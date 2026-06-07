@@ -1,0 +1,564 @@
+{
+  "generated_at": "2026-06-07T15:14:04Z",
+  "site": {
+    "title": "Daily Paper Digest",
+    "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
+    "default_limit": 10
+  },
+  "analysis_enabled": false,
+  "interests": {
+    "arxiv_categories": [
+      "cs.IR",
+      "cs.AI",
+      "cs.LG",
+      "cs.CL"
+    ],
+    "include_keywords": [
+      "recommender system",
+      "recommendation",
+      "generative recommendation",
+      "sequential recommendation",
+      "LLM4Rec",
+      "large language model recommendation",
+      "agent recommendation",
+      "Agent4Rec",
+      "conversational recommendation"
+    ],
+    "exclude_keywords": [
+      "advertising",
+      "sponsored search"
+    ],
+    "dblp_venues": [
+      "RecSys",
+      "SIGIR",
+      "WWW",
+      "KDD",
+      "WSDM",
+      "CIKM",
+      "ICLR",
+      "AAAI",
+      "ICML",
+      "NeurIPS"
+    ]
+  },
+  "papers": [
+    {
+      "id": "arxiv:2606.02883",
+      "title": "LLM-Assisted Reranking to Operationalize Nuanced Objectives in Recommender Systems",
+      "authors": [
+        "Amir Ghasemian",
+        "Homa Hosseinmardi",
+        "Upasana Dutta",
+        "Duncan J. Watts"
+      ],
+      "affiliations": [
+        "Department of Communication, University of California, Los Angeles, CA 90095",
+        "Department of Computer and Information Science, University of Pennsylvania, Philadelphia, PA 19104",
+        "Annenberg School of Communication, University of Pennsylvania, Philadelphia, PA 19104",
+        "Operations, Information, and Decisions Department, University of Pennsylvania, Philadelphia, PA 19104"
+      ],
+      "published": "2026-06-01T20:54:14Z",
+      "updated": "2026-06-01T20:54:14Z",
+      "abstract": "Recommender systems have grown from content-organization tools into sophisticated systems that shape daily behavior. By controlling what we see, they shape what we perceive, raising concerns about filter bubbles, radicalization, polarization, and social inequality. Large language models (LLMs) enable more powerful personalization, intensifying these dynamics. Yet most recommenders are tuned for engagement or limited accuracy metrics, with little attention to broader social implications, e.g. how personalization reshapes exposure in socially consequential domains. We investigate whether LLM-assisted reranking, while improving personalization, inadvertently amplifies exposure to ideologically extreme or conspiratorial political content, a risk theorized but not empirically characterized in news recommendation. Using real news-consumption histories, we rerank YouTube's sidebar candidates through zero-shot, instruction-based prompting. We compare a baseline prompt with a constrained variant that preserves topical relevance and broadens ideological exposure while reducing conspiratorial or extreme content. Without constraints, reranking strengthened personalization but increased exposure to conspiratorial and extremist material for users whose histories contained such content. Lightweight prompt-level regularization reduced promotion of extreme content and increased ideological diversity, with modest relevance loss. Synthetic experiments suggest that LLMs rerank via statistical regularities in language rather than semantic understanding of ideology, clarifying why naive prompts amplify these patterns and why regularization can reshape them. Together, our results highlight the power of LLMs to operationalize contextual nuance in high-stakes recommendation, and the need to evaluate LLM-assisted personalization beyond accuracy and treat prompt design as a value-laden rather than neutral default.",
+      "categories": [
+        "cs.HC",
+        "cs.AI",
+        "cs.CY",
+        "cs.IR"
+      ],
+      "primary_category": "cs.HC",
+      "abs_url": "http://arxiv.org/abs/2606.02883v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.02883v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "Recommender systems have grown from content-organization tools into sophisticated systems that shape daily behavior. By controlling what we see, they shape what we perceive, raising concerns about filter bubbles, radicalization, polarization, and social inequality. Large language models (LLMs) enable more powerful personalization, intensifying these dynamics.",
+      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "innovation_points": [
+        "未能从全文/元数据中稳定抽取明确创新点。"
+      ],
+      "experiment_results": [
+        "全文未提供足够实验结果细节，或解析失败。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "需要阅读全文确认实验设置、数据集和适用边界。"
+      ],
+      "practical_value": "可作为推荐系统相关方向的跟进阅读。",
+      "analysis_basis": "metadata",
+      "tags": [
+        "LLM4Rec",
+        "RecSys",
+        "Evaluation"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 10
+    },
+    {
+      "id": "arxiv:2606.01948",
+      "title": "Rank-Constrained Deep Matrix Completion for Group Recommendation",
+      "authors": [
+        "Mubaraka Sani Ibrahim",
+        "Lehel Csató",
+        "Isah Charles Saidu"
+      ],
+      "affiliations": [
+        "Faculty of Mathematics and Computer Science, Babes-Bolyai University, Cluj-Napoca, Romania",
+        "Department of Computer Science, Baze University, Abuja, Nigeria",
+        "African University of Science and Technology",
+        "Babes-Bolyai University",
+        "Baze University"
+      ],
+      "published": "2026-06-01T09:09:46Z",
+      "updated": "2026-06-01T09:09:46Z",
+      "abstract": "The growing popularity of group activities has increased the need for methods that provide recommendations to groups of users given their individual preferences. Many existing group recommender systems rely on aggregating individual user preferences, but they often struggle with high-dimensional and highly sparse rating data commonly found in real-world scenarios. We propose Group Rank-Constrained Deep Matrix Completion (Group RC-DMC), a novel framework that extends RC-DMC by integrating group-level representation learning via a Set-Transformer aggregator, jointly leveraging low-rank structure and attention-based nonlinear modeling. Unlike most existing group recommender systems, Group RC-DMC unifies explicit low-rank regularization, linear encoder-decoder architectures, and attention-based nonlinear group modeling within a single framework, yielding accurate predictions at both the individual and group levels. Group RC-DMC addresses data sparsity through low-rank matrix completion, computing per-user latent representations from observed ratings only, and enforcing a rank constraint on the latent space using a nuclear-norm proximal step based on periodic singular value thresholding. The decoder is parametrized as a low-rank factorization, enabling efficient inference. Experimental results on the MovieLens and Goodbooks datasets demonstrate that Group RC-DMC achieves superior reconstruction accuracy, measured by lower group RMSE, while remaining computationally efficient and competitive in group-level performance in terms of precision, recall, and F1 score compared with weighted-before-factorization (WBF) and after-factorization (AF) baselines. The results highlight the model's ability to recover the underlying low-rank structure of user-item interactions and provide robust group recommendations across small, medium, and large user groups.",
+      "categories": [
+        "cs.IR",
+        "cs.AI"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.01948v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.01948v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "The growing popularity of group activities has increased the need for methods that provide recommendations to groups of users given their individual preferences. Many existing group recommender systems rely on aggregating individual user preferences, but they often struggle with high-dimensional and highly sparse rating data commonly found in real-world scenarios. We propose Group Rank-Constrained Deep Matrix Completion (Group RC-DMC), a novel framework that extends RC-DMC by integrating group-level representation learning via a Set-Transformer aggregator, jointly leveraging low-rank structure and attention-based nonlinear modeling.",
+      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "innovation_points": [
+        "未能从全文/元数据中稳定抽取明确创新点。"
+      ],
+      "experiment_results": [
+        "全文未提供足够实验结果细节，或解析失败。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "需要阅读全文确认实验设置、数据集和适用边界。"
+      ],
+      "practical_value": "可作为推荐系统相关方向的跟进阅读。",
+      "analysis_basis": "metadata",
+      "tags": [
+        "RecSys",
+        "Dataset"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 10
+    },
+    {
+      "id": "arxiv:2606.03091",
+      "title": "BAHSD: Bridging the Long-tail Gap via Adaptive Distillation in Black-box Sequential Recommendation",
+      "authors": [
+        "Xi Zhou",
+        "Famin Wu",
+        "Mingming Li",
+        "Hongyue Zhang",
+        "Jiao Dai",
+        "Jizhong Han",
+        "Tao Guo"
+      ],
+      "affiliations": [
+        "Institute of Information Engineering, Chinese Academy of Sciences, Beijing, China"
+      ],
+      "published": "2026-06-02T03:26:25Z",
+      "updated": "2026-06-04T07:55:34Z",
+      "abstract": "Sequential recommendation systems are widely adopted but often deployed as black-box APIs, which has driven recent interest in model extraction to replicate their capabilities locally. However, the long-tail distribution induces severe signal heterogeneity: dense head sequences trigger the solidification of teacher preference, biasing extraction toward local patterns, while sparse tail sequences yield flat, noisy predictions. Existing one-size-fits-all extraction overlooks this disparity, resulting in noise overfitting and suboptimal knowledge transfer. We propose BAHSD, a black-box adaptive distillation framework that handles signal heterogeneity via a multi-scale consistency probing mechanism to implicitly quantify signal reliability. Based on this, an adaptive hierarchical objective is designed: dynamic-temperature KL divergence mitigates preference solidification for high-confidence signals, while ranking consistency and InfoNCE contrastive learning provide noise-robust enhancement for low-confidence signals. BAHSD consistently outperforms baselines, achieving up to 4.98\\% gain over the teacher and 80\\%+ improvement on tail users, offering a plug-and-play solution for high-fidelity black-box recommendation extraction.",
+      "categories": [
+        "cs.IR",
+        "cs.AI"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.03091v2",
+      "pdf_url": "https://arxiv.org/pdf/2606.03091v2",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "Sequential recommendation systems are widely adopted but often deployed as black-box APIs, which has driven recent interest in model extraction to replicate their capabilities locally. However, the long-tail distribution induces severe signal heterogeneity: dense head sequences trigger the solidification of teacher preference, biasing extraction toward local patterns, while sparse tail sequences yield flat, noisy predictions. Existing one-size-fits-all extraction overlooks this disparity, resulting in noise overfitting and suboptimal knowledge transfer.",
+      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "innovation_points": [
+        "未能从全文/元数据中稳定抽取明确创新点。"
+      ],
+      "experiment_results": [
+        "全文未提供足够实验结果细节，或解析失败。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "需要阅读全文确认实验设置、数据集和适用边界。"
+      ],
+      "practical_value": "可作为推荐系统相关方向的跟进阅读。",
+      "analysis_basis": "metadata",
+      "tags": [
+        "Sequential Rec",
+        "RecSys"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 10
+    },
+    {
+      "id": "arxiv:2606.03718",
+      "title": "MARS: Multi-rate Aggregation of Recency Signals for Sequential Recommendation across Sparse and Dense Regimes",
+      "authors": [
+        "Zhenyu Yu",
+        "Shuigeng Zhou"
+      ],
+      "affiliations": [],
+      "published": "2026-06-02T14:39:19Z",
+      "updated": "2026-06-02T14:39:19Z",
+      "abstract": "Sequential recommenders weight historical interactions either through positional self-attention as in Transformers or through a single implicit decay schedule as in State-Space Models. Neither makes the multi-scale temporal structure of real user behaviour explicit. We propose MARS, an encoder-agnostic aggregation operator that consumes real timestamps and produces K summaries emphasising distinct recency scales, fused by a context-adaptive gate. MARS adds at most 6% parameters and runs in $\\mathcal{O}(LdK)$ time. MARS adapts to data density by automatically selecting between two encoder instantiations: MARS-T (Transformer) for sparse data and MARS-M (Mamba) for dense data, based on the average sequence length of the training set. On five public benchmarks against ten Transformer- and Mamba-based baselines under a unified RecBole protocol, MARS attains the best HR@10 on every benchmark, with mean relative gain +19.7% over the strongest content-only Transformer baseline on sparse data (reaching +36.2% on Games) and +3.2% HR@10 / +0.9% NDCG over SIGMA on dense ML-1M at 42% fewer MFLOPs, occupying the accuracy-efficiency Pareto frontier across the data-density spectrum. A backbone-only ablation isolates the marginal contribution of MARS at +4% to +19% HR@10 on sparse data and motivates the dual-instantiation design. The code is included in the supplementary material.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.03718v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.03718v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "Sequential recommenders weight historical interactions either through positional self-attention as in Transformers or through a single implicit decay schedule as in State-Space Models. Neither makes the multi-scale temporal structure of real user behaviour explicit. We propose MARS, an encoder-agnostic aggregation operator that consumes real timestamps and produces K summaries emphasising distinct recency scales, fused by a context-adaptive gate.",
+      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "innovation_points": [
+        "未能从全文/元数据中稳定抽取明确创新点。"
+      ],
+      "experiment_results": [
+        "全文未提供足够实验结果细节，或解析失败。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "需要阅读全文确认实验设置、数据集和适用边界。"
+      ],
+      "practical_value": "可作为推荐系统相关方向的跟进阅读。",
+      "analysis_basis": "metadata",
+      "tags": [
+        "Sequential Rec",
+        "RecSys",
+        "Benchmark"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 10
+    },
+    {
+      "id": "arxiv:2606.03221",
+      "title": "VirtualMLE: A Virtual ML Engineer that Optimizes Sequential Recommenders",
+      "authors": [
+        "Shiteng Cao",
+        "Jingwen Liu",
+        "Junda She",
+        "Zhiheng Li"
+      ],
+      "affiliations": [],
+      "published": "2026-06-02T06:31:15Z",
+      "updated": "2026-06-02T06:31:15Z",
+      "abstract": "Recent advancements in Large Language Models (LLMs) have demonstrated remarkable capabilities in reasoning, reflection, and tool utilization, unlocking new paradigms for automating complex engineering workflows. However, in the domain of sequential recommendation (SR), tuning models on new datasets still relies heavily on the manual trial-and-error of experienced machine learning engineers. To bridge this gap, we propose \\textbf{VirtualMLE}, an LLM-agent framework that leverages the cognitive capabilities of LLMs to organize recommender optimizing into a closed loop of execution, reflection, and memory update. After each trial, the agent explicitly analyzes the observed outcomes and stores concise heuristic feedback in a hierarchical memory system. We evaluate VirtualMLE on three Amazon SR benchmarks with two representative backbones, SASRec and HSTU. VirtualMLE reaches competitive recommendation quality with substantially fewer trials. Furthermore, we observe that cognition summaries distilled from previous datasets can significantly accelerate the search process on unseen datasets, demonstrating the potential of transferring tuning heuristics. Overall, our results provide compelling evidence that LLM agents equipped with reflection and memory can serve as practical virtual engineers to automate and amortize heuristic learning in SR optimization. Our codes are available.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.03221v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.03221v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "Recent advancements in Large Language Models (LLMs) have demonstrated remarkable capabilities in reasoning, reflection, and tool utilization, unlocking new paradigms for automating complex engineering workflows. However, in the domain of sequential recommendation (SR), tuning models on new datasets still relies heavily on the manual trial-and-error of experienced machine learning engineers. To bridge this gap, we propose \\textbf{VirtualMLE}, an LLM-agent framework that leverages the cognitive capabilities of LLMs to organize recommender optimizing into a closed loop of execution, reflection, and memory update.",
+      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "innovation_points": [
+        "未能从全文/元数据中稳定抽取明确创新点。"
+      ],
+      "experiment_results": [
+        "全文未提供足够实验结果细节，或解析失败。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "需要阅读全文确认实验设置、数据集和适用边界。"
+      ],
+      "practical_value": "可作为推荐系统相关方向的跟进阅读。",
+      "analysis_basis": "metadata",
+      "tags": [
+        "LLM4Rec",
+        "Sequential Rec",
+        "RecSys",
+        "Evaluation",
+        "Dataset",
+        "Benchmark"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 10
+    },
+    {
+      "id": "arxiv:2606.03727",
+      "title": "When Does Latent Reasoning Help? MeRa: Metric-Space Bias for Spatial Prediction",
+      "authors": [
+        "Zhenyu Yu",
+        "Shuigeng Zhou"
+      ],
+      "affiliations": [],
+      "published": "2026-06-02T14:47:30Z",
+      "updated": "2026-06-02T14:47:30Z",
+      "abstract": "Latent reasoning has improved sequential recommendation by iteratively refining representations before prediction, but does it help spatial prediction? We find that the answer depends on whether reasoning is grounded in the underlying metric space. Without such grounding, latent reasoning degrades spatial prediction below the unmodified baseline, while a learned metric-space bias derived from pairwise distances produces consistent gains. We formalize this finding through MeRa (Metric-space Reasoning), a lightweight backbone-agnostic module that can be inserted between any sequence encoder and its prediction heads. On the GETNext backbone, the gap between reasoning without and with metric-space bias reaches 4.5% NDCG@10. MeRa achieves the best NDCG@10 on all three spatial prediction benchmarks among the compared methods, surpassing recent approaches such as GeoMamba and HMST. We prove that metric-space-constrained reasoning converges to a unique fixed point and that N-step reasoning is strictly more expressive than (N-1)-step reasoning. A controlled experiment on CLEVR with Euclidean distance confirms that the finding generalizes beyond geographic coordinates. The code is included in the supplementary material.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.03727v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.03727v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "Latent reasoning has improved sequential recommendation by iteratively refining representations before prediction, but does it help spatial prediction? We find that the answer depends on whether reasoning is grounded in the underlying metric space. Without such grounding, latent reasoning degrades spatial prediction below the unmodified baseline, while a learned metric-space bias derived from pairwise distances produces consistent gains.",
+      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "innovation_points": [
+        "未能从全文/元数据中稳定抽取明确创新点。"
+      ],
+      "experiment_results": [
+        "全文未提供足够实验结果细节，或解析失败。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "需要阅读全文确认实验设置、数据集和适用边界。"
+      ],
+      "practical_value": "可作为推荐系统相关方向的跟进阅读。",
+      "analysis_basis": "metadata",
+      "tags": [
+        "Sequential Rec",
+        "RecSys",
+        "Evaluation",
+        "Benchmark"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 10
+    },
+    {
+      "id": "arxiv:2606.04550",
+      "title": "Trading Engagement for Sustainability: Carbon-Aware Re-ranking for E-commerce Recommendations",
+      "authors": [
+        "Noah Lund Syrdal",
+        "Anders Vestrum",
+        "Jorgen Bergh"
+      ],
+      "affiliations": [],
+      "published": "2026-06-03T07:34:46Z",
+      "updated": "2026-06-03T07:34:46Z",
+      "abstract": "E-commerce recommender systems strongly influence which products users consider and purchase, yet sustainability signals such as Product Carbon Footprint (PCF) are almost never available at catalog scale. We study carbon-aware product recommendation in the realistic setting where PCF labels are missing for most items and must be inferred. We first estimate product-level carbon footprints via a retrieval-augmented PCF estimation pipeline that transfers supervision from the Carbon Catalogue, a small set of life-cycle-assessed products, to a large unlabeled e-commerce catalog using semantic similarity search, few-shot LLM prompting, and a nearest-neighbour fallback. We then apply a carbon-aware post-hoc re-ranking strategy on top of relevance scores produced by three established recommendation models: BPR, NeuMF, and LightGCN. The method trades off predicted user-item engagement against estimated carbon footprint through a single tunable parameter, lambda. In this offline study, engagement is operationalized through Amazon review interactions, which serve as implicit feedback and as a proxy for user interest or purchase behavior. We evaluate the framework on the Amazon Reviews dataset across three product categories: Home and Kitchen, Sports and Outdoors, and Electronics. By sweeping lambda, we construct Pareto frontiers that characterize the achievable engagement and carbon trade-off for each model and category. Substantial carbon reductions are achievable at minimal engagement cost across all models and categories. However, the available carbon headroom varies by model and category, underscoring the importance of model choice and domain context.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.04550v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.04550v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "E-commerce recommender systems strongly influence which products users consider and purchase, yet sustainability signals such as Product Carbon Footprint (PCF) are almost never available at catalog scale. We study carbon-aware product recommendation in the realistic setting where PCF labels are missing for most items and must be inferred. We first estimate product-level carbon footprints via a retrieval-augmented PCF estimation pipeline that transfers supervision from the Carbon Catalogue, a small set of life-cycle-assessed products, to a large unlabeled e-commerce catalog using semantic similarity search, few-shot LLM prompting, and a nearest-neighbour fallback.",
+      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "innovation_points": [
+        "未能从全文/元数据中稳定抽取明确创新点。"
+      ],
+      "experiment_results": [
+        "全文未提供足够实验结果细节，或解析失败。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "需要阅读全文确认实验设置、数据集和适用边界。"
+      ],
+      "practical_value": "可作为推荐系统相关方向的跟进阅读。",
+      "analysis_basis": "metadata",
+      "tags": [
+        "RecSys",
+        "Evaluation",
+        "Dataset"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 10
+    },
+    {
+      "id": "arxiv:2606.05537",
+      "title": "PHKT:Personalized Dynamic Hypergraph-enhanced KAN-Transformer for Multi-behavior Sequential Recommendation",
+      "authors": [
+        "Ruijie Du",
+        "Hao Chen",
+        "Xin Zhang",
+        "Dongjing Wang",
+        "Ze Zhang",
+        "Xudong Shen",
+        "Runze Wu",
+        "Dongjin Yu"
+      ],
+      "affiliations": [],
+      "published": "2026-06-04T00:40:58Z",
+      "updated": "2026-06-04T00:40:58Z",
+      "abstract": "In multi-behavior recommendation, auxiliary behaviors such as clicks, add-to-cart, and purchases can provide richer supervisory information for predicting target behaviors. Although existing graph and hypergraph methods are capable of modeling high-order relationships among users, items, and behaviors, they still have limitations in heterogeneous semantics, user-specific weighting, and sequence dependency modeling. While standard Transformers excel at sequence modeling, their shared feedforward mapping struggles to accommodate the differentiated requirements of heterogeneous latent patterns in multi-behavior scenarios. To address this, this paper proposes the Personalized Hypergraph-enhanced Kolmogorov-Arnold Network Transformer (PHKT). Specifically, we design a personalized dynamic hypergraph module that performs behavior-aware weighting of item similarities based on users' historical behavior sequences to capture user-specific heterogeneous high-order relationships. Meanwhile, a Transformer is used as the temporal backbone to model the evolution of short- and long-term preferences, and KAN is introduced to replace the traditional MLP in the feedforward network to enhance fine-grained modeling capability for nonlinear responses to different latent patterns. Experiments on three real datasets, Tmall, RetailRocket, and IJCAI, show that PHKT consistently outperforms nine strong baseline models across multiple evaluation metrics, demonstrating its effectiveness in multi-behavior preference modeling and target behavior prediction.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.05537v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.05537v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "In multi-behavior recommendation, auxiliary behaviors such as clicks, add-to-cart, and purchases can provide richer supervisory information for predicting target behaviors. Although existing graph and hypergraph methods are capable of modeling high-order relationships among users, items, and behaviors, they still have limitations in heterogeneous semantics, user-specific weighting, and sequence dependency modeling. While standard Transformers excel at sequence modeling, their shared feedforward mapping struggles to accommodate the differentiated requirements of heterogeneous latent patterns in multi-behavior scenarios.",
+      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "innovation_points": [
+        "未能从全文/元数据中稳定抽取明确创新点。"
+      ],
+      "experiment_results": [
+        "全文未提供足够实验结果细节，或解析失败。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "需要阅读全文确认实验设置、数据集和适用边界。"
+      ],
+      "practical_value": "可作为推荐系统相关方向的跟进阅读。",
+      "analysis_basis": "metadata",
+      "tags": [
+        "Sequential Rec",
+        "RecSys",
+        "Evaluation",
+        "Dataset"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 10
+    },
+    {
+      "id": "arxiv:2606.01844",
+      "title": "Decoupled Residual Quantization for Robust Semantic IDs in Recommendation",
+      "authors": [
+        "Xuesi Wang",
+        "Junjie Wang",
+        "Ziliang Wang",
+        "Weijie Bian",
+        "Guanxing Zhang"
+      ],
+      "affiliations": [],
+      "published": "2026-06-01T07:55:21Z",
+      "updated": "2026-06-01T07:55:21Z",
+      "abstract": "Semantic IDs represent items as shared discrete token sequences and have become a practical tool for recommendation and retrieval. Yet it remains difficult to tell why a tokenizer fails: poor quality may come from codebook underutilization, unstable decision boundaries, or geometric distortion of the embedding space. This paper develops a quantitative framework for diagnosing these failures through expected codeword overlap and effective codebook capacity. The former measures expected codeword confusion under retrieval-time perturbation, while the latter converts that confusion into an effective number of usable, well-separated codes. The framework links semantic boundary confusion to both code usage imbalance and Euclidean geometric constraints. As a proof of concept, we present Decoupled Residual Quantization (DRQ), which separates continuous geometry reconstruction from discrete distribution matching. Experiments on a large-scale industrial dataset show that Semantic ID quality is multi-objective: symbolic robustness, reconstruction fidelity, and behavior-aware soft matching each stress different aspects of a tokenizer. These downstream observations are based on one proprietary industrial dataset, so they should be read as a case study rather than a universal benchmark claim.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.01844v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.01844v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "Semantic IDs represent items as shared discrete token sequences and have become a practical tool for recommendation and retrieval. Yet it remains difficult to tell why a tokenizer fails: poor quality may come from codebook underutilization, unstable decision boundaries, or geometric distortion of the embedding space. This paper develops a quantitative framework for diagnosing these failures through expected codeword overlap and effective codebook capacity.",
+      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "innovation_points": [
+        "未能从全文/元数据中稳定抽取明确创新点。"
+      ],
+      "experiment_results": [
+        "全文未提供足够实验结果细节，或解析失败。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "需要阅读全文确认实验设置、数据集和适用边界。"
+      ],
+      "practical_value": "可作为推荐系统相关方向的跟进阅读。",
+      "analysis_basis": "metadata",
+      "tags": [
+        "RecSys",
+        "Evaluation",
+        "Dataset",
+        "Benchmark"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 6
+    },
+    {
+      "id": "arxiv:2606.02417",
+      "title": "Dynamic Spectral Denoising with Global-Context Attention for Multi-Behavior Recommendation",
+      "authors": [
+        "Miaomiao Cai",
+        "Yunshan Ma",
+        "Fangqi Zhu",
+        "Junfeng Fang",
+        "Zhijie Zhang",
+        "Zhiyong Cheng",
+        "Xiang Wang",
+        "See-Kiong Ng"
+      ],
+      "affiliations": [],
+      "published": "2026-06-01T15:58:13Z",
+      "updated": "2026-06-01T15:58:13Z",
+      "abstract": "Multi-behavior recommendation improves target-behavior prediction by exploiting heterogeneous auxiliary feedback (e.g., view, collect, and cart), yet its robustness is undermined by behavior-dependent noise and inconsistency. We argue that the key bottleneck is a representation-level failure caused by two coupled heterogeneities. First, intra-behavior representation entanglement arises when multi-hop propagation blends incidental signals with true preferences in the embedding space, making coarse spatial denoising unable to suppress noise without sacrificing informative niche signals. Second, inter-behavior reliability heterogeneity complicates cross-behavior fusion because the predictive value of auxiliary behaviors varies across users and contexts. Without reliability calibration, frequent yet unreliable signals may dominate aggregation and cause target-intent drift. To address this bottleneck, we propose Dynamic Spectral Denoising with Global-Context Attention for Multi-Behavior Recommendation (SpectraMB), a target-oriented model that performs representation purification before reliability-aware fusion. SpectraMB introduces Dynamic Feature-Level Spectral Filtering, which re-parameterizes embeddings along the feature dimension into a feature-frequency space and learns view-adaptive spectral modulation under target supervision, enabling component-wise purification without hand-crafted frequency assumptions. It further proposes Global-Context Attention Fusion, which uses a purified global representation as a context anchor to assess view compatibility and perform reliability-aware aggregation, while a residual global backbone preserves collaborative structure. Extensive experiments on three real-world datasets show that SpectraMB achieves the best results in most evaluation settings and exhibits improved robustness under noisy interactions.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.02417v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.02417v1",
+      "doi": "10.1145/3770855.3818191",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "Multi-behavior recommendation improves target-behavior prediction by exploiting heterogeneous auxiliary feedback (e.g., view, collect, and cart), yet its robustness is undermined by behavior-dependent noise and inconsistency. We argue that the key bottleneck is a representation-level failure caused by two coupled heterogeneities. First, intra-behavior representation entanglement arises when multi-hop propagation blends incidental signals with true preferences in the embedding space, making coarse spatial denoising unable to suppress noise without sacrificing informative niche signals.",
+      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "innovation_points": [
+        "未能从全文/元数据中稳定抽取明确创新点。"
+      ],
+      "experiment_results": [
+        "全文未提供足够实验结果细节，或解析失败。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "需要阅读全文确认实验设置、数据集和适用边界。"
+      ],
+      "practical_value": "可作为推荐系统相关方向的跟进阅读。",
+      "analysis_basis": "metadata",
+      "tags": [
+        "RecSys",
+        "Evaluation",
+        "Dataset"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 6
+    }
+  ]
+}

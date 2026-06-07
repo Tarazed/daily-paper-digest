@@ -1,0 +1,68 @@
+state_file = "paper_state.toml"
+
+[arxiv]
+categories = ["cs.IR", "cs.AI", "cs.LG", "cs.CL"]
+include_keywords = [
+  "recommender system",
+  "recommendation",
+  "generative recommendation",
+  "sequential recommendation",
+  "LLM4Rec",
+  "large language model recommendation",
+  "agent recommendation",
+  "Agent4Rec",
+  "conversational recommendation",
+]
+exclude_keywords = ["advertising", "sponsored search"]
+max_results = 50
+days_back = 14
+
+[dblp]
+enabled = true
+venues = ["RecSys", "SIGIR", "WWW", "KDD", "WSDM", "CIKM", "ICLR", "AAAI", "ICML", "NeurIPS"]
+include_keywords = [
+  "recommender",
+  "recommendation",
+  "recommend",
+  "LLM4Rec",
+  "generative recommendation",
+  "sequential recommendation",
+  "conversational recommendation",
+  "agent",
+]
+max_results_per_query = 10
+years_back = 2
+timeout_seconds = 4
+max_failures = 2
+max_total_results = 20
+
+[email]
+sender_name = "Daily Paper Digest"
+default_to = ""
+subject_prefix = "Daily Paper Digest"
+top_n = 10
+
+[site]
+title = "Daily Paper Digest"
+subtitle = "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪"
+default_limit = 10
+
+[summary]
+provider = "deepseek"
+base_url = "https://api.deepseek.com"
+model = "deepseek-v4-flash"
+analysis_model = "deepseek-v4-pro"
+language = "zh"
+max_sentences = 3
+full_text_max_chars = 12000
+full_text_timeout_seconds = 10
+analysis_workers = 3
+
+[enrichment]
+enabled = true
+provider = "openalex"
+mailto = ""
+max_results = 3
+source_enabled = true
+source_max_papers = 5
+source_timeout_seconds = 8

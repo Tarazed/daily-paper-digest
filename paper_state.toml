@@ -1,0 +1,7 @@
+# Add manually curated paper state here. Section names only need to be unique.
+#
+# [paper.arxiv_2606_01234]
+# id = "arxiv:2606.01234"
+# importance = "high"
+# read_status = "saved"
+# notes = "重点看实验设置和推荐任务定义。"
