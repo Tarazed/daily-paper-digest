@@ -93,7 +93,7 @@ function App() {
 
       {payload?.analysis_enabled === false && (
         <div className="notice">
-          未检测到 DEEPSEEK_API_KEY，创新点、实验结果和 A/B 测试字段使用保守 fallback。请设置 .env.local 后重新运行 ./scripts/build_pages.sh。
+          未检测到 DEEPSEEK_API_KEY，创新点、实验结果和 A/B 测试字段使用保守 fallback。本机构建请设置 .env.local 后重新运行 ./scripts/build_pages.sh；GitHub Actions 部署请添加同名 Repository Secret 后重新运行 workflow。
         </div>
       )}
 

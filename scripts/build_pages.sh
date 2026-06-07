@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-LIMIT="${DAILY_PAPER_LIMIT:-10}"
+LIMIT="${DAILY_PAPER_LIMIT:-30}"
 CONFIG="${DAILY_PAPER_CONFIG:-config.toml}"
 
 cd "$ROOT_DIR"

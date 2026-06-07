@@ -42,7 +42,7 @@ python3 -m daily_paper fetch --out papers.json
 python3 -m daily_paper preview --out preview.html
 python3 -m daily_paper send --to recipient@example.com --dry-run
 python3 -m daily_paper send --to recipient@example.com
-python3 -m daily_paper site-data --out web/public/papers.json --limit 10
+python3 -m daily_paper site-data --out web/public/papers.json --limit 30
 ```
 
 Use `paper_state.toml` to mark important papers. Important papers are placed first in the email.
@@ -64,6 +64,10 @@ One-command local build:
 `build_pages.sh` loads `.env` and `.env.local` automatically. Put `DEEPSEEK_API_KEY`
 in `.env.local` for local builds. Without `DEEPSEEK_API_KEY`, the site still builds
 with fallback summaries.
+
+Site data is updated incrementally. Each build searches the current window, selects the
+current top papers, reuses existing DeepSeek analysis when the paper version and analysis
+settings have not changed, and keeps older papers already present in `web/public/papers.json`.
 
 Optional controls:
 

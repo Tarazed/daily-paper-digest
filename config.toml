@@ -1,40 +1,193 @@
 state_file = "paper_state.toml"
 
 [arxiv]
-categories = ["cs.IR", "cs.AI", "cs.LG", "cs.CL"]
+categories = ["cs.IR", "cs.AI", "cs.LG", "cs.CL", "cs.SI", "stat.ML"]
 include_keywords = [
+  # General recommendation
   "recommender system",
   "recommendation",
-  "generative recommendation",
+  "personalized recommendation",
   "sequential recommendation",
-  "LLM4Rec",
-  "large language model recommendation",
-  "agent recommendation",
-  "Agent4Rec",
+  "session-based recommendation",
   "conversational recommendation",
+  "explainable recommendation",
+  "interactive recommendation",
+
+  # Generative recommendation
+  "generative recommendation",
+  "generative recommender",
+  "generative recommender system",
+  "generative sequential recommendation",
+  "generative collaborative filtering",
+  "generative ranking",
+  "generative retrieval",
+  "generative item retrieval",
+  "autoregressive recommendation",
+
+  # Semantic ID / tokenization / codebook
+  "semantic id",
+  "semantic identifier",
+  "semantic token",
+  "semantic tokenization",
+  "item tokenization",
+  "item identifier",
+  "discrete item token",
+  "discrete token recommendation",
+  "codebook recommendation",
+  "vector quantization recommendation",
+  "residual quantization recommendation",
+  "RQ-VAE recommendation",
+  "VQ-VAE recommendation",
+  "hierarchical identifier recommendation",
+
+  # LLM4Rec
+  "LLM4Rec",
+  "LLM recommendation",
+  "LLM recommender",
+  "LLM-based recommendation",
+  "large language model recommendation",
+  "large language model recommender",
+  "foundation model recommendation",
+  "foundation model recommender",
+  "instruction tuning recommendation",
+  "prompt-based recommendation",
+  "in-context learning recommendation",
+  "zero-shot recommendation",
+  "few-shot recommendation",
+  "RAG recommendation",
+  "retrieval augmented recommendation",
+  "LLM user modeling",
+  "user preference modeling LLM",
+  "personalized LLM recommendation",
+
+  # Agent4Rec
+  "agent recommendation",
+  "agent recommender",
+  "agentic recommendation",
+  "Agent4Rec",
+  "LLM agent recommendation",
+  "LLM agent recommender",
+  "recommendation agent",
+  "recommender agent",
+  "multi-agent recommendation",
+  "multi-agent recommender",
+  "user simulator recommendation",
+  "LLM user simulator",
+  "generative agents recommendation",
+  "tool-augmented recommendation",
+  "planning recommendation agent",
+  "reasoning recommendation agent"
 ]
-exclude_keywords = ["advertising", "sponsored search"]
-max_results = 50
+exclude_keywords = [
+  "advertising",
+  "sponsored search",
+  "ad recommendation",
+  "ads recommendation",
+  "advertisement recommendation",
+  "medical recommendation",
+  "clinical recommendation",
+  "drug recommendation",
+  "treatment recommendation",
+  "policy recommendation",
+  "recommendation letter",
+  "citation recommendation",
+  "review recommendation"
+]
+max_results = 80
 days_back = 14
 
 [dblp]
 enabled = true
-venues = ["RecSys", "SIGIR", "WWW", "KDD", "WSDM", "CIKM", "ICLR", "AAAI", "ICML", "NeurIPS"]
+venues = [
+  "RecSys",
+  "SIGIR",
+  "WWW",
+  "KDD",
+  "WSDM",
+  "CIKM",
+  "SIGMOD",
+  "VLDB",
+  "ICLR",
+  "AAAI",
+  "IJCAI",
+  "ICML",
+  "NeurIPS",
+  "ACL",
+  "EMNLP",
+  "NAACL",
+  "COLING",
+  "TOIS",
+  "TKDE",
+  "TKDD",
+  "TORS"
+]
 include_keywords = [
+  # General recommendation
   "recommender",
   "recommendation",
   "recommend",
-  "LLM4Rec",
-  "generative recommendation",
+  "personalized recommendation",
   "sequential recommendation",
+  "session-based recommendation",
   "conversational recommendation",
-  "agent",
+  "interactive recommendation",
+
+  # Generative recommendation
+  "generative recommendation",
+  "generative recommender",
+  "generative recommender system",
+  "generative retrieval",
+  "generative ranking",
+  "autoregressive recommendation",
+
+  # Semantic ID / tokenization / quantization
+  "semantic id",
+  "semantic identifier",
+  "semantic token",
+  "item tokenization",
+  "item identifier",
+  "discrete token",
+  "codebook",
+  "vector quantization",
+  "residual quantization",
+  "RQ-VAE",
+  "VQ-VAE",
+
+  # LLM4Rec
+  "LLM4Rec",
+  "LLM recommendation",
+  "LLM recommender",
+  "LLM-based recommendation",
+  "large language model recommendation",
+  "large language model recommender",
+  "foundation model recommendation",
+  "prompt-based recommendation",
+  "instruction tuning recommendation",
+  "in-context learning recommendation",
+  "RAG recommendation",
+  "retrieval augmented recommendation",
+  "LLM user modeling",
+  "user preference modeling",
+
+  # Agent4Rec
+  "agent recommendation",
+  "agentic recommendation",
+  "Agent4Rec",
+  "LLM agent recommendation",
+  "recommendation agent",
+  "recommender agent",
+  "multi-agent recommendation",
+  "user simulator recommendation",
+  "generative agents recommendation",
+  "tool-augmented recommendation",
+  "planning recommendation agent",
+  "reasoning recommendation agent"
 ]
 max_results_per_query = 10
-years_back = 2
-timeout_seconds = 4
-max_failures = 2
-max_total_results = 20
+years_back = 3
+timeout_seconds = 8
+max_failures = 3
+max_total_results = 50
 
 [email]
 sender_name = "Daily Paper Digest"
@@ -45,7 +198,7 @@ top_n = 10
 [site]
 title = "Daily Paper Digest"
 subtitle = "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪"
-default_limit = 10
+default_limit = 30
 
 [summary]
 provider = "deepseek"
@@ -55,7 +208,7 @@ analysis_model = "deepseek-v4-pro"
 language = "zh"
 max_sentences = 3
 full_text_max_chars = 12000
-full_text_timeout_seconds = 10
+full_text_timeout_seconds = 15
 analysis_workers = 3
 
 [enrichment]
@@ -65,4 +218,4 @@ mailto = ""
 max_results = 3
 source_enabled = true
 source_max_papers = 5
-source_timeout_seconds = 8
+source_timeout_seconds = 10

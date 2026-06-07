@@ -14,7 +14,14 @@ from .enrichment import enrich_papers
 from .filtering import prepare_papers
 from .mailer import MailConfigError, build_message, send_message
 from .state import load_state
-from .summarizer import analyze_papers_for_site, summarize_papers
+from .models import Paper
+from .summarizer import (
+    analyze_papers_for_site,
+    copy_site_analysis,
+    expected_analysis_signature,
+    has_reusable_site_analysis,
+    summarize_papers,
+)
 
 
 def main(argv: List[str] = None) -> int:
@@ -120,11 +127,17 @@ def _site_data_command(args, config) -> int:
     limit = args.limit or config.site.default_limit
     candidates = _load_ranked_papers(config, limit=limit * 2)
     papers = _select_site_papers(candidates, limit)
-    analyze_papers_for_site(papers, config.summary)
+    current_paper_count = len(papers)
+    previous_papers = _load_previous_site_papers(args.out)
+    papers_to_analyze = _reuse_cached_site_analysis(papers, previous_papers, config.summary)
+    analyze_papers_for_site(papers_to_analyze, config.summary)
+    papers = _merge_site_history(papers, previous_papers)
     payload = {
         "generated_at": _dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
         "site": asdict(config.site),
         "analysis_enabled": bool(_analysis_api_key(config.summary.provider)),
+        "current_limit": limit,
+        "current_paper_count": current_paper_count,
         "interests": {
             "arxiv_categories": config.arxiv.categories,
             "include_keywords": config.arxiv.include_keywords,
@@ -203,3 +216,91 @@ def _select_site_papers(papers, limit: int):
             if len(selected) >= limit:
                 break
     return selected[:limit]
+
+
+def _load_previous_site_papers(path: str) -> List[Paper]:
+    if not os.path.exists(path):
+        return []
+    try:
+        with open(path, "r", encoding="utf-8") as handle:
+            payload = json.load(handle)
+    except Exception:
+        return []
+    values = payload.get("papers", []) if isinstance(payload, dict) else payload
+    papers = []
+    for item in values or []:
+        if not isinstance(item, dict):
+            continue
+        paper = _paper_from_dict(item)
+        if paper.id:
+            papers.append(paper)
+    return papers
+
+
+def _reuse_cached_site_analysis(
+    current_papers: List[Paper], previous_papers: List[Paper], summary_config
+) -> List[Paper]:
+    previous_by_id = {paper.id: paper for paper in previous_papers}
+    papers_to_analyze = []
+    for paper in current_papers:
+        cached = previous_by_id.get(paper.id)
+        expected_signature = expected_analysis_signature(paper, summary_config)
+        if cached and has_reusable_site_analysis(cached, summary_config, expected_signature):
+            copy_site_analysis(cached, paper)
+        else:
+            papers_to_analyze.append(paper)
+    return papers_to_analyze
+
+
+def _merge_site_history(current_papers: List[Paper], previous_papers: List[Paper]) -> List[Paper]:
+    merged = []
+    seen = set()
+    for paper in current_papers:
+        if paper.id in seen:
+            continue
+        merged.append(paper)
+        seen.add(paper.id)
+    for paper in previous_papers:
+        if paper.id in seen:
+            continue
+        merged.append(paper)
+        seen.add(paper.id)
+    return merged
+
+
+def _paper_from_dict(values) -> Paper:
+    paper = Paper(
+        id=str(values.get("id", "")),
+        title=str(values.get("title", "")),
+        authors=list(values.get("authors") or []),
+        affiliations=list(values.get("affiliations") or []),
+        published=str(values.get("published", "")),
+        updated=str(values.get("updated", "")),
+        abstract=str(values.get("abstract", "")),
+        categories=list(values.get("categories") or []),
+        primary_category=str(values.get("primary_category", "")),
+        abs_url=str(values.get("abs_url", "")),
+        pdf_url=str(values.get("pdf_url", "")),
+        doi=str(values.get("doi", "")),
+        source=str(values.get("source", "arXiv")),
+        status=str(values.get("status", "preprint")),
+        venue=str(values.get("venue", "")),
+        venue_key=str(values.get("venue_key", "")),
+        generated_summary=str(values.get("generated_summary", "")),
+        core_method=str(values.get("core_method", "")),
+        innovation_points=list(values.get("innovation_points") or []),
+        experiment_results=list(values.get("experiment_results") or []),
+        ab_test=str(values.get("ab_test", "unknown")),
+        ab_test_evidence=str(values.get("ab_test_evidence", "")),
+        limitations=list(values.get("limitations") or []),
+        practical_value=str(values.get("practical_value", "")),
+        analysis_basis=str(values.get("analysis_basis", "metadata")),
+        analysis_status=str(values.get("analysis_status", "")),
+        analysis_signature=str(values.get("analysis_signature", "")),
+        tags=list(values.get("tags") or []),
+        importance=str(values.get("importance", "normal")),
+        read_status=str(values.get("read_status", "unread")),
+        notes=str(values.get("notes", "")),
+        score=int(values.get("score", 0)),
+    )
+    return paper

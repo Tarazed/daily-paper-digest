@@ -1,3 +1,4 @@
+import hashlib
 import json
 import os
 import re
@@ -11,6 +12,22 @@ from .config import SummaryConfig
 from .filtering import infer_tags
 from .fulltext import extract_full_text_for_analysis
 from .models import Paper
+
+ANALYSIS_PROMPT_VERSION = "site-analysis-v1"
+SITE_ANALYSIS_FIELDS = [
+    "generated_summary",
+    "core_method",
+    "innovation_points",
+    "experiment_results",
+    "ab_test",
+    "ab_test_evidence",
+    "limitations",
+    "practical_value",
+    "analysis_basis",
+    "analysis_status",
+    "analysis_signature",
+    "tags",
+]
 
 
 def summarize_papers(papers: List[Paper], config: SummaryConfig) -> List[Paper]:
@@ -51,6 +68,7 @@ def analyze_papers_for_site(papers: List[Paper], config: SummaryConfig) -> List[
     if not api_key:
         for paper in papers:
             _apply_analysis_result(paper, {})
+            paper.analysis_signature = expected_analysis_signature(paper, config)
         return papers
     def analyze_one(paper: Paper) -> Dict[str, object]:
         client = ChatCompletionClient(
@@ -79,6 +97,7 @@ def analyze_papers_for_site(papers: List[Paper], config: SummaryConfig) -> List[
     if workers == 1 or len(papers) <= 1:
         for paper in papers:
             _apply_analysis_result(paper, analyze_one(paper))
+            paper.analysis_signature = expected_analysis_signature(paper, config)
         return papers
 
     with ThreadPoolExecutor(max_workers=min(workers, len(papers))) as executor:
@@ -95,6 +114,7 @@ def analyze_papers_for_site(papers: List[Paper], config: SummaryConfig) -> List[
                 )
                 result = {}
             _apply_analysis_result(paper, result)
+            paper.analysis_signature = expected_analysis_signature(paper, config)
     return papers
 
 
@@ -108,6 +128,7 @@ def fallback_summary(text: str, max_sentences: int = 3) -> str:
 
 
 def _apply_analysis_result(paper: Paper, result: Dict[str, object]) -> None:
+    paper.analysis_status = "complete" if result else "fallback"
     if result.get("summary"):
         paper.generated_summary = str(result.get("summary")).strip()
     paper.core_method = str(
@@ -152,6 +173,55 @@ def _apply_analysis_result(paper: Paper, result: Dict[str, object]) -> None:
         result.get("practical_value") or "可作为推荐系统相关方向的跟进阅读。"
     ).strip()
     paper.tags = _clean_tags(result.get("tags") or paper.tags) or paper.tags or infer_tags(paper)
+
+
+def expected_analysis_signature(paper: Paper, config: SummaryConfig) -> str:
+    payload = {
+        "prompt_version": ANALYSIS_PROMPT_VERSION,
+        "provider": config.provider,
+        "summary_model": config.model,
+        "analysis_model": config.analysis_model,
+        "language": config.language,
+        "full_text_max_chars": config.full_text_max_chars,
+        "paper": {
+            "id": paper.id,
+            "title": paper.title,
+            "updated": paper.updated,
+            "abstract": paper.abstract,
+            "categories": paper.categories,
+            "source": paper.source,
+            "venue": paper.venue,
+        },
+    }
+    encoded = json.dumps(payload, ensure_ascii=False, sort_keys=True).encode("utf-8")
+    return hashlib.sha256(encoded).hexdigest()[:16]
+
+
+def has_reusable_site_analysis(
+    paper: Paper, config: SummaryConfig, expected_signature: str = None
+) -> bool:
+    if paper.analysis_signature != (expected_signature or expected_analysis_signature(paper, config)):
+        return False
+    if paper.analysis_status not in ("complete", "cached"):
+        return False
+    required = [
+        paper.generated_summary,
+        paper.core_method,
+        paper.innovation_points,
+        paper.experiment_results,
+        paper.limitations,
+        paper.practical_value,
+    ]
+    return all(bool(value) for value in required)
+
+
+def copy_site_analysis(source: Paper, target: Paper) -> None:
+    for field_name in SITE_ANALYSIS_FIELDS:
+        value = getattr(source, field_name)
+        if isinstance(value, list):
+            value = list(value)
+        setattr(target, field_name, value)
+    target.analysis_status = "cached"
 
 
 def _clean_list(values, fallback: List[str], limit: int) -> List[str]:

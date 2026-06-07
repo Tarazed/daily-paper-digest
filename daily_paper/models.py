@@ -29,6 +29,8 @@ class Paper:
     limitations: List[str] = field(default_factory=list)
     practical_value: str = ""
     analysis_basis: str = "metadata"
+    analysis_status: str = ""
+    analysis_signature: str = ""
     tags: List[str] = field(default_factory=list)
     importance: str = "normal"
     read_status: str = "unread"
