@@ -19,6 +19,7 @@ from .summarizer import (
     analyze_papers_for_site,
     copy_site_analysis,
     expected_analysis_signature,
+    has_legacy_site_analysis,
     has_reusable_site_analysis,
     summarize_papers,
 )
@@ -125,13 +126,33 @@ def _send_command(args, config) -> int:
 
 def _site_data_command(args, config) -> int:
     limit = args.limit or config.site.default_limit
-    candidates = _load_ranked_papers(config, limit=limit * 2)
-    papers = _select_site_papers(candidates, limit)
-    current_paper_count = len(papers)
     previous_papers = _load_previous_site_papers(args.out)
-    papers_to_analyze = _reuse_cached_site_analysis(papers, previous_papers, config.summary)
-    analyze_papers_for_site(papers_to_analyze, config.summary)
-    papers = _merge_site_history(papers, previous_papers)
+    try:
+        candidates = _load_ranked_papers(config, limit=limit * 2, enrich_results=False)
+        papers = _select_site_papers(candidates, limit)
+        current_paper_count = len(papers)
+        papers_to_analyze = _reuse_cached_site_analysis(papers, previous_papers, config.summary)
+        papers = enrich_papers(
+            papers,
+            config.enrichment,
+            llm_model=config.summary.model,
+            llm_base_url=config.summary.base_url,
+        )
+        print(
+            "Site analysis: reusing %d cached papers, analyzing %d new or changed papers."
+            % (len(papers) - len(papers_to_analyze), len(papers_to_analyze))
+        )
+        analyze_papers_for_site(papers_to_analyze, config.summary)
+        papers = _merge_site_history(papers, previous_papers)
+    except Exception as exc:
+        if not previous_papers:
+            raise
+        print(
+            "Warning: current paper search failed; reusing previous site data. %s" % exc,
+            file=sys.stderr,
+        )
+        papers = previous_papers
+        current_paper_count = 0
     payload = {
         "generated_at": _dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
         "site": asdict(config.site),
@@ -156,14 +177,27 @@ def _site_data_command(args, config) -> int:
     return 0
 
 
-def _load_ranked_papers(config, limit: int):
+def _load_ranked_papers(config, limit: int, enrich_results: bool = True):
     state = load_state(config.state_file)
     papers = []
-    papers.extend(fetch_papers(config.arxiv))
-    papers.extend(fetch_dblp_papers(config.dblp))
+    source_errors = []
+    try:
+        papers.extend(fetch_papers(config.arxiv))
+    except Exception as exc:
+        source_errors.append("arXiv: %s" % exc)
+        print("Warning: arXiv fetch failed; continuing with other sources. %s" % exc, file=sys.stderr)
+    try:
+        papers.extend(fetch_dblp_papers(config.dblp))
+    except Exception as exc:
+        source_errors.append("DBLP: %s" % exc)
+        print("Warning: DBLP fetch failed; continuing with other sources. %s" % exc, file=sys.stderr)
+    if not papers and source_errors:
+        raise RuntimeError("No paper sources returned results. " + "; ".join(source_errors))
     papers = _dedupe_papers(papers)
     ranked = prepare_papers(papers, config.arxiv, state)
     selected = ranked[:limit] if limit else ranked
+    if not enrich_results:
+        return selected
     return enrich_papers(
         selected,
         config.enrichment,
@@ -244,9 +278,14 @@ def _reuse_cached_site_analysis(
     papers_to_analyze = []
     for paper in current_papers:
         cached = previous_by_id.get(paper.id)
+        if cached and not paper.affiliations and cached.affiliations:
+            paper.affiliations = list(cached.affiliations)
         expected_signature = expected_analysis_signature(paper, summary_config)
         if cached and has_reusable_site_analysis(cached, summary_config, expected_signature):
             copy_site_analysis(cached, paper)
+        elif cached and cached.updated == paper.updated and has_legacy_site_analysis(cached):
+            copy_site_analysis(cached, paper)
+            paper.analysis_signature = expected_signature
         else:
             papers_to_analyze.append(paper)
     return papers_to_analyze

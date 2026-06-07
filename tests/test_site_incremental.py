@@ -82,6 +82,21 @@ def test_reuse_cached_site_analysis_reanalyzes_updated_paper():
     assert current.generated_summary == ""
 
 
+def test_reuse_cached_site_analysis_accepts_legacy_complete_analysis():
+    config = make_summary_config()
+    previous = add_complete_analysis(make_paper("arxiv:2606.01234"), config)
+    previous.analysis_status = ""
+    previous.analysis_signature = ""
+    current = make_paper("arxiv:2606.01234")
+
+    to_analyze = _reuse_cached_site_analysis([current], [previous], config)
+
+    assert to_analyze == []
+    assert current.generated_summary == "深度摘要"
+    assert current.analysis_status == "cached"
+    assert current.analysis_signature == expected_analysis_signature(current, config)
+
+
 def test_merge_site_history_keeps_previous_papers_after_current():
     current = [make_paper("arxiv:new")]
     previous = [make_paper("arxiv:old"), make_paper("arxiv:new")]

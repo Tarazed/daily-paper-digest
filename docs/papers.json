@@ -1,32 +1,103 @@
 {
-  "generated_at": "2026-06-07T15:14:04Z",
+  "generated_at": "2026-06-07T16:37:21Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
-    "default_limit": 10
+    "default_limit": 30
   },
-  "analysis_enabled": false,
+  "analysis_enabled": true,
+  "current_limit": 30,
+  "current_paper_count": 30,
   "interests": {
     "arxiv_categories": [
       "cs.IR",
       "cs.AI",
       "cs.LG",
-      "cs.CL"
+      "cs.CL",
+      "cs.SI",
+      "stat.ML"
     ],
     "include_keywords": [
       "recommender system",
       "recommendation",
-      "generative recommendation",
+      "personalized recommendation",
       "sequential recommendation",
+      "session-based recommendation",
+      "conversational recommendation",
+      "explainable recommendation",
+      "interactive recommendation",
+      "generative recommendation",
+      "generative recommender",
+      "generative recommender system",
+      "generative sequential recommendation",
+      "generative collaborative filtering",
+      "generative ranking",
+      "generative retrieval",
+      "generative item retrieval",
+      "autoregressive recommendation",
+      "semantic id",
+      "semantic identifier",
+      "semantic token",
+      "semantic tokenization",
+      "item tokenization",
+      "item identifier",
+      "discrete item token",
+      "discrete token recommendation",
+      "codebook recommendation",
+      "vector quantization recommendation",
+      "residual quantization recommendation",
+      "RQ-VAE recommendation",
+      "VQ-VAE recommendation",
+      "hierarchical identifier recommendation",
       "LLM4Rec",
+      "LLM recommendation",
+      "LLM recommender",
+      "LLM-based recommendation",
       "large language model recommendation",
+      "large language model recommender",
+      "foundation model recommendation",
+      "foundation model recommender",
+      "instruction tuning recommendation",
+      "prompt-based recommendation",
+      "in-context learning recommendation",
+      "zero-shot recommendation",
+      "few-shot recommendation",
+      "RAG recommendation",
+      "retrieval augmented recommendation",
+      "LLM user modeling",
+      "user preference modeling LLM",
+      "personalized LLM recommendation",
       "agent recommendation",
+      "agent recommender",
+      "agentic recommendation",
       "Agent4Rec",
-      "conversational recommendation"
+      "LLM agent recommendation",
+      "LLM agent recommender",
+      "recommendation agent",
+      "recommender agent",
+      "multi-agent recommendation",
+      "multi-agent recommender",
+      "user simulator recommendation",
+      "LLM user simulator",
+      "generative agents recommendation",
+      "tool-augmented recommendation",
+      "planning recommendation agent",
+      "reasoning recommendation agent"
     ],
     "exclude_keywords": [
       "advertising",
-      "sponsored search"
+      "sponsored search",
+      "ad recommendation",
+      "ads recommendation",
+      "advertisement recommendation",
+      "medical recommendation",
+      "clinical recommendation",
+      "drug recommendation",
+      "treatment recommendation",
+      "policy recommendation",
+      "recommendation letter",
+      "citation recommendation",
+      "review recommendation"
     ],
     "dblp_venues": [
       "RecSys",
@@ -35,13 +106,1840 @@
       "KDD",
       "WSDM",
       "CIKM",
+      "SIGMOD",
+      "VLDB",
       "ICLR",
       "AAAI",
+      "IJCAI",
       "ICML",
-      "NeurIPS"
+      "NeurIPS",
+      "ACL",
+      "EMNLP",
+      "NAACL",
+      "COLING",
+      "TOIS",
+      "TKDE",
+      "TKDD",
+      "TORS"
     ]
   },
   "papers": [
+    {
+      "id": "dblp:conf/kdd/Fu0LCL24",
+      "title": "DIET: Customized Slimming for Incompatible Networks in Sequential Recommendation",
+      "authors": [
+        "Kairui Fu",
+        "Shengyu Zhang 0001",
+        "Zheqi Lv",
+        "Jingyuan Chen",
+        "Jiwei Li 0001"
+      ],
+      "affiliations": [
+        "Zhejiang University, Hangzhou, China",
+        "Zhejiang University",
+        "Zhejiang University &amp; Shanghai Institute for Advanced Study of Zhejiang University, Hangzhou, China"
+      ],
+      "published": "2024-01-01T00:00:00Z",
+      "updated": "2024-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "KDD"
+      ],
+      "primary_category": "KDD",
+      "abs_url": "https://doi.org/10.1145/3637528.3671669",
+      "pdf_url": "https://doi.org/10.1145/3637528.3671669",
+      "doi": "10.1145/3637528.3671669",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "KDD",
+      "venue_key": "KDD",
+      "generated_summary": "提出DIET方法，通过定制化瘦身为顺序推荐中的不兼容网络进行模型压缩，发表于KDD会议。",
+      "core_method": "DIET通过定制化压缩技术处理顺序推荐中不同网络结构的不兼容问题，实现模型瘦身。",
+      "innovation_points": [
+        "针对顺序推荐中多个网络结构不兼容的挑战，提出定制化压缩方案。",
+        "在保持推荐精度的同时，显著降低模型计算和存储成本。"
+      ],
+      "experiment_results": [
+        "论文未提供具体实验结果和评测结论。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏具体的实验结果支持方法的有效性。",
+        "未讨论方法在实际大规模系统上的部署可行性。"
+      ],
+      "practical_value": "为推荐系统模型的轻量化和部署提供了定制化压缩思路，有助于在资源受限场景中应用。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "9f25dce1e46b68b8",
+      "tags": [
+        "Sequential Rec",
+        "RecSys"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 0
+    },
+    {
+      "id": "dblp:conf/kdd/DuW000024",
+      "title": "Disentangled Multi-interest Representation Learning for Sequential Recommendation",
+      "authors": [
+        "Yingpeng Du",
+        "Ziyan Wang",
+        "Zhu Sun 0001",
+        "Yining Ma 0001",
+        "Hongzhi Liu 0001",
+        "Jie Zhang 0002"
+      ],
+      "affiliations": [
+        "Nanyang Technological University, Singapore, Singapore",
+        "Nanyang Technological University",
+        "Singapore University of Technology and Design, Singapore, Singapore",
+        "Singapore University of Technology and Design",
+        "Peking University, Beijing, China",
+        "Peking University"
+      ],
+      "published": "2024-01-01T00:00:00Z",
+      "updated": "2024-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "KDD"
+      ],
+      "primary_category": "KDD",
+      "abs_url": "https://doi.org/10.1145/3637528.3671800",
+      "pdf_url": "https://doi.org/10.1145/3637528.3671800",
+      "doi": "10.1145/3637528.3671800",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "KDD",
+      "venue_key": "KDD",
+      "generated_summary": "提出一种解耦的多兴趣表示学习方法，用于序列推荐任务。该方法旨在从用户行为序列中分离出多个潜在兴趣，以提升推荐的准确性和多样性。论文发表于KDD会议。",
+      "core_method": "通过解耦学习从用户行为序列中提取多个独立兴趣表示。",
+      "innovation_points": [
+        "将解耦表示学习引入多兴趣序列推荐，分离用户行为中的多个潜在兴趣。",
+        "提出一种无监督的解耦机制，避免了兴趣标签的依赖。"
+      ],
+      "experiment_results": [
+        "论文元数据未提供具体实验结果，无法给出评测结论。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未提供具体实验数据，无法评估模型的实际性能。",
+        "缺乏线上测试证据，实际效果未知。"
+      ],
+      "practical_value": "为多兴趣序列推荐提供了解耦思路，有助于提升推荐的多样性和可解释性。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "9d5a1369a4cfe0b6",
+      "tags": [
+        "Sequential Rec",
+        "RecSys"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 0
+    },
+    {
+      "id": "dblp:conf/kdd/ChenP024",
+      "title": "Explicit and Implicit Modeling via Dual-Path Transformer for Behavior Set-informed Sequential Recommendation",
+      "authors": [
+        "Ming Chen",
+        "Weike Pan",
+        "Zhong Ming 0001"
+      ],
+      "affiliations": [
+        "College of Computer Science and Software Engineering, Shenzhen University, Shenzhen, GuangDong, China",
+        "Shenzhen University",
+        "College of Computer Science and Software Engineering, Shenzhen University, Shenzhen, China",
+        "Shenzhen University &amp; Shenzhen Technology University, Shenzhen, China",
+        "Shenzhen Technology University"
+      ],
+      "published": "2024-01-01T00:00:00Z",
+      "updated": "2024-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "KDD"
+      ],
+      "primary_category": "KDD",
+      "abs_url": "https://doi.org/10.1145/3637528.3671755",
+      "pdf_url": "https://doi.org/10.1145/3637528.3671755",
+      "doi": "10.1145/3637528.3671755",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "KDD",
+      "venue_key": "KDD",
+      "generated_summary": "提出双路径Transformer模型，同时显式和隐式建模用户行为序列，用于行为集感知的序列推荐。",
+      "core_method": "基于双路径Transformer同时进行显式和隐式建模以捕捉行为集信息。",
+      "innovation_points": [
+        "提出显式与隐式双路径建模架构",
+        "利用Transformer处理行为集感知的序列推荐"
+      ],
+      "experiment_results": [
+        "论文全文未提供实验数据"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏实验验证，模型效果未知",
+        "未说明计算复杂度和实时性"
+      ],
+      "practical_value": "为序列推荐中行为集建模提供新思路，但需实验支持。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "49ba377d1e11c350",
+      "tags": [
+        "Sequential Rec",
+        "RecSys"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 0
+    },
+    {
+      "id": "dblp:conf/sigir/AnZWZS025",
+      "title": "Beyond Whole Dialogue Modeling: Contextual Disentanglement for Conversational Recommendation",
+      "authors": [
+        "Guojia An",
+        "Jie Zou 0001",
+        "Jiwei Wei",
+        "Chaoning Zhang",
+        "Fuming Sun",
+        "Yang Yang 0002"
+      ],
+      "affiliations": [
+        "University of Electronic Science and Technology of China, Chengdu, Sichuan, China",
+        "University of Electronic Science and Technology of China",
+        "School of Computer Science and Technology, University of Electronic Science and Technology of China, Chengdu, Sichuan, China",
+        "Dalian Minzu University, Dalian, Liaoning, China",
+        "Dalian Minzu University"
+      ],
+      "published": "2025-01-01T00:00:00Z",
+      "updated": "2025-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3726302.3729903",
+      "pdf_url": "https://doi.org/10.1145/3726302.3729903",
+      "doi": "10.1145/3726302.3729903",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "在对话推荐中提出超越整体对话建模的上下文解耦方法。",
+      "core_method": "将对话上下文解耦为不同语义部分，进行细粒度推荐建模。",
+      "innovation_points": [
+        "提出上下文解耦框架，突破传统整体对话建模的局限",
+        "实现对话语义的细粒度分离与利用"
+      ],
+      "experiment_results": [
+        "论文未提供实验评测结果（无全文且元数据摘要缺失）"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "由于缺乏全文和摘要，无法评估方法的实际效度与适用场景"
+      ],
+      "practical_value": "可能提升对话推荐系统对复杂上下文的理解能力",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "ccfeba9cc3d977c7",
+      "tags": [
+        "Conversational Rec",
+        "RecSys"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 0
+    },
+    {
+      "id": "dblp:conf/wsdm/HuangH0C0M026",
+      "title": "Dual Conditional Diffusion for Sequential Recommendation",
+      "authors": [
+        "Hongtao Huang",
+        "Chengkai Huang",
+        "Tong Yu 0001",
+        "Xiaojun Chang",
+        "Wen Hu 0001",
+        "Julian J. McAuley",
+        "Lina Yao 0001"
+      ],
+      "affiliations": [
+        "The University of New South Wales, Sydney, NSW, Australia",
+        "UNSW Sydney",
+        "Macquarie University, Sydney, NSW, Australia and The University of New South Wales, Sydney, NSW, Australia",
+        "Macquarie University",
+        "Adobe Research, San Jose, CA, USA",
+        "Adobe Systems (United States)",
+        "University of Science and Technology of China, Hefei, Anhui, China",
+        "University of Science and Technology of China",
+        "University of California San Diego, San Diego, CA, USA",
+        "University of California San Diego",
+        "The University of New South Wales, Sydney, NSW, Australia and CSIRO’s Data 61, Sydney, NSW, Australia",
+        "Data61"
+      ],
+      "published": "2026-01-01T00:00:00Z",
+      "updated": "2026-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "WSDM"
+      ],
+      "primary_category": "WSDM",
+      "abs_url": "https://doi.org/10.1145/3773966.3777926",
+      "pdf_url": "https://doi.org/10.1145/3773966.3777926",
+      "doi": "10.1145/3773966.3777926",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WSDM",
+      "venue_key": "WSDM",
+      "generated_summary": "提出了一种双条件扩散模型用于顺序推荐，通过利用条件扩散过程捕捉用户序列的复杂模式。该工作结合了序列信息和条件扩散机制，旨在提升推荐的准确性和鲁棒性。",
+      "core_method": "利用双条件扩散过程建模用户行为序列以提升推荐性能。",
+      "innovation_points": [
+        "首次将双条件扩散模型应用于顺序推荐，增强序列模式捕捉能力",
+        "设计特定的条件扩散机制以适应推荐场景的序列数据"
+      ],
+      "experiment_results": [
+        "论文全文未提供实验数据，无法给出具体评测结论"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏实验验证，方法有效性需要进一步实证支持",
+        "未讨论计算复杂度与实际部署的可行性"
+      ],
+      "practical_value": "为顺序推荐提供了一种基于扩散模型的新范式，但实际价值需依赖后续实验验证。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "b6e19dd86ff30acf",
+      "tags": [
+        "RecSys",
+        "Sequential Rec",
+        "LLM4Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 0
+    },
+    {
+      "id": "dblp:conf/wsdm/DongX0Z26",
+      "title": "Enhanced Cold-Start Sequential Recommendation with Causal Diffusion Preference Modeling",
+      "authors": [
+        "Hongsheng Dong",
+        "Haolong Xiang",
+        "Xiaolong Xu 0001",
+        "Xuyun Zhang"
+      ],
+      "affiliations": [
+        "Nanjing University of Information Science and Technology, Nanjing, Jiangsu, China",
+        "Nanjing University of Information Science and Technology",
+        "Macquarie University, Sydney, New South Wales, Australia",
+        "Macquarie University"
+      ],
+      "published": "2026-01-01T00:00:00Z",
+      "updated": "2026-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "WSDM"
+      ],
+      "primary_category": "WSDM",
+      "abs_url": "https://doi.org/10.1145/3773966.3778026",
+      "pdf_url": "https://doi.org/10.1145/3773966.3778026",
+      "doi": "10.1145/3773966.3778026",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WSDM",
+      "venue_key": "WSDM",
+      "generated_summary": "提出因果扩散偏好模型，增强冷启动顺序推荐的性能。",
+      "core_method": "利用因果推断与扩散模型建模用户偏好，提升冷启动场景下的序列推荐效果。",
+      "innovation_points": [
+        "将因果推断引入扩散模型以缓解冷启动问题",
+        "提出因果扩散偏好建模框架用于序列推荐"
+      ],
+      "experiment_results": [
+        "论文全文未提供具体实验结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏实验验证，方法有效性待证实",
+        "冷启动场景下的实际部署复杂度未知"
+      ],
+      "practical_value": "为冷启动推荐提供了结合因果和扩散模型的新思路，有望改善用户冷启动体验。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "32dcc3984aa8e179",
+      "tags": [
+        "Sequential Rec",
+        "Generative Rec",
+        "LLM4Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 0
+    },
+    {
+      "id": "dblp:conf/wsdm/HanQYZYZ0F0XZ26",
+      "title": "GSDiffRec: Enhancing Personalized Sequential Recommendation via Diffusion Augmentation and Guidance Optimization",
+      "authors": [
+        "Ruxue Han",
+        "Lianyong Qi",
+        "Chao Yan",
+        "Weiyi Zhong",
+        "Boyuan Yan",
+        "Bing Zhao",
+        "Xiaoran Zhao 0001",
+        "Zhikang Feng",
+        "Xiaolong Xu 0001",
+        "Haolong Xiang",
+        "Xuyun Zhang"
+      ],
+      "affiliations": [
+        "College of Computer Science, Qufu Normal University, Rizhao, China",
+        "Qufu Normal University",
+        "College of Computer Science and Technology, China University of Petroleum (East China), Qingdao, China",
+        "China University of Petroleum, East China",
+        "School of Computer Science, Qufu Normal University, Rizhao, China",
+        "School of Engineering, Qufu Normal University, Rizhao, China",
+        "College of Computer Science, Beijing University of Technology, Beijing, China",
+        "Beijing University of Technology",
+        "School of Software, Nanjing University of Information Science and Technology, Nanjing, China",
+        "Nanjing University of Information Science and Technology",
+        "School of Computing, Macquarie University, Macquarie Park, Australia",
+        "Macquarie University"
+      ],
+      "published": "2026-01-01T00:00:00Z",
+      "updated": "2026-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "WSDM"
+      ],
+      "primary_category": "WSDM",
+      "abs_url": "https://doi.org/10.1145/3773966.3777973",
+      "pdf_url": "https://doi.org/10.1145/3773966.3777973",
+      "doi": "10.1145/3773966.3777973",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WSDM",
+      "venue_key": "WSDM",
+      "generated_summary": "本文提出GSDiffRec，利用扩散模型进行数据增强和引导优化，提升个性化序列推荐的性能。方法通过扩散过程生成高质量用户行为序列，并结合引导机制优化推荐结果。",
+      "core_method": "基于扩散模型的序列增强与引导优化框架，用于个性化推荐。",
+      "innovation_points": [
+        "提出扩散模型用于用户行为序列的数据增强",
+        "设计引导优化策略提升推荐质量",
+        "将扩散模型与序列推荐深度融合"
+      ],
+      "experiment_results": [
+        "论文全文未提供具体实验结果或评测结论"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "模型复杂度与推理效率可能受限",
+        "扩散模型的超参数敏感性需进一步探索"
+      ],
+      "practical_value": "为序列推荐提供了一种基于生成式增强的新思路，有望改善数据稀疏场景下的推荐效果。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "7dcb7ce699b9bd24",
+      "tags": [
+        "RecSys",
+        "Sequential Rec",
+        "Generative Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 0
+    },
+    {
+      "id": "dblp:conf/wsdm/ChoiNP26",
+      "title": "SimDiffRec: Semantic Similarity-Guided Diffusion for Contrastive Sequential Recommendation",
+      "authors": [
+        "Jinkyeong Choi",
+        "Yejin Noh",
+        "Donghyeon Park"
+      ],
+      "affiliations": [
+        "Sejong University, Seoul, Republic of Korea",
+        "Sejong University"
+      ],
+      "published": "2026-01-01T00:00:00Z",
+      "updated": "2026-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "WSDM"
+      ],
+      "primary_category": "WSDM",
+      "abs_url": "https://doi.org/10.1145/3773966.3777978",
+      "pdf_url": "https://doi.org/10.1145/3773966.3777978",
+      "doi": "10.1145/3773966.3777978",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WSDM",
+      "venue_key": "WSDM",
+      "generated_summary": "提出SimDiffRec，一种基于语义相似度引导的扩散模型用于对比序列推荐，整合扩散过程与对比学习以增强推荐鲁棒性。",
+      "core_method": "基于语义相似度引导扩散模型并结合对比学习的序列推荐方法",
+      "innovation_points": [
+        "将语义相似度引导融入扩散模型用于序列推荐",
+        "结合对比学习提升推荐鲁棒性"
+      ],
+      "experiment_results": [
+        "论文全文未提供具体实验结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺少实验验证，性能未知",
+        "扩散模型在推荐中的效率问题未提及"
+      ],
+      "practical_value": "可能通过语义相似度与对比学习提升推荐鲁棒性，但需实证",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "4cf7ae9cf992c64d",
+      "tags": [
+        "Sequential Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 0
+    },
+    {
+      "id": "dblp:conf/wsdm/Huang0NFWY026",
+      "title": "Towards Next-Generation Recommender Systems: A Benchmark for Personalized Recommendation Assistant with LLMs",
+      "authors": [
+        "Jiani Huang 0001",
+        "Shijie Wang 0002",
+        "Liangbo Ning 0001",
+        "Wenqi Fan",
+        "Shuaiqiang Wang",
+        "Dawei Yin 0001",
+        "Qing Li 0001"
+      ],
+      "affiliations": [
+        "The Hong Kong Polytechnic University, HongKong, China",
+        "Hong Kong Polytechnic University",
+        "Baidu Inc., Beijing, China",
+        "Hong Kong Polytechnic University, Hong Kong, China",
+        "Baidu (China)"
+      ],
+      "published": "2026-01-01T00:00:00Z",
+      "updated": "2026-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "WSDM"
+      ],
+      "primary_category": "WSDM",
+      "abs_url": "https://doi.org/10.1145/3773966.3777954",
+      "pdf_url": "https://doi.org/10.1145/3773966.3777954",
+      "doi": "10.1145/3773966.3777954",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WSDM",
+      "venue_key": "WSDM",
+      "generated_summary": "该论文提出一个针对LLM驱动的个性化推荐助手的基准，旨在评估下一代推荐系统的性能。它关注如何利用大型语言模型增强推荐交互。",
+      "core_method": "构建一个用于评估LLM驱动的个性化推荐助手的基准测试。",
+      "innovation_points": [
+        "提出面向下一代推荐系统的LLM个性化推荐助手基准"
+      ],
+      "experiment_results": [
+        "论文元数据未提供具体实验结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "仅提供元数据，具体方法和实验细节未知"
+      ],
+      "practical_value": "为LLM增强的推荐系统提供评估基准，推动个性化推荐助手的发展。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "e1fa805e96226bc5",
+      "tags": [
+        "Benchmark",
+        "LLM4Rec",
+        "RecSys"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 0
+    },
+    {
+      "id": "dblp:conf/www/TangLPLK26",
+      "title": "Verifiable Federated Representation Learning for Cross-domain Sequential Recommendation",
+      "authors": [
+        "Tao Tang 0007",
+        "Botao Liu",
+        "Ciyuan Peng",
+        "Ivan Lee 0001",
+        "Xiangjie Kong 0001"
+      ],
+      "affiliations": [
+        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
+        "Zhejiang University of Technology",
+        "Federation University Australia, Ballarat, Australia",
+        "Federation University",
+        "Adelaide University, Adelaide, Australia",
+        "The University of Adelaide"
+      ],
+      "published": "2026-01-01T00:00:00Z",
+      "updated": "2026-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792533",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792533",
+      "doi": "10.1145/3774904.3792533",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "该论文提出一种可验证的联邦表示学习方法，用于跨域序列推荐，发表于WWW会议。",
+      "core_method": "可验证的联邦表示学习，用于跨域序列推荐。",
+      "innovation_points": [
+        "结合联邦学习与可验证机制，保障跨域序列推荐的隐私与可信性",
+        "针对跨域场景的序列推荐任务设计表示学习框架"
+      ],
+      "experiment_results": [
+        "论文全文未提供具体实验结果或评测结论"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "元数据缺失，无法评估实验充分性与实际效果",
+        "可验证机制的实际开销与跨域数据异质性挑战未在摘要中体现"
+      ],
+      "practical_value": "为隐私敏感场景下的跨域序列推荐提供了可验证的联邦学习方案，有助于在数据隔离前提下提升推荐性能。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "35fa6a34689aa4dc",
+      "tags": [
+        "Sequential Rec",
+        "RecSys"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 0
+    },
+    {
+      "id": "dblp:conf/kdd/DuCLXWD0T024",
+      "title": "DisCo: Towards Harmonious Disentanglement and Collaboration between Tabular and Semantic Space for Recommendation",
+      "authors": [
+        "Kounianhua Du",
+        "Jizheng Chen",
+        "Jianghao Lin",
+        "Yunjia Xi",
+        "Hangyu Wang",
+        "Xinyi Dai",
+        "Bo Chen 0023",
+        "Ruiming Tang",
+        "Weinan Zhang 0001"
+      ],
+      "affiliations": [
+        "Shanghai Jiao Tong University, Shanghai, China",
+        "Shanghai Jiao Tong University",
+        "Huawei Noah's Ark Lab, Shanghai, China",
+        "Huawei Technologies (China)",
+        "Huawei Noah's Ark Lab, Shenzhen, China"
+      ],
+      "published": "2024-01-01T00:00:00Z",
+      "updated": "2024-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "KDD"
+      ],
+      "primary_category": "KDD",
+      "abs_url": "https://doi.org/10.1145/3637528.3672008",
+      "pdf_url": "https://doi.org/10.1145/3637528.3672008",
+      "doi": "10.1145/3637528.3672008",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "KDD",
+      "venue_key": "KDD",
+      "generated_summary": "提出DisCo方法，旨在和谐解耦与协作表格和语义空间，提升推荐效果。由于缺乏全文和摘要，具体实现和实验结果未知。",
+      "core_method": "通过解耦与协作机制融合表格特征和语义特征以提升推荐性能。",
+      "innovation_points": [
+        "提出在表格和语义空间之间进行和谐解耦与协作的推荐框架。",
+        "同时利用表格数据和语义信息，增强模型表示能力。"
+      ],
+      "experiment_results": [
+        "论文未提供实验结果（元数据中无相关数据）"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "由于缺少全文和摘要，方法的局限性和不确定性无法评估"
+      ],
+      "practical_value": "可能为融合多模态数据的推荐系统提供新思路，但缺乏具体证据。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "b22523bff39bf0f5",
+      "tags": [
+        "RecSys",
+        "LLM4Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
+    {
+      "id": "dblp:conf/kdd/CheeKEWDI24",
+      "title": "Harm Mitigation in Recommender Systems under User Preference Dynamics",
+      "authors": [
+        "Jerry Chee",
+        "Shankar Kalyanaraman",
+        "Sindhu Kiranmai Ernala",
+        "Udi Weinsberg",
+        "Sarah Dean",
+        "Stratis Ioannidis"
+      ],
+      "affiliations": [
+        "Cornell University, Ithaca, NY, USA",
+        "Cornell University",
+        "Meta, Menlo Park, CA, USA",
+        "Menlo School",
+        "Northeastern University, Boston, MA, USA",
+        "Northeastern University"
+      ],
+      "published": "2024-01-01T00:00:00Z",
+      "updated": "2024-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "KDD"
+      ],
+      "primary_category": "KDD",
+      "abs_url": "https://doi.org/10.1145/3637528.3671925",
+      "pdf_url": "https://doi.org/10.1145/3637528.3671925",
+      "doi": "10.1145/3637528.3671925",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "KDD",
+      "venue_key": "KDD",
+      "generated_summary": "该论文探讨了在用户偏好动态变化下的推荐系统危害缓解问题，提出了应对策略。",
+      "core_method": "针对用户偏好动态变化，提出推荐系统危害缓解方法。",
+      "innovation_points": [
+        "考虑用户偏好动态性进行危害缓解",
+        "提出应对策略以减少推荐系统负面影响"
+      ],
+      "experiment_results": [
+        "论文全文未提供实验评测结论。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏实验验证，方法有效性待评估",
+        "用户偏好动态建模的实际挑战未详细讨论"
+      ],
+      "practical_value": "为设计更安全、适应用户变化的推荐系统提供思路，但需进一步验证。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "1e55ebf2c138bc2d",
+      "tags": [
+        "RecSys",
+        "Sequential Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
+    {
+      "id": "dblp:conf/kdd/ChenW024",
+      "title": "Maximum-Entropy Regularized Decision Transformer with Reward Relabelling for Dynamic Recommendation",
+      "authors": [
+        "Xiaocong Chen",
+        "Siyu Wang 0001",
+        "Lina Yao 0001"
+      ],
+      "affiliations": [
+        "Data 61, CSIRO, Eveleigh, Australia",
+        "Commonwealth Scientific and Industrial Research Organisation",
+        "Data61",
+        "The University of New South Wales, Sydney, Australia",
+        "UNSW Sydney",
+        "Data 61, CSIRO &amp; The University of New South Wales, Eveleigh, Australia"
+      ],
+      "published": "2024-01-01T00:00:00Z",
+      "updated": "2024-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "KDD"
+      ],
+      "primary_category": "KDD",
+      "abs_url": "https://doi.org/10.1145/3637528.3671750",
+      "pdf_url": "https://doi.org/10.1145/3637528.3671750",
+      "doi": "10.1145/3637528.3671750",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "KDD",
+      "venue_key": "KDD",
+      "generated_summary": "提出最大熵正则化决策Transformer与奖励重标记方法用于动态推荐，旨在提升推荐系统的探索与长期性能。",
+      "core_method": "结合最大熵强化学习与决策Transformer，通过奖励重标记优化长期用户满意度。",
+      "innovation_points": [
+        "将最大熵正则化融入决策Transformer以平衡探索与利用",
+        "设计奖励重标记方法缓解稀疏奖励问题"
+      ],
+      "experiment_results": [
+        "全文未提供具体实验结果或评测结论"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "无全文内容，难以评估方法局限性",
+        "缺乏具体实验数据支撑性能表现"
+      ],
+      "practical_value": "若有效，可为动态推荐系统提供兼顾探索与长期收益的解决方案。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "39d2b38caf6b21db",
+      "tags": [
+        "RecSys",
+        "Sequential Rec",
+        "LLM4Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
+    {
+      "id": "dblp:conf/kdd/Coppolillo0G24",
+      "title": "Relevance Meets Diversity: A User-Centric Framework for Knowledge Exploration Through Recommendations",
+      "authors": [
+        "Erica Coppolillo",
+        "Giuseppe Manco 0001",
+        "Aristides Gionis"
+      ],
+      "affiliations": [
+        "Department of Computer Science, University of Calabria &amp; ICAR-CNR, Rende, Italy",
+        "University of Calabria",
+        "ICAR-CNR, Rende, Italy",
+        "Institute for High Performance Computing and Networking",
+        "Division of Theoretical Computer Science, KTH Royal Institute of Technology, Stockholm, Sweden",
+        "KTH Royal Institute of Technology"
+      ],
+      "published": "2024-01-01T00:00:00Z",
+      "updated": "2024-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "KDD"
+      ],
+      "primary_category": "KDD",
+      "abs_url": "https://doi.org/10.1145/3637528.3671949",
+      "pdf_url": "https://doi.org/10.1145/3637528.3671949",
+      "doi": "10.1145/3637528.3671949",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "KDD",
+      "venue_key": "KDD",
+      "generated_summary": "提出以用户为中心的知识探索推荐框架，旨在平衡推荐结果的相关性与多样性以促进用户探索。",
+      "core_method": "在推荐中同时优化相关性和多样性的用户中心框架。",
+      "innovation_points": [
+        "提出平衡相关性与多样性的用户中心知识探索框架",
+        "引入促进用户探索的推荐策略"
+      ],
+      "experiment_results": [
+        "全文未提供具体实验评测结论"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "元数据信息有限，具体实现与评估细节未知"
+      ],
+      "practical_value": "为需要平衡准确性与探索性的推荐场景提供新思路。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "9eed292ef20844a6",
+      "tags": [
+        "RecSys",
+        "Evaluation"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
+    {
+      "id": "dblp:conf/kdd/FengMCSO24",
+      "title": "ROTAN: A Rotation-based Temporal Attention Network for Time-Specific Next POI Recommendation",
+      "authors": [
+        "Shanshan Feng 0001",
+        "Feiyu Meng",
+        "Lisi Chen 0001",
+        "Shuo Shang",
+        "Yew Soon Ong"
+      ],
+      "affiliations": [
+        "Centre for Frontier AI Research, A*STAR &amp; Institute of High Performance Computing, A*STAR, Singapore, Singapore",
+        "Agency for Science, Technology and Research",
+        "Institute of High Performance Computing",
+        "University of Electronic Science and Technology of China, Chengdu, Sichuan, China",
+        "University of Electronic Science and Technology of China",
+        "University of Electronic Science and Technology of China, Chengdu, China",
+        "Centre for Frontier AI Research, A*STAR &amp; Nanyang Technological University, Singapore, Singapore",
+        "Nanyang Technological University"
+      ],
+      "published": "2024-01-01T00:00:00Z",
+      "updated": "2024-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "KDD"
+      ],
+      "primary_category": "KDD",
+      "abs_url": "https://doi.org/10.1145/3637528.3671809",
+      "pdf_url": "https://doi.org/10.1145/3637528.3671809",
+      "doi": "10.1145/3637528.3671809",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "KDD",
+      "venue_key": "KDD",
+      "generated_summary": "提出基于旋转的时间注意力网络（ROTAN），用于时间特定的下一兴趣点推荐。该方法通过旋转机制建模时间动态性。该论文发表于KDD。",
+      "core_method": "基于旋转机制的时间注意力网络，建模时间动态性以推荐下一兴趣点",
+      "innovation_points": [
+        "提出旋转机制来捕捉时间动态性",
+        "设计时间特定的下一兴趣点推荐框架"
+      ],
+      "experiment_results": [
+        "论文未提供具体实验结果或评测结论"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏可用的全文，无法评估方法局限"
+      ],
+      "practical_value": "为时间敏感的POI推荐提供了一种基于旋转注意力机制的新思路",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "26b516672a2e228e",
+      "tags": [
+        "Sequential Rec",
+        "Evaluation"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
+    {
+      "id": "dblp:conf/kdd/0001TS0K24",
+      "title": "Shopping Trajectory Representation Learning with Pre-training for E-commerce Customer Understanding and Recommendation",
+      "authors": [
+        "Yankai Chen 0001",
+        "Quoc-Tuan Truong",
+        "Xin Shen",
+        "Jin Li 0003",
+        "Irwin King"
+      ],
+      "affiliations": [
+        "The Chinese University of Hong Kong, Hong Kong, China",
+        "Chinese University of Hong Kong",
+        "Amazon, Seattle, WA, USA",
+        "Amazon (United States)"
+      ],
+      "published": "2024-01-01T00:00:00Z",
+      "updated": "2024-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "KDD"
+      ],
+      "primary_category": "KDD",
+      "abs_url": "https://doi.org/10.1145/3637528.3671747",
+      "pdf_url": "https://doi.org/10.1145/3637528.3671747",
+      "doi": "10.1145/3637528.3671747",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "KDD",
+      "venue_key": "KDD",
+      "generated_summary": "通过预训练方法学习电商购物轨迹表示，以提升客户理解与推荐效果。提出了针对电子商务场景的序列建模与表征学习框架。",
+      "core_method": "基于预训练的购物轨迹表征学习框架。",
+      "innovation_points": [
+        "将预训练方法应用于电商购物轨迹的表示学习",
+        "设计了针对购物序列的建模框架以增强客户理解"
+      ],
+      "experiment_results": [
+        "论文正文未提供具体实验结果或评测结论"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未提供具体实验验证，方法有效性待证实",
+        "仅基于元数据分析，缺乏全文细节"
+      ],
+      "practical_value": "为电商推荐中的用户行为建模提供了一种预训练学习方法，有潜力提升推荐效果。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "ebe532896c98f0a6",
+      "tags": [
+        "RecSys",
+        "Sequential Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
+    {
+      "id": "dblp:conf/kdd/CaiZHS0ZC024",
+      "title": "Where Have You Been? A Study of Privacy Risk for Point-of-Interest Recommendation",
+      "authors": [
+        "Kunlin Cai",
+        "Jinghuai Zhang",
+        "Zhiqing Hong",
+        "William Shand",
+        "Guang Wang 0001",
+        "Desheng Zhang 0002",
+        "Jianfeng Chi",
+        "Yuan Tian 0001"
+      ],
+      "affiliations": [
+        "University of California, Los Angeles, Los Angeles, CA, USA",
+        "University of California, Los Angeles",
+        "Rutgers University, New Brunswick, NJ, USA",
+        "Rutgers, The State University of New Jersey",
+        "Florida State University, Tallahassee, FL, USA",
+        "Florida State University",
+        "Meta, New York, NY, USA"
+      ],
+      "published": "2024-01-01T00:00:00Z",
+      "updated": "2024-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "KDD"
+      ],
+      "primary_category": "KDD",
+      "abs_url": "https://doi.org/10.1145/3637528.3671758",
+      "pdf_url": "https://doi.org/10.1145/3637528.3671758",
+      "doi": "10.1145/3637528.3671758",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "KDD",
+      "venue_key": "KDD",
+      "generated_summary": "研究点-of-interest推荐中的隐私风险问题，通过分析用户位置数据推断用户行为轨迹。",
+      "core_method": "基于位置数据的隐私攻击方法，推断用户行为轨迹。",
+      "innovation_points": [
+        "揭示POI推荐系统中的隐私泄露风险",
+        "提出基于位置数据的攻击方法来推断用户行为"
+      ],
+      "experiment_results": [
+        "全文未提供具体实验结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏具体实验验证",
+        "未讨论防御机制"
+      ],
+      "practical_value": "提醒设计POI推荐系统时需关注用户隐私保护",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "e147a64246fcb38f",
+      "tags": [
+        "RecSys",
+        "Evaluation"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
+    {
+      "id": "dblp:conf/recsys/Charolois-Pasqua25",
+      "title": "A Language Model-Based Playlist Generation Recommender System",
+      "authors": [
+        "Enzo Charolois-Pasqua",
+        "Eléa Vellard",
+        "Youssra Rebboud",
+        "Pasquale Lisena",
+        "Raphaël Troncy"
+      ],
+      "affiliations": [
+        "EURECOM, Sophia Antipolis, France",
+        "EURECOM"
+      ],
+      "published": "2025-01-01T00:00:00Z",
+      "updated": "2025-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "RecSys"
+      ],
+      "primary_category": "RecSys",
+      "abs_url": "https://doi.org/10.1145/3705328.3748053",
+      "pdf_url": "https://doi.org/10.1145/3705328.3748053",
+      "doi": "10.1145/3705328.3748053",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "RecSys",
+      "venue_key": "RecSys",
+      "generated_summary": "本文提出了一种基于语言模型的播放列表生成推荐系统，利用自然语言处理技术来增强音乐推荐。",
+      "core_method": "基于语言模型生成音乐播放列表。",
+      "innovation_points": [
+        "将语言模型应用于播放列表生成任务",
+        "利用自然语言处理技术增强音乐推荐"
+      ],
+      "experiment_results": [
+        "论文全文未提供实验评测结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏实验验证和性能评估",
+        "语言模型在音乐推荐中的适用性未充分论证"
+      ],
+      "practical_value": "为音乐推荐提供了一种基于语言模型的生成式方法，具有潜在的应用价值。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "423f6d71c6262846",
+      "tags": [
+        "RecSys",
+        "Generative Rec",
+        "LLM4Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
+    {
+      "id": "dblp:conf/recsys/Liu0YYT025",
+      "title": "A Multi-Factor Collaborative Prediction for Review-based Recommendation",
+      "authors": [
+        "Junrui Liu",
+        "Tong Li 0001",
+        "Mingliang Yu",
+        "Shiqiu Yang",
+        "Zifang Tang",
+        "Zhen Yang 0004"
+      ],
+      "affiliations": [
+        "Beijing University of Technology, Beijing, Beijing, China",
+        "Beijing University of Technology",
+        "TravelSky Technology Limited, Beijing, Beijing, China",
+        "OriginWater (China)"
+      ],
+      "published": "2025-01-01T00:00:00Z",
+      "updated": "2025-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "RecSys"
+      ],
+      "primary_category": "RecSys",
+      "abs_url": "https://doi.org/10.1145/3705328.3748062",
+      "pdf_url": "https://doi.org/10.1145/3705328.3748062",
+      "doi": "10.1145/3705328.3748062",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "RecSys",
+      "venue_key": "RecSys",
+      "generated_summary": "本文提出一种多因素协同预测方法，利用评论文本、用户和物品等多维信息提升推荐效果。",
+      "core_method": "基于评论的多因素协同预测模型，融合文本语义、用户偏好和物品特征进行评分预测。",
+      "innovation_points": [
+        "提出多因素协同框架，有效结合评论文本与协同过滤信号",
+        "可能引入注意力机制或情感分析以捕捉评论中的细粒度偏好"
+      ],
+      "experiment_results": [
+        "论文元数据未提供具体实验结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏实验结果和细节，难以评估实际效果",
+        "可能面临评论文本稀疏或噪声问题"
+      ],
+      "practical_value": "为基于评论的推荐系统提供了一种融合多维信息的思路，可能提升可解释性。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "b9fd411fe9b2db1c",
+      "tags": [
+        "RecSys",
+        "LLM4Rec",
+        "Evaluation"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
+    {
+      "id": "dblp:conf/sigir/RuiXLL0T0025",
+      "title": "Action First: Leveraging Preference-Aware Actions for More Effective Decision-Making in Interactive Recommender Systems",
+      "authors": [
+        "Renting Rui",
+        "Yunjia Xi",
+        "Weiwen Liu",
+        "Jianghao Lin",
+        "Bo Chen 0023",
+        "Ruiming Tang",
+        "Weinan Zhang 0001",
+        "Yong Yu 0001"
+      ],
+      "affiliations": [
+        "Computer Science and Technology, Shanghai Jiao Tong University, Shanghai, China",
+        "Shanghai Jiao Tong University",
+        "Computer Science, Shanghai Jiao Tong University, Shanghai, China",
+        "Huawei Noah's Ark Lab, Shenzhen, China",
+        "Huawei Technologies (China)",
+        "Shanghai Jiao Tong University, Shanghai, China"
+      ],
+      "published": "2025-01-01T00:00:00Z",
+      "updated": "2025-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3726302.3729885",
+      "pdf_url": "https://doi.org/10.1145/3726302.3729885",
+      "doi": "10.1145/3726302.3729885",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "提出一种名为‘Action First’的方法，通过偏好感知动作增强交互式推荐系统的决策效果。该方法优先考虑用户偏好，以提升推荐的相关性和有效性。",
+      "core_method": "通过偏好感知动作优先策略增强交互式推荐系统的决策。",
+      "innovation_points": [
+        "提出Action First框架，将用户偏好感知与动作决策相结合。",
+        "在交互式推荐中引入偏好驱动机制，提升推荐效果。"
+      ],
+      "experiment_results": [
+        "论文元数据未提供实验或评测结论，无法总结。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "基于有限元数据，无法评估方法的具体局限性和不确定性。"
+      ],
+      "practical_value": "若有效，可提升交互式推荐系统的决策质量和用户体验。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "60e6f2c8aa526911",
+      "tags": [
+        "RecSys"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
+    {
+      "id": "dblp:conf/recsys/YilmaL25",
+      "title": "Affect-aware Cross-Domain Recommendation for Art Therapy via Music Preference Elicitation",
+      "authors": [
+        "Bereket Abera Yilma",
+        "Luis A. Leiva"
+      ],
+      "affiliations": [
+        "University of Luxembourg, Esch-sur-Alzette, Luxembourg",
+        "University of Luxembourg"
+      ],
+      "published": "2025-01-01T00:00:00Z",
+      "updated": "2025-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "RecSys"
+      ],
+      "primary_category": "RecSys",
+      "abs_url": "https://doi.org/10.1145/3705328.3748084",
+      "pdf_url": "https://doi.org/10.1145/3705328.3748084",
+      "doi": "10.1145/3705328.3748084",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "RecSys",
+      "venue_key": "RecSys",
+      "generated_summary": "针对艺术治疗中的音乐偏好激发问题，提出一种情感感知的跨领域推荐方法。",
+      "core_method": "基于情感感知，进行跨领域推荐以激发艺术治疗中的音乐偏好。",
+      "innovation_points": [
+        "将情感感知融入跨领域推荐",
+        "应用于艺术治疗的音乐偏好激发"
+      ],
+      "experiment_results": [
+        "论文摘要和全文未提供具体实验结果或评测结论，无法评估性能。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏实验结果，有效性未知",
+        "摘要缺失，方法细节不确定"
+      ],
+      "practical_value": "为艺术治疗中个性化音乐推荐提供跨领域情感感知新思路。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "89d1c316eac2de0b",
+      "tags": [
+        "RecSys"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
+    {
+      "id": "dblp:conf/recsys/FabbriB25",
+      "title": "Auditing Recommender Systems for User Empowerment in Very Large Online Platforms under the Digital Services Act",
+      "authors": [
+        "Matteo Fabbri",
+        "Ludovico Boratto"
+      ],
+      "affiliations": [
+        "IMT School for Advanced Studies Lucca, Lucca, Italy",
+        "IMT School for Advanced Studies Lucca",
+        "University of Cagliari, Cagliari, Italy",
+        "University of Cagliari"
+      ],
+      "published": "2025-01-01T00:00:00Z",
+      "updated": "2025-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "RecSys"
+      ],
+      "primary_category": "RecSys",
+      "abs_url": "https://doi.org/10.1145/3705328.3748074",
+      "pdf_url": "https://doi.org/10.1145/3705328.3748074",
+      "doi": "10.1145/3705328.3748074",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "RecSys",
+      "venue_key": "RecSys",
+      "generated_summary": "该论文探讨了在《数字服务法案》下对超大型在线平台中的推荐系统进行审计，以增强用户自主权。",
+      "core_method": "提出针对超大型在线平台推荐系统的审计框架，以实现用户赋权。",
+      "innovation_points": [
+        "将监管框架与推荐系统审计结合，关注用户赋权维度",
+        "提出面向超大型在线平台的审计方法论"
+      ],
+      "experiment_results": [
+        "全文未提供具体实验结果或评测结论"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏实证验证，审计框架的有效性未经验证"
+      ],
+      "practical_value": "为平台在《数字服务法案》合规性和提升用户赋权方面提供审计指导。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "058d7398ea9d1e36",
+      "tags": [
+        "RecSys",
+        "Evaluation"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
+    {
+      "id": "dblp:conf/recsys/JiangPZC25",
+      "title": "Beyond Immediate Click: Engagement-Aware and MoE-Enhanced Transformers for Sequential Movie Recommendation",
+      "authors": [
+        "Haotian Jiang",
+        "Sibendu Paul",
+        "Haiyang Zhang",
+        "Caren Chen"
+      ],
+      "affiliations": [
+        "Amazon Prime Video, Sunnyvale, USA",
+        "Amazon (United States)",
+        "Amazon Prime Video, Seattle, USA"
+      ],
+      "published": "2025-01-01T00:00:00Z",
+      "updated": "2025-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "RecSys"
+      ],
+      "primary_category": "RecSys",
+      "abs_url": "https://doi.org/10.1145/3705328.3748076",
+      "pdf_url": "https://doi.org/10.1145/3705328.3748076",
+      "doi": "10.1145/3705328.3748076",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "RecSys",
+      "venue_key": "RecSys",
+      "generated_summary": "提出一种序列电影推荐方法，通过引入用户参与感知和专家混合增强的Transformer模型，超越即时点击信号，关注长期推荐效果。",
+      "core_method": "基于参与感知和MoE增强的Transformer序列推荐模型，旨在捕捉用户长期偏好而非仅依赖即时点击。",
+      "innovation_points": [
+        "引入用户参与感知信号，优化长期推荐质量",
+        "采用专家混合（MoE）增强Transformer建模能力"
+      ],
+      "experiment_results": [
+        "论文全文未提供具体实验结果；仅基于元数据无法获取评测结论"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未提供全文，无法评估方法的实际有效性和局限性"
+      ],
+      "practical_value": "对电影推荐等需要关注用户长期兴趣的场景有潜在价值，但缺乏实证支持。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "d614b46eb1341c48",
+      "tags": [
+        "Sequential Rec",
+        "RecSys"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
+    {
+      "id": "dblp:conf/recsys/LiZLC0B25",
+      "title": "Breaking Knowledge Boundaries: Cognitive Distillation-enhanced Cross-Behavior Course Recommendation Model",
+      "authors": [
+        "Ruoyu Li",
+        "Yangtao Zhou",
+        "Chenzhang Li",
+        "Hua Chu",
+        "Jianan Li 0003",
+        "Yuhan Bian"
+      ],
+      "affiliations": [
+        "Xidian University, Xi'an, Shaanxi, China",
+        "Xidian University"
+      ],
+      "published": "2025-01-01T00:00:00Z",
+      "updated": "2025-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "RecSys"
+      ],
+      "primary_category": "RecSys",
+      "abs_url": "https://doi.org/10.1145/3705328.3748083",
+      "pdf_url": "https://doi.org/10.1145/3705328.3748083",
+      "doi": "10.1145/3705328.3748083",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "RecSys",
+      "venue_key": "RecSys",
+      "generated_summary": "提出认知蒸馏增强的跨行为课程推荐模型，突破知识边界，有效整合多行为信息以提升推荐性能。",
+      "core_method": "采用认知蒸馏技术融合跨行为信号，实现课程推荐。",
+      "innovation_points": [
+        "提出认知蒸馏增强的跨行为学习框架",
+        "突破知识边界以整合多行为信息"
+      ],
+      "experiment_results": [
+        "论文全文未提供具体实验结果或评测结论。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏具体实验验证，效果与泛化性存疑",
+        "跨行为对齐与蒸馏损失设计可能较复杂"
+      ],
+      "practical_value": "有望通过多行为整合提升课程推荐的准确性，适用于教育平台等场景。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "4dc89df4c4b47cd5",
+      "tags": [
+        "RecSys",
+        "Sequential Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
+    {
+      "id": "dblp:conf/sigir/0001LHZKW25",
+      "title": "Bridging Interests and Truth: Towards Mitigating Fake News with Personalized and Truthful Recommendations",
+      "authors": [
+        "Zihan Ma 0001",
+        "Minnan Luo",
+        "Yiran Hao",
+        "Zhi Zeng 0001",
+        "Xiangzheng Kong",
+        "Jiahao Wang 0004"
+      ],
+      "affiliations": [
+        "School of Computer Science, Xi'an Jiaotong University, Xi'an, ShaanXi, China",
+        "Xi'an Jiaotong University"
+      ],
+      "published": "2025-01-01T00:00:00Z",
+      "updated": "2025-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3726302.3729912",
+      "pdf_url": "https://doi.org/10.1145/3726302.3729912",
+      "doi": "10.1145/3726302.3729912",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "本论文针对推荐系统中的假新闻问题，提出一种平衡用户兴趣与信息真实性的个性化推荐方法，旨在在满足用户偏好的同时推荐真实内容。",
+      "core_method": "一种在推荐过程中同时考虑用户个性化兴趣和信息真实性的平衡方法。",
+      "innovation_points": [
+        "提出将信息真实性纳入个性化推荐框架以缓解假新闻传播",
+        "设计了一种平衡用户兴趣与内容可信度的推荐策略"
+      ],
+      "experiment_results": [
+        "论文全文未提供具体实验结果或评测结论。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏具体的实验设计和结果描述，方法有效性未经验证",
+        "仅从元数据无法确认该方法在实际系统中的可行性"
+      ],
+      "practical_value": "为推荐系统在信息真实性与用户满意度之间提供了一种新的平衡思路，对假新闻缓解具有实践参考价值。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "1d8c2b66332f31dc",
+      "tags": [
+        "RecSys",
+        "Evaluation"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
+    {
+      "id": "dblp:conf/sigir/0001S00G25",
+      "title": "Can LLMs Enhance Fairness in Recommendation Systems? A Data Augmentation Approach",
+      "authors": [
+        "Hanzhe Li 0001",
+        "Dazhong Shen",
+        "Chao Wang 0086",
+        "Yuting Liu 0001",
+        "Jingjing Gu"
+      ],
+      "affiliations": [
+        "Nanjing University of Aeronautics and Astronautics, Nanjing, China",
+        "Nanjing University of Aeronautics and Astronautics",
+        "University of Science and Technology of China, Hefei, China",
+        "University of Science and Technology of China"
+      ],
+      "published": "2025-01-01T00:00:00Z",
+      "updated": "2025-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3726302.3729917",
+      "pdf_url": "https://doi.org/10.1145/3726302.3729917",
+      "doi": "10.1145/3726302.3729917",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "该论文探讨如何利用大语言模型（LLMs）通过数据增强方法来提升推荐系统的公平性，重点关注在缓解数据偏差对推荐结果公平性的影响。",
+      "core_method": "基于大语言模型的数据增强策略，生成合成数据以平衡推荐系统中的数据分布，从而提升公平性。",
+      "innovation_points": [
+        "提出利用大语言模型进行数据增强以改善推荐公平性的新范式。",
+        "探索LLMs生成合成交互数据来缓解长尾分布和不平衡问题。"
+      ],
+      "experiment_results": [
+        "论文未提供具体的实验结果或评测结论。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未提供全文，无法评估所提方法的实际效果和局限性。",
+        "缺乏实验证据支持LLMs在推荐公平性上的有效性和可行性。"
+      ],
+      "practical_value": "为利用大模型解决推荐系统公平性问题提供了新颖的思路，若有效可缓解数据偏差带来的不公平推荐。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "55e662c9064a64c7",
+      "tags": [
+        "RecSys",
+        "LLM4Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
+    {
+      "id": "dblp:conf/recsys/MengZW0FH00G25",
+      "title": "Enhancing Online Video Recommendation via a Coarse-to-fine Dynamic Uplift Modeling Framework",
+      "authors": [
+        "Chang Meng",
+        "Chenhao Zhai",
+        "Xueliang Wang",
+        "Shuchang Liu 0001",
+        "Xiaoqiang Feng",
+        "Lantao Hu",
+        "Xiu Li 0001",
+        "Han Li 0005",
+        "Kun Gai"
+      ],
+      "affiliations": [
+        "Kuaishou Technology, Beijing, China",
+        "Kuaishou (China)",
+        "Shenzhen International Graduate School, Tsinghua University, Shenzhen, China",
+        "University Town of Shenzhen",
+        "Tsinghua University"
+      ],
+      "published": "2025-01-01T00:00:00Z",
+      "updated": "2025-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "RecSys"
+      ],
+      "primary_category": "RecSys",
+      "abs_url": "https://doi.org/10.1145/3705328.3748070",
+      "pdf_url": "https://doi.org/10.1145/3705328.3748070",
+      "doi": "10.1145/3705328.3748070",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "RecSys",
+      "venue_key": "RecSys",
+      "generated_summary": "提出一种从粗到细的动态提升建模框架，用于增强在线视频推荐效果。",
+      "core_method": "从粗到细的动态提升建模框架。",
+      "innovation_points": [
+        "提出一种从粗到细的动态提升建模方法。",
+        "将提升建模应用于在线视频推荐场景。"
+      ],
+      "experiment_results": [
+        "论文摘要和元数据未提供具体实验结果。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "由于缺乏全文和摘要，无法评估方法局限性和实验完整性。"
+      ],
+      "practical_value": "该方法有望通过动态提升建模改善在线视频推荐的效果，为实际系统提供新的优化思路。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "ac2f24a058eca306",
+      "tags": [
+        "RecSys",
+        "Sequential Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
+    {
+      "id": "dblp:conf/recsys/0005L0YBLLZW25",
+      "title": "Enhancing Sequential Recommender with Large Language Models for Joint Video and Comment Recommendation",
+      "authors": [
+        "Bowen Zheng 0005",
+        "Zihan Lin",
+        "Enze Liu 0005",
+        "Chen Yang 0032",
+        "Enyang Bai",
+        "Cheng Ling",
+        "Han Li 0005",
+        "Wayne Xin Zhao",
+        "Ji-Rong Wen"
+      ],
+      "affiliations": [
+        "Gaoling School of Artificial Intelligence, Renmin University of China, Beijing, China",
+        "Renmin University of China",
+        "Kuaishou Technology, Beijing, China",
+        "Kuaishou (China)"
+      ],
+      "published": "2025-01-01T00:00:00Z",
+      "updated": "2025-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "RecSys"
+      ],
+      "primary_category": "RecSys",
+      "abs_url": "https://doi.org/10.1145/3705328.3748075",
+      "pdf_url": "https://doi.org/10.1145/3705328.3748075",
+      "doi": "10.1145/3705328.3748075",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "RecSys",
+      "venue_key": "RecSys",
+      "generated_summary": "提出用大语言模型增强序列推荐器，实现视频与评论的联合推荐。",
+      "core_method": "使用大语言模型增强序列推荐模型，进行视频和评论的联合推荐。",
+      "innovation_points": [
+        "将大语言模型引入序列推荐，同时处理视频和评论的联合推荐任务",
+        "设计联合推荐框架，协同利用视频和评论的语义信息"
+      ],
+      "experiment_results": [
+        "论文全文未提供实验数据，无法总结具体实验结果。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "由于无全文，无法评估方法的具体局限性和不确定性"
+      ],
+      "practical_value": "可能为推荐系统引入多模态联合建模，提升视频与评论的推荐效果。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "affd83a2c8ed1e3a",
+      "tags": [
+        "RecSys",
+        "LLM4Rec",
+        "Sequential Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
+    {
+      "id": "dblp:conf/recsys/WangXBTLL25",
+      "title": "Enhancing Transferability and Consistency in Cross-Domain Recommendations via Supervised Disentanglement",
+      "authors": [
+        "Yuhan Wang 0004",
+        "Qing Xie 0002",
+        "Zhifeng Bao",
+        "Mengzi Tang",
+        "Lin Li 0001",
+        "Yongjian Liu"
+      ],
+      "affiliations": [
+        "Wuhan University of Technology, Wuhan, China and Engineering Research Center of Intelligent Service Technology for Digital Publishing, Ministry of Education, Wuhan, China",
+        "Wuhan University of Technology",
+        "Wuhan University of Science and Technology",
+        "School of Computing Technologies, RMIT University, Melbourne, Australia",
+        "RMIT University"
+      ],
+      "published": "2025-01-01T00:00:00Z",
+      "updated": "2025-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "RecSys"
+      ],
+      "primary_category": "RecSys",
+      "abs_url": "https://doi.org/10.1145/3705328.3748044",
+      "pdf_url": "https://doi.org/10.1145/3705328.3748044",
+      "doi": "10.1145/3705328.3748044",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "RecSys",
+      "venue_key": "RecSys",
+      "generated_summary": "该论文提出了一种基于监督解耦的跨域推荐方法，通过分离域共享特征和域特有特征，来提升跨域推荐的迁移性和一致性。",
+      "core_method": "基于监督解耦的跨域推荐框架，利用监督信号分离共享和特有特征以增强迁移性和一致性。",
+      "innovation_points": [
+        "提出监督解耦方法，显式分离域共享和域特有特征",
+        "设计机制增强跨域推荐的迁移性和一致性"
+      ],
+      "experiment_results": [
+        "摘要和全文未提供具体实验结果或评测结论"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏实验验证细节，方法有效性未知"
+      ],
+      "practical_value": "该方法有望改善跨域推荐中的信息迁移问题，提升推荐系统在多域场景下的表现。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "466ef7f8ddf57302",
+      "tags": [
+        "RecSys"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
+    {
+      "id": "dblp:conf/sigir/Zhou00SLDF0WZ25",
+      "title": "Joint Item Embedding Dual-view Exploration and Adaptive Local-Global Fusion for Federated Recommendation",
+      "authors": [
+        "Pengyang Zhou 0001",
+        "Chaochao Chen 0001",
+        "Weiming Liu 0005",
+        "Wenkai Shen",
+        "Xinting Liao",
+        "Huarong Deng",
+        "Zhihui Fu",
+        "Jun Wang 0020",
+        "Wu Wen",
+        "Xiaolin Zheng"
+      ],
+      "affiliations": [
+        "Zhejiang University, Hangzhou, China",
+        "Zhejiang University",
+        "Northwestern Polytechnical University, Xi'an, China",
+        "Northwestern Polytechnical University",
+        "OPPO, Shenzhen, China"
+      ],
+      "published": "2025-01-01T00:00:00Z",
+      "updated": "2025-01-01T00:00:00Z",
+      "abstract": "",
+      "categories": [
+        "DBLP",
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3726302.3730016",
+      "pdf_url": "https://doi.org/10.1145/3726302.3730016",
+      "doi": "10.1145/3726302.3730016",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "提出了一种联邦推荐中的联合物品嵌入双视角探索与自适应局部-全局融合方法。该方法通过双视角探索物品嵌入并自适应融合局部与全局信息，以提升推荐性能。",
+      "core_method": "通过双视角探索物品嵌入并自适应融合局部与全局信息进行联邦推荐。",
+      "innovation_points": [
+        "提出联合物品嵌入的双视角探索方法",
+        "设计自适应局部-全局融合机制"
+      ],
+      "experiment_results": [
+        "全文未提供实验结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏实验验证，性能存疑",
+        "联邦场景下的通信效率和隐私保护未明确"
+      ],
+      "practical_value": "可能为联邦推荐系统提供物品嵌入学习的新思路。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "154a1f3ac2e19901",
+      "tags": [
+        "RecSys"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
     {
       "id": "arxiv:2606.02883",
       "title": "LLM-Assisted Reranking to Operationalize Nuanced Objectives in Recommender Systems",
@@ -89,6 +1987,8 @@
       ],
       "practical_value": "可作为推荐系统相关方向的跟进阅读。",
       "analysis_basis": "metadata",
+      "analysis_status": "",
+      "analysis_signature": "",
       "tags": [
         "LLM4Rec",
         "RecSys",
@@ -144,6 +2044,8 @@
       ],
       "practical_value": "可作为推荐系统相关方向的跟进阅读。",
       "analysis_basis": "metadata",
+      "analysis_status": "",
+      "analysis_signature": "",
       "tags": [
         "RecSys",
         "Dataset"
@@ -198,6 +2100,8 @@
       ],
       "practical_value": "可作为推荐系统相关方向的跟进阅读。",
       "analysis_basis": "metadata",
+      "analysis_status": "",
+      "analysis_signature": "",
       "tags": [
         "Sequential Rec",
         "RecSys"
@@ -244,6 +2148,8 @@
       ],
       "practical_value": "可作为推荐系统相关方向的跟进阅读。",
       "analysis_basis": "metadata",
+      "analysis_status": "",
+      "analysis_signature": "",
       "tags": [
         "Sequential Rec",
         "RecSys",
@@ -293,6 +2199,8 @@
       ],
       "practical_value": "可作为推荐系统相关方向的跟进阅读。",
       "analysis_basis": "metadata",
+      "analysis_status": "",
+      "analysis_signature": "",
       "tags": [
         "LLM4Rec",
         "Sequential Rec",
@@ -343,6 +2251,8 @@
       ],
       "practical_value": "可作为推荐系统相关方向的跟进阅读。",
       "analysis_basis": "metadata",
+      "analysis_status": "",
+      "analysis_signature": "",
       "tags": [
         "Sequential Rec",
         "RecSys",
@@ -392,6 +2302,8 @@
       ],
       "practical_value": "可作为推荐系统相关方向的跟进阅读。",
       "analysis_basis": "metadata",
+      "analysis_status": "",
+      "analysis_signature": "",
       "tags": [
         "RecSys",
         "Evaluation",
@@ -445,6 +2357,8 @@
       ],
       "practical_value": "可作为推荐系统相关方向的跟进阅读。",
       "analysis_basis": "metadata",
+      "analysis_status": "",
+      "analysis_signature": "",
       "tags": [
         "Sequential Rec",
         "RecSys",
@@ -496,6 +2410,8 @@
       ],
       "practical_value": "可作为推荐系统相关方向的跟进阅读。",
       "analysis_basis": "metadata",
+      "analysis_status": "",
+      "analysis_signature": "",
       "tags": [
         "RecSys",
         "Evaluation",
@@ -550,6 +2466,8 @@
       ],
       "practical_value": "可作为推荐系统相关方向的跟进阅读。",
       "analysis_basis": "metadata",
+      "analysis_status": "",
+      "analysis_signature": "",
       "tags": [
         "RecSys",
         "Evaluation",

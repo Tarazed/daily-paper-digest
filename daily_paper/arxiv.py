@@ -1,5 +1,7 @@
 import datetime as _dt
 import re
+import sys
+import time
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -28,10 +30,28 @@ def fetch_papers(config: ArxivConfig) -> List[Paper]:
         "sortOrder": "descending",
     }
     url = API_URL + "?" + urllib.parse.urlencode(params)
-    request = urllib.request.Request(url, headers={"User-Agent": "daily-paper-digest/0.1"})
-    with urllib.request.urlopen(request, timeout=30) as response:
-        body = response.read()
+    body = _fetch_feed_with_retries(url, timeout=20, attempts=2)
     return filter_recent(parse_feed(body), config.days_back)
+
+
+def _fetch_feed_with_retries(url: str, timeout: int, attempts: int) -> bytes:
+    last_error = None
+    for attempt in range(1, attempts + 1):
+        request = urllib.request.Request(url, headers={"User-Agent": "daily-paper-digest/0.1"})
+        try:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
+                return response.read()
+        except Exception as exc:
+            last_error = exc
+            if attempt >= attempts:
+                break
+            print(
+                "Warning: arXiv fetch attempt %d/%d failed; retrying. %s"
+                % (attempt, attempts, exc),
+                file=sys.stderr,
+            )
+            time.sleep(min(2 * attempt, 5))
+    raise last_error
 
 
 def parse_feed(body: bytes) -> List[Paper]:

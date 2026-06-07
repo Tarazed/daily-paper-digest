@@ -204,6 +204,18 @@ def has_reusable_site_analysis(
         return False
     if paper.analysis_status not in ("complete", "cached"):
         return False
+    return has_complete_site_analysis_fields(paper)
+
+
+def has_legacy_site_analysis(paper: Paper) -> bool:
+    if paper.analysis_signature:
+        return False
+    if paper.analysis_status not in ("", "complete", "cached"):
+        return False
+    return has_complete_site_analysis_fields(paper)
+
+
+def has_complete_site_analysis_fields(paper: Paper) -> bool:
     required = [
         paper.generated_summary,
         paper.core_method,
