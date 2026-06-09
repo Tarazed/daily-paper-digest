@@ -297,7 +297,7 @@ def _doi_url(doi: str) -> str:
 
 
 def _published_from_year(year: str) -> str:
-    return "%s-01-01T00:00:00Z" % year if year else ""
+    return year if year else ""
 
 
 def _paper_year(paper: Paper) -> int:

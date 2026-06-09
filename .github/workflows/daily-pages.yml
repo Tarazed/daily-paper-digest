@@ -1,6 +1,9 @@
 name: Daily Paper Pages
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     # 08:00 Beijing time is 00:00 UTC.
     - cron: "0 0 * * *"

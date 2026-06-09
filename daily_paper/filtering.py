@@ -1,3 +1,4 @@
+import datetime as _dt
 import re
 from typing import Dict, Iterable, List
 
@@ -91,7 +92,18 @@ def _matches_interest(paper: Paper, config: ArxivConfig) -> bool:
 
 
 def _sort_key(paper: Paper):
-    return (-paper.score, paper.published[:10], paper.title.lower())
+    return (-paper.score, -_sort_timestamp(paper.published), paper.title.lower())
+
+
+def _sort_timestamp(value: str) -> int:
+    if not value:
+        return 0
+    for fmt, sample in (("%Y-%m-%dT%H:%M:%S", value[:19]), ("%Y-%m-%d", value[:10]), ("%Y", value[:4])):
+        try:
+            return int(_dt.datetime.strptime(sample, fmt).timestamp())
+        except ValueError:
+            continue
+    return 0
 
 
 def _search_text(paper: Paper) -> str:
