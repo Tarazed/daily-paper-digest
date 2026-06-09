@@ -117,7 +117,7 @@ def load_config(path: str = "config.toml") -> AppConfig:
             days_back=int(arxiv.get("days_back", 14)),
         ),
         dblp=DblpConfig(
-            enabled=bool(dblp.get("enabled", True)),
+            enabled=bool(dblp.get("enabled", False)),
             venues=_parse_dblp_venues(
                 dblp.get(
                     "venues",

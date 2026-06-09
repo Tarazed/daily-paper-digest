@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-07T16:37:21Z",
+  "generated_at": "2026-06-09T16:27:00Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
@@ -125,1871 +125,294 @@
   },
   "papers": [
     {
-      "id": "dblp:conf/kdd/Fu0LCL24",
-      "title": "DIET: Customized Slimming for Incompatible Networks in Sequential Recommendation",
+      "id": "arxiv:2606.07688",
+      "title": "TRACER: Token ReAssignment for Concept ERasure in Generative Recommendation",
       "authors": [
-        "Kairui Fu",
-        "Shengyu Zhang 0001",
-        "Zheqi Lv",
-        "Jingyuan Chen",
-        "Jiwei Li 0001"
+        "Ziheng Chen",
+        "Jiali Cheng",
+        "Zezhong Fan",
+        "Hadi Amiri",
+        "Diyuan Wu",
+        "Gabriele Tolomei",
+        "Yang Zhang"
       ],
-      "affiliations": [
-        "Zhejiang University, Hangzhou, China",
-        "Zhejiang University",
-        "Zhejiang University &amp; Shanghai Institute for Advanced Study of Zhejiang University, Hangzhou, China"
-      ],
-      "published": "2024-01-01T00:00:00Z",
-      "updated": "2024-01-01T00:00:00Z",
-      "abstract": "",
+      "affiliations": [],
+      "published": "2026-06-05T05:19:31Z",
+      "updated": "2026-06-05T05:19:31Z",
+      "abstract": "Generative recommendation formulates next-item prediction as autoregressive generation over semantic ID (SID) sequences derived from users' historical interactions, making modern recommender systems structurally similar to large language models (LLMs). As privacy and safety concerns grow, these systems increasingly require concept unlearning to remove sensitive or harmful concepts associated with items. However, existing LLM unlearning methods cannot be directly applied to generative recommendation. Unlike word tokens with explicit semantics, SIDs are abstract identifiers that are often shared by both forget and retain items, leading to severe conflicts between concept removal and recommendation utility preservation. To address this challenge, we propose TRACER, an end-to-end concept unlearning framework based on token reassignment. Rather than directly suppressing shared SIDs, TRACER reassigns concept-related items to alternative tokens that better facilitate forgetting while minimizing side effects on retained items. We further introduce a coherence regularizer to preserve semantic consistency among retain items during unlearning. Experiments on real-world recommendation datasets demonstrate that TRACER effectively removes target concepts while substantially better preserving recommendation utility than existing unlearning baselines.",
       "categories": [
-        "DBLP",
-        "KDD"
-      ],
-      "primary_category": "KDD",
-      "abs_url": "https://doi.org/10.1145/3637528.3671669",
-      "pdf_url": "https://doi.org/10.1145/3637528.3671669",
-      "doi": "10.1145/3637528.3671669",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "KDD",
-      "venue_key": "KDD",
-      "generated_summary": "提出DIET方法，通过定制化瘦身为顺序推荐中的不兼容网络进行模型压缩，发表于KDD会议。",
-      "core_method": "DIET通过定制化压缩技术处理顺序推荐中不同网络结构的不兼容问题，实现模型瘦身。",
-      "innovation_points": [
-        "针对顺序推荐中多个网络结构不兼容的挑战，提出定制化压缩方案。",
-        "在保持推荐精度的同时，显著降低模型计算和存储成本。"
-      ],
-      "experiment_results": [
-        "论文未提供具体实验结果和评测结论。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏具体的实验结果支持方法的有效性。",
-        "未讨论方法在实际大规模系统上的部署可行性。"
-      ],
-      "practical_value": "为推荐系统模型的轻量化和部署提供了定制化压缩思路，有助于在资源受限场景中应用。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "9f25dce1e46b68b8",
-      "tags": [
-        "Sequential Rec",
-        "RecSys"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 0
-    },
-    {
-      "id": "dblp:conf/kdd/DuW000024",
-      "title": "Disentangled Multi-interest Representation Learning for Sequential Recommendation",
-      "authors": [
-        "Yingpeng Du",
-        "Ziyan Wang",
-        "Zhu Sun 0001",
-        "Yining Ma 0001",
-        "Hongzhi Liu 0001",
-        "Jie Zhang 0002"
-      ],
-      "affiliations": [
-        "Nanyang Technological University, Singapore, Singapore",
-        "Nanyang Technological University",
-        "Singapore University of Technology and Design, Singapore, Singapore",
-        "Singapore University of Technology and Design",
-        "Peking University, Beijing, China",
-        "Peking University"
-      ],
-      "published": "2024-01-01T00:00:00Z",
-      "updated": "2024-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "KDD"
-      ],
-      "primary_category": "KDD",
-      "abs_url": "https://doi.org/10.1145/3637528.3671800",
-      "pdf_url": "https://doi.org/10.1145/3637528.3671800",
-      "doi": "10.1145/3637528.3671800",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "KDD",
-      "venue_key": "KDD",
-      "generated_summary": "提出一种解耦的多兴趣表示学习方法，用于序列推荐任务。该方法旨在从用户行为序列中分离出多个潜在兴趣，以提升推荐的准确性和多样性。论文发表于KDD会议。",
-      "core_method": "通过解耦学习从用户行为序列中提取多个独立兴趣表示。",
-      "innovation_points": [
-        "将解耦表示学习引入多兴趣序列推荐，分离用户行为中的多个潜在兴趣。",
-        "提出一种无监督的解耦机制，避免了兴趣标签的依赖。"
-      ],
-      "experiment_results": [
-        "论文元数据未提供具体实验结果，无法给出评测结论。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "未提供具体实验数据，无法评估模型的实际性能。",
-        "缺乏线上测试证据，实际效果未知。"
-      ],
-      "practical_value": "为多兴趣序列推荐提供了解耦思路，有助于提升推荐的多样性和可解释性。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "9d5a1369a4cfe0b6",
-      "tags": [
-        "Sequential Rec",
-        "RecSys"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 0
-    },
-    {
-      "id": "dblp:conf/kdd/ChenP024",
-      "title": "Explicit and Implicit Modeling via Dual-Path Transformer for Behavior Set-informed Sequential Recommendation",
-      "authors": [
-        "Ming Chen",
-        "Weike Pan",
-        "Zhong Ming 0001"
-      ],
-      "affiliations": [
-        "College of Computer Science and Software Engineering, Shenzhen University, Shenzhen, GuangDong, China",
-        "Shenzhen University",
-        "College of Computer Science and Software Engineering, Shenzhen University, Shenzhen, China",
-        "Shenzhen University &amp; Shenzhen Technology University, Shenzhen, China",
-        "Shenzhen Technology University"
-      ],
-      "published": "2024-01-01T00:00:00Z",
-      "updated": "2024-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "KDD"
-      ],
-      "primary_category": "KDD",
-      "abs_url": "https://doi.org/10.1145/3637528.3671755",
-      "pdf_url": "https://doi.org/10.1145/3637528.3671755",
-      "doi": "10.1145/3637528.3671755",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "KDD",
-      "venue_key": "KDD",
-      "generated_summary": "提出双路径Transformer模型，同时显式和隐式建模用户行为序列，用于行为集感知的序列推荐。",
-      "core_method": "基于双路径Transformer同时进行显式和隐式建模以捕捉行为集信息。",
-      "innovation_points": [
-        "提出显式与隐式双路径建模架构",
-        "利用Transformer处理行为集感知的序列推荐"
-      ],
-      "experiment_results": [
-        "论文全文未提供实验数据"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏实验验证，模型效果未知",
-        "未说明计算复杂度和实时性"
-      ],
-      "practical_value": "为序列推荐中行为集建模提供新思路，但需实验支持。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "49ba377d1e11c350",
-      "tags": [
-        "Sequential Rec",
-        "RecSys"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 0
-    },
-    {
-      "id": "dblp:conf/sigir/AnZWZS025",
-      "title": "Beyond Whole Dialogue Modeling: Contextual Disentanglement for Conversational Recommendation",
-      "authors": [
-        "Guojia An",
-        "Jie Zou 0001",
-        "Jiwei Wei",
-        "Chaoning Zhang",
-        "Fuming Sun",
-        "Yang Yang 0002"
-      ],
-      "affiliations": [
-        "University of Electronic Science and Technology of China, Chengdu, Sichuan, China",
-        "University of Electronic Science and Technology of China",
-        "School of Computer Science and Technology, University of Electronic Science and Technology of China, Chengdu, Sichuan, China",
-        "Dalian Minzu University, Dalian, Liaoning, China",
-        "Dalian Minzu University"
-      ],
-      "published": "2025-01-01T00:00:00Z",
-      "updated": "2025-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "SIGIR"
-      ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3726302.3729903",
-      "pdf_url": "https://doi.org/10.1145/3726302.3729903",
-      "doi": "10.1145/3726302.3729903",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "在对话推荐中提出超越整体对话建模的上下文解耦方法。",
-      "core_method": "将对话上下文解耦为不同语义部分，进行细粒度推荐建模。",
-      "innovation_points": [
-        "提出上下文解耦框架，突破传统整体对话建模的局限",
-        "实现对话语义的细粒度分离与利用"
-      ],
-      "experiment_results": [
-        "论文未提供实验评测结果（无全文且元数据摘要缺失）"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "由于缺乏全文和摘要，无法评估方法的实际效度与适用场景"
-      ],
-      "practical_value": "可能提升对话推荐系统对复杂上下文的理解能力",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "ccfeba9cc3d977c7",
-      "tags": [
-        "Conversational Rec",
-        "RecSys"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 0
-    },
-    {
-      "id": "dblp:conf/wsdm/HuangH0C0M026",
-      "title": "Dual Conditional Diffusion for Sequential Recommendation",
-      "authors": [
-        "Hongtao Huang",
-        "Chengkai Huang",
-        "Tong Yu 0001",
-        "Xiaojun Chang",
-        "Wen Hu 0001",
-        "Julian J. McAuley",
-        "Lina Yao 0001"
-      ],
-      "affiliations": [
-        "The University of New South Wales, Sydney, NSW, Australia",
-        "UNSW Sydney",
-        "Macquarie University, Sydney, NSW, Australia and The University of New South Wales, Sydney, NSW, Australia",
-        "Macquarie University",
-        "Adobe Research, San Jose, CA, USA",
-        "Adobe Systems (United States)",
-        "University of Science and Technology of China, Hefei, Anhui, China",
-        "University of Science and Technology of China",
-        "University of California San Diego, San Diego, CA, USA",
-        "University of California San Diego",
-        "The University of New South Wales, Sydney, NSW, Australia and CSIRO’s Data 61, Sydney, NSW, Australia",
-        "Data61"
-      ],
-      "published": "2026-01-01T00:00:00Z",
-      "updated": "2026-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "WSDM"
-      ],
-      "primary_category": "WSDM",
-      "abs_url": "https://doi.org/10.1145/3773966.3777926",
-      "pdf_url": "https://doi.org/10.1145/3773966.3777926",
-      "doi": "10.1145/3773966.3777926",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WSDM",
-      "venue_key": "WSDM",
-      "generated_summary": "提出了一种双条件扩散模型用于顺序推荐，通过利用条件扩散过程捕捉用户序列的复杂模式。该工作结合了序列信息和条件扩散机制，旨在提升推荐的准确性和鲁棒性。",
-      "core_method": "利用双条件扩散过程建模用户行为序列以提升推荐性能。",
-      "innovation_points": [
-        "首次将双条件扩散模型应用于顺序推荐，增强序列模式捕捉能力",
-        "设计特定的条件扩散机制以适应推荐场景的序列数据"
-      ],
-      "experiment_results": [
-        "论文全文未提供实验数据，无法给出具体评测结论"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏实验验证，方法有效性需要进一步实证支持",
-        "未讨论计算复杂度与实际部署的可行性"
-      ],
-      "practical_value": "为顺序推荐提供了一种基于扩散模型的新范式，但实际价值需依赖后续实验验证。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "b6e19dd86ff30acf",
-      "tags": [
-        "RecSys",
-        "Sequential Rec",
-        "LLM4Rec"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 0
-    },
-    {
-      "id": "dblp:conf/wsdm/DongX0Z26",
-      "title": "Enhanced Cold-Start Sequential Recommendation with Causal Diffusion Preference Modeling",
-      "authors": [
-        "Hongsheng Dong",
-        "Haolong Xiang",
-        "Xiaolong Xu 0001",
-        "Xuyun Zhang"
-      ],
-      "affiliations": [
-        "Nanjing University of Information Science and Technology, Nanjing, Jiangsu, China",
-        "Nanjing University of Information Science and Technology",
-        "Macquarie University, Sydney, New South Wales, Australia",
-        "Macquarie University"
-      ],
-      "published": "2026-01-01T00:00:00Z",
-      "updated": "2026-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "WSDM"
-      ],
-      "primary_category": "WSDM",
-      "abs_url": "https://doi.org/10.1145/3773966.3778026",
-      "pdf_url": "https://doi.org/10.1145/3773966.3778026",
-      "doi": "10.1145/3773966.3778026",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WSDM",
-      "venue_key": "WSDM",
-      "generated_summary": "提出因果扩散偏好模型，增强冷启动顺序推荐的性能。",
-      "core_method": "利用因果推断与扩散模型建模用户偏好，提升冷启动场景下的序列推荐效果。",
-      "innovation_points": [
-        "将因果推断引入扩散模型以缓解冷启动问题",
-        "提出因果扩散偏好建模框架用于序列推荐"
-      ],
-      "experiment_results": [
-        "论文全文未提供具体实验结果"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏实验验证，方法有效性待证实",
-        "冷启动场景下的实际部署复杂度未知"
-      ],
-      "practical_value": "为冷启动推荐提供了结合因果和扩散模型的新思路，有望改善用户冷启动体验。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "32dcc3984aa8e179",
-      "tags": [
-        "Sequential Rec",
-        "Generative Rec",
-        "LLM4Rec"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 0
-    },
-    {
-      "id": "dblp:conf/wsdm/HanQYZYZ0F0XZ26",
-      "title": "GSDiffRec: Enhancing Personalized Sequential Recommendation via Diffusion Augmentation and Guidance Optimization",
-      "authors": [
-        "Ruxue Han",
-        "Lianyong Qi",
-        "Chao Yan",
-        "Weiyi Zhong",
-        "Boyuan Yan",
-        "Bing Zhao",
-        "Xiaoran Zhao 0001",
-        "Zhikang Feng",
-        "Xiaolong Xu 0001",
-        "Haolong Xiang",
-        "Xuyun Zhang"
-      ],
-      "affiliations": [
-        "College of Computer Science, Qufu Normal University, Rizhao, China",
-        "Qufu Normal University",
-        "College of Computer Science and Technology, China University of Petroleum (East China), Qingdao, China",
-        "China University of Petroleum, East China",
-        "School of Computer Science, Qufu Normal University, Rizhao, China",
-        "School of Engineering, Qufu Normal University, Rizhao, China",
-        "College of Computer Science, Beijing University of Technology, Beijing, China",
-        "Beijing University of Technology",
-        "School of Software, Nanjing University of Information Science and Technology, Nanjing, China",
-        "Nanjing University of Information Science and Technology",
-        "School of Computing, Macquarie University, Macquarie Park, Australia",
-        "Macquarie University"
-      ],
-      "published": "2026-01-01T00:00:00Z",
-      "updated": "2026-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "WSDM"
-      ],
-      "primary_category": "WSDM",
-      "abs_url": "https://doi.org/10.1145/3773966.3777973",
-      "pdf_url": "https://doi.org/10.1145/3773966.3777973",
-      "doi": "10.1145/3773966.3777973",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WSDM",
-      "venue_key": "WSDM",
-      "generated_summary": "本文提出GSDiffRec，利用扩散模型进行数据增强和引导优化，提升个性化序列推荐的性能。方法通过扩散过程生成高质量用户行为序列，并结合引导机制优化推荐结果。",
-      "core_method": "基于扩散模型的序列增强与引导优化框架，用于个性化推荐。",
-      "innovation_points": [
-        "提出扩散模型用于用户行为序列的数据增强",
-        "设计引导优化策略提升推荐质量",
-        "将扩散模型与序列推荐深度融合"
-      ],
-      "experiment_results": [
-        "论文全文未提供具体实验结果或评测结论"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "模型复杂度与推理效率可能受限",
-        "扩散模型的超参数敏感性需进一步探索"
-      ],
-      "practical_value": "为序列推荐提供了一种基于生成式增强的新思路，有望改善数据稀疏场景下的推荐效果。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "7dcb7ce699b9bd24",
-      "tags": [
-        "RecSys",
-        "Sequential Rec",
-        "Generative Rec"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 0
-    },
-    {
-      "id": "dblp:conf/wsdm/ChoiNP26",
-      "title": "SimDiffRec: Semantic Similarity-Guided Diffusion for Contrastive Sequential Recommendation",
-      "authors": [
-        "Jinkyeong Choi",
-        "Yejin Noh",
-        "Donghyeon Park"
-      ],
-      "affiliations": [
-        "Sejong University, Seoul, Republic of Korea",
-        "Sejong University"
-      ],
-      "published": "2026-01-01T00:00:00Z",
-      "updated": "2026-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "WSDM"
-      ],
-      "primary_category": "WSDM",
-      "abs_url": "https://doi.org/10.1145/3773966.3777978",
-      "pdf_url": "https://doi.org/10.1145/3773966.3777978",
-      "doi": "10.1145/3773966.3777978",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WSDM",
-      "venue_key": "WSDM",
-      "generated_summary": "提出SimDiffRec，一种基于语义相似度引导的扩散模型用于对比序列推荐，整合扩散过程与对比学习以增强推荐鲁棒性。",
-      "core_method": "基于语义相似度引导扩散模型并结合对比学习的序列推荐方法",
-      "innovation_points": [
-        "将语义相似度引导融入扩散模型用于序列推荐",
-        "结合对比学习提升推荐鲁棒性"
-      ],
-      "experiment_results": [
-        "论文全文未提供具体实验结果"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺少实验验证，性能未知",
-        "扩散模型在推荐中的效率问题未提及"
-      ],
-      "practical_value": "可能通过语义相似度与对比学习提升推荐鲁棒性，但需实证",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "4cf7ae9cf992c64d",
-      "tags": [
-        "Sequential Rec"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 0
-    },
-    {
-      "id": "dblp:conf/wsdm/Huang0NFWY026",
-      "title": "Towards Next-Generation Recommender Systems: A Benchmark for Personalized Recommendation Assistant with LLMs",
-      "authors": [
-        "Jiani Huang 0001",
-        "Shijie Wang 0002",
-        "Liangbo Ning 0001",
-        "Wenqi Fan",
-        "Shuaiqiang Wang",
-        "Dawei Yin 0001",
-        "Qing Li 0001"
-      ],
-      "affiliations": [
-        "The Hong Kong Polytechnic University, HongKong, China",
-        "Hong Kong Polytechnic University",
-        "Baidu Inc., Beijing, China",
-        "Hong Kong Polytechnic University, Hong Kong, China",
-        "Baidu (China)"
-      ],
-      "published": "2026-01-01T00:00:00Z",
-      "updated": "2026-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "WSDM"
-      ],
-      "primary_category": "WSDM",
-      "abs_url": "https://doi.org/10.1145/3773966.3777954",
-      "pdf_url": "https://doi.org/10.1145/3773966.3777954",
-      "doi": "10.1145/3773966.3777954",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WSDM",
-      "venue_key": "WSDM",
-      "generated_summary": "该论文提出一个针对LLM驱动的个性化推荐助手的基准，旨在评估下一代推荐系统的性能。它关注如何利用大型语言模型增强推荐交互。",
-      "core_method": "构建一个用于评估LLM驱动的个性化推荐助手的基准测试。",
-      "innovation_points": [
-        "提出面向下一代推荐系统的LLM个性化推荐助手基准"
-      ],
-      "experiment_results": [
-        "论文元数据未提供具体实验结果"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "仅提供元数据，具体方法和实验细节未知"
-      ],
-      "practical_value": "为LLM增强的推荐系统提供评估基准，推动个性化推荐助手的发展。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "e1fa805e96226bc5",
-      "tags": [
-        "Benchmark",
-        "LLM4Rec",
-        "RecSys"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 0
-    },
-    {
-      "id": "dblp:conf/www/TangLPLK26",
-      "title": "Verifiable Federated Representation Learning for Cross-domain Sequential Recommendation",
-      "authors": [
-        "Tao Tang 0007",
-        "Botao Liu",
-        "Ciyuan Peng",
-        "Ivan Lee 0001",
-        "Xiangjie Kong 0001"
-      ],
-      "affiliations": [
-        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
-        "Zhejiang University of Technology",
-        "Federation University Australia, Ballarat, Australia",
-        "Federation University",
-        "Adelaide University, Adelaide, Australia",
-        "The University of Adelaide"
-      ],
-      "published": "2026-01-01T00:00:00Z",
-      "updated": "2026-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792533",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792533",
-      "doi": "10.1145/3774904.3792533",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "该论文提出一种可验证的联邦表示学习方法，用于跨域序列推荐，发表于WWW会议。",
-      "core_method": "可验证的联邦表示学习，用于跨域序列推荐。",
-      "innovation_points": [
-        "结合联邦学习与可验证机制，保障跨域序列推荐的隐私与可信性",
-        "针对跨域场景的序列推荐任务设计表示学习框架"
-      ],
-      "experiment_results": [
-        "论文全文未提供具体实验结果或评测结论"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "元数据缺失，无法评估实验充分性与实际效果",
-        "可验证机制的实际开销与跨域数据异质性挑战未在摘要中体现"
-      ],
-      "practical_value": "为隐私敏感场景下的跨域序列推荐提供了可验证的联邦学习方案，有助于在数据隔离前提下提升推荐性能。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "35fa6a34689aa4dc",
-      "tags": [
-        "Sequential Rec",
-        "RecSys"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 0
-    },
-    {
-      "id": "dblp:conf/kdd/DuCLXWD0T024",
-      "title": "DisCo: Towards Harmonious Disentanglement and Collaboration between Tabular and Semantic Space for Recommendation",
-      "authors": [
-        "Kounianhua Du",
-        "Jizheng Chen",
-        "Jianghao Lin",
-        "Yunjia Xi",
-        "Hangyu Wang",
-        "Xinyi Dai",
-        "Bo Chen 0023",
-        "Ruiming Tang",
-        "Weinan Zhang 0001"
-      ],
-      "affiliations": [
-        "Shanghai Jiao Tong University, Shanghai, China",
-        "Shanghai Jiao Tong University",
-        "Huawei Noah's Ark Lab, Shanghai, China",
-        "Huawei Technologies (China)",
-        "Huawei Noah's Ark Lab, Shenzhen, China"
-      ],
-      "published": "2024-01-01T00:00:00Z",
-      "updated": "2024-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "KDD"
-      ],
-      "primary_category": "KDD",
-      "abs_url": "https://doi.org/10.1145/3637528.3672008",
-      "pdf_url": "https://doi.org/10.1145/3637528.3672008",
-      "doi": "10.1145/3637528.3672008",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "KDD",
-      "venue_key": "KDD",
-      "generated_summary": "提出DisCo方法，旨在和谐解耦与协作表格和语义空间，提升推荐效果。由于缺乏全文和摘要，具体实现和实验结果未知。",
-      "core_method": "通过解耦与协作机制融合表格特征和语义特征以提升推荐性能。",
-      "innovation_points": [
-        "提出在表格和语义空间之间进行和谐解耦与协作的推荐框架。",
-        "同时利用表格数据和语义信息，增强模型表示能力。"
-      ],
-      "experiment_results": [
-        "论文未提供实验结果（元数据中无相关数据）"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "由于缺少全文和摘要，方法的局限性和不确定性无法评估"
-      ],
-      "practical_value": "可能为融合多模态数据的推荐系统提供新思路，但缺乏具体证据。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "b22523bff39bf0f5",
-      "tags": [
-        "RecSys",
-        "LLM4Rec"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": -4
-    },
-    {
-      "id": "dblp:conf/kdd/CheeKEWDI24",
-      "title": "Harm Mitigation in Recommender Systems under User Preference Dynamics",
-      "authors": [
-        "Jerry Chee",
-        "Shankar Kalyanaraman",
-        "Sindhu Kiranmai Ernala",
-        "Udi Weinsberg",
-        "Sarah Dean",
-        "Stratis Ioannidis"
-      ],
-      "affiliations": [
-        "Cornell University, Ithaca, NY, USA",
-        "Cornell University",
-        "Meta, Menlo Park, CA, USA",
-        "Menlo School",
-        "Northeastern University, Boston, MA, USA",
-        "Northeastern University"
-      ],
-      "published": "2024-01-01T00:00:00Z",
-      "updated": "2024-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "KDD"
-      ],
-      "primary_category": "KDD",
-      "abs_url": "https://doi.org/10.1145/3637528.3671925",
-      "pdf_url": "https://doi.org/10.1145/3637528.3671925",
-      "doi": "10.1145/3637528.3671925",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "KDD",
-      "venue_key": "KDD",
-      "generated_summary": "该论文探讨了在用户偏好动态变化下的推荐系统危害缓解问题，提出了应对策略。",
-      "core_method": "针对用户偏好动态变化，提出推荐系统危害缓解方法。",
-      "innovation_points": [
-        "考虑用户偏好动态性进行危害缓解",
-        "提出应对策略以减少推荐系统负面影响"
-      ],
-      "experiment_results": [
-        "论文全文未提供实验评测结论。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏实验验证，方法有效性待评估",
-        "用户偏好动态建模的实际挑战未详细讨论"
-      ],
-      "practical_value": "为设计更安全、适应用户变化的推荐系统提供思路，但需进一步验证。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "1e55ebf2c138bc2d",
-      "tags": [
-        "RecSys",
-        "Sequential Rec"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": -4
-    },
-    {
-      "id": "dblp:conf/kdd/ChenW024",
-      "title": "Maximum-Entropy Regularized Decision Transformer with Reward Relabelling for Dynamic Recommendation",
-      "authors": [
-        "Xiaocong Chen",
-        "Siyu Wang 0001",
-        "Lina Yao 0001"
-      ],
-      "affiliations": [
-        "Data 61, CSIRO, Eveleigh, Australia",
-        "Commonwealth Scientific and Industrial Research Organisation",
-        "Data61",
-        "The University of New South Wales, Sydney, Australia",
-        "UNSW Sydney",
-        "Data 61, CSIRO &amp; The University of New South Wales, Eveleigh, Australia"
-      ],
-      "published": "2024-01-01T00:00:00Z",
-      "updated": "2024-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "KDD"
-      ],
-      "primary_category": "KDD",
-      "abs_url": "https://doi.org/10.1145/3637528.3671750",
-      "pdf_url": "https://doi.org/10.1145/3637528.3671750",
-      "doi": "10.1145/3637528.3671750",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "KDD",
-      "venue_key": "KDD",
-      "generated_summary": "提出最大熵正则化决策Transformer与奖励重标记方法用于动态推荐，旨在提升推荐系统的探索与长期性能。",
-      "core_method": "结合最大熵强化学习与决策Transformer，通过奖励重标记优化长期用户满意度。",
-      "innovation_points": [
-        "将最大熵正则化融入决策Transformer以平衡探索与利用",
-        "设计奖励重标记方法缓解稀疏奖励问题"
-      ],
-      "experiment_results": [
-        "全文未提供具体实验结果或评测结论"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "无全文内容，难以评估方法局限性",
-        "缺乏具体实验数据支撑性能表现"
-      ],
-      "practical_value": "若有效，可为动态推荐系统提供兼顾探索与长期收益的解决方案。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "39d2b38caf6b21db",
-      "tags": [
-        "RecSys",
-        "Sequential Rec",
-        "LLM4Rec"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": -4
-    },
-    {
-      "id": "dblp:conf/kdd/Coppolillo0G24",
-      "title": "Relevance Meets Diversity: A User-Centric Framework for Knowledge Exploration Through Recommendations",
-      "authors": [
-        "Erica Coppolillo",
-        "Giuseppe Manco 0001",
-        "Aristides Gionis"
-      ],
-      "affiliations": [
-        "Department of Computer Science, University of Calabria &amp; ICAR-CNR, Rende, Italy",
-        "University of Calabria",
-        "ICAR-CNR, Rende, Italy",
-        "Institute for High Performance Computing and Networking",
-        "Division of Theoretical Computer Science, KTH Royal Institute of Technology, Stockholm, Sweden",
-        "KTH Royal Institute of Technology"
-      ],
-      "published": "2024-01-01T00:00:00Z",
-      "updated": "2024-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "KDD"
-      ],
-      "primary_category": "KDD",
-      "abs_url": "https://doi.org/10.1145/3637528.3671949",
-      "pdf_url": "https://doi.org/10.1145/3637528.3671949",
-      "doi": "10.1145/3637528.3671949",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "KDD",
-      "venue_key": "KDD",
-      "generated_summary": "提出以用户为中心的知识探索推荐框架，旨在平衡推荐结果的相关性与多样性以促进用户探索。",
-      "core_method": "在推荐中同时优化相关性和多样性的用户中心框架。",
-      "innovation_points": [
-        "提出平衡相关性与多样性的用户中心知识探索框架",
-        "引入促进用户探索的推荐策略"
-      ],
-      "experiment_results": [
-        "全文未提供具体实验评测结论"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "元数据信息有限，具体实现与评估细节未知"
-      ],
-      "practical_value": "为需要平衡准确性与探索性的推荐场景提供新思路。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "9eed292ef20844a6",
-      "tags": [
-        "RecSys",
-        "Evaluation"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": -4
-    },
-    {
-      "id": "dblp:conf/kdd/FengMCSO24",
-      "title": "ROTAN: A Rotation-based Temporal Attention Network for Time-Specific Next POI Recommendation",
-      "authors": [
-        "Shanshan Feng 0001",
-        "Feiyu Meng",
-        "Lisi Chen 0001",
-        "Shuo Shang",
-        "Yew Soon Ong"
-      ],
-      "affiliations": [
-        "Centre for Frontier AI Research, A*STAR &amp; Institute of High Performance Computing, A*STAR, Singapore, Singapore",
-        "Agency for Science, Technology and Research",
-        "Institute of High Performance Computing",
-        "University of Electronic Science and Technology of China, Chengdu, Sichuan, China",
-        "University of Electronic Science and Technology of China",
-        "University of Electronic Science and Technology of China, Chengdu, China",
-        "Centre for Frontier AI Research, A*STAR &amp; Nanyang Technological University, Singapore, Singapore",
-        "Nanyang Technological University"
-      ],
-      "published": "2024-01-01T00:00:00Z",
-      "updated": "2024-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "KDD"
-      ],
-      "primary_category": "KDD",
-      "abs_url": "https://doi.org/10.1145/3637528.3671809",
-      "pdf_url": "https://doi.org/10.1145/3637528.3671809",
-      "doi": "10.1145/3637528.3671809",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "KDD",
-      "venue_key": "KDD",
-      "generated_summary": "提出基于旋转的时间注意力网络（ROTAN），用于时间特定的下一兴趣点推荐。该方法通过旋转机制建模时间动态性。该论文发表于KDD。",
-      "core_method": "基于旋转机制的时间注意力网络，建模时间动态性以推荐下一兴趣点",
-      "innovation_points": [
-        "提出旋转机制来捕捉时间动态性",
-        "设计时间特定的下一兴趣点推荐框架"
-      ],
-      "experiment_results": [
-        "论文未提供具体实验结果或评测结论"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏可用的全文，无法评估方法局限"
-      ],
-      "practical_value": "为时间敏感的POI推荐提供了一种基于旋转注意力机制的新思路",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "26b516672a2e228e",
-      "tags": [
-        "Sequential Rec",
-        "Evaluation"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": -4
-    },
-    {
-      "id": "dblp:conf/kdd/0001TS0K24",
-      "title": "Shopping Trajectory Representation Learning with Pre-training for E-commerce Customer Understanding and Recommendation",
-      "authors": [
-        "Yankai Chen 0001",
-        "Quoc-Tuan Truong",
-        "Xin Shen",
-        "Jin Li 0003",
-        "Irwin King"
-      ],
-      "affiliations": [
-        "The Chinese University of Hong Kong, Hong Kong, China",
-        "Chinese University of Hong Kong",
-        "Amazon, Seattle, WA, USA",
-        "Amazon (United States)"
-      ],
-      "published": "2024-01-01T00:00:00Z",
-      "updated": "2024-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "KDD"
-      ],
-      "primary_category": "KDD",
-      "abs_url": "https://doi.org/10.1145/3637528.3671747",
-      "pdf_url": "https://doi.org/10.1145/3637528.3671747",
-      "doi": "10.1145/3637528.3671747",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "KDD",
-      "venue_key": "KDD",
-      "generated_summary": "通过预训练方法学习电商购物轨迹表示，以提升客户理解与推荐效果。提出了针对电子商务场景的序列建模与表征学习框架。",
-      "core_method": "基于预训练的购物轨迹表征学习框架。",
-      "innovation_points": [
-        "将预训练方法应用于电商购物轨迹的表示学习",
-        "设计了针对购物序列的建模框架以增强客户理解"
-      ],
-      "experiment_results": [
-        "论文正文未提供具体实验结果或评测结论"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "未提供具体实验验证，方法有效性待证实",
-        "仅基于元数据分析，缺乏全文细节"
-      ],
-      "practical_value": "为电商推荐中的用户行为建模提供了一种预训练学习方法，有潜力提升推荐效果。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "ebe532896c98f0a6",
-      "tags": [
-        "RecSys",
-        "Sequential Rec"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": -4
-    },
-    {
-      "id": "dblp:conf/kdd/CaiZHS0ZC024",
-      "title": "Where Have You Been? A Study of Privacy Risk for Point-of-Interest Recommendation",
-      "authors": [
-        "Kunlin Cai",
-        "Jinghuai Zhang",
-        "Zhiqing Hong",
-        "William Shand",
-        "Guang Wang 0001",
-        "Desheng Zhang 0002",
-        "Jianfeng Chi",
-        "Yuan Tian 0001"
-      ],
-      "affiliations": [
-        "University of California, Los Angeles, Los Angeles, CA, USA",
-        "University of California, Los Angeles",
-        "Rutgers University, New Brunswick, NJ, USA",
-        "Rutgers, The State University of New Jersey",
-        "Florida State University, Tallahassee, FL, USA",
-        "Florida State University",
-        "Meta, New York, NY, USA"
-      ],
-      "published": "2024-01-01T00:00:00Z",
-      "updated": "2024-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "KDD"
-      ],
-      "primary_category": "KDD",
-      "abs_url": "https://doi.org/10.1145/3637528.3671758",
-      "pdf_url": "https://doi.org/10.1145/3637528.3671758",
-      "doi": "10.1145/3637528.3671758",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "KDD",
-      "venue_key": "KDD",
-      "generated_summary": "研究点-of-interest推荐中的隐私风险问题，通过分析用户位置数据推断用户行为轨迹。",
-      "core_method": "基于位置数据的隐私攻击方法，推断用户行为轨迹。",
-      "innovation_points": [
-        "揭示POI推荐系统中的隐私泄露风险",
-        "提出基于位置数据的攻击方法来推断用户行为"
-      ],
-      "experiment_results": [
-        "全文未提供具体实验结果"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏具体实验验证",
-        "未讨论防御机制"
-      ],
-      "practical_value": "提醒设计POI推荐系统时需关注用户隐私保护",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "e147a64246fcb38f",
-      "tags": [
-        "RecSys",
-        "Evaluation"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": -4
-    },
-    {
-      "id": "dblp:conf/recsys/Charolois-Pasqua25",
-      "title": "A Language Model-Based Playlist Generation Recommender System",
-      "authors": [
-        "Enzo Charolois-Pasqua",
-        "Eléa Vellard",
-        "Youssra Rebboud",
-        "Pasquale Lisena",
-        "Raphaël Troncy"
-      ],
-      "affiliations": [
-        "EURECOM, Sophia Antipolis, France",
-        "EURECOM"
-      ],
-      "published": "2025-01-01T00:00:00Z",
-      "updated": "2025-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "RecSys"
-      ],
-      "primary_category": "RecSys",
-      "abs_url": "https://doi.org/10.1145/3705328.3748053",
-      "pdf_url": "https://doi.org/10.1145/3705328.3748053",
-      "doi": "10.1145/3705328.3748053",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "RecSys",
-      "venue_key": "RecSys",
-      "generated_summary": "本文提出了一种基于语言模型的播放列表生成推荐系统，利用自然语言处理技术来增强音乐推荐。",
-      "core_method": "基于语言模型生成音乐播放列表。",
-      "innovation_points": [
-        "将语言模型应用于播放列表生成任务",
-        "利用自然语言处理技术增强音乐推荐"
-      ],
-      "experiment_results": [
-        "论文全文未提供实验评测结果"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏实验验证和性能评估",
-        "语言模型在音乐推荐中的适用性未充分论证"
-      ],
-      "practical_value": "为音乐推荐提供了一种基于语言模型的生成式方法，具有潜在的应用价值。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "423f6d71c6262846",
-      "tags": [
-        "RecSys",
-        "Generative Rec",
-        "LLM4Rec"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": -4
-    },
-    {
-      "id": "dblp:conf/recsys/Liu0YYT025",
-      "title": "A Multi-Factor Collaborative Prediction for Review-based Recommendation",
-      "authors": [
-        "Junrui Liu",
-        "Tong Li 0001",
-        "Mingliang Yu",
-        "Shiqiu Yang",
-        "Zifang Tang",
-        "Zhen Yang 0004"
-      ],
-      "affiliations": [
-        "Beijing University of Technology, Beijing, Beijing, China",
-        "Beijing University of Technology",
-        "TravelSky Technology Limited, Beijing, Beijing, China",
-        "OriginWater (China)"
-      ],
-      "published": "2025-01-01T00:00:00Z",
-      "updated": "2025-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "RecSys"
-      ],
-      "primary_category": "RecSys",
-      "abs_url": "https://doi.org/10.1145/3705328.3748062",
-      "pdf_url": "https://doi.org/10.1145/3705328.3748062",
-      "doi": "10.1145/3705328.3748062",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "RecSys",
-      "venue_key": "RecSys",
-      "generated_summary": "本文提出一种多因素协同预测方法，利用评论文本、用户和物品等多维信息提升推荐效果。",
-      "core_method": "基于评论的多因素协同预测模型，融合文本语义、用户偏好和物品特征进行评分预测。",
-      "innovation_points": [
-        "提出多因素协同框架，有效结合评论文本与协同过滤信号",
-        "可能引入注意力机制或情感分析以捕捉评论中的细粒度偏好"
-      ],
-      "experiment_results": [
-        "论文元数据未提供具体实验结果"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏实验结果和细节，难以评估实际效果",
-        "可能面临评论文本稀疏或噪声问题"
-      ],
-      "practical_value": "为基于评论的推荐系统提供了一种融合多维信息的思路，可能提升可解释性。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "b9fd411fe9b2db1c",
-      "tags": [
-        "RecSys",
-        "LLM4Rec",
-        "Evaluation"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": -4
-    },
-    {
-      "id": "dblp:conf/sigir/RuiXLL0T0025",
-      "title": "Action First: Leveraging Preference-Aware Actions for More Effective Decision-Making in Interactive Recommender Systems",
-      "authors": [
-        "Renting Rui",
-        "Yunjia Xi",
-        "Weiwen Liu",
-        "Jianghao Lin",
-        "Bo Chen 0023",
-        "Ruiming Tang",
-        "Weinan Zhang 0001",
-        "Yong Yu 0001"
-      ],
-      "affiliations": [
-        "Computer Science and Technology, Shanghai Jiao Tong University, Shanghai, China",
-        "Shanghai Jiao Tong University",
-        "Computer Science, Shanghai Jiao Tong University, Shanghai, China",
-        "Huawei Noah's Ark Lab, Shenzhen, China",
-        "Huawei Technologies (China)",
-        "Shanghai Jiao Tong University, Shanghai, China"
-      ],
-      "published": "2025-01-01T00:00:00Z",
-      "updated": "2025-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "SIGIR"
-      ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3726302.3729885",
-      "pdf_url": "https://doi.org/10.1145/3726302.3729885",
-      "doi": "10.1145/3726302.3729885",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "提出一种名为‘Action First’的方法，通过偏好感知动作增强交互式推荐系统的决策效果。该方法优先考虑用户偏好，以提升推荐的相关性和有效性。",
-      "core_method": "通过偏好感知动作优先策略增强交互式推荐系统的决策。",
-      "innovation_points": [
-        "提出Action First框架，将用户偏好感知与动作决策相结合。",
-        "在交互式推荐中引入偏好驱动机制，提升推荐效果。"
-      ],
-      "experiment_results": [
-        "论文元数据未提供实验或评测结论，无法总结。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "基于有限元数据，无法评估方法的具体局限性和不确定性。"
-      ],
-      "practical_value": "若有效，可提升交互式推荐系统的决策质量和用户体验。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "60e6f2c8aa526911",
-      "tags": [
-        "RecSys"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": -4
-    },
-    {
-      "id": "dblp:conf/recsys/YilmaL25",
-      "title": "Affect-aware Cross-Domain Recommendation for Art Therapy via Music Preference Elicitation",
-      "authors": [
-        "Bereket Abera Yilma",
-        "Luis A. Leiva"
-      ],
-      "affiliations": [
-        "University of Luxembourg, Esch-sur-Alzette, Luxembourg",
-        "University of Luxembourg"
-      ],
-      "published": "2025-01-01T00:00:00Z",
-      "updated": "2025-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "RecSys"
-      ],
-      "primary_category": "RecSys",
-      "abs_url": "https://doi.org/10.1145/3705328.3748084",
-      "pdf_url": "https://doi.org/10.1145/3705328.3748084",
-      "doi": "10.1145/3705328.3748084",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "RecSys",
-      "venue_key": "RecSys",
-      "generated_summary": "针对艺术治疗中的音乐偏好激发问题，提出一种情感感知的跨领域推荐方法。",
-      "core_method": "基于情感感知，进行跨领域推荐以激发艺术治疗中的音乐偏好。",
-      "innovation_points": [
-        "将情感感知融入跨领域推荐",
-        "应用于艺术治疗的音乐偏好激发"
-      ],
-      "experiment_results": [
-        "论文摘要和全文未提供具体实验结果或评测结论，无法评估性能。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏实验结果，有效性未知",
-        "摘要缺失，方法细节不确定"
-      ],
-      "practical_value": "为艺术治疗中个性化音乐推荐提供跨领域情感感知新思路。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "89d1c316eac2de0b",
-      "tags": [
-        "RecSys"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": -4
-    },
-    {
-      "id": "dblp:conf/recsys/FabbriB25",
-      "title": "Auditing Recommender Systems for User Empowerment in Very Large Online Platforms under the Digital Services Act",
-      "authors": [
-        "Matteo Fabbri",
-        "Ludovico Boratto"
-      ],
-      "affiliations": [
-        "IMT School for Advanced Studies Lucca, Lucca, Italy",
-        "IMT School for Advanced Studies Lucca",
-        "University of Cagliari, Cagliari, Italy",
-        "University of Cagliari"
-      ],
-      "published": "2025-01-01T00:00:00Z",
-      "updated": "2025-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "RecSys"
-      ],
-      "primary_category": "RecSys",
-      "abs_url": "https://doi.org/10.1145/3705328.3748074",
-      "pdf_url": "https://doi.org/10.1145/3705328.3748074",
-      "doi": "10.1145/3705328.3748074",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "RecSys",
-      "venue_key": "RecSys",
-      "generated_summary": "该论文探讨了在《数字服务法案》下对超大型在线平台中的推荐系统进行审计，以增强用户自主权。",
-      "core_method": "提出针对超大型在线平台推荐系统的审计框架，以实现用户赋权。",
-      "innovation_points": [
-        "将监管框架与推荐系统审计结合，关注用户赋权维度",
-        "提出面向超大型在线平台的审计方法论"
-      ],
-      "experiment_results": [
-        "全文未提供具体实验结果或评测结论"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏实证验证，审计框架的有效性未经验证"
-      ],
-      "practical_value": "为平台在《数字服务法案》合规性和提升用户赋权方面提供审计指导。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "058d7398ea9d1e36",
-      "tags": [
-        "RecSys",
-        "Evaluation"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": -4
-    },
-    {
-      "id": "dblp:conf/recsys/JiangPZC25",
-      "title": "Beyond Immediate Click: Engagement-Aware and MoE-Enhanced Transformers for Sequential Movie Recommendation",
-      "authors": [
-        "Haotian Jiang",
-        "Sibendu Paul",
-        "Haiyang Zhang",
-        "Caren Chen"
-      ],
-      "affiliations": [
-        "Amazon Prime Video, Sunnyvale, USA",
-        "Amazon (United States)",
-        "Amazon Prime Video, Seattle, USA"
-      ],
-      "published": "2025-01-01T00:00:00Z",
-      "updated": "2025-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "RecSys"
-      ],
-      "primary_category": "RecSys",
-      "abs_url": "https://doi.org/10.1145/3705328.3748076",
-      "pdf_url": "https://doi.org/10.1145/3705328.3748076",
-      "doi": "10.1145/3705328.3748076",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "RecSys",
-      "venue_key": "RecSys",
-      "generated_summary": "提出一种序列电影推荐方法，通过引入用户参与感知和专家混合增强的Transformer模型，超越即时点击信号，关注长期推荐效果。",
-      "core_method": "基于参与感知和MoE增强的Transformer序列推荐模型，旨在捕捉用户长期偏好而非仅依赖即时点击。",
-      "innovation_points": [
-        "引入用户参与感知信号，优化长期推荐质量",
-        "采用专家混合（MoE）增强Transformer建模能力"
-      ],
-      "experiment_results": [
-        "论文全文未提供具体实验结果；仅基于元数据无法获取评测结论"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "未提供全文，无法评估方法的实际有效性和局限性"
-      ],
-      "practical_value": "对电影推荐等需要关注用户长期兴趣的场景有潜在价值，但缺乏实证支持。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "d614b46eb1341c48",
-      "tags": [
-        "Sequential Rec",
-        "RecSys"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": -4
-    },
-    {
-      "id": "dblp:conf/recsys/LiZLC0B25",
-      "title": "Breaking Knowledge Boundaries: Cognitive Distillation-enhanced Cross-Behavior Course Recommendation Model",
-      "authors": [
-        "Ruoyu Li",
-        "Yangtao Zhou",
-        "Chenzhang Li",
-        "Hua Chu",
-        "Jianan Li 0003",
-        "Yuhan Bian"
-      ],
-      "affiliations": [
-        "Xidian University, Xi'an, Shaanxi, China",
-        "Xidian University"
-      ],
-      "published": "2025-01-01T00:00:00Z",
-      "updated": "2025-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "RecSys"
-      ],
-      "primary_category": "RecSys",
-      "abs_url": "https://doi.org/10.1145/3705328.3748083",
-      "pdf_url": "https://doi.org/10.1145/3705328.3748083",
-      "doi": "10.1145/3705328.3748083",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "RecSys",
-      "venue_key": "RecSys",
-      "generated_summary": "提出认知蒸馏增强的跨行为课程推荐模型，突破知识边界，有效整合多行为信息以提升推荐性能。",
-      "core_method": "采用认知蒸馏技术融合跨行为信号，实现课程推荐。",
-      "innovation_points": [
-        "提出认知蒸馏增强的跨行为学习框架",
-        "突破知识边界以整合多行为信息"
-      ],
-      "experiment_results": [
-        "论文全文未提供具体实验结果或评测结论。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏具体实验验证，效果与泛化性存疑",
-        "跨行为对齐与蒸馏损失设计可能较复杂"
-      ],
-      "practical_value": "有望通过多行为整合提升课程推荐的准确性，适用于教育平台等场景。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "4dc89df4c4b47cd5",
-      "tags": [
-        "RecSys",
-        "Sequential Rec"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": -4
-    },
-    {
-      "id": "dblp:conf/sigir/0001LHZKW25",
-      "title": "Bridging Interests and Truth: Towards Mitigating Fake News with Personalized and Truthful Recommendations",
-      "authors": [
-        "Zihan Ma 0001",
-        "Minnan Luo",
-        "Yiran Hao",
-        "Zhi Zeng 0001",
-        "Xiangzheng Kong",
-        "Jiahao Wang 0004"
-      ],
-      "affiliations": [
-        "School of Computer Science, Xi'an Jiaotong University, Xi'an, ShaanXi, China",
-        "Xi'an Jiaotong University"
-      ],
-      "published": "2025-01-01T00:00:00Z",
-      "updated": "2025-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "SIGIR"
-      ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3726302.3729912",
-      "pdf_url": "https://doi.org/10.1145/3726302.3729912",
-      "doi": "10.1145/3726302.3729912",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "本论文针对推荐系统中的假新闻问题，提出一种平衡用户兴趣与信息真实性的个性化推荐方法，旨在在满足用户偏好的同时推荐真实内容。",
-      "core_method": "一种在推荐过程中同时考虑用户个性化兴趣和信息真实性的平衡方法。",
-      "innovation_points": [
-        "提出将信息真实性纳入个性化推荐框架以缓解假新闻传播",
-        "设计了一种平衡用户兴趣与内容可信度的推荐策略"
-      ],
-      "experiment_results": [
-        "论文全文未提供具体实验结果或评测结论。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏具体的实验设计和结果描述，方法有效性未经验证",
-        "仅从元数据无法确认该方法在实际系统中的可行性"
-      ],
-      "practical_value": "为推荐系统在信息真实性与用户满意度之间提供了一种新的平衡思路，对假新闻缓解具有实践参考价值。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "1d8c2b66332f31dc",
-      "tags": [
-        "RecSys",
-        "Evaluation"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": -4
-    },
-    {
-      "id": "dblp:conf/sigir/0001S00G25",
-      "title": "Can LLMs Enhance Fairness in Recommendation Systems? A Data Augmentation Approach",
-      "authors": [
-        "Hanzhe Li 0001",
-        "Dazhong Shen",
-        "Chao Wang 0086",
-        "Yuting Liu 0001",
-        "Jingjing Gu"
-      ],
-      "affiliations": [
-        "Nanjing University of Aeronautics and Astronautics, Nanjing, China",
-        "Nanjing University of Aeronautics and Astronautics",
-        "University of Science and Technology of China, Hefei, China",
-        "University of Science and Technology of China"
-      ],
-      "published": "2025-01-01T00:00:00Z",
-      "updated": "2025-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "SIGIR"
-      ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3726302.3729917",
-      "pdf_url": "https://doi.org/10.1145/3726302.3729917",
-      "doi": "10.1145/3726302.3729917",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "该论文探讨如何利用大语言模型（LLMs）通过数据增强方法来提升推荐系统的公平性，重点关注在缓解数据偏差对推荐结果公平性的影响。",
-      "core_method": "基于大语言模型的数据增强策略，生成合成数据以平衡推荐系统中的数据分布，从而提升公平性。",
-      "innovation_points": [
-        "提出利用大语言模型进行数据增强以改善推荐公平性的新范式。",
-        "探索LLMs生成合成交互数据来缓解长尾分布和不平衡问题。"
-      ],
-      "experiment_results": [
-        "论文未提供具体的实验结果或评测结论。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "未提供全文，无法评估所提方法的实际效果和局限性。",
-        "缺乏实验证据支持LLMs在推荐公平性上的有效性和可行性。"
-      ],
-      "practical_value": "为利用大模型解决推荐系统公平性问题提供了新颖的思路，若有效可缓解数据偏差带来的不公平推荐。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "55e662c9064a64c7",
-      "tags": [
-        "RecSys",
-        "LLM4Rec"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": -4
-    },
-    {
-      "id": "dblp:conf/recsys/MengZW0FH00G25",
-      "title": "Enhancing Online Video Recommendation via a Coarse-to-fine Dynamic Uplift Modeling Framework",
-      "authors": [
-        "Chang Meng",
-        "Chenhao Zhai",
-        "Xueliang Wang",
-        "Shuchang Liu 0001",
-        "Xiaoqiang Feng",
-        "Lantao Hu",
-        "Xiu Li 0001",
-        "Han Li 0005",
-        "Kun Gai"
-      ],
-      "affiliations": [
-        "Kuaishou Technology, Beijing, China",
-        "Kuaishou (China)",
-        "Shenzhen International Graduate School, Tsinghua University, Shenzhen, China",
-        "University Town of Shenzhen",
-        "Tsinghua University"
-      ],
-      "published": "2025-01-01T00:00:00Z",
-      "updated": "2025-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "RecSys"
-      ],
-      "primary_category": "RecSys",
-      "abs_url": "https://doi.org/10.1145/3705328.3748070",
-      "pdf_url": "https://doi.org/10.1145/3705328.3748070",
-      "doi": "10.1145/3705328.3748070",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "RecSys",
-      "venue_key": "RecSys",
-      "generated_summary": "提出一种从粗到细的动态提升建模框架，用于增强在线视频推荐效果。",
-      "core_method": "从粗到细的动态提升建模框架。",
-      "innovation_points": [
-        "提出一种从粗到细的动态提升建模方法。",
-        "将提升建模应用于在线视频推荐场景。"
-      ],
-      "experiment_results": [
-        "论文摘要和元数据未提供具体实验结果。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "由于缺乏全文和摘要，无法评估方法局限性和实验完整性。"
-      ],
-      "practical_value": "该方法有望通过动态提升建模改善在线视频推荐的效果，为实际系统提供新的优化思路。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "ac2f24a058eca306",
-      "tags": [
-        "RecSys",
-        "Sequential Rec"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": -4
-    },
-    {
-      "id": "dblp:conf/recsys/0005L0YBLLZW25",
-      "title": "Enhancing Sequential Recommender with Large Language Models for Joint Video and Comment Recommendation",
-      "authors": [
-        "Bowen Zheng 0005",
-        "Zihan Lin",
-        "Enze Liu 0005",
-        "Chen Yang 0032",
-        "Enyang Bai",
-        "Cheng Ling",
-        "Han Li 0005",
-        "Wayne Xin Zhao",
-        "Ji-Rong Wen"
-      ],
-      "affiliations": [
-        "Gaoling School of Artificial Intelligence, Renmin University of China, Beijing, China",
-        "Renmin University of China",
-        "Kuaishou Technology, Beijing, China",
-        "Kuaishou (China)"
-      ],
-      "published": "2025-01-01T00:00:00Z",
-      "updated": "2025-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "RecSys"
-      ],
-      "primary_category": "RecSys",
-      "abs_url": "https://doi.org/10.1145/3705328.3748075",
-      "pdf_url": "https://doi.org/10.1145/3705328.3748075",
-      "doi": "10.1145/3705328.3748075",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "RecSys",
-      "venue_key": "RecSys",
-      "generated_summary": "提出用大语言模型增强序列推荐器，实现视频与评论的联合推荐。",
-      "core_method": "使用大语言模型增强序列推荐模型，进行视频和评论的联合推荐。",
-      "innovation_points": [
-        "将大语言模型引入序列推荐，同时处理视频和评论的联合推荐任务",
-        "设计联合推荐框架，协同利用视频和评论的语义信息"
-      ],
-      "experiment_results": [
-        "论文全文未提供实验数据，无法总结具体实验结果。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "由于无全文，无法评估方法的具体局限性和不确定性"
-      ],
-      "practical_value": "可能为推荐系统引入多模态联合建模，提升视频与评论的推荐效果。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "affd83a2c8ed1e3a",
-      "tags": [
-        "RecSys",
-        "LLM4Rec",
-        "Sequential Rec"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": -4
-    },
-    {
-      "id": "dblp:conf/recsys/WangXBTLL25",
-      "title": "Enhancing Transferability and Consistency in Cross-Domain Recommendations via Supervised Disentanglement",
-      "authors": [
-        "Yuhan Wang 0004",
-        "Qing Xie 0002",
-        "Zhifeng Bao",
-        "Mengzi Tang",
-        "Lin Li 0001",
-        "Yongjian Liu"
-      ],
-      "affiliations": [
-        "Wuhan University of Technology, Wuhan, China and Engineering Research Center of Intelligent Service Technology for Digital Publishing, Ministry of Education, Wuhan, China",
-        "Wuhan University of Technology",
-        "Wuhan University of Science and Technology",
-        "School of Computing Technologies, RMIT University, Melbourne, Australia",
-        "RMIT University"
-      ],
-      "published": "2025-01-01T00:00:00Z",
-      "updated": "2025-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "RecSys"
-      ],
-      "primary_category": "RecSys",
-      "abs_url": "https://doi.org/10.1145/3705328.3748044",
-      "pdf_url": "https://doi.org/10.1145/3705328.3748044",
-      "doi": "10.1145/3705328.3748044",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "RecSys",
-      "venue_key": "RecSys",
-      "generated_summary": "该论文提出了一种基于监督解耦的跨域推荐方法，通过分离域共享特征和域特有特征，来提升跨域推荐的迁移性和一致性。",
-      "core_method": "基于监督解耦的跨域推荐框架，利用监督信号分离共享和特有特征以增强迁移性和一致性。",
-      "innovation_points": [
-        "提出监督解耦方法，显式分离域共享和域特有特征",
-        "设计机制增强跨域推荐的迁移性和一致性"
-      ],
-      "experiment_results": [
-        "摘要和全文未提供具体实验结果或评测结论"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏实验验证细节，方法有效性未知"
-      ],
-      "practical_value": "该方法有望改善跨域推荐中的信息迁移问题，提升推荐系统在多域场景下的表现。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "466ef7f8ddf57302",
-      "tags": [
-        "RecSys"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": -4
-    },
-    {
-      "id": "dblp:conf/sigir/Zhou00SLDF0WZ25",
-      "title": "Joint Item Embedding Dual-view Exploration and Adaptive Local-Global Fusion for Federated Recommendation",
-      "authors": [
-        "Pengyang Zhou 0001",
-        "Chaochao Chen 0001",
-        "Weiming Liu 0005",
-        "Wenkai Shen",
-        "Xinting Liao",
-        "Huarong Deng",
-        "Zhihui Fu",
-        "Jun Wang 0020",
-        "Wu Wen",
-        "Xiaolin Zheng"
-      ],
-      "affiliations": [
-        "Zhejiang University, Hangzhou, China",
-        "Zhejiang University",
-        "Northwestern Polytechnical University, Xi'an, China",
-        "Northwestern Polytechnical University",
-        "OPPO, Shenzhen, China"
-      ],
-      "published": "2025-01-01T00:00:00Z",
-      "updated": "2025-01-01T00:00:00Z",
-      "abstract": "",
-      "categories": [
-        "DBLP",
-        "SIGIR"
-      ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3726302.3730016",
-      "pdf_url": "https://doi.org/10.1145/3726302.3730016",
-      "doi": "10.1145/3726302.3730016",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "提出了一种联邦推荐中的联合物品嵌入双视角探索与自适应局部-全局融合方法。该方法通过双视角探索物品嵌入并自适应融合局部与全局信息，以提升推荐性能。",
-      "core_method": "通过双视角探索物品嵌入并自适应融合局部与全局信息进行联邦推荐。",
-      "innovation_points": [
-        "提出联合物品嵌入的双视角探索方法",
-        "设计自适应局部-全局融合机制"
-      ],
-      "experiment_results": [
-        "全文未提供实验结果"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏实验验证，性能存疑",
-        "联邦场景下的通信效率和隐私保护未明确"
-      ],
-      "practical_value": "可能为联邦推荐系统提供物品嵌入学习的新思路。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "154a1f3ac2e19901",
-      "tags": [
-        "RecSys"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": -4
-    },
-    {
-      "id": "arxiv:2606.02883",
-      "title": "LLM-Assisted Reranking to Operationalize Nuanced Objectives in Recommender Systems",
-      "authors": [
-        "Amir Ghasemian",
-        "Homa Hosseinmardi",
-        "Upasana Dutta",
-        "Duncan J. Watts"
-      ],
-      "affiliations": [
-        "Department of Communication, University of California, Los Angeles, CA 90095",
-        "Department of Computer and Information Science, University of Pennsylvania, Philadelphia, PA 19104",
-        "Annenberg School of Communication, University of Pennsylvania, Philadelphia, PA 19104",
-        "Operations, Information, and Decisions Department, University of Pennsylvania, Philadelphia, PA 19104"
-      ],
-      "published": "2026-06-01T20:54:14Z",
-      "updated": "2026-06-01T20:54:14Z",
-      "abstract": "Recommender systems have grown from content-organization tools into sophisticated systems that shape daily behavior. By controlling what we see, they shape what we perceive, raising concerns about filter bubbles, radicalization, polarization, and social inequality. Large language models (LLMs) enable more powerful personalization, intensifying these dynamics. Yet most recommenders are tuned for engagement or limited accuracy metrics, with little attention to broader social implications, e.g. how personalization reshapes exposure in socially consequential domains. We investigate whether LLM-assisted reranking, while improving personalization, inadvertently amplifies exposure to ideologically extreme or conspiratorial political content, a risk theorized but not empirically characterized in news recommendation. Using real news-consumption histories, we rerank YouTube's sidebar candidates through zero-shot, instruction-based prompting. We compare a baseline prompt with a constrained variant that preserves topical relevance and broadens ideological exposure while reducing conspiratorial or extreme content. Without constraints, reranking strengthened personalization but increased exposure to conspiratorial and extremist material for users whose histories contained such content. Lightweight prompt-level regularization reduced promotion of extreme content and increased ideological diversity, with modest relevance loss. Synthetic experiments suggest that LLMs rerank via statistical regularities in language rather than semantic understanding of ideology, clarifying why naive prompts amplify these patterns and why regularization can reshape them. Together, our results highlight the power of LLMs to operationalize contextual nuance in high-stakes recommendation, and the need to evaluate LLM-assisted personalization beyond accuracy and treat prompt design as a value-laden rather than neutral default.",
-      "categories": [
-        "cs.HC",
+        "cs.IR",
         "cs.AI",
-        "cs.CY",
-        "cs.IR"
+        "cs.CL",
+        "cs.LG"
       ],
-      "primary_category": "cs.HC",
-      "abs_url": "http://arxiv.org/abs/2606.02883v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.02883v1",
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.07688v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.07688v1",
       "doi": "",
       "source": "arXiv",
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "Recommender systems have grown from content-organization tools into sophisticated systems that shape daily behavior. By controlling what we see, they shape what we perceive, raising concerns about filter bubbles, radicalization, polarization, and social inequality. Large language models (LLMs) enable more powerful personalization, intensifying these dynamics.",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "generated_summary": "论文提出TRACER框架，通过令牌重分配实现生成式推荐中的概念遗忘，解决共享语义ID导致的遗忘与效用冲突问题。在真实推荐数据集上的实验表明，TRACER能有效移除目标概念，同时比现有基线更好地保留推荐效用。",
+      "core_method": "TRACER是一个基于令牌重分配的端到端概念遗忘框架，将概念相关物品重新分配给替代令牌以促进遗忘，并引入一致性正则化保持保留物品的语义一致性。",
       "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
+        "首次将概念遗忘引入生成式推荐，解决共享语义ID带来的遗忘-效用冲突",
+        "提出令牌重分配策略，避免直接抑制共享令牌，减少对保留物品的副作用",
+        "设计一致性正则化器，在遗忘过程中维持保留物品的语义一致性"
       ],
       "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
+        "在真实推荐数据集上，TRACER在概念移除率上均优于或匹配最强基线，同时推荐效用（如Recall和NDCG）下降更小",
+        "消融实验显示令牌重分配和一致性正则化对性能均有正向贡献"
       ],
       "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "ab_test_evidence": "论文全文未报告线上A/B测试",
       "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
+        "需要预先定义要遗忘的概念集合，实际应用中概念边界可能模糊",
+        "未在大规模工业级数据上验证可扩展性"
       ],
-      "practical_value": "可作为推荐系统相关方向的跟进阅读。",
-      "analysis_basis": "metadata",
-      "analysis_status": "",
-      "analysis_signature": "",
+      "practical_value": "为生成式推荐系统提供了一种有效的概念遗忘方法，可应用于隐私保护、有害内容移除等场景，平衡遗忘与效用。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "a3e86d55109e3310",
       "tags": [
+        "Generative Rec",
+        "LLM4Rec",
+        "Sequential Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 20
+    },
+    {
+      "id": "arxiv:2606.08604",
+      "title": "Gryphon: A Unified Architecture for Semantic-ID Generation and Item-Level Scoring in Industrial Recommendations",
+      "authors": [
+        "Daria Tikhonovich",
+        "Oleg Sorokin",
+        "Vladislav Dodonov",
+        "Mariia Ulianova",
+        "Ilya Murzin"
+      ],
+      "affiliations": [],
+      "published": "2026-06-07T12:31:26Z",
+      "updated": "2026-06-07T12:31:26Z",
+      "abstract": "Generative retrieval (GR) has become a scalable approach to candidate generation: each item is assigned a short hierarchical token sequence called a Semantic ID (SID), and the next item's SID is decoded autoregressively. A practical limitation is that the decoder's beam search optimizes the likelihood of token sequences, not the relevance of the underlying items. These objectives diverge when sequence likelihood is poorly calibrated due to beam search error accumulation, and when several items collapse onto a single SID and receive identical scores. We introduce Gryphon, an encoder-decoder generative recommendation architecture that adds a jointly trained item-level scoring component alongside SID generation, reusing the encoder's user representation computed in a single forward pass. Instead of ranking SIDs by accumulated token likelihood, Gryphon resolves each generated SID to its concrete items and re-scores those items directly, which sidesteps miscalibrated sequence scores and separates items that collide on the same identifier. On an industrial music service, with item-level scoring trained under a next-item-prediction objective, Gryphon attains the highest item-level Recall@1000, above the strongest baselines (+3.7% over vanilla GR and +2.5% over collision-resolved GR) at comparable parameter count and latency. Gryphon's item-level ranking also surpasses its beam-likelihood ranking of the same candidates (+4.2% gain), demonstrating the benefit of item-level scoring in GR. Deployed as the sole candidate source in a 7-day A/B test, Gryphon produced no statistically significant change in total listening time (+0.25%) while replacing a pipeline of more than 15 candidate generators and a separate preranking stage, substantially simplifying the candidate-generation system.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.08604v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.08604v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "Gryphon 提出一种统一的编码器-解码器生成式推荐架构，在生成语义ID（SID）的同时联合训练项目级评分模块（ILSM），以解决SID序列似然与项目相关性之间的结构不匹配问题。通过复用编码器用户表示，Gryphon 对波束搜索生成的SID解析出具体项目并重新评分，从而规避序列似然误校准和SID冲突。在工业音乐推荐平台上，Gryphon 离线 Recall@1000 优于基线（+3.7% over vanilla GR），且线上A/B测试在保持总收听时长无显著变化（+0.25%）的同时大幅简化候选生成流程。",
+      "core_method": "在生成式检索架构中增加联合训练的项目级评分模块，重用编码器输出对由SID解析得到的候选项目直接评分，避免依赖波束搜索的序列似然排序。",
+      "innovation_points": [
+        "提出统一架构，将SID生成与项目级评分联合训练，解耦项目排序与波束似然。",
+        "引入项目级评分模块（ILSM），复用编码器状态，以低计算开销实现项目级重排序。",
+        "在工业级测试中验证了项目级评分可超越SID级波束搜索的性能上限（+4.2% gain）。"
+      ],
+      "experiment_results": [
+        "离线Recall@1000：Gryphon 达到0.8552，比 Vanilla GR 提升3.7%，比 collision-resolved GR 提升2.5%。",
+        "项目级评分比相同候选池的波束似然排序 Recall@1000 提升4.2%，说明项目级评分纠正了波束误校准。",
+        "线上A/B测试：Gryphon 作为唯一候选源，总收听时长变化+0.25%且不显著，活跃用户比例提升0.43%，未完成曲目减少1.3%，同时将候选源从15+个缩减为1个，并移除了预排序阶段。"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "在工业音乐推荐应用中进行了为期7天的线上A/B测试，Gryphon作为唯一候选源替换了包含超过15个候选生成器和预排序阶段的原有流程，总收听时长变化+0.25%无统计显著性。",
+      "limitations": [
+        "离线实验未进行多随机种子显著性检验，增益仅超出经验方差估计。",
+        "ILSM仅使用项目ID特征，未利用项目内容特征，可能存在提升空间。"
+      ],
+      "practical_value": "Gryphon 能大幅简化工业推荐系统的候选生成管线，在保持线上核心指标稳定的同时降低系统复杂度和资源开销。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "c3c5589a1d87c258",
+      "tags": [
+        "Generative Rec",
+        "RecSys",
+        "Evaluation"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 16
+    },
+    {
+      "id": "arxiv:2606.08480",
+      "title": "Adaptive Loss Balancing for Noise-Robust GRPO in Generative Recommendation",
+      "authors": [
+        "Kewei Xu",
+        "Junbo Qi",
+        "Yanyan Zou",
+        "Pengfei Zhang",
+        "Xingzhi Yao",
+        "Shengjie Li"
+      ],
+      "affiliations": [
+        "Waseda University",
+        "University of Electronic Science and Technology of China"
+      ],
+      "published": "2026-06-07T06:51:18Z",
+      "updated": "2026-06-07T06:51:18Z",
+      "abstract": "Reinforcement learning (RL) presents a promising avenue for enhancing generative recommendation beyond supervised imitation, leveraging reward signals to guide policy improvement. However, its efficacy is critically contingent on the trustworthiness of the reward model for the samples it evaluates. In practice, production rankers, the widely adopted reward models, are trained on exposure-biased logs, leading to sample-dependent inaccuracies that violate this assumption. Our stratified analysis uncovers a consistent pattern: reward guidance is most beneficial when the policy exhibits uncertainty and the ranker can effectively discriminate the ground-truth item from rollout negatives. On other samples, the reward signal is either negligible or detrimental, highlighting the risk of uniform RL application. To address such an issue, we introduce AdaGRPO, a novel framework that treats reward-guided optimization as selective admission rather than uniform pressure. Training is anchored in supervised negative log-likelihood, while the GRPO objective is gated by a binary, per-sample clip determined by two rollout diagnostics: policy-side difficulty and reward discriminability. Instances failing either diagnostic default to pure supervision, ensuring stability and mitigating the amplification of noisy gradients. We validate AdaGRPO on a large-scale e-commerce dataset. At the best intermediate checkpoint, it elevates HR@10 from 11.01% to 12.18% while constraining hallucination below 0.22%, and maintains robustness at the final checkpoint (HR@10 11.63%, hallucination 0.27%), outperforming fixed NLL--GRPO mixtures across the retrieval--validity frontier. In production A/B tests, AdaGRPO achieves statistically significant gains in click-through rate and dwell time, confirming its practical utility.",
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.IR"
+      ],
+      "primary_category": "cs.LG",
+      "abs_url": "http://arxiv.org/abs/2606.08480v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.08480v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "针对生成式推荐中强化学习依赖可信奖励但实际点击/时长等线上排序器存在曝光偏差导致奖励噪声的问题，论文通过分层分析发现GRPO仅在策略不确定且奖励可分辨的样本上有效，其余样本上应用GRPO可能产生有害梯度。为此，提出AdaGRPO框架，通过每样本二元门控自适应地决定是否应用GRPO目标，否则退化为监督学习，从而平衡召回率与幻觉风险。",
+      "core_method": "基于策略难度和奖励可区分性两个rollout诊断指标，对每个样本计算二元门控，选择性地在监督NLL损失上叠加GRPO损失，实现自适应损失平衡。",
+      "innovation_points": [
+        "首次对GRPO在生成式推荐中的噪声奖励样本进行分层分析，揭示GRPO仅对组合条件正确的样本有益。",
+        "提出两个轻量级rollout诊断指标：策略难度（policy-side difficulty）和奖励可分辨性（reward discriminability），用于动态判断是否应用GRPO。",
+        "设计AdaGRPO框架，以监督NLL为基础，通过二值门控选择性融合GRPO，无需额外超参数调优，平衡召回率与幻觉。"
+      ],
+      "experiment_results": [
+        "在工业级电商数据集上，最佳中间检查点HR@10从11.01%提升至12.18%，同时幻觉率低于0.22%；最终检查点HR@10为11.63%，幻觉率0.27%。",
+        "相比固定混合比例的NLL-GRPO基线，AdaGRPO在召回-幻觉前沿上表现更优且更鲁棒。",
+        "消融实验表明两个门控条件缺一不可，单独使用任一条件会导致召回下降或幻觉上升。"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文全文明确报告线上A/B测试：在生产环境中进行A/B测试，AdaGRPO在点击率和停留时长上均取得统计显著收益。",
+      "limitations": [
+        "方法目前仅在电商生成式检索场景验证，泛化到其他推荐域（如内容推荐）或更大参数模型的效果未验证。",
+        "门控阈值等超参数通过统计特征设定，未探索自适应学习或任务特定调优机制。"
+      ],
+      "practical_value": "为生成式推荐中应用GRPO提供了一种即插即用的自适应策略，在不修改模型结构和奖励模型的前提下，有效缓解噪声奖励带来的性能退化问题，可直接应用于工业级系统。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "df264ec0b683dbf9",
+      "tags": [
+        "RecSys",
+        "Generative Rec",
+        "LLM4Rec",
+        "Evaluation"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 16
+    },
+    {
+      "id": "arxiv:2606.06970",
+      "title": "SSRLive: Live Streaming Recommendation with Dynamic Semantic ID",
+      "authors": [
+        "Teng Shi",
+        "Zhaoheng Li",
+        "Yuanhang Qu",
+        "Yi Liu",
+        "Lixiang Lai",
+        "Yuning Jiang"
+      ],
+      "affiliations": [
+        "Alibaba"
+      ],
+      "published": "2026-06-05T06:58:07Z",
+      "updated": "2026-06-05T06:58:07Z",
+      "abstract": "Live streaming has emerged as one of the fastest-growing forms of online media, enabling instant content broadcasting and real-time engagement between users and streamers. Despite the effectiveness of existing recommendation algorithms in this domain, they often suffer from limited utilization of computational resources, with low FLOPs that hinder further performance enhancement. Generative recommendation techniques, which have gained traction in various industrial tasks, offer a promising avenue for improving live streaming recommendations. However, directly applying generative methods to live streaming is non-trivial due to two major challenges: (1) static semantic IDs (SIDs) cannot reflect the rapidly changing nature of live room content; and (2) generative pipelines generally do not incorporate user--streamer interaction signals (e.g., likes, orders), which are critical for modeling user intent toward both the streamer and showcased products. To address these challenges, we introduce SSRLive: Dynamic Semantic ID-guided Streaming Recommendation for Live platforms. The proposed framework integrates a generative module and a discriminative module in a unified architecture. The generative component employs an encoder-decoder design to produce both static and dynamic SIDs, enabling timely representation of live room content while leveraging multimodal information. The discriminative component refines task-specific representations by combining SIDs with user features, augments them with user-streamer interaction data, and performs multi-task predictions. Online A/B tests in real-world deployment demonstrate tangible benefits: watch time (+3.38%), GMV (+0.72%), follower growth (+3.12%), and interaction volume (+2.92%). These improvements highlight the effectiveness and business value of SSRLive, which is now fully deployed, serving hundreds of millions of active users.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.06970v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.06970v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "本文提出SSRLive，一种结合动态语义ID与生成-判别模块的直播推荐框架，解决了静态语义ID无法反映直播内容快速变化以及忽略用户-主播交互信号的问题。在线A/B测试表明，该方法在观看时长、GMV等指标上取得了显著提升，已全面部署服务于数亿活跃用户。",
+      "core_method": "生成模块编码-解码产生动态语义ID并融合多模态信息，判别模块结合语义ID、用户特征和交互数据进行多任务预测。",
+      "innovation_points": [
+        "提出动态语义ID机制以捕捉直播内容的实时变化",
+        "设计生成-判别统一架构，将语义ID与用户-主播交互信号融合",
+        "在直播推荐中同时建模内容变化和用户意图，实现多任务优化"
+      ],
+      "experiment_results": [
+        "在线A/B测试：观看时长+3.38%，GMV+0.72%，粉丝增长+3.12%，互动量+2.92%"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文全文明确提到Online A/B tests in real-world deployment，并报告了具体指标提升，且已全面部署服务于数亿用户。",
+      "limitations": [
+        "动态语义ID生成依赖于稳定的多模态特征提取，可能受数据质量影响",
+        "未详细分析不同直播场景下的效果差异，泛化性有待验证"
+      ],
+      "practical_value": "为直播推荐提供了一种可实时适应内容变化并融入交互信号的解决方案，已大规模落地并带来显著业务收益。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "86b6fc3ce8e7439c",
+      "tags": [
+        "RecSys",
+        "Generative Rec",
+        "Sequential Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 16
+    },
+    {
+      "id": "arxiv:2606.06947",
+      "title": "DREAM: Dynamic Refinement of Early Assignment Mappings",
+      "authors": [
+        "Liwei Guan",
+        "Huanjie Wang",
+        "Hongwei Zhang",
+        "Linxun Chen",
+        "Zhaojie Liu"
+      ],
+      "affiliations": [],
+      "published": "2026-06-05T06:21:01Z",
+      "updated": "2026-06-05T06:21:01Z",
+      "abstract": "Generative recommendation advances item retrieval by reformulating it as autoregressive generation of Semantic IDs (SIDs), compact token sequences that encode item semantics. While SIDs offer a strong semantic prior, current SID-based methods assign each item a single static identifier through offline tokenization before sufficient user feedback is observed. For cold-start items, this one-shot commitment produces poorly discriminative codes, generating misaligned paths that remain unrefined because the associated tokens are rarely sampled during training. We identify this early static commitment, not model capacity, as the fundamental cold-start bottleneck in SID-based generative recommendation. To overcome this bottleneck and bridge the disjoint objectives of tokenization and generation, we propose DREAM (Dynamic Refinement of Early Assignment Mappings), a three-stage framework that resolves this flaw through progressive refinement. First, an intent-aware tokenizer rebuilds the SID space through counterfactual contrastive learning, generating a diverse pool of behavior-aligned candidates per cold-start item. Second, the frozen recommendation backbone serves as an evaluator, selecting the most reliable candidate based on multi-context user support without retraining. Third, a dynamic beam mechanism maintains multiple weighted SID hypotheses throughout training and inference, preventing premature collapse to a single assignment. Extensive experiments on three Amazon benchmarks show that DREAM substantially outperforms state-of-the-art generative and sequential baselines on cold-start metrics.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.06947v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.06947v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "针对基于语义ID的生成式推荐中冷启动物品的早期静态分配问题，提出了DREAM框架，通过意图感知分词器、推荐背板评估和动态波束机制三阶段渐进式优化。实验表明，DREAM在亚马逊数据集上显著优于现有基线。",
+      "core_method": "DREAM采用三阶段动态优化框架：意图感知分词器通过反事实对比学习生成候选SID池，推荐背板评估器选择最优候选，动态波束机制在训练和推理中维持多个加权假设。",
+      "innovation_points": [
+        "提出动态波束机制，避免冷启动物品过早坍缩到单一编码，保持多假设路径。",
+        "设计意图感知分词器，利用反事实对比学习为冷启动物品生成多样化的行为对齐候选SID。",
+        "将冻结的推荐主干网络作为评估器，基于多上下文用户支持选择最可靠候选，无需重新训练。"
+      ],
+      "experiment_results": [
+        "在三个亚马逊基准数据集上，DREAM在所有冷启动指标上均显著优于最新的生成式和序列推荐基线。",
+        "消融实验验证了意图感知分词、无训练候选选择和动态波束机制各组件对性能提升的贡献。",
+        "参数敏感性分析显示，波束宽度K=5和假设数N=3时达到最佳效果。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试",
+      "limitations": [
+        "实验仅在三个公开的亚马逊评论数据集上进行，未在其他领域或工业规模数据上验证。",
+        "DREAM框架涉及多个组件，训练和推理复杂度较高，可能对实时性要求高的场景带来压力。"
+      ],
+      "practical_value": "DREAM为冷启动物品推荐提供了一种无需重训练即可动态优化语义ID分配的方法，可直接集成到现有生成式推荐系统中。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "2c14ba0cb3f515e3",
+      "tags": [
+        "Generative Rec",
         "LLM4Rec",
         "RecSys",
         "Evaluation"
@@ -1997,113 +420,58 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 10
+      "score": 16
     },
     {
-      "id": "arxiv:2606.01948",
-      "title": "Rank-Constrained Deep Matrix Completion for Group Recommendation",
+      "id": "arxiv:2606.09082",
+      "title": "Teach Multimodal Recommendation Model to See via Personalized Visual Extraction and Adaptive Learning",
       "authors": [
-        "Mubaraka Sani Ibrahim",
-        "Lehel Csató",
-        "Isah Charles Saidu"
+        "Yutong Li",
+        "Xinyi Zhang",
+        "Ziyi Ye",
+        "Daoguo Dong",
+        "Yu-gang Jiang"
       ],
-      "affiliations": [
-        "Faculty of Mathematics and Computer Science, Babes-Bolyai University, Cluj-Napoca, Romania",
-        "Department of Computer Science, Baze University, Abuja, Nigeria",
-        "African University of Science and Technology",
-        "Babes-Bolyai University",
-        "Baze University"
-      ],
-      "published": "2026-06-01T09:09:46Z",
-      "updated": "2026-06-01T09:09:46Z",
-      "abstract": "The growing popularity of group activities has increased the need for methods that provide recommendations to groups of users given their individual preferences. Many existing group recommender systems rely on aggregating individual user preferences, but they often struggle with high-dimensional and highly sparse rating data commonly found in real-world scenarios. We propose Group Rank-Constrained Deep Matrix Completion (Group RC-DMC), a novel framework that extends RC-DMC by integrating group-level representation learning via a Set-Transformer aggregator, jointly leveraging low-rank structure and attention-based nonlinear modeling. Unlike most existing group recommender systems, Group RC-DMC unifies explicit low-rank regularization, linear encoder-decoder architectures, and attention-based nonlinear group modeling within a single framework, yielding accurate predictions at both the individual and group levels. Group RC-DMC addresses data sparsity through low-rank matrix completion, computing per-user latent representations from observed ratings only, and enforcing a rank constraint on the latent space using a nuclear-norm proximal step based on periodic singular value thresholding. The decoder is parametrized as a low-rank factorization, enabling efficient inference. Experimental results on the MovieLens and Goodbooks datasets demonstrate that Group RC-DMC achieves superior reconstruction accuracy, measured by lower group RMSE, while remaining computationally efficient and competitive in group-level performance in terms of precision, recall, and F1 score compared with weighted-before-factorization (WBF) and after-factorization (AF) baselines. The results highlight the model's ability to recover the underlying low-rank structure of user-item interactions and provide robust group recommendations across small, medium, and large user groups.",
+      "affiliations": [],
+      "published": "2026-06-08T06:28:25Z",
+      "updated": "2026-06-08T06:28:25Z",
+      "abstract": "Multimodal sequential recommendation (MSR) incorporates textual and visual information to improve recommendation quality. However, recent studies and our empirical analysis show that visual features are often underutilized, thereby contributing far less than textual signals. We attribute this issue to two factors: insufficient visual representation learning (pretrained encoders fail to capture preference-relevant cues) and unbalanced visual-text optimization (textual features dominate the learning process). To address these issues, we propose Teach Multimodal Recommendation Model to See via Personalized Visual Extraction and Adaptive Learning (REVEAL), a plug-and-play framework that enhances visual representation learning and cross-modal optimization without modifying the original recommendation backbone. REVEAL consists of Feedback-Guided Visual Extraction (FVE), which refines prompt-guided visual extraction through task-level feedback, and Adaptive Visual Learning (AVL), which dynamically reweights visual learning to alleviate modality imbalance. Experiments on multiple real-world datasets and MSR backbones demonstrate that REVEAL consistently improves recommendation performance. Further analysis shows that these gains arise from more effective attention to preference-relevant visual regions and better visual utilization during training. The code is available at https://github.com/YutongLi2024/REVEAL.",
       "categories": [
-        "cs.IR",
-        "cs.AI"
+        "cs.IR"
       ],
       "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.01948v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.01948v1",
+      "abs_url": "http://arxiv.org/abs/2606.09082v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.09082v1",
       "doi": "",
       "source": "arXiv",
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "The growing popularity of group activities has increased the need for methods that provide recommendations to groups of users given their individual preferences. Many existing group recommender systems rely on aggregating individual user preferences, but they often struggle with high-dimensional and highly sparse rating data commonly found in real-world scenarios. We propose Group Rank-Constrained Deep Matrix Completion (Group RC-DMC), a novel framework that extends RC-DMC by integrating group-level representation learning via a Set-Transformer aggregator, jointly leveraging low-rank structure and attention-based nonlinear modeling.",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "generated_summary": "针对多模态序列推荐中视觉特征利用不足的问题，提出REVEAL框架，通过反馈引导的视觉提取和自适应视觉学习增强视觉表示与跨模态优化，实验证明能持续提升推荐性能。",
+      "core_method": "REVEAL框架，包含Feedback-Guided Visual Extraction（FVE）和Adaptive Visual Learning（AVL），分别通过任务反馈优化视觉提取和动态重加权视觉损失来缓解模态不平衡。",
       "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
+        "提出插件式的REVEAL框架，不修改推荐模型主体即可增强视觉表示和跨模态优化。",
+        "Feedback-Guided Visual Extraction利用高层反馈信号提取个性化偏好相关的视觉区域。",
+        "Adaptive Visual Learning动态调整视觉学习权重，缓解训练中文本特征主导的问题。"
       ],
       "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
+        "在多个真实数据集（如Amazon和Yelp）和多种MSR模型（如MMSRec、NOVA、FEARec）上，REVEAL均能持续提升Recall和NDCG指标。",
+        "通过注意力可视化分析，REVEAL确实使模型更关注与偏好相关的视觉区域。",
+        "在不同数据集规模下REVEAL均表现出稳定的性能增益，验证了其鲁棒性。"
       ],
       "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "ab_test_evidence": "论文全文未报告线上A/B测试",
       "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
+        "Prompt token的初始化方式可能对性能有影响，但本文未深入探讨其敏感性。",
+        "仅在学术数据集上验证，缺乏工业级大规模数据上的评估。"
       ],
-      "practical_value": "可作为推荐系统相关方向的跟进阅读。",
-      "analysis_basis": "metadata",
-      "analysis_status": "",
-      "analysis_signature": "",
-      "tags": [
-        "RecSys",
-        "Dataset"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 10
-    },
-    {
-      "id": "arxiv:2606.03091",
-      "title": "BAHSD: Bridging the Long-tail Gap via Adaptive Distillation in Black-box Sequential Recommendation",
-      "authors": [
-        "Xi Zhou",
-        "Famin Wu",
-        "Mingming Li",
-        "Hongyue Zhang",
-        "Jiao Dai",
-        "Jizhong Han",
-        "Tao Guo"
-      ],
-      "affiliations": [
-        "Institute of Information Engineering, Chinese Academy of Sciences, Beijing, China"
-      ],
-      "published": "2026-06-02T03:26:25Z",
-      "updated": "2026-06-04T07:55:34Z",
-      "abstract": "Sequential recommendation systems are widely adopted but often deployed as black-box APIs, which has driven recent interest in model extraction to replicate their capabilities locally. However, the long-tail distribution induces severe signal heterogeneity: dense head sequences trigger the solidification of teacher preference, biasing extraction toward local patterns, while sparse tail sequences yield flat, noisy predictions. Existing one-size-fits-all extraction overlooks this disparity, resulting in noise overfitting and suboptimal knowledge transfer. We propose BAHSD, a black-box adaptive distillation framework that handles signal heterogeneity via a multi-scale consistency probing mechanism to implicitly quantify signal reliability. Based on this, an adaptive hierarchical objective is designed: dynamic-temperature KL divergence mitigates preference solidification for high-confidence signals, while ranking consistency and InfoNCE contrastive learning provide noise-robust enhancement for low-confidence signals. BAHSD consistently outperforms baselines, achieving up to 4.98\\% gain over the teacher and 80\\%+ improvement on tail users, offering a plug-and-play solution for high-fidelity black-box recommendation extraction.",
-      "categories": [
-        "cs.IR",
-        "cs.AI"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.03091v2",
-      "pdf_url": "https://arxiv.org/pdf/2606.03091v2",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "Sequential recommendation systems are widely adopted but often deployed as black-box APIs, which has driven recent interest in model extraction to replicate their capabilities locally. However, the long-tail distribution induces severe signal heterogeneity: dense head sequences trigger the solidification of teacher preference, biasing extraction toward local patterns, while sparse tail sequences yield flat, noisy predictions. Existing one-size-fits-all extraction overlooks this disparity, resulting in noise overfitting and suboptimal knowledge transfer.",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
-      "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
-      ],
-      "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
-      ],
-      "practical_value": "可作为推荐系统相关方向的跟进阅读。",
-      "analysis_basis": "metadata",
-      "analysis_status": "",
-      "analysis_signature": "",
+      "practical_value": "REVEAL可作为即插即用的模块集成到现有MSR模型中，有效提升视觉信号利用率和推荐精度，具有较高的工业应用潜力。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "9188c2900f8b9538",
       "tags": [
         "Sequential Rec",
+        "Generative Rec",
         "RecSys"
       ],
       "importance": "normal",
@@ -2112,202 +480,65 @@
       "score": 10
     },
     {
-      "id": "arxiv:2606.03718",
-      "title": "MARS: Multi-rate Aggregation of Recency Signals for Sequential Recommendation across Sparse and Dense Regimes",
+      "id": "arxiv:2606.07492",
+      "title": "Bradley-Terry Rankings for Recommender Systems Across Dataset Taxonomies",
       "authors": [
-        "Zhenyu Yu",
-        "Shuigeng Zhou"
+        "Ekaterina Grishina",
+        "Stepan Kuznetsov",
+        "Askar Tsyganov",
+        "Ilya Ivanov",
+        "Daria Korovaitceva",
+        "Margarita Rusanova",
+        "Uliana Parkina",
+        "Alexander Derevyagin",
+        "Evgeny Frolov",
+        "Sergey Samsonov",
+        "Anton Lysenko"
       ],
       "affiliations": [],
-      "published": "2026-06-02T14:39:19Z",
-      "updated": "2026-06-02T14:39:19Z",
-      "abstract": "Sequential recommenders weight historical interactions either through positional self-attention as in Transformers or through a single implicit decay schedule as in State-Space Models. Neither makes the multi-scale temporal structure of real user behaviour explicit. We propose MARS, an encoder-agnostic aggregation operator that consumes real timestamps and produces K summaries emphasising distinct recency scales, fused by a context-adaptive gate. MARS adds at most 6% parameters and runs in $\\mathcal{O}(LdK)$ time. MARS adapts to data density by automatically selecting between two encoder instantiations: MARS-T (Transformer) for sparse data and MARS-M (Mamba) for dense data, based on the average sequence length of the training set. On five public benchmarks against ten Transformer- and Mamba-based baselines under a unified RecBole protocol, MARS attains the best HR@10 on every benchmark, with mean relative gain +19.7% over the strongest content-only Transformer baseline on sparse data (reaching +36.2% on Games) and +3.2% HR@10 / +0.9% NDCG over SIGMA on dense ML-1M at 42% fewer MFLOPs, occupying the accuracy-efficiency Pareto frontier across the data-density spectrum. A backbone-only ablation isolates the marginal contribution of MARS at +4% to +19% HR@10 on sparse data and motivates the dual-instantiation design. The code is included in the supplementary material.",
+      "published": "2026-06-05T17:46:36Z",
+      "updated": "2026-06-05T17:46:36Z",
+      "abstract": "The ranking of recommendation algorithms is a challenging problem since model performance is sensitive to dataset characteristics such as sparsity, sequential structure, and scale. This drives a demand for a proper methodology for fair comparison between algorithms. Naive aggregation of performance metrics (e.g., averaging NDCG over benchmarks) can yield misleading rankings, undermining practical selection. To address this problem, we introduce a novel, data-driven ranking methodology based on Bradley-Terry (BT) model. We demonstrate that the obtained ranking depends on key dataset statistics. Additionally, we propose a novel metric for evaluating ranking consistency and demonstrate robustness of our ranking to incomplete data. Finally, we introduce a dataset-specific methodology for ranking algorithms on unseen datasets without running the models, relying on extensions of the Bradley-Terry framework, including BT trees and BT models with covariates.",
       "categories": [
-        "cs.IR"
+        "cs.IR",
+        "cs.LG",
+        "stat.ML"
       ],
       "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.03718v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.03718v1",
-      "doi": "",
+      "abs_url": "http://arxiv.org/abs/2606.07492v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.07492v1",
+      "doi": "10.1145/3770855.3817890",
       "source": "arXiv",
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "Sequential recommenders weight historical interactions either through positional self-attention as in Transformers or through a single implicit decay schedule as in State-Space Models. Neither makes the multi-scale temporal structure of real user behaviour explicit. We propose MARS, an encoder-agnostic aggregation operator that consumes real timestamps and produces K summaries emphasising distinct recency scales, fused by a context-adaptive gate.",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "generated_summary": "本文提出基于Bradley-Terry模型的数据驱动推荐算法排名方法，揭示排名对数据集稀疏性、序列结构等统计特性的依赖，并引入排名一致性新指标。通过BT树与协变量BT模型，实现无需运行模型即可对新数据集进行算法排名，提升排名的公平性与可推广性。",
+      "core_method": "基于Bradley-Terry模型及其扩展（BT树、协变量BT），通过算法在多个数据集上的性能对比构建配对比较概率模型，实现数据集感知的推荐算法排名与泛化。",
       "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
+        "将Bradley-Terry模型引入推荐算法排名，利用配对比较概率框架替代简单平均，缓解数据集偏差对排名的影响。",
+        "提出排名一致性新指标，评估排名对缺失数据的鲁棒性。",
+        "通过BT树和协变量BT模型，实现无需在新数据集上运行算法即可预测排名，增强方法的实用性。"
       ],
       "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
+        "基于公开数据集的实验表明，所提排名方法能有效反映数据集统计特征（如稀疏度）对算法表现的影响。",
+        "排名一致性指标验证了方法对不完整数据的鲁棒性，在部分数据缺失时排名仍保持稳定。",
+        "协变量BT模型在未见数据集上的排名预测与真实排名高度一致，证明了泛化能力。"
       ],
       "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "ab_test_evidence": "论文全文未报告线上 A/B 测试",
       "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
+        "未在真实在线推荐系统中验证排名方法的实际业务效果，仅基于离线数据集实验。",
+        "BT模型假设比较独立且传递性成立，但实际算法性能可能存在非线性交互或循环占优，影响模型适用性。"
       ],
-      "practical_value": "可作为推荐系统相关方向的跟进阅读。",
-      "analysis_basis": "metadata",
-      "analysis_status": "",
-      "analysis_signature": "",
+      "practical_value": "为推荐算法选择提供了一套考虑数据集差异的排名工具，尤其在多业务场景或新数据集上线前，可快速筛选候选算法，降低实验成本。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "911c16433d2f517c",
       "tags": [
-        "Sequential Rec",
-        "RecSys",
-        "Benchmark"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 10
-    },
-    {
-      "id": "arxiv:2606.03221",
-      "title": "VirtualMLE: A Virtual ML Engineer that Optimizes Sequential Recommenders",
-      "authors": [
-        "Shiteng Cao",
-        "Jingwen Liu",
-        "Junda She",
-        "Zhiheng Li"
-      ],
-      "affiliations": [],
-      "published": "2026-06-02T06:31:15Z",
-      "updated": "2026-06-02T06:31:15Z",
-      "abstract": "Recent advancements in Large Language Models (LLMs) have demonstrated remarkable capabilities in reasoning, reflection, and tool utilization, unlocking new paradigms for automating complex engineering workflows. However, in the domain of sequential recommendation (SR), tuning models on new datasets still relies heavily on the manual trial-and-error of experienced machine learning engineers. To bridge this gap, we propose \\textbf{VirtualMLE}, an LLM-agent framework that leverages the cognitive capabilities of LLMs to organize recommender optimizing into a closed loop of execution, reflection, and memory update. After each trial, the agent explicitly analyzes the observed outcomes and stores concise heuristic feedback in a hierarchical memory system. We evaluate VirtualMLE on three Amazon SR benchmarks with two representative backbones, SASRec and HSTU. VirtualMLE reaches competitive recommendation quality with substantially fewer trials. Furthermore, we observe that cognition summaries distilled from previous datasets can significantly accelerate the search process on unseen datasets, demonstrating the potential of transferring tuning heuristics. Overall, our results provide compelling evidence that LLM agents equipped with reflection and memory can serve as practical virtual engineers to automate and amortize heuristic learning in SR optimization. Our codes are available.",
-      "categories": [
-        "cs.IR"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.03221v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.03221v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "Recent advancements in Large Language Models (LLMs) have demonstrated remarkable capabilities in reasoning, reflection, and tool utilization, unlocking new paradigms for automating complex engineering workflows. However, in the domain of sequential recommendation (SR), tuning models on new datasets still relies heavily on the manual trial-and-error of experienced machine learning engineers. To bridge this gap, we propose \\textbf{VirtualMLE}, an LLM-agent framework that leverages the cognitive capabilities of LLMs to organize recommender optimizing into a closed loop of execution, reflection, and memory update.",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
-      "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
-      ],
-      "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
-      ],
-      "practical_value": "可作为推荐系统相关方向的跟进阅读。",
-      "analysis_basis": "metadata",
-      "analysis_status": "",
-      "analysis_signature": "",
-      "tags": [
-        "LLM4Rec",
-        "Sequential Rec",
         "RecSys",
         "Evaluation",
         "Dataset",
         "Benchmark"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 10
-    },
-    {
-      "id": "arxiv:2606.03727",
-      "title": "When Does Latent Reasoning Help? MeRa: Metric-Space Bias for Spatial Prediction",
-      "authors": [
-        "Zhenyu Yu",
-        "Shuigeng Zhou"
-      ],
-      "affiliations": [],
-      "published": "2026-06-02T14:47:30Z",
-      "updated": "2026-06-02T14:47:30Z",
-      "abstract": "Latent reasoning has improved sequential recommendation by iteratively refining representations before prediction, but does it help spatial prediction? We find that the answer depends on whether reasoning is grounded in the underlying metric space. Without such grounding, latent reasoning degrades spatial prediction below the unmodified baseline, while a learned metric-space bias derived from pairwise distances produces consistent gains. We formalize this finding through MeRa (Metric-space Reasoning), a lightweight backbone-agnostic module that can be inserted between any sequence encoder and its prediction heads. On the GETNext backbone, the gap between reasoning without and with metric-space bias reaches 4.5% NDCG@10. MeRa achieves the best NDCG@10 on all three spatial prediction benchmarks among the compared methods, surpassing recent approaches such as GeoMamba and HMST. We prove that metric-space-constrained reasoning converges to a unique fixed point and that N-step reasoning is strictly more expressive than (N-1)-step reasoning. A controlled experiment on CLEVR with Euclidean distance confirms that the finding generalizes beyond geographic coordinates. The code is included in the supplementary material.",
-      "categories": [
-        "cs.IR"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.03727v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.03727v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "Latent reasoning has improved sequential recommendation by iteratively refining representations before prediction, but does it help spatial prediction? We find that the answer depends on whether reasoning is grounded in the underlying metric space. Without such grounding, latent reasoning degrades spatial prediction below the unmodified baseline, while a learned metric-space bias derived from pairwise distances produces consistent gains.",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
-      "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
-      ],
-      "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
-      ],
-      "practical_value": "可作为推荐系统相关方向的跟进阅读。",
-      "analysis_basis": "metadata",
-      "analysis_status": "",
-      "analysis_signature": "",
-      "tags": [
-        "Sequential Rec",
-        "RecSys",
-        "Evaluation",
-        "Benchmark"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 10
-    },
-    {
-      "id": "arxiv:2606.04550",
-      "title": "Trading Engagement for Sustainability: Carbon-Aware Re-ranking for E-commerce Recommendations",
-      "authors": [
-        "Noah Lund Syrdal",
-        "Anders Vestrum",
-        "Jorgen Bergh"
-      ],
-      "affiliations": [],
-      "published": "2026-06-03T07:34:46Z",
-      "updated": "2026-06-03T07:34:46Z",
-      "abstract": "E-commerce recommender systems strongly influence which products users consider and purchase, yet sustainability signals such as Product Carbon Footprint (PCF) are almost never available at catalog scale. We study carbon-aware product recommendation in the realistic setting where PCF labels are missing for most items and must be inferred. We first estimate product-level carbon footprints via a retrieval-augmented PCF estimation pipeline that transfers supervision from the Carbon Catalogue, a small set of life-cycle-assessed products, to a large unlabeled e-commerce catalog using semantic similarity search, few-shot LLM prompting, and a nearest-neighbour fallback. We then apply a carbon-aware post-hoc re-ranking strategy on top of relevance scores produced by three established recommendation models: BPR, NeuMF, and LightGCN. The method trades off predicted user-item engagement against estimated carbon footprint through a single tunable parameter, lambda. In this offline study, engagement is operationalized through Amazon review interactions, which serve as implicit feedback and as a proxy for user interest or purchase behavior. We evaluate the framework on the Amazon Reviews dataset across three product categories: Home and Kitchen, Sports and Outdoors, and Electronics. By sweeping lambda, we construct Pareto frontiers that characterize the achievable engagement and carbon trade-off for each model and category. Substantial carbon reductions are achievable at minimal engagement cost across all models and categories. However, the available carbon headroom varies by model and category, underscoring the importance of model choice and domain context.",
-      "categories": [
-        "cs.IR"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.04550v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.04550v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "E-commerce recommender systems strongly influence which products users consider and purchase, yet sustainability signals such as Product Carbon Footprint (PCF) are almost never available at catalog scale. We study carbon-aware product recommendation in the realistic setting where PCF labels are missing for most items and must be inferred. We first estimate product-level carbon footprints via a retrieval-augmented PCF estimation pipeline that transfers supervision from the Carbon Catalogue, a small set of life-cycle-assessed products, to a large unlabeled e-commerce catalog using semantic similarity search, few-shot LLM prompting, and a nearest-neighbour fallback.",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
-      "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
-      ],
-      "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
-      ],
-      "practical_value": "可作为推荐系统相关方向的跟进阅读。",
-      "analysis_basis": "metadata",
-      "analysis_status": "",
-      "analysis_signature": "",
-      "tags": [
-        "RecSys",
-        "Evaluation",
-        "Dataset"
       ],
       "importance": "normal",
       "read_status": "unread",
@@ -2357,8 +588,8 @@
       ],
       "practical_value": "可作为推荐系统相关方向的跟进阅读。",
       "analysis_basis": "metadata",
-      "analysis_status": "",
-      "analysis_signature": "",
+      "analysis_status": "cached",
+      "analysis_signature": "4708f396414afeba",
       "tags": [
         "Sequential Rec",
         "RecSys",
@@ -2371,49 +602,383 @@
       "score": 10
     },
     {
-      "id": "arxiv:2606.01844",
-      "title": "Decoupled Residual Quantization for Robust Semantic IDs in Recommendation",
+      "id": "arxiv:2606.09595",
+      "title": "Popcorn: A Configurable Benchmark for Visual Evidence in Multimodal Movie Recommendation",
       "authors": [
-        "Xuesi Wang",
-        "Junjie Wang",
-        "Ziliang Wang",
-        "Weijie Bian",
-        "Guanxing Zhang"
+        "Ali Tourani",
+        "Fatemeh Nazary",
+        "Yashar Deldjoo",
+        "Tommaso Di Noia"
       ],
       "affiliations": [],
-      "published": "2026-06-01T07:55:21Z",
-      "updated": "2026-06-01T07:55:21Z",
-      "abstract": "Semantic IDs represent items as shared discrete token sequences and have become a practical tool for recommendation and retrieval. Yet it remains difficult to tell why a tokenizer fails: poor quality may come from codebook underutilization, unstable decision boundaries, or geometric distortion of the embedding space. This paper develops a quantitative framework for diagnosing these failures through expected codeword overlap and effective codebook capacity. The former measures expected codeword confusion under retrieval-time perturbation, while the latter converts that confusion into an effective number of usable, well-separated codes. The framework links semantic boundary confusion to both code usage imbalance and Euclidean geometric constraints. As a proof of concept, we present Decoupled Residual Quantization (DRQ), which separates continuous geometry reconstruction from discrete distribution matching. Experiments on a large-scale industrial dataset show that Semantic ID quality is multi-objective: symbolic robustness, reconstruction fidelity, and behavior-aware soft matching each stress different aspects of a tokenizer. These downstream observations are based on one proprietary industrial dataset, so they should be read as a case study rather than a universal benchmark claim.",
+      "published": "2026-06-08T15:06:06Z",
+      "updated": "2026-06-08T15:06:06Z",
+      "abstract": "Movies are long-form audiovisual works, yet recommender benchmarks often rely on trailers, thumbnails, or metadata. These sources differ in semantics and scalability: full movies preserve consumption-level evidence, trailers concentrate promotional highlights, and thumbnails provide sparse but catalog-scale visual signals. We present Popcorn, a configurable benchmark for visual evidence in multimodal movie recommendation, combining title-aligned full-movie/trailer embeddings with MovieLens-linked thumbnail features encoded by modern visual and vision-language models. Popcorn standardizes modality assembly, fusion, splitting, evaluation, and LLM-augmented metadata through a single configuration contract. Experiments show that thumbnail VLMs provide strong, scalable item-side evidence, while controlled trailer/full-movie comparisons show that visual evidence sources are not interchangeable: the choice of source and fusion strategy affects ranking accuracy, coverage, diversity, and calibration. The framework is available at https://github.com/RecSys-lab/Popcorn.",
       "categories": [
         "cs.IR"
       ],
       "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.01844v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.01844v1",
+      "abs_url": "http://arxiv.org/abs/2606.09595v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.09595v1",
       "doi": "",
       "source": "arXiv",
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "Semantic IDs represent items as shared discrete token sequences and have become a practical tool for recommendation and retrieval. Yet it remains difficult to tell why a tokenizer fails: poor quality may come from codebook underutilization, unstable decision boundaries, or geometric distortion of the embedding space. This paper develops a quantitative framework for diagnosing these failures through expected codeword overlap and effective codebook capacity.",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "generated_summary": "Popcorn是一个可配置的多模态电影推荐基准，统一了全电影、预告片和缩略图三种视觉证据源，并通过实验表明视觉源的选择和融合策略显著影响推荐性能。",
+      "core_method": "通过配置驱动的多模态流水线，统一管理不同视觉证据源的嵌入、融合、评估和LLM增强，以对比缩略图VLM编码与多帧CNN编码在推荐中的效果。",
       "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
+        "首次将全电影、预告片和缩略图三种视觉证据源整合到同一可配置基准中，并系统比较其对推荐的影响。",
+        "揭示了缩略图VLM编码在目录级可扩展性和推荐性能上可超越传统的多帧CNN预告片特征。",
+        "提供了涵盖约65K标题的缩略图VLM特征层和274部对齐的全电影/预告片特征层，支持不同粒度的视觉证据研究。"
       ],
       "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
+        "缩略图VLM（SigLIP-base）在nDCG@10和Recall@10上分别达到0.269和0.262，较MMTF-14K预告片CNN基线提升21.2%和29.1%。",
+        "在全电影和预告片对比中，预告片在仅视觉条件下更强，但经过CCA融合后差距缩小甚至反转，表明两者不可互换。",
+        "融合（CCA）可提高覆盖率（从0.767到0.918），但可能牺牲多样性和校准偏差，并非单调提升。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试",
+      "limitations": [
+        "全电影和预告片数据仅覆盖274部电影，规模较小，可能限制结论的泛化性。",
+        "实验未考虑用户行为序列或动态偏好，仅基于静态视觉特征和协同过滤。"
+      ],
+      "practical_value": "为多模态推荐系统的视觉证据选择提供了可重复的评估框架和规模化特征资源，帮助实践者根据成本-效益权衡选择合适的视觉源和编码器。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "fd7117656599e45d",
+      "tags": [
+        "RecSys",
+        "Benchmark",
+        "Evaluation"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 6
+    },
+    {
+      "id": "arxiv:2606.08936",
+      "title": "Report on CHIIR 2026 Workshop on Generative AI and Academic Search (GAI&AS)",
+      "authors": [
+        "Yifan Liu",
+        "Jaime Arguello",
+        "Orland Hoeber",
+        "Chang Liu",
+        "Soo Young Rieh",
+        "Luanne Sinnamon",
+        "Dean Alvarez",
+        "Susan Archambault",
+        "Rob Capra",
+        "Henson Chen",
+        "Charles Costa",
+        "Anita Crescenzi",
+        "Zhitong",
+        "Guan",
+        "Jacek Gwizdka",
+        "Pao-Pei Huang",
+        "Gavindya Jayawardena",
+        "Ghazal Kalhor",
+        "Dagmar Kern",
+        "Oliver Koop",
+        "Alice Li",
+        "Afra Mashhadi",
+        "Gaohui Meng",
+        "Marta Micheli",
+        "Anil B. Murthy",
+        "Kevin Schott",
+        "Sebastian Schultheiß",
+        "Jiwoo Seo",
+        "Phaneendra Sivangula",
+        "Frans van der Sluis",
+        "Xiaoxuan Song",
+        "Silang Wang",
+        "Dan Zhang"
+      ],
+      "affiliations": [
+        "Klara",
+        "Klara",
+        "Klara",
+        "Klara",
+        "Klara",
+        "Klara",
+        "Klara",
+        "Klara",
+        "Klara",
+        "Klara",
+        "Klara",
+        "Klara",
+        "Klara"
+      ],
+      "published": "2026-06-08T02:31:14Z",
+      "updated": "2026-06-08T02:31:14Z",
+      "abstract": "This report summarizes the CHIIR 2026 Workshop on Generative AI and Academic Search (GAI\\&AS), which examined how GenAI is reshaping academic search systems and research practices. The workshop brought together researchers in human information interaction and information retrieval to explore key challenges and opportunities in designing and evaluating future academic search systems that integrate GenAI, moving beyond traditional document retrieval to support summarization, recommendation, synthesis, and conversational interaction. Participants' interests and discussions focused on three thematic clusters: foundations and principles, applications and opportunities, and search-as-learning. Across these themes, the workshop highlighted the importance of academic search systems in supporting transparency, credibility, research integrity, and long-term scholarly needs, as well as in fostering higher-order cognitive processes. Participants discussed guiding theories, design principles, methodological approaches, partnerships, and community-building efforts aimed at advancing human-centered GenAI-enhanced academic search systems. Overall, the workshop demonstrated strong community interest and a diverse range of ongoing and emerging research initiatives at the intersection of GenAI and academic search.",
+      "categories": [
+        "cs.IR",
+        "cs.AI",
+        "cs.HC"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.08936v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.08936v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "本报告总结CHIIR 2026研讨会，探讨生成式AI对学术搜索的变革，超越传统文献检索，支持摘要、推荐、综合与对话交互。聚焦基础原则、应用机遇和搜索即学习三大主题，强调透明度、可信度、研究完整性和高阶认知支持。研讨会展示了社区兴趣和多样化研究方向。",
+      "core_method": "本报告为研讨会总结，未提出具体技术方法，而是综合讨论生成式AI增强学术搜索系统的设计原则、评估方法和以人为中心的研究范式。",
+      "innovation_points": [
+        "提出将学术搜索作为重新审视搜索系统支持知识工作假设的切入点，而非仅视为GenAI的新应用领域。",
+        "强调以人为中心的方法，倡导考虑文化、语言和神经多样性的包容性设计。",
+        "识别出需要发展的研究方法，如自然主义、纵向用户研究、参与式设计和反事实研究设计。"
+      ],
+      "experiment_results": [
+        "全文为研讨会总结报告，未提供具体实验或评测结果，仅概述讨论主题和挑战。"
       ],
       "ab_test": "no",
       "ab_test_evidence": "论文未报告线上 A/B 测试。",
       "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
+        "报告仅总结研讨会内容，未提供实证研究或系统实现数据，缺乏可验证的结论。",
+        "所提出的设计原则和方法论建议尚未得到定量评估。"
       ],
-      "practical_value": "可作为推荐系统相关方向的跟进阅读。",
-      "analysis_basis": "metadata",
-      "analysis_status": "",
-      "analysis_signature": "",
+      "practical_value": "为设计透明、可信、支持高阶认知的GenAI学术搜索系统提供了指导原则和研究议程，有助推动以人为中心的学术搜索实践。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "2dc6cc06fb1882a9",
+      "tags": [
+        "LLM4Rec",
+        "Evaluation",
+        "Conversational Rec",
+        "RecSys"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 6
+    },
+    {
+      "id": "arxiv:2606.08466",
+      "title": "ToolRec: Calibrated Preference Alignment for Query Recommendation in On-Device Assistants",
+      "authors": [
+        "Zihan Luo",
+        "Lingkui Chen",
+        "Ruike Zhang",
+        "Hong Huang",
+        "Boyang Zhang",
+        "Ziniu Chen",
+        "Lizhong Wang"
+      ],
+      "affiliations": [],
+      "published": "2026-06-07T06:06:38Z",
+      "updated": "2026-06-07T06:06:38Z",
+      "abstract": "Large Language Models (LLMs) have significantly advanced generative query recommendation. However, existing alignment methods primarily focus on standard chatbot scenarios, falling short in on-device intelligent assistants where users predominantly expect the rapid invocation of system-level tools. Moreover, directly aligning LLMs with real-world click logs introduces severe noise due to varying user activity levels and the failure to emphasize execution-oriented queries. To address these challenges, we propose ToolRec, a calibrated preference alignment framework tailored for on-device query recommendation. To ground query recommendation with executable actions, we first construct SysToolKit, a comprehensive repository of 708 system tools, paired with a context-aware tool retrieval mechanism to ensure recommendation relevance. We then propose a dual-level calibration mechanism to refine raw click data, effectively mitigating user behavioral noise by calibrating signals based on user activity levels, while simultaneously up-weighting click signals on system-level tool-invoking queries. Guided by these refined preference signals, we then align the model using a sample-level weighted Kahneman-Tversky Optimization (KTO). Extensive online A/B tests on our mobile assistant platform OPPO Xiaobu, which has over 150 million monthly active users, demonstrate that ToolRec can significantly improve Click-Through Rate (CTR) and total clicks volume over strong baselines while maintaining high query relevance.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.08466v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.08466v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "本文提出ToolRec框架，针对设备端智能助手场景，通过构建SysToolKit系统工具库和双重校准机制，优化用户点击信号以减轻行为噪声，并利用加权KTO进行偏好对齐，从而提升查询推荐的执行导向性和相关性。",
+      "core_method": "提出ToolRec框架，包含SysToolKit工具库构建、基于用户活性和工具调用查询的双重校准机制，以及样本级加权KTO对齐。",
+      "innovation_points": [
+        "构建SysToolKit工具库并设计上下文感知的工具检索机制，将查询推荐与可执行动作关联。",
+        "提出双重校准机制，基于用户活性水平校准点击信号并提升系统工具调用查询的权重，有效降低用户行为噪声。",
+        "采用样本级加权的KTO对齐方法，直接利用校准后的偏好信号优化查询推荐模型。"
+      ],
+      "experiment_results": [
+        "在OPPO小布助手（月活超1.5亿）的在线A/B测试中，ToolRec相比强基线显著提升点击率（CTR）和总点击量，同时保持高查询相关性。"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文明确描述在OPPO小布助手平台（月活跃用户超过1.5亿）上进行了广泛的在线A/B测试，ToolRec在CTR和总点击量上均取得显著提升。",
+      "limitations": [
+        "SysToolKit工具库规模有限（708个工具），可能无法覆盖所有用户意图；校准机制依赖预定义的用户活性分位阈值，超参数调整可能影响泛化性。"
+      ],
+      "practical_value": "为设备端智能助手的查询推荐系统提供了一套可落地的偏好对齐方案，能够有效利用用户行为数据并提升工具调用型查询的推荐效果。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "30c0c8e36da511c2",
       "tags": [
         "RecSys",
+        "LLM4Rec",
+        "Sequential Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 6
+    },
+    {
+      "id": "arxiv:2606.07980",
+      "title": "DeRes: Decoupling Residual Stability and Adaptivity for Scalable CTR Prediction",
+      "authors": [
+        "Wenzhuo Cheng",
+        "Shipeng Nie",
+        "Qixin Guo",
+        "Xuefeng Sun",
+        "Jianguo Lou",
+        "Zhengwei Zheng"
+      ],
+      "affiliations": [],
+      "published": "2026-06-06T05:07:16Z",
+      "updated": "2026-06-06T05:07:16Z",
+      "abstract": "Transformer-based CTR models face a growing bottleneck at the residual connection: under Pre-Norm, early user-interest signals are diluted layer by layer; the identity skip cannot forget stale interests; and each layer sees only its immediate predecessor, losing long-range cross-layer dependencies. Recent attention-based residual variants (AttnRes) address parts of this in language models, but drop the protective identity skip and have not been tried in recommendation. Drawing on Dual Path Networks (DPN) and the HORNN view of residuals, we present DeRes, which routes each layer through two parallel paths -- an Identity residual path that preserves first-order feature reuse and gradient flow, and a Block Attention Residual path that attends over compressed outputs of all earlier blocks for high-order recall. A vector-wise gate decides, per hidden dimension, the weight given to each path. We further propose Pointwise AttnRes, replacing the Softmax in the cross-layer attention with SiLU so that multiple past blocks can be activated simultaneously and irrelevant ones receive negative (forgetting) weights -- better aligned with CTR's parallel multi-interest patterns. On a large-scale industrial dataset (331M interactions from a major social-media platform), Criteo (45M), and Avazu (40M), DeRes outperforms twelve baselines including OneTrans, TokenMixer-Large, UniMixer, mHC, and AttnRes, achieving up to +0.32% AUC at under 5% extra FLOPs. Beyond a single operating point, DeRes fits a markedly steeper compute-AUC scaling law (gamma=0.118 vs. 0.071 for OneTrans, a 1.66x gap), so an 8-layer DeRes matches a 16-layer OneTrans -- about 2x compute saving at equivalent AUC. Ablations confirm that the dual-path design outperforms either single path, Identity beats learnable residuals, and SiLU beats Softmax.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.07980v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.07980v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "DeRes针对Transformer CTR模型中的残差连接瓶颈，提出双路径解耦设计（身份残差路径+块注意力残差路径），并引入Pointwise AttnRes（用SiLU替代Softmax），以并行多兴趣编码避免零和竞争。在大规模工业数据集和Criteo、Avazu上，DeRes以不到5%的额外计算量，超越12个基线，AUC最高提升0.32%，且计算-AUC缩放效率显著优于OneTrans。",
+      "core_method": "通过向量门控融合身份残差路径和块注意力残差路径，实现残差稳定性与跨层自适应性的解耦。",
+      "innovation_points": [
+        "首次将注意力残差引入CTR Transformer，并证明其在浅层异构数据上的收益相对更大",
+        "提出双路径解耦设计，结合身份跳连(DenseNet)与块级注意力残差(AttnRes)，保障梯度流和长程依赖",
+        "提出Pointwise AttnRes，用SiLU替代Softmax进行跨层注意力，支持非竞争的多兴趣编码和负向遗忘"
+      ],
+      "experiment_results": [
+        "在331M工业数据集上，DeRes AUC比最佳基线提升0.32%，额外FLOPs<5%",
+        "计算-AUC缩放定律拟合显示DeRes的指数γ=0.118，为OneTrans(γ=0.071)的1.66倍，8层DeRes可匹配16层OneRes，节省约2倍计算",
+        "消融实验证实双路径优于单路径、身份跳连优于可学习残差、SiLU优于Softmax"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试",
+      "limitations": [
+        "工业数据集为专有数据，不可复现；公开数据集规模相对较小，泛化性需进一步验证",
+        "Pointwise AttnRes的SiLU负向遗忘机制的有效性依赖于序列长度和兴趣漂移强度，可能在短序列场景收益有限"
+      ],
+      "practical_value": "DeRes以极小计算开销显著提升CTR模型深度扩展和预测精度，适合工业级推荐系统直接部署，可节省约2倍计算资源获得同等AUC。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "4cd62b76b16d299b",
+      "tags": [
+        "RecSys",
+        "Sequential Rec",
+        "LLM4Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 6
+    },
+    {
+      "id": "arxiv:2606.07972",
+      "title": "OneFeed: A Unified Generative Framework for Feed Content Enhancement and Query Generation",
+      "authors": [
+        "Guo Xun"
+      ],
+      "affiliations": [],
+      "published": "2026-06-06T04:17:09Z",
+      "updated": "2026-06-06T04:17:09Z",
+      "abstract": "Modern feed recommendation and search systems are deeply connected in user behavior butare usually modeled by separate architectures. Feed recommendation mainly captures implicitinterests from browsing interactions, while search systems rely on explicit user queries to retrieveintent-matched content. This separation causes fragmented user understanding and missedopportunities for using feed interactions to improve query generation and using generated queriesto enhance feed candidate retrieval.In this paper, we propose OneFeed, a unified generative framework for jointly modelingfeed content enhancement and query generation. OneFeed encodes heterogeneous user behaviorsequences with a shared behavior encoder and employs two generative heads: a Feed SemanticID Generator that produces content semantic IDs for recommendation retrieval, and an IntentQuery Generator that produces natural-language queries for search-based candidate expansion.To bridge the semantic gap between recommendation content and search queries, we introduce aSID-Query alignment objective that learns a shared semantic space for content semantic IDs andquery representations. We further design a closed-loop self-enhancement paradigm that leveragesimplicit user feedback from generated content and search-retrieved results to improve bothgeneration tasks. We provide a detailed experimental protocol using public recommendationdatasets with weakly supervised query construction, define a comprehensive set of evaluationmetrics, report expected performance estimates grounded in known baseline values, and validatethe executability of the proposed pipeline through a minimal local prototype. OneFeed providesa practical and extensible direction for unifying search and recommendation through generativemodeling.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.07972v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.07972v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "提出OneFeed统一生成框架，通过共享编码器和两个生成头（内容语义ID与意图查询）联合建模推荐内容增强与查询生成，结合SID-Query对齐和闭环自增强机制，弥合推荐与搜索的语义鸿沟。",
+      "core_method": "共享行为编码器加两个生成头（Feed语义ID生成器和意图查询生成器），并通过SID-Query对齐目标学习共享语义空间，闭环自增强利用隐式反馈进行迭代训练。",
+      "innovation_points": [
+        "统一生成建模：将推荐内容增强和查询生成作为两个互补的生成任务，共享编码器并联合训练。",
+        "SID-Query对齐：在共享语义空间中学习内容语义ID和查询表示的对齐，促进知识迁移。",
+        "闭环自增强：利用生成内容和搜索结果的隐式反馈持续改进两个生成任务。"
+      ],
+      "experiment_results": [
+        "论文未提供完整实验数据，仅给出了基于已知基线的预期性能估计和消融方向，具体结果待后续更新。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试。",
+      "limitations": [
+        "实验结果仅为预期性能估计，未进行完整数据集训练和评测。",
+        "查询构建采用弱监督方式，可能影响真实系统表现。"
+      ],
+      "practical_value": "为统一推荐和搜索系统提供了可扩展的生成式建模方向，能够利用搜索意图增强推荐候选池。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "3e6c2286e737c72f",
+      "tags": [
+        "Generative Rec",
+        "Sequential Rec",
+        "LLM4Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 6
+    },
+    {
+      "id": "arxiv:2606.07454",
+      "title": "PaperFlow: Profiling, Recommending, and Adapting Across Daily Paper Streams",
+      "authors": [
+        "Fuqiang Wang",
+        "Song Tan",
+        "Zheng Guo",
+        "Jiaohao Fu",
+        "Xinglong Xu",
+        "Bihui Yu",
+        "Jie Dong",
+        "Zheng Sun",
+        "Siyuan Li",
+        "Jingxuan Wei",
+        "Cheng Tan"
+      ],
+      "affiliations": [],
+      "published": "2026-06-05T17:00:20Z",
+      "updated": "2026-06-05T17:00:20Z",
+      "abstract": "Scientific paper recommendation is typically evaluated as static ranking over a fixed candidate set, yet real scientific reading unfolds as a daily, longitudinal process in which interests shift and feedback accumulates. We introduce PaperFlow, a framework that organizes it into three coupled stages: Profiling, which constructs and maintains a structured, inspectable scholarly profile from heterogeneous cold-start evidence; Recommending, which ranks each date-specific paper stream through multi-signal aggregation under a fixed display budget; and Adapting, which updates user state from semantically distinct feedback signals and models interest drift across days. We further define a longitudinal user-day benchmark that fixes users, dates, candidate pools, visible inputs, and hidden simulated relevance labels under a shared temporal information boundary. The benchmark contains 24 simulated research users, 50 daily paper streams, 1,200 user-day episodes, 20,727 unique papers, and 497,448 episode-paper records. We additionally specify a blind human-evaluation protocol to validate alignment between automatic metrics and expert judgments. Experiments against five scientific recommendation baselines show that PaperFlow achieves the strongest oracle-based ranking, the highest behavioral alignment with simulated reading selections, and the best blind human-evaluation score.",
+      "categories": [
+        "cs.IR",
+        "cs.AI"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.07454v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.07454v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "PaperFlow 将科学论文推荐建模为每日纵向循环，包含画像构建、多信号排序和适应三个阶段，以捕捉用户兴趣漂移和反馈累积。论文定义了纵向用户-日基准，包含 24 个模拟用户、50 天、1200 个 episode 和 20,727 篇论文，并提供自动评估和盲法人工评估协议。实验表明，PaperFlow 在排序质量、行为对齐和人工评估上均优于 Scholar Inbox 等基线。",
+      "core_method": "PaperFlow 框架耦合了结构化学术画像、多信号日级排序和基于反馈的状态更新与兴趣漂移建模，实现论文流的动态个性化推荐。",
+      "innovation_points": [
+        "提出纵向每日论文推荐设定，将推荐视为连续的日级循环，而非静态排序",
+        "构建包含画像、排序、适应三个耦合阶段的 PaperFlow 框架，显式建模用户状态更新与兴趣漂移",
+        "定义严格的纵向用户-日评估基准和盲法人工评估协议，确保自动指标与人类判断对齐"
+      ],
+      "experiment_results": [
+        "PaperFlow 在 gNDCG@20 上达到 50.65，RecommendationScore 为 55.31，HumanEval 为 65.56，均超越最强基线 Scholar Inbox",
+        "行为对齐指标 SelectedNDCG@20 从 33.47 大幅提升至 70.88，表明推荐更接近模拟用户的实际阅读选择",
+        "不同 LLM 骨干对比显示，自动评分与人类评分相关系数达 0.9632，验证了自动指标的有效性"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上 A/B 测试",
+      "limitations": [
+        "实验基于模拟用户和伪真实相关性标签，而非真实人类反馈",
+        "框架的组件较多，消融分析显示简化变体在静态相关性指标上可能更优，实际部署需权衡动态性与稳定性"
+      ],
+      "practical_value": "为个性化论文推送系统提供了一套可解释、可适应兴趣变化的动态推荐方案，可直接应用于学术论文阅读平台。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "544b8fa900fa41a9",
+      "tags": [
+        "RecSys",
+        "Sequential Rec",
         "Evaluation",
         "Dataset",
         "Benchmark"
@@ -2424,59 +989,896 @@
       "score": 6
     },
     {
-      "id": "arxiv:2606.02417",
-      "title": "Dynamic Spectral Denoising with Global-Context Attention for Multi-Behavior Recommendation",
+      "id": "arxiv:2606.07317",
+      "title": "Gated Bidirectional Linear Attention for Generative Retrieval",
       "authors": [
-        "Miaomiao Cai",
-        "Yunshan Ma",
-        "Fangqi Zhu",
-        "Junfeng Fang",
-        "Zhijie Zhang",
-        "Zhiyong Cheng",
-        "Xiang Wang",
-        "See-Kiong Ng"
+        "Artem Matveev",
+        "Vladislav Tytskiy",
+        "Sergei Makeev",
+        "Sergei Liamaev"
       ],
       "affiliations": [],
-      "published": "2026-06-01T15:58:13Z",
-      "updated": "2026-06-01T15:58:13Z",
-      "abstract": "Multi-behavior recommendation improves target-behavior prediction by exploiting heterogeneous auxiliary feedback (e.g., view, collect, and cart), yet its robustness is undermined by behavior-dependent noise and inconsistency. We argue that the key bottleneck is a representation-level failure caused by two coupled heterogeneities. First, intra-behavior representation entanglement arises when multi-hop propagation blends incidental signals with true preferences in the embedding space, making coarse spatial denoising unable to suppress noise without sacrificing informative niche signals. Second, inter-behavior reliability heterogeneity complicates cross-behavior fusion because the predictive value of auxiliary behaviors varies across users and contexts. Without reliability calibration, frequent yet unreliable signals may dominate aggregation and cause target-intent drift. To address this bottleneck, we propose Dynamic Spectral Denoising with Global-Context Attention for Multi-Behavior Recommendation (SpectraMB), a target-oriented model that performs representation purification before reliability-aware fusion. SpectraMB introduces Dynamic Feature-Level Spectral Filtering, which re-parameterizes embeddings along the feature dimension into a feature-frequency space and learns view-adaptive spectral modulation under target supervision, enabling component-wise purification without hand-crafted frequency assumptions. It further proposes Global-Context Attention Fusion, which uses a purified global representation as a context anchor to assess view compatibility and perform reliability-aware aggregation, while a residual global backbone preserves collaborative structure. Extensive experiments on three real-world datasets show that SpectraMB achieves the best results in most evaluation settings and exhibits improved robustness under noisy interactions.",
+      "published": "2026-06-05T14:37:02Z",
+      "updated": "2026-06-08T08:58:58Z",
+      "abstract": "In recommender systems, generative retrieval typically uses an encoder-decoder setup: an encoder processes a user interaction history, and an autoregressive decoder then generates recommended items. In large-scale streaming services, active users accumulate very long histories over time. As histories grow, the encoder becomes a major latency bottleneck because softmax attention scales quadratically with sequence length. In our experiments, using bidirectional attention in the encoder substantially improves quality. However, most sub-quadratic attention methods focus on causal attention. We propose Gated Bidirectional Linear Attention (GBLA), a linear-time bidirectional attention layer that extends kernelized linear attention with three lightweight components: local causal mixing (Conv1D), sequence-level key gating for soft forgetting, and a gated RMSNorm output. On a large-scale Yandex Music dataset, a hybrid encoder that interleaves self-attention (SA) and GBLA in a 1:2 ratio (one SA block followed by two GBLA blocks) matches bidirectional self-attention quality. On H100 GPUs, GBLA reaches up to an $8.2\\times$ single-layer speedup at a history length of 32768, compared to FlashAttention-v3. Finally, we show that the same hybrid design generalizes beyond our proprietary setting, consistently preserving self-attention retrieval quality on public Amazon benchmarks.",
       "categories": [
         "cs.IR"
       ],
       "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.02417v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.02417v1",
-      "doi": "10.1145/3770855.3818191",
+      "abs_url": "http://arxiv.org/abs/2606.07317v2",
+      "pdf_url": "https://arxiv.org/pdf/2606.07317v2",
+      "doi": "10.1145/3805712.3808495",
       "source": "arXiv",
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "Multi-behavior recommendation improves target-behavior prediction by exploiting heterogeneous auxiliary feedback (e.g., view, collect, and cart), yet its robustness is undermined by behavior-dependent noise and inconsistency. We argue that the key bottleneck is a representation-level failure caused by two coupled heterogeneities. First, intra-behavior representation entanglement arises when multi-hop propagation blends incidental signals with true preferences in the embedding space, making coarse spatial denoising unable to suppress noise without sacrificing informative niche signals.",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "generated_summary": "提出门控双向线性注意力（GBLA），一种线性时间复杂度的双向注意力层，通过局部因果混合、序列级键门控和门控RMSNorm扩展核化线性注意力，旨在解决生成式检索中长序列编码器的效率瓶颈。在Yandex Music数据集上，混合编码器（1个自注意力块后接2个GBLA块）在Recall@1000上匹配双向自注意力质量，H100 GPU上单层加速达8.2倍。该方法在公开Amazon基准上也保持了检索质量。",
+      "core_method": "GBLA通过将核化线性注意力扩展为双向形式，并引入Conv1D局部混合、键门控和门控RMSNorm，实现线性复杂度的双向序列建模，用于生成式检索编码器。",
       "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
+        "提出GBLA，一种线性时间复杂度的双向注意力层，填补了高效双向注意力在生成式检索中的空白",
+        "设计混合编码器架构，通过交错自注意力与GBLA块（1:2比例），在效率和效果间取得平衡",
+        "在工业级超长序列场景（32K长度）验证显著加速，并在多个公开基准上证明通用性"
       ],
       "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
+        "Yandex Music数据集上，混合编码器（1:2比例）在Recall@1000上匹配纯双向自注意力基线，且在序列长度L≤4096时GBLA略优，L=8192时仅微小下降",
+        "H100 GPU上，序列长度32768时GBLA单层推理速度比FlashAttention-v3快8.2倍",
+        "Amazon Beauty/Sports/Toys基准上，Tiger+GBLA与原始Tiger的Recall@10/NDCG@10结果接近，无显著差异"
       ],
       "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "ab_test_evidence": "论文全文未报告线上A/B测试",
       "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
+        "未在真实在线生产环境中验证GBLA的端到端延迟和推荐质量",
+        "公开基准序列长度较短（≤128），未体现长序列场景优势，且缺乏效率对比"
       ],
-      "practical_value": "可作为推荐系统相关方向的跟进阅读。",
-      "analysis_basis": "metadata",
-      "analysis_status": "",
-      "analysis_signature": "",
+      "practical_value": "为工业级生成式推荐系统提供了一种可扩展的编码器方案，能够以线性复杂度处理超长用户历史，降低推理延迟并保持推荐质量。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "8a60ce1400b20f34",
       "tags": [
-        "RecSys",
-        "Evaluation",
-        "Dataset"
+        "Generative Rec",
+        "Sequential Rec",
+        "RecSys"
       ],
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
       "score": 6
+    },
+    {
+      "id": "arxiv:2606.07071",
+      "title": "Decision-Theoretic Stopping Rules for Document Screening",
+      "authors": [
+        "Aaron H. A. Fletcher",
+        "Mark Stevenson"
+      ],
+      "affiliations": [],
+      "published": "2026-06-05T09:09:37Z",
+      "updated": "2026-06-05T09:09:37Z",
+      "abstract": "Deciding when to stop reviewing the results of a search is a common problem with multiple applications. Existing stopping rules developed within Technology-Assisted Review (TAR) aim to achieve a pre-specified recall target and do not take into account the reason for examining the results, potentially leading to sub-optimal recommendations. This paper applies decision theory to the problem and uses it to derive three practical stopping policies based on the Expected Value of Perfect Information. The approach is applied to two professional search tasks: patent examining and systematic reviewing. Experiments on CLEF-IP and medical systematic review datasets show that the proposed approach generally produces more appropriate stopping decisions than existing methods, as demonstrated by higher net utility under the evaluated cost and payoff settings.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.07071v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.07071v1",
+      "doi": "10.1145/3805712.3809548",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "本文应用决策理论，基于完美信息预期价值推导出三种实用的停止策略（Greedy、Smooth、Batch），用于文献筛选。在专利审查和系统综述数据集上的实验表明，该方法比现有基于召回率的方法能做出更合适的停止决策，实现更高净效用。",
+      "core_method": "基于完美信息预期价值的决策论停止规则，为专利审查（单篇决定）和系统综述（证据累积）两种决策任务导出三种实用策略。",
+      "innovation_points": [
+        "首次将决策论和价值信息原则应用于TAR停止问题，替代传统的固定召回率目标。",
+        "针对不同证据结构的任务（专利审查的单篇决定性 vs. 系统综述的证据累积性）分别推导停止策略。",
+        "提出净效用作为主要评估指标，统一衡量决策收益和筛选成本。"
+      ],
+      "experiment_results": [
+        "在专利审查数据集（CLEF-IP）上，所提方法在多种成本设置下比现有方法实现更高净效用，且ICER优于基线。",
+        "在医学系统综述数据集上，所提方法在大多数效用参数设置下超越基线，决策符合度更高。",
+        "在低单位成本下，所提方法的决策准确率接近完美信息上限，且能根据成本变化调整停止深度。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试，仅基于离线数据集进行实验评估。",
+      "limitations": [
+        "所提方法依赖于对决策问题世界状态和效用的简化假设（如二元世界状态），可能不适用于更复杂的多值决策。",
+        "实验结果高度依赖于预设的成本与收益参数，实际应用中需要对这些参数进行领域特定的校准。"
+      ],
+      "practical_value": "为专利审查和系统综述等专业搜索任务提供了一种经济上更合理的停止决策方法，有望在保证决策质量的同时显著降低人力筛选成本。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "2b1f3f9b7dd08bde",
+      "tags": [
+        "RecSys",
+        "Evaluation"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 6
+    },
+    {
+      "id": "arxiv:2606.06779",
+      "title": "Mind the Gap: Bridging Behavioral Silos with LLMs in Multi-Vertical Recommendations",
+      "authors": [
+        "Nimesh Sinha",
+        "Raghav Saboo",
+        "Martin Wang",
+        "Sudeep Das"
+      ],
+      "affiliations": [],
+      "published": "2026-06-04T23:39:52Z",
+      "updated": "2026-06-04T23:39:52Z",
+      "abstract": "In multi-vertical e-commerce platforms like DoorDash, relatively newer product verticals such as grocery and retail present a significant opportunity for personalization innovation. A key challenge lies in solving the \"cold start\" problem for users. This paper introduces a novel framework for enhancing recommendation quality by transferring knowledge from data-rich verticals (e.g., restaurants at DoorDash) to data-sparse ones. We leverage Large Language Models (LLMs) to perform generative inference, synthesizing sparse, high-dimensional features that encapsulate latent user affinities. Specifically, we employ a hierarchical Retrieval-Augmented Generation (RAG) pipeline to derive multi-level taxonomic features from user restaurant order histories and search queries. These generated features, encoding both long-term cross-vertical preferences and short-term intent, are integrated into a production Multi-Task Learning (MTL) ranking model. We demonstrate through extensive offline and online evaluation that this approach significantly improves personalization and engagement in emerging business verticals, effectively bridging the behavioral data gap.",
+      "categories": [
+        "cs.IR",
+        "cs.AI"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.06779v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.06779v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "本文针对多垂直领域电商平台（如DoorDash）中用户在新垂直领域（如杂货、零售）的冷启动问题，提出利用大语言模型从数据丰富的垂直领域（如餐厅）生成用户偏好特征，通过层次化检索增强生成管道提取跨垂直偏好和短期意图，并集成到多任务学习排序模型中，有效提升个性化推荐效果。",
+      "core_method": "利用层次化检索增强生成（RAG）管道从用户餐厅订单历史和搜索查询中推断多级分类偏好特征，作为附加特征注入多任务学习排序模型。",
+      "innovation_points": [
+        "提出层次化RAG管道，通过多级分类体系约束生成过程，降低幻觉风险并提高特征保真度。",
+        "设计长短期兴趣特征：长周期跨垂直偏好（基于历史订单）与短期意图（基于搜索查询）相结合。",
+        "通过提示工程（置信度阈值0.8、温度0.1等）和模型选择优化（GPT-4o-mini），实现特征生成的高效低成本。"
+      ],
+      "experiment_results": [
+        "离线实验中，整体用户AUC-ROC相对提升4.4%，MRR提升4.8%；冷启动用户AUC-ROC提升4.0%，MRR提升1.1%；高活跃用户AUC-ROC提升5.2%，MRR提升2.2%。",
+        "在线影子部署中，LLM增强模型相比基线在整体人群上AUC-ROC提升4.3%，MRR提升3.2%，验证了实际环境有效性。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文进行了在线影子部署（shadowing live traffic）评估，但未提及正式的线上A/B测试（如randomized bucket experiment），仅将模型预测与生产流量对比，未实际影响用户体验。",
+      "limitations": [
+        "特征生成依赖外部LLM，推理成本虽经优化仍可能受模型可用性和延迟影响。",
+        "实验主要由离线评估和影子测试支持，未进行完整的线上A/B测试验证业务指标（如转化率、用户留存）提升。"
+      ],
+      "practical_value": "为多垂直领域电商平台提供了一种利用LLM实现跨领域知识迁移的实用方案，能有效缓解新垂直领域用户冷启动问题，提升推荐个性化。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "dfb639694ff0d31c",
+      "tags": [
+        "LLM4Rec",
+        "Sequential Rec",
+        "RecSys"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 6
+    },
+    {
+      "id": "arxiv:2606.06225",
+      "title": "Bridging the Semantic-Collaborative Gap: An Asymmetric Graph Architecture for Cold-Start Item Recommendation",
+      "authors": [
+        "Anh Truong",
+        "John Trenkle",
+        "Yuanbo Chen",
+        "Honghong Zhao",
+        "Abdullah Alchihabi",
+        "Effy Fang",
+        "Michael Tamir"
+      ],
+      "affiliations": [],
+      "published": "2026-06-04T14:35:57Z",
+      "updated": "2026-06-04T14:35:57Z",
+      "abstract": "Collaborative filtering and graph-based recommendation models are highly effective because they leverage observed user interactions, but this dependence creates a fundamental cold-start challenge when newly added content has no interaction history. In Tubi's production retrieval system, this challenge is further constrained by the serving interface: new content must be assigned a standalone embedding immediately, and the model must also produce device embeddings suitable for approximate nearest-neighbor retrieval. We address this setting by formulating cold-start recommendation as an inductive graph-completion problem on a temporal bipartite device-content graph. We propose Shallow-RHS, an asymmetric link-prediction architecture in which the left-hand side (LHS) device tower leverages temporally valid watch-history message passing to capture collaborative signals, while the right-hand side (RHS) content tower is intentionally shallow with respect to the graph and encodes content solely from intrinsic features. The RHS tower does not use ID-based embeddings, content-side subgraphs, neighbor aggregation, or interaction-derived representations, forcing the content encoder to map intrinsic features into a collaborative-filtering-aware embedding space. After training, the learned content encoder generates embeddings for both warm and newly ingested content, enabling implicit graph completion through retrieval of warm surrogate neighbors. We further extend the same representation-completion principle to device cold-start by constructing cohort-based embeddings from demographic features. Large-scale online experiments demonstrate consistent relative improvements in content cold-start engagement, promotion speed, impression acquisition, and device cold-start engagement.",
+      "categories": [
+        "cs.IR",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.06225v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.06225v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "论文提出Shallow-RHS架构：设备端通过时态消息传递捕捉协同信号，内容端仅使用内在特征，强制学习协同感知嵌入，解决零交互冷启动推荐问题。通过隐式图补全为冷内容检索温近邻，并扩展到设备冷启动。",
+      "core_method": "非对称图链接预测架构Shallow-RHS，设备端进行时态消息传递，内容端仅用内在特征编码，避免依赖交互历史，学习协同感知嵌入。",
+      "innovation_points": [
+        "将内容冷启动形式化为归纳式图补全问题，强制内容编码器仅从内在特征映射到协同过滤感知嵌入空间",
+        "提出隐式图补全策略，通过检索温近邻代理为冷内容提供行为证据，无需合成边",
+        "将表示补全原理扩展到设备冷启动，利用人口统计特征构建队列嵌入"
+      ],
+      "experiment_results": [
+        "在线A/B测试表明，内容冷启动总观看时长、推广速度、展示获取均持续提升",
+        "设备冷启动首次接触参与度也获得提升"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文明确指出所有实验为随机在线A/B测试，在Tubi生产推荐系统中进行，并报告了总观看时长、推广速度等关键指标的相对提升。",
+      "limitations": [
+        "论文未在公开数据集验证，所有实验限于Tubi平台",
+        "内容冷启动依赖元数据质量和LLM特征的有效性，在特征稀疏时可能退化"
+      ],
+      "practical_value": "为需要立即对新内容进行嵌入并支持近邻检索的生产系统提供了一套实用的冷启动解决方案，可直接应用于流媒体等平台。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "7ee0a0cfdf563ef8",
+      "tags": [
+        "RecSys",
+        "Sequential Rec",
+        "LLM4Rec",
+        "Evaluation"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 6
+    },
+    {
+      "id": "arxiv:2606.06106",
+      "title": "WebKnoGraph: GNN-Powered Internal Linking",
+      "authors": [
+        "Emilija Gjorgjevska",
+        "Georgina Mirceva",
+        "Miroslav Mirchev"
+      ],
+      "affiliations": [],
+      "published": "2026-06-04T12:50:11Z",
+      "updated": "2026-06-04T12:50:11Z",
+      "abstract": "Internal link optimization is a recurring task in search engine optimization, yet many production workflows rely on manual judgment, fixed page templates, or generic tool recommendations. Practitioners need ways to evaluate candidate links before deployment because link changes can redistribute authority and affect semantic coherence in ways that are difficult to isolate after release. We present WebKnoGraph, an open-source framework for evaluating internal linking strategies on website crawls. The framework models a website as a directed graph, represents pages by embeddings, scores candidate links with GraphSAGE, and evaluates interventions by embedding the site into larger host environments. We instantiate WebKnoGraph on a production crawl of Kalicube.com and compare automatic with expert-assisted link selection in an empirical FineWeb-based host graph and a synthetic Barabási-Albert host graph, using PageRank-based authority metrics and semantic coherence. The results show that automatic selection generally produces stronger authority redistribution, with higher Authority Yield, but also larger semantic coherence costs. Expert-assisted selection better preserves semantic coherence and, when targeting low-PageRank pages, achieves the highest Authority Yield, although with the least favorable loss-gain balance. Authority Volatility provides an additional stability perspective, but is interpreted cautiously because the two regimes use different numbers of intervention sets. These findings support a practical workflow in which candidate intervention sets are generated at scale, evaluated jointly across authority gain, volatility, loss-gain balance, and semantic coherence, and then reviewed for editorial deployability before implementation.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.06106v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.06106v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "WebKnoGraph是一个开源框架，通过图神经网络（GraphSAGE）建模网站结构并评估内部链接策略。它在Kalicube.com生产爬虫数据上，将站点嵌入经验性和合成宿主图中，比较自动与专家辅助链接选择。实验显示自动选择权限收益更高但语义连贯性损失大，专家辅助选择更好地保持语义连贯性，尤其是针对低PageRank页面时权限收益最高。",
+      "core_method": "使用GraphSAGE在网站有向图上基于内容嵌入生成候选链接，并通过嵌入宿主图进行PageRank-based权限和语义连贯性评估。",
+      "innovation_points": [
+        "将内部链接优化形式化为应用图干预问题，结合生产SEO工作流",
+        "提出首个在部署前评估内部链接策略的开放框架，综合权限再分配、波动性、损益平衡和语义连贯性",
+        "在真实生产网站爬虫上比较自动与专家辅助链接选择，提供结构-语义权衡的实证证据"
+      ],
+      "experiment_results": [
+        "自动选择Authority Yield更高但语义连贯性成本更大",
+        "专家辅助选择更好地保持语义连贯性，且针对低PageRank页面时Authority Yield最高",
+        "损益平衡方面，专家辅助选择最不理想"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试",
+      "limitations": [
+        "实验仅基于单个网站Kalicube.com，泛化性待验证",
+        "Authority Volatility指标因不同配置使用不同数量干预集而需谨慎解释"
+      ],
+      "practical_value": "为SEO从业者提供在部署前评估内部链接策略的框架，综合权限、稳定性和语义因素以支持编辑决策。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "3c88f39ccf2bdf3a",
+      "tags": [
+        "RecSys",
+        "Evaluation",
+        "Sequential Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 6
+    },
+    {
+      "id": "arxiv:2606.05621",
+      "title": "ANCHOR: Agentic Noise Creation Framework for Human Simulation and Denoising Recommendation",
+      "authors": [
+        "Xiangming Li",
+        "Hua Chu",
+        "Chengyu Feng",
+        "Jianan Li",
+        "Yangtao Zhou"
+      ],
+      "affiliations": [],
+      "published": "2026-06-04T02:46:31Z",
+      "updated": "2026-06-04T02:46:31Z",
+      "abstract": "Distilling accurate user preferences from noisy implicit feedback remains a fundamental bottleneck in recommendation systems, highlighting the need for recommendation denoising. However, real-world data lack explicit noise annotations, forcing existing methods to rely on unsupervised side information or handcrafted heuristics. These approaches often incur high external costs, generalize poorly, or depend on unreliable priors, causing noise misidentification and corrupting true user preference representations. To address these limitations, we propose a paradigm-level reformulation of recommendation denoising. Instead of indirectly inferring noisy interactions through heuristics, our Creation-Recognition paradigm proactively creates labeled noisy interactions and trains a dedicated recognizer to identify them, transforming denoising from heuristic filtering into supervised learning. Based on this paradigm, we present ANCHOR, an agent-based framework inspired by recent LLM-as-User research. ANCHOR simulates user behaviors to generate realistic noise labels and enables supervised denoising through two stages: noise creation and noise recognition. In the noise creation stage, ANCHOR adopts a recommender-in-the-loop agentic architecture to synthesize both diverse out-of-preference noise and informative boundary-adjacent noise. For out-of-preference noise, it implements five extensible simulation mechanisms to approximate major sources of noisy implicit feedback. For boundary-adjacent noise, an adversarial boundary refinement mechanism generates ambiguous interactions that challenge the recognizer and target the decision boundary. In the noise recognition stage, ANCHOR leverages the generated labels to train a reusable parametric recognizer that integrates collaborative signals and semantic representations to detect noise patterns in real interaction data.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.05621v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.05621v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "本文提出了一种基于智能体的噪声创建与识别框架ANCHOR，用于推荐系统中的隐式反馈去噪。通过模拟用户行为生成带标签的噪声数据，将去噪问题转化为监督学习任务。实验表明，ANCHOR在多个基准上显著优于现有去噪方法。",
+      "core_method": "ANCHOR框架通过智能体模拟用户行为创建带标签的噪声交互，并训练一个参数化噪声识别器来检测真实数据中的噪声，将推荐去噪从无监督启发式过滤转变为监督学习。",
+      "innovation_points": [
+        "提出Creation-Recognition范式，将推荐去噪从无监督问题重新定义为监督学习问题。",
+        "设计基于LLM智能体和推荐器在环的噪声创建框架，模拟五种非偏好驱动的噪声行为。",
+        "引入对抗边界细化机制生成边界相邻噪声，提高识别器对模糊交互的区分能力。"
+      ],
+      "experiment_results": [
+        "在三个基准数据集上，ANCHOR显著优于现有最先进的推荐去噪方法，展现出鲁棒性和模型无关性。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试",
+      "limitations": [
+        "依赖LLM进行用户模拟，可能引入LLM自身的偏差和推理成本。",
+        "噪声模拟机制的覆盖范围有限，可能无法涵盖所有真实世界的噪声类型。"
+      ],
+      "practical_value": "ANCHOR提供了一种模型无关的去噪方案，能够生成可复用的噪声标签，提升下游推荐模型的性能，具有较高的实用价值。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "f7a393b6bf6b6ebc",
+      "tags": [
+        "RecSys",
+        "LLM4Rec",
+        "Agent4Rec",
+        "Evaluation"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 6
+    },
+    {
+      "id": "arxiv:2606.09802",
+      "title": "Bandits for Efficient Experimentation: Adapting to Control Group, Preferences, and Context Drifts",
+      "authors": [
+        "Udvas Das",
+        "Waris Radji",
+        "Debabrota Basu",
+        "Odalric-Ambrym Maillard"
+      ],
+      "affiliations": [],
+      "published": "2026-06-08T17:53:29Z",
+      "updated": "2026-06-08T17:53:29Z",
+      "abstract": "We consider a variant of the linear contextual stochastic multi-armed bandits, where the learner must provide recommendations to a group of users, each having its personalized preference vector, and in the presence of context distributions that are drifting over time. Under practitioner-friendly assumptions, we reduce this setting to linear bandit with stationary mean but heteroskedastic and non-stationary noise. We further study the case when the learner must ensure the mean reward of each decision must exceed that of a baseline strategy $\\boldsymbolπ_0$ at each decision step. We introduce Dri-MED, an algorithm inspired from the linear version of the MED strategy, and carefully adapted to handle the non-stationary heteroskedastic noise. We show that the instance-dependent regret scales as $\\tilde{\\mathcal O}\\left(\\fracκ{\\tildeΔ}d^2(\\log(T)\\right)$, where $\\tildeΔ$ is the constraint-aware sub-optimality gap subject to policy $π_0$, with variance-aware multiplicative term $κ$ that we carefully handle using heteroskedastic regression. We further show Dri-MED enjoys $\\tilde{\\mathcal{O}}(d)$ expected constraint violations. Our numerical results suggest that Dri-MED significantly outperforms conservative baselines that ignores the drift and preference structure.",
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "stat.ML"
+      ],
+      "primary_category": "cs.LG",
+      "abs_url": "http://arxiv.org/abs/2606.09802v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.09802v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "研究在线推荐中用户偏好与上下文漂移下的线性上下文老虎机问题，需满足相对于控制组的性能约束。提出Dri-MED算法，通过MED策略与异方差处理，实现约束感知的遗憾界。实验显示优于忽略漂移和偏好结构的保守基线。",
+      "core_method": "Dri-MED算法，基于线性MED策略并适配非平稳异方差噪声，融合约束感知的对偶G-最优设计以处理控制组安全约束与用户偏好漂移。",
+      "innovation_points": [
+        "首次在上下文老虎机中同时处理上下文漂移、用户个性化偏好与控制组安全约束",
+        "提出约束感知的拉格朗日对偶G-最优设计，用于每步精确计算臂选择概率",
+        "将非平稳上下文问题归约为平稳均值但异方差噪声的线性老虎机，并给出实例相关遗憾界"
+      ],
+      "experiment_results": [
+        "在具有不同类型上下文漂移的合成数据集上，Dri-MED显著优于忽略漂移和偏好结构的保守基线"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上 A/B 测试",
+      "limitations": [
+        "仅在合成数据集上进行数值实验，缺乏真实在线推荐环境验证",
+        "约束违规界为期望界，实际应用中可能出现较大违规"
+      ],
+      "practical_value": "为在线实验平台中的推荐系统提供了一种在控制组约束下适应环境变化与用户异质偏好的高效动态分配方法。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "fbc74ada777d61ae",
+      "tags": [
+        "RecSys",
+        "Sequential Rec",
+        "Evaluation"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 4
+    },
+    {
+      "id": "arxiv:2606.09204",
+      "title": "The Injection Paradox: Brand-Level Suppression in Safety-Trained LLM Recommendations via RAG Context Injection",
+      "authors": [
+        "Hyunseok Paeng"
+      ],
+      "affiliations": [],
+      "published": "2026-06-08T08:38:33Z",
+      "updated": "2026-06-08T08:38:33Z",
+      "abstract": "We present a reproducible failure mode of safety training in RAG-based LLM recommendation -- the Injection Paradox -- in which prompt injections embedded in retrieved documents backfire against the attacker, suppressing the target brand below the injection-free baseline. In safety-trained Claude models, documents containing prompt injections suffer a sharp drop in recommendation rate, and this suppression propagates beyond the injected document to unmodified documents of the same brand. In Claude Opus 4.6, the target brand drops from a 54% baseline to zero top-2 recommendations across all 50 trials, even though only 1 of 4 brand documents in the corpus contains an injection. The directional pattern is reproduced in counterfactual experiments and across three brands. A contrasting result across the GPT models tested, where the same injection instead increases recommendations, suggests model-family differences in how injection-like context affects recommendation behavior. These findings raise the technical possibility of a reverse-attack scenario in which an adversary embeds injections in a competitor's documents to suppress the competitor's brand via safety-sensitive model behavior.",
+      "categories": [
+        "cs.LG",
+        "cs.CL",
+        "cs.CR"
+      ],
+      "primary_category": "cs.LG",
+      "abs_url": "http://arxiv.org/abs/2606.09204v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.09204v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "本文在基于检索增强生成（RAG）的LLM推荐中，发现了一种称为“注入悖论”的新失败模式：在安全训练更强的Claude模型中，文档中的提示注入反而会抑制目标品牌推荐，使其降至基线以下，且抑制效应会传播到同品牌未注入文档，导致品牌整体被抹去。而在GPT模型中，相同注入却提升了推荐率，揭示了模型族间的差异。该现象可能被利用进行反向攻击，即攻击者将注入放入竞争对手的文档中来压制其品牌。",
+      "core_method": "通过在RAG语料中向单个文档插入元数据伪装的提示注入，并对比注入、隐式说服和组合条件，在多个LLM上进行无线耳机推荐实验，测量推荐率的变化，以揭示安全训练与注入交互的副作用。",
+      "innovation_points": [
+        "首次发现并系统定义了RAG-LLM推荐中的“注入悖论”现象，即安全训练导致提示注入反向抑制目标品牌。",
+        "揭示了安全训练引起的品牌级抑制传播效应，即单个文档的注入可导致同品牌未修改文档也被压制，形成组合原语。",
+        "通过跨模型（Claude与GPT）、跨品牌的反事实实验，验证了该失败模式的可复现性，并提出其作为最小可操作基准的价值。"
+      ],
+      "experiment_results": [
+        "在Claude Opus 4.6上，注入条件下目标品牌（Edifier）的top-2推荐率从基线54%降至0%（50次试验）。",
+        "Claude Sonnet推荐率下降18个百分点，而GPT-4o-mini推荐率上升23个百分点。",
+        "反事实实验证实，注入文档的存在（0%推荐）比完全移除该文档（28%推荐）造成的损害更大。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上 A/B 测试",
+      "limitations": [
+        "实验仅在有限品牌和产品类别（无线耳机）上进行，未验证其他领域。",
+        "未在实际在线推荐系统或完整RAG流水线（包含检索阶段）中进行端到端测试，可能忽略检索动态和真实用户行为。"
+      ],
+      "practical_value": "揭示了安全训练在RAG推荐中可能被恶意利用的意外副作用，为推荐系统抗攻击设计提供了新的风险场景和测试基准。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "bfd8486adadcd91c",
+      "tags": [
+        "LLM4Rec",
+        "RecSys",
+        "Evaluation",
+        "Generative Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 4
+    },
+    {
+      "id": "arxiv:2606.09160",
+      "title": "Crop Recommendation and Agricultural Query Answering System Using Spatio-Temporal Graph Neural Networks and Hybrid Retrieval Augmentation",
+      "authors": [
+        "Prajwal Thapa",
+        "Yagya Raj Pandeya"
+      ],
+      "affiliations": [],
+      "published": "2026-06-08T07:51:34Z",
+      "updated": "2026-06-08T07:51:34Z",
+      "abstract": "This paper presents a unified system designed to support precision agriculture by integrating advanced weather prediction, crop recommendation, and a question-answering tool for farmers. We propose two deep learning models -- a Transformer-based Graph Neural Network and a Spatio-Temporal Graph Convolutional Network (STGCN) -- to forecast weather conditions for the next 30 days using data from 1,359 locations in Nepal. The STGCN outperforms the Transformer-based model in accuracy (MSE ~0.011 vs. 0.013), effectively modeling both spatial and temporal dependencies in climate data. These predictions are combined with static soil properties such as pH, moisture, and organic content to generate localized crop recommendations through a scoring algorithm that matches each crop's optimal growing conditions. Additionally, we develop a Retrieval-Augmented Generation (RAG) chatbot that leverages domain-specific agricultural documents to answer farmers' questions in natural language. The entire system is deployed via a mobile application, offering real-time suggestions and conversational support. User feedback confirms the system's usability and relevance, especially in rural settings where personalized farming guidance is limited. Overall, our approach demonstrates how combining machine learning models with local agricultural data can empower farmers with actionable insights, promoting more informed decisions, better crop yields, and increased resilience to climate variability.",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "primary_category": "cs.LG",
+      "abs_url": "http://arxiv.org/abs/2606.09160v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.09160v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "本文提出一个面向尼泊尔精准农业的统一系统，利用时空图卷积网络（STGCN）进行30天气象预测，结合土壤数据通过评分算法生成作物推荐，并基于混合检索增强生成（RAG）构建农业问答聊天机器人，在1359个地点验证并部署于移动应用。",
+      "core_method": "基于时空图卷积网络（STGCN）的气象预测模型，融合图卷积和时序卷积以捕获空间和时间依赖，并结合土壤属性通过评分算法实现本地化作物推荐。",
+      "innovation_points": [
+        "将时空图神经网络应用于尼泊尔多地点气象预测，显式建模地理节点间的空间依赖关系",
+        "结合气象预测与静态土壤数据，设计评分算法生成动态、本地化的作物推荐",
+        "采用SPLADE与稠密-稀疏向量混合检索策略，提升农业领域RAG问答的准确性和效率"
+      ],
+      "experiment_results": [
+        "STGCN气象预测MSE为0.011，优于Transformer-based模型的0.013",
+        "系统集成于移动应用，用户反馈证实其实用性，尤其在指导有限的农村地区"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试",
+      "limitations": [
+        "未在真实生产环境中进行在线A/B测试或大规模用户实验，难以量化实际收益",
+        "气象预测模型仅使用100天历史数据，长期依赖和泛化性能未充分验证"
+      ],
+      "practical_value": "为数据稀缺的农业地区提供可部署的端到端决策支持工具，通过移动应用实现气象预测、作物推荐和农业问答的实时融合。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "fe7fbd3b84947db8",
+      "tags": [
+        "RecSys",
+        "Sequential Rec",
+        "LLM4Rec",
+        "Generative Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 4
+    },
+    {
+      "id": "arxiv:2606.08921",
+      "title": "Generalized Rank-based Evaluation for Knowledge Graph Completion: Perspectives, Framework, and Analyses",
+      "authors": [
+        "Sooho Moon",
+        "Jian Kang",
+        "Yunyong Ko"
+      ],
+      "affiliations": [],
+      "published": "2026-06-08T02:00:38Z",
+      "updated": "2026-06-08T02:00:38Z",
+      "abstract": "Knowledge graph completion (KGC) aims to predict missing facts from an observed knowledge graph (KG), playing a crucial role in a wide range of real-world applications such as drug discovery, recommender systems, and retrieval-augmented generation (RAG). Although numerous KGC models have been proposed, the evaluation of KGC remains underexplored, despite its critical role in reliably assessing model performance and selecting appropriate models for real-world applications. In this paper, we introduce two important perspectives for KGC evaluation that are overlooked by existing evaluation metrics, (P1) predictive sharpness and (P2) popularity-bias robustness. To address both perspectives, we propose a generalized evaluation framework, PROBE, which consists of a rank transformer (RT) that estimates the score of each prediction based on a desired level of predictive sharpness and a rank aggregator (RA) that determines the final evaluation score by aggregating all prediction scores according to a desired level of popularity-bias robustness. We theoretically analyze PROBE by defining six key properties for reliable KGC evaluation and prove that PROBE satisfies all the properties, while existing metrics fail to satisfy some. In particular, due to the open-world nature of KGs, an evaluation metric should preserve the relative performance of KGC models even when only incomplete facts are observed. We show that PROBE better maintains such consistency, providing a more reliable estimate of intrinsic model performance than existing metrics. Extensive experiments with six KGC models on six real-world KGs reveal that existing metrics may over- or under-estimate model performance depending on different evaluation perspectives, whereas PROBE enables a more comprehensive, flexible, and consistent evaluation of KGC models.",
+      "categories": [
+        "cs.LG"
+      ],
+      "primary_category": "cs.LG",
+      "abs_url": "http://arxiv.org/abs/2606.08921v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.08921v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "本文提出通用评估框架PROBE，通过排名变换器（RT）和排名聚合器（RA）解决知识图谱补全评估中预测锐度（P1）和流行度偏差鲁棒性（P2）两个被忽视的视角。理论分析表明PROBE满足六项关键属性，实验证明其比现有指标（如MRR、Hits@K）更全面、灵活且一致。PROBE能根据应用需求调整评估严格程度，并减轻流行度偏差对评估的影响。",
+      "core_method": "提出PROBE框架，包含控制预测锐度的排名变换器和控制流行度偏差鲁棒性的排名聚合器，通过调节参数实现灵活评估。",
+      "innovation_points": [
+        "引入预测锐度和流行度偏差鲁棒性两个新的评估视角，弥补现有指标不足。",
+        "提出广义评估框架PROBE，统一并扩展了现有排名指标，支持可调评估。",
+        "理论证明PROBE满足六项关键属性（如开放世界一致性），优于现有指标。"
+      ],
+      "experiment_results": [
+        "在六个真实知识图谱上的实验表明，现有指标可能高估或低估模型性能，而PROBE提供更全面、一致的评估。",
+        "PROBE通过调节参数能适应不同应用场景的评估需求，如药物发现需高锐度，推荐系统可低锐度。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试",
+      "limitations": [
+        "PROBE框架的参数选择可能依赖领域知识，缺乏自动化调参指导。",
+        "实验未在大规模工业级知识图谱上验证可扩展性。"
+      ],
+      "practical_value": "PROBE为知识图谱补全模型评估提供了灵活可控的框架，能根据实际应用需求（如药物发现、推荐系统）调整评估严格度和流行度偏差处理，有助于更可靠地选择模型。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "aa4f5a2a4f7aa885",
+      "tags": [
+        "Evaluation",
+        "Benchmark",
+        "RecSys"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 4
+    },
+    {
+      "id": "arxiv:2606.08491",
+      "title": "What Makes a Desired Graph for Relational Deep Learning?",
+      "authors": [
+        "Yao Cheng",
+        "Siqiang Luo"
+      ],
+      "affiliations": [],
+      "published": "2026-06-07T07:30:34Z",
+      "updated": "2026-06-07T07:30:34Z",
+      "abstract": "Relational deep learning (RDL) converts relational databases (RDBs) into heterogeneous graphs, but graphs derived directly from database schemas are often not well suited for how graph neural networks (GNNs) perform relational reasoning. We study what makes a relational graph suitable for deep learning and show that schema-derived graphs suffer from two systematic failures: information overload and semantic fragmentation. Our empirical analysis reveals that the desired graph is not the raw schema, but a result of controlled structural adaptation. Performance depends on balancing two operations: mitigating information overload via filtering, and repairing semantic fragmentation via injection. Specifically, filtering serves as a bias-variance knob with non-monotonic effects, while injection improves performance only when it explicitly restores the relational dependencies missing from the original schema. Based on these findings, we develop an end-to-end structural optimizer that applies both operations to adapt relational graphs automatically. Across 26 tasks spanning classification, regression, and recommendation, the optimized graphs consistently improve accuracy while often reducing inference cost.",
+      "categories": [
+        "cs.AI"
+      ],
+      "primary_category": "cs.AI",
+      "abs_url": "http://arxiv.org/abs/2606.08491v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.08491v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "本文研究关系深度学习（RDL）中从关系数据库模式直接转换的异构图存在信息过载和语义碎片化两类系统性问题，揭示有效的关系图需要通过过滤去除无关结构、通过注入恢复缺失的关系依赖，并基于此提出端到端的结构优化器，在分类、回归和推荐等26个任务上持续提升预测精度并降低推理成本。",
+      "core_method": "提出端到端的结构优化器，通过过滤操作缓解信息过载、注入操作修复语义碎片化，自动调整关系图结构以适配下游预测任务。",
+      "innovation_points": [
+        "系统识别并定义了关系深度学习中信息过载和语义碎片化两大结构问题",
+        "揭示了过滤和注入操作在构建有效关系图时的非单调作用以及任务依赖性平衡机制",
+        "设计了融合过滤与注入的端到端结构优化器，无需人工干预即可自动学习适应任务的关系图结构"
+      ],
+      "experiment_results": [
+        "在RELBench基准的23个分类、回归和推荐任务上，优化后的图在ROC-AUC、MAE和MAP等指标上一致优于原始模式图和LightGBM、HAN、GTN等基线方法",
+        "过滤操作呈现非单调效应，适中过滤能去除噪声提升性能，但过度过滤会丢失有用信息导致性能下降",
+        "注入操作仅在显式恢复原始模式缺失的关系依赖时才能提升性能"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试",
+      "limitations": [
+        "本文实验基于RELBench基准的23个任务，未在更大规模或更多样化的数据库上验证方法的泛化性",
+        "结构优化器的设计依赖于下游任务的目标，如何在不明确任务时自动确定优化目标尚未探讨"
+      ],
+      "practical_value": "为关系数据库上的图神经网络应用提供了结构层面的优化方法，可自动生成适配任务的关系图，提升推荐等预测任务的准确性和效率。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "9f2395ca8d079883",
+      "tags": [
+        "RecSys",
+        "Evaluation",
+        "Dataset",
+        "Benchmark"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 4
+    },
+    {
+      "id": "arxiv:2606.08212",
+      "title": "Public Machine Learning Solver Framework for Novices in the Machine Learning Domain",
+      "authors": [
+        "Lokman Saleh",
+        "Hafedh Mili",
+        "Mounir Boukadoum"
+      ],
+      "affiliations": [],
+      "published": "2026-06-06T14:57:14Z",
+      "updated": "2026-06-06T14:57:14Z",
+      "abstract": "Solving machine learning problems is complex and typically reserved for experts. Over the past two decades, systems have emerged to support non-experts. Based on our review, we identify three categories: (1) fully automated AutoML systems, (2) expert cheat sheets for algorithm selection, and (3) decision-support systems using selection criteria (accuracy, transparency, data requirements). We propose a new platform combining categories 2 and 3 to deliver semi-automated, intelligent solution recommendations for non-experts. Unlike existing approaches that recommend a single algorithm, our platform suggests a complete pipeline tailored to the user's problem. It integrates expert-defined selection criteria with transfer learning and automatically extracts data characteristics (e.g., class imbalance, missing values) from user-provided datasets. The platform uses first-order logic to reason over its knowledge base and recommends suitable algorithms ranked by relevance. It features a user-friendly interface and connects to a crowdsourcing platform for ML experts, ensuring continuous updates. The platform is built incrementally, allowing seamless integration of new algorithms, criteria, and domain knowledge. To our knowledge, this is the first free, publicly accessible online framework that systematically captures and operationalizes expert knowledge to guide non-experts in solving ML problems in a structured, transparent manner.",
+      "categories": [
+        "cs.LG"
+      ],
+      "primary_category": "cs.LG",
+      "abs_url": "http://arxiv.org/abs/2606.08212v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.08212v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "本文提出一个面向非专家的半自动化机器学习求解平台，结合专家选择标准、迁移学习和自动数据特征提取，推荐完整流水线而非单一算法。平台利用一阶逻辑推理知识库，按相关性排序推荐算法，并连接众包平台以持续更新知识。",
+      "core_method": "构建一个半自动化框架，通过专家定义的选择标准、迁移学习处理问题描述、自动提取数据特征，并基于一阶逻辑推理推荐机器学习流水线。",
+      "innovation_points": [
+        "首次提出免费公开的在线框架，系统化捕捉并操作化专家知识以指导非专家解决ML问题",
+        "结合专家选择标准与自动数据特征提取，推荐完整流水线而非单一算法",
+        "通过连接众包平台实现知识库的持续更新和扩展"
+      ],
+      "experiment_results": [
+        "论文全文未提供具体的实验结果或评测数据"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试",
+      "limitations": [
+        "论文未提供系统的性能评估或与现有方法的对比实验，缺乏实证验证",
+        "知识库的维护依赖于众包专家的持续参与，实际效果可能受专家参与度影响"
+      ],
+      "practical_value": "为缺乏ML专业知识的业务人员提供了一个透明、可扩展的辅助工具，降低机器学习应用门槛。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "ed7984589d957919",
+      "tags": [
+        "RecSys"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 4
+    },
+    {
+      "id": "arxiv:2606.08051",
+      "title": "How Small Can You Go? LoRA Fine-Tuning 270M-8B Models for Merchant Information Extraction in Financial Transactions",
+      "authors": [
+        "Donghao Huang",
+        "Tomas Drietomsky",
+        "Benjamin Barrett",
+        "Zhaoxia Wang"
+      ],
+      "affiliations": [],
+      "published": "2026-06-06T08:32:38Z",
+      "updated": "2026-06-06T08:32:38Z",
+      "abstract": "Financial transaction processing requires extracting structured merchant information from noisy, abbreviated bank transaction strings at scale. Our current production system, a LoRA-fine-tuned LLaMA 3.1-8B, achieves 96.95% F1 on this task, but deploying 8-billion-parameter models imposes prohibitive memory, latency, and cost constraints. To identify more efficient alternatives, we conduct a deployment-focused study of 24 model variants spanning four model families: Gemma 3 (270M, 1B, 4B), Qwen 3.5 (0.8B, 2B, 4B), Aya (3.35B), and LLaMA 3.1-8B, systematically evaluating accuracy, inference throughput, training cost, and hardware behavior to assess production suitability. Our findings show that: (1) reproducing the LLaMA 3.1-8B fine-tune with a LoRA rank of 8 achieves 96.75% F1, only 0.20 points below the rank-32 baseline; (2) Qwen 3.5 4B with JSON-only prompting reaches 96.60% F1, within 0.35 points of the 8B baseline while using roughly half the parameters; (3) the 0.8B Qwen 3.5 model achieves 94.75% F1, matching models 2.5-4x larger and offering an attractive latency-accuracy trade-off; (4) chain-of-thought fine-tuning generally improves F1 by 0.3-1.8 points across most models, although Qwen 3.5 4B performs best with direct JSON-only prompting; and (5) Qwen 3.5 Think and Nothink training templates produce nearly identical results (F1 differences <0.004), indicating that explicit reasoning supervision is unnecessary for structured extraction tasks. We further deploy all 14 fine-tuned sub-8B models as Databricks Model Serving endpoints and observe that benchmark performance transfers reliably to production, with an average F1 change of only 0.8 points. Aya 3.35B, based on the Cohere2 architecture, is the sole exception, exhibiting a 3-5 point decline under serving conditions. Based on these results, we provide deployment recommendations across accuracy and latency requirements, ...",
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "primary_category": "cs.AI",
+      "abs_url": "http://arxiv.org/abs/2606.08051v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.08051v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "本文系统评估了从270M到8B参数的LoRA微调模型在金融交易商户信息提取任务上的表现，发现Qwen 3.5 4B以一半参数达到接近8B基线的准确率，且链式思维微调对多数模型有提升但并非必需，同时验证了生产部署中性能的平稳迁移。",
+      "core_method": "LoRA微调多种小型语言模型（包括Gemma 3、Qwen 3.5、Aya）进行结构化实体提取，并对比直接JSON输出与链式思维提示的效果。",
+      "innovation_points": [
+        "在商户信息提取任务上对270M-8B参数模型进行系统缩放分析，确定可维持生产精度的最小模型规模",
+        "发现Qwen 3.5的混合Mamba-Attention架构在小模型上表现异常强劲，0.8B即可匹配2-4B常规Transformer模型",
+        "通过Think/Nothink训练模板对比，证明在结构化提取任务中显式推理监督不必要"
+      ],
+      "experiment_results": [
+        "Qwen 3.5 4B以JSON-only提示达到96.60% F1，仅比8B生产基线低0.35个百分点，参数量减半",
+        "0.8B Qwen 3.5达到94.75% F1，匹配2-4B模型，且推理延迟更低",
+        "所有14个微调的8B以下模型部署为生产端点后，F1平均仅下降0.8个百分点，Aya模型除外（下降3-5个百分点）"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试",
+      "limitations": [
+        "Aya模型在生产服务条件下性能下降显著（3-5个F1点），表明Cohere2架构在生产环境中不够稳定",
+        "测试仅覆盖单一硬件环境（NVIDIA DGX Spark与Databricks Model Serving），其他部署平台的表现未验证"
+      ],
+      "practical_value": "为金融交易场景下商户信息提取任务提供了明确的模型选型建议，证明小模型可大幅降低部署成本与延迟，同时保持接近大模型的准确率。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "935c3d1217192648",
+      "tags": [
+        "LLM4Rec",
+        "Evaluation",
+        "RecSys"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 4
+    },
+    {
+      "id": "arxiv:2606.07936",
+      "title": "Illusions of the Gold Standard: A Large-scale Analysis of Human Evaluation Protocols for Long-form Text Generation",
+      "authors": [
+        "Katelyn Xiaoying Mei",
+        "Yi-Li Hsu",
+        "Minjoon Choi",
+        "Zongwan Cao",
+        "Chenjun Xu",
+        "Bingbing Wen",
+        "Su Lin Blodgett",
+        "Lucy Lu Wang"
+      ],
+      "affiliations": [],
+      "published": "2026-06-06T01:55:56Z",
+      "updated": "2026-06-06T01:55:56Z",
+      "abstract": "Human evaluation plays a critical role in assessing the quality of generated text. However, the reliability and reproducibility of these evaluations depend on transparent and well-documented protocols -- details that are frequently missing in current practice. In this work, we conduct a large-scale analysis of human evaluation protocols for evaluating long-form generation tasks in *CL conference publications from 2023--2025, including a full manual review of 284 papers and LLM-assisted analysis for another 1.8k+ papers. We define a set of 20 reportable criteria related to reproducibility of human evaluation studies, and apply these criteria to systematically examine reporting norms and practices within the community. We find widespread under-reporting of important aspects of human evaluation study design, leading to ambiguity about what was measured and how, who contributed judgments, and how judgments should be interpreted. Based on these findings, we outline actionable recommendations to support more transparent and reproducible reporting in future research. Our analysis code and annotated dataset can be found at: https://github.com/larchlab/Illusions-of-the-Gold-Standard",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "primary_category": "cs.CL",
+      "abs_url": "http://arxiv.org/abs/2606.07936v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.07936v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "该论文对2023-2025年*CL会议中长文本生成任务的人类评估协议进行大规模分析，结合人工审查284篇论文与LLM辅助分析1800+篇，发现评估设计关键细节普遍缺失，并定义20项可报告标准以提升可重复性。",
+      "core_method": "基于人工审查与LLM辅助分析，系统评估长文本生成论文中人类评估协议的20项可报告标准，量化报告缺陷并提出改进建议。",
+      "innovation_points": [
+        "首次对ACL社区长文本生成任务的人类评估协议进行大规模系统分析",
+        "提出包含20项标准的可报告性检查清单，覆盖评估设计、执行和解释等维度",
+        "将LLM辅助分析用于大规模论文筛选和初步标注，结合人工验证提升效率与深度"
+      ],
+      "experiment_results": [
+        "发现社区普遍存在人类评估关键细节报告不足，导致评估结果难以复现和解释",
+        "基于284篇人工审查论文，识别出多个方面的报告缺失，如评估者资质、任务指令、指标定义等"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上 A/B 测试",
+      "limitations": [
+        "仅覆盖*CL会议论文，可能无法代表其他NLP或AI子领域的评估实践",
+        "LLM辅助分析虽提升规模，但自动标注的错误可能引入偏差，尽管有人工验证步骤"
+      ],
+      "practical_value": "为推荐系统研究中生成推荐解释或对话推荐等涉及长文本输出的任务，提供透明可重复的人类评估设计指南，避免评估陷阱。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "8875e82e03aca420",
+      "tags": [
+        "Evaluation",
+        "Dataset",
+        "Benchmark"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 4
+    },
+    {
+      "id": "arxiv:2606.07853",
+      "title": "Beyond English benchmarks: clinical llm evaluation in Brazilian Portuguese",
+      "authors": [
+        "Giordano de Pinho Souza",
+        "Glaucia Melo",
+        "Josefino Cabral Melo Lima",
+        "Daniel Schneider"
+      ],
+      "affiliations": [],
+      "published": "2026-06-05T21:29:39Z",
+      "updated": "2026-06-05T21:29:39Z",
+      "abstract": "Large Language Models are transforming the support for clinical decision and their application in real scenarios. Yet, most benchmarks are conducted in English, and cross-lingual evaluation is needed to tackle the language gaps in global access. We introduce ClinicalBr, the first bilingual benchmark for clinical decision built from real Brazilian case reports. The corpus contains 2,892 cases drawn from 28 SciELO medical journals, spanning 18 specialties, and is structured as parallel Portuguese-English pairs. Each case supports four evaluation tasks: diagnosis retrieval, differential diagnosis, exam recommendation, and treatment planning. We evaluate four models: MedGemma-27B, Sabiá-4, DeepSeek-R1, and o3-mini, across both languages. The central finding is that the Portuguese-English performance gap is task-dependent, not general. In diagnosis retrieval, English yields a consistent advantage across all models, with +7.5-12.1 accuracy points. This advantage disappears in differential diagnosis, exam recommendation, and treatment planning, where confidence intervals cross zero for most models and Portuguese completeness scores are marginally higher. Brazilian-endemic conditions proved easier than the full corpus, not harder, indicating that tropical presentations are adequately represented in current pre-training. Exam recommendation was the hardest task across all models and both languages, with F1 scores below 0.10, well below the differential diagnosis ceiling of 0.20-0.27.",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "primary_category": "cs.CL",
+      "abs_url": "http://arxiv.org/abs/2606.07853v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.07853v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "本文提出了ClinicalBr，首个基于真实巴西病例的双语临床决策基准，包含2892个案例，支持诊断检索、鉴别诊断、检查推荐和治疗规划四项任务。评估发现英语在诊断检索上一致领先，但其他任务上语言差距消失，且巴西地方病表现优于全量数据，检查推荐任务难度最高。",
+      "core_method": "构建并评估了一个葡萄牙语-英语双语临床推理基准ClinicalBr，采用多任务测评框架分析不同语言下的模型性能差距。",
+      "innovation_points": [
+        "首个基于巴西真实病例的双语临床决策基准ClinicalBr，覆盖18个专科的2892个案例",
+        "发现语言性能差距具有任务依赖性，而非普遍存在",
+        "揭示巴西地方病比全量数据更容易，表明热带疾病在预训练中已有充分表示"
+      ],
+      "experiment_results": [
+        "诊断检索任务中英语比葡萄牙语准确率高7.5-12.1个百分点",
+        "鉴别诊断、检查推荐和治疗规划任务上语言差异不显著，葡萄牙语在某些指标上略优",
+        "检查推荐是整体最难任务，所有模型和语言的F1值均低于0.10"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试",
+      "limitations": [
+        "病例来自SciELO期刊，可能未完全覆盖基层医疗场景",
+        "仅评估了四个模型，代表性可能不足"
+      ],
+      "practical_value": "为低资源语言临床LLM评估提供了可复用的基准，指导多语言医疗AI系统的开发与部署。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "6479f6ac90c7067f",
+      "tags": [
+        "Evaluation",
+        "Benchmark",
+        "Dataset",
+        "LLM4Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 4
+    },
+    {
+      "id": "arxiv:2606.07068",
+      "title": "Bias in Filter Feature Selection Evaluation: A Meta-Analysis of Datasets, Baselines, and Experimental Design Choices",
+      "authors": [
+        "Malick Ebiele",
+        "Malika Bendechache",
+        "Rob Brennan"
+      ],
+      "affiliations": [],
+      "published": "2026-06-05T09:06:56Z",
+      "updated": "2026-06-05T09:06:56Z",
+      "abstract": "Background: Since 1990 many feature selection methods have been proposed across heterogeneous applications. To validate the usefulness of a new method, it needs to be compared against at least one baseline method from the existing literature on a feature selection task using at least one dataset. Recent developments in tabular Deep Learning (DL) and data valuation in Machine Learning (ML) suggest that the evaluation of new methods, algorithms, and models may be consciously or unconsciously biased. We hypothesise that a similar trend exists in feature selection (FS), particularly in filter feature selection (FFS). The aim of this study is therefore to examine FFS studies to identify factors that influence the evaluation and that might consist entry point for biases in order to recommend stronger principles for FFS evaluation. Methods: We analyse a sample of 28 high profile FFS studies published between 1994 and 2025. The analysis provides reflections on how to examine FFS studies, highlights lessons learned throughout the process, and gives five evidence-based recommendations for future FFS evaluation. Results: Multivariate Linear Regression analysis achieved a score of $R^2=0.33$. It means that 33% of the variance in the performance of new methods against chosen baselines (win rate) is explained by the number of datasets (#Datasets), the number of baselines (#Baselines), and the number of new methods (#NewMethods). Discussion: $R^2=0.33$ is considered medium explanation; which is promising given that this is the first such study. The medium explanation result is due to the fact that win rate is influenced by additional factors such as the maturity of the feature selection domain, the type of datasets and baselines, and the simplicity of the regression model used to explain the relationship.",
+      "categories": [
+        "cs.LG"
+      ],
+      "primary_category": "cs.LG",
+      "abs_url": "http://arxiv.org/abs/2606.07068v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.07068v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "该论文对28项高影响力过滤式特征选择研究进行元分析，发现数据集数量、基线数量和新方法数量可解释33%的胜率方差，表明现有评估存在偏差，并提出五项改进建议。",
+      "core_method": "通过多元线性回归分析28项过滤式特征选择研究，量化数据集数量、基线数量和新方法数量对胜率的影响。",
+      "innovation_points": [
+        "首次对过滤式特征选择评估进行元分析，揭示评估因素与胜率的定量关系",
+        "提出win rate和success rate两项元评估指标，量化报告偏差",
+        "基于分析结果给出五项强化评估原则的循证建议"
+      ],
+      "experiment_results": [
+        "多元线性回归模型R²=0.33，解释33%的胜率方差",
+        "胜率受数据集数量、基线数量和新方法数量显著影响",
+        "中等解释力表明还存在其他偏差来源如领域成熟度和数据集类型"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "分析样本限于28项高影响力研究，可能无法完全代表所有过滤式特征选择文献",
+        "R²=0.33为中等解释力，剩余方差可能受未建模因素影响"
+      ],
+      "practical_value": "为过滤式特征选择方法的评估提供具体改进建议，有助于增强评估的可靠性和可重复性。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "d7072a43985954e3",
+      "tags": [
+        "Evaluation"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 4
     }
   ]
 }

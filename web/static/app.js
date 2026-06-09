@@ -13,9 +13,6 @@
     var tagState = React.useState("All");
     var tag = tagState[0];
     var setTag = tagState[1];
-    var sourceState = React.useState("All");
-    var source = sourceState[0];
-    var setSource = sourceState[1];
     var venueState = React.useState("All");
     var venue = venueState[0];
     var setVenue = venueState[1];
@@ -61,12 +58,6 @@
       },
       [papers]
     );
-    var sources = React.useMemo(
-      function () {
-        return unique(papers.map(function (paper) { return paper.source; }).filter(Boolean));
-      },
-      [papers]
-    );
     var venues = React.useMemo(
       function () {
         return unique(
@@ -87,7 +78,6 @@
             (paper.affiliations || []).join(" "),
             paper.generated_summary,
             paper.venue,
-            paper.source,
             (paper.tags || []).join(" ")
           ]
             .join(" ")
@@ -95,13 +85,12 @@
           return (
             (!needle || haystack.indexOf(needle) >= 0) &&
             (tag === "All" || (paper.tags || []).indexOf(tag) >= 0) &&
-            (source === "All" || paper.source === source) &&
             (venue === "All" || displayVenue(paper) === venue) &&
             (importanceFilter === "All" || paper.localMark === importanceFilter)
           );
         });
       },
-      [papers, query, tag, source, venue, importanceFilter]
+      [papers, query, tag, venue, importanceFilter]
     );
 
     var stats = buildStats(papers);
@@ -160,7 +149,6 @@
           placeholder: "搜索标题、作者、机构、标签..."
         }),
         h(FilterGroup, { label: "标签", value: tag, onChange: setTag, options: ["All"].concat(tags) }),
-        h(FilterGroup, { label: "来源", value: source, onChange: setSource, options: ["All"].concat(sources) }),
         h(FilterGroup, { label: "会议", value: venue, onChange: setVenue, options: ["All"].concat(venues) }),
         h(FilterGroup, {
           label: "重要性",
@@ -224,7 +212,6 @@
       h(
         "div",
         { className: "paperMeta" },
-        h("span", null, paper.source),
         h("span", null, displayVenue(paper) || paper.status),
         h("span", null, paper.published_date || (paper.published || "").slice(0, 10)),
         h("span", null, paper.analysis_basis === "full_text" ? "全文分析" : "元数据分析")

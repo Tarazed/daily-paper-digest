@@ -93,11 +93,13 @@ exclude_keywords = [
   "citation recommendation",
   "review recommendation"
 ]
-max_results = 80
-days_back = 14
+max_results = 50
+days_back = 7
 
 [dblp]
-enabled = true
+# DBLP only exposes year-level conference metadata for many records, so it is
+# disabled by default for the daily "recent papers" site.
+enabled = false
 venues = [
   "RecSys",
   "SIGIR",

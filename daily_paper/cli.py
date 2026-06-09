@@ -2,6 +2,7 @@ import argparse
 import datetime as _dt
 import json
 import os
+import re
 import sys
 from dataclasses import asdict
 from typing import List
@@ -127,32 +128,22 @@ def _send_command(args, config) -> int:
 def _site_data_command(args, config) -> int:
     limit = args.limit or config.site.default_limit
     previous_papers = _load_previous_site_papers(args.out)
-    try:
-        candidates = _load_ranked_papers(config, limit=limit * 2, enrich_results=False)
-        papers = _select_site_papers(candidates, limit)
-        current_paper_count = len(papers)
-        papers_to_analyze = _reuse_cached_site_analysis(papers, previous_papers, config.summary)
-        papers = enrich_papers(
-            papers,
-            config.enrichment,
-            llm_model=config.summary.model,
-            llm_base_url=config.summary.base_url,
-        )
-        print(
-            "Site analysis: reusing %d cached papers, analyzing %d new or changed papers."
-            % (len(papers) - len(papers_to_analyze), len(papers_to_analyze))
-        )
-        analyze_papers_for_site(papers_to_analyze, config.summary)
-        papers = _merge_site_history(papers, previous_papers)
-    except Exception as exc:
-        if not previous_papers:
-            raise
-        print(
-            "Warning: current paper search failed; reusing previous site data. %s" % exc,
-            file=sys.stderr,
-        )
-        papers = previous_papers
-        current_paper_count = 0
+    candidates = _load_ranked_papers(config, limit=limit * 2, enrich_results=False)
+    papers = _select_site_papers(candidates, limit)
+    current_paper_count = len(papers)
+    papers_to_analyze = _reuse_cached_site_analysis(papers, previous_papers, config.summary)
+    papers = enrich_papers(
+        papers,
+        config.enrichment,
+        llm_model=config.summary.model,
+        llm_base_url=config.summary.base_url,
+    )
+    print(
+        "Site analysis: reusing %d cached papers, analyzing %d new or changed papers."
+        % (len(papers) - len(papers_to_analyze), len(papers_to_analyze))
+    )
+    analyze_papers_for_site(papers_to_analyze, config.summary)
+    _clean_site_papers(papers)
     payload = {
         "generated_at": _dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
         "site": asdict(config.site),
@@ -235,21 +226,10 @@ def _analysis_api_key(provider: str) -> str:
 
 
 def _select_site_papers(papers, limit: int):
+    papers = [paper for paper in papers if paper.source == "arXiv"]
     if not limit:
         return papers
-    arxiv_target = max(1, int(round(limit * 0.7)))
-    arxiv = [paper for paper in papers if paper.source == "arXiv"]
-    dblp = [paper for paper in papers if paper.source == "DBLP"]
-    selected = arxiv[:arxiv_target] + dblp[: max(0, limit - arxiv_target)]
-    if len(selected) < limit:
-        selected_ids = {paper.id for paper in selected}
-        for paper in papers:
-            if paper.id not in selected_ids:
-                selected.append(paper)
-                selected_ids.add(paper.id)
-            if len(selected) >= limit:
-                break
-    return selected[:limit]
+    return papers[:limit]
 
 
 def _load_previous_site_papers(path: str) -> List[Paper]:
@@ -305,6 +285,32 @@ def _merge_site_history(current_papers: List[Paper], previous_papers: List[Paper
         merged.append(paper)
         seen.add(paper.id)
     return merged
+
+
+def _clean_site_papers(papers: List[Paper]) -> None:
+    import html
+
+    for paper in papers:
+        paper.title = _clean_display_text(paper.title, html)
+        paper.authors = [_clean_display_author(value, html) for value in paper.authors]
+        paper.affiliations = [_clean_display_text(value, html) for value in paper.affiliations]
+        paper.categories = [value for value in paper.categories if value != "DBLP"]
+        paper.generated_summary = _clean_display_text(paper.generated_summary, html)
+        paper.core_method = _clean_display_text(paper.core_method, html)
+        paper.innovation_points = [_clean_display_text(value, html) for value in paper.innovation_points]
+        paper.experiment_results = [_clean_display_text(value, html) for value in paper.experiment_results]
+        paper.ab_test_evidence = _clean_display_text(paper.ab_test_evidence, html)
+        paper.limitations = [_clean_display_text(value, html) for value in paper.limitations]
+        paper.practical_value = _clean_display_text(paper.practical_value, html)
+
+
+def _clean_display_text(value: str, html_module) -> str:
+    return html_module.unescape(str(value)).strip()
+
+
+def _clean_display_author(value: str, html_module) -> str:
+    text = _clean_display_text(value, html_module)
+    return re.sub(r"\s+\d{4}$", "", text).strip()
 
 
 def _paper_from_dict(values) -> Paper:

@@ -13,7 +13,7 @@ SAMPLE_DBLP = {
                         "authors": {
                             "author": [
                                 {"text": "Alice Zhang"},
-                                {"text": "Bob Lee"},
+                                {"text": "Bob Lee 0001"},
                             ]
                         },
                         "venue": "RecSys",

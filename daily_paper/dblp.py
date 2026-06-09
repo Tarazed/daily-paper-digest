@@ -113,7 +113,7 @@ def parse_toc_xml(body: bytes, venue: DblpVenueConfig) -> List[Paper]:
             Paper(
                 id="dblp:%s" % key,
                 title=title,
-                authors=[author.text.strip() for author in node.findall("author") if author.text],
+                authors=[_clean_author_name(author.text) for author in node.findall("author") if author.text],
                 affiliations=[],
                 published=_published_from_year(year),
                 updated=_published_from_year(year),
@@ -200,12 +200,16 @@ def _parse_authors(authors_value) -> List[str]:
             name = author
         value = str(name).strip()
         if value:
-            parsed.append(value)
+            parsed.append(_clean_author_name(value))
     return parsed
 
 
 def _clean_title(value: str) -> str:
     return re.sub(r"\s+", " ", value).strip().rstrip(".")
+
+
+def _clean_author_name(value: str) -> str:
+    return re.sub(r"\s+\d{4}$", "", re.sub(r"\s+", " ", str(value)).strip())
 
 
 def _is_non_paper_record(title: str, info: Dict[str, object]) -> bool:

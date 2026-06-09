@@ -30,7 +30,7 @@ def fetch_papers(config: ArxivConfig) -> List[Paper]:
         "sortOrder": "descending",
     }
     url = API_URL + "?" + urllib.parse.urlencode(params)
-    body = _fetch_feed_with_retries(url, timeout=20, attempts=2)
+    body = _fetch_feed_with_retries(url, timeout=45, attempts=4)
     return filter_recent(parse_feed(body), config.days_back)
 
 

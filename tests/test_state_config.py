@@ -32,7 +32,7 @@ top_n = 5
     assert config.arxiv.categories == ["cs.IR", "cs.CL"]
     assert config.email.default_to == "reader@example.com"
     assert config.email.top_n == 5
-    assert config.dblp.enabled is True
+    assert config.dblp.enabled is False
     assert config.dblp.venues[0].name == "RecSys"
     assert "ICLR" in [venue.name for venue in config.dblp.venues]
     assert "AAAI" in [venue.name for venue in config.dblp.venues]

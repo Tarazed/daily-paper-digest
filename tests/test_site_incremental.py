@@ -1,11 +1,7 @@
 import json
 from dataclasses import asdict
 
-from daily_paper.cli import (
-    _load_previous_site_papers,
-    _merge_site_history,
-    _reuse_cached_site_analysis,
-)
+from daily_paper.cli import _load_previous_site_papers, _reuse_cached_site_analysis
 from daily_paper.config import SummaryConfig
 from daily_paper.models import Paper
 from daily_paper.summarizer import expected_analysis_signature
@@ -95,15 +91,6 @@ def test_reuse_cached_site_analysis_accepts_legacy_complete_analysis():
     assert current.generated_summary == "深度摘要"
     assert current.analysis_status == "cached"
     assert current.analysis_signature == expected_analysis_signature(current, config)
-
-
-def test_merge_site_history_keeps_previous_papers_after_current():
-    current = [make_paper("arxiv:new")]
-    previous = [make_paper("arxiv:old"), make_paper("arxiv:new")]
-
-    merged = _merge_site_history(current, previous)
-
-    assert [paper.id for paper in merged] == ["arxiv:new", "arxiv:old"]
 
 
 def test_load_previous_site_papers_reads_existing_payload(tmp_path):

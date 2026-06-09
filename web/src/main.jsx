@@ -13,7 +13,6 @@ function App() {
   const [payload, setPayload] = useState(null);
   const [query, setQuery] = useState("");
   const [tag, setTag] = useState("All");
-  const [source, setSource] = useState("All");
   const [venue, setVenue] = useState("All");
   const [importanceFilter, setImportanceFilter] = useState("All");
   const [marks, setMarks] = useState(() => loadMarks());
@@ -37,7 +36,6 @@ function App() {
   }, [payload, marks]);
 
   const tags = useMemo(() => unique(papers.flatMap((paper) => paper.tags || [])), [papers]);
-  const sources = useMemo(() => unique(papers.map((paper) => paper.source).filter(Boolean)), [papers]);
   const venues = useMemo(() => unique(papers.map((paper) => displayVenue(paper)).filter(Boolean)), [papers]);
   const filtered = useMemo(() => {
     const needle = query.trim().toLowerCase();
@@ -48,7 +46,6 @@ function App() {
         (paper.affiliations || []).join(" "),
         paper.generated_summary,
         paper.venue,
-        paper.source,
         (paper.tags || []).join(" ")
       ]
         .join(" ")
@@ -56,12 +53,11 @@ function App() {
       return (
         (!needle || haystack.includes(needle)) &&
         (tag === "All" || (paper.tags || []).includes(tag)) &&
-        (source === "All" || paper.source === source) &&
         (venue === "All" || displayVenue(paper) === venue) &&
         (importanceFilter === "All" || paper.localMark === importanceFilter)
       );
     });
-  }, [papers, query, tag, source, venue, importanceFilter]);
+  }, [papers, query, tag, venue, importanceFilter]);
 
   const stats = useMemo(() => buildStats(papers), [papers]);
   const site = payload?.site || {};
@@ -105,7 +101,6 @@ function App() {
           placeholder="搜索标题、作者、机构、标签..."
         />
         <FilterGroup label="标签" value={tag} onChange={setTag} options={["All", ...tags]} />
-        <FilterGroup label="来源" value={source} onChange={setSource} options={["All", ...sources]} />
         <FilterGroup label="会议" value={venue} onChange={setVenue} options={["All", ...venues]} />
         <FilterGroup
           label="重要性"
@@ -156,7 +151,6 @@ function PaperCard({ paper, onMark }) {
       <p className="authors">{compactList(paper.authors, 8) || "Unknown authors"}</p>
       <p className="affiliations">{compactList(paper.affiliations, 4) || "Unknown affiliation"}</p>
       <div className="paperMeta">
-        <span>{paper.source}</span>
         <span>{displayVenue(paper) || paper.status}</span>
         <span>{paper.published_date || (paper.published || "").slice(0, 10)}</span>
         <span>{paper.analysis_basis === "full_text" ? "全文分析" : "元数据分析"}</span>
