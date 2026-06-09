@@ -40,6 +40,9 @@ top_n = 5
     assert "NeurIPS" in [venue.name for venue in config.dblp.venues]
     assert config.dblp.max_failures == 2
     assert config.dblp.max_total_results == 20
+    assert config.dblp.fallback_enabled is True
+    assert config.dblp.fallback_providers == ["openalex", "semantic_scholar"]
+    assert config.dblp.fallback_workers == 4
     assert config.summary.provider == "deepseek"
     assert config.summary.base_url == "https://api.deepseek.com"
     assert config.summary.model == "deepseek-v4-flash"

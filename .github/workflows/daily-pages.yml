@@ -38,6 +38,7 @@ jobs:
       - name: Build site data and GitHub Pages files
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
           DAILY_PAPER_LIMIT: "10"
           DAILY_PAPER_CONFIG: config.toml
         run: ./scripts/build_pages.sh

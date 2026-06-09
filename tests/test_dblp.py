@@ -1,5 +1,9 @@
 from daily_paper.config import DblpConfig, DblpVenueConfig
-from daily_paper.dblp import filter_dblp_papers, parse_results, parse_toc_xml
+from daily_paper.conference_sources import (
+    fetch_fallback_venue_papers,
+    fetch_semantic_scholar_venue_papers,
+)
+from daily_paper.dblp import fetch_venue_papers, filter_dblp_papers, parse_results, parse_toc_xml
 
 
 SAMPLE_DBLP = {
@@ -109,3 +113,81 @@ def test_parse_toc_xml_keeps_only_inproceedings_and_normalizes_venue():
     assert papers[0].venue_key == "RecSys"
     assert papers[0].doi == "10.1145/3705328.3748053"
     assert papers[0].authors == ["Alice Zhang", "Bob Lee"]
+
+
+def test_fetch_venue_papers_uses_fallback_when_dblp_fails(monkeypatch):
+    cfg = config()
+    calls = []
+
+    def fail_toc(venue, config):
+        calls.append("toc")
+        raise RuntimeError("blocked")
+
+    def fallback(venue, config):
+        calls.append("fallback")
+        return [
+            parse_results(SAMPLE_DBLP, DblpVenueConfig(name="RecSys", query="RecSys"))[0]
+        ]
+
+    monkeypatch.setattr("daily_paper.dblp.fetch_venue_toc_papers", fail_toc)
+    monkeypatch.setattr("daily_paper.dblp.fetch_fallback_venue_papers", fallback)
+
+    papers = fetch_venue_papers(DblpVenueConfig(name="RecSys", query="RecSys"), cfg)
+
+    assert calls == ["toc", "fallback"]
+    assert papers[0].title == "Generative Recommendation with Large Language Models"
+
+
+def test_semantic_scholar_fallback_maps_to_paper(monkeypatch):
+    cfg = config()
+    payload = {
+        "data": [
+            {
+                "paperId": "abc123",
+                "title": "Sequential Recommendation with LLM Agents.",
+                "abstract": "A recommender system paper.",
+                "authors": [{"name": "Alice Zhang"}],
+                "year": 2026,
+                "venue": "RecSys",
+                "url": "https://www.semanticscholar.org/paper/abc123",
+                "externalIds": {"DOI": "10.1145/fallback"},
+                "publicationVenue": {"name": "RecSys"},
+                "publicationDate": "2026-09-22",
+                "openAccessPdf": {"url": "https://example.com/paper.pdf"},
+            }
+        ]
+    }
+
+    monkeypatch.setattr("daily_paper.conference_sources._get_json", lambda *args, **kwargs: payload)
+
+    papers = fetch_semantic_scholar_venue_papers(DblpVenueConfig(name="RecSys", query="RecSys"), 2026, cfg)
+
+    assert papers[0].id == "s2:abc123"
+    assert papers[0].source == "Semantic Scholar"
+    assert papers[0].venue == "RecSys"
+    assert papers[0].doi == "10.1145/fallback"
+    assert papers[0].pdf_url == "https://example.com/paper.pdf"
+
+
+def test_fallback_source_order_dedupes_titles(monkeypatch):
+    cfg = config()
+    cfg.fallback_providers = ["semantic_scholar", "openalex"]
+    venue = DblpVenueConfig(name="RecSys", query="RecSys")
+
+    def s2(venue, year, config):
+        return [
+            parse_results(SAMPLE_DBLP, venue)[0]
+        ]
+
+    def openalex(venue, year, config):
+        paper = parse_results(SAMPLE_DBLP, venue)[0]
+        paper.id = "openalex:W1"
+        return [paper]
+
+    monkeypatch.setattr("daily_paper.conference_sources.fetch_semantic_scholar_venue_papers", s2)
+    monkeypatch.setattr("daily_paper.conference_sources.fetch_openalex_venue_papers", openalex)
+
+    papers = fetch_fallback_venue_papers(venue, cfg)
+
+    assert len(papers) == 1
+    assert papers[0].title == "Generative Recommendation with Large Language Models"

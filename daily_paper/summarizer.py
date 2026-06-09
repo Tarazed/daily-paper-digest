@@ -38,28 +38,53 @@ def summarize_papers(papers: List[Paper], config: SummaryConfig) -> List[Paper]:
             if not paper.tags:
                 paper.tags = infer_tags(paper)
         return papers
-    client = ChatCompletionClient(
-        api_key=api_key,
-        base_url=config.base_url,
-        model=config.model,
-        provider=config.provider,
-    )
-    for paper in papers:
+
+    def summarize_one(paper: Paper) -> Dict[str, object]:
+        client = ChatCompletionClient(
+            api_key=api_key,
+            base_url=config.base_url,
+            model=config.model,
+            provider=config.provider,
+        )
         try:
-            result = client.summarize(paper, language=config.language)
+            return client.summarize(paper, language=config.language)
         except Exception as exc:
             print(
                 "Warning: LLM summary failed for %s; using abstract fallback. %s"
                 % (paper.id, exc),
                 file=sys.stderr,
             )
-            result = {}
-        paper.generated_summary = result.get("summary") or fallback_summary(
-            paper.abstract, config.max_sentences
-        )
-        tags = result.get("tags") or []
-        paper.tags = _clean_tags(tags) or paper.tags or infer_tags(paper)
+            return {}
+
+    workers = max(1, int(config.summary_workers))
+    if workers == 1 or len(papers) <= 1:
+        for paper in papers:
+            _apply_summary_result(paper, summarize_one(paper), config)
+        return papers
+
+    with ThreadPoolExecutor(max_workers=min(workers, len(papers))) as executor:
+        futures = {executor.submit(summarize_one, paper): paper for paper in papers}
+        for future in as_completed(futures):
+            paper = futures[future]
+            try:
+                result = future.result()
+            except Exception as exc:
+                print(
+                    "Warning: LLM summary failed for %s; using abstract fallback. %s"
+                    % (paper.id, exc),
+                    file=sys.stderr,
+                )
+                result = {}
+            _apply_summary_result(paper, result, config)
     return papers
+
+
+def _apply_summary_result(paper: Paper, result: Dict[str, object], config: SummaryConfig) -> None:
+    paper.generated_summary = result.get("summary") or fallback_summary(
+        paper.abstract, config.max_sentences
+    )
+    tags = result.get("tags") or []
+    paper.tags = _clean_tags(tags) or paper.tags or infer_tags(paper)
 
 
 def analyze_papers_for_site(papers: List[Paper], config: SummaryConfig) -> List[Paper]:

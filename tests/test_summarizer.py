@@ -97,6 +97,41 @@ def test_summarize_papers_uses_deepseek_api_key(monkeypatch):
     assert paper.tags == ["LLM4Rec"]
 
 
+def test_summarize_papers_parallel_applies_all_results(monkeypatch):
+    papers = [make_paper(), make_paper()]
+    papers[1].id = "arxiv:2606.05678"
+    calls = []
+
+    def fake_summarize(self, paper, language="zh"):
+        calls.append(paper.id)
+        return {"summary": "模型摘要 " + paper.id, "tags": ["LLM4Rec"]}
+
+    monkeypatch.setenv("DEEPSEEK_API_KEY", "secret")
+    monkeypatch.setattr(ChatCompletionClient, "summarize", fake_summarize)
+
+    summarize_papers(
+        papers,
+        SummaryConfig(
+            provider="deepseek",
+            base_url="https://api.deepseek.com",
+            model="deepseek-v4-flash",
+            analysis_model="deepseek-v4-pro",
+            language="zh",
+            max_sentences=3,
+            full_text_max_chars=12000,
+            full_text_timeout_seconds=10,
+            analysis_workers=1,
+            summary_workers=2,
+        ),
+    )
+
+    assert sorted(calls) == ["arxiv:2606.01234", "arxiv:2606.05678"]
+    assert [paper.generated_summary for paper in papers] == [
+        "模型摘要 arxiv:2606.01234",
+        "模型摘要 arxiv:2606.05678",
+    ]
+
+
 def test_analyze_papers_for_site_uses_analysis_model(monkeypatch):
     paper = make_paper()
     models = []

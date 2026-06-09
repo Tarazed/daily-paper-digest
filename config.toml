@@ -190,6 +190,10 @@ years_back = 3
 timeout_seconds = 8
 max_failures = 3
 max_total_results = 50
+workers = 4
+fallback_enabled = true
+fallback_providers = ["openalex", "semantic_scholar"]
+fallback_workers = 4
 
 [email]
 sender_name = "Daily Paper Digest"
@@ -211,6 +215,7 @@ language = "zh"
 max_sentences = 3
 full_text_max_chars = 12000
 full_text_timeout_seconds = 15
+summary_workers = 4
 analysis_workers = 3
 
 [enrichment]

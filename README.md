@@ -49,7 +49,9 @@ Use `paper_state.toml` to mark important papers. Important papers are placed fir
 
 ## Sources
 
-The digest searches arXiv first, then optionally queries DBLP for recommendation-related top conference papers from RecSys, SIGIR, WWW, KDD, WSDM, CIKM, ICLR, AAAI, ICML, and NeurIPS. DBLP is a supplemental source; if the public DBLP search API returns repeated errors, the CLI logs warnings, skips the remaining DBLP venues, and continues with arXiv results.
+The digest searches arXiv first, then optionally queries DBLP for recommendation-related top conference papers from RecSys, SIGIR, WWW, KDD, WSDM, CIKM, ICLR, AAAI, ICML, and NeurIPS. DBLP is a supplemental source; if a DBLP venue query is unavailable or returns no matching records, the conference source automatically falls back to OpenAlex and Semantic Scholar, queries by venue/year plus recommendation keywords, then maps those results into the same `Paper` model.
+
+DBLP venue queries, fallback conference queries, and LLM summary/analysis calls are parallelized. Tune `dblp.workers`, `dblp.fallback_workers`, `summary.summary_workers`, and `summary.analysis_workers` in `config.toml` to balance speed against API rate limits. Semantic Scholar works without a key for light use, but setting `SEMANTIC_SCHOLAR_API_KEY` locally or as a GitHub Actions secret is recommended.
 
 ## GitHub Pages Website
 
@@ -101,6 +103,7 @@ Recommended GitHub deployment:
 1. Create a GitHub repository and push this project.
 2. In GitHub, open `Settings` -> `Secrets and variables` -> `Actions` and add:
    - `DEEPSEEK_API_KEY`: your DeepSeek API key. This is stored as a GitHub Actions secret and is not committed to the repository.
+   - `SEMANTIC_SCHOLAR_API_KEY`: optional, improves Semantic Scholar fallback reliability.
 3. Open `Settings` -> `Pages` and set:
    - Source: `GitHub Actions`
 4. Open `Actions` -> `Daily Paper Pages` and click `Run workflow` once to test it.

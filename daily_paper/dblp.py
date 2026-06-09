@@ -6,9 +6,11 @@ import sys
 import xml.etree.ElementTree as ET
 import urllib.parse
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Dict, Iterable, List
 
 from .config import DblpConfig, DblpVenueConfig
+from .conference_sources import fetch_fallback_venue_papers
 from .models import Paper
 
 API_URL = "https://dblp.org/search/publ/api"
@@ -29,6 +31,10 @@ VENUE_SLUGS = {
 def fetch_dblp_papers(config: DblpConfig) -> List[Paper]:
     if not config.enabled:
         return []
+    workers = max(1, int(max(config.workers, config.fallback_workers if config.fallback_enabled else 1)))
+    if workers > 1 and len(config.venues) > 1:
+        return _fetch_dblp_papers_parallel(config, workers)
+
     papers = []
     seen = set()
     failures = 0
@@ -53,11 +59,54 @@ def fetch_dblp_papers(config: DblpConfig) -> List[Paper]:
     return papers
 
 
+def _fetch_dblp_papers_parallel(config: DblpConfig, workers: int) -> List[Paper]:
+    venue_results = {}
+    failures = 0
+    with ThreadPoolExecutor(max_workers=min(workers, len(config.venues))) as executor:
+        futures = {executor.submit(fetch_venue_papers, venue, config): venue for venue in config.venues}
+        for future in as_completed(futures):
+            venue = futures[future]
+            try:
+                venue_results[venue.name] = future.result()
+            except Exception as exc:
+                failures += 1
+                print("Warning: DBLP fetch failed for %s. %s" % (venue.name, exc), file=sys.stderr)
+
+    if failures >= config.max_failures:
+        print("Warning: DBLP reached configured failure threshold.", file=sys.stderr)
+
+    papers = []
+    seen = set()
+    for venue in config.venues:
+        for paper in venue_results.get(venue.name, []):
+            if paper.id in seen:
+                continue
+            seen.add(paper.id)
+            papers.append(paper)
+            if len(papers) >= config.max_total_results:
+                return papers
+    return papers
+
+
 def fetch_venue_papers(venue: DblpVenueConfig, config: DblpConfig) -> List[Paper]:
-    toc_papers = fetch_venue_toc_papers(venue, config)
-    if toc_papers:
-        return filter_dblp_papers(toc_papers, config)
-    return fetch_venue_search_papers(venue, config)
+    try:
+        toc_papers = fetch_venue_toc_papers(venue, config)
+        if toc_papers:
+            return filter_dblp_papers(toc_papers, config)
+        search_papers = fetch_venue_search_papers(venue, config)
+        if search_papers:
+            return search_papers
+    except Exception as exc:
+        if not config.fallback_enabled:
+            raise
+        print("Warning: DBLP unavailable for %s; trying fallback sources. %s" % (venue.name, exc), file=sys.stderr)
+    fallback_papers = fetch_fallback_venue_papers(venue, config)
+    if fallback_papers:
+        print(
+            "Info: using %d fallback conference papers for %s." % (len(fallback_papers), venue.name),
+            file=sys.stderr,
+        )
+    return fallback_papers
 
 
 def fetch_venue_search_papers(venue: DblpVenueConfig, config: DblpConfig) -> List[Paper]:

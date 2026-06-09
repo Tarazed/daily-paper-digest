@@ -1,5 +1,5 @@
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import List
 
 from . import simple_toml
@@ -38,6 +38,10 @@ class DblpConfig:
     timeout_seconds: int
     max_failures: int
     max_total_results: int
+    workers: int = 4
+    fallback_enabled: bool = True
+    fallback_providers: List[str] = field(default_factory=lambda: ["openalex", "semantic_scholar"])
+    fallback_workers: int = 4
 
 
 @dataclass
@@ -51,6 +55,7 @@ class SummaryConfig:
     full_text_max_chars: int
     full_text_timeout_seconds: int
     analysis_workers: int
+    summary_workers: int = 4
 
 
 @dataclass
@@ -144,6 +149,10 @@ def load_config(path: str = "config.toml") -> AppConfig:
             timeout_seconds=int(dblp.get("timeout_seconds", 4)),
             max_failures=int(dblp.get("max_failures", 2)),
             max_total_results=int(dblp.get("max_total_results", 20)),
+            workers=int(dblp.get("workers", 4)),
+            fallback_enabled=bool(dblp.get("fallback_enabled", True)),
+            fallback_providers=list(dblp.get("fallback_providers", ["openalex", "semantic_scholar"])),
+            fallback_workers=int(dblp.get("fallback_workers", 4)),
         ),
         email=EmailConfig(
             sender_name=str(email.get("sender_name", "Daily Paper Digest")),
@@ -161,6 +170,7 @@ def load_config(path: str = "config.toml") -> AppConfig:
             full_text_max_chars=int(summary.get("full_text_max_chars", 12000)),
             full_text_timeout_seconds=int(summary.get("full_text_timeout_seconds", 10)),
             analysis_workers=int(summary.get("analysis_workers", 3)),
+            summary_workers=int(summary.get("summary_workers", 4)),
         ),
         enrichment=EnrichmentConfig(
             enabled=bool(enrichment.get("enabled", True)),
