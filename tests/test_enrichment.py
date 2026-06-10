@@ -113,3 +113,26 @@ def test_extract_tex_affiliations_removes_email_tail():
     assert affiliations == [
         "Institute of Information Engineering, Chinese Academy of Sciences, Beijing, China"
     ]
+
+
+def test_extract_tex_affiliations_from_author_blocks():
+    tex = r"""
+\author{Alice Zhang\\Tsinghua University\\alice@example.com \and
+Bob Lee\\Google DeepMind}
+"""
+
+    affiliations = extract_tex_affiliations(tex)
+
+    assert "Tsinghua University" in affiliations
+    assert "Google DeepMind" in affiliations
+
+
+def test_extract_tex_affiliations_from_ieee_author_block():
+    tex = r"""
+\author{\IEEEauthorblockN{Alice Zhang}
+\IEEEauthorblockA{Department of Computer Science\\Stanford University}}
+"""
+
+    affiliations = extract_tex_affiliations(tex)
+
+    assert any("Stanford University" in affiliation for affiliation in affiliations)

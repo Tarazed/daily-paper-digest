@@ -1,7 +1,12 @@
 import json
 from dataclasses import asdict
 
-from daily_paper.cli import _load_previous_site_papers, _merge_site_history, _reuse_cached_site_analysis
+from daily_paper.cli import (
+    _load_previous_site_papers,
+    _merge_site_history,
+    _reuse_cached_site_analysis,
+    _select_site_papers,
+)
 from daily_paper.config import SummaryConfig
 from daily_paper.models import Paper
 from daily_paper.summarizer import expected_analysis_signature
@@ -121,3 +126,18 @@ def test_merge_site_history_keeps_current_first_and_preserves_older_papers():
         "arxiv:2606.00001",
     ]
     assert merged[1].title == "Updated current paper"
+
+
+def test_select_site_papers_keeps_conference_papers():
+    papers = [make_paper("arxiv:%s" % index, "Arxiv paper %s" % index) for index in range(10)]
+    conference = make_paper("dblp:conf/recsys/Sample26", "Conference recommendation paper")
+    conference.source = "DBLP"
+    conference.status = "conference"
+    conference.venue = "RecSys"
+    conference.venue_key = "RecSys"
+    papers.append(conference)
+
+    selected = _select_site_papers(papers, limit=10)
+
+    assert len(selected) == 10
+    assert any(paper.id == "dblp:conf/recsys/Sample26" for paper in selected)

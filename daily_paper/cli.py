@@ -233,10 +233,41 @@ def _analysis_api_key(provider: str) -> str:
 
 
 def _select_site_papers(papers, limit: int):
-    papers = [paper for paper in papers if paper.source == "arXiv"]
     if not limit:
         return papers
-    return papers[:limit]
+    selected = list(papers[:limit])
+    conference_papers = [paper for paper in papers if _is_conference_paper(paper)]
+    if not conference_papers:
+        return selected
+
+    target_conference_count = min(len(conference_papers), max(1, min(5, limit // 5)))
+    selected_ids = {paper.id for paper in selected}
+    selected_conference_count = sum(1 for paper in selected if _is_conference_paper(paper))
+    if selected_conference_count >= target_conference_count:
+        return selected
+
+    for conference_paper in conference_papers:
+        if selected_conference_count >= target_conference_count:
+            break
+        if conference_paper.id in selected_ids:
+            continue
+        for index in range(len(selected) - 1, -1, -1):
+            if _is_conference_paper(selected[index]):
+                continue
+            selected_ids.discard(selected[index].id)
+            selected[index] = conference_paper
+            selected_ids.add(conference_paper.id)
+            selected_conference_count += 1
+            break
+    return selected
+
+
+def _is_conference_paper(paper: Paper) -> bool:
+    return (
+        paper.status == "conference"
+        or paper.source in ("DBLP", "OpenAlex", "Semantic Scholar")
+        or bool(paper.venue_key)
+    )
 
 
 def _load_previous_site_papers(path: str) -> List[Paper]:

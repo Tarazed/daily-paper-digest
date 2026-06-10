@@ -178,7 +178,7 @@ def load_config(path: str = "config.toml") -> AppConfig:
             mailto=str(enrichment.get("mailto", "")),
             max_results=int(enrichment.get("max_results", 3)),
             source_enabled=bool(enrichment.get("source_enabled", True)),
-            source_max_papers=int(enrichment.get("source_max_papers", 5)),
+            source_max_papers=int(enrichment.get("source_max_papers", 30)),
             source_timeout_seconds=int(enrichment.get("source_timeout_seconds", 8)),
         ),
         site=SiteConfig(

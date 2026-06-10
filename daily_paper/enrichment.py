@@ -101,11 +101,25 @@ def lookup_arxiv_source_affiliations(
 def extract_tex_affiliations(tex: str) -> List[str]:
     text = _strip_tex_comments(tex)
     values = []
-    command_names = ["affiliation", "affil", "institute", "institution", "orgname", "address"]
+    command_names = [
+        "affiliation",
+        "affil",
+        "institute",
+        "institution",
+        "orgname",
+        "orgdiv",
+        "orgaddress",
+        "address",
+        "affaddr",
+        "IEEEauthorblockA",
+    ]
     for command in command_names:
         for value in _extract_braced_command_values(text, command):
             if _looks_like_affiliation(value):
                 _append_unique(values, _clean_tex(value))
+    for value in _extract_braced_command_values(text, "author"):
+        for candidate in _extract_author_block_affiliations(value):
+            _append_unique(values, candidate)
     for value in _extract_braced_command_values(text, "thanks"):
         if _looks_like_affiliation(value):
             _append_unique(values, _clean_tex(value))
@@ -310,18 +324,57 @@ def _looks_like_affiliation(value: str) -> bool:
         "lab",
         "department",
         "academy",
+        "polytechnic",
+        "research",
         "centre",
         "center",
+        "cnrs",
+        "inria",
+        "eth ",
+        "epfl",
+        "kaist",
+        "mit ",
+        "stanford",
         "corporation",
         "google",
+        "deepmind",
         "microsoft",
         "meta",
+        "openai",
         "amazon",
+        "apple",
+        "nvidia",
+        "huawei",
+        "baidu",
         "alibaba",
         "tencent",
         "bytedance",
     ]
     return any(marker in cleaned for marker in markers)
+
+
+def _extract_author_block_affiliations(value: str) -> List[str]:
+    text = value
+    text = re.sub(r"\\\\|\\newline|\\par|\\and\b", "\n", text)
+    text = re.sub(r"\\(?:inst|textsuperscript|thanks|email|url|href)\s*(?:\[[^\]]*\])?\{[^{}]*\}", " ", text)
+    text = re.sub(r"[A-Za-z0-9._%+\-]+(?:\\?\s*)?@[\w.\-]+", " ", text)
+    candidates = []
+    for line in text.splitlines():
+        candidate = _clean_tex_preserving_block_text(line)
+        if not candidate or not _looks_like_affiliation(candidate):
+            continue
+        _append_unique(candidates, candidate)
+    return candidates
+
+
+def _clean_tex_preserving_block_text(value: str) -> str:
+    cleaned = value
+    cleaned = re.sub(r"\\[a-zA-Z]+\*?(?:\[[^\]]*\])?", " ", cleaned)
+    cleaned = re.sub(r"[{}$^_~\\]", " ", cleaned)
+    cleaned = cleaned.replace("\\&", "&")
+    cleaned = re.sub(r"\s+", " ", cleaned)
+    cleaned = re.sub(r"\s*,\s*", ", ", cleaned)
+    return cleaned.strip(" ,;")
 
 
 def _dedupe(values: List[str]) -> List[str]:

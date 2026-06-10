@@ -97,9 +97,8 @@ max_results = 50
 days_back = 7
 
 [dblp]
-# DBLP only exposes year-level conference metadata for many records, so it is
-# disabled by default for the daily "recent papers" site.
-enabled = false
+# Conference metadata is merged into the site alongside recent arXiv papers.
+enabled = true
 venues = [
   "RecSys",
   "SIGIR",
@@ -224,5 +223,5 @@ provider = "openalex"
 mailto = ""
 max_results = 3
 source_enabled = true
-source_max_papers = 5
+source_max_papers = 30
 source_timeout_seconds = 10

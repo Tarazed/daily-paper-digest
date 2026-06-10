@@ -48,7 +48,7 @@ top_n = 5
     assert config.summary.model == "deepseek-v4-flash"
     assert config.summary.analysis_model == "deepseek-v4-pro"
     assert config.enrichment.enabled is True
-    assert config.enrichment.source_max_papers == 5
+    assert config.enrichment.source_max_papers == 30
     assert config.site.title == "Daily Paper Digest"
 
 
