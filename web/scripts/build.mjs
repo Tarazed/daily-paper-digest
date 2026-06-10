@@ -1,4 +1,5 @@
 import esbuild from "esbuild";
+import crypto from "crypto";
 import fs from "fs";
 import path from "path";
 
@@ -26,6 +27,10 @@ await esbuild.build({
 });
 
 copyFileIfExists(path.join(publicDir, "papers.json"), path.join(docsDir, "papers.json"));
+const assetVersion = assetVersionFor([
+  path.join(assetsDir, "app.js"),
+  path.join(assetsDir, "app.css")
+]);
 
 fs.writeFileSync(
   path.join(docsDir, "index.html"),
@@ -35,11 +40,11 @@ fs.writeFileSync(
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Daily Paper Digest</title>
-    <link rel="stylesheet" href="./assets/app.css" />
+    <link rel="stylesheet" href="./assets/app.css?v=${assetVersion}" />
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="./assets/app.js"></script>
+    <script type="module" src="./assets/app.js?v=${assetVersion}"></script>
   </body>
 </html>
 `,
@@ -53,4 +58,12 @@ function copyFileIfExists(from, to) {
     fs.mkdirSync(path.dirname(to), { recursive: true });
     fs.copyFileSync(from, to);
   }
+}
+
+function assetVersionFor(files) {
+  const hash = crypto.createHash("sha256");
+  for (const file of files) {
+    hash.update(fs.readFileSync(file));
+  }
+  return hash.digest("hex").slice(0, 12);
 }

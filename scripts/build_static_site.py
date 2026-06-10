@@ -1,5 +1,6 @@
 import os
 import shutil
+import hashlib
 
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -12,8 +13,11 @@ def main():
     if os.path.exists(DOCS):
         shutil.rmtree(DOCS)
     os.makedirs(os.path.join(DOCS, "assets"))
-    shutil.copyfile(os.path.join(STATIC, "app.js"), os.path.join(DOCS, "assets", "app.js"))
-    shutil.copyfile(os.path.join(STATIC, "styles.css"), os.path.join(DOCS, "assets", "styles.css"))
+    app_source = os.path.join(STATIC, "app.js")
+    styles_source = os.path.join(STATIC, "styles.css")
+    asset_version = _asset_version([app_source, styles_source])
+    shutil.copyfile(app_source, os.path.join(DOCS, "assets", "app.js"))
+    shutil.copyfile(styles_source, os.path.join(DOCS, "assets", "styles.css"))
     shutil.copyfile(os.path.join(PUBLIC, "papers.json"), os.path.join(DOCS, "papers.json"))
     with open(os.path.join(DOCS, "index.html"), "w", encoding="utf-8") as handle:
         handle.write(
@@ -23,20 +27,28 @@ def main():
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Daily Paper Digest</title>
-    <link rel="stylesheet" href="./assets/styles.css" />
+    <link rel="stylesheet" href="./assets/styles.css?v={asset_version}" />
   </head>
   <body>
     <div id="root"></div>
     <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
-    <script src="./assets/app.js"></script>
+    <script src="./assets/app.js?v={asset_version}"></script>
   </body>
 </html>
-"""
+""".format(asset_version=asset_version)
         )
     with open(os.path.join(DOCS, ".nojekyll"), "w", encoding="utf-8"):
         pass
     print("Built static site into %s" % DOCS)
+
+
+def _asset_version(paths):
+    digest = hashlib.sha256()
+    for path in paths:
+        with open(path, "rb") as handle:
+            digest.update(handle.read())
+    return digest.hexdigest()[:12]
 
 
 if __name__ == "__main__":
