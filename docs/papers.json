@@ -1,13 +1,18 @@
 {
-  "generated_at": "2026-06-09T16:27:00Z",
+  "generated_at": "2026-06-10T16:03:59Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
     "default_limit": 30
   },
   "analysis_enabled": true,
-  "current_limit": 30,
-  "current_paper_count": 30,
+  "analysis_cache": {
+    "reused": 6,
+    "analyzed": 4,
+    "source": "web/public/papers.json"
+  },
+  "current_limit": 10,
+  "current_paper_count": 10,
   "interests": {
     "arxiv_categories": [
       "cs.IR",
@@ -173,7 +178,7 @@
       ],
       "practical_value": "为生成式推荐系统提供了一种有效的概念遗忘方法，可应用于隐私保护、有害内容移除等场景，平衡遗忘与效用。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "a3e86d55109e3310",
       "tags": [
         "Generative Rec",
@@ -184,6 +189,63 @@
       "read_status": "unread",
       "notes": "",
       "score": 20
+    },
+    {
+      "id": "arxiv:2606.10375",
+      "title": "SIDInspector: A Mapping-First Diagnostic Resource for Semantic-ID Tokenizers",
+      "authors": [
+        "Jiandong Ding",
+        "Heng Chang",
+        "Huijie Qin",
+        "Tianying Liu"
+      ],
+      "affiliations": [],
+      "published": "2026-06-09T03:36:31Z",
+      "updated": "2026-06-09T03:36:31Z",
+      "abstract": "Semantic-ID (\\sid) tokenizers are increasingly reused as standalone artifacts in generative recommendation: an exported item-to-code mapping becomes the address space that a later sequence generator must use. These mappings rarely come with a common inspection interface, so coverage gaps, full-code aliasing, behaviorally weak prefixes, tail compression, and prefix fan-out are often found only after downstream training. We present \\tool, a mapping-first diagnostic resource for \\sid tokenizer artifacts. \\tool defines a small adapter contract over item mappings, metadata, interactions, and optional generator traces; validates the contract; and reports mapping-level probes for utilization, aliasing, neighborhood alignment, popularity allocation, and structural cost, with hooks for temporal churn and generator traces. \\tool reports inspectable artifact profiles before downstream leaderboard scores. The released resource covers four tokenizer artifact lines: a same-item GRID/RQ-KMeans-style and ReSID/GAOQ contrast on 23,742 Musical items, plus released LETTER and LC-Rec item-index artifacts. In the Musical contrast, the GRID-style feature-text export has 3,749 unique full codes and a 0.977 full-code aliasing rate, while ReSID/GAOQ is aliasing-free in its exported mapping. Yet the strongest prefix--co-occurrence alignment comes from a deterministic category-prefix control, not from either learned export row (0.447 versus 0.154 and 0.055--0.080), showing that addressability and behaviorally meaningful prefixes should be inspected separately. Cross-domain, fixed-reranker, and mechanism-probe checks support the same diagnostic direction: prefix alignment is a candidate-exposure signal, while final ranking quality remains a downstream model question.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.10375v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.10375v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "SIDInspector是一个针对语义ID分词器的映射优先诊断资源，定义了适配器契约并报告利用率、别名、邻域对齐等映射级探测指标，可在下游排行榜前揭示可检查的工件概况。实验对比了GRID和ReSID/GAOQ等分词器，发现最高前缀-共现对齐来自确定性类别前缀，而非学习到的导出行。该工具支持跨域固定重排序器检查，强调前缀对齐是候选曝光信号，最终排序质量仍然是下游模型问题。",
+      "core_method": "提出SIDInspector诊断资源，通过定义适配器契约对语义ID分词器的item-code映射进行多维度探测，无需下游训练即可评估映射质量。",
+      "innovation_points": [
+        "首次提出映射优先的语义ID分词器诊断框架，在下游模型训练前即可暴露映射质量缺陷",
+        "定义了统一的适配器契约，可覆盖利用率、别名、邻域对齐、流行度分配和结构成本等探测指标",
+        "发现前缀-共现对齐与编码地址能力应分开检查，最高对齐可能来自确定性规则而非学习表示"
+      ],
+      "experiment_results": [
+        "在23,742个音乐物品上，GRID风格分词器仅有3,749个唯一full-code，别名率0.977；ReSID/GAOQ无别名",
+        "确定性类别前缀实现了最高前缀-共现对齐（0.447），优于学习导出行（0.154和0.055-0.080）",
+        "跨域固定重排序器检查支持诊断方向：前缀对齐是候选曝光信号，最终排序质量仍由下游模型决定"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上 A/B 测试",
+      "limitations": [
+        "目前仅覆盖四种分词器工件线，尚未扩展到所有语义ID方法",
+        "诊断结果只反映映射级属性，最终推荐效果仍需下游模型验证"
+      ],
+      "practical_value": "为生成式推荐中语义ID分词器的选择、对比和调试提供统一、可复用的离线诊断工具，减少下游失败风险。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "787557af26e4bc3f",
+      "tags": [
+        "RecSys",
+        "Generative Rec",
+        "Evaluation",
+        "Benchmark"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 16
     },
     {
       "id": "arxiv:2606.08604",
@@ -197,44 +259,44 @@
       ],
       "affiliations": [],
       "published": "2026-06-07T12:31:26Z",
-      "updated": "2026-06-07T12:31:26Z",
+      "updated": "2026-06-09T13:50:48Z",
       "abstract": "Generative retrieval (GR) has become a scalable approach to candidate generation: each item is assigned a short hierarchical token sequence called a Semantic ID (SID), and the next item's SID is decoded autoregressively. A practical limitation is that the decoder's beam search optimizes the likelihood of token sequences, not the relevance of the underlying items. These objectives diverge when sequence likelihood is poorly calibrated due to beam search error accumulation, and when several items collapse onto a single SID and receive identical scores. We introduce Gryphon, an encoder-decoder generative recommendation architecture that adds a jointly trained item-level scoring component alongside SID generation, reusing the encoder's user representation computed in a single forward pass. Instead of ranking SIDs by accumulated token likelihood, Gryphon resolves each generated SID to its concrete items and re-scores those items directly, which sidesteps miscalibrated sequence scores and separates items that collide on the same identifier. On an industrial music service, with item-level scoring trained under a next-item-prediction objective, Gryphon attains the highest item-level Recall@1000, above the strongest baselines (+3.7% over vanilla GR and +2.5% over collision-resolved GR) at comparable parameter count and latency. Gryphon's item-level ranking also surpasses its beam-likelihood ranking of the same candidates (+4.2% gain), demonstrating the benefit of item-level scoring in GR. Deployed as the sole candidate source in a 7-day A/B test, Gryphon produced no statistically significant change in total listening time (+0.25%) while replacing a pipeline of more than 15 candidate generators and a separate preranking stage, substantially simplifying the candidate-generation system.",
       "categories": [
         "cs.IR"
       ],
       "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.08604v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.08604v1",
+      "abs_url": "http://arxiv.org/abs/2606.08604v2",
+      "pdf_url": "https://arxiv.org/pdf/2606.08604v2",
       "doi": "",
       "source": "arXiv",
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "Gryphon 提出一种统一的编码器-解码器生成式推荐架构，在生成语义ID（SID）的同时联合训练项目级评分模块（ILSM），以解决SID序列似然与项目相关性之间的结构不匹配问题。通过复用编码器用户表示，Gryphon 对波束搜索生成的SID解析出具体项目并重新评分，从而规避序列似然误校准和SID冲突。在工业音乐推荐平台上，Gryphon 离线 Recall@1000 优于基线（+3.7% over vanilla GR），且线上A/B测试在保持总收听时长无显著变化（+0.25%）的同时大幅简化候选生成流程。",
-      "core_method": "在生成式检索架构中增加联合训练的项目级评分模块，重用编码器输出对由SID解析得到的候选项目直接评分，避免依赖波束搜索的序列似然排序。",
+      "generated_summary": "Gryphon是一种编码器-解码器生成式推荐架构，在语义ID生成的同时增加了联合训练的条目级评分模块（ILSM），通过直接对生成的语义ID对应的具体条目进行重评分，解决了生成检索中序列似然与相关性目标不一致的问题。在工业音乐服务上，Gryphon以可比的参数规模和延迟实现了最高的条目级Recall@1000，并在A/B测试中替换了超过15个候选生成器的级联，显著简化了候选生成系统。",
+      "core_method": "Gryphon在编码器-解码器生成式检索框架中引入一个共享编码器用户表示的条目级评分模块（ILSM），与语义ID生成联合训练，最终通过ILSM对解码器生成的候选条目进行重排序，而非依赖波束搜索的序列似然。",
       "innovation_points": [
-        "提出统一架构，将SID生成与项目级评分联合训练，解耦项目排序与波束似然。",
-        "引入项目级评分模块（ILSM），复用编码器状态，以低计算开销实现项目级重排序。",
-        "在工业级测试中验证了项目级评分可超越SID级波束搜索的性能上限（+4.2% gain）。"
+        "提出在生成式检索中联合训练语义ID生成和条目级评分，解耦候选排序与序列似然，解决波束搜索目标与推荐相关性不匹配的问题。",
+        "通过共享编码器表示，在不显著增加参数和推理成本的情况下，实现条目级重评分，缓解语义ID碰撞和序列似然校准误差。",
+        "在工业级A/B测试中验证了单一候选源替代复杂多源管线并移除预排序阶段的可行性。"
       ],
       "experiment_results": [
-        "离线Recall@1000：Gryphon 达到0.8552，比 Vanilla GR 提升3.7%，比 collision-resolved GR 提升2.5%。",
-        "项目级评分比相同候选池的波束似然排序 Recall@1000 提升4.2%，说明项目级评分纠正了波束误校准。",
-        "线上A/B测试：Gryphon 作为唯一候选源，总收听时长变化+0.25%且不显著，活跃用户比例提升0.43%，未完成曲目减少1.3%，同时将候选源从15+个缩减为1个，并移除了预排序阶段。"
+        "离线实验中，Gryphon在Recall@1000上比Vanilla GR提升3.7%，比碰撞解析的GR提升2.5%，且条目级重排序得分比波束似然排序高4.2%。",
+        "在线A/B测试中，Gryphon作为唯一候选源，总收听时长变化+0.25%但不显著，同时活跃用户比例提升0.43%，未完成曲目减少1.3%。"
       ],
       "ab_test": "yes",
-      "ab_test_evidence": "在工业音乐推荐应用中进行了为期7天的线上A/B测试，Gryphon作为唯一候选源替换了包含超过15个候选生成器和预排序阶段的原有流程，总收听时长变化+0.25%无统计显著性。",
+      "ab_test_evidence": "论文明确描述了在工业音乐推荐服务上进行了为期7天的线上A/B测试，Gryphon作为处理组唯一的候选源，与超过15个候选生成器和预排序级联的对照组进行对比，并报告了总收听时长等指标。",
       "limitations": [
-        "离线实验未进行多随机种子显著性检验，增益仅超出经验方差估计。",
-        "ILSM仅使用项目ID特征，未利用项目内容特征，可能存在提升空间。"
+        "离线实验未进行多种子显著性测试，仅依据经验方差估计。",
+        "A/B测试仅7天，无法评估长期效果和模型稳定性。"
       ],
-      "practical_value": "Gryphon 能大幅简化工业推荐系统的候选生成管线，在保持线上核心指标稳定的同时降低系统复杂度和资源开销。",
+      "practical_value": "Gryphon提供了一种可落地的生成式推荐方案，能够在保持推荐质量的同时大幅简化工业级候选生成系统，减少工程复杂度和维护成本。",
       "analysis_basis": "full_text",
       "analysis_status": "complete",
-      "analysis_signature": "c3c5589a1d87c258",
+      "analysis_signature": "fdc6c7b4af740f03",
       "tags": [
         "Generative Rec",
-        "RecSys",
+        "LLM4Rec",
+        "Sequential Rec",
         "Evaluation"
       ],
       "importance": "normal",
@@ -293,7 +355,7 @@
       ],
       "practical_value": "为生成式推荐中应用GRPO提供了一种即插即用的自适应策略，在不修改模型结构和奖励模型的前提下，有效缓解噪声奖励带来的性能退化问题，可直接应用于工业级系统。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "df264ec0b683dbf9",
       "tags": [
         "RecSys",
@@ -352,7 +414,7 @@
       ],
       "practical_value": "为直播推荐提供了一种可实时适应内容变化并融入交互信号的解决方案，已大规模落地并带来显著业务收益。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "86b6fc3ce8e7439c",
       "tags": [
         "RecSys",
@@ -409,7 +471,7 @@
       ],
       "practical_value": "DREAM为冷启动物品推荐提供了一种无需重训练即可动态优化语义ID分配的方法，可直接集成到现有生成式推荐系统中。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "2c14ba0cb3f515e3",
       "tags": [
         "Generative Rec",
@@ -423,6 +485,75 @@
       "score": 16
     },
     {
+      "id": "arxiv:2606.11023",
+      "title": "Generative Archetype-Grounded Item Representations for Sequential Recommendation",
+      "authors": [
+        "Yifan Li",
+        "Jiahong Liu",
+        "Xinni Zhang",
+        "Hao Chen",
+        "Yankai Chen",
+        "Wenhao Yu",
+        "Jianting Chen",
+        "Irwin King"
+      ],
+      "affiliations": [
+        "The Chinese University of Hong Kong, Hong Kong, Hong Kong",
+        "Chinese University of Hong Kong",
+        "McGill University, Montreal, Canada",
+        "McGill University",
+        "Tongji University, Shanghai, China",
+        "Tongji University"
+      ],
+      "published": "2026-06-09T15:59:14Z",
+      "updated": "2026-06-09T15:59:14Z",
+      "abstract": "Sequential recommendation aims to predict users' next interaction with items by analyzing their historical behavior. However, the limited quality of item representations remains a critical bottleneck. While pre-trained large language models (LLMs) can provide rich semantic representations, existing approaches only rely on static encoding of fixed attributes, overlooking the crucial role of target audiences in defining item identity. Moreover, the semantic space struggles to reflect actual user behavior, resulting in a significant gap between semantic representations and behavioral patterns. To address these limitations, we propose GenAIR, a general framework that empowers sequential recommendation with Generative Archetype-grounded Item Representations. Specifically, we first leverage an LLM to analyze item metadata and infer textual description of the Archetype, which represents the conceptual profile of the item's ideal target audience. We then extract the corresponding embeddings in a single forward pass. Further, to ground these generative archetypes in real-world behavior, we introduce a behavioral calibration objective, which explicitly incorporates behavioral signals from actual interactions. This objective adjusts the structure of the embedding space to reflect empirical patterns. GenAIR enables seamless integration with most existing models while maintaining high efficiency. Comprehensive experiments conducted on three real-world datasets demonstrate that GenAIR significantly improves the performance of various sequential recommendation models and consistently outperforms state-of-the-art baseline approaches. Implementation codes are available at https://github.com/AI-Santiago/GenAIR.",
+      "categories": [
+        "cs.IR",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.11023v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.11023v1",
+      "doi": "10.1145/3774904.3792587",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "针对序列推荐中物品表示质量有限的问题，本文提出GenAIR框架。首先利用大语言模型分析物品元数据，生成理想目标受众的“原型”文本描述，并通过一次前向传播获取对应嵌入；然后引入行为校准目标，将语义表示与实际用户行为对齐，从而提升推荐性能。",
+      "core_method": "使用LLM生成物品的原型描述并提取表示，再通过行为校准损失将语义空间与真实交互行为对齐。",
+      "innovation_points": [
+        "提出基于LLM生成物品理想受众原型描述来增强物品表示，而非仅依赖静态属性编码。",
+        "设计行为校准目标，强制语义表示贴近实际用户行为模式，缓解语义空间与行为空间的差距。",
+        "框架即插即用，可与多数序列推荐模型无缝集成，计算高效（仅需单次前向传播）。"
+      ],
+      "experiment_results": [
+        "在三个真实数据集上，GenAIR均能显著提升多种序列推荐模型的性能（如SASRec、BERT4Rec等）。",
+        "与现有SOTA方法相比，GenAIR一致取得更优的Recall和NDCG。",
+        "消融实验验证了原型生成和行为校准两个组件的有效性。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试",
+      "limitations": [
+        "原型生成依赖LLM推理能力，可能受LLM质量和效率影响；行为校准目标需要足够的交互数据。",
+        "论文仅评估离线数据集，未验证线上真实场景性能。"
+      ],
+      "practical_value": "为序列推荐提供一种高效、可插拔的物品表示增强方案，能一致提升现有模型性能，具有广泛的应用潜力。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "46d80b9d35aad4d3",
+      "tags": [
+        "Sequential Rec",
+        "LLM4Rec",
+        "RecSys"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 10
+    },
+    {
       "id": "arxiv:2606.09082",
       "title": "Teach Multimodal Recommendation Model to See via Personalized Visual Extraction and Adaptive Learning",
       "authors": [
@@ -432,7 +563,10 @@
         "Daoguo Dong",
         "Yu-gang Jiang"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "Fudan University",
+        "Imperial College London"
+      ],
       "published": "2026-06-08T06:28:25Z",
       "updated": "2026-06-08T06:28:25Z",
       "abstract": "Multimodal sequential recommendation (MSR) incorporates textual and visual information to improve recommendation quality. However, recent studies and our empirical analysis show that visual features are often underutilized, thereby contributing far less than textual signals. We attribute this issue to two factors: insufficient visual representation learning (pretrained encoders fail to capture preference-relevant cues) and unbalanced visual-text optimization (textual features dominate the learning process). To address these issues, we propose Teach Multimodal Recommendation Model to See via Personalized Visual Extraction and Adaptive Learning (REVEAL), a plug-and-play framework that enhances visual representation learning and cross-modal optimization without modifying the original recommendation backbone. REVEAL consists of Feedback-Guided Visual Extraction (FVE), which refines prompt-guided visual extraction through task-level feedback, and Adaptive Visual Learning (AVL), which dynamically reweights visual learning to alleviate modality imbalance. Experiments on multiple real-world datasets and MSR backbones demonstrate that REVEAL consistently improves recommendation performance. Further analysis shows that these gains arise from more effective attention to preference-relevant visual regions and better visual utilization during training. The code is available at https://github.com/YutongLi2024/REVEAL.",
@@ -467,7 +601,7 @@
       ],
       "practical_value": "REVEAL可作为即插即用的模块集成到现有MSR模型中，有效提升视觉信号利用率和推荐精度，具有较高的工业应用潜力。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "9188c2900f8b9538",
       "tags": [
         "Sequential Rec",
@@ -532,7 +666,7 @@
       ],
       "practical_value": "为推荐算法选择提供了一套考虑数据集差异的排名工具，尤其在多业务场景或新数据集上线前，可快速筛选候选算法，降低实验成本。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "911c16433d2f517c",
       "tags": [
         "RecSys",
@@ -544,6 +678,62 @@
       "read_status": "unread",
       "notes": "",
       "score": 10
+    },
+    {
+      "id": "arxiv:2606.10907",
+      "title": "From Prompt to Purchase: How AI Brand Recommendations Move Consumers on the Open Web",
+      "authors": [
+        "Michael Iannelli",
+        "Alan Ai"
+      ],
+      "affiliations": [],
+      "published": "2026-06-09T14:16:48Z",
+      "updated": "2026-06-09T14:16:48Z",
+      "abstract": "When a conversational assistant recommends a brand to a user with no recent observed engagement, that user's same-name Google search rises +4.3 percentage points (pp) [3.1, 5.5], visits to the brand's own site +2.4 pp [1.4, 3.5], and brand-specific retailer-page visits +1.0 pp [0.3, 1.7] over matched backward placebos. Recovering that estimate is the work. The mention creates a brand exposure no web log attributes to the assistant, and the naive all-mention funnel that seems to measure it is confounded: many mentions are incidental references to brands the user already uses (\"your Netflix download\"), whose downstream visits are that existing customer's own behavior and surface as a brand-specific pre-trend. We measure off-platform response on a panel that joins opt-in clickstream to the same users' ChatGPT, Claude, and Gemini conversations, and isolate the effect with a pre-trend event study, a stance classifier, non-customer conditioning, and a within-response same-category control: incidental name-drops then move behavior far less (+1.8/+1.1/+0.3), and the named brand moves far more than unnamed same-category brands in the same response. The downstream path is mostly search-mediated and reaches both own sites and retailer pages, with a destination mix that tracks baseline brand-directed behavior rather than redirecting toward either. The design is observational and we do not observe transactions, so retail is purchase-adjacent. Standard referrer-based and last-click measurement miss this upstream exposure: assistants move observably-unengaged users into open-web brand navigation along a path attributed elsewhere.",
+      "categories": [
+        "cs.CY",
+        "cs.IR"
+      ],
+      "primary_category": "cs.CY",
+      "abs_url": "http://arxiv.org/abs/2606.10907v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.10907v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "该论文研究了对话式AI（ChatGPT、Claude、Gemini）的品牌推荐如何影响用户的开放式网络行为。通过将用户点击流数据与对话记录连接，发现对未近期互动用户的推荐能显著提升品牌搜索（+4.3pp）、网站访问（+2.4pp）和零售商页面访问（+1.0pp）。研究通过事件研究、立场分类和非客户条件化等方法，分离了偶然提及和现有客户行为的混淆效应，并揭示了这一影响主要通过搜索中介实现，且标准归因模型会忽略此上游曝光。",
+      "core_method": "利用连接点击流和对话记录的观察性面板数据，通过事件研究、立场分类和非客户条件化来估计对话AI品牌推荐对用户后续网络行为的因果效应。",
+      "innovation_points": [
+        "提出了一种在观察性约束下测量LLM生成的品牌曝光对离线行为影响的方法，并估计了类获取效应。",
+        "通过事件研究、立场分类和非客户条件化，分解了偶然提及和现有客户行为混淆，揭示了真正的推荐效应。",
+        "在零售测量中采用路径感知匹配，改进了仅基于主机匹配可能忽略的零售商页面访问测量。"
+      ],
+      "experiment_results": [
+        "对非客户推荐后，品牌搜索提升4.3个百分点，网站访问提升2.4个百分点，零售商页面访问提升1.0个百分点。",
+        "偶然提及品牌的行为效应要小得多（+1.8/+1.1/+0.3个百分点），且名称品牌效应远高于未命名的同类品牌。",
+        "下游路径主要受搜索中介，目的地混合跟踪基准品牌导向行为，而非重定向。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试，设计为观察性研究，无随机曝光。",
+      "limitations": [
+        "研究是观察性的，无法排除未观测混杂因素，且未观察实际交易，仅以零售商页面访问作为购买邻近指标。",
+        "面板数据细节（如大小）未公开，可能影响外部效度；行为定义的非客户可能包含离线购买用户。"
+      ],
+      "practical_value": "揭示了对话AI作为未记录的购物路径上游曝光的重要性，为营销归因和推荐系统效果测量提供了新视角和方法。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "c7b60cfa9b91c98c",
+      "tags": [
+        "RecSys",
+        "Conversational Rec",
+        "LLM4Rec",
+        "Evaluation"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 6
     },
     {
       "id": "arxiv:2606.05537",
