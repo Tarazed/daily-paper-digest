@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-10T16:56:30Z",
+  "generated_at": "2026-06-10T17:09:06Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
@@ -7,8 +7,8 @@
   },
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 9,
-    "analyzed": 1,
+    "reused": 6,
+    "analyzed": 4,
     "source": "web/public/papers.json"
   },
   "current_limit": 10,
@@ -188,7 +188,7 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 128
+      "score": 131
     },
     {
       "id": "arxiv:2606.08604",
@@ -248,7 +248,553 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
+      "score": 128
+    },
+    {
+      "id": "s2:db3ed14bfec6bbaa0fa0e371b47519b3b35c5b21",
+      "title": "Enhanced Cold-Start Sequential Recommendation with Causal Diffusion Preference Modeling",
+      "authors": [
+        "Hongsheng Dong",
+        "Haolong Xiang",
+        "Xiaolong Xu",
+        "Xuyun Zhang"
+      ],
+      "affiliations": [
+        "Nanjing University of Information Science and Technology, Nanjing, Jiangsu, China",
+        "Nanjing University of Information Science and Technology",
+        "Macquarie University, Sydney, New South Wales, Australia",
+        "Macquarie University"
+      ],
+      "published": "2026-02-21",
+      "updated": "2026-02-21",
+      "abstract": "Sequential recommendation has achieved remarkable success across various application domains due to its ability to capture dynamic user preferences. Therefore, its effectiveness significantly diminishes in user cold-start scenarios, where new users have limited or no interaction history. Current solutions typically design specialized model architectures to infer cold-start user preferences from auxiliary information, such as user attributes or social networks. However, such methods overlook compatibility with advanced sequential recommender models, preventing the efficient extraction of sequential features. To address this limitation, we propose CDMRec, a Causal Diffusion Preference Model for user cold-start sequential recommendation. CDMRec generates diffusion-based preference representations for cold-start users, which can be directly utilized by existing sequential recommendation models. The framework first constructs a Preference-Dominant Sequence (PDS) by isolating interactions most indicative of user interests, mitigating noise from irrelevant behaviors. Then, leveraging causal inference, CDMRec identifies key causal variables from PDS to condition the diffusion process, enabling the generation of personalized behavioral preferences. Extensive experiments on three public datasets demonstrate that CDMRec can be seamlessly integrated into mainstream sequential recommender models, yielding substantial performance gains in cold-start settings.",
+      "categories": [
+        "Semantic Scholar",
+        "WSDM"
+      ],
+      "primary_category": "WSDM",
+      "abs_url": "https://www.semanticscholar.org/paper/db3ed14bfec6bbaa0fa0e371b47519b3b35c5b21",
+      "pdf_url": "https://www.semanticscholar.org/paper/db3ed14bfec6bbaa0fa0e371b47519b3b35c5b21",
+      "doi": "10.1145/3773966.3778026",
+      "source": "Semantic Scholar",
+      "status": "conference",
+      "venue": "Web Search and Data Mining",
+      "venue_key": "WSDM",
+      "generated_summary": "现有序列推荐在冷启动场景下表现不佳，主流方案依赖辅助信息设计专用架构，但难以兼容先进序列模型。本文提出CDMRec，通过因果扩散生成冷启动用户偏好表征，可直接与现有序列推荐模型集成，并利用偏好主导序列与因果变量引导扩散过程，显著提升冷启动性能。",
+      "core_method": "CDMRec使用因果推断从偏好主导序列中提取关键变量，条件化扩散模型生成个性化偏好表征，供现有序列推荐器直接使用。",
+      "innovation_points": [
+        "提出偏好主导序列构建方法，过滤噪声交互以突出用户兴趣信号",
+        "利用因果推断识别关键因果变量，引导扩散过程生成冷启动用户偏好",
+        "模型无关的即插即用框架，可无缝集成主流序列推荐模型"
+      ],
+      "experiment_results": [
+        "在三个公开数据集上，CDMRec与多种主流序列推荐模型集成后，冷启动场景下性能显著提升",
+        "具体数值未在元数据中提供"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "元数据未提供关于计算开销或扩散过程效率的分析",
+        "未说明在非冷启动场景下是否引入额外成本或性能影响"
+      ],
+      "practical_value": "CDMRec提供了一种即插即用的冷启动增强方案，无需修改现有序列推荐模型即可部署，具有较高的实用价值。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "9319614c36018754",
+      "tags": [
+        "Sequential Rec",
+        "Generative Rec",
+        "RecSys"
+      ],
+      "llm_score": 85,
+      "llm_score_rationale": "发表于顶级会议WSDM，具有较高学术权威性；论文提出利用扩散模型生成冷启动用户的偏好表示，可集成到现有序列推荐模型，与生成式推荐相关；实验仅在三个公开数据集上进行离线验证，无线上A/B测试证据",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 128
+    },
+    {
+      "id": "openalex:W4405300788",
+      "title": "MRP-LLM: Multitask Reflective Large Language Models for Privacy-Preserving Next POI Recommendation",
+      "authors": [
+        "Zhigang Wu",
+        "Zhu Sun",
+        "Dongxia Wang",
+        "Lu Zhang",
+        "Jie Zhang",
+        "Yew-Soon Ong"
+      ],
+      "affiliations": [
+        "Nanyang Technological University, Singapore, Singapore",
+        "Nanyang Technological University",
+        "Singapore University of Technology and Design, Singapore, Singapore",
+        "Singapore University of Technology and Design",
+        "Zhejiang University, Hangzhou, Zhejiang, China",
+        "Zhejiang University",
+        "Chengdu University of Information Technology, Chengdu, Sichuan, China",
+        "Chengdu University of Information Technology"
+      ],
+      "published": "2026-06-01",
+      "updated": "2026-06-03T06:16:58.514037",
+      "abstract": "Large language models (LLMs) have shown promising potential for next Point-of-Interest (POI) recommendation. However, existing methods only perform direct zero-shot prompting, leading to ineffective extraction of user preferences, insufficient injection of collaborative signals, and a lack of user privacy protection. As such, we propose a novel Multitask Reflective Large Language Model for Privacy-preserving Next POI Recommendation (MRP-LLM), aiming to exploit LLMs for better next POI recommendation while preserving user privacy. Specifically, the Multitask Reflective Preference Extraction Module first utilizes LLMs to distill each user's fine-grained (i.e., categorical, temporal, and spatial) preferences into a knowledge base (KB). The Neighbor Preference Retrieval Module retrieves and summarizes the preferences of similar users from the KB to obtain collaborative signals. Subsequently, aggregating the user's preferences with those of similar users, the Multitask Next POI Recommendation Module generates the next POI recommendations via multitask prompting. Meanwhile, during data collection, a Privacy Transmission Module is specifically devised to preserve sensitive POI data. Extensive experiments on three real-world datasets demonstrate the efficacy of our proposed MRP-LLM in providing more accurate next POI recommendations with user privacy preserved.",
+      "categories": [
+        "OpenAlex",
+        "WSDM"
+      ],
+      "primary_category": "WSDM",
+      "abs_url": "https://doi.org/10.1145/3774935.3806151",
+      "pdf_url": "https://doi.org/10.1145/3774935.3806151",
+      "doi": "10.1145/3774935.3806151",
+      "source": "OpenAlex",
+      "status": "conference",
+      "venue": "WSDM",
+      "venue_key": "WSDM",
+      "generated_summary": "提出MRP-LLM，通过多任务反思大模型在隐私保护下提升下一POI推荐精度，包含偏好提取、邻居检索和多任务生成模块。实验证明该方法在三个数据集上有效。",
+      "core_method": "利用LLM进行多任务反思式偏好提取与邻居协同信号注入，并结合隐私传输模块实现隐私保护的下一POI推荐。",
+      "innovation_points": [
+        "设计多任务反思偏好提取模块，从类别、时间、空间三个细粒度层面提取用户偏好构建知识库。",
+        "提出邻居偏好检索模块，从相似用户中获取协同信号以增强LLM的推荐能力。",
+        "引入隐私传输模块，在数据收集阶段保护敏感POI数据。"
+      ],
+      "experiment_results": [
+        "在三个真实世界数据集上的实验表明，MRP-LLM在保护用户隐私的同时提供了更准确的下一POI推荐。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "论文未提供对计算开销和推理延迟的分析。",
+        "仅通过离线实验验证，缺乏线上部署和实时性能评估。"
+      ],
+      "practical_value": "为隐私敏感的POI推荐场景提供了一种利用LLM协同信号且保护隐私的可行方案。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "9e2863335eea556e",
+      "tags": [
+        "LLM4Rec",
+        "Sequential Rec"
+      ],
+      "llm_score": 82,
+      "llm_score_rationale": "发表在顶级会议WSDM（2026）；作者单位包括Nanyang Technological University等学术界，没有知名互联网公司；虽然有隐私保护相关，但主要聚焦于LLM在POI推荐中的多任务反思应用，与生成式推荐/语义ID强相关度较低",
+      "preference_signals": [
+        "Top venue",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
       "score": 121
+    },
+    {
+      "id": "s2:3ada3254c8182711e7624f32331147afa9074e3f",
+      "title": "Decoupling User Features for User Cold-Start App Recommendation: Static Attributes versus Behavioral Sequences",
+      "authors": [
+        "Bin Chen",
+        "Yu Kang",
+        "Li Ma",
+        "Yue Ding",
+        "Xiaofeng Gao"
+      ],
+      "affiliations": [
+        "School of Computer Science, Shanghai Jiao Tong University, Shanghai, China",
+        "Shanghai Jiao Tong University"
+      ],
+      "published": "2026-02-21",
+      "updated": "2026-02-21",
+      "abstract": "In app recommendation, user cold-start remains a fundamental challenge in recommender systems. Existing approaches primarily focus on efficiently leveraging limited data or transferring knowledge from active users to alleviate the user cold-start problem, yet they often overlook the influence of feature interactions on user cold-start. We group features according to their semantic types and identify an interesting phenomenon: user attribute features and behavioral sequence features interfere with each other, thereby constraining the model's ability to represent cold-start users effectively. We attribute this issue to differences in the latent space distributions and learning complexities of the two feature types, which hinder the model from accurately capturing cold-start users' interests. To address this challenge, we propose the AFIM architecture, which decouples the learning of user attribute and behavior sequential features. AFIM leverages a lightweight attention module to explicitly capture user interests from behavioral sequences, thereby reducing the learning burden on downstream recommendation networks. Additionally, it incorporates feature decoupling and dynamic fusion modules to mitigate learning bias arising from heterogeneous feature spaces. Extensive experiments on two public datasets and two industrial datasets demonstrate that AFIM consistently outperforms SOTA baselines, highlighting its effectiveness in user cold-start scenarios.",
+      "categories": [
+        "Semantic Scholar",
+        "WSDM"
+      ],
+      "primary_category": "WSDM",
+      "abs_url": "https://www.semanticscholar.org/paper/3ada3254c8182711e7624f32331147afa9074e3f",
+      "pdf_url": "https://www.semanticscholar.org/paper/3ada3254c8182711e7624f32331147afa9074e3f",
+      "doi": "10.1145/3773966.3778016",
+      "source": "Semantic Scholar",
+      "status": "conference",
+      "venue": "Web Search and Data Mining",
+      "venue_key": "WSDM",
+      "generated_summary": "针对应用推荐中的用户冷启动问题，发现用户静态属性与行为序列特征存在相互干扰，限制模型表示冷启动用户的能力。提出AFIM架构，解耦这两类特征的学习，结合轻量注意力模块与动态融合策略，有效捕捉冷启动用户兴趣。在两个公开和两个工业数据集上，AFIM均优于现有方法。",
+      "core_method": "通过解耦用户属性与行为序列特征学习并动态融合的AFIM架构",
+      "innovation_points": [
+        "发现并分析用户冷启动中静态属性与行为序列特征相互干扰的现象",
+        "提出AFIM架构，通过特征解耦和动态融合缓解异质特征空间带来的学习偏差",
+        "利用轻量注意力模块显式从行为序列中提取兴趣，降低下游网络学习负担"
+      ],
+      "experiment_results": [
+        "在两个公开数据集和两个工业数据集上，AFIM一致超越SOTA基线方法",
+        "在用户冷启动场景下效果尤为突出，验证了特征解耦的有效性"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未报告线上A/B测试或实际生产环境验证",
+        "未讨论不同冷启动程度或稀疏度下的鲁棒性"
+      ],
+      "practical_value": "为冷启动推荐提供了一种有效的特征解耦思路，可提升对冷启动用户的兴趣捕捉能力，具备工业应用潜力",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "69b132a82b2ebda6",
+      "tags": [
+        "RecSys"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "发表在WSDM顶会，符合高权重信号；作者单位含上海交通大学，非知名互联网公司，但有工业数据集实验；论文研究推荐系统的冷启动问题，与工业实践相关，但未涉及生成式推荐或语义ID",
+      "preference_signals": [
+        "Top venue",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 118
+    },
+    {
+      "id": "s2:1c168032d25046e6a304aa3ba40d04ce7f03b11b",
+      "title": "Third Workshop on Generative AI for Recommender Systems and Personalization",
+      "authors": [
+        "Narges Tabari",
+        "Aniket Deshmukh",
+        "Wang-Cheng Kang",
+        "Julian Mcauley",
+        "James Caverlee",
+        "Neil Shah",
+        "George Karypis"
+      ],
+      "affiliations": [
+        "AWS AI Labs, Santa Clara, CA, USA",
+        "Databricks, Santa Clara, CA, USA",
+        "Santa Clara University",
+        "Google DeepMind, Mountain View, CA, USA",
+        "Google (United States)",
+        "University of California San Diego, San Diego, CA, USA",
+        "University of California San Diego",
+        "Texas A&#38;M University, College Station, USA",
+        "Texas A&M University",
+        "Snap Inc., Seattle, WA, USA",
+        "Snap (United States)",
+        "University of Minnesota, Minneapolis, MN, USA",
+        "University of Minnesota"
+      ],
+      "published": "2026-02-21",
+      "updated": "2026-02-21",
+      "abstract": "Building personalized recommender systems and search experiences is a cornerstone of the modern data mining and applied machine learning (ML) community. Modern online platforms have a confluence of data including user-item interaction graphs, user and item-associated semantics (text, visual content, etc.), and metadata. Recent advancements in generative models and semantic encoders via large language models (LLMs), visual and audio encoders have significantly impacted research in relevant domains, enabling new directions in knowledge discovery and ability of models to better incorporate semantic context. These techniques are quickly advancing in the academic sphere, and adoption in industrial environments is growing. These advances force large questions about the future of search, recommendation and personalized experiences in the future. This workshop bridges the research gap between the use of generative models and recommendation for personalized systems. We will focus on topics spanning the interplay between such models and conventional personalized systems. Building upon the momentum of previous successful forums, we seek to engage a diverse audience from academia and industry, fostering a dialogue that incorporates fresh insights and anticipates over 100 attendees, including key stakeholders in the field.",
+      "categories": [
+        "Semantic Scholar",
+        "WSDM"
+      ],
+      "primary_category": "WSDM",
+      "abs_url": "https://www.semanticscholar.org/paper/1c168032d25046e6a304aa3ba40d04ce7f03b11b",
+      "pdf_url": "https://www.semanticscholar.org/paper/1c168032d25046e6a304aa3ba40d04ce7f03b11b",
+      "doi": "10.1145/3773966.3778018",
+      "source": "Semantic Scholar",
+      "status": "conference",
+      "venue": "Web Search and Data Mining",
+      "venue_key": "WSDM",
+      "generated_summary": "该研讨会聚焦生成式AI在推荐系统与个性化中的应用，探讨大语言模型等生成技术如何融合语义信息，推动个性化搜索与推荐的发展，并促进产学研交流。",
+      "core_method": "研讨会形式，无单一核心方法；汇集生成式AI与推荐系统交叉领域的前沿研究和工业实践。",
+      "innovation_points": [
+        "聚焦生成式模型（如LLM、视觉/音频编码器）与推荐系统的融合",
+        "探索语义上下文在个性化搜索和推荐中的新潜能",
+        "搭建学术界与工业界在生成式推荐系统上的对话桥梁"
+      ],
+      "experiment_results": [
+        "全文未提供具体实验结果或评测结论。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "研讨会摘要未提供具体研究的局限性信息。",
+        "无全文，无法评估所涵盖工作的局限。"
+      ],
+      "practical_value": "为推荐系统领域引入生成式AI的前沿视角，促进工业界采用大模型提升个性化体验。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "2da75d26afb38ed8",
+      "tags": [
+        "Generative Rec",
+        "LLM4Rec",
+        "RecSys"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "WSDM是顶级会议，且论文主题明确聚焦生成式推荐与个性化系统，与generative recommendation强相关。；作者单位包含Google DeepMind、AWS AI Labs、Snap Inc.等知名互联网公司，工业界背景强。；尽管是workshop论文，但涉及生成式模型在推荐中的应用，方向贴合，但无明确线上A/B实验证据，因此不给最高分。",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 118
+    },
+    {
+      "id": "dblp:conf/www/ZhuCJYWCZ26",
+      "title": "FeedGuard: Online Critic-Guided Reinforcement Learning with Privacy-Preserving Feedback for Recommendation",
+      "authors": [
+        "Mengying Zhu",
+        "Feiyue Chen",
+        "Lifan Jiang",
+        "Mengyuan Yang",
+        "Yangyang Wu",
+        "Guanjie Cheng",
+        "Xiaolin Zheng"
+      ],
+      "affiliations": [
+        "School of Software Technology, Zhejiang University, Ningbo, China",
+        "Ningbo University",
+        "Zhejiang University",
+        "Zhejiang University, Hangzhou, China"
+      ],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792155",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792155",
+      "doi": "10.1145/3774904.3792155",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出FeedGuard框架，结合在线评判与强化学习，实现隐私保护的反馈机制用于推荐系统。",
+      "core_method": "在线评判引导的强化学习并结合隐私保护反馈机制。",
+      "innovation_points": [
+        "引入在线评判器实时引导强化学习模型更新",
+        "设计隐私保护的用户反馈收集与利用方法",
+        "在推荐系统中融合在线强化学习与评判指导"
+      ],
+      "experiment_results": [
+        "全文未提供实验/评测结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "基于元数据无法确认方法的有效性及实验证据",
+        "隐私保护机制的实际效果和开销未知"
+      ],
+      "practical_value": "为推荐系统提供在线学习与隐私保护结合的解决方案，有望提升模型适应性和用户信任。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "afb2e7c1b77438a3",
+      "tags": [
+        "RecSys",
+        "Agent4Rec",
+        "LLM4Rec"
+      ],
+      "llm_score": 0,
+      "llm_score_rationale": "",
+      "preference_signals": [],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 116
+    },
+    {
+      "id": "dblp:conf/www/YuFLZWLWZW26",
+      "title": "ThinkRec: Thinking-based recommendation via LLM",
+      "authors": [
+        "Qihang Yu",
+        "Kairui Fu",
+        "Zheqi Lv",
+        "Shengyu Zhang",
+        "Xinhui Wu",
+        "Chen Lin",
+        "Feng Wei",
+        "Bo Zheng",
+        "Fei Wu"
+      ],
+      "affiliations": [
+        "Zhejiang University, Hangzhou, China",
+        "Zhejiang University",
+        "Ant Group, Hangzhou, China",
+        "Ant Group, Shanghai, China",
+        "Zhejiang University, Hangzhou, China and Shanghai AI Laboratory, Shanghai, China",
+        "Shanghai University"
+      ],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792070",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792070",
+      "doi": "10.1145/3774904.3792070",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "ThinkRec 提出了一种基于大语言模型的思考式推荐方法，旨在通过更深层次的推理过程生成推荐结果。该方法利用 LLM 的思考链能力来提升推荐的可解释性和准确性。论文发表于 WWW 2026，属于前沿的 LLM4Rec 研究。",
+      "core_method": "基于大语言模型的多步推理推荐方法，通过生成思考链来改进推荐质量。",
+      "innovation_points": [
+        "将 LLM 的思维链推理引入推荐系统，实现可解释的推荐生成",
+        "提出 ThinkRec 框架，通过多步思考过程捕捉用户意图和物品关系"
+      ],
+      "experiment_results": [
+        "由于无全文和摘要，具体的实验结果未提供。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "由于只有元数据，具体方法效果和局限未知，可能面临 LLM 推理成本和效率问题。"
+      ],
+      "practical_value": "ThinkRec 为推荐系统引入深度推理能力，有望提升复杂场景下的推荐解释性和准确性。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "8eeca4bfb07efef6",
+      "tags": [
+        "LLM4Rec",
+        "RecSys",
+        "Generative Rec"
+      ],
+      "llm_score": 0,
+      "llm_score_rationale": "",
+      "preference_signals": [],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 116
+    },
+    {
+      "id": "arxiv:2606.07075",
+      "title": "Beyond Matching: Category-Guided Latent Intent Reasoning for Generative Retrieval in E-Commerce",
+      "authors": [
+        "Fuwei Zhang",
+        "Xiaoyu Liu",
+        "Jiajie Jin",
+        "Jiale Mao",
+        "Wei Chen",
+        "Dongbo Xi",
+        "Yifan Yang",
+        "Peng Yan",
+        "Zichao Hao",
+        "Zhao Zhang",
+        "Fuzhen Zhuang"
+      ],
+      "affiliations": [
+        "Beihang University",
+        "Renmin University of China",
+        "Beijing Information Science and Technology University"
+      ],
+      "published": "2026-06-05T09:12:54Z",
+      "updated": "2026-06-05T09:12:54Z",
+      "abstract": "Generative retrieval offers a new paradigm for e-commerce search by mapping user queries directly to product Semantic Identifiers (SIDs). However, e-commerce queries are often short, noisy, attribute-heavy, and associated with multiple category-consistent products, creating a substantial representation gap between natural-language shopping intent and artificially constructed item SIDs. Explicit Chain-of-Thought (CoT) reasoning can help bridge this gap, but its extra generation cost is difficult to reconcile with the low-latency requirements of online e-commerce systems. To address this challenge, we propose CaLIR (Category-guided Latent Intent Reasoning), a category-guided latent intent reasoning framework for e-commerce generative retrieval. Rather than generating explicit textual rationales, CaLIR learns continuous latent intent states before SID decoding and uses product category hierarchies as a natural scaffold for coarse-to-fine intent reasoning. Specifically, we introduce hierarchical semantic reasoning to align latent states with category-level shopping intent, and query-wise reasoning enhancement to model diverse intent paths under multi-positive queries. CaLIR further combines a query-specific dynamic prefix trie, assembled from pre-indexed category-level tries, with reasoning-aware constrained decoding. Experiments on multilingual e-commerce search datasets show that CaLIR achieves a better balance between retrieval effectiveness and inference efficiency than existing methods, while also demonstrating transferability and robustness across induced hierarchies and different generative backbones.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.07075v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.07075v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "提出CaIR类别引导的隐式意图推理框架，用于电商生成式检索。方法利用类别层次结构进行由粗到细的隐式意图推理，替代显式思维链以降低生成开销。实验显示在检索效果与推理效率间取得更好平衡，并具备可迁移性与鲁棒性。",
+      "core_method": "通过类别层次引导的连续隐式意图状态学习，结合查询自适应的动态前缀树约束解码，实现高效隐式推理的生成式检索。",
+      "innovation_points": [
+        "提出隐式意图推理替代显式思维链，在不生成额外文本的情况下弥合查询与商品SID的语义鸿沟",
+        "利用产品类别层次作为自然脚手架，实现由粗到细的层次化语义推理",
+        "设计查询特定的动态前缀树与推理感知约束解码，提升推理效率与检索质量"
+      ],
+      "experiment_results": [
+        "在Amazon、JD等多语言电商数据集上，Recall@20最高提升8.2%，推理时间较显式CoT降低54%"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "仅在两个电商数据集上验证，未在其他领域或更广泛的任务上测试",
+        "依赖预先定义的类别层次，冷启动或层次不完善的场景可能影响效果"
+      ],
+      "practical_value": "为电商搜索提供低延迟、高效率的生成式检索方案，平衡效果与推理成本",
+      "analysis_basis": "full_text",
+      "analysis_status": "cached",
+      "analysis_signature": "26c14997c8cb5cf0",
+      "tags": [
+        "Generative Rec",
+        "LLM4Rec",
+        "Sequential Rec"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "论文明确针对电商搜索的生成式检索，使用语义ID (SID)，属于生成式推荐/语义ID强相关方向；作者单位包括北京航空航天大学、中国人民大学等，部分作者可能来自工业界但未明确指出知名互联网公司，缺乏明确工业界作者标注；发表于arXiv预印本，无顶会发表记录，且未提供线上A/B实验或在线实验证据",
+      "preference_signals": [
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 112
+    },
+    {
+      "id": "dblp:conf/www/LiuZHZZZ26",
+      "title": "Facilitating Generative Retrieval with Logical Denoising for Interpretable Conversational Search",
+      "authors": [
+        "Qichuan Liu",
+        "Chentao Zhang",
+        "Yuxuan Hu",
+        "Chenfeng Zheng",
+        "Qinggang Zhang",
+        "Zhihong Zhang"
+      ],
+      "affiliations": [
+        "Xiamen University, Xiamen, China",
+        "Xiamen University",
+        "The Hong Kong Polytechnic University, Hong Kong, China",
+        "Hong Kong Polytechnic University"
+      ],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792544",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792544",
+      "doi": "10.1145/3774904.3792544",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "本文提出了一种通过逻辑去噪促进生成式检索的方法，旨在实现可解释的对话式搜索。",
+      "core_method": "逻辑去噪生成式检索方法，用于提升对话搜索的可解释性。",
+      "innovation_points": [
+        "提出逻辑去噪机制以增强生成式检索的鲁棒性",
+        "实现对话式搜索过程的可解释性"
+      ],
+      "experiment_results": [
+        "论文元数据未提供实验评测结果。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "可能缺乏大规模实验验证",
+        "未明确说明去噪方法的适用范围"
+      ],
+      "practical_value": "可为对话搜索系统提供更可解释的检索结果，提升用户信任度。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "be6c50960e9a6c40",
+      "tags": [
+        "Generative Rec",
+        "Conversational Rec"
+      ],
+      "llm_score": 0,
+      "llm_score_rationale": "",
+      "preference_signals": [],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 112
     },
     {
       "id": "arxiv:2606.06947",
@@ -367,77 +913,6 @@
       "read_status": "unread",
       "notes": "",
       "score": 119
-    },
-    {
-      "id": "arxiv:2606.07075",
-      "title": "Beyond Matching: Category-Guided Latent Intent Reasoning for Generative Retrieval in E-Commerce",
-      "authors": [
-        "Fuwei Zhang",
-        "Xiaoyu Liu",
-        "Jiajie Jin",
-        "Jiale Mao",
-        "Wei Chen",
-        "Dongbo Xi",
-        "Yifan Yang",
-        "Peng Yan",
-        "Zichao Hao",
-        "Zhao Zhang",
-        "Fuzhen Zhuang"
-      ],
-      "affiliations": [
-        "Beihang University",
-        "Renmin University of China",
-        "Beijing Information Science and Technology University"
-      ],
-      "published": "2026-06-05T09:12:54Z",
-      "updated": "2026-06-05T09:12:54Z",
-      "abstract": "Generative retrieval offers a new paradigm for e-commerce search by mapping user queries directly to product Semantic Identifiers (SIDs). However, e-commerce queries are often short, noisy, attribute-heavy, and associated with multiple category-consistent products, creating a substantial representation gap between natural-language shopping intent and artificially constructed item SIDs. Explicit Chain-of-Thought (CoT) reasoning can help bridge this gap, but its extra generation cost is difficult to reconcile with the low-latency requirements of online e-commerce systems. To address this challenge, we propose CaLIR (Category-guided Latent Intent Reasoning), a category-guided latent intent reasoning framework for e-commerce generative retrieval. Rather than generating explicit textual rationales, CaLIR learns continuous latent intent states before SID decoding and uses product category hierarchies as a natural scaffold for coarse-to-fine intent reasoning. Specifically, we introduce hierarchical semantic reasoning to align latent states with category-level shopping intent, and query-wise reasoning enhancement to model diverse intent paths under multi-positive queries. CaLIR further combines a query-specific dynamic prefix trie, assembled from pre-indexed category-level tries, with reasoning-aware constrained decoding. Experiments on multilingual e-commerce search datasets show that CaLIR achieves a better balance between retrieval effectiveness and inference efficiency than existing methods, while also demonstrating transferability and robustness across induced hierarchies and different generative backbones.",
-      "categories": [
-        "cs.IR"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.07075v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.07075v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "提出CaIR类别引导的隐式意图推理框架，用于电商生成式检索。方法利用类别层次结构进行由粗到细的隐式意图推理，替代显式思维链以降低生成开销。实验显示在检索效果与推理效率间取得更好平衡，并具备可迁移性与鲁棒性。",
-      "core_method": "通过类别层次引导的连续隐式意图状态学习，结合查询自适应的动态前缀树约束解码，实现高效隐式推理的生成式检索。",
-      "innovation_points": [
-        "提出隐式意图推理替代显式思维链，在不生成额外文本的情况下弥合查询与商品SID的语义鸿沟",
-        "利用产品类别层次作为自然脚手架，实现由粗到细的层次化语义推理",
-        "设计查询特定的动态前缀树与推理感知约束解码，提升推理效率与检索质量"
-      ],
-      "experiment_results": [
-        "在Amazon、JD等多语言电商数据集上，Recall@20最高提升8.2%，推理时间较显式CoT降低54%"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "仅在两个电商数据集上验证，未在其他领域或更广泛的任务上测试",
-        "依赖预先定义的类别层次，冷启动或层次不完善的场景可能影响效果"
-      ],
-      "practical_value": "为电商搜索提供低延迟、高效率的生成式检索方案，平衡效果与推理成本",
-      "analysis_basis": "full_text",
-      "analysis_status": "complete",
-      "analysis_signature": "26c14997c8cb5cf0",
-      "tags": [
-        "Generative Rec",
-        "LLM4Rec",
-        "Sequential Rec"
-      ],
-      "llm_score": 75,
-      "llm_score_rationale": "论文明确针对电商搜索的生成式检索，使用语义ID (SID)，属于生成式推荐/语义ID强相关方向；作者单位包括北京航空航天大学、中国人民大学等，部分作者可能来自工业界但未明确指出知名互联网公司，缺乏明确工业界作者标注；发表于arXiv预印本，无顶会发表记录，且未提供线上A/B实验或在线实验证据",
-      "preference_signals": [
-        "Generative Rec / Semantic ID",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 117
     },
     {
       "id": "arxiv:2606.08480",
@@ -568,68 +1043,6 @@
       "read_status": "unread",
       "notes": "",
       "score": 110
-    },
-    {
-      "id": "dblp:conf/www/LiuZHZZZ26",
-      "title": "Facilitating Generative Retrieval with Logical Denoising for Interpretable Conversational Search",
-      "authors": [
-        "Qichuan Liu",
-        "Chentao Zhang",
-        "Yuxuan Hu",
-        "Chenfeng Zheng",
-        "Qinggang Zhang",
-        "Zhihong Zhang"
-      ],
-      "affiliations": [
-        "Xiamen University, Xiamen, China",
-        "Xiamen University",
-        "The Hong Kong Polytechnic University, Hong Kong, China",
-        "Hong Kong Polytechnic University"
-      ],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792544",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792544",
-      "doi": "10.1145/3774904.3792544",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "本文提出了一种通过逻辑去噪促进生成式检索的方法，旨在实现可解释的对话式搜索。",
-      "core_method": "逻辑去噪生成式检索方法，用于提升对话搜索的可解释性。",
-      "innovation_points": [
-        "提出逻辑去噪机制以增强生成式检索的鲁棒性",
-        "实现对话式搜索过程的可解释性"
-      ],
-      "experiment_results": [
-        "论文元数据未提供实验评测结果。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "可能缺乏大规模实验验证",
-        "未明确说明去噪方法的适用范围"
-      ],
-      "practical_value": "可为对话搜索系统提供更可解释的检索结果，提升用户信任度。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "be6c50960e9a6c40",
-      "tags": [
-        "Generative Rec",
-        "Conversational Rec"
-      ],
-      "llm_score": 0,
-      "llm_score_rationale": "",
-      "preference_signals": [],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 107
     },
     {
       "id": "arxiv:2606.07972",
@@ -812,71 +1225,6 @@
       "score": -4
     },
     {
-      "id": "dblp:conf/www/ZhuCJYWCZ26",
-      "title": "FeedGuard: Online Critic-Guided Reinforcement Learning with Privacy-Preserving Feedback for Recommendation",
-      "authors": [
-        "Mengying Zhu",
-        "Feiyue Chen",
-        "Lifan Jiang",
-        "Mengyuan Yang",
-        "Yangyang Wu",
-        "Guanjie Cheng",
-        "Xiaolin Zheng"
-      ],
-      "affiliations": [
-        "School of Software Technology, Zhejiang University, Ningbo, China",
-        "Ningbo University",
-        "Zhejiang University",
-        "Zhejiang University, Hangzhou, China"
-      ],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792155",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792155",
-      "doi": "10.1145/3774904.3792155",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "提出FeedGuard框架，结合在线评判与强化学习，实现隐私保护的反馈机制用于推荐系统。",
-      "core_method": "在线评判引导的强化学习并结合隐私保护反馈机制。",
-      "innovation_points": [
-        "引入在线评判器实时引导强化学习模型更新",
-        "设计隐私保护的用户反馈收集与利用方法",
-        "在推荐系统中融合在线强化学习与评判指导"
-      ],
-      "experiment_results": [
-        "全文未提供实验/评测结果"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "基于元数据无法确认方法的有效性及实验证据",
-        "隐私保护机制的实际效果和开销未知"
-      ],
-      "practical_value": "为推荐系统提供在线学习与隐私保护结合的解决方案，有望提升模型适应性和用户信任。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "afb2e7c1b77438a3",
-      "tags": [
-        "RecSys",
-        "Agent4Rec",
-        "LLM4Rec"
-      ],
-      "llm_score": 0,
-      "llm_score_rationale": "",
-      "preference_signals": [],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": -4
-    },
-    {
       "id": "dblp:conf/www/QiuXHPW26",
       "title": "Meta-Learning Driven Few-Shot Knowledge Transfer with Dual-Stage Adaptive Data Replay for Cross-Domain Recommendation",
       "authors": [
@@ -1003,73 +1351,6 @@
         "LLM4Rec",
         "RecSys",
         "Sequential Rec"
-      ],
-      "llm_score": 0,
-      "llm_score_rationale": "",
-      "preference_signals": [],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": -4
-    },
-    {
-      "id": "dblp:conf/www/YuFLZWLWZW26",
-      "title": "ThinkRec: Thinking-based recommendation via LLM",
-      "authors": [
-        "Qihang Yu",
-        "Kairui Fu",
-        "Zheqi Lv",
-        "Shengyu Zhang",
-        "Xinhui Wu",
-        "Chen Lin",
-        "Feng Wei",
-        "Bo Zheng",
-        "Fei Wu"
-      ],
-      "affiliations": [
-        "Zhejiang University, Hangzhou, China",
-        "Zhejiang University",
-        "Ant Group, Hangzhou, China",
-        "Ant Group, Shanghai, China",
-        "Zhejiang University, Hangzhou, China and Shanghai AI Laboratory, Shanghai, China",
-        "Shanghai University"
-      ],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792070",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792070",
-      "doi": "10.1145/3774904.3792070",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "ThinkRec 提出了一种基于大语言模型的思考式推荐方法，旨在通过更深层次的推理过程生成推荐结果。该方法利用 LLM 的思考链能力来提升推荐的可解释性和准确性。论文发表于 WWW 2026，属于前沿的 LLM4Rec 研究。",
-      "core_method": "基于大语言模型的多步推理推荐方法，通过生成思考链来改进推荐质量。",
-      "innovation_points": [
-        "将 LLM 的思维链推理引入推荐系统，实现可解释的推荐生成",
-        "提出 ThinkRec 框架，通过多步思考过程捕捉用户意图和物品关系"
-      ],
-      "experiment_results": [
-        "由于无全文和摘要，具体的实验结果未提供。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "由于只有元数据，具体方法效果和局限未知，可能面临 LLM 推理成本和效率问题。"
-      ],
-      "practical_value": "ThinkRec 为推荐系统引入深度推理能力，有望提升复杂场景下的推荐解释性和准确性。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "8eeca4bfb07efef6",
-      "tags": [
-        "LLM4Rec",
-        "RecSys",
-        "Generative Rec"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
