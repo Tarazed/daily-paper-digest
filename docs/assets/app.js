@@ -2,6 +2,7 @@
   var h = React.createElement;
   var MARKS_KEY = "daily-paper-marks-v1";
   var AB_LABELS = { yes: "有线上 A/B", no: "无线上 A/B", unknown: "未说明" };
+  var AB_FILTER_LABELS = Object.assign({ All: "全部 A/B 状态" }, AB_LABELS);
 
   function App() {
     var state = React.useState(null);
@@ -22,6 +23,9 @@
     var markFilterState = React.useState("All");
     var importanceFilter = markFilterState[0];
     var setImportanceFilter = markFilterState[1];
+    var abFilterState = React.useState("All");
+    var abFilter = abFilterState[0];
+    var setAbFilter = abFilterState[1];
     var marksState = React.useState(loadMarks);
     var marks = marksState[0];
     var setMarks = marksState[1];
@@ -100,11 +104,12 @@
             (archiveDate === "All" || paperDate(paper) === archiveDate) &&
             (tag === "All" || (paper.tags || []).indexOf(tag) >= 0) &&
             (venue === "All" || displayVenue(paper) === venue) &&
-            (importanceFilter === "All" || paper.localMark === importanceFilter)
+            (importanceFilter === "All" || paper.localMark === importanceFilter) &&
+            (abFilter === "All" || (paper.ab_test || "unknown") === abFilter)
           );
         });
       },
-      [papers, query, archiveDate, tag, venue, importanceFilter]
+      [papers, query, archiveDate, tag, venue, importanceFilter, abFilter]
     );
     var groupedPapers = React.useMemo(
       function () {
@@ -174,6 +179,13 @@
         h(FilterGroup, { label: "标签", value: tag, onChange: setTag, options: ["All"].concat(tags) }),
         h(FilterGroup, { label: "会议", value: venue, onChange: setVenue, options: ["All"].concat(venues) }),
         h(FilterGroup, {
+          label: "A/B 实验",
+          value: abFilter,
+          onChange: setAbFilter,
+          options: ["All", "yes", "no", "unknown"],
+          optionLabels: AB_FILTER_LABELS
+        }),
+        h(FilterGroup, {
           label: "重要性",
           value: importanceFilter,
           onChange: setImportanceFilter,
@@ -183,7 +195,11 @@
       h(
         "section",
         { className: "archiveSummary" },
-        h("span", null, archiveDate === "All" ? "全部日期" : formatArchiveDate(archiveDate)),
+        h(
+          "span",
+          null,
+          (archiveDate === "All" ? "全部日期" : formatArchiveDate(archiveDate)) + " · " + (AB_FILTER_LABELS[abFilter] || AB_FILTER_LABELS.All)
+        ),
         h("strong", null, filtered.length + " 篇论文")
       ),
       h(
@@ -320,6 +336,7 @@
   }
 
   function FilterGroup(props) {
+    var optionLabels = props.optionLabels || {};
     return h(
       "label",
       { className: "filterGroup" },
@@ -331,7 +348,7 @@
           onChange: function (event) { return props.onChange(event.target.value); }
         },
         props.options.map(function (option) {
-          return h("option", { key: option, value: option }, option);
+          return h("option", { key: option, value: option }, optionLabels[option] || option);
         })
       )
     );

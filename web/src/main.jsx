@@ -8,6 +8,10 @@ const AB_LABELS = {
   no: "无线上 A/B",
   unknown: "未说明"
 };
+const AB_FILTER_LABELS = {
+  All: "全部 A/B 状态",
+  ...AB_LABELS
+};
 
 function App() {
   const [payload, setPayload] = useState(null);
@@ -16,6 +20,7 @@ function App() {
   const [tag, setTag] = useState("All");
   const [venue, setVenue] = useState("All");
   const [importanceFilter, setImportanceFilter] = useState("All");
+  const [abFilter, setAbFilter] = useState("All");
   const [marks, setMarks] = useState(() => loadMarks());
 
   useEffect(() => {
@@ -57,10 +62,11 @@ function App() {
         (archiveDate === "All" || paperDate(paper) === archiveDate) &&
         (tag === "All" || (paper.tags || []).includes(tag)) &&
         (venue === "All" || displayVenue(paper) === venue) &&
-        (importanceFilter === "All" || paper.localMark === importanceFilter)
+        (importanceFilter === "All" || paper.localMark === importanceFilter) &&
+        (abFilter === "All" || (paper.ab_test || "unknown") === abFilter)
       );
     });
-  }, [papers, query, archiveDate, tag, venue, importanceFilter]);
+  }, [papers, query, archiveDate, tag, venue, importanceFilter, abFilter]);
   const groupedPapers = useMemo(() => groupPapersByDate(filtered), [filtered]);
 
   const stats = useMemo(() => buildStats(papers), [papers]);
@@ -110,6 +116,13 @@ function App() {
         <FilterGroup label="标签" value={tag} onChange={setTag} options={["All", ...tags]} />
         <FilterGroup label="会议" value={venue} onChange={setVenue} options={["All", ...venues]} />
         <FilterGroup
+          label="A/B 实验"
+          value={abFilter}
+          onChange={setAbFilter}
+          options={["All", "yes", "no", "unknown"]}
+          optionLabels={AB_FILTER_LABELS}
+        />
+        <FilterGroup
           label="重要性"
           value={importanceFilter}
           onChange={setImportanceFilter}
@@ -118,7 +131,11 @@ function App() {
       </section>
 
       <section className="archiveSummary">
-        <span>{archiveDate === "All" ? "全部日期" : formatArchiveDate(archiveDate)}</span>
+        <span>
+          {archiveDate === "All" ? "全部日期" : formatArchiveDate(archiveDate)}
+          {" · "}
+          {AB_FILTER_LABELS[abFilter] || AB_FILTER_LABELS.All}
+        </span>
         <strong>{filtered.length} 篇论文</strong>
       </section>
 
@@ -252,14 +269,14 @@ function Stat({ label, value }) {
   );
 }
 
-function FilterGroup({ label, value, onChange, options }) {
+function FilterGroup({ label, value, onChange, options, optionLabels = {} }) {
   return (
     <label className="filterGroup">
       <span>{label}</span>
       <select value={value} onChange={(event) => onChange(event.target.value)}>
         {options.map((option) => (
           <option key={option} value={option}>
-            {option}
+            {optionLabels[option] || option}
           </option>
         ))}
       </select>
