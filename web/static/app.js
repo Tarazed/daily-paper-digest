@@ -278,6 +278,7 @@
         h("span", null, paper.analysis_basis === "full_text" ? "全文分析" : "元数据分析")
       ),
       h("div", { className: "statusLine" }, h("span", null, markLabel(mark))),
+      h(PreferenceScore, { paper: paper }),
       h("p", { className: "summary" }, paper.generated_summary || paper.abstract || "No summary available."),
       paper.core_method
         ? h(
@@ -310,6 +311,34 @@
         paper.pdf_url ? h("a", { href: paper.pdf_url, target: "_blank", rel: "noreferrer" }, "PDF") : null,
         paper.doi ? h("a", { href: "https://doi.org/" + paper.doi, target: "_blank", rel: "noreferrer" }, "DOI") : null
       )
+    );
+  }
+
+  function PreferenceScore(props) {
+    var paper = props.paper;
+    var score = Number(paper.llm_score || 0);
+    var signals = Array.isArray(paper.preference_signals) ? paper.preference_signals.filter(Boolean) : [];
+    var rationale = String(paper.llm_score_rationale || "").trim();
+    if (!score && !signals.length && !rationale) return null;
+    return h(
+      "div",
+      { className: "preferenceScore" },
+      h(
+        "div",
+        { className: "preferenceHead" },
+        h("span", null, "偏好评分"),
+        h("strong", null, score || "N/A")
+      ),
+      signals.length
+        ? h(
+            "div",
+            { className: "signalRow" },
+            signals.map(function (signal) {
+              return h("span", { key: signal }, signal);
+            })
+          )
+        : null,
+      rationale ? h("p", null, rationale) : null
     );
   }
 

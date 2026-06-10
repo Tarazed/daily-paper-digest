@@ -198,6 +198,8 @@ function PaperCard({ paper, onMark }) {
       </div>
       <div className="statusLine"><span>{markLabel(mark)}</span></div>
 
+      <PreferenceScore paper={paper} />
+
       <p className="summary">{paper.generated_summary || paper.abstract || "No summary available."}</p>
       {paper.core_method && (
         <div className="methodLine">
@@ -239,6 +241,29 @@ function PaperCard({ paper, onMark }) {
         )}
       </div>
     </article>
+  );
+}
+
+function PreferenceScore({ paper }) {
+  const score = Number(paper.llm_score || 0);
+  const signals = Array.isArray(paper.preference_signals) ? paper.preference_signals.filter(Boolean) : [];
+  const rationale = String(paper.llm_score_rationale || "").trim();
+  if (!score && !signals.length && !rationale) return null;
+  return (
+    <div className="preferenceScore">
+      <div className="preferenceHead">
+        <span>偏好评分</span>
+        <strong>{score || "N/A"}</strong>
+      </div>
+      {signals.length > 0 && (
+        <div className="signalRow">
+          {signals.map((signal) => (
+            <span key={signal}>{signal}</span>
+          ))}
+        </div>
+      )}
+      {rationale && <p>{rationale}</p>}
+    </div>
   );
 }
 
