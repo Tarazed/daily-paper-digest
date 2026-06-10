@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-10T16:03:59Z",
+  "generated_at": "2026-06-10T16:19:14Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
@@ -7,8 +7,8 @@
   },
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 6,
-    "analyzed": 4,
+    "reused": 8,
+    "analyzed": 2,
     "source": "web/public/papers.json"
   },
   "current_limit": 10,
@@ -141,7 +141,14 @@
         "Gabriele Tolomei",
         "Yang Zhang"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "Stony Brook University",
+        "University of Massachusetts Lowell",
+        "Columbia University",
+        "Institute of Science and Technology Austria",
+        "Sapienza University of Rome",
+        "National University of Singapore"
+      ],
       "published": "2026-06-05T05:19:31Z",
       "updated": "2026-06-05T05:19:31Z",
       "abstract": "Generative recommendation formulates next-item prediction as autoregressive generation over semantic ID (SID) sequences derived from users' historical interactions, making modern recommender systems structurally similar to large language models (LLMs). As privacy and safety concerns grow, these systems increasingly require concept unlearning to remove sensitive or harmful concepts associated with items. However, existing LLM unlearning methods cannot be directly applied to generative recommendation. Unlike word tokens with explicit semantics, SIDs are abstract identifiers that are often shared by both forget and retain items, leading to severe conflicts between concept removal and recommendation utility preservation. To address this challenge, we propose TRACER, an end-to-end concept unlearning framework based on token reassignment. Rather than directly suppressing shared SIDs, TRACER reassigns concept-related items to alternative tokens that better facilitate forgetting while minimizing side effects on retained items. We further introduce a coherence regularizer to preserve semantic consistency among retain items during unlearning. Experiments on real-world recommendation datasets demonstrate that TRACER effectively removes target concepts while substantially better preserving recommendation utility than existing unlearning baselines.",
@@ -191,6 +198,62 @@
       "score": 20
     },
     {
+      "id": "openalex:W4411030024",
+      "title": "LLM4Rec: A Comprehensive Survey on the Integration of Large Language Models in Recommender Systems—Approaches, Applications and Challenges",
+      "authors": [
+        "Sarama Shehmir",
+        "Rasha Kashef"
+      ],
+      "affiliations": [
+        "Electrical, Computer, and Biomedical Engineering, Toronto Metropolitan University, Toronto, ON M5B 2K3, Canada",
+        "Toronto Metropolitan University"
+      ],
+      "published": "2025-06-04",
+      "updated": "2026-06-09T15:46:55.921056",
+      "abstract": "The synthesis of large language models (LLMs) and recommender systems has been a game-changer in tailored content onslaught with applications ranging from e-commerce, social media, and education to health care. This survey covers the usage of LLMs for content recommendations (LLM4Rec). LLM4Rec has opened up a whole set of challenges in terms of scale, real-time processing, and data privacy, all of which we touch upon along with potential future directions for research in areas such as multimodal recommendations and reinforcement learning for long-term engagement. This survey combines existing developments and outlines possible future developments, thus becoming a point of reference for other researchers and practitioners in developing the future of LLM-based recommendation systems.",
+      "categories": [
+        "OpenAlex",
+        "CIKM"
+      ],
+      "primary_category": "CIKM",
+      "abs_url": "https://doi.org/10.3390/fi17060252",
+      "pdf_url": "https://www.mdpi.com/1999-5903/17/6/252/pdf?version=1749033633",
+      "doi": "10.3390/fi17060252",
+      "source": "OpenAlex",
+      "status": "conference",
+      "venue": "Future Internet",
+      "venue_key": "CIKM",
+      "generated_summary": "该综述全面梳理了大型语言模型在推荐系统中的应用，涵盖方法、应用场景及挑战，并讨论了多模态推荐与强化学习等未来方向。",
+      "core_method": "对LLM4Rec领域的方法、应用和挑战进行系统综述。",
+      "innovation_points": [
+        "系统性地归纳了LLM在推荐系统中的集成方式与应用场景",
+        "分析了LLM4Rec面临的可扩展性、实时处理和隐私挑战",
+        "展望了多模态推荐和强化学习等未来研究方向"
+      ],
+      "experiment_results": [
+        "论文为综述，未提供新实验或评测结论"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "综述未提供原创实验验证",
+        "仅基于现有文献，缺乏实证分析"
+      ],
+      "practical_value": "为研究人员和从业者提供了LLM4Rec领域的全面参考和发展蓝图。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "8ad48d9ad04c907c",
+      "tags": [
+        "LLM4Rec",
+        "RecSys",
+        "Generative Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 18
+    },
+    {
       "id": "arxiv:2606.10375",
       "title": "SIDInspector: A Mapping-First Diagnostic Resource for Semantic-ID Tokenizers",
       "authors": [
@@ -199,7 +262,9 @@
         "Huijie Qin",
         "Tianying Liu"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "Huawei Technologies"
+      ],
       "published": "2026-06-09T03:36:31Z",
       "updated": "2026-06-09T03:36:31Z",
       "abstract": "Semantic-ID (\\sid) tokenizers are increasingly reused as standalone artifacts in generative recommendation: an exported item-to-code mapping becomes the address space that a later sequence generator must use. These mappings rarely come with a common inspection interface, so coverage gaps, full-code aliasing, behaviorally weak prefixes, tail compression, and prefix fan-out are often found only after downstream training. We present \\tool, a mapping-first diagnostic resource for \\sid tokenizer artifacts. \\tool defines a small adapter contract over item mappings, metadata, interactions, and optional generator traces; validates the contract; and reports mapping-level probes for utilization, aliasing, neighborhood alignment, popularity allocation, and structural cost, with hooks for temporal churn and generator traces. \\tool reports inspectable artifact profiles before downstream leaderboard scores. The released resource covers four tokenizer artifact lines: a same-item GRID/RQ-KMeans-style and ReSID/GAOQ contrast on 23,742 Musical items, plus released LETTER and LC-Rec item-index artifacts. In the Musical contrast, the GRID-style feature-text export has 3,749 unique full codes and a 0.977 full-code aliasing rate, while ReSID/GAOQ is aliasing-free in its exported mapping. Yet the strongest prefix--co-occurrence alignment comes from a deterministic category-prefix control, not from either learned export row (0.447 versus 0.154 and 0.055--0.080), showing that addressability and behaviorally meaningful prefixes should be inspected separately. Cross-domain, fixed-reranker, and mechanism-probe checks support the same diagnostic direction: prefix alignment is a candidate-exposure signal, while final ranking quality remains a downstream model question.",
@@ -234,7 +299,7 @@
       ],
       "practical_value": "为生成式推荐中语义ID分词器的选择、对比和调试提供统一、可复用的离线诊断工具，减少下游失败风险。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "787557af26e4bc3f",
       "tags": [
         "RecSys",
@@ -291,7 +356,7 @@
       ],
       "practical_value": "Gryphon提供了一种可落地的生成式推荐方案，能够在保持推荐质量的同时大幅简化工业级候选生成系统，减少工程复杂度和维护成本。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "fdc6c7b4af740f03",
       "tags": [
         "Generative Rec",
@@ -541,7 +606,7 @@
       ],
       "practical_value": "为序列推荐提供一种高效、可插拔的物品表示增强方案，能一致提升现有模型性能，具有广泛的应用潜力。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "46d80b9d35aad4d3",
       "tags": [
         "Sequential Rec",
@@ -612,6 +677,74 @@
       "read_status": "unread",
       "notes": "",
       "score": 10
+    },
+    {
+      "id": "openalex:W4416050722",
+      "title": "MMQ: Multimodal Mixture-of-Quantization Tokenization for Semantic ID Generation and User Behavioral Adaptation",
+      "authors": [
+        "Yi Xu",
+        "Moyu Zhang",
+        "Chenxuan Li",
+        "Zhihao Liao",
+        "Haibo Xing",
+        "Hao Deng",
+        "Jinxin Hu",
+        "Yu Zhang",
+        "Xiaoyi Zeng",
+        "Jing Zhang"
+      ],
+      "affiliations": [
+        "Alibaba International Digital Commerce Group, Beijing, China",
+        "Alibaba Group (China)",
+        "Peking University, Beijing, China",
+        "Peking University",
+        "Beijing University of Aeronautics and Astronautics, Beijing, China",
+        "Beihang University",
+        "Alibaba International Digital Commerce Group, Hangzhou, China",
+        "Wuhan University, School of Computer Science, Wuhan, China",
+        "Wuhan University"
+      ],
+      "published": "2026-02-16",
+      "updated": "2026-06-10T14:10:52.464848",
+      "abstract": "Recommender systems traditionally represent items using unique identifiers (ItemIDs), but this approach struggles with large, dynamic item corpora and sparse long-tail data, limiting scalability and generalization. Semantic IDs, derived from multimodal content such as text and images, offer a promising alternative by mapping items into a shared semantic space, enabling knowledge transfer and improving recommendations for new or rare items. However, existing methods face two key challenges: (1) balancing cross-modal synergy with modality-specific uniqueness, and (2) bridging the semantic-behavioral gap, where semantic representations may misalign with actual user preferences. To address these challenges, we propose Multimodal Mixture-of-Quantization (MMQ), a two-stage framework that trains a novel multimodal tokenizer. First, a shared-specific tokenizer leverages a multi-expert architecture with modality-specific and modality-shared experts, using orthogonal regularization to capture comprehensive multimodal information. Second, behavior-aware fine-tuning dynamically adapts semantic IDs to downstream recommendation objectives while preserving modality information through a multimodal reconstruction loss. Extensive offline experiments and online A/B tests demonstrate that MMQ effectively unifies multimodal synergy, specificity, and behavioral adaptation, providing a scalable and versatile solution for both generative retrieval and discriminative ranking tasks.",
+      "categories": [
+        "OpenAlex",
+        "CIKM"
+      ],
+      "primary_category": "CIKM",
+      "abs_url": "https://doi.org/10.1145/3773966.3777923",
+      "pdf_url": "https://doi.org/10.1145/3773966.3777923",
+      "doi": "10.1145/3773966.3777923",
+      "source": "OpenAlex",
+      "status": "conference",
+      "venue": "CIKM",
+      "venue_key": "CIKM",
+      "generated_summary": "本文提出MMQ框架，通过多模态混合量化将物品的文本和图像内容映射为语义ID，以替代传统ItemID。框架包含共享-特定多专家分词器和行为感知微调，旨在平衡跨模态协同与模态独特性，并弥合语义表示与用户偏好的差距。",
+      "core_method": "两阶段多模态混合量化（MMQ）：先训练共享-特定多专家分词器生成语义ID，再进行行为感知微调以适应推荐目标。",
+      "innovation_points": [
+        "设计共享-特定多专家分词器，通过正交正则化平衡跨模态协同与模态独特性",
+        "提出行为感知微调阶段，通过多模态重建损失动态调整语义ID以适配下游推荐任务"
+      ],
+      "experiment_results": [
+        "离线实验和在线A/B测试表明MMQ在生成式检索和判别式排序任务中均有效提升了性能，具体指标未提供。"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "摘要明确提到 Extensive offline experiments and online A/B tests demonstrate that MMQ effectively unifies multimodal synergy, specificity, and behavioral adaptation",
+      "limitations": [
+        "摘要未提及对计算资源、训练效率或长尾物品覆盖度的具体分析"
+      ],
+      "practical_value": "为大规模推荐系统提供可扩展的语义ID方案，适用于生成式检索和排序场景，能提升新物品和长尾物品的推荐质量。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "6941c04b929e45f8",
+      "tags": [
+        "RecSys",
+        "Generative Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 8
     },
     {
       "id": "arxiv:2606.07492",
