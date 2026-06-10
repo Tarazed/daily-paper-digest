@@ -32,6 +32,9 @@ class Paper:
     analysis_status: str = ""
     analysis_signature: str = ""
     tags: List[str] = field(default_factory=list)
+    llm_score: int = 0
+    llm_score_rationale: str = ""
+    preference_signals: List[str] = field(default_factory=list)
     importance: str = "normal"
     read_status: str = "unread"
     notes: str = ""

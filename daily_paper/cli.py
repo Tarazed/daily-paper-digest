@@ -12,7 +12,7 @@ from .config import load_config
 from .dblp import fetch_dblp_papers
 from .email_template import render_html, render_subject, render_text
 from .enrichment import enrich_papers
-from .filtering import prepare_papers
+from .filtering import prepare_papers, sort_papers
 from .mailer import MailConfigError, build_message, send_message
 from .state import load_state
 from .models import Paper
@@ -22,6 +22,7 @@ from .summarizer import (
     expected_analysis_signature,
     has_legacy_site_analysis,
     has_reusable_site_analysis,
+    score_papers_with_llm,
     summarize_papers,
 )
 
@@ -193,15 +194,17 @@ def _load_ranked_papers(config, limit: int, enrich_results: bool = True):
         raise RuntimeError("No paper sources returned results. " + "; ".join(source_errors))
     papers = _dedupe_papers(papers)
     ranked = prepare_papers(papers, config.arxiv, state)
-    selected = ranked[:limit] if limit else ranked
-    if not enrich_results:
-        return selected
-    return enrich_papers(
-        selected,
+    candidate_count = _candidate_pool_size(limit, len(ranked))
+    candidate_pool = ranked[:candidate_count] if candidate_count else ranked
+    candidate_pool = enrich_papers(
+        candidate_pool,
         config.enrichment,
         llm_model=config.summary.model,
         llm_base_url=config.summary.base_url,
     )
+    score_papers_with_llm(candidate_pool, config.summary)
+    selected = sort_papers(candidate_pool)[:limit] if limit else sort_papers(candidate_pool)
+    return selected
 
 
 def _dedupe_papers(papers):
@@ -224,6 +227,12 @@ def _parse_recipients(value: str) -> List[str]:
     if not value:
         return []
     return [item.strip() for item in value.replace(";", ",").split(",") if item.strip()]
+
+
+def _candidate_pool_size(limit: int, available: int) -> int:
+    if not limit:
+        return available
+    return min(available, max(limit * 3, limit + 20))
 
 
 def _analysis_api_key(provider: str) -> str:
@@ -381,6 +390,9 @@ def _paper_from_dict(values) -> Paper:
         analysis_status=str(values.get("analysis_status", "")),
         analysis_signature=str(values.get("analysis_signature", "")),
         tags=list(values.get("tags") or []),
+        llm_score=int(values.get("llm_score", 0)),
+        llm_score_rationale=str(values.get("llm_score_rationale", "")),
+        preference_signals=list(values.get("preference_signals") or []),
         importance=str(values.get("importance", "normal")),
         read_status=str(values.get("read_status", "unread")),
         notes=str(values.get("notes", "")),

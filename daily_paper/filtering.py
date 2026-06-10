@@ -9,6 +9,12 @@ HIGH_PRIORITY_TERMS = [
     "llm4rec",
     "agent4rec",
     "generative recommendation",
+    "generative recommender",
+    "generative retrieval",
+    "semantic id",
+    "semantic ids",
+    "semantic identifier",
+    "semantic identifiers",
     "large language model recommendation",
     "large language models for recommendation",
     "agent recommendation",
@@ -70,9 +76,19 @@ def score_paper(paper: Paper) -> int:
         score += 1000
     if "cs.IR" in paper.categories or paper.primary_category == "cs.IR":
         score += 2
+    if paper.ab_test == "yes":
+        score += 80
+    if _is_top_venue(paper):
+        score += 35
+    if _has_known_internet_company(paper):
+        score += 10
     if paper.source == "DBLP" and not paper.abstract:
         score -= 8
     return score
+
+
+def sort_papers(papers: Iterable[Paper]) -> List[Paper]:
+    return sorted(papers, key=_sort_key)
 
 
 def infer_tags(paper: Paper) -> List[str]:
@@ -107,5 +123,59 @@ def _sort_timestamp(value: str) -> int:
 
 
 def _search_text(paper: Paper) -> str:
-    value = " ".join([paper.title, paper.abstract, " ".join(paper.categories)])
+    value = " ".join(
+        [
+            paper.title,
+            paper.abstract,
+            paper.venue,
+            paper.venue_key,
+            " ".join(paper.categories),
+            " ".join(paper.affiliations),
+        ]
+    )
     return re.sub(r"\s+", " ", value).lower()
+
+
+def _is_top_venue(paper: Paper) -> bool:
+    top_venues = {
+        "recsys",
+        "sigir",
+        "www",
+        "kdd",
+        "wsdm",
+        "cikm",
+        "iclr",
+        "aaai",
+        "icml",
+        "neurips",
+    }
+    values = [paper.venue_key, paper.venue, paper.primary_category] + list(paper.categories)
+    return any(str(value).strip().lower() in top_venues for value in values)
+
+
+def _has_known_internet_company(paper: Paper) -> bool:
+    text = " ".join(paper.affiliations).lower()
+    companies = [
+        "google",
+        "deepmind",
+        "meta",
+        "facebook",
+        "amazon",
+        "microsoft",
+        "netflix",
+        "spotify",
+        "linkedin",
+        "bytedance",
+        "tiktok",
+        "alibaba",
+        "ant group",
+        "tencent",
+        "baidu",
+        "kuaishou",
+        "meituan",
+        "jd.com",
+        "pinterest",
+        "airbnb",
+        "uber",
+    ]
+    return any(company in text for company in companies)

@@ -1,5 +1,5 @@
 from daily_paper.config import ArxivConfig
-from daily_paper.filtering import infer_tags, prepare_papers
+from daily_paper.filtering import infer_tags, prepare_papers, score_paper
 from daily_paper.models import Paper
 
 
@@ -61,3 +61,17 @@ def test_infer_tags_for_llm4rec_and_benchmark():
     )
 
     assert infer_tags(paper) == ["LLM4Rec", "RecSys", "Evaluation", "Benchmark"]
+
+
+def test_score_paper_boosts_preference_signals():
+    paper = make_paper(
+        "arxiv:4",
+        "Semantic ID Generative Recommendation",
+        "We report an online A/B test for a semantic identifier recommender.",
+    )
+    paper.venue = "RecSys"
+    paper.venue_key = "RecSys"
+    paper.affiliations = ["Google DeepMind"]
+    paper.ab_test = "yes"
+
+    assert score_paper(paper) >= 120

@@ -14,6 +14,7 @@ from .fulltext import extract_full_text_for_analysis
 from .models import Paper
 
 ANALYSIS_PROMPT_VERSION = "site-analysis-v1"
+PREFERENCE_PROMPT_VERSION = "preference-score-v1"
 SITE_ANALYSIS_FIELDS = [
     "generated_summary",
     "core_method",
@@ -27,6 +28,9 @@ SITE_ANALYSIS_FIELDS = [
     "analysis_status",
     "analysis_signature",
     "tags",
+    "llm_score",
+    "llm_score_rationale",
+    "preference_signals",
 ]
 
 
@@ -79,12 +83,126 @@ def summarize_papers(papers: List[Paper], config: SummaryConfig) -> List[Paper]:
     return papers
 
 
+def score_papers_with_llm(papers: List[Paper], config: SummaryConfig) -> List[Paper]:
+    if not papers:
+        return papers
+    api_key = _api_key_for_provider(config.provider)
+    if not api_key:
+        for paper in papers:
+            _apply_preference_score_result(paper, fallback_preference_score(paper))
+        return papers
+
+    def score_one(paper: Paper) -> Dict[str, object]:
+        client = ChatCompletionClient(
+            api_key=api_key,
+            base_url=config.base_url,
+            model=config.analysis_model,
+            provider=config.provider,
+        )
+        try:
+            return client.score_preference(paper, language=config.language)
+        except Exception as exc:
+            print(
+                "Warning: LLM preference scoring failed for %s; using rule fallback. %s"
+                % (paper.id, exc),
+                file=sys.stderr,
+            )
+            return fallback_preference_score(paper)
+
+    workers = max(1, int(config.analysis_workers))
+    if workers == 1 or len(papers) <= 1:
+        for paper in papers:
+            _apply_preference_score_result(paper, score_one(paper))
+        return papers
+
+    with ThreadPoolExecutor(max_workers=min(workers, len(papers))) as executor:
+        futures = {executor.submit(score_one, paper): paper for paper in papers}
+        for future in as_completed(futures):
+            paper = futures[future]
+            try:
+                result = future.result()
+            except Exception as exc:
+                print(
+                    "Warning: LLM preference scoring failed for %s; using rule fallback. %s"
+                    % (paper.id, exc),
+                    file=sys.stderr,
+                )
+                result = fallback_preference_score(paper)
+            _apply_preference_score_result(paper, result)
+    return papers
+
+
 def _apply_summary_result(paper: Paper, result: Dict[str, object], config: SummaryConfig) -> None:
     paper.generated_summary = result.get("summary") or fallback_summary(
         paper.abstract, config.max_sentences
     )
     tags = result.get("tags") or []
     paper.tags = _clean_tags(tags) or paper.tags or infer_tags(paper)
+
+
+def _apply_preference_score_result(paper: Paper, result: Dict[str, object]) -> None:
+    score = _safe_int(result.get("score"), default=0)
+    paper.llm_score = max(0, min(100, score))
+    reasons = _clean_list(result.get("reasons"), fallback=[], limit=3)
+    signals = _clean_list(result.get("signals"), fallback=[], limit=5)
+    paper.preference_signals = signals
+    paper.llm_score_rationale = "；".join(reasons)
+    paper.score += paper.llm_score
+
+
+def fallback_preference_score(paper: Paper) -> Dict[str, object]:
+    text = " ".join(
+        [
+            paper.title,
+            paper.abstract,
+            paper.venue,
+            paper.venue_key,
+            " ".join(paper.categories),
+            " ".join(paper.affiliations),
+        ]
+    ).lower()
+    score = 0
+    reasons = []
+    signals = []
+    if paper.ab_test == "yes" or any(
+        term in text
+        for term in (
+            "online a/b",
+            "online ab",
+            "a/b test",
+            "online experiment",
+            "live traffic",
+            "production experiment",
+            "bucket test",
+        )
+    ):
+        score += 45
+        signals.append("Online A/B")
+        reasons.append("明确或疑似包含线上 A/B/生产流量实验信号。")
+    if _is_top_venue_metadata(paper):
+        score += 25
+        signals.append("Top venue")
+        reasons.append("论文来自重点会议或会议来源。")
+    if any(
+        term in text
+        for term in (
+            "generative recommendation",
+            "generative recommender",
+            "generative retrieval",
+            "semantic id",
+            "semantic ids",
+            "semantic identifier",
+            "llm4rec",
+        )
+    ):
+        score += 20
+        signals.append("Generative Rec / Semantic ID")
+        reasons.append("主题与生成式推荐、LLM4Rec 或语义 ID 强相关。")
+    if _has_known_internet_company_metadata(paper):
+        score += 10
+        signals.append("Industry company")
+        reasons.append("作者单位包含知名互联网公司。")
+    return {"score": min(score, 100), "reasons": reasons, "signals": signals}
 
 
 def analyze_papers_for_site(papers: List[Paper], config: SummaryConfig) -> List[Paper]:
@@ -372,6 +490,39 @@ class ChatCompletionClient:
         output = _extract_chat_output_text(data)
         return json.loads(output)
 
+    def score_preference(self, paper: Paper, language: str = "zh") -> Dict[str, object]:
+        user_prompt = (
+            "Title: %s\nAuthors: %s\nAffiliations: %s\nVenue: %s\nVenue key: %s\n"
+            "Source: %s\nStatus: %s\nPublished: %s\nCategories: %s\nAbstract: %s"
+            % (
+                paper.title,
+                ", ".join(paper.authors),
+                "; ".join(paper.display_affiliations),
+                paper.venue,
+                paper.venue_key,
+                paper.source,
+                paper.status,
+                paper.published_date,
+                ", ".join(paper.categories),
+                paper.abstract or "No abstract is available.",
+            )
+        )
+        system_prompt = (
+            "你是推荐系统论文检索的排序助手。请只基于给定 metadata 打分，不要臆测。"
+            "输出严格 JSON，不要输出 JSON 之外的文字。"
+            "打分范围 0-100，表示这篇论文对“生成式推荐/语义 ID/工业推荐实践”读者的优先级。"
+            "权重偏好：1) 明确有线上 A/B、online experiment、live traffic、production/bucket experiment 证据权重最高；"
+            "2) RecSys、SIGIR、WWW、KDD、WSDM、CIKM、ICLR、AAAI、ICML、NeurIPS 等顶会已发表次之；"
+            "3) 与 generative recommendation、generative retrieval、semantic ID/identifier、LLM4Rec 强相关加高分；"
+            "4) 作者单位含 Google/DeepMind、Meta、Amazon、Microsoft、Netflix、Spotify、LinkedIn、ByteDance/TikTok、Alibaba、Tencent、Baidu、Kuaishou、Meituan、JD、Pinterest、Airbnb、Uber 等知名互联网公司加分。"
+            "如果只有离线实验，不要给线上 A/B 信号。"
+            "JSON schema: {\"score\": 0-100, \"signals\": [\"Online A/B|Top venue|Generative Rec / Semantic ID|Industry company\"], \"reasons\": [\"1-3条中文依据\"]}。"
+        )
+        payload = self._build_payload(system_prompt=system_prompt, user_prompt=user_prompt, max_tokens=500)
+        data = self._post_chat(payload)
+        output = _extract_chat_output_text(data)
+        return json.loads(output)
+
     def _build_payload(self, system_prompt: str, user_prompt: str, max_tokens: int) -> Dict[str, object]:
         payload = {
             "model": self.model,
@@ -456,3 +607,55 @@ def _clean_tags(tags) -> List[str]:
         if value in allowed and value not in cleaned:
             cleaned.append(value)
     return cleaned
+
+
+def _safe_int(value, default: int = 0) -> int:
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return default
+
+
+def _is_top_venue_metadata(paper: Paper) -> bool:
+    top_venues = {
+        "recsys",
+        "sigir",
+        "www",
+        "kdd",
+        "wsdm",
+        "cikm",
+        "iclr",
+        "aaai",
+        "icml",
+        "neurips",
+    }
+    values = [paper.venue_key, paper.venue, paper.primary_category] + list(paper.categories)
+    return any(str(value).strip().lower() in top_venues for value in values)
+
+
+def _has_known_internet_company_metadata(paper: Paper) -> bool:
+    text = " ".join(paper.affiliations).lower()
+    companies = [
+        "google",
+        "deepmind",
+        "meta",
+        "facebook",
+        "amazon",
+        "microsoft",
+        "netflix",
+        "spotify",
+        "linkedin",
+        "bytedance",
+        "tiktok",
+        "alibaba",
+        "ant group",
+        "tencent",
+        "baidu",
+        "kuaishou",
+        "meituan",
+        "jd.com",
+        "pinterest",
+        "airbnb",
+        "uber",
+    ]
+    return any(company in text for company in companies)

@@ -1,7 +1,12 @@
 import json
 
 from daily_paper.models import Paper
-from daily_paper.summarizer import ChatCompletionClient, analyze_papers_for_site, summarize_papers
+from daily_paper.summarizer import (
+    ChatCompletionClient,
+    analyze_papers_for_site,
+    score_papers_with_llm,
+    summarize_papers,
+)
 from daily_paper.config import SummaryConfig
 
 
@@ -67,6 +72,116 @@ def test_deepseek_chat_completion_payload(monkeypatch):
     assert captured["body"]["response_format"] == {"type": "json_object"}
     assert captured["body"]["thinking"] == {"type": "disabled"}
     assert result["tags"] == ["LLM4Rec", "RecSys"]
+
+
+def test_preference_scoring_payload(monkeypatch):
+    captured = {}
+    response_payload = {
+        "choices": [
+            {
+                "message": {
+                    "content": json.dumps(
+                        {
+                            "score": 92,
+                            "signals": ["Online A/B", "Generative Rec / Semantic ID"],
+                            "reasons": ["有线上 A/B 测试", "语义 ID 推荐相关"],
+                        }
+                    )
+                }
+            }
+        ]
+    }
+
+    class FakeResponse:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+        def read(self):
+            return json.dumps(response_payload).encode("utf-8")
+
+    def fake_urlopen(request, timeout):
+        captured["body"] = json.loads(request.data.decode("utf-8"))
+        return FakeResponse()
+
+    monkeypatch.setattr("urllib.request.urlopen", fake_urlopen)
+
+    client = ChatCompletionClient(
+        api_key="secret",
+        base_url="https://api.deepseek.com",
+        model="deepseek-v4-pro",
+        provider="deepseek",
+    )
+    result = client.score_preference(make_paper())
+
+    assert captured["body"]["response_format"] == {"type": "json_object"}
+    assert "线上 A/B" in captured["body"]["messages"][0]["content"]
+    assert result["score"] == 92
+
+
+def test_score_papers_with_llm_applies_preference_score(monkeypatch):
+    paper = make_paper()
+
+    def fake_score(self, paper, language="zh"):
+        return {
+            "score": 87,
+            "signals": ["Online A/B", "Industry company"],
+            "reasons": ["报告线上 A/B 测试", "作者单位包含互联网公司"],
+        }
+
+    monkeypatch.setenv("DEEPSEEK_API_KEY", "secret")
+    monkeypatch.setattr(ChatCompletionClient, "score_preference", fake_score)
+
+    score_papers_with_llm(
+        [paper],
+        SummaryConfig(
+            provider="deepseek",
+            base_url="https://api.deepseek.com",
+            model="deepseek-v4-flash",
+            analysis_model="deepseek-v4-pro",
+            language="zh",
+            max_sentences=3,
+            full_text_max_chars=12000,
+            full_text_timeout_seconds=10,
+            analysis_workers=1,
+        ),
+    )
+
+    assert paper.llm_score == 87
+    assert paper.score == 87
+    assert paper.preference_signals == ["Online A/B", "Industry company"]
+    assert "线上 A/B" in paper.llm_score_rationale
+
+
+def test_score_papers_with_llm_falls_back_without_api_key(monkeypatch):
+    paper = make_paper()
+    paper.title = "Semantic ID for Generative Recommendation"
+    paper.abstract = "We run an online A/B test on live traffic."
+    paper.venue = "KDD"
+    paper.venue_key = "KDD"
+    paper.affiliations = ["Microsoft"]
+    monkeypatch.delenv("DEEPSEEK_API_KEY", raising=False)
+
+    score_papers_with_llm(
+        [paper],
+        SummaryConfig(
+            provider="deepseek",
+            base_url="https://api.deepseek.com",
+            model="deepseek-v4-flash",
+            analysis_model="deepseek-v4-pro",
+            language="zh",
+            max_sentences=3,
+            full_text_max_chars=12000,
+            full_text_timeout_seconds=10,
+            analysis_workers=1,
+        ),
+    )
+
+    assert paper.llm_score == 100
+    assert "Online A/B" in paper.preference_signals
+    assert "Top venue" in paper.preference_signals
 
 
 def test_summarize_papers_uses_deepseek_api_key(monkeypatch):
