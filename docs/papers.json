@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-10T16:19:14Z",
+  "generated_at": "2026-06-10T16:38:33Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
@@ -7,12 +7,12 @@
   },
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 8,
-    "analyzed": 2,
+    "reused": 0,
+    "analyzed": 8,
     "source": "web/public/papers.json"
   },
   "current_limit": 10,
-  "current_paper_count": 10,
+  "current_paper_count": 8,
   "interests": {
     "arxiv_categories": [
       "cs.IR",
@@ -129,6 +129,496 @@
     ]
   },
   "papers": [
+    {
+      "id": "dblp:conf/www/TangLPLK26",
+      "title": "Verifiable Federated Representation Learning for Cross-domain Sequential Recommendation",
+      "authors": [
+        "Tao Tang",
+        "Botao Liu",
+        "Ciyuan Peng",
+        "Ivan Lee",
+        "Xiangjie Kong"
+      ],
+      "affiliations": [
+        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
+        "Zhejiang University of Technology",
+        "Federation University Australia, Ballarat, Australia",
+        "Federation University",
+        "Adelaide University, Adelaide, Australia",
+        "The University of Adelaide"
+      ],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792533",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792533",
+      "doi": "10.1145/3774904.3792533",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出一种可验证的联邦表征学习方法，用于解决跨域序列推荐中的隐私保护与协同学习问题。",
+      "core_method": "可验证的联邦表征学习框架，结合跨域序列推荐。",
+      "innovation_points": [
+        "将联邦学习引入跨域序列推荐，保护隐私的同时实现多域协同。",
+        "引入可验证机制，增强模型的安全性与可信度。"
+      ],
+      "experiment_results": [
+        "论文元数据未提供具体实验结果或评测结论。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "仅基于元数据，无法评估方法的实际性能和局限性。",
+        "缺乏全文信息，方法的泛化性和效率未经验证。"
+      ],
+      "practical_value": "有望在保护用户隐私的前提下实现跨平台推荐系统的协同学习。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "aa12cbabc7ff6142",
+      "tags": [
+        "RecSys",
+        "Sequential Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 0
+    },
+    {
+      "id": "dblp:conf/www/LiJLWLYZZX26",
+      "title": "Explaining Synergistic Effects in Social Recommendations",
+      "authors": [
+        "Yicong Li",
+        "Shan Jin",
+        "Qi Liu",
+        "Shuo Wang",
+        "Jiaying Liu",
+        "Shuo Yu",
+        "Qiang Zhang",
+        "Kuanjiu Zhou",
+        "Feng Xia"
+      ],
+      "affiliations": [
+        "Dalian University of Technology, Dalian, China",
+        "Dalian University of Technology",
+        "RMIT University, Melbourne, Australia",
+        "RMIT University"
+      ],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792174",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792174",
+      "doi": "10.1145/3774904.3792174",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "研究社交推荐中用户间互动产生的协同效应，提出解释该方法论以增强推荐透明性。",
+      "core_method": "提出解释社交推荐中协同效应的框架，分析用户间如何相互影响推荐结果。",
+      "innovation_points": [
+        "首次聚焦社交推荐中的协同效应解释问题",
+        "构建可解释的协同效应建模方法"
+      ],
+      "experiment_results": [
+        "全文中未提供实验评测结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏实验验证，有效性未知",
+        "仅提出框架，未展示具体实现细节"
+      ],
+      "practical_value": "可提升社交推荐系统的透明度和用户信任，为解释性推荐提供新思路。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "0cf4218910e72c1d",
+      "tags": [
+        "RecSys"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
+    {
+      "id": "dblp:conf/www/ZhuCJYWCZ26",
+      "title": "FeedGuard: Online Critic-Guided Reinforcement Learning with Privacy-Preserving Feedback for Recommendation",
+      "authors": [
+        "Mengying Zhu",
+        "Feiyue Chen",
+        "Lifan Jiang",
+        "Mengyuan Yang",
+        "Yangyang Wu",
+        "Guanjie Cheng",
+        "Xiaolin Zheng"
+      ],
+      "affiliations": [
+        "School of Software Technology, Zhejiang University, Ningbo, China",
+        "Ningbo University",
+        "Zhejiang University",
+        "Zhejiang University, Hangzhou, China"
+      ],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792155",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792155",
+      "doi": "10.1145/3774904.3792155",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出FeedGuard框架，结合在线评判与强化学习，实现隐私保护的反馈机制用于推荐系统。",
+      "core_method": "在线评判引导的强化学习并结合隐私保护反馈机制。",
+      "innovation_points": [
+        "引入在线评判器实时引导强化学习模型更新",
+        "设计隐私保护的用户反馈收集与利用方法",
+        "在推荐系统中融合在线强化学习与评判指导"
+      ],
+      "experiment_results": [
+        "全文未提供实验/评测结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "基于元数据无法确认方法的有效性及实验证据",
+        "隐私保护机制的实际效果和开销未知"
+      ],
+      "practical_value": "为推荐系统提供在线学习与隐私保护结合的解决方案，有望提升模型适应性和用户信任。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "afb2e7c1b77438a3",
+      "tags": [
+        "RecSys",
+        "Agent4Rec",
+        "LLM4Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
+    {
+      "id": "dblp:conf/www/QiuXHPW26",
+      "title": "Meta-Learning Driven Few-Shot Knowledge Transfer with Dual-Stage Adaptive Data Replay for Cross-Domain Recommendation",
+      "authors": [
+        "Yilei Qiu",
+        "Fei Xiong",
+        "Jun Hu",
+        "Shirui Pan",
+        "Liang Wang"
+      ],
+      "affiliations": [
+        "School of Electronic and Information Engineering, Beijing Jiaotong University, Beijing, China",
+        "Beijing Jiaotong University",
+        "Institute of Software Chinese Academy of Sciences, University of Chinese Academy of Sciences, Beijing, China",
+        "Institute of Software",
+        "University of Chinese Academy of Sciences",
+        "School of Information and Communication Technology, Griffith University, Brisbane, Australia",
+        "Griffith University",
+        "School of Computer Science, Northwestern Polytechnical University, Xi'an, China",
+        "Northwestern Polytechnical University"
+      ],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792443",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792443",
+      "doi": "10.1145/3774904.3792443",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出一种元学习驱动的少样本知识迁移框架，通过双阶段自适应数据重放实现跨域推荐。该方法利用元学习从源域提取可迁移知识，并在目标域上通过自适应重放机制缓解灾难性遗忘。论文在WWW会议发表，但未提供具体实验数据。",
+      "core_method": "基于元学习的双阶段自适应数据重放框架，用于跨域推荐的少样本知识迁移。",
+      "innovation_points": [
+        "引入元学习实现跨域少样本知识迁移",
+        "设计双阶段自适应数据重放机制缓解灾难性遗忘"
+      ],
+      "experiment_results": [
+        "论文未提供具体实验结果或评测结论"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏全文，无法评估方法的具体局限性和实验细节"
+      ],
+      "practical_value": "为跨域推荐系统中数据稀疏和灾难性遗忘问题提供了一种潜在的解决方案，可应用于冷启动和少样本场景。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "0104fd9f2e95ac6e",
+      "tags": [
+        "RecSys"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
+    {
+      "id": "dblp:conf/www/ZengQLLLCB26",
+      "title": "RAIE: Region-Aware Incremental Preference Editing with LoRA for LLM-based Recommendation",
+      "authors": [
+        "Jin Zeng",
+        "Yupeng Qi",
+        "Hui Li",
+        "Chengming Li",
+        "Ziyu Lyu",
+        "Lixin Cui",
+        "Lu Bai"
+      ],
+      "affiliations": [
+        "School of Cyber Science and Technology, Shenzhen Campus of Sun Yat-sen University, Shenzhen, Guangdong, China",
+        "Sun Yat-sen University",
+        "Department of Computer Science and Technology, Xiamen University, Xiamen, Fujian, China",
+        "Xiamen University of Technology",
+        "Artificial Intelligence Research Institute, Shenzhen MSU-BIT University, Shenzhen, Guangdong, China",
+        "Shenzhen University",
+        "Shenzhen MSU-BIT University",
+        "School of Information, Central University of Finance and Economics, Beijing, China",
+        "Central University of Finance and Economics",
+        "School of Artificial Intelligence, Beijing Normal University, Beijing, China",
+        "Beijing Normal University"
+      ],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792451",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792451",
+      "doi": "10.1145/3774904.3792451",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "本文提出RAIE方法，通过LoRA进行区域感知的增量式偏好编辑，用于基于大语言模型的推荐系统。该方法旨在高效地更新推荐模型中的用户偏好，同时保持原有知识。RAIE结合了区域感知策略和增量学习，以支持动态用户兴趣变化。",
+      "core_method": "利用LoRA进行区域感知的增量偏好编辑，实现基于大语言模型推荐系统的高效参数更新。",
+      "innovation_points": [
+        "提出区域感知的增量偏好编辑框架，使模型能够聚焦于用户兴趣的特定区域进行更新。",
+        "将LoRA应用于LLM-based推荐，实现参数高效的偏好调整，避免灾难性遗忘。",
+        "增量式编辑机制支持模型在保持原有知识的同时，动态适应用户偏好变化。"
+      ],
+      "experiment_results": [
+        "全文未提供具体实验结果或评测结论（基于元数据无证据）。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏实验结果，有效性和鲁棒性未经验证。",
+        "区域感知策略和增量编辑的具体实现细节未知，可能影响方法的泛化性。"
+      ],
+      "practical_value": "为基于大语言模型的推荐系统提供了一种参数高效且可动态更新的偏好学习方法，有望降低计算成本并提升个性化能力。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "b77a07435afdb51b",
+      "tags": [
+        "LLM4Rec",
+        "RecSys",
+        "Sequential Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
+    {
+      "id": "dblp:conf/www/YuFLZWLWZW26",
+      "title": "ThinkRec: Thinking-based recommendation via LLM",
+      "authors": [
+        "Qihang Yu",
+        "Kairui Fu",
+        "Zheqi Lv",
+        "Shengyu Zhang",
+        "Xinhui Wu",
+        "Chen Lin",
+        "Feng Wei",
+        "Bo Zheng",
+        "Fei Wu"
+      ],
+      "affiliations": [
+        "Zhejiang University, Hangzhou, China",
+        "Zhejiang University",
+        "Ant Group, Hangzhou, China",
+        "Ant Group, Shanghai, China",
+        "Zhejiang University, Hangzhou, China and Shanghai AI Laboratory, Shanghai, China",
+        "Shanghai University"
+      ],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792070",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792070",
+      "doi": "10.1145/3774904.3792070",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "ThinkRec 提出了一种基于大语言模型的思考式推荐方法，旨在通过更深层次的推理过程生成推荐结果。该方法利用 LLM 的思考链能力来提升推荐的可解释性和准确性。论文发表于 WWW 2026，属于前沿的 LLM4Rec 研究。",
+      "core_method": "基于大语言模型的多步推理推荐方法，通过生成思考链来改进推荐质量。",
+      "innovation_points": [
+        "将 LLM 的思维链推理引入推荐系统，实现可解释的推荐生成",
+        "提出 ThinkRec 框架，通过多步思考过程捕捉用户意图和物品关系"
+      ],
+      "experiment_results": [
+        "由于无全文和摘要，具体的实验结果未提供。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "由于只有元数据，具体方法效果和局限未知，可能面临 LLM 推理成本和效率问题。"
+      ],
+      "practical_value": "ThinkRec 为推荐系统引入深度推理能力，有望提升复杂场景下的推荐解释性和准确性。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "8eeca4bfb07efef6",
+      "tags": [
+        "LLM4Rec",
+        "RecSys",
+        "Generative Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -4
+    },
+    {
+      "id": "dblp:conf/www/LiuZHZZZ26",
+      "title": "Facilitating Generative Retrieval with Logical Denoising for Interpretable Conversational Search",
+      "authors": [
+        "Qichuan Liu",
+        "Chentao Zhang",
+        "Yuxuan Hu",
+        "Chenfeng Zheng",
+        "Qinggang Zhang",
+        "Zhihong Zhang"
+      ],
+      "affiliations": [
+        "Xiamen University, Xiamen, China",
+        "Xiamen University",
+        "The Hong Kong Polytechnic University, Hong Kong, China",
+        "Hong Kong Polytechnic University"
+      ],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792544",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792544",
+      "doi": "10.1145/3774904.3792544",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "本文提出了一种通过逻辑去噪促进生成式检索的方法，旨在实现可解释的对话式搜索。",
+      "core_method": "逻辑去噪生成式检索方法，用于提升对话搜索的可解释性。",
+      "innovation_points": [
+        "提出逻辑去噪机制以增强生成式检索的鲁棒性",
+        "实现对话式搜索过程的可解释性"
+      ],
+      "experiment_results": [
+        "论文元数据未提供实验评测结果。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "可能缺乏大规模实验验证",
+        "未明确说明去噪方法的适用范围"
+      ],
+      "practical_value": "可为对话搜索系统提供更可解释的检索结果，提升用户信任度。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "be6c50960e9a6c40",
+      "tags": [
+        "Generative Rec",
+        "Conversational Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -8
+    },
+    {
+      "id": "dblp:conf/www/LiuFYWGH26",
+      "title": "LLM-Driven Semantic ID for Information Diffusion Prediction",
+      "authors": [
+        "Haoshuang Liu",
+        "Zihan Feng",
+        "Yajun Yang",
+        "Xin Wang",
+        "Hong Gao",
+        "Qinghua Hu"
+      ],
+      "affiliations": [],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792652",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792652",
+      "doi": "10.1145/3774904.3792652",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出利用LLM生成语义ID以改进信息扩散预测，利用语言模型增强序列表示，在WWW会议发表。",
+      "core_method": "利用LLM生成语义ID来增强信息扩散预测的序列表示。",
+      "innovation_points": [
+        "首次将LLM生成的语义ID用于信息扩散预测任务",
+        "通过语言模型增强序列表示，提升预测性能"
+      ],
+      "experiment_results": [
+        "论文未提供具体实验结果或评测结论"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏实验验证，方法有效性未知",
+        "仅基于元数据推断，细节不足"
+      ],
+      "practical_value": "若语义ID能有效捕获信息扩散模式，可为推荐系统的信息传播建模提供新思路",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "7d58c24b0b362531",
+      "tags": [
+        "LLM4Rec",
+        "Sequential Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": -8
+    },
     {
       "id": "arxiv:2606.07688",
       "title": "TRACER: Token ReAssignment for Concept ERasure in Generative Recommendation",
