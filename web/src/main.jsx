@@ -12,6 +12,7 @@ const AB_LABELS = {
 function App() {
   const [payload, setPayload] = useState(null);
   const [query, setQuery] = useState("");
+  const [archiveDate, setArchiveDate] = useState("All");
   const [tag, setTag] = useState("All");
   const [venue, setVenue] = useState("All");
   const [importanceFilter, setImportanceFilter] = useState("All");
@@ -37,6 +38,7 @@ function App() {
 
   const tags = useMemo(() => unique(papers.flatMap((paper) => paper.tags || [])), [papers]);
   const venues = useMemo(() => unique(papers.map((paper) => displayVenue(paper)).filter(Boolean)), [papers]);
+  const archiveDates = useMemo(() => uniqueDesc(papers.map((paper) => paperDate(paper)).filter(Boolean)), [papers]);
   const filtered = useMemo(() => {
     const needle = query.trim().toLowerCase();
     return papers.filter((paper) => {
@@ -52,15 +54,18 @@ function App() {
         .toLowerCase();
       return (
         (!needle || haystack.includes(needle)) &&
+        (archiveDate === "All" || paperDate(paper) === archiveDate) &&
         (tag === "All" || (paper.tags || []).includes(tag)) &&
         (venue === "All" || displayVenue(paper) === venue) &&
         (importanceFilter === "All" || paper.localMark === importanceFilter)
       );
     });
-  }, [papers, query, tag, venue, importanceFilter]);
+  }, [papers, query, archiveDate, tag, venue, importanceFilter]);
+  const groupedPapers = useMemo(() => groupPapersByDate(filtered), [filtered]);
 
   const stats = useMemo(() => buildStats(papers), [papers]);
   const site = payload?.site || {};
+  const cache = payload?.analysis_cache || {};
 
   function setMark(paperId, value) {
     setMarks((current) => ({ ...current, [paperId]: value }));
@@ -82,9 +87,10 @@ function App() {
 
       <section className="statsGrid" aria-label="Digest statistics">
         <Stat label="Papers" value={stats.total} />
+        <Stat label="Archive Days" value={archiveDates.length} />
         <Stat label="Important" value={stats.important} />
         <Stat label="A/B Evidence" value={stats.abTests} />
-        <Stat label="Top Venues" value={stats.venues} />
+        <Stat label="Analysis Cache" value={`${cache.reused || 0}/${(cache.reused || 0) + (cache.analyzed || 0)}`} />
       </section>
 
       {payload?.analysis_enabled === false && (
@@ -100,6 +106,7 @@ function App() {
           onChange={(event) => setQuery(event.target.value)}
           placeholder="搜索标题、作者、机构、标签..."
         />
+        <FilterGroup label="日期" value={archiveDate} onChange={setArchiveDate} options={["All", ...archiveDates]} />
         <FilterGroup label="标签" value={tag} onChange={setTag} options={["All", ...tags]} />
         <FilterGroup label="会议" value={venue} onChange={setVenue} options={["All", ...venues]} />
         <FilterGroup
@@ -110,9 +117,26 @@ function App() {
         />
       </section>
 
-      <section className="paperGrid">
+      <section className="archiveSummary">
+        <span>{archiveDate === "All" ? "全部日期" : formatArchiveDate(archiveDate)}</span>
+        <strong>{filtered.length} 篇论文</strong>
+      </section>
+
+      <section className="archiveList">
         {filtered.length ? (
-          filtered.map((paper) => <PaperCard key={paper.id} paper={paper} onMark={setMark} />)
+          groupedPapers.map((group) => (
+            <section className="archiveSection" key={group.date}>
+              <div className="archiveSectionHeader">
+                <h2>{formatArchiveDate(group.date)}</h2>
+                <span>{group.papers.length} 篇</span>
+              </div>
+              <div className="paperGrid">
+                {group.papers.map((paper) => (
+                  <PaperCard key={paper.id} paper={paper} onMark={setMark} />
+                ))}
+              </div>
+            </section>
+          ))
         ) : (
           <div className="emptyState">没有匹配的论文。调整搜索或筛选条件。</div>
         )}
@@ -252,6 +276,26 @@ function buildStats(papers) {
   };
 }
 
+function groupPapersByDate(papers) {
+  const groups = new Map();
+  papers.forEach((paper) => {
+    const date = paperDate(paper) || "Unknown";
+    if (!groups.has(date)) groups.set(date, []);
+    groups.get(date).push(paper);
+  });
+  return Array.from(groups.entries())
+    .sort(([left], [right]) => {
+      if (left === "Unknown") return 1;
+      if (right === "Unknown") return -1;
+      return right.localeCompare(left);
+    })
+    .map(([date, values]) => ({ date, papers: values }));
+}
+
+function paperDate(paper) {
+  return paper.published_date || (paper.published || "").slice(0, 10) || "";
+}
+
 function displayVenue(paper) {
   let value = paper.venue_key || paper.venue || "";
   if (Array.isArray(value)) return value[0] || "";
@@ -279,6 +323,10 @@ function unique(values) {
   return Array.from(new Set(values)).sort((a, b) => a.localeCompare(b));
 }
 
+function uniqueDesc(values) {
+  return Array.from(new Set(values)).sort((a, b) => b.localeCompare(a));
+}
+
 function compactList(values, limit) {
   const items = (values || []).filter(Boolean);
   if (!items.length) return "";
@@ -293,6 +341,11 @@ function formatGeneratedAt(value) {
   } catch (error) {
     return value;
   }
+}
+
+function formatArchiveDate(value) {
+  if (!value || value === "Unknown") return "未知日期";
+  return value;
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));

@@ -1,4 +1,7 @@
-from daily_paper.arxiv import parse_feed
+import datetime as dt
+
+from daily_paper.arxiv import build_search_query, parse_feed
+from daily_paper.config import ArxivConfig
 
 
 SAMPLE_FEED = b"""<?xml version="1.0" encoding="UTF-8"?>
@@ -38,3 +41,19 @@ def test_parse_feed_extracts_required_fields():
     assert paper.affiliations == ["Stanford University", "Google DeepMind"]
     assert paper.primary_category == "cs.IR"
     assert paper.pdf_url == "http://arxiv.org/pdf/2606.01234v2"
+
+
+def test_build_search_query_limits_submitted_date_window():
+    config = ArxivConfig(
+        categories=["cs.IR"],
+        include_keywords=["recommendation"],
+        exclude_keywords=[],
+        max_results=50,
+        days_back=7,
+    )
+
+    query = build_search_query(config, now=dt.datetime(2026, 6, 10, 0, 0))
+
+    assert 'all:"recommendation"' in query
+    assert "cat:cs.IR" in query
+    assert "submittedDate:[202606030000 TO 202606100000]" in query

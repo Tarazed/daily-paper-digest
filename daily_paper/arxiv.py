@@ -15,10 +15,19 @@ ARXIV_NS = "{http://arxiv.org/schemas/atom}"
 API_URL = "https://export.arxiv.org/api/query"
 
 
-def build_search_query(config: ArxivConfig) -> str:
+def build_search_query(config: ArxivConfig, now: _dt.datetime = None) -> str:
     keyword_query = " OR ".join('all:"%s"' % keyword for keyword in config.include_keywords)
     category_query = " OR ".join("cat:%s" % category for category in config.categories)
-    return "(%s) AND (%s)" % (keyword_query, category_query)
+    query = "(%s) AND (%s)" % (keyword_query, category_query)
+    if config.days_back > 0:
+        end = now or _dt.datetime.utcnow()
+        start = end - _dt.timedelta(days=config.days_back)
+        query = "(%s) AND submittedDate:[%s TO %s]" % (
+            query,
+            _format_arxiv_date(start),
+            _format_arxiv_date(end),
+        )
+    return query
 
 
 def fetch_papers(config: ArxivConfig) -> List[Paper]:
@@ -139,3 +148,7 @@ def _extract_arxiv_id(url: str) -> str:
 
 def _parse_datetime(value: str) -> _dt.datetime:
     return _dt.datetime.strptime(value[:19], "%Y-%m-%dT%H:%M:%S")
+
+
+def _format_arxiv_date(value: _dt.datetime) -> str:
+    return value.strftime("%Y%m%d%H%M")

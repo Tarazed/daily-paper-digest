@@ -1,7 +1,7 @@
 import json
 from dataclasses import asdict
 
-from daily_paper.cli import _load_previous_site_papers, _reuse_cached_site_analysis
+from daily_paper.cli import _load_previous_site_papers, _merge_site_history, _reuse_cached_site_analysis
 from daily_paper.config import SummaryConfig
 from daily_paper.models import Paper
 from daily_paper.summarizer import expected_analysis_signature
@@ -101,3 +101,23 @@ def test_load_previous_site_papers_reads_existing_payload(tmp_path):
     loaded = _load_previous_site_papers(str(path))
 
     assert [paper.id for paper in loaded] == ["arxiv:2606.01234"]
+
+
+def test_merge_site_history_keeps_current_first_and_preserves_older_papers():
+    current = [
+        make_paper("arxiv:2606.00003", "Current top paper"),
+        make_paper("arxiv:2606.00002", "Updated current paper"),
+    ]
+    previous = [
+        make_paper("arxiv:2606.00002", "Older duplicate should be replaced"),
+        make_paper("arxiv:2606.00001", "Historical paper"),
+    ]
+
+    merged = _merge_site_history(current, previous)
+
+    assert [paper.id for paper in merged] == [
+        "arxiv:2606.00003",
+        "arxiv:2606.00002",
+        "arxiv:2606.00001",
+    ]
+    assert merged[1].title == "Updated current paper"

@@ -10,6 +10,9 @@
     var queryState = React.useState("");
     var query = queryState[0];
     var setQuery = queryState[1];
+    var archiveDateState = React.useState("All");
+    var archiveDate = archiveDateState[0];
+    var setArchiveDate = archiveDateState[1];
     var tagState = React.useState("All");
     var tag = tagState[0];
     var setTag = tagState[1];
@@ -68,6 +71,16 @@
       },
       [papers]
     );
+    var archiveDates = React.useMemo(
+      function () {
+        return uniqueDesc(
+          papers
+            .map(function (paper) { return paperDate(paper); })
+            .filter(Boolean)
+        );
+      },
+      [papers]
+    );
     var filtered = React.useMemo(
       function () {
         var needle = query.trim().toLowerCase();
@@ -84,17 +97,25 @@
             .toLowerCase();
           return (
             (!needle || haystack.indexOf(needle) >= 0) &&
+            (archiveDate === "All" || paperDate(paper) === archiveDate) &&
             (tag === "All" || (paper.tags || []).indexOf(tag) >= 0) &&
             (venue === "All" || displayVenue(paper) === venue) &&
             (importanceFilter === "All" || paper.localMark === importanceFilter)
           );
         });
       },
-      [papers, query, tag, venue, importanceFilter]
+      [papers, query, archiveDate, tag, venue, importanceFilter]
+    );
+    var groupedPapers = React.useMemo(
+      function () {
+        return groupPapersByDate(filtered);
+      },
+      [filtered]
     );
 
     var stats = buildStats(papers);
     var site = (payload && payload.site) || {};
+    var cache = (payload && payload.analysis_cache) || {};
 
     function setMark(paperId, value) {
       setMarks(function (current) {
@@ -128,9 +149,10 @@
         "section",
         { className: "statsGrid", "aria-label": "Digest statistics" },
         h(Stat, { label: "Papers", value: stats.total }),
+        h(Stat, { label: "Archive Days", value: archiveDates.length }),
         h(Stat, { label: "Important", value: stats.important }),
         h(Stat, { label: "A/B Evidence", value: stats.abTests }),
-        h(Stat, { label: "Top Venues", value: stats.venues })
+        h(Stat, { label: "Analysis Cache", value: (cache.reused || 0) + "/" + ((cache.reused || 0) + (cache.analyzed || 0)) })
       ),
       payload && payload.analysis_enabled === false
         ? h(
@@ -148,6 +170,7 @@
           onChange: function (event) { return setQuery(event.target.value); },
           placeholder: "搜索标题、作者、机构、标签..."
         }),
+        h(FilterGroup, { label: "日期", value: archiveDate, onChange: setArchiveDate, options: ["All"].concat(archiveDates) }),
         h(FilterGroup, { label: "标签", value: tag, onChange: setTag, options: ["All"].concat(tags) }),
         h(FilterGroup, { label: "会议", value: venue, onChange: setVenue, options: ["All"].concat(venues) }),
         h(FilterGroup, {
@@ -159,10 +182,32 @@
       ),
       h(
         "section",
-        { className: "paperGrid" },
+        { className: "archiveSummary" },
+        h("span", null, archiveDate === "All" ? "全部日期" : formatArchiveDate(archiveDate)),
+        h("strong", null, filtered.length + " 篇论文")
+      ),
+      h(
+        "section",
+        { className: "archiveList" },
         filtered.length
-          ? filtered.map(function (paper) {
-              return h(PaperCard, { key: paper.id, paper: paper, onMark: setMark });
+          ? groupedPapers.map(function (group) {
+              return h(
+                "section",
+                { className: "archiveSection", key: group.date },
+                h(
+                  "div",
+                  { className: "archiveSectionHeader" },
+                  h("h2", null, formatArchiveDate(group.date)),
+                  h("span", null, group.papers.length + " 篇")
+                ),
+                h(
+                  "div",
+                  { className: "paperGrid" },
+                  group.papers.map(function (paper) {
+                    return h(PaperCard, { key: paper.id, paper: paper, onMark: setMark });
+                  })
+                )
+              );
             })
           : h("div", { className: "emptyState" }, "没有匹配的论文。调整搜索或筛选条件。")
       )
@@ -310,6 +355,28 @@
     };
   }
 
+  function groupPapersByDate(papers) {
+    var groups = {};
+    papers.forEach(function (paper) {
+      var date = paperDate(paper) || "Unknown";
+      if (!groups[date]) groups[date] = [];
+      groups[date].push(paper);
+    });
+    return Object.keys(groups)
+      .sort(function (left, right) {
+        if (left === "Unknown") return 1;
+        if (right === "Unknown") return -1;
+        return right.localeCompare(left);
+      })
+      .map(function (date) {
+        return { date: date, papers: groups[date] };
+      });
+  }
+
+  function paperDate(paper) {
+    return paper.published_date || (paper.published || "").slice(0, 10) || "";
+  }
+
   function displayVenue(paper) {
     var value = paper.venue_key || paper.venue || "";
     if (Array.isArray(value)) return value[0] || "";
@@ -337,6 +404,10 @@
     return Array.from(new Set(values)).sort(function (a, b) { return a.localeCompare(b); });
   }
 
+  function uniqueDesc(values) {
+    return Array.from(new Set(values)).sort(function (a, b) { return b.localeCompare(a); });
+  }
+
   function flatten(values) {
     return values.reduce(function (acc, item) { return acc.concat(item); }, []);
   }
@@ -355,6 +426,11 @@
     } catch (error) {
       return value;
     }
+  }
+
+  function formatArchiveDate(value) {
+    if (!value || value === "Unknown") return "未知日期";
+    return value;
   }
 
   ReactDOM.render(h(App), document.getElementById("root"));

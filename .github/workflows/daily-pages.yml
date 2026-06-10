@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -42,6 +42,18 @@ jobs:
           DAILY_PAPER_LIMIT: "10"
           DAILY_PAPER_CONFIG: config.toml
         run: ./scripts/build_pages.sh
+
+      - name: Persist generated paper history
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add web/public/papers.json docs/papers.json
+          if git diff --cached --quiet; then
+            echo "No paper history changes to persist."
+          else
+            git commit -m "Update daily paper history [skip ci]"
+            git push
+          fi
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

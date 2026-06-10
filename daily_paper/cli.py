@@ -132,6 +132,7 @@ def _site_data_command(args, config) -> int:
     papers = _select_site_papers(candidates, limit)
     current_paper_count = len(papers)
     papers_to_analyze = _reuse_cached_site_analysis(papers, previous_papers, config.summary)
+    cache_reused_count = len(papers) - len(papers_to_analyze)
     papers = enrich_papers(
         papers,
         config.enrichment,
@@ -140,14 +141,20 @@ def _site_data_command(args, config) -> int:
     )
     print(
         "Site analysis: reusing %d cached papers, analyzing %d new or changed papers."
-        % (len(papers) - len(papers_to_analyze), len(papers_to_analyze))
+        % (cache_reused_count, len(papers_to_analyze))
     )
     analyze_papers_for_site(papers_to_analyze, config.summary)
+    papers = _merge_site_history(papers, previous_papers)
     _clean_site_papers(papers)
     payload = {
         "generated_at": _dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
         "site": asdict(config.site),
         "analysis_enabled": bool(_analysis_api_key(config.summary.provider)),
+        "analysis_cache": {
+            "reused": cache_reused_count,
+            "analyzed": len(papers_to_analyze),
+            "source": args.out,
+        },
         "current_limit": limit,
         "current_paper_count": current_paper_count,
         "interests": {
