@@ -11,7 +11,7 @@ from .arxiv import fetch_papers
 from .config import load_config
 from .dblp import fetch_dblp_papers
 from .email_template import render_html, render_subject, render_text
-from .enrichment import enrich_papers
+from .enrichment import enrich_papers, normalize_affiliations
 from .filtering import prepare_papers, sort_papers
 from .mailer import MailConfigError, build_message, send_message
 from .state import load_state
@@ -132,20 +132,26 @@ def _site_data_command(args, config) -> int:
     candidates = _load_ranked_papers(config, limit=limit * 2, enrich_results=False)
     papers = _select_site_papers(candidates, limit)
     current_paper_count = len(papers)
-    papers_to_analyze = _reuse_cached_site_analysis(papers, previous_papers, config.summary)
-    cache_reused_count = len(papers) - len(papers_to_analyze)
     papers = enrich_papers(
         papers,
         config.enrichment,
         llm_model=config.summary.model,
         llm_base_url=config.summary.base_url,
     )
+    papers_to_analyze = _reuse_cached_site_analysis(papers, previous_papers, config.summary)
+    cache_reused_count = len(papers) - len(papers_to_analyze)
     print(
         "Site analysis: reusing %d cached papers, analyzing %d new or changed papers."
         % (cache_reused_count, len(papers_to_analyze))
     )
     analyze_papers_for_site(papers_to_analyze, config.summary)
     papers = _merge_site_history(papers, previous_papers)
+    papers = enrich_papers(
+        papers,
+        config.enrichment,
+        llm_model=config.summary.model,
+        llm_base_url=config.summary.base_url,
+    )
     _clean_site_papers(papers)
     payload = {
         "generated_at": _dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
@@ -196,12 +202,13 @@ def _load_ranked_papers(config, limit: int, enrich_results: bool = True):
     ranked = prepare_papers(papers, config.arxiv, state)
     candidate_count = _candidate_pool_size(limit, len(ranked))
     candidate_pool = ranked[:candidate_count] if candidate_count else ranked
-    candidate_pool = enrich_papers(
-        candidate_pool,
-        config.enrichment,
-        llm_model=config.summary.model,
-        llm_base_url=config.summary.base_url,
-    )
+    if enrich_results:
+        candidate_pool = enrich_papers(
+            candidate_pool,
+            config.enrichment,
+            llm_model=config.summary.model,
+            llm_base_url=config.summary.base_url,
+        )
     score_papers_with_llm(candidate_pool, config.summary)
     selected = sort_papers(candidate_pool)[:limit] if limit else sort_papers(candidate_pool)
     return selected
@@ -340,7 +347,9 @@ def _clean_site_papers(papers: List[Paper]) -> None:
     for paper in papers:
         paper.title = _clean_display_text(paper.title, html)
         paper.authors = [_clean_display_author(value, html) for value in paper.authors]
-        paper.affiliations = [_clean_display_text(value, html) for value in paper.affiliations]
+        paper.affiliations = normalize_affiliations(
+            [_clean_display_text(value, html) for value in paper.affiliations]
+        )
         paper.categories = [value for value in paper.categories if value != "DBLP"]
         paper.generated_summary = _clean_display_text(paper.generated_summary, html)
         paper.core_method = _clean_display_text(paper.core_method, html)

@@ -29,6 +29,7 @@ def enrich_papers(
         return items
     source_attempts = 0
     for paper in items:
+        paper.affiliations = normalize_affiliations(paper.affiliations)
         if _has_affiliations(paper):
             continue
         allow_source_lookup = config.source_enabled and source_attempts < config.source_max_papers
@@ -42,8 +43,18 @@ def enrich_papers(
         if used_source_lookup:
             source_attempts += 1
         if affiliations:
-            paper.affiliations = affiliations
+            paper.affiliations = normalize_affiliations(affiliations)
     return items
+
+
+def normalize_affiliations(values: Iterable[str]) -> List[str]:
+    affiliations = []
+    for value in values or []:
+        cleaned = _clean_affiliation_name(value)
+        if not cleaned or not _looks_like_institution_name(cleaned):
+            continue
+        _append_affiliation_unique(affiliations, cleaned)
+    return affiliations
 
 
 def lookup_confirmed_affiliations(
@@ -79,7 +90,7 @@ def lookup_confirmed_affiliations(
         cleaned = [_clean_affiliation_name(value) for value in affiliations]
         cleaned = [value for value in cleaned if value]
         if cleaned:
-            candidates[provider] = _dedupe(cleaned)
+            candidates[provider] = normalize_affiliations(cleaned)
     return _select_confirmed_affiliations(candidates, config.confirmed_min_sources), used_source_lookup
 
 
@@ -461,7 +472,7 @@ def _clean_affiliations_with_llm(values: List[str], model: str, base_url: str) -
         parsed = json.loads(output)
     except Exception:
         return []
-    return _dedupe([str(value).strip() for value in parsed.get("affiliations", []) if value])
+    return normalize_affiliations([str(value).strip() for value in parsed.get("affiliations", []) if value])
 
 
 def _extract_chat_output_text(data: Dict[str, object]) -> str:
@@ -574,30 +585,129 @@ def _clean_affiliation_name(value: str) -> str:
     cleaned = re.sub(r"\s+", " ", str(value or "")).strip(" ,;")
     if not cleaned:
         return ""
+    if cleaned.lower() in ("unknown", "unknown affiliation", "n/a", "none", "null"):
+        return ""
     if "@" in cleaned and len(cleaned.split()) <= 4:
         return ""
     return cleaned
 
 
 def _normalize_affiliation(value: str) -> str:
-    return re.sub(r"[^a-z0-9]+", "", str(value or "").lower())
+    return _affiliation_match_key(value)
 
 
 def _dedupe(values: List[str]) -> List[str]:
     cleaned = []
     for value in values:
-        _append_unique(cleaned, value)
+        _append_affiliation_unique(cleaned, value)
     return cleaned
 
 
 def _has_affiliations(paper: Paper) -> bool:
-    return any(value.strip() for value in paper.affiliations)
+    return bool(normalize_affiliations(paper.affiliations))
 
 
 def _append_unique(values: List[str], value: str) -> None:
     cleaned = re.sub(r"\s+", " ", str(value)).strip()
     if cleaned and cleaned not in values:
         values.append(cleaned)
+
+
+def _append_affiliation_unique(values: List[str], value: str) -> None:
+    cleaned = re.sub(r"\s+", " ", str(value)).strip(" ,;")
+    if not cleaned:
+        return
+    key = _affiliation_match_key(cleaned)
+    if not key:
+        return
+    for index, existing in enumerate(values):
+        existing_key = _affiliation_match_key(existing)
+        if not existing_key:
+            continue
+        if key == existing_key or _similar_affiliation_key(key, existing_key):
+            if _prefer_affiliation_value(cleaned, existing):
+                values[index] = cleaned
+            return
+    values.append(cleaned)
+
+
+def _prefer_affiliation_value(candidate: str, existing: str) -> bool:
+    candidate_parts = len([part for part in candidate.split(",") if part.strip()])
+    existing_parts = len([part for part in existing.split(",") if part.strip()])
+    if candidate_parts != existing_parts:
+        return candidate_parts < existing_parts
+    return len(candidate) < len(existing)
+
+
+def _similar_affiliation_key(left: str, right: str) -> bool:
+    if not left or not right:
+        return False
+    shorter, longer = sorted((left, right), key=len)
+    return len(shorter) >= 8 and shorter in longer
+
+
+def _affiliation_match_key(value: str) -> str:
+    text = str(value or "").lower()
+    text = re.sub(r"\b(the|a|an)\b", " ", text)
+    text = text.replace("&", "and")
+    parts = [part.strip(" .;:-") for part in re.split(r",|\||/|\\\\|\\n", text) if part.strip()]
+    institution_parts = [part for part in parts if _looks_like_institution_name(part)]
+    if institution_parts:
+        text = institution_parts[-1]
+    text = re.sub(r"\b(department|dept|school|faculty|college|division) of [a-z0-9 and&.-]+?\b", " ", text)
+    text = re.sub(r"\b(hong kong|beijing|shanghai|montreal|toronto|canada|china|usa|united states|uk|united kingdom)\b", " ", text)
+    return re.sub(r"[^a-z0-9]+", "", text)
+
+
+def _looks_like_institution_name(value: str) -> bool:
+    text = str(value or "").lower().strip()
+    if not text:
+        return False
+    markers = [
+        "university",
+        "institute",
+        "college",
+        "school",
+        "laboratory",
+        "lab",
+        "academy",
+        "polytechnic",
+        "research",
+        "centre",
+        "center",
+        "cnrs",
+        "inria",
+        "corporation",
+        "inc",
+        "ltd",
+        "llc",
+        "company",
+    ]
+    known_short_names = [
+        "google",
+        "deepmind",
+        "microsoft",
+        "meta",
+        "openai",
+        "amazon",
+        "apple",
+        "nvidia",
+        "huawei",
+        "baidu",
+        "alibaba",
+        "tencent",
+        "bytedance",
+        "netflix",
+        "spotify",
+        "yandex",
+        "mit",
+        "eth",
+        "epfl",
+        "kaist",
+    ]
+    return any(marker in text for marker in markers) or any(
+        re.search(r"\b%s\b" % re.escape(name), text) for name in known_short_names
+    )
 
 
 def _normalize_title(value: str) -> str:

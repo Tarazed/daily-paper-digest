@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field
+import re
 from typing import List
 
 
@@ -45,10 +46,54 @@ class Paper:
         seen = []
         for affiliation in self.affiliations:
             value = affiliation.strip()
-            if value and value not in seen:
-                seen.append(value)
+            key = _affiliation_display_key(value)
+            if not value or not key:
+                continue
+            existing_keys = [_affiliation_display_key(existing) for existing in seen]
+            if key in existing_keys:
+                continue
+            seen.append(value)
         return seen or ["Unknown affiliation"]
 
     @property
     def published_date(self):
         return self.published[:10] if self.published else ""
+
+
+def _affiliation_display_key(value: str) -> str:
+    text = str(value or "").lower().strip()
+    if text in ("unknown", "unknown affiliation", "n/a", "none", "null"):
+        return ""
+    text = re.sub(r"\b(the|a|an)\b", " ", text)
+    text = text.replace("&", "and")
+    parts = [part.strip(" .;:-") for part in re.split(r",|\||/|\\\\|\\n", text) if part.strip()]
+    markers = (
+        "university",
+        "institute",
+        "college",
+        "school",
+        "laboratory",
+        "lab",
+        "academy",
+        "research",
+        "centre",
+        "center",
+        "google",
+        "deepmind",
+        "microsoft",
+        "meta",
+        "openai",
+        "amazon",
+        "apple",
+        "nvidia",
+        "huawei",
+        "baidu",
+        "alibaba",
+        "tencent",
+        "bytedance",
+    )
+    institution_parts = [part for part in parts if any(marker in part for marker in markers)]
+    if institution_parts:
+        text = institution_parts[-1]
+    text = re.sub(r"\b(hong kong|beijing|shanghai|montreal|toronto|canada|china|usa|united states|uk|united kingdom)\b", " ", text)
+    return re.sub(r"[^a-z0-9]+", "", text)

@@ -8,6 +8,7 @@ from daily_paper.enrichment import (
     extract_semantic_scholar_affiliations,
     extract_tex_affiliations,
     lookup_confirmed_affiliations,
+    normalize_affiliations,
 )
 from daily_paper.models import Paper
 
@@ -109,6 +110,34 @@ def test_enrich_papers_uses_openalex_title_match(monkeypatch):
     )
 
     assert enriched[0].affiliations == ["Tsinghua University"]
+
+
+def test_enrich_papers_replaces_unknown_or_invalid_affiliations(monkeypatch):
+    paper = make_paper()
+    paper.affiliations = ["Unknown affiliation", "Klara"]
+
+    monkeypatch.setattr(
+        "daily_paper.enrichment.lookup_confirmed_affiliations",
+        lambda *args, **kwargs: (["The Chinese University of Hong Kong"], False),
+    )
+
+    enriched = enrich_papers([paper], config(confirm_providers=["openalex"]))
+
+    assert enriched[0].affiliations == ["The Chinese University of Hong Kong"]
+
+
+def test_normalize_affiliations_removes_duplicate_location_variants():
+    affiliations = normalize_affiliations(
+        [
+            "The Chinese University of Hong Kong, Hong Kong, Hong Kong",
+            "Chinese University of Hong Kong",
+            "McGill University, Montreal, Canada",
+            "McGill University",
+            "Klara",
+        ]
+    )
+
+    assert affiliations == ["Chinese University of Hong Kong", "McGill University"]
 
 
 def test_extract_affiliations_from_crossref_authors():

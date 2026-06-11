@@ -145,10 +145,7 @@
         "Jaegul Choo"
       ],
       "affiliations": [
-        "SK Telecom",
-        "SK Telecom Korea Advanced Institute of Science and Technology",
-        "Korea Advanced Institute of Science and Technology",
-        "Korea Telecom (South Korea)"
+        "Korea Advanced Institute of Science and Technology"
       ],
       "published": "2026-03-14",
       "updated": "2026-03-14",
@@ -276,9 +273,7 @@
         "Jianxia Ling"
       ],
       "affiliations": [
-        "Zhejiang Key Laboratory of Intelligent Education Technology and Application, Zhejiang Normal University",
         "Zhejiang Normal University",
-        "School of Computer Science and Engineering, Southeast University",
         "Southeast University"
       ],
       "published": "2026-03-14",
@@ -345,10 +340,8 @@
         "Xiaolin Zheng"
       ],
       "affiliations": [
-        "School of Software Technology, Zhejiang University, Ningbo, China",
-        "Ningbo University",
         "Zhejiang University",
-        "Zhejiang University, Hangzhou, China"
+        "Ningbo University"
       ],
       "published": "2026",
       "updated": "2026",
@@ -481,7 +474,6 @@
       ],
       "affiliations": [
         "China University of Petroleum (East China) Shandong Key Laboratory of Intelligent Oil and Gas Industrial Software",
-        "China University of Petroleum, East China",
         "ByteDance Inc",
         "Macquarie University",
         "Lancaster University",
@@ -551,7 +543,6 @@
       ],
       "affiliations": [
         "University of Electronic Science and Technology of China",
-        "Centre for Artificial Intelligence and Robotics, HKISI-CAS",
         "Centre for Artificial Intelligence and Robotics",
         "Nanyang Technological University"
       ],
@@ -676,16 +667,11 @@
         "Lu Bai"
       ],
       "affiliations": [
-        "School of Cyber Science and Technology, Shenzhen Campus of Sun Yat-sen University, Shenzhen, Guangdong, China",
         "Sun Yat-sen University",
-        "Department of Computer Science and Technology, Xiamen University, Xiamen, Fujian, China",
         "Xiamen University of Technology",
-        "Artificial Intelligence Research Institute, Shenzhen MSU-BIT University, Shenzhen, Guangdong, China",
-        "Shenzhen University",
         "Shenzhen MSU-BIT University",
-        "School of Information, Central University of Finance and Economics, Beijing, China",
+        "Shenzhen University",
         "Central University of Finance and Economics",
-        "School of Artificial Intelligence, Beijing Normal University, Beijing, China",
         "Beijing Normal University"
       ],
       "published": "2026",
@@ -886,9 +872,7 @@
         "Xuyun Zhang"
       ],
       "affiliations": [
-        "Nanjing University of Information Science and Technology, Nanjing, Jiangsu, China",
         "Nanjing University of Information Science and Technology",
-        "Macquarie University, Sydney, New South Wales, Australia",
         "Macquarie University"
       ],
       "published": "2026-02-21",
@@ -955,13 +939,9 @@
         "Yew-Soon Ong"
       ],
       "affiliations": [
-        "Nanyang Technological University, Singapore, Singapore",
         "Nanyang Technological University",
-        "Singapore University of Technology and Design, Singapore, Singapore",
         "Singapore University of Technology and Design",
-        "Zhejiang University, Hangzhou, Zhejiang, China",
         "Zhejiang University",
-        "Chengdu University of Information Technology, Chengdu, Sichuan, China",
         "Chengdu University of Information Technology"
       ],
       "published": "2026-06-01",
@@ -1025,7 +1005,6 @@
         "Xiaofeng Gao"
       ],
       "affiliations": [
-        "School of Computer Science, Shanghai Jiao Tong University, Shanghai, China",
         "Shanghai Jiao Tong University"
       ],
       "published": "2026-02-21",
@@ -1092,17 +1071,13 @@
       ],
       "affiliations": [
         "AWS AI Labs, Santa Clara, CA, USA",
-        "Databricks, Santa Clara, CA, USA",
         "Santa Clara University",
         "Google DeepMind, Mountain View, CA, USA",
         "Google (United States)",
-        "University of California San Diego, San Diego, CA, USA",
         "University of California San Diego",
         "Texas A&M University, College Station, USA",
         "Texas A&M University",
         "Snap Inc., Seattle, WA, USA",
-        "Snap (United States)",
-        "University of Minnesota, Minneapolis, MN, USA",
         "University of Minnesota"
       ],
       "published": "2026-02-21",
@@ -1172,12 +1147,8 @@
         "Fei Wu"
       ],
       "affiliations": [
-        "Zhejiang University, Hangzhou, China",
         "Zhejiang University",
-        "Ant Group, Hangzhou, China",
-        "Ant Group, Shanghai, China",
-        "Zhejiang University, Hangzhou, China and Shanghai AI Laboratory, Shanghai, China",
-        "Shanghai University"
+        "Zhejiang University, Hangzhou, China and Shanghai AI Laboratory, Shanghai, China"
       ],
       "published": "2026",
       "updated": "2026",
@@ -1307,9 +1278,7 @@
         "Zhihong Zhang"
       ],
       "affiliations": [
-        "Xiamen University, Xiamen, China",
         "Xiamen University",
-        "The Hong Kong Polytechnic University, Hong Kong, China",
         "Hong Kong Polytechnic University"
       ],
       "published": "2026",
@@ -1431,7 +1400,6 @@
       "affiliations": [
         "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
         "Zhejiang University of Technology",
-        "Federation University Australia, Ballarat, Australia",
         "Federation University",
         "Adelaide University, Adelaide, Australia",
         "The University of Adelaide"
@@ -1612,9 +1580,7 @@
         "Feng Xia"
       ],
       "affiliations": [
-        "Dalian University of Technology, Dalian, China",
         "Dalian University of Technology",
-        "RMIT University, Melbourne, Australia",
         "RMIT University"
       ],
       "published": "2026",
@@ -1672,14 +1638,10 @@
         "Liang Wang"
       ],
       "affiliations": [
-        "School of Electronic and Information Engineering, Beijing Jiaotong University, Beijing, China",
         "Beijing Jiaotong University",
-        "Institute of Software Chinese Academy of Sciences, University of Chinese Academy of Sciences, Beijing, China",
-        "Institute of Software",
         "University of Chinese Academy of Sciences",
-        "School of Information and Communication Technology, Griffith University, Brisbane, Australia",
+        "Institute of Software",
         "Griffith University",
-        "School of Computer Science, Northwestern Polytechnical University, Xi'an, China",
         "Northwestern Polytechnical University"
       ],
       "published": "2026",
@@ -1804,7 +1766,6 @@
         "Rasha Kashef"
       ],
       "affiliations": [
-        "Electrical, Computer, and Biomedical Engineering, Toronto Metropolitan University, Toronto, ON M5B 2K3, Canada",
         "Toronto Metropolitan University"
       ],
       "published": "2025-06-04",
@@ -1931,11 +1892,8 @@
         "Irwin King"
       ],
       "affiliations": [
-        "The Chinese University of Hong Kong, Hong Kong, Hong Kong",
         "Chinese University of Hong Kong",
-        "McGill University, Montreal, Canada",
         "McGill University",
-        "Tongji University, Shanghai, China",
         "Tongji University"
       ],
       "published": "2026-06-09T15:59:14Z",
@@ -2070,11 +2028,9 @@
       "affiliations": [
         "Alibaba International Digital Commerce Group, Beijing, China",
         "Alibaba Group (China)",
-        "Peking University, Beijing, China",
         "Peking University",
         "Beijing University of Aeronautics and Astronautics, Beijing, China",
         "Beihang University",
-        "Alibaba International Digital Commerce Group, Hangzhou, China",
         "Wuhan University, School of Computer Science, Wuhan, China",
         "Wuhan University"
       ],
@@ -2407,21 +2363,7 @@
         "Silang Wang",
         "Dan Zhang"
       ],
-      "affiliations": [
-        "Klara",
-        "Klara",
-        "Klara",
-        "Klara",
-        "Klara",
-        "Klara",
-        "Klara",
-        "Klara",
-        "Klara",
-        "Klara",
-        "Klara",
-        "Klara",
-        "Klara"
-      ],
+      "affiliations": [],
       "published": "2026-06-08T02:31:14Z",
       "updated": "2026-06-08T02:31:14Z",
       "abstract": "This report summarizes the CHIIR 2026 Workshop on Generative AI and Academic Search (GAI\\&AS), which examined how GenAI is reshaping academic search systems and research practices. The workshop brought together researchers in human information interaction and information retrieval to explore key challenges and opportunities in designing and evaluating future academic search systems that integrate GenAI, moving beyond traditional document retrieval to support summarization, recommendation, synthesis, and conversational interaction. Participants' interests and discussions focused on three thematic clusters: foundations and principles, applications and opportunities, and search-as-learning. Across these themes, the workshop highlighted the importance of academic search systems in supporting transparency, credibility, research integrity, and long-term scholarly needs, as well as in fostering higher-order cognitive processes. Participants discussed guiding theories, design principles, methodological approaches, partnerships, and community-building efforts aimed at advancing human-centered GenAI-enhanced academic search systems. Overall, the workshop demonstrated strong community interest and a diverse range of ongoing and emerging research initiatives at the intersection of GenAI and academic search.",
