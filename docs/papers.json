@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T04:52:11Z",
+  "generated_at": "2026-06-11T14:51:56Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
@@ -7,8 +7,8 @@
   },
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 5,
-    "analyzed": 5,
+    "reused": 6,
+    "analyzed": 4,
     "source": "web/public/papers.json"
   },
   "current_limit": 10,
@@ -183,7 +183,7 @@
       ],
       "practical_value": "通过融合协作信号和理性生成，提升了LLM推荐的准确性和可解释性，适合注重用户参与度的推荐场景。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "45dba10bb5790ed0",
       "tags": [
         "LLM4Rec",
@@ -201,7 +201,64 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 142
+      "score": 147
+    },
+    {
+      "id": "dblp:conf/www/LiuFYWGH26",
+      "title": "LLM-Driven Semantic ID for Information Diffusion Prediction",
+      "authors": [
+        "Haoshuang Liu",
+        "Zihan Feng",
+        "Yajun Yang",
+        "Xin Wang",
+        "Hong Gao",
+        "Qinghua Hu"
+      ],
+      "affiliations": [],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792652",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792652",
+      "doi": "10.1145/3774904.3792652",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出利用LLM生成语义ID以改进信息扩散预测，利用语言模型增强序列表示，在WWW会议发表。",
+      "core_method": "利用LLM生成语义ID来增强信息扩散预测的序列表示。",
+      "innovation_points": [
+        "首次将LLM生成的语义ID用于信息扩散预测任务",
+        "通过语言模型增强序列表示，提升预测性能"
+      ],
+      "experiment_results": [
+        "论文未提供具体实验结果或评测结论"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏实验验证，方法有效性未知",
+        "仅基于元数据推断，细节不足"
+      ],
+      "practical_value": "若语义ID能有效捕获信息扩散模式，可为推荐系统的信息传播建模提供新思路",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "7d58c24b0b362531",
+      "tags": [
+        "LLM4Rec",
+        "Sequential Rec"
+      ],
+      "llm_score": 0,
+      "llm_score_rationale": "",
+      "preference_signals": [],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 122
     },
     {
       "id": "arxiv:2606.08604",
@@ -261,7 +318,478 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 134
+      "score": 121
+    },
+    {
+      "id": "s2:874577ed403f08008a6eea48e432deabbf0fc2ad",
+      "title": "DHMRec: Collaboration-Guided Multimodal Disentanglement and Hierarchical Fusion for Recommendation",
+      "authors": [
+        "Xiaohang Zhan",
+        "Yuliang Shi",
+        "Jihu Wang",
+        "Shijun Liu",
+        "Fanyu Kong",
+        "Zhiyong Chen"
+      ],
+      "affiliations": [
+        "School of Software, Shandong University",
+        "Shandong University",
+        "School of Software, Shandong University Dareway Software Co., Ltd",
+        "DHC Software (China)",
+        "School of Control Science and Engineering, Shandong University"
+      ],
+      "published": "2026-03-14",
+      "updated": "2026-03-14",
+      "abstract": "Multimodal recommender systems have emerged as a pivotal paradigm for harnessing diverse data modalities to deliver personalized services. Contemporary research predominantly focuses on integrating heterogeneous modality information through graph learning. However, these approaches face two key challenges: (1) the inherent complexity of modalities, characterized by entangled redundant signals and noise; and (2) the challenge of effectively integrating multimodal representations, each of which may exert varying degrees of influence on users' preferences. To address these challenges, we propose a novel Collaboration-Guided Multimodal Disentanglement and Hierarchical Fusion for Recommendation (DHMRec), which simultaneously achieves intra-modal denoising disentanglement and inter-modal hierarchical fusion. Specifically, we introduce a collaboration-related modality disentanglement module to distinguish between modality-common and modality-specific features. Then, through multi-view graph learning to capture both item-item dependencies and user-item interaction patterns. Additionally, we implement hierarchical fusion between the disentangled multimodal features and ID embeddings using a positive-negative attention-aware fusion module and an interaction distribution-based alignment module. Extensive experiments on three benchmarks demonstrate that our DHMRec surpasses various state-of-the-art baselines, highlighting its effectiveness in intra-modal disentanglement and multimodal features fusion.",
+      "categories": [
+        "Semantic Scholar",
+        "AAAI"
+      ],
+      "primary_category": "AAAI",
+      "abs_url": "https://www.semanticscholar.org/paper/874577ed403f08008a6eea48e432deabbf0fc2ad",
+      "pdf_url": "https://www.semanticscholar.org/paper/874577ed403f08008a6eea48e432deabbf0fc2ad",
+      "doi": "10.1609/aaai.v40i19.38661",
+      "source": "Semantic Scholar",
+      "status": "conference",
+      "venue": "AAAI Conference on Artificial Intelligence",
+      "venue_key": "AAAI",
+      "generated_summary": "DHMRec提出协作引导的多模态解耦与分层融合推荐框架，通过解耦模态的共性/特异性特征、多视图图学习及正负注意力感知融合，在三个基准数据集上验证了有效性。",
+      "core_method": "协作引导的多模态解耦与分层融合（DHMRec），包含模态解耦、多视图图学习和正负注意力感知融合模块。",
+      "innovation_points": [
+        "引入协作相关的模态解耦，区分模态共性与特异性特征以去除冗余和噪声",
+        "设计正负注意力感知融合模块，实现解耦特征与ID嵌入的分层融合",
+        "结合多视图图学习捕捉物品依赖与用户-物品交互模式"
+      ],
+      "experiment_results": [
+        "在三个基准数据集上，DHMRec性能超越多种现有最佳基线方法",
+        "消融研究表明模态解耦和分层融合均对性能有积极贡献（具体指标元数据未提供）"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "论文仅基于三个基准数据集进行离线评估，泛化能力未在大规模线上环境验证",
+        "模态解耦与融合的可解释性及计算效率未在元数据中讨论"
+      ],
+      "practical_value": "DHMRec通过去噪和自适应融合多种模态信息，有望提升多模态推荐系统的准确性和鲁棒性。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "7977997eed9be154",
+      "tags": [
+        "RecSys",
+        "Dataset"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "发表在中国计算机学会推荐A类会议AAAI，属于顶会论文，信誉度较高。；作者单位包含DHC Software（China），属于企业背景，但非知名互联网公司，信号较弱。；论文主题为多模态推荐，与生成式推荐、语义ID、LLM4Rec等方向关联度较低。",
+      "preference_signals": [
+        "Top venue",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 118
+    },
+    {
+      "id": "s2:b23703ae1e11808638b7a2ebdca7ab102765ade5",
+      "title": "MM4Rec: Multi-Source and Multi-Scenario Recommender for Unified User Preference",
+      "authors": [
+        "Chu-Chun Yu",
+        "Ming-Yi Hong",
+        "Miao-Chen Chiang",
+        "M. Hsieh",
+        "Che Lin"
+      ],
+      "affiliations": [
+        "National Taiwan University",
+        "National Taiwan University Academia Sinica",
+        "Genomics Research Center, Academia Sinica",
+        "Institute of Biological Chemistry, Academia Sinica"
+      ],
+      "published": "2026-03-14",
+      "updated": "2026-03-14",
+      "abstract": "As online ecosystems grow increasingly complex, personalized recommendation systems must integrate user preferences across heterogeneous content sources and interaction scenarios. However, conventional methods typically model each source and scenario in isolation, hindering their ability to capture shared and complementary signals across contexts. In this work, we propose MM4Rec, a unified framework for multi-source and multi-scenario recommendation. MM4Rec introduces a Source-Aware Transformer Encoder to jointly model heterogeneous inputs, a Multi-Scenario Behavior Extraction Layer based on a multi-mixture-of-experts architecture to capture scenario-specific dynamics, and a Trend-Aware Learner to enhance temporal representation learning. Extensive experiments on three real-world datasets demonstrate that MM4Rec consistently outperforms strong baselines across standard recommendation metrics. To facilitate future research, we also release two large-scale datasets encompassing diverse sources and scenarios.",
+      "categories": [
+        "Semantic Scholar",
+        "AAAI"
+      ],
+      "primary_category": "AAAI",
+      "abs_url": "https://www.semanticscholar.org/paper/b23703ae1e11808638b7a2ebdca7ab102765ade5",
+      "pdf_url": "https://www.semanticscholar.org/paper/b23703ae1e11808638b7a2ebdca7ab102765ade5",
+      "doi": "10.1609/aaai.v40i19.38655",
+      "source": "Semantic Scholar",
+      "status": "conference",
+      "venue": "AAAI Conference on Artificial Intelligence",
+      "venue_key": "AAAI",
+      "generated_summary": "MM4Rec提出一个统一的多源多场景推荐框架，通过源感知Transformer编码器、多场景行为提取层和趋势感知学习者整合异构数据，在三个真实数据集上显著优于基线方法。",
+      "core_method": "基于源感知Transformer编码、多专家混合的多场景行为提取和趋势感知学习的统一多源多场景推荐模型",
+      "innovation_points": [
+        "提出统一的多源多场景推荐框架，联合建模异构内容源和交互场景",
+        "设计源感知Transformer编码器处理多源异构输入",
+        "引入趋势感知学习器增强时间表征学习"
+      ],
+      "experiment_results": [
+        "在三个真实数据集上，MM4Rec在标准推荐指标上持续超越强基线"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "论文缺少全文，具体实现细节和局限性未明确",
+        "未报告线上实验，实际部署效果未知"
+      ],
+      "practical_value": "为多源多场景推荐提供统一框架，有助于工业界整合异构数据提升推荐效果",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "351cb1903c6cd61b",
+      "tags": [
+        "RecSys",
+        "Sequential Rec",
+        "LLM4Rec"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "AAAI 是顶级会议，加分；作者单位为国家台湾大学和中研院，非知名互联网公司，但场景多源多场景推荐有工业应用潜力；没有明确提及线上 A/B 实验或在线实验证据，仅有离线实验",
+      "preference_signals": [
+        "Top venue",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 114
+    },
+    {
+      "id": "s2:ae959583f883aec3384cc6a6f33c64d415bed93d",
+      "title": "Federated Context-Aware Personalized Recommendation",
+      "authors": [
+        "Zhihao Wang",
+        "Xiaoying Liao",
+        "Wenke Huang",
+        "Bingqian Liu",
+        "Tianle Chen",
+        "Jian Wang",
+        "Bing Li"
+      ],
+      "affiliations": [
+        "School of Computer Science, Wuhan University",
+        "Wuhan University",
+        "Changsha Bus Group Central South University of Forestry and Technology",
+        "Central South University of Forestry and Technology"
+      ],
+      "published": "2026-03-14",
+      "updated": "2026-03-14",
+      "abstract": "Federated recommender system is emerging as a new paradigm for providing personalized services while preserving user data privacy. Most existing personalized federated recommender systems predict the user's next item by discretely training user and item embeddings. However, this training approach overlooks the user's behavioral patterns, suffers from low interpretability, and requires a substantial amount of data and meticulous fine-tuning to achieve stable and accurate embeddings. To address these limitations, we propose Federated Context-Aware Personalized Recommendation (FedCAR), a novel framework that leverages users’ recent interactions as behavioral context to guide prediction. Instead of static user embeddings, FedCAR dynamically constructs context representations by aggregating and weighting recently interacted item embeddings. Additionally, we incorporate a contrastive learning strategy that enables the model to capture shared behavioral structures across clients while maintaining personalized preferences, enhancing both generalization and robustness in heterogeneous settings. Experiments on 5 benchmark datasets show that FedCAR consistently outperforms state-of-the-art methods and provides interpretable recommendations by explicitly modeling context dependencies.",
+      "categories": [
+        "Semantic Scholar",
+        "AAAI"
+      ],
+      "primary_category": "AAAI",
+      "abs_url": "https://www.semanticscholar.org/paper/ae959583f883aec3384cc6a6f33c64d415bed93d",
+      "pdf_url": "https://www.semanticscholar.org/paper/ae959583f883aec3384cc6a6f33c64d415bed93d",
+      "doi": "10.1609/aaai.v40i31.39888",
+      "source": "Semantic Scholar",
+      "status": "conference",
+      "venue": "AAAI Conference on Artificial Intelligence",
+      "venue_key": "AAAI",
+      "generated_summary": "FedCAR是一种联邦上下文感知推荐框架，利用用户最近交互作为行为上下文动态构建表征，结合对比学习捕捉跨客户端共享行为结构，在5个基准数据集上一致优于现有方法。",
+      "core_method": "通过聚合和加权最近交互的物品嵌入动态构建上下文表征，并采用对比学习策略在联邦设置中平衡共享结构与个性化偏好。",
+      "innovation_points": [
+        "提出动态上下文表征替代静态用户嵌入，显式建模用户行为模式",
+        "引入对比学习增强模型在异构客户端间的泛化性和鲁棒性",
+        "框架具备可解释性，能通过上下文依赖关系解释推荐结果"
+      ],
+      "experiment_results": [
+        "在5个基准数据集上，FedCAR持续超越最先进方法"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "元数据中未提及对冷启动或数据稀疏场景的处理能力",
+        "对比学习对超参数的敏感性未在摘要中说明"
+      ],
+      "practical_value": "在保护隐私的联邦学习框架下实现可解释且高性能的个性化推荐，适用于金融、医疗等隐私敏感领域。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "e9a2a03a2fbfb736",
+      "tags": [
+        "RecSys",
+        "Sequential Rec",
+        "LLM4Rec"
+      ],
+      "llm_score": 70,
+      "llm_score_rationale": "发表于AAAI顶会，符合高权重条件；标题和摘要体现个性化推荐与上下文感知，但未直接涉及生成式推荐或语义ID，仅部分相关；无线上A/B实验证据，仅有离线基准数据集实验",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 113
+    },
+    {
+      "id": "s2:413edab3e04b1b971648018a6f27f858ec90b148",
+      "title": "Hyperbolic-Enhanced Mixture-of-Experts Mamba for Sequential Recommendation",
+      "authors": [
+        "Yuwen Liu",
+        "Lianyong Qi",
+        "Xingyuan Mao",
+        "Weiming Liu",
+        "Xuhui Fan",
+        "Qiang Ni",
+        "Xuyun Zhang",
+        "Yang Zhang",
+        "Yuan Tian",
+        "Amin Beheshti"
+      ],
+      "affiliations": [
+        "China University of Petroleum (East China) Shandong Key Laboratory of Intelligent Oil and Gas Industrial Software",
+        "China University of Petroleum, East China",
+        "ByteDance Inc",
+        "Macquarie University",
+        "Lancaster University",
+        "University of North Texas",
+        "Nanjing Institute of Technology"
+      ],
+      "published": "2026-03-14",
+      "updated": "2026-03-14",
+      "abstract": "Sequential recommendation has emerged as a fundamental task in various domains, aiming to predict a user's next interaction based on historical behavior. Recent advances in deep sequence models, particularly Transformer-based architectures and the more recent Mamba, have substantially pushed the boundaries of sequential modeling performance. However, existing methods still face two critical challenges. First, many current approaches overlook the hierarchical structures and high-order dependencies among items, typically restricting representation learning to conventional Euclidean spaces, which limits their capacity to capture complex relational information. Second, although Mamba excels at long-range dependency modeling, its reliance on static Feed-Forward Networks (FFNs) hinders its ability to dynamically adapt to evolving user preferences across diverse contexts. To address these limitations, we propose a Hyperbolic-Enhanced Mixture-of-Experts Mamba recommender (HM2Rec) for sequential recommendation. HM2Rec first encodes user-item relationships through hyperbolic graph convolution to exploit hierarchical structure more effectively. Then, a Variational Graph Auto-Encoder (VGAE) is employed to reconstruct node embeddings, improving structural robustness. To further enhance sequential modeling, we integrate Rotary Positional Encoding (RoPE) into Mamba to better capture relative position dependencies, and replace the FFN with Mixture-of-Expert (MOE) module, enabling dynamic and personalized expert selection for each token. Our extensive experiments on four widely-used public datasets demonstrate that HM2Rec outperforms several advanced baseline models.",
+      "categories": [
+        "Semantic Scholar",
+        "AAAI"
+      ],
+      "primary_category": "AAAI",
+      "abs_url": "https://www.semanticscholar.org/paper/413edab3e04b1b971648018a6f27f858ec90b148",
+      "pdf_url": "https://www.semanticscholar.org/paper/413edab3e04b1b971648018a6f27f858ec90b148",
+      "doi": "10.1609/aaai.v40i18.38567",
+      "source": "Semantic Scholar",
+      "status": "conference",
+      "venue": "AAAI Conference on Artificial Intelligence",
+      "venue_key": "AAAI",
+      "generated_summary": "提出一种结合双曲空间与混合专家Mamba的序列推荐模型HM2Rec，通过双曲图卷积捕获物品层次结构，利用变分图自编码器增强嵌入鲁棒性，并引入旋转位置编码与动态专家选择提升序列建模能力。",
+      "core_method": "HM2Rec采用双曲图卷积编码层次关系、变分图自编码器重构嵌入、旋转位置编码增强位置感知，并将Mamba的FFN替换为混合专家模块实现动态适配。",
+      "innovation_points": [
+        "在双曲空间中进行图卷积，更有效地建模物品间的层次结构和高阶依赖",
+        "将Mamba与前馈网络替换为混合专家模块（MOE），实现动态、个性化的专家选择",
+        "结合变分图自编码器（VGAE）增强节点嵌入的结构鲁棒性"
+      ],
+      "experiment_results": [
+        "在四个公开数据集上进行了广泛实验，HM2Rec性能优于多个先进基线模型（详情未提供）"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "元数据未提供具体局限性，但方法涉及双曲空间和混合专家，可能增加模型复杂度和训练开销"
+      ],
+      "practical_value": "增强了序列推荐对层次结构和动态用户偏好的建模能力，有望提升实际推荐系统的准确性和个性化程度。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "1f8f6da95b9cd684",
+      "tags": [
+        "Sequential Rec",
+        "LLM4Rec"
+      ],
+      "llm_score": 65,
+      "llm_score_rationale": "发表在AAAI顶会，符合顶会加分条件；作者包含ByteDance Inc，属于知名互联网公司；主要关注序列推荐，未涉及生成式推荐/语义ID，相关性一般",
+      "preference_signals": [
+        "Top venue",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 113
+    },
+    {
+      "id": "s2:0fa47e5bf0d1eb49c55456066fec3227ddc08654",
+      "title": "Semantic-Aware Data Augmentation for Sequential Recommendation",
+      "authors": [
+        "Zhifu Wei"
+      ],
+      "affiliations": [
+        "School of Computer Science and Engineering, Northeastern University, China",
+        "Northeastern University"
+      ],
+      "published": "2026-03-14",
+      "updated": "2026-03-14",
+      "abstract": "Sequential recommendation (SR) aims to model users' dynamic preferences from their historical interaction sequences to provide personalized recommendations. However, data sparsity remains a core bottleneck limiting the performance of sequential recommendation models. Existing mixup methods face two major challenges: 1) They cannot effectively address the data sparsity dilemma in long-tail scenarios. 2) It is difficult to maintain the Semantic structure of augmented samples during the random mixing process.\nTo address these challenges, this study proposes the Semantic-Aware Data Augmentation (SADA) framework, which utilizes large language models (LLMs) to generate semantic embeddings. This framework allows for the fusion of both collaborative and semantic signals, alleviating the representation deficiency of long-tail items. Additionally, through semantic-guided mixup, the framework preserves semantic structure consistency at both the user and item levels, thereby avoiding semantic structure degradation caused by traditional random mixing. This approach is expected to significantly improve recommendation performance and generalization ability across multiple datasets and application scenarios.\nIn a broader context, this research aims to drive the evolution of data augmentation in sequential recommendation from heuristic methods to a semantic-driven paradigm, helping to build more personalized, accurate, and socially valuable recommendation services.",
+      "categories": [
+        "Semantic Scholar",
+        "AAAI"
+      ],
+      "primary_category": "AAAI",
+      "abs_url": "https://www.semanticscholar.org/paper/0fa47e5bf0d1eb49c55456066fec3227ddc08654",
+      "pdf_url": "https://www.semanticscholar.org/paper/0fa47e5bf0d1eb49c55456066fec3227ddc08654",
+      "doi": "10.1609/aaai.v40i48.42328",
+      "source": "Semantic Scholar",
+      "status": "conference",
+      "venue": "AAAI Conference on Artificial Intelligence",
+      "venue_key": "AAAI",
+      "generated_summary": "提出语义感知数据增强框架(SADA)，利用大语言模型生成语义嵌入融合协同和语义信号，缓解长尾物品表示不足；通过语义引导混合保持用户和项目级别的语义结构一致性，提升序列推荐性能与泛化能力。",
+      "core_method": "基于LLM的语义感知数据增强框架，通过语义嵌入融合协同信号并进行语义引导的混合操作，增强序列推荐中的长尾物品表示并保持语义结构。",
+      "innovation_points": [
+        "利用大语言模型生成语义嵌入，将语义信号融入协同过滤，缓解长尾物品的表示稀疏问题。",
+        "提出语义引导的混合策略，在用户和项目层面保持增强样本的语义结构一致性，避免传统随机混合导致的语义退化。"
+      ],
+      "experiment_results": [
+        "论文元数据未提供具体实验结果或评测指标。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "依赖大语言模型生成语义嵌入，可能增加计算开销和部署复杂性。",
+        "元数据未提供具体实验对比数据，效果待验证。"
+      ],
+      "practical_value": "为序列推荐中的数据增强提供了一种语义驱动的方法，有望在冷启动和长尾场景下提升推荐系统的多样性和个性化。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "ce0a2a673d7c2a6a",
+      "tags": [
+        "Sequential Rec",
+        "LLM4Rec"
+      ],
+      "llm_score": 65,
+      "llm_score_rationale": "发表于AAAI，属于顶级会议，加分。；涉及语义增强和LLM用于序列推荐，与生成式推荐/语义ID有一定相关性，但非直接聚焦生成式检索或语义标识符。；作者单位非知名互联网公司，缺少线上A/B实验证据。",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 108
+    },
+    {
+      "id": "arxiv:2606.07972",
+      "title": "OneFeed: A Unified Generative Framework for Feed Content Enhancement and Query Generation",
+      "authors": [
+        "Guo Xun"
+      ],
+      "affiliations": [],
+      "published": "2026-06-06T04:17:09Z",
+      "updated": "2026-06-06T04:17:09Z",
+      "abstract": "Modern feed recommendation and search systems are deeply connected in user behavior butare usually modeled by separate architectures. Feed recommendation mainly captures implicitinterests from browsing interactions, while search systems rely on explicit user queries to retrieveintent-matched content. This separation causes fragmented user understanding and missedopportunities for using feed interactions to improve query generation and using generated queriesto enhance feed candidate retrieval.In this paper, we propose OneFeed, a unified generative framework for jointly modelingfeed content enhancement and query generation. OneFeed encodes heterogeneous user behaviorsequences with a shared behavior encoder and employs two generative heads: a Feed SemanticID Generator that produces content semantic IDs for recommendation retrieval, and an IntentQuery Generator that produces natural-language queries for search-based candidate expansion.To bridge the semantic gap between recommendation content and search queries, we introduce aSID-Query alignment objective that learns a shared semantic space for content semantic IDs andquery representations. We further design a closed-loop self-enhancement paradigm that leveragesimplicit user feedback from generated content and search-retrieved results to improve bothgeneration tasks. We provide a detailed experimental protocol using public recommendationdatasets with weakly supervised query construction, define a comprehensive set of evaluationmetrics, report expected performance estimates grounded in known baseline values, and validatethe executability of the proposed pipeline through a minimal local prototype. OneFeed providesa practical and extensible direction for unifying search and recommendation through generativemodeling.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.07972v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.07972v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "提出OneFeed统一生成框架，通过共享编码器和两个生成头（内容语义ID与意图查询）联合建模推荐内容增强与查询生成，结合SID-Query对齐和闭环自增强机制，弥合推荐与搜索的语义鸿沟。",
+      "core_method": "共享行为编码器加两个生成头（Feed语义ID生成器和意图查询生成器），并通过SID-Query对齐目标学习共享语义空间，闭环自增强利用隐式反馈进行迭代训练。",
+      "innovation_points": [
+        "统一生成建模：将推荐内容增强和查询生成作为两个互补的生成任务，共享编码器并联合训练。",
+        "SID-Query对齐：在共享语义空间中学习内容语义ID和查询表示的对齐，促进知识迁移。",
+        "闭环自增强：利用生成内容和搜索结果的隐式反馈持续改进两个生成任务。"
+      ],
+      "experiment_results": [
+        "论文未提供完整实验数据，仅给出了基于已知基线的预期性能估计和消融方向，具体结果待后续更新。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试。",
+      "limitations": [
+        "实验结果仅为预期性能估计，未进行完整数据集训练和评测。",
+        "查询构建采用弱监督方式，可能影响真实系统表现。"
+      ],
+      "practical_value": "为统一推荐和搜索系统提供了可扩展的生成式建模方向，能够利用搜索意图增强推荐候选池。",
+      "analysis_basis": "full_text",
+      "analysis_status": "cached",
+      "analysis_signature": "3e6c2286e737c72f",
+      "tags": [
+        "Generative Rec",
+        "Sequential Rec",
+        "LLM4Rec"
+      ],
+      "llm_score": 0,
+      "llm_score_rationale": "",
+      "preference_signals": [],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 107
+    },
+    {
+      "id": "arxiv:2606.12198",
+      "title": "LLM-Based User Personas for Recommendations at Scale",
+      "authors": [
+        "Haoting Wang",
+        "Haokai Lu",
+        "Zheyun Feng",
+        "Jenny Huang",
+        "Yifat Amir",
+        "Gregory Hinkson",
+        "Ben Most",
+        "Zelong Zhao",
+        "Yixin Kelly Cui",
+        "Rein Zhang",
+        "Fabio Soldo",
+        "Yu Xia",
+        "Nihar Bhupalam",
+        "Minmin Chen",
+        "Konstantina Christakopoulou",
+        "Lichan Hong",
+        "Ed H. Chi"
+      ],
+      "affiliations": [
+        "Google DeepMind",
+        "Google"
+      ],
+      "published": "2026-06-10T15:18:32Z",
+      "updated": "2026-06-10T15:18:32Z",
+      "abstract": "Large Language Models (LLMs) offer unprecedented potential for enhancing recommendation systems through their world knowledge and reasoning capabilities. However, existing approaches often rely on structured IDs or offline processing, limiting semantic richness, real-time adaptability, and user-facing interpretability. In this paper, we introduce a novel framework that enables real-time generation of LLM-based user interest personas for a large-scale commercial video recommendation platform. Our method generates natural-language user interest personas that address the exploitation-exploration trade-off by combining the summarization of existing interests with novel topics, directly during serving. To overcome the computational challenges of online LLM inference at a billion-user scale, we design a cost-efficient architecture leveraging knowledge distillation, asynchronous inference, and input optimization via semantically clustered video representations. Extensive offline evaluations, user studies, and live A/B tests demonstrate significant improvements in viewer value. This work bridges the gap between high-level semantic understanding and industrial-scale recommendation, paving the way for more dynamic, explainable, and satisfying personalized experiences.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.12198v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.12198v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "论文提出一个在亿级用户规模的商业视频推荐平台上，实时生成基于大语言模型的用户兴趣画像的框架。该方法通过结合兴趣总结和探索生成自然语言画像，并利用知识蒸馏、异步推理和语义聚类输入来克服在线推理的计算挑战。",
+      "core_method": "使用知识蒸馏训练小模型，在线上异步推理中根据用户观看历史的语义聚类生成包含兴趣总结和探索话题的自然语言用户画像。",
+      "innovation_points": [
+        "首次将LLM生成的用户画像直接嵌入实时推荐服务路径，作为检索源驱动用户探索",
+        "设计知识蒸馏流程，将大型LLM的多步推理能力迁移到可用于在线推理的小模型，同时处理兴趣总结与探索生成",
+        "提出异步推理架构，结合输入语义聚类和模型量化，在亿级用户规模下实现低延迟、低成本的在线LLM推理"
+      ],
+      "experiment_results": [
+        "大规模在线A/B测试显示，用户满意度和探索行为显著提升",
+        "用户调研表明对LLM生成的兴趣画像准确性有较高满意度",
+        "离线评估验证了语义聚类输入相比原始序列输入的摘要质量更优"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文明确提到进行了大规模A/B测试（large-scale A/B testing），并展示了在观看者价值（viewer value）上的统计显著改善，包括用户满意度和探索的增加。",
+      "limitations": [
+        "系统依赖于大型教师模型生成训练数据，可能继承其偏见或错误",
+        "未详细讨论画像生成对推荐结果多样性的长期影响及潜在伦理问题"
+      ],
+      "practical_value": "为工业级推荐系统提供了一种在实时服务中利用LLM语义理解能力、平衡利用与探索的可规模化方案，并可用于用户可解释性功能。",
+      "analysis_basis": "full_text",
+      "analysis_status": "cached",
+      "analysis_signature": "45f4b31d622b12c1",
+      "tags": [
+        "LLM4Rec",
+        "RecSys",
+        "Sequential Rec",
+        "Generative Rec"
+      ],
+      "llm_score": 98,
+      "llm_score_rationale": "明确有live A/B tests且在商业视频推荐平台上线，证据权重最高；作者单位含Google DeepMind和Google，为顶级互联网公司；使用LLM生成用户兴趣persona用于推荐，与生成式推荐强相关",
+      "preference_signals": [
+        "Online A/B",
+        "Industry company",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 106
     },
     {
       "id": "s2:d112bb5cdd7b4aa01829eb181f78d705a47bc888",
@@ -465,79 +993,6 @@
       "score": 108
     },
     {
-      "id": "s2:413edab3e04b1b971648018a6f27f858ec90b148",
-      "title": "Hyperbolic-Enhanced Mixture-of-Experts Mamba for Sequential Recommendation",
-      "authors": [
-        "Yuwen Liu",
-        "Lianyong Qi",
-        "Xingyuan Mao",
-        "Weiming Liu",
-        "Xuhui Fan",
-        "Qiang Ni",
-        "Xuyun Zhang",
-        "Yang Zhang",
-        "Yuan Tian",
-        "Amin Beheshti"
-      ],
-      "affiliations": [
-        "China University of Petroleum (East China) Shandong Key Laboratory of Intelligent Oil and Gas Industrial Software",
-        "China University of Petroleum, East China",
-        "ByteDance Inc",
-        "Macquarie University",
-        "Lancaster University",
-        "University of North Texas",
-        "Nanjing Institute of Technology"
-      ],
-      "published": "2026-03-14",
-      "updated": "2026-03-14",
-      "abstract": "Sequential recommendation has emerged as a fundamental task in various domains, aiming to predict a user's next interaction based on historical behavior. Recent advances in deep sequence models, particularly Transformer-based architectures and the more recent Mamba, have substantially pushed the boundaries of sequential modeling performance. However, existing methods still face two critical challenges. First, many current approaches overlook the hierarchical structures and high-order dependencies among items, typically restricting representation learning to conventional Euclidean spaces, which limits their capacity to capture complex relational information. Second, although Mamba excels at long-range dependency modeling, its reliance on static Feed-Forward Networks (FFNs) hinders its ability to dynamically adapt to evolving user preferences across diverse contexts. To address these limitations, we propose a Hyperbolic-Enhanced Mixture-of-Experts Mamba recommender (HM2Rec) for sequential recommendation. HM2Rec first encodes user-item relationships through hyperbolic graph convolution to exploit hierarchical structure more effectively. Then, a Variational Graph Auto-Encoder (VGAE) is employed to reconstruct node embeddings, improving structural robustness. To further enhance sequential modeling, we integrate Rotary Positional Encoding (RoPE) into Mamba to better capture relative position dependencies, and replace the FFN with Mixture-of-Expert (MOE) module, enabling dynamic and personalized expert selection for each token. Our extensive experiments on four widely-used public datasets demonstrate that HM2Rec outperforms several advanced baseline models.",
-      "categories": [
-        "Semantic Scholar",
-        "AAAI"
-      ],
-      "primary_category": "AAAI",
-      "abs_url": "https://www.semanticscholar.org/paper/413edab3e04b1b971648018a6f27f858ec90b148",
-      "pdf_url": "https://www.semanticscholar.org/paper/413edab3e04b1b971648018a6f27f858ec90b148",
-      "doi": "10.1609/aaai.v40i18.38567",
-      "source": "Semantic Scholar",
-      "status": "conference",
-      "venue": "AAAI Conference on Artificial Intelligence",
-      "venue_key": "AAAI",
-      "generated_summary": "提出一种结合双曲空间与混合专家Mamba的序列推荐模型HM2Rec，通过双曲图卷积捕获物品层次结构，利用变分图自编码器增强嵌入鲁棒性，并引入旋转位置编码与动态专家选择提升序列建模能力。",
-      "core_method": "HM2Rec采用双曲图卷积编码层次关系、变分图自编码器重构嵌入、旋转位置编码增强位置感知，并将Mamba的FFN替换为混合专家模块实现动态适配。",
-      "innovation_points": [
-        "在双曲空间中进行图卷积，更有效地建模物品间的层次结构和高阶依赖",
-        "将Mamba与前馈网络替换为混合专家模块（MOE），实现动态、个性化的专家选择",
-        "结合变分图自编码器（VGAE）增强节点嵌入的结构鲁棒性"
-      ],
-      "experiment_results": [
-        "在四个公开数据集上进行了广泛实验，HM2Rec性能优于多个先进基线模型（详情未提供）"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "元数据未提供具体局限性，但方法涉及双曲空间和混合专家，可能增加模型复杂度和训练开销"
-      ],
-      "practical_value": "增强了序列推荐对层次结构和动态用户偏好的建模能力，有望提升实际推荐系统的准确性和个性化程度。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "1f8f6da95b9cd684",
-      "tags": [
-        "Sequential Rec",
-        "LLM4Rec"
-      ],
-      "llm_score": 65,
-      "llm_score_rationale": "发表在AAAI顶会，符合顶会加分条件；作者包含ByteDance Inc，属于知名互联网公司；主要关注序列推荐，未涉及生成式推荐/语义ID，相关性一般",
-      "preference_signals": [
-        "Top venue",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 108
-    },
-    {
       "id": "s2:7f23e1e6d62acdd5f6369f843778cd100afb2074",
       "title": "From Dialogue to Destination: Geography-Aware Large Language Models with Multimodal Fusion for Conversational Recommendation",
       "authors": [
@@ -601,63 +1056,6 @@
         "Top venue",
         "Industry company"
       ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 107
-    },
-    {
-      "id": "dblp:conf/www/LiuFYWGH26",
-      "title": "LLM-Driven Semantic ID for Information Diffusion Prediction",
-      "authors": [
-        "Haoshuang Liu",
-        "Zihan Feng",
-        "Yajun Yang",
-        "Xin Wang",
-        "Hong Gao",
-        "Qinghua Hu"
-      ],
-      "affiliations": [],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792652",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792652",
-      "doi": "10.1145/3774904.3792652",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "提出利用LLM生成语义ID以改进信息扩散预测，利用语言模型增强序列表示，在WWW会议发表。",
-      "core_method": "利用LLM生成语义ID来增强信息扩散预测的序列表示。",
-      "innovation_points": [
-        "首次将LLM生成的语义ID用于信息扩散预测任务",
-        "通过语言模型增强序列表示，提升预测性能"
-      ],
-      "experiment_results": [
-        "论文未提供具体实验结果或评测结论"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏实验验证，方法有效性未知",
-        "仅基于元数据推断，细节不足"
-      ],
-      "practical_value": "若语义ID能有效捕获信息扩散模式，可为推荐系统的信息传播建模提供新思路",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "7d58c24b0b362531",
-      "tags": [
-        "LLM4Rec",
-        "Sequential Rec"
-      ],
-      "llm_score": 0,
-      "llm_score_rationale": "",
-      "preference_signals": [],
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
@@ -734,86 +1132,6 @@
       "read_status": "unread",
       "notes": "",
       "score": 106
-    },
-    {
-      "id": "arxiv:2606.12198",
-      "title": "LLM-Based User Personas for Recommendations at Scale",
-      "authors": [
-        "Haoting Wang",
-        "Haokai Lu",
-        "Zheyun Feng",
-        "Jenny Huang",
-        "Yifat Amir",
-        "Gregory Hinkson",
-        "Ben Most",
-        "Zelong Zhao",
-        "Yixin Kelly Cui",
-        "Rein Zhang",
-        "Fabio Soldo",
-        "Yu Xia",
-        "Nihar Bhupalam",
-        "Minmin Chen",
-        "Konstantina Christakopoulou",
-        "Lichan Hong",
-        "Ed H. Chi"
-      ],
-      "affiliations": [
-        "Google DeepMind",
-        "Google"
-      ],
-      "published": "2026-06-10T15:18:32Z",
-      "updated": "2026-06-10T15:18:32Z",
-      "abstract": "Large Language Models (LLMs) offer unprecedented potential for enhancing recommendation systems through their world knowledge and reasoning capabilities. However, existing approaches often rely on structured IDs or offline processing, limiting semantic richness, real-time adaptability, and user-facing interpretability. In this paper, we introduce a novel framework that enables real-time generation of LLM-based user interest personas for a large-scale commercial video recommendation platform. Our method generates natural-language user interest personas that address the exploitation-exploration trade-off by combining the summarization of existing interests with novel topics, directly during serving. To overcome the computational challenges of online LLM inference at a billion-user scale, we design a cost-efficient architecture leveraging knowledge distillation, asynchronous inference, and input optimization via semantically clustered video representations. Extensive offline evaluations, user studies, and live A/B tests demonstrate significant improvements in viewer value. This work bridges the gap between high-level semantic understanding and industrial-scale recommendation, paving the way for more dynamic, explainable, and satisfying personalized experiences.",
-      "categories": [
-        "cs.IR"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.12198v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.12198v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "论文提出一个在亿级用户规模的商业视频推荐平台上，实时生成基于大语言模型的用户兴趣画像的框架。该方法通过结合兴趣总结和探索生成自然语言画像，并利用知识蒸馏、异步推理和语义聚类输入来克服在线推理的计算挑战。",
-      "core_method": "使用知识蒸馏训练小模型，在线上异步推理中根据用户观看历史的语义聚类生成包含兴趣总结和探索话题的自然语言用户画像。",
-      "innovation_points": [
-        "首次将LLM生成的用户画像直接嵌入实时推荐服务路径，作为检索源驱动用户探索",
-        "设计知识蒸馏流程，将大型LLM的多步推理能力迁移到可用于在线推理的小模型，同时处理兴趣总结与探索生成",
-        "提出异步推理架构，结合输入语义聚类和模型量化，在亿级用户规模下实现低延迟、低成本的在线LLM推理"
-      ],
-      "experiment_results": [
-        "大规模在线A/B测试显示，用户满意度和探索行为显著提升",
-        "用户调研表明对LLM生成的兴趣画像准确性有较高满意度",
-        "离线评估验证了语义聚类输入相比原始序列输入的摘要质量更优"
-      ],
-      "ab_test": "yes",
-      "ab_test_evidence": "论文明确提到进行了大规模A/B测试（large-scale A/B testing），并展示了在观看者价值（viewer value）上的统计显著改善，包括用户满意度和探索的增加。",
-      "limitations": [
-        "系统依赖于大型教师模型生成训练数据，可能继承其偏见或错误",
-        "未详细讨论画像生成对推荐结果多样性的长期影响及潜在伦理问题"
-      ],
-      "practical_value": "为工业级推荐系统提供了一种在实时服务中利用LLM语义理解能力、平衡利用与探索的可规模化方案，并可用于用户可解释性功能。",
-      "analysis_basis": "full_text",
-      "analysis_status": "complete",
-      "analysis_signature": "45f4b31d622b12c1",
-      "tags": [
-        "LLM4Rec",
-        "RecSys",
-        "Sequential Rec",
-        "Generative Rec"
-      ],
-      "llm_score": 98,
-      "llm_score_rationale": "明确有live A/B tests且在商业视频推荐平台上线，证据权重最高；作者单位含Google DeepMind和Google，为顶级互联网公司；使用LLM生成用户兴趣persona用于推荐，与生成式推荐强相关",
-      "preference_signals": [
-        "Online A/B",
-        "Industry company",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 104
     },
     {
       "id": "arxiv:2606.06970",
@@ -1480,60 +1798,6 @@
       "read_status": "unread",
       "notes": "",
       "score": 110
-    },
-    {
-      "id": "arxiv:2606.07972",
-      "title": "OneFeed: A Unified Generative Framework for Feed Content Enhancement and Query Generation",
-      "authors": [
-        "Guo Xun"
-      ],
-      "affiliations": [],
-      "published": "2026-06-06T04:17:09Z",
-      "updated": "2026-06-06T04:17:09Z",
-      "abstract": "Modern feed recommendation and search systems are deeply connected in user behavior butare usually modeled by separate architectures. Feed recommendation mainly captures implicitinterests from browsing interactions, while search systems rely on explicit user queries to retrieveintent-matched content. This separation causes fragmented user understanding and missedopportunities for using feed interactions to improve query generation and using generated queriesto enhance feed candidate retrieval.In this paper, we propose OneFeed, a unified generative framework for jointly modelingfeed content enhancement and query generation. OneFeed encodes heterogeneous user behaviorsequences with a shared behavior encoder and employs two generative heads: a Feed SemanticID Generator that produces content semantic IDs for recommendation retrieval, and an IntentQuery Generator that produces natural-language queries for search-based candidate expansion.To bridge the semantic gap between recommendation content and search queries, we introduce aSID-Query alignment objective that learns a shared semantic space for content semantic IDs andquery representations. We further design a closed-loop self-enhancement paradigm that leveragesimplicit user feedback from generated content and search-retrieved results to improve bothgeneration tasks. We provide a detailed experimental protocol using public recommendationdatasets with weakly supervised query construction, define a comprehensive set of evaluationmetrics, report expected performance estimates grounded in known baseline values, and validatethe executability of the proposed pipeline through a minimal local prototype. OneFeed providesa practical and extensible direction for unifying search and recommendation through generativemodeling.",
-      "categories": [
-        "cs.IR"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.07972v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.07972v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "提出OneFeed统一生成框架，通过共享编码器和两个生成头（内容语义ID与意图查询）联合建模推荐内容增强与查询生成，结合SID-Query对齐和闭环自增强机制，弥合推荐与搜索的语义鸿沟。",
-      "core_method": "共享行为编码器加两个生成头（Feed语义ID生成器和意图查询生成器），并通过SID-Query对齐目标学习共享语义空间，闭环自增强利用隐式反馈进行迭代训练。",
-      "innovation_points": [
-        "统一生成建模：将推荐内容增强和查询生成作为两个互补的生成任务，共享编码器并联合训练。",
-        "SID-Query对齐：在共享语义空间中学习内容语义ID和查询表示的对齐，促进知识迁移。",
-        "闭环自增强：利用生成内容和搜索结果的隐式反馈持续改进两个生成任务。"
-      ],
-      "experiment_results": [
-        "论文未提供完整实验数据，仅给出了基于已知基线的预期性能估计和消融方向，具体结果待后续更新。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文全文未报告线上A/B测试。",
-      "limitations": [
-        "实验结果仅为预期性能估计，未进行完整数据集训练和评测。",
-        "查询构建采用弱监督方式，可能影响真实系统表现。"
-      ],
-      "practical_value": "为统一推荐和搜索系统提供了可扩展的生成式建模方向，能够利用搜索意图增强推荐候选池。",
-      "analysis_basis": "full_text",
-      "analysis_status": "cached",
-      "analysis_signature": "3e6c2286e737c72f",
-      "tags": [
-        "Generative Rec",
-        "Sequential Rec",
-        "LLM4Rec"
-      ],
-      "llm_score": 0,
-      "llm_score_rationale": "",
-      "preference_signals": [],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 104
     },
     {
       "id": "arxiv:2606.08466",
