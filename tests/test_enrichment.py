@@ -1,7 +1,14 @@
 import json
 
 from daily_paper.config import EnrichmentConfig
-from daily_paper.enrichment import enrich_papers, extract_affiliations, extract_tex_affiliations
+from daily_paper.enrichment import (
+    enrich_papers,
+    extract_affiliations,
+    extract_crossref_affiliations,
+    extract_semantic_scholar_affiliations,
+    extract_tex_affiliations,
+    lookup_confirmed_affiliations,
+)
 from daily_paper.models import Paper
 
 
@@ -19,6 +26,22 @@ def make_paper():
         abs_url="https://arxiv.org/abs/2606.01234",
         pdf_url="https://arxiv.org/pdf/2606.01234",
     )
+
+
+def config(**overrides):
+    values = {
+        "enabled": True,
+        "provider": "openalex",
+        "mailto": "",
+        "max_results": 3,
+        "confirm_providers": ["openalex", "crossref", "semantic_scholar", "arxiv_source"],
+        "confirmed_min_sources": 2,
+        "source_enabled": True,
+        "source_max_papers": 5,
+        "source_timeout_seconds": 8,
+    }
+    values.update(overrides)
+    return EnrichmentConfig(**values)
 
 
 def test_extract_affiliations_from_openalex_authorships():
@@ -77,6 +100,8 @@ def test_enrich_papers_uses_openalex_title_match(monkeypatch):
             provider="openalex",
             mailto="",
             max_results=3,
+            confirm_providers=["openalex"],
+            confirmed_min_sources=1,
             source_enabled=True,
             source_max_papers=5,
             source_timeout_seconds=8,
@@ -84,6 +109,81 @@ def test_enrich_papers_uses_openalex_title_match(monkeypatch):
     )
 
     assert enriched[0].affiliations == ["Tsinghua University"]
+
+
+def test_extract_affiliations_from_crossref_authors():
+    work = {
+        "author": [
+            {"affiliation": [{"name": "Tsinghua University"}]},
+            {"affiliation": [{"name": "Google DeepMind"}]},
+        ]
+    }
+
+    assert extract_crossref_affiliations(work) == ["Tsinghua University", "Google DeepMind"]
+
+
+def test_extract_affiliations_from_semantic_scholar_authors():
+    work = {
+        "authors": [
+            {"name": "Alice", "affiliations": ["Tsinghua University"]},
+            {"name": "Bob", "affiliations": ["Google DeepMind"]},
+        ]
+    }
+
+    assert extract_semantic_scholar_affiliations(work) == [
+        "Tsinghua University",
+        "Google DeepMind",
+    ]
+
+
+def test_lookup_confirmed_affiliations_prefers_multi_source_confirmation(monkeypatch):
+    paper = make_paper()
+
+    monkeypatch.setattr(
+        "daily_paper.enrichment.lookup_openalex_affiliations",
+        lambda paper, config: ["Tsinghua University", "Unconfirmed Lab"],
+    )
+    monkeypatch.setattr(
+        "daily_paper.enrichment.lookup_crossref_affiliations",
+        lambda paper, config: ["Tsinghua University"],
+    )
+    monkeypatch.setattr(
+        "daily_paper.enrichment.lookup_semantic_scholar_affiliations",
+        lambda paper, config: [],
+    )
+    monkeypatch.setattr(
+        "daily_paper.enrichment.lookup_arxiv_source_affiliations",
+        lambda *args, **kwargs: ["Another University"],
+    )
+
+    affiliations, used_source_lookup = lookup_confirmed_affiliations(
+        paper,
+        config(confirm_providers=["openalex", "crossref", "semantic_scholar", "arxiv_source"]),
+    )
+
+    assert used_source_lookup is True
+    assert affiliations == ["Tsinghua University"]
+
+
+def test_lookup_confirmed_affiliations_falls_back_to_trusted_single_source(monkeypatch):
+    paper = make_paper()
+
+    monkeypatch.setattr(
+        "daily_paper.enrichment.lookup_openalex_affiliations",
+        lambda paper, config: ["Tsinghua University"],
+    )
+    monkeypatch.setattr(
+        "daily_paper.enrichment.lookup_crossref_affiliations",
+        lambda paper, config: [],
+    )
+
+    affiliations, used_source_lookup = lookup_confirmed_affiliations(
+        paper,
+        config(confirm_providers=["openalex", "crossref"], confirmed_min_sources=2),
+    )
+
+    assert used_source_lookup is False
+    assert affiliations == ["Tsinghua University"]
 
 
 def test_extract_tex_affiliations_from_common_commands():

@@ -64,6 +64,8 @@ class EnrichmentConfig:
     provider: str
     mailto: str
     max_results: int
+    confirm_providers: List[str]
+    confirmed_min_sources: int
     source_enabled: bool
     source_max_papers: int
     source_timeout_seconds: int
@@ -177,6 +179,13 @@ def load_config(path: str = "config.toml") -> AppConfig:
             provider=str(enrichment.get("provider", "openalex")),
             mailto=str(enrichment.get("mailto", "")),
             max_results=int(enrichment.get("max_results", 3)),
+            confirm_providers=list(
+                enrichment.get(
+                    "confirm_providers",
+                    ["openalex", "crossref", "semantic_scholar", "arxiv_source"],
+                )
+            ),
+            confirmed_min_sources=int(enrichment.get("confirmed_min_sources", 2)),
             source_enabled=bool(enrichment.get("source_enabled", True)),
             source_max_papers=int(enrichment.get("source_max_papers", 30)),
             source_timeout_seconds=int(enrichment.get("source_timeout_seconds", 8)),

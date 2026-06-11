@@ -1,6 +1,6 @@
-import json
 import gzip
 import io
+import json
 import os
 import re
 import tarfile
@@ -13,6 +13,8 @@ from .config import EnrichmentConfig
 from .models import Paper
 
 OPENALEX_WORKS_URL = "https://api.openalex.org/works"
+SEMANTIC_SCHOLAR_SEARCH_URL = "https://api.semanticscholar.org/graph/v1/paper/search"
+CROSSREF_WORKS_URL = "https://api.crossref.org/works"
 ARXIV_EPRINT_URL = "https://arxiv.org/e-print/%s"
 
 
@@ -29,25 +31,56 @@ def enrich_papers(
     for paper in items:
         if _has_affiliations(paper):
             continue
-        try:
-            affiliations = lookup_openalex_affiliations(paper, config)
-        except Exception:
-            affiliations = []
-        if affiliations:
-            paper.affiliations = affiliations
-            continue
-        if not config.source_enabled or source_attempts >= config.source_max_papers:
-            continue
-        source_attempts += 1
-        source_affiliations = lookup_arxiv_source_affiliations(
+        allow_source_lookup = config.source_enabled and source_attempts < config.source_max_papers
+        affiliations, used_source_lookup = lookup_confirmed_affiliations(
             paper,
+            config,
             llm_model=llm_model,
             llm_base_url=llm_base_url,
-            timeout_seconds=config.source_timeout_seconds,
+            include_arxiv_source=allow_source_lookup,
         )
-        if source_affiliations:
-            paper.affiliations = source_affiliations
+        if used_source_lookup:
+            source_attempts += 1
+        if affiliations:
+            paper.affiliations = affiliations
     return items
+
+
+def lookup_confirmed_affiliations(
+    paper: Paper,
+    config: EnrichmentConfig,
+    llm_model: str = "deepseek-v4-flash",
+    llm_base_url: str = "https://api.deepseek.com",
+    include_arxiv_source: bool = True,
+) -> tuple[List[str], bool]:
+    providers = [str(value).lower().replace("-", "_") for value in config.confirm_providers]
+    providers = providers or ["openalex", "crossref", "semantic_scholar", "arxiv_source"]
+    candidates: Dict[str, List[str]] = {}
+    used_source_lookup = False
+    for provider in providers:
+        affiliations = []
+        try:
+            if provider == "openalex":
+                affiliations = lookup_openalex_affiliations(paper, config)
+            elif provider == "crossref":
+                affiliations = lookup_crossref_affiliations(paper, config)
+            elif provider in ("semantic_scholar", "semanticscholar", "s2"):
+                affiliations = lookup_semantic_scholar_affiliations(paper, config)
+            elif provider == "arxiv_source" and include_arxiv_source:
+                used_source_lookup = True
+                affiliations = lookup_arxiv_source_affiliations(
+                    paper,
+                    llm_model=llm_model,
+                    llm_base_url=llm_base_url,
+                    timeout_seconds=config.source_timeout_seconds,
+                )
+        except Exception:
+            affiliations = []
+        cleaned = [_clean_affiliation_name(value) for value in affiliations]
+        cleaned = [value for value in cleaned if value]
+        if cleaned:
+            candidates[provider] = _dedupe(cleaned)
+    return _select_confirmed_affiliations(candidates, config.confirmed_min_sources), used_source_lookup
 
 
 def lookup_openalex_affiliations(paper: Paper, config: EnrichmentConfig) -> List[str]:
@@ -56,23 +89,42 @@ def lookup_openalex_affiliations(paper: Paper, config: EnrichmentConfig) -> List
         works = _fetch_works({"filter": "doi:%s" % paper.doi}, config)
     if not works:
         works = _fetch_works({"search": paper.title}, config)
-    work = _best_title_match(paper.title, works)
+    work = _best_openalex_title_match(paper.title, works)
     if not work:
         return []
     return extract_affiliations(work)
 
 
-def extract_affiliations(work: Dict[str, object]) -> List[str]:
-    names = []
-    for authorship in work.get("authorships", []) or []:
-        raw = authorship.get("raw_affiliation_strings") or []
-        for value in raw:
-            _append_unique(names, value)
-        for institution in authorship.get("institutions", []) or []:
-            name = institution.get("display_name")
-            if name:
-                _append_unique(names, name)
-    return names
+def lookup_crossref_affiliations(paper: Paper, config: EnrichmentConfig) -> List[str]:
+    works = []
+    if paper.doi:
+        try:
+            payload = _fetch_crossref_work(paper.doi, config)
+            message = payload.get("message", {}) if isinstance(payload, dict) else {}
+            if message:
+                works = [message]
+        except Exception:
+            works = []
+    if not works:
+        works = _fetch_crossref_works({"query.title": paper.title}, config)
+    work = _best_crossref_title_match(paper.title, works)
+    if not work:
+        return []
+    return extract_crossref_affiliations(work)
+
+
+def lookup_semantic_scholar_affiliations(paper: Paper, config: EnrichmentConfig) -> List[str]:
+    fields = ["title", "externalIds", "authors", "authors.affiliations"]
+    params = {
+        "query": paper.doi or paper.title,
+        "limit": str(config.max_results),
+        "fields": ",".join(fields),
+    }
+    payload = _fetch_semantic_scholar(params, config)
+    work = _best_semantic_scholar_title_match(paper.title, payload.get("data", []) or [])
+    if not work:
+        return []
+    return extract_semantic_scholar_affiliations(work)
 
 
 def lookup_arxiv_source_affiliations(
@@ -96,6 +148,38 @@ def lookup_arxiv_source_affiliations(
         return []
     cleaned = _clean_affiliations_with_llm(raw_values, model=llm_model, base_url=llm_base_url)
     return cleaned or raw_values
+
+
+def extract_affiliations(work: Dict[str, object]) -> List[str]:
+    names = []
+    for authorship in work.get("authorships", []) or []:
+        raw = authorship.get("raw_affiliation_strings") or []
+        for value in raw:
+            _append_unique(names, value)
+        for institution in authorship.get("institutions", []) or []:
+            name = institution.get("display_name")
+            if name:
+                _append_unique(names, name)
+    return names
+
+
+def extract_crossref_affiliations(work: Dict[str, object]) -> List[str]:
+    affiliations = []
+    for author in work.get("author", []) or []:
+        for affiliation in author.get("affiliation", []) or []:
+            if isinstance(affiliation, dict):
+                _append_unique(affiliations, affiliation.get("name", ""))
+            else:
+                _append_unique(affiliations, str(affiliation))
+    return affiliations
+
+
+def extract_semantic_scholar_affiliations(work: Dict[str, object]) -> List[str]:
+    affiliations = []
+    for author in work.get("authors", []) or []:
+        for value in author.get("affiliations", []) or []:
+            _append_unique(affiliations, value)
+    return affiliations
 
 
 def extract_tex_affiliations(tex: str) -> List[str]:
@@ -126,16 +210,75 @@ def extract_tex_affiliations(tex: str) -> List[str]:
     return values[:12]
 
 
+def _select_confirmed_affiliations(
+    candidates: Dict[str, List[str]], min_sources: int = 2
+) -> List[str]:
+    if not candidates:
+        return []
+    by_name: Dict[str, Dict[str, object]] = {}
+    for provider, affiliations in candidates.items():
+        for affiliation in affiliations:
+            normalized = _normalize_affiliation(affiliation)
+            if not normalized:
+                continue
+            bucket = by_name.setdefault(normalized, {"value": affiliation, "sources": set()})
+            bucket["sources"].add(provider)
+    confirmed = []
+    required = max(1, int(min_sources))
+    for bucket in by_name.values():
+        if len(bucket["sources"]) >= required:
+            _append_unique(confirmed, str(bucket["value"]))
+    if confirmed:
+        return confirmed
+
+    fallback = []
+    trusted_order = ("openalex", "crossref", "semantic_scholar", "semanticscholar", "s2", "arxiv_source")
+    for provider in trusted_order:
+        for affiliation in candidates.get(provider, []):
+            _append_unique(fallback, affiliation)
+        if fallback:
+            return fallback
+    for affiliations in candidates.values():
+        for affiliation in affiliations:
+            _append_unique(fallback, affiliation)
+    return fallback
+
+
 def _fetch_works(params: Dict[str, str], config: EnrichmentConfig) -> List[Dict[str, object]]:
     query = dict(params)
     query["per-page"] = str(config.max_results)
     if config.mailto:
         query["mailto"] = config.mailto
     url = OPENALEX_WORKS_URL + "?" + urllib.parse.urlencode(query)
-    request = urllib.request.Request(url, headers={"User-Agent": "daily-paper-digest/0.1"})
+    request = urllib.request.Request(url, headers=_headers_for_url(url, config))
     with urllib.request.urlopen(request, timeout=20) as response:
         payload = json.loads(response.read().decode("utf-8"))
     return payload.get("results", []) or []
+
+
+def _fetch_crossref_work(doi: str, config: EnrichmentConfig) -> Dict[str, object]:
+    url = CROSSREF_WORKS_URL + "/" + urllib.parse.quote(doi)
+    request = urllib.request.Request(url, headers=_headers_for_url(url, config))
+    with urllib.request.urlopen(request, timeout=20) as response:
+        return json.loads(response.read().decode("utf-8"))
+
+
+def _fetch_crossref_works(params: Dict[str, str], config: EnrichmentConfig) -> List[Dict[str, object]]:
+    query = dict(params)
+    query["rows"] = str(config.max_results)
+    url = CROSSREF_WORKS_URL + "?" + urllib.parse.urlencode(query)
+    request = urllib.request.Request(url, headers=_headers_for_url(url, config))
+    with urllib.request.urlopen(request, timeout=20) as response:
+        payload = json.loads(response.read().decode("utf-8"))
+    message = payload.get("message", {}) or {}
+    return message.get("items", []) or []
+
+
+def _fetch_semantic_scholar(params: Dict[str, str], config: EnrichmentConfig) -> Dict[str, object]:
+    url = SEMANTIC_SCHOLAR_SEARCH_URL + "?" + urllib.parse.urlencode(params)
+    request = urllib.request.Request(url, headers=_headers_for_url(url, config))
+    with urllib.request.urlopen(request, timeout=20) as response:
+        return json.loads(response.read().decode("utf-8"))
 
 
 def _fetch_arxiv_tex_documents(arxiv_id: str, timeout_seconds: int = 8) -> List[str]:
@@ -159,6 +302,16 @@ def _fetch_arxiv_tex_documents(arxiv_id: str, timeout_seconds: int = 8) -> List[
             return [text]
     text = _decode_text(payload)
     return [text] if text else []
+
+
+def _headers_for_url(url: str, config: EnrichmentConfig) -> Dict[str, str]:
+    headers = {"User-Agent": "daily-paper-digest/0.1"}
+    if config.mailto and "crossref.org" in url:
+        headers["User-Agent"] = "daily-paper-digest/0.1 (mailto:%s)" % config.mailto
+    api_key = os.getenv("SEMANTIC_SCHOLAR_API_KEY", "")
+    if api_key and "semanticscholar.org" in url:
+        headers["x-api-key"] = api_key
+    return headers
 
 
 def _read_tar_tex_documents(payload: bytes) -> List[str]:
@@ -188,6 +341,46 @@ def _decode_text(payload: bytes) -> str:
         if "\\begin{document}" in text or "\\author" in text or "\\affiliation" in text:
             return text
     return ""
+
+
+def _best_openalex_title_match(title: str, works: List[Dict[str, object]]) -> Dict[str, object]:
+    return _best_title_match(title, works, "display_name")
+
+
+def _best_semantic_scholar_title_match(title: str, works: List[Dict[str, object]]) -> Dict[str, object]:
+    return _best_title_match(title, works, "title")
+
+
+def _best_crossref_title_match(title: str, works: List[Dict[str, object]]) -> Dict[str, object]:
+    normalized_title = _normalize_title(title)
+    best = None
+    best_score = 0.0
+    for work in works:
+        titles = work.get("title", []) or []
+        candidate_title = titles[0] if titles else ""
+        candidate = _normalize_title(str(candidate_title))
+        if not candidate:
+            continue
+        score = SequenceMatcher(None, normalized_title, candidate).ratio()
+        if score > best_score:
+            best = work
+            best_score = score
+    return best if best_score >= 0.88 else {}
+
+
+def _best_title_match(title: str, works: List[Dict[str, object]], title_key: str) -> Dict[str, object]:
+    normalized_title = _normalize_title(title)
+    best = None
+    best_score = 0.0
+    for work in works:
+        candidate = _normalize_title(str(work.get(title_key, "")))
+        if not candidate:
+            continue
+        score = SequenceMatcher(None, normalized_title, candidate).ratio()
+        if score > best_score:
+            best = work
+            best_score = score
+    return best if best_score >= 0.88 else {}
 
 
 def _extract_braced_command_values(text: str, command: str) -> List[str]:
@@ -377,26 +570,24 @@ def _clean_tex_preserving_block_text(value: str) -> str:
     return cleaned.strip(" ,;")
 
 
+def _clean_affiliation_name(value: str) -> str:
+    cleaned = re.sub(r"\s+", " ", str(value or "")).strip(" ,;")
+    if not cleaned:
+        return ""
+    if "@" in cleaned and len(cleaned.split()) <= 4:
+        return ""
+    return cleaned
+
+
+def _normalize_affiliation(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "", str(value or "").lower())
+
+
 def _dedupe(values: List[str]) -> List[str]:
     cleaned = []
     for value in values:
         _append_unique(cleaned, value)
     return cleaned
-
-
-def _best_title_match(title: str, works: List[Dict[str, object]]) -> Dict[str, object]:
-    normalized_title = _normalize_title(title)
-    best = None
-    best_score = 0.0
-    for work in works:
-        candidate = _normalize_title(str(work.get("display_name", "")))
-        if not candidate:
-            continue
-        score = SequenceMatcher(None, normalized_title, candidate).ratio()
-        if score > best_score:
-            best = work
-            best_score = score
-    return best if best_score >= 0.88 else {}
 
 
 def _has_affiliations(paper: Paper) -> bool:

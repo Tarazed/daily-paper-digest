@@ -33,7 +33,7 @@ export DEEPSEEK_API_KEY='<your key>'
 
 Without `DEEPSEEK_API_KEY`, the CLI still runs and falls back to a shortened abstract summary.
 
-The default model is `deepseek-v4-flash` at `https://api.deepseek.com`, using DeepSeek's OpenAI-compatible Chat Completions API. The CLI also enriches missing arXiv affiliations from OpenAlex and arXiv source files when available.
+The default model is `deepseek-v4-flash` at `https://api.deepseek.com`, using DeepSeek's OpenAI-compatible Chat Completions API. The CLI also enriches missing affiliations from multiple sources when available: OpenAlex, Crossref, Semantic Scholar, and arXiv source files. Multi-source matches are preferred, with high-confidence single-source results used as a fallback when other sources do not expose affiliation data.
 
 Before applying the final limit, the CLI reranks a candidate pool with an LLM preference score. The scoring prompt prioritizes papers with online A/B or production traffic evidence, then top-conference publications, strong generative recommendation or semantic ID relevance, and author affiliations from well-known internet companies. Without an API key, the same preferences are approximated with deterministic metadata rules.
 

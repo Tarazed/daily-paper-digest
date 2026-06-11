@@ -222,6 +222,10 @@ enabled = true
 provider = "openalex"
 mailto = ""
 max_results = 3
+# When affiliations are missing, confirm metadata across multiple sources.
+# Supported: openalex, crossref, semantic_scholar, arxiv_source.
+confirm_providers = ["openalex", "crossref", "semantic_scholar", "arxiv_source"]
+confirmed_min_sources = 2
 source_enabled = true
 source_max_papers = 30
 source_timeout_seconds = 10
