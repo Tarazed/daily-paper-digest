@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-12T04:54:51Z",
+  "generated_at": "2026-06-13T04:43:11Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
@@ -7,8 +7,8 @@
   },
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 8,
-    "analyzed": 2,
+    "reused": 6,
+    "analyzed": 4,
     "source": "web/public/papers.json"
   },
   "current_limit": 10,
@@ -187,7 +187,75 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 131
+      "score": 134
+    },
+    {
+      "id": "openalex:W4400525124",
+      "title": "LLaRA: Large Language-Recommendation Assistant",
+      "authors": [
+        "Jiayi Liao",
+        "Sihang Li",
+        "Zhengyi Yang",
+        "Jiancan Wu",
+        "Yancheng Yuan",
+        "Xiang Wang",
+        "Xiangnan He"
+      ],
+      "affiliations": [
+        "University of Science and Technology of China",
+        "Hong Kong Polytechnic University"
+      ],
+      "published": "2024-07-10",
+      "updated": "2026-06-11T09:08:48.828518",
+      "abstract": "Sequential recommendation aims to predict users' next interaction with items based on their past engagement sequence. Recently, the advent of Large Language Models (LLMs) has sparked interest in leveraging them for sequential recommendation, viewing it as language modeling. Previous studies represent items within LLMs' input prompts as either ID indices or textual metadata. However, these approaches often fail to either encapsulate comprehensive world knowledge or exhibit sufficient behavioral understanding. To combine the complementary strengths of conventional recommenders in capturing behavioral patterns of users and LLMs in encoding world knowledge about items, we introduce Large Language-Recommendation Assistant (LLaRA). Specifically, it uses a novel hybrid prompting method that integrates ID-based item embeddings learned by traditional recommendation models with textual item features. Treating the \"sequential behaviors of users\" as a distinct modality beyond texts, we employ a projector to align the traditional recommender's ID embeddings with the LLM's input space. Moreover, rather than directly exposing the hybrid prompt to LLMs, a curriculum learning strategy is adopted to gradually ramp up training complexity. Initially, we warm up the LLM using text-only prompts, which better suit its inherent language modeling ability. Subsequently, we progressively transition to the hybrid prompts, training the model to seamlessly incorporate the behavioral knowledge from the traditional sequential recommender into the LLM. Empirical results validate the effectiveness of our proposed framework. Codes are available at https://github.com/ljy0ustc/LLaRA.",
+      "categories": [
+        "OpenAlex",
+        "ICML"
+      ],
+      "primary_category": "ICML",
+      "abs_url": "https://doi.org/10.1145/3626772.3657690",
+      "pdf_url": "https://dl.acm.org/doi/pdf/10.1145/3626772.3657690?download=true",
+      "doi": "10.1145/3626772.3657690",
+      "source": "OpenAlex",
+      "status": "conference",
+      "venue": "ICML",
+      "venue_key": "ICML",
+      "generated_summary": "提出LLaRA框架，通过混合提示方法融合传统推荐器的ID嵌入与LLM的文本特征，并采用课程学习策略逐步训练，以提升序列推荐性能。",
+      "core_method": "LLaRA通过混合提示和课程学习对齐传统序列推荐模型的ID嵌入与大语言模型的文本表示，将用户行为序列作为独立模态融入LLM。",
+      "innovation_points": [
+        "提出混合提示方法，结合传统推荐器的ID嵌入与LLM的文本特征",
+        "将用户行为序列视为独立模态，通过投影模块对齐ID嵌入与LLM输入空间",
+        "引入课程学习策略，从纯文本提示逐步过渡到混合提示，稳定融合行为知识"
+      ],
+      "experiment_results": [
+        "元数据提及实证结果验证了LLaRA框架的有效性，但未提供具体评测指标或数值比较。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "仅基于元数据，缺乏具体实验细节和局限性分析",
+        "模型复杂度和实际部署效率未提及"
+      ],
+      "practical_value": "该方法为将传统推荐系统与LLM结合提供了一种实用框架，有望在序列推荐任务中提升性能。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "8758f1d24a19944d",
+      "tags": [
+        "RecSys",
+        "LLM4Rec",
+        "Sequential Rec"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "发表在顶会ICML，具有高可信度；论文提出将传统ID嵌入与LLM文本特征结合的混合提示方法，与生成式推荐中语义ID的使用相关；作者单位包含中国科学技术大学等学术界，无明确工业界公司支撑，且摘要未提及线上A/B实验证据",
+      "preference_signals": [
+        "Top venue",
+        "Industry company",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 118
     },
     {
       "id": "dblp:conf/www/LiuFYWGH26",
@@ -244,22 +312,22 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 119
+      "score": 117
     },
     {
-      "id": "dblp:conf/www/LiuZHZZZ26",
-      "title": "Facilitating Generative Retrieval with Logical Denoising for Interpretable Conversational Search",
+      "id": "dblp:conf/www/ZhuCJYWCZ26",
+      "title": "FeedGuard: Online Critic-Guided Reinforcement Learning with Privacy-Preserving Feedback for Recommendation",
       "authors": [
-        "Qichuan Liu",
-        "Chentao Zhang",
-        "Yuxuan Hu",
-        "Chenfeng Zheng",
-        "Qinggang Zhang",
-        "Zhihong Zhang"
+        "Mengying Zhu",
+        "Feiyue Chen",
+        "Lifan Jiang",
+        "Mengyuan Yang",
+        "Yangyang Wu",
+        "Guanjie Cheng",
+        "Xiaolin Zheng"
       ],
       "affiliations": [
-        "Xiamen University",
-        "Hong Kong Polytechnic University"
+        "Zhejiang University"
       ],
       "published": "2026",
       "updated": "2026",
@@ -268,35 +336,37 @@
         "WWW"
       ],
       "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792544",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792544",
-      "doi": "10.1145/3774904.3792544",
+      "abs_url": "https://doi.org/10.1145/3774904.3792155",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792155",
+      "doi": "10.1145/3774904.3792155",
       "source": "DBLP",
       "status": "conference",
       "venue": "WWW",
       "venue_key": "WWW",
-      "generated_summary": "本文提出了一种通过逻辑去噪促进生成式检索的方法，旨在实现可解释的对话式搜索。",
-      "core_method": "逻辑去噪生成式检索方法，用于提升对话搜索的可解释性。",
+      "generated_summary": "提出FeedGuard框架，结合在线评判与强化学习，实现隐私保护的反馈机制用于推荐系统。",
+      "core_method": "在线评判引导的强化学习并结合隐私保护反馈机制。",
       "innovation_points": [
-        "提出逻辑去噪机制以增强生成式检索的鲁棒性",
-        "实现对话式搜索过程的可解释性"
+        "引入在线评判器实时引导强化学习模型更新",
+        "设计隐私保护的用户反馈收集与利用方法",
+        "在推荐系统中融合在线强化学习与评判指导"
       ],
       "experiment_results": [
-        "论文元数据未提供实验评测结果。"
+        "全文未提供实验/评测结果"
       ],
       "ab_test": "no",
       "ab_test_evidence": "论文未报告线上 A/B 测试。",
       "limitations": [
-        "可能缺乏大规模实验验证",
-        "未明确说明去噪方法的适用范围"
+        "基于元数据无法确认方法的有效性及实验证据",
+        "隐私保护机制的实际效果和开销未知"
       ],
-      "practical_value": "可为对话搜索系统提供更可解释的检索结果，提升用户信任度。",
+      "practical_value": "为推荐系统提供在线学习与隐私保护结合的解决方案，有望提升模型适应性和用户信任。",
       "analysis_basis": "metadata",
       "analysis_status": "cached",
-      "analysis_signature": "be6c50960e9a6c40",
+      "analysis_signature": "afb2e7c1b77438a3",
       "tags": [
-        "Generative Rec",
-        "Conversational Rec"
+        "RecSys",
+        "Agent4Rec",
+        "LLM4Rec"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -304,7 +374,7 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 112
+      "score": 116
     },
     {
       "id": "dblp:conf/www/YuFLZWLWZW26",
@@ -367,7 +437,329 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 111
+      "score": 116
+    },
+    {
+      "id": "openalex:W4400118952",
+      "title": "When large language models meet personalization: perspectives of challenges and opportunities",
+      "authors": [
+        "Jing Chen",
+        "Zheng Liu",
+        "Xu Huang",
+        "Chenwang Wu",
+        "Qi Liu",
+        "Gangwei Jiang",
+        "Yuanhao Pu",
+        "Yuxuan Lei",
+        "Xiaolong Chen",
+        "Xingmei Wang",
+        "Kai Zheng",
+        "Defu Lian",
+        "Enhong Chen"
+      ],
+      "affiliations": [
+        "University of Science and Technology of China",
+        "Beijing Academy of Artificial Intelligence",
+        "University of Electronic Science and Technology of China"
+      ],
+      "published": "2024-06-28",
+      "updated": "2026-06-07T08:38:57.713557",
+      "abstract": "Abstract The advent of large language models marks a revolutionary breakthrough in artificial intelligence. With the unprecedented scale of training and model parameters, the capability of large language models has been dramatically improved, leading to human-like performances in understanding, language synthesizing, common-sense reasoning, etc. Such a major leap forward in general AI capacity will fundamentally change the pattern of how personalization is conducted. For one thing, it will reform the way of interaction between humans and personalization systems. Instead of being a passive medium of information filtering, like conventional recommender systems and search engines, large language models present the foundation for active user engagement. On top of such a new foundation, users’ requests can be proactively explored, and users’ required information can be delivered in a natural, interactable, and explainable way. For another thing, it will also considerably expand the scope of personalization, making it grow from the sole function of collecting personalized information to the compound function of providing personalized services. By leveraging large language models as a general-purpose interface, the personalization systems may compile user’s requests into plans, calls the functions of external tools (e.g., search engines, calculators, service APIs, etc.) to execute the plans, and integrate the tools’ outputs to complete the end-to-end personalization tasks. Today, large language models are still being rapidly developed, whereas the application in personalization is largely unexplored. Therefore, we consider it to be right the time to review the challenges in personalization and the opportunities to address them with large language models. In particular, we dedicate this perspective paper to the discussion of the following aspects: the development and challenges for the existing personalization system, the newly emerged capabilities of large language models, and the potential ways of making use of large language models for personalization.",
+      "categories": [
+        "OpenAlex",
+        "ICML"
+      ],
+      "primary_category": "ICML",
+      "abs_url": "https://doi.org/10.1007/s11280-024-01276-1",
+      "pdf_url": "https://link.springer.com/content/pdf/10.1007/s11280-024-01276-1.pdf",
+      "doi": "10.1007/s11280-024-01276-1",
+      "source": "OpenAlex",
+      "status": "conference",
+      "venue": "World Wide Web",
+      "venue_key": "ICML",
+      "generated_summary": "本文探讨了大语言模型如何推动个性化系统的变革，包括提升人机交互方式、扩展个性化服务范围，以及将用户请求转化为可执行的计划。文章综述了现有个性化系统的挑战、大语言模型的新能力及其在个性化中的应用潜力。",
+      "core_method": "提出以大语言模型作为通用接口，将用户请求编译为计划、调用外部工具执行并整合输出，以实现端到端的个性化服务。",
+      "innovation_points": [
+        "系统性地阐述了大语言模型在个性化系统中从被动信息过滤升级为主动用户参与的新范式。",
+        "指出大语言模型可扩展个性化范围，从信息收集转向复合的个性化服务。",
+        "提出大语言模型作为通用接口协调外部工具完成个性化任务的架构设想。"
+      ],
+      "experiment_results": [
+        "论文为观点论文，未提供具体实验结果或评测结论。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "论文缺乏实证验证，所提观点和架构尚处于设想阶段。",
+        "未深入讨论大语言模型在个性化系统中的具体实现细节和潜在风险。"
+      ],
+      "practical_value": "为推荐系统领域提供了利用大语言模型实现主动交互和端到端个性化服务的未来发展方向。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "b3be2e0be0fab4a2",
+      "tags": [
+        "LLM4Rec",
+        "RecSys"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "发表在顶级会议ICML（World Wide Web为期刊，但标注为ICML），符合顶会已发表权重。；讨论大语言模型与个性化系统的结合，涉及生成式推荐范式，与生成式推荐/语义ID强相关。；作者单位包括香港科技大学、北京人工智能研究院等，虽非互联网公司，但主题契合前沿研究方向，对读者有较高参考价值。",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 114
+    },
+    {
+      "id": "openalex:W4414939390",
+      "title": "Diffusion Recommender Models and the Illusion of Progress: A Concerning Study of Reproducibility and a Conceptual Mismatch",
+      "authors": [
+        "Michael Benigni",
+        "Maurizio Ferrari Dacrema",
+        "Dietmar Jannach"
+      ],
+      "affiliations": [
+        "ReMAP Lab, Politecnico di Milano",
+        "University of Klagenfurt"
+      ],
+      "published": "2026-02-06",
+      "updated": "2026-06-12T08:23:45.883708",
+      "abstract": "Countless new machine learning models are published every year and are reported to significantly advance the state-of-the-art in top-n recommendation. However, earlier reproducibility studies indicate that progress in this area may be quite limited, due to widespread methodological issues, e.g., comparisons with untuned baseline models, creating an illusion of progress . In this work, we examine whether these problems persist in today’s research by attempting to reproduce nine SIGIR 2023 and 2024 recommendation algorithms based on Denoising Diffusion Probabilistic Models, a recent but rapidly expanding research area. Only 25% of reported results are fully reproducible and, since the original papers relied on weak baselines , they do not establish the superiority of diffusion models over state-of-the-art methods. In our controlled evaluations, well-tuned simpler baselines consistently exceed the diffusion-based models’ effectiveness reported in the original papers. Furthermore, we identify key mismatches between the characteristics of diffusion models and those of the traditional top-n recommendation task, raising doubts about their suitability for recommendation. Moreover, in the analyzed papers, the generative capabilities of these models are constrained to a minimum. Overall, our results call for greater scientific rigor and a disruptive change in the research and publication culture in this area.",
+      "categories": [
+        "OpenAlex",
+        "ICML"
+      ],
+      "primary_category": "ICML",
+      "abs_url": "https://doi.org/10.1145/3795792",
+      "pdf_url": "https://arxiv.org/pdf/2505.09364",
+      "doi": "10.1145/3795792",
+      "source": "OpenAlex",
+      "status": "conference",
+      "venue": "ACM Transactions on Recommender Systems",
+      "venue_key": "ICML",
+      "generated_summary": "本文复现了9种SIGIR 2023-2024的扩散推荐模型，发现仅25%的结果可复现，且这些模型在受控评估中表现不如调优的简单基线，指出扩散模型与推荐任务存在概念不匹配，质疑其在top-n推荐中的有效性。",
+      "core_method": "通过系统复现和受控实验，对比扩散推荐模型与调优的简单基线，分析可复现性问题及概念匹配度。",
+      "innovation_points": [
+        "首次系统性检验扩散模型在推荐系统中的可复现性，揭露了‘进步假象’",
+        "识别出扩散模型的生成特性与推荐任务间的根本概念不匹配",
+        "呼吁社区提高科学严谨性，推动研究文化变革"
+      ],
+      "experiment_results": [
+        "仅25%的原论文结果可完全复现",
+        "在受控评估中，调优的简单基线一致超越扩散模型的效果",
+        "扩散模型的生成能力在推荐应用中被极度限制"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "仅覆盖SIGIR的9个扩散模型，未分析其他会议或期刊的扩散推荐研究",
+        "未深入探讨扩散模型在特定推荐场景（如冷启动、多模态）中的潜在优势"
+      ],
+      "practical_value": "警示研究者和实践者审慎评估扩散推荐模型的实用性，促进推荐系统研究的严谨性与对比基线标准。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "c514cb3980169b8c",
+      "tags": [
+        "RecSys",
+        "Evaluation"
+      ],
+      "llm_score": 70,
+      "llm_score_rationale": "发表在ACM Transactions on Recommender Systems（顶会级别），具有较高学术影响力；论文主题涉及生成式推荐中的扩散模型，与目标读者关注的生成式推荐/语义ID强相关；作者单位包括Politecnico di Milano和University of Klagenfurt，非明确互联网公司，缺少线上A/B实验证据",
+      "preference_signals": [
+        "Top venue",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 113
+    },
+    {
+      "id": "openalex:W4386346386",
+      "title": "A survey on multi-behavior sequential recommendation",
+      "authors": [
+        "Xiaoqing Chen",
+        "Zhitao Li",
+        "Weike Pan",
+        "Qiang Yang",
+        "Zhong Ming"
+      ],
+      "affiliations": [
+        "Shenzhen University",
+        "Hong Kong Polytechnic University",
+        "Shenzhen Technology University",
+        "Guangdong Laboratory of Artificial Intelligence and Digital Economy (SZ), Shenzhen, 518123, China",
+        "Peng Cheng Laboratory"
+      ],
+      "published": "2026-01-27",
+      "updated": "2026-06-12T08:23:45.883708",
+      "abstract": "",
+      "categories": [
+        "OpenAlex",
+        "ICML"
+      ],
+      "primary_category": "ICML",
+      "abs_url": "https://doi.org/10.1007/s11432-024-4568-7",
+      "pdf_url": "https://arxiv.org/pdf/2308.15701",
+      "doi": "10.1007/s11432-024-4568-7",
+      "source": "OpenAlex",
+      "status": "conference",
+      "venue": "Science China Information Sciences",
+      "venue_key": "ICML",
+      "generated_summary": "本综述聚焦于多行为序列推荐方法，涵盖其模型、应用与挑战，为研究者提供系统性参考。",
+      "core_method": "综述了多行为序列推荐的现有方法与技术。",
+      "innovation_points": [
+        "对多行为序列推荐领域进行系统性综述",
+        "梳理了多行为建模与序列推荐相结合的方法",
+        "讨论了挑战和未来方向"
+      ],
+      "experiment_results": [
+        "全文未提供具体实验结果。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "仅基于元数据，可能遗漏细节",
+        "缺乏对具体方法的深入对比"
+      ],
+      "practical_value": "为推荐系统研究者提供多行为序列推荐方向的整体视角和参考。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "91c081bdf25bb858",
+      "tags": [
+        "Sequential Rec",
+        "RecSys"
+      ],
+      "llm_score": 65,
+      "llm_score_rationale": "发表于ICML顶会；综述文章，非原创算法，无线上实验证据；主题为多行为序列推荐，与生成式推荐/语义ID关联度一般",
+      "preference_signals": [
+        "Top venue"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 108
+    },
+    {
+      "id": "dblp:conf/www/LiuZHZZZ26",
+      "title": "Facilitating Generative Retrieval with Logical Denoising for Interpretable Conversational Search",
+      "authors": [
+        "Qichuan Liu",
+        "Chentao Zhang",
+        "Yuxuan Hu",
+        "Chenfeng Zheng",
+        "Qinggang Zhang",
+        "Zhihong Zhang"
+      ],
+      "affiliations": [
+        "Xiamen University",
+        "Hong Kong Polytechnic University"
+      ],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792544",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792544",
+      "doi": "10.1145/3774904.3792544",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "本文提出了一种通过逻辑去噪促进生成式检索的方法，旨在实现可解释的对话式搜索。",
+      "core_method": "逻辑去噪生成式检索方法，用于提升对话搜索的可解释性。",
+      "innovation_points": [
+        "提出逻辑去噪机制以增强生成式检索的鲁棒性",
+        "实现对话式搜索过程的可解释性"
+      ],
+      "experiment_results": [
+        "论文元数据未提供实验评测结果。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "可能缺乏大规模实验验证",
+        "未明确说明去噪方法的适用范围"
+      ],
+      "practical_value": "可为对话搜索系统提供更可解释的检索结果，提升用户信任度。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "be6c50960e9a6c40",
+      "tags": [
+        "Generative Rec",
+        "Conversational Rec"
+      ],
+      "llm_score": 0,
+      "llm_score_rationale": "",
+      "preference_signals": [],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 107
+    },
+    {
+      "id": "dblp:conf/www/TangLPLK26",
+      "title": "Verifiable Federated Representation Learning for Cross-domain Sequential Recommendation",
+      "authors": [
+        "Tao Tang",
+        "Botao Liu",
+        "Ciyuan Peng",
+        "Ivan Lee",
+        "Xiangjie Kong"
+      ],
+      "affiliations": [
+        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
+        "Adelaide University, Adelaide, Australia"
+      ],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792533",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792533",
+      "doi": "10.1145/3774904.3792533",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出一种可验证的联邦表征学习方法，用于解决跨域序列推荐中的隐私保护与协同学习问题。",
+      "core_method": "可验证的联邦表征学习框架，结合跨域序列推荐。",
+      "innovation_points": [
+        "将联邦学习引入跨域序列推荐，保护隐私的同时实现多域协同。",
+        "引入可验证机制，增强模型的安全性与可信度。"
+      ],
+      "experiment_results": [
+        "论文元数据未提供具体实验结果或评测结论。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "仅基于元数据，无法评估方法的实际性能和局限性。",
+        "缺乏全文信息，方法的泛化性和效率未经验证。"
+      ],
+      "practical_value": "有望在保护用户隐私的前提下实现跨平台推荐系统的协同学习。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "aa12cbabc7ff6142",
+      "tags": [
+        "RecSys",
+        "Sequential Rec"
+      ],
+      "llm_score": 0,
+      "llm_score_rationale": "",
+      "preference_signals": [],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 105
     },
     {
       "id": "arxiv:2606.13533",
@@ -444,127 +836,6 @@
       "read_status": "unread",
       "notes": "",
       "score": 107
-    },
-    {
-      "id": "dblp:conf/www/ZhuCJYWCZ26",
-      "title": "FeedGuard: Online Critic-Guided Reinforcement Learning with Privacy-Preserving Feedback for Recommendation",
-      "authors": [
-        "Mengying Zhu",
-        "Feiyue Chen",
-        "Lifan Jiang",
-        "Mengyuan Yang",
-        "Yangyang Wu",
-        "Guanjie Cheng",
-        "Xiaolin Zheng"
-      ],
-      "affiliations": [
-        "Zhejiang University"
-      ],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792155",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792155",
-      "doi": "10.1145/3774904.3792155",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "提出FeedGuard框架，结合在线评判与强化学习，实现隐私保护的反馈机制用于推荐系统。",
-      "core_method": "在线评判引导的强化学习并结合隐私保护反馈机制。",
-      "innovation_points": [
-        "引入在线评判器实时引导强化学习模型更新",
-        "设计隐私保护的用户反馈收集与利用方法",
-        "在推荐系统中融合在线强化学习与评判指导"
-      ],
-      "experiment_results": [
-        "全文未提供实验/评测结果"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "基于元数据无法确认方法的有效性及实验证据",
-        "隐私保护机制的实际效果和开销未知"
-      ],
-      "practical_value": "为推荐系统提供在线学习与隐私保护结合的解决方案，有望提升模型适应性和用户信任。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "afb2e7c1b77438a3",
-      "tags": [
-        "RecSys",
-        "Agent4Rec",
-        "LLM4Rec"
-      ],
-      "llm_score": 0,
-      "llm_score_rationale": "",
-      "preference_signals": [],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 106
-    },
-    {
-      "id": "dblp:conf/www/TangLPLK26",
-      "title": "Verifiable Federated Representation Learning for Cross-domain Sequential Recommendation",
-      "authors": [
-        "Tao Tang",
-        "Botao Liu",
-        "Ciyuan Peng",
-        "Ivan Lee",
-        "Xiangjie Kong"
-      ],
-      "affiliations": [
-        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
-        "Adelaide University, Adelaide, Australia"
-      ],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792533",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792533",
-      "doi": "10.1145/3774904.3792533",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "提出一种可验证的联邦表征学习方法，用于解决跨域序列推荐中的隐私保护与协同学习问题。",
-      "core_method": "可验证的联邦表征学习框架，结合跨域序列推荐。",
-      "innovation_points": [
-        "将联邦学习引入跨域序列推荐，保护隐私的同时实现多域协同。",
-        "引入可验证机制，增强模型的安全性与可信度。"
-      ],
-      "experiment_results": [
-        "论文元数据未提供具体实验结果或评测结论。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "仅基于元数据，无法评估方法的实际性能和局限性。",
-        "缺乏全文信息，方法的泛化性和效率未经验证。"
-      ],
-      "practical_value": "有望在保护用户隐私的前提下实现跨平台推荐系统的协同学习。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "aa12cbabc7ff6142",
-      "tags": [
-        "RecSys",
-        "Sequential Rec"
-      ],
-      "llm_score": 0,
-      "llm_score_rationale": "",
-      "preference_signals": [],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 105
     },
     {
       "id": "arxiv:2606.12198",
@@ -3093,7 +3364,10 @@
         "Sergei Makeev",
         "Sergei Liamaev"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "Yandex Moscow , Russia Yandex Moscow , Russia Yandex Moscow , Russia Yandex Moscow , Russia",
+        "Yandex (Russia)"
+      ],
       "published": "2026-06-05T14:37:02Z",
       "updated": "2026-06-08T08:58:58Z",
       "abstract": "In recommender systems, generative retrieval typically uses an encoder-decoder setup: an encoder processes a user interaction history, and an autoregressive decoder then generates recommended items. In large-scale streaming services, active users accumulate very long histories over time. As histories grow, the encoder becomes a major latency bottleneck because softmax attention scales quadratically with sequence length. In our experiments, using bidirectional attention in the encoder substantially improves quality. However, most sub-quadratic attention methods focus on causal attention. We propose Gated Bidirectional Linear Attention (GBLA), a linear-time bidirectional attention layer that extends kernelized linear attention with three lightweight components: local causal mixing (Conv1D), sequence-level key gating for soft forgetting, and a gated RMSNorm output. On a large-scale Yandex Music dataset, a hybrid encoder that interleaves self-attention (SA) and GBLA in a 1:2 ratio (one SA block followed by two GBLA blocks) matches bidirectional self-attention quality. On H100 GPUs, GBLA reaches up to an $8.2\\times$ single-layer speedup at a history length of 32768, compared to FlashAttention-v3. Finally, we show that the same hybrid design generalizes beyond our proprietary setting, consistently preserving self-attention retrieval quality on public Amazon benchmarks.",
@@ -3455,7 +3729,10 @@
         "Debabrota Basu",
         "Odalric-Ambrym Maillard"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "Univ. Lille , Inria , CNRS , Centrale Lille , UMR 9189 -CRIStAL F-59000 Lille , France",
+        "Centre National de la Recherche Scientifique"
+      ],
       "published": "2026-06-08T17:53:29Z",
       "updated": "2026-06-08T17:53:29Z",
       "abstract": "We consider a variant of the linear contextual stochastic multi-armed bandits, where the learner must provide recommendations to a group of users, each having its personalized preference vector, and in the presence of context distributions that are drifting over time. Under practitioner-friendly assumptions, we reduce this setting to linear bandit with stationary mean but heteroskedastic and non-stationary noise. We further study the case when the learner must ensure the mean reward of each decision must exceed that of a baseline strategy $\\boldsymbolπ_0$ at each decision step. We introduce Dri-MED, an algorithm inspired from the linear version of the MED strategy, and carefully adapted to handle the non-stationary heteroskedastic noise. We show that the instance-dependent regret scales as $\\tilde{\\mathcal O}\\left(\\fracκ{\\tildeΔ}d^2(\\log(T)\\right)$, where $\\tildeΔ$ is the constraint-aware sub-optimality gap subject to policy $π_0$, with variance-aware multiplicative term $κ$ that we carefully handle using heteroskedastic regression. We further show Dri-MED enjoys $\\tilde{\\mathcal{O}}(d)$ expected constraint violations. Our numerical results suggest that Dri-MED significantly outperforms conservative baselines that ignores the drift and preference structure.",
