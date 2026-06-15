@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-14T04:59:04Z",
+  "generated_at": "2026-06-15T05:18:45Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
@@ -130,245 +130,6 @@
   },
   "papers": [
     {
-      "id": "arxiv:2606.08604",
-      "title": "Gryphon: A Unified Architecture for Semantic-ID Generation and Item-Level Scoring in Industrial Recommendations",
-      "authors": [
-        "Daria Tikhonovich",
-        "Oleg Sorokin",
-        "Vladislav Dodonov",
-        "Mariia Ulianova",
-        "Ilya Murzin"
-      ],
-      "affiliations": [
-        "Yandex Moscow , Russia Yandex Moscow , Russia Yandex Moscow , Russia Yandex Moscow , Russia Yandex Moscow , Russia",
-        "Yandex (Russia)"
-      ],
-      "published": "2026-06-07T12:31:26Z",
-      "updated": "2026-06-09T13:50:48Z",
-      "abstract": "Generative retrieval (GR) has become a scalable approach to candidate generation: each item is assigned a short hierarchical token sequence called a Semantic ID (SID), and the next item's SID is decoded autoregressively. A practical limitation is that the decoder's beam search optimizes the likelihood of token sequences, not the relevance of the underlying items. These objectives diverge when sequence likelihood is poorly calibrated due to beam search error accumulation, and when several items collapse onto a single SID and receive identical scores. We introduce Gryphon, an encoder-decoder generative recommendation architecture that adds a jointly trained item-level scoring component alongside SID generation, reusing the encoder's user representation computed in a single forward pass. Instead of ranking SIDs by accumulated token likelihood, Gryphon resolves each generated SID to its concrete items and re-scores those items directly, which sidesteps miscalibrated sequence scores and separates items that collide on the same identifier. On an industrial music service, with item-level scoring trained under a next-item-prediction objective, Gryphon attains the highest item-level Recall@1000, above the strongest baselines (+3.7% over vanilla GR and +2.5% over collision-resolved GR) at comparable parameter count and latency. Gryphon's item-level ranking also surpasses its beam-likelihood ranking of the same candidates (+4.2% gain), demonstrating the benefit of item-level scoring in GR. Deployed as the sole candidate source in a 7-day A/B test, Gryphon produced no statistically significant change in total listening time (+0.25%) while replacing a pipeline of more than 15 candidate generators and a separate preranking stage, substantially simplifying the candidate-generation system.",
-      "categories": [
-        "cs.IR"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.08604v2",
-      "pdf_url": "https://arxiv.org/pdf/2606.08604v2",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "Gryphon是一种编码器-解码器生成式推荐架构，在语义ID生成的同时增加了联合训练的条目级评分模块（ILSM），通过直接对生成的语义ID对应的具体条目进行重评分，解决了生成检索中序列似然与相关性目标不一致的问题。在工业音乐服务上，Gryphon以可比的参数规模和延迟实现了最高的条目级Recall@1000，并在A/B测试中替换了超过15个候选生成器的级联，显著简化了候选生成系统。",
-      "core_method": "Gryphon在编码器-解码器生成式检索框架中引入一个共享编码器用户表示的条目级评分模块（ILSM），与语义ID生成联合训练，最终通过ILSM对解码器生成的候选条目进行重排序，而非依赖波束搜索的序列似然。",
-      "innovation_points": [
-        "提出在生成式检索中联合训练语义ID生成和条目级评分，解耦候选排序与序列似然，解决波束搜索目标与推荐相关性不匹配的问题。",
-        "通过共享编码器表示，在不显著增加参数和推理成本的情况下，实现条目级重评分，缓解语义ID碰撞和序列似然校准误差。",
-        "在工业级A/B测试中验证了单一候选源替代复杂多源管线并移除预排序阶段的可行性。"
-      ],
-      "experiment_results": [
-        "离线实验中，Gryphon在Recall@1000上比Vanilla GR提升3.7%，比碰撞解析的GR提升2.5%，且条目级重排序得分比波束似然排序高4.2%。",
-        "在线A/B测试中，Gryphon作为唯一候选源，总收听时长变化+0.25%但不显著，同时活跃用户比例提升0.43%，未完成曲目减少1.3%。"
-      ],
-      "ab_test": "yes",
-      "ab_test_evidence": "论文明确描述了在工业音乐推荐服务上进行了为期7天的线上A/B测试，Gryphon作为处理组唯一的候选源，与超过15个候选生成器和预排序级联的对照组进行对比，并报告了总收听时长等指标。",
-      "limitations": [
-        "离线实验未进行多种子显著性测试，仅依据经验方差估计。",
-        "A/B测试仅7天，无法评估长期效果和模型稳定性。"
-      ],
-      "practical_value": "Gryphon提供了一种可落地的生成式推荐方案，能够在保持推荐质量的同时大幅简化工业级候选生成系统，减少工程复杂度和维护成本。",
-      "analysis_basis": "full_text",
-      "analysis_status": "cached",
-      "analysis_signature": "fdc6c7b4af740f03",
-      "tags": [
-        "Generative Rec",
-        "LLM4Rec",
-        "Sequential Rec",
-        "Evaluation"
-      ],
-      "llm_score": 0,
-      "llm_score_rationale": "",
-      "preference_signals": [],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 129
-    },
-    {
-      "id": "dblp:conf/www/LiuZHZZZ26",
-      "title": "Facilitating Generative Retrieval with Logical Denoising for Interpretable Conversational Search",
-      "authors": [
-        "Qichuan Liu",
-        "Chentao Zhang",
-        "Yuxuan Hu",
-        "Chenfeng Zheng",
-        "Qinggang Zhang",
-        "Zhihong Zhang"
-      ],
-      "affiliations": [
-        "Xiamen University",
-        "Hong Kong Polytechnic University"
-      ],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792544",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792544",
-      "doi": "10.1145/3774904.3792544",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "本文提出了一种通过逻辑去噪促进生成式检索的方法，旨在实现可解释的对话式搜索。",
-      "core_method": "逻辑去噪生成式检索方法，用于提升对话搜索的可解释性。",
-      "innovation_points": [
-        "提出逻辑去噪机制以增强生成式检索的鲁棒性",
-        "实现对话式搜索过程的可解释性"
-      ],
-      "experiment_results": [
-        "论文元数据未提供实验评测结果。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "可能缺乏大规模实验验证",
-        "未明确说明去噪方法的适用范围"
-      ],
-      "practical_value": "可为对话搜索系统提供更可解释的检索结果，提升用户信任度。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "be6c50960e9a6c40",
-      "tags": [
-        "Generative Rec",
-        "Conversational Rec"
-      ],
-      "llm_score": 0,
-      "llm_score_rationale": "",
-      "preference_signals": [],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 115
-    },
-    {
-      "id": "dblp:conf/www/TangLPLK26",
-      "title": "Verifiable Federated Representation Learning for Cross-domain Sequential Recommendation",
-      "authors": [
-        "Tao Tang",
-        "Botao Liu",
-        "Ciyuan Peng",
-        "Ivan Lee",
-        "Xiangjie Kong"
-      ],
-      "affiliations": [
-        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
-        "Adelaide University, Adelaide, Australia"
-      ],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792533",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792533",
-      "doi": "10.1145/3774904.3792533",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "提出一种可验证的联邦表征学习方法，用于解决跨域序列推荐中的隐私保护与协同学习问题。",
-      "core_method": "可验证的联邦表征学习框架，结合跨域序列推荐。",
-      "innovation_points": [
-        "将联邦学习引入跨域序列推荐，保护隐私的同时实现多域协同。",
-        "引入可验证机制，增强模型的安全性与可信度。"
-      ],
-      "experiment_results": [
-        "论文元数据未提供具体实验结果或评测结论。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "仅基于元数据，无法评估方法的实际性能和局限性。",
-        "缺乏全文信息，方法的泛化性和效率未经验证。"
-      ],
-      "practical_value": "有望在保护用户隐私的前提下实现跨平台推荐系统的协同学习。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "aa12cbabc7ff6142",
-      "tags": [
-        "RecSys",
-        "Sequential Rec"
-      ],
-      "llm_score": 0,
-      "llm_score_rationale": "",
-      "preference_signals": [],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 115
-    },
-    {
-      "id": "dblp:conf/www/LiuFYWGH26",
-      "title": "LLM-Driven Semantic ID for Information Diffusion Prediction",
-      "authors": [
-        "Haoshuang Liu",
-        "Zihan Feng",
-        "Yajun Yang",
-        "Xin Wang",
-        "Hong Gao",
-        "Qinghua Hu"
-      ],
-      "affiliations": [],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792652",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792652",
-      "doi": "10.1145/3774904.3792652",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "提出利用LLM生成语义ID以改进信息扩散预测，利用语言模型增强序列表示，在WWW会议发表。",
-      "core_method": "利用LLM生成语义ID来增强信息扩散预测的序列表示。",
-      "innovation_points": [
-        "首次将LLM生成的语义ID用于信息扩散预测任务",
-        "通过语言模型增强序列表示，提升预测性能"
-      ],
-      "experiment_results": [
-        "论文未提供具体实验结果或评测结论"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏实验验证，方法有效性未知",
-        "仅基于元数据推断，细节不足"
-      ],
-      "practical_value": "若语义ID能有效捕获信息扩散模式，可为推荐系统的信息传播建模提供新思路",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "7d58c24b0b362531",
-      "tags": [
-        "LLM4Rec",
-        "Sequential Rec"
-      ],
-      "llm_score": 0,
-      "llm_score_rationale": "",
-      "preference_signals": [],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 107
-    },
-    {
       "id": "dblp:conf/www/YuFLZWLWZW26",
       "title": "ThinkRec: Thinking-based recommendation via LLM",
       "authors": [
@@ -429,69 +190,7 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 106
-    },
-    {
-      "id": "dblp:conf/www/ZhuCJYWCZ26",
-      "title": "FeedGuard: Online Critic-Guided Reinforcement Learning with Privacy-Preserving Feedback for Recommendation",
-      "authors": [
-        "Mengying Zhu",
-        "Feiyue Chen",
-        "Lifan Jiang",
-        "Mengyuan Yang",
-        "Yangyang Wu",
-        "Guanjie Cheng",
-        "Xiaolin Zheng"
-      ],
-      "affiliations": [
-        "Zhejiang University"
-      ],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792155",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792155",
-      "doi": "10.1145/3774904.3792155",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "提出FeedGuard框架，结合在线评判与强化学习，实现隐私保护的反馈机制用于推荐系统。",
-      "core_method": "在线评判引导的强化学习并结合隐私保护反馈机制。",
-      "innovation_points": [
-        "引入在线评判器实时引导强化学习模型更新",
-        "设计隐私保护的用户反馈收集与利用方法",
-        "在推荐系统中融合在线强化学习与评判指导"
-      ],
-      "experiment_results": [
-        "全文未提供实验/评测结果"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "基于元数据无法确认方法的有效性及实验证据",
-        "隐私保护机制的实际效果和开销未知"
-      ],
-      "practical_value": "为推荐系统提供在线学习与隐私保护结合的解决方案，有望提升模型适应性和用户信任。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "afb2e7c1b77438a3",
-      "tags": [
-        "RecSys",
-        "Agent4Rec",
-        "LLM4Rec"
-      ],
-      "llm_score": 0,
-      "llm_score_rationale": "",
-      "preference_signals": [],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 103
+      "score": 111
     },
     {
       "id": "arxiv:2606.13533",
@@ -567,65 +266,263 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 102
+      "score": 110
     },
     {
-      "id": "arxiv:2606.12984",
-      "title": "SkillChain: Closing the Loop on Skill Evolution for Image-Based E-Commerce AI Assistants",
+      "id": "arxiv:2606.14142",
+      "title": "Implicit Reasoning for Large Language Model-based Generative Recommendation",
       "authors": [
-        "Yimin Hu",
-        "Mengtao Xu",
-        "Hao Guo",
-        "Yuheng Song",
-        "Xiaoyong Zhu",
-        "Bo Zheng"
+        "Yinhan He",
+        "Liam Collins",
+        "Bhuvesh Kumar",
+        "Jundong Li",
+        "Neil Shah",
+        "Donald Loveland"
       ],
       "affiliations": [
-        "Alibaba Group"
+        "University of Virginia"
       ],
-      "published": "2026-06-11T07:21:55Z",
-      "updated": "2026-06-11T07:21:55Z",
-      "abstract": "Image-based AI assistants are now deployed at production scale on e-commerce platforms, where a single uploaded image can trigger fundamentally different user intents: product search, style recommendation, visual encyclopedia, or utility tool calls, each demanding its own response format, tool invocation, and domain knowledge. Without per-intent behavioral constraints, LLM-based systems conflate these heterogeneous modes and fall short of domain quality standards, while the breadth and dynamism of the intent space render manual engineering infeasible. To address this, we present SkillChain, which closes the production feedback loop on Skill evolution, automating the lifecycle of Skills through three stages: Skill Creator for bootstrapping from task specs and trajectories, Route Optimizer for routing alignment, and Body Refiner for iterative Skill Body refinement via dual-path LLM-Judge evaluation. Deployed on a production-scale e-commerce image assistant, SkillChain substantially improves aggregate response quality, with the strongest gains on structural compliance and content quality; a one-week online A/B experiment further confirms significant gains in user engagement, content consumption, and long-term retention.",
+      "published": "2026-06-12T06:04:05Z",
+      "updated": "2026-06-12T06:04:05Z",
+      "abstract": "Large Language Models (LLMs) are increasingly adopted as backbones for Generative Recommendation (GR), promising access to pretrained world knowledge. Yet reliably invoking this knowledge for GR remains poorly understood. A key obstacle is that LLM-based GR typically represents items with Semantic IDs (SIDs), disrupting LLMs' natural-language reasoning interface because these tokens are unseen by the LLM during pretraining. Existing approaches address this with expensive multi-stage pipelines that ground SIDs and elicit explicit rationales, but offer limited insight into when and why each stage is necessary. In this work, we systematically decompose explicit reasoning training pipelines for LLM-based GR, revealing three key limitations: weakened world-knowledge verbalization, misalignment between SID and natural-language token embedding spaces, and sensitivity to rationale quality, all of which hurt explicit reasoning performance. To circumvent these issues, we propose PauseRec, a lightweight implicit reasoning paradigm tailored for GR. PauseRec is exceptionally practical, avoiding costly reasoning trace acquisition and reasoning alignment training, leading to a multitude of benefits: (1) it outperforms standard explicit CoT methods by up to 6.22%, (2) it reduces training cost by up to 65% GPU hours, and (3) it speeds up inference by up to 71.3%. These results position PauseRec as a lightweight alternative to explicit rationale generation, enabling more effective and efficient LLM-based GR.",
       "categories": [
-        "cs.CL"
+        "cs.CL",
+        "cs.AI"
       ],
       "primary_category": "cs.CL",
-      "abs_url": "http://arxiv.org/abs/2606.12984v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.12984v1",
+      "abs_url": "http://arxiv.org/abs/2606.14142v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.14142v1",
       "doi": "",
       "source": "arXiv",
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "SkillChain 提出一种三阶段技能演化闭环框架，自动化管理电商图像AI助手的技能创建、路由优化和质量精炼，以应对用户意图多样性带来的行为约束缺失、路由漂移和规格衰减问题。在生产系统中部署后，离线评估和一周在线A/B实验均验证了其在结构合规性、内容质量和用户参与度等指标上的显著提升。",
-      "core_method": "SkillChain 通过声明式技能描述（Skill）将工具调用、富媒体组合、写作约束和领域知识解耦为路由描述（d）和响应体（b），并依次执行技能创建、路由优化和响应体精炼三个单向阶段，形成闭环自动演化。",
+      "generated_summary": "本文揭示了显式推理在基于语义ID的LLM生成式推荐中的三大缺陷：世界知识表达减弱、文本与SID嵌入空间错位、对推理质量敏感。提出PauseRec，通过插入可训练<pause>令牌实现隐式推理，无需昂贵推理轨迹获取和对齐训练，显著提升推荐性能并降低训练与推理成本。",
+      "core_method": "PauseRec通过在SID生成前插入可训练的<pause>令牌序列，仅优化最终推荐目标，实现隐式推理，连接语言与SID表示空间。",
       "innovation_points": [
-        "首次在电商图像AI助手中实现技能创建、路由优化和响应体精炼的全生命周期自动化闭环框架",
-        "通过单向阶段化设计确保各阶段独立优化且修正不会向后传播，提供单调质量保证",
-        "结合双路径评估（规则检查和LLM裁判）与跨样本归因，精准定位并修复响应体质量缺陷"
+        "系统分解显式推理训练流程，揭示其在LLM生成式推荐中的三个关键局限。",
+        "提出轻量级隐式推理框架PauseRec，用可训练<pause>令牌替代显示推理轨迹，无需推理标注和对齐。",
+        "通过理论分析证明文本与SID嵌入空间分离会限制推理效果，并用<pause>令牌桥接两个空间。"
       ],
       "experiment_results": [
-        "离线评估显示，完整SkillChain（Stage 3）在结构合规性（CCC）和内容质量（CQ）上提升最显著，总分最高，并优于人工编写技能",
-        "在线A/B实验一周后，全文阅读率（Full-read Rate）提升4.98个百分点，7日回访率提升1.15个百分点，互动用户数（Interactive UV）和平均停留时长也有显著增长",
-        "人工盲测中，SkillChain在所有五类意图上均优于人工技能，其中百科和工具辅助场景偏好优势最大"
+        "在三个Amazon评论数据集上，PauseRec相比标准SFT和CoT方法推荐性能提升最高6.22%。",
+        "PauseRec训练GPU小时数减少最高65%，推理速度提升最高71.3%。",
+        "消融实验表明预训练的<pause>令牌初始化优于仅用文本嵌入、SID嵌入或默认特殊令牌的初始化。"
       ],
-      "ab_test": "yes",
-      "ab_test_evidence": "论文明确提到进行了一周的在线A/B实验，比较Stage 3与已部署的Stage 2基线，并报告了互动UV、全文阅读率、平均停留时长和7日回访率等在线指标显著提升。",
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试",
       "limitations": [
-        "在发散推荐场景下人工偏好提升较弱，可能受推荐内容主观性和多样性偏好影响",
-        "定性归纳（Qualitative Induction）模块偶尔会引入对内容导向指标的错误改写，CC和CA维度存在轻微负向影响"
+        "仅在小规模语言模型（Qwen3-1.7B）和三个Amazon数据集上验证，大规模模型和更多领域的泛化性未实验。",
+        "未探索<pause>令牌数量、插入位置等超参数的敏感性，以及隐式推理的可解释性。"
       ],
-      "practical_value": "SkillChain 为基于图像的电商AI助手提供了可自动适应流量分布和质量信号的技能管理体系，减少了人工维护成本，并验证了离线LLM裁判与在线用户体验的正相关性。",
+      "practical_value": "PauseRec为LLM生成式推荐提供了一种高效、轻量的隐式推理方案，避免昂贵的推理轨迹标注和RL后训练，易于在实际系统中部署。",
       "analysis_basis": "full_text",
       "analysis_status": "complete",
-      "analysis_signature": "e23dd40895eb7b59",
+      "analysis_signature": "b9c22966784da100",
+      "tags": [
+        "LLM4Rec",
+        "Generative Rec",
+        "Sequential Rec",
+        "Evaluation"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "论文聚焦于生成式推荐与大语言模型结合，明确涉及Semantic ID，与主题强相关；提出PauseRec隐式推理范式，在多个数据集上离线实验大幅超越显式CoT基线，但无线上A/B或生产环境验证；未列出顶级会议发表，但2026年arXiv预印本可能投稿顶会，作者单位未知，无知名互联网公司背书",
+      "preference_signals": [
+        "Generative Rec / Semantic ID",
+        "Top venue"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 109
+    },
+    {
+      "id": "dblp:conf/www/LiuZHZZZ26",
+      "title": "Facilitating Generative Retrieval with Logical Denoising for Interpretable Conversational Search",
+      "authors": [
+        "Qichuan Liu",
+        "Chentao Zhang",
+        "Yuxuan Hu",
+        "Chenfeng Zheng",
+        "Qinggang Zhang",
+        "Zhihong Zhang"
+      ],
+      "affiliations": [
+        "Xiamen University",
+        "Hong Kong Polytechnic University"
+      ],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792544",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792544",
+      "doi": "10.1145/3774904.3792544",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "本文提出了一种通过逻辑去噪促进生成式检索的方法，旨在实现可解释的对话式搜索。",
+      "core_method": "逻辑去噪生成式检索方法，用于提升对话搜索的可解释性。",
+      "innovation_points": [
+        "提出逻辑去噪机制以增强生成式检索的鲁棒性",
+        "实现对话式搜索过程的可解释性"
+      ],
+      "experiment_results": [
+        "论文元数据未提供实验评测结果。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "可能缺乏大规模实验验证",
+        "未明确说明去噪方法的适用范围"
+      ],
+      "practical_value": "可为对话搜索系统提供更可解释的检索结果，提升用户信任度。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "be6c50960e9a6c40",
+      "tags": [
+        "Generative Rec",
+        "Conversational Rec"
+      ],
+      "llm_score": 0,
+      "llm_score_rationale": "",
+      "preference_signals": [],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 107
+    },
+    {
+      "id": "dblp:conf/www/LiuFYWGH26",
+      "title": "LLM-Driven Semantic ID for Information Diffusion Prediction",
+      "authors": [
+        "Haoshuang Liu",
+        "Zihan Feng",
+        "Yajun Yang",
+        "Xin Wang",
+        "Hong Gao",
+        "Qinghua Hu"
+      ],
+      "affiliations": [],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792652",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792652",
+      "doi": "10.1145/3774904.3792652",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出利用LLM生成语义ID以改进信息扩散预测，利用语言模型增强序列表示，在WWW会议发表。",
+      "core_method": "利用LLM生成语义ID来增强信息扩散预测的序列表示。",
+      "innovation_points": [
+        "首次将LLM生成的语义ID用于信息扩散预测任务",
+        "通过语言模型增强序列表示，提升预测性能"
+      ],
+      "experiment_results": [
+        "论文未提供具体实验结果或评测结论"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏实验验证，方法有效性未知",
+        "仅基于元数据推断，细节不足"
+      ],
+      "practical_value": "若语义ID能有效捕获信息扩散模式，可为推荐系统的信息传播建模提供新思路",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "7d58c24b0b362531",
+      "tags": [
+        "LLM4Rec",
+        "Sequential Rec"
+      ],
+      "llm_score": 0,
+      "llm_score_rationale": "",
+      "preference_signals": [],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 102
+    },
+    {
+      "id": "arxiv:2606.12198",
+      "title": "LLM-Based User Personas for Recommendations at Scale",
+      "authors": [
+        "Haoting Wang",
+        "Haokai Lu",
+        "Zheyun Feng",
+        "Jenny Huang",
+        "Yifat Amir",
+        "Gregory Hinkson",
+        "Ben Most",
+        "Zelong Zhao",
+        "Yixin Kelly Cui",
+        "Rein Zhang",
+        "Fabio Soldo",
+        "Yu Xia",
+        "Nihar Bhupalam",
+        "Minmin Chen",
+        "Konstantina Christakopoulou",
+        "Lichan Hong",
+        "Ed H. Chi"
+      ],
+      "affiliations": [
+        "Google Deepmind",
+        "Google"
+      ],
+      "published": "2026-06-10T15:18:32Z",
+      "updated": "2026-06-10T15:18:32Z",
+      "abstract": "Large Language Models (LLMs) offer unprecedented potential for enhancing recommendation systems through their world knowledge and reasoning capabilities. However, existing approaches often rely on structured IDs or offline processing, limiting semantic richness, real-time adaptability, and user-facing interpretability. In this paper, we introduce a novel framework that enables real-time generation of LLM-based user interest personas for a large-scale commercial video recommendation platform. Our method generates natural-language user interest personas that address the exploitation-exploration trade-off by combining the summarization of existing interests with novel topics, directly during serving. To overcome the computational challenges of online LLM inference at a billion-user scale, we design a cost-efficient architecture leveraging knowledge distillation, asynchronous inference, and input optimization via semantically clustered video representations. Extensive offline evaluations, user studies, and live A/B tests demonstrate significant improvements in viewer value. This work bridges the gap between high-level semantic understanding and industrial-scale recommendation, paving the way for more dynamic, explainable, and satisfying personalized experiences.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.12198v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.12198v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "论文提出一个在亿级用户规模的商业视频推荐平台上，实时生成基于大语言模型的用户兴趣画像的框架。该方法通过结合兴趣总结和探索生成自然语言画像，并利用知识蒸馏、异步推理和语义聚类输入来克服在线推理的计算挑战。",
+      "core_method": "使用知识蒸馏训练小模型，在线上异步推理中根据用户观看历史的语义聚类生成包含兴趣总结和探索话题的自然语言用户画像。",
+      "innovation_points": [
+        "首次将LLM生成的用户画像直接嵌入实时推荐服务路径，作为检索源驱动用户探索",
+        "设计知识蒸馏流程，将大型LLM的多步推理能力迁移到可用于在线推理的小模型，同时处理兴趣总结与探索生成",
+        "提出异步推理架构，结合输入语义聚类和模型量化，在亿级用户规模下实现低延迟、低成本的在线LLM推理"
+      ],
+      "experiment_results": [
+        "大规模在线A/B测试显示，用户满意度和探索行为显著提升",
+        "用户调研表明对LLM生成的兴趣画像准确性有较高满意度",
+        "离线评估验证了语义聚类输入相比原始序列输入的摘要质量更优"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文明确提到进行了大规模A/B测试（large-scale A/B testing），并展示了在观看者价值（viewer value）上的统计显著改善，包括用户满意度和探索的增加。",
+      "limitations": [
+        "系统依赖于大型教师模型生成训练数据，可能继承其偏见或错误",
+        "未详细讨论画像生成对推荐结果多样性的长期影响及潜在伦理问题"
+      ],
+      "practical_value": "为工业级推荐系统提供了一种在实时服务中利用LLM语义理解能力、平衡利用与探索的可规模化方案，并可用于用户可解释性功能。",
+      "analysis_basis": "full_text",
+      "analysis_status": "cached",
+      "analysis_signature": "45f4b31d622b12c1",
       "tags": [
         "LLM4Rec",
         "RecSys",
-        "Evaluation"
+        "Sequential Rec",
+        "Generative Rec"
       ],
       "llm_score": 98,
-      "llm_score_rationale": "论文包含一周期在线A/B实验，证实用户参与度、内容消费和长期留存显著提升，证据等级最高。；作者来自知名电商公司（推测为阿里巴巴/京东等），解决工业级电商图像AI助手问题，实践性强。；研究生成式AI助手在电商的多意图处理，涉及LLM与生成式推荐近邻领域，与生成式推荐/语义ID部分相关。",
+      "llm_score_rationale": "明确有live A/B tests且在商业视频推荐平台上线，证据权重最高；作者单位含Google DeepMind和Google，为顶级互联网公司；使用LLM生成用户兴趣persona用于推荐，与生成式推荐强相关",
       "preference_signals": [
         "Online A/B",
         "Industry company",
@@ -634,7 +531,7 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 102
+      "score": 101
     },
     {
       "id": "arxiv:2606.10357",
@@ -705,6 +602,316 @@
       "read_status": "unread",
       "notes": "",
       "score": 101
+    },
+    {
+      "id": "dblp:conf/www/TangLPLK26",
+      "title": "Verifiable Federated Representation Learning for Cross-domain Sequential Recommendation",
+      "authors": [
+        "Tao Tang",
+        "Botao Liu",
+        "Ciyuan Peng",
+        "Ivan Lee",
+        "Xiangjie Kong"
+      ],
+      "affiliations": [
+        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
+        "Adelaide University, Adelaide, Australia"
+      ],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792533",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792533",
+      "doi": "10.1145/3774904.3792533",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出一种可验证的联邦表征学习方法，用于解决跨域序列推荐中的隐私保护与协同学习问题。",
+      "core_method": "可验证的联邦表征学习框架，结合跨域序列推荐。",
+      "innovation_points": [
+        "将联邦学习引入跨域序列推荐，保护隐私的同时实现多域协同。",
+        "引入可验证机制，增强模型的安全性与可信度。"
+      ],
+      "experiment_results": [
+        "论文元数据未提供具体实验结果或评测结论。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "仅基于元数据，无法评估方法的实际性能和局限性。",
+        "缺乏全文信息，方法的泛化性和效率未经验证。"
+      ],
+      "practical_value": "有望在保护用户隐私的前提下实现跨平台推荐系统的协同学习。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "aa12cbabc7ff6142",
+      "tags": [
+        "RecSys",
+        "Sequential Rec"
+      ],
+      "llm_score": 0,
+      "llm_score_rationale": "",
+      "preference_signals": [],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 100
+    },
+    {
+      "id": "dblp:conf/www/ZhuCJYWCZ26",
+      "title": "FeedGuard: Online Critic-Guided Reinforcement Learning with Privacy-Preserving Feedback for Recommendation",
+      "authors": [
+        "Mengying Zhu",
+        "Feiyue Chen",
+        "Lifan Jiang",
+        "Mengyuan Yang",
+        "Yangyang Wu",
+        "Guanjie Cheng",
+        "Xiaolin Zheng"
+      ],
+      "affiliations": [
+        "Zhejiang University"
+      ],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792155",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792155",
+      "doi": "10.1145/3774904.3792155",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出FeedGuard框架，结合在线评判与强化学习，实现隐私保护的反馈机制用于推荐系统。",
+      "core_method": "在线评判引导的强化学习并结合隐私保护反馈机制。",
+      "innovation_points": [
+        "引入在线评判器实时引导强化学习模型更新",
+        "设计隐私保护的用户反馈收集与利用方法",
+        "在推荐系统中融合在线强化学习与评判指导"
+      ],
+      "experiment_results": [
+        "全文未提供实验/评测结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "基于元数据无法确认方法的有效性及实验证据",
+        "隐私保护机制的实际效果和开销未知"
+      ],
+      "practical_value": "为推荐系统提供在线学习与隐私保护结合的解决方案，有望提升模型适应性和用户信任。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "afb2e7c1b77438a3",
+      "tags": [
+        "RecSys",
+        "Agent4Rec",
+        "LLM4Rec"
+      ],
+      "llm_score": 0,
+      "llm_score_rationale": "",
+      "preference_signals": [],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 96
+    },
+    {
+      "id": "dblp:conf/www/QiuXHPW26",
+      "title": "Meta-Learning Driven Few-Shot Knowledge Transfer with Dual-Stage Adaptive Data Replay for Cross-Domain Recommendation",
+      "authors": [
+        "Yilei Qiu",
+        "Fei Xiong",
+        "Jun Hu",
+        "Shirui Pan",
+        "Liang Wang"
+      ],
+      "affiliations": [
+        "Beijing Jiaotong University",
+        "University of Chinese Academy of Sciences",
+        "Griffith University",
+        "Northwestern Polytechnical University"
+      ],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792443",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792443",
+      "doi": "10.1145/3774904.3792443",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出一种元学习驱动的少样本知识迁移框架，通过双阶段自适应数据重放实现跨域推荐。该方法利用元学习从源域提取可迁移知识，并在目标域上通过自适应重放机制缓解灾难性遗忘。论文在WWW会议发表，但未提供具体实验数据。",
+      "core_method": "基于元学习的双阶段自适应数据重放框架，用于跨域推荐的少样本知识迁移。",
+      "innovation_points": [
+        "引入元学习实现跨域少样本知识迁移",
+        "设计双阶段自适应数据重放机制缓解灾难性遗忘"
+      ],
+      "experiment_results": [
+        "论文未提供具体实验结果或评测结论"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏全文，无法评估方法的具体局限性和实验细节"
+      ],
+      "practical_value": "为跨域推荐系统中数据稀疏和灾难性遗忘问题提供了一种潜在的解决方案，可应用于冷启动和少样本场景。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "0104fd9f2e95ac6e",
+      "tags": [
+        "RecSys"
+      ],
+      "llm_score": 0,
+      "llm_score_rationale": "",
+      "preference_signals": [],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 91
+    },
+    {
+      "id": "arxiv:2606.08604",
+      "title": "Gryphon: A Unified Architecture for Semantic-ID Generation and Item-Level Scoring in Industrial Recommendations",
+      "authors": [
+        "Daria Tikhonovich",
+        "Oleg Sorokin",
+        "Vladislav Dodonov",
+        "Mariia Ulianova",
+        "Ilya Murzin"
+      ],
+      "affiliations": [
+        "Yandex Moscow , Russia Yandex Moscow , Russia Yandex Moscow , Russia Yandex Moscow , Russia Yandex Moscow , Russia",
+        "Yandex (Russia)"
+      ],
+      "published": "2026-06-07T12:31:26Z",
+      "updated": "2026-06-09T13:50:48Z",
+      "abstract": "Generative retrieval (GR) has become a scalable approach to candidate generation: each item is assigned a short hierarchical token sequence called a Semantic ID (SID), and the next item's SID is decoded autoregressively. A practical limitation is that the decoder's beam search optimizes the likelihood of token sequences, not the relevance of the underlying items. These objectives diverge when sequence likelihood is poorly calibrated due to beam search error accumulation, and when several items collapse onto a single SID and receive identical scores. We introduce Gryphon, an encoder-decoder generative recommendation architecture that adds a jointly trained item-level scoring component alongside SID generation, reusing the encoder's user representation computed in a single forward pass. Instead of ranking SIDs by accumulated token likelihood, Gryphon resolves each generated SID to its concrete items and re-scores those items directly, which sidesteps miscalibrated sequence scores and separates items that collide on the same identifier. On an industrial music service, with item-level scoring trained under a next-item-prediction objective, Gryphon attains the highest item-level Recall@1000, above the strongest baselines (+3.7% over vanilla GR and +2.5% over collision-resolved GR) at comparable parameter count and latency. Gryphon's item-level ranking also surpasses its beam-likelihood ranking of the same candidates (+4.2% gain), demonstrating the benefit of item-level scoring in GR. Deployed as the sole candidate source in a 7-day A/B test, Gryphon produced no statistically significant change in total listening time (+0.25%) while replacing a pipeline of more than 15 candidate generators and a separate preranking stage, substantially simplifying the candidate-generation system.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.08604v2",
+      "pdf_url": "https://arxiv.org/pdf/2606.08604v2",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "Gryphon是一种编码器-解码器生成式推荐架构，在语义ID生成的同时增加了联合训练的条目级评分模块（ILSM），通过直接对生成的语义ID对应的具体条目进行重评分，解决了生成检索中序列似然与相关性目标不一致的问题。在工业音乐服务上，Gryphon以可比的参数规模和延迟实现了最高的条目级Recall@1000，并在A/B测试中替换了超过15个候选生成器的级联，显著简化了候选生成系统。",
+      "core_method": "Gryphon在编码器-解码器生成式检索框架中引入一个共享编码器用户表示的条目级评分模块（ILSM），与语义ID生成联合训练，最终通过ILSM对解码器生成的候选条目进行重排序，而非依赖波束搜索的序列似然。",
+      "innovation_points": [
+        "提出在生成式检索中联合训练语义ID生成和条目级评分，解耦候选排序与序列似然，解决波束搜索目标与推荐相关性不匹配的问题。",
+        "通过共享编码器表示，在不显著增加参数和推理成本的情况下，实现条目级重评分，缓解语义ID碰撞和序列似然校准误差。",
+        "在工业级A/B测试中验证了单一候选源替代复杂多源管线并移除预排序阶段的可行性。"
+      ],
+      "experiment_results": [
+        "离线实验中，Gryphon在Recall@1000上比Vanilla GR提升3.7%，比碰撞解析的GR提升2.5%，且条目级重排序得分比波束似然排序高4.2%。",
+        "在线A/B测试中，Gryphon作为唯一候选源，总收听时长变化+0.25%但不显著，同时活跃用户比例提升0.43%，未完成曲目减少1.3%。"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文明确描述了在工业音乐推荐服务上进行了为期7天的线上A/B测试，Gryphon作为处理组唯一的候选源，与超过15个候选生成器和预排序级联的对照组进行对比，并报告了总收听时长等指标。",
+      "limitations": [
+        "离线实验未进行多种子显著性测试，仅依据经验方差估计。",
+        "A/B测试仅7天，无法评估长期效果和模型稳定性。"
+      ],
+      "practical_value": "Gryphon提供了一种可落地的生成式推荐方案，能够在保持推荐质量的同时大幅简化工业级候选生成系统，减少工程复杂度和维护成本。",
+      "analysis_basis": "full_text",
+      "analysis_status": "cached",
+      "analysis_signature": "fdc6c7b4af740f03",
+      "tags": [
+        "Generative Rec",
+        "LLM4Rec",
+        "Sequential Rec",
+        "Evaluation"
+      ],
+      "llm_score": 0,
+      "llm_score_rationale": "",
+      "preference_signals": [],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 129
+    },
+    {
+      "id": "arxiv:2606.12984",
+      "title": "SkillChain: Closing the Loop on Skill Evolution for Image-Based E-Commerce AI Assistants",
+      "authors": [
+        "Yimin Hu",
+        "Mengtao Xu",
+        "Hao Guo",
+        "Yuheng Song",
+        "Xiaoyong Zhu",
+        "Bo Zheng"
+      ],
+      "affiliations": [
+        "Alibaba Group"
+      ],
+      "published": "2026-06-11T07:21:55Z",
+      "updated": "2026-06-11T07:21:55Z",
+      "abstract": "Image-based AI assistants are now deployed at production scale on e-commerce platforms, where a single uploaded image can trigger fundamentally different user intents: product search, style recommendation, visual encyclopedia, or utility tool calls, each demanding its own response format, tool invocation, and domain knowledge. Without per-intent behavioral constraints, LLM-based systems conflate these heterogeneous modes and fall short of domain quality standards, while the breadth and dynamism of the intent space render manual engineering infeasible. To address this, we present SkillChain, which closes the production feedback loop on Skill evolution, automating the lifecycle of Skills through three stages: Skill Creator for bootstrapping from task specs and trajectories, Route Optimizer for routing alignment, and Body Refiner for iterative Skill Body refinement via dual-path LLM-Judge evaluation. Deployed on a production-scale e-commerce image assistant, SkillChain substantially improves aggregate response quality, with the strongest gains on structural compliance and content quality; a one-week online A/B experiment further confirms significant gains in user engagement, content consumption, and long-term retention.",
+      "categories": [
+        "cs.CL"
+      ],
+      "primary_category": "cs.CL",
+      "abs_url": "http://arxiv.org/abs/2606.12984v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.12984v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "SkillChain 提出一种三阶段技能演化闭环框架，自动化管理电商图像AI助手的技能创建、路由优化和质量精炼，以应对用户意图多样性带来的行为约束缺失、路由漂移和规格衰减问题。在生产系统中部署后，离线评估和一周在线A/B实验均验证了其在结构合规性、内容质量和用户参与度等指标上的显著提升。",
+      "core_method": "SkillChain 通过声明式技能描述（Skill）将工具调用、富媒体组合、写作约束和领域知识解耦为路由描述（d）和响应体（b），并依次执行技能创建、路由优化和响应体精炼三个单向阶段，形成闭环自动演化。",
+      "innovation_points": [
+        "首次在电商图像AI助手中实现技能创建、路由优化和响应体精炼的全生命周期自动化闭环框架",
+        "通过单向阶段化设计确保各阶段独立优化且修正不会向后传播，提供单调质量保证",
+        "结合双路径评估（规则检查和LLM裁判）与跨样本归因，精准定位并修复响应体质量缺陷"
+      ],
+      "experiment_results": [
+        "离线评估显示，完整SkillChain（Stage 3）在结构合规性（CCC）和内容质量（CQ）上提升最显著，总分最高，并优于人工编写技能",
+        "在线A/B实验一周后，全文阅读率（Full-read Rate）提升4.98个百分点，7日回访率提升1.15个百分点，互动用户数（Interactive UV）和平均停留时长也有显著增长",
+        "人工盲测中，SkillChain在所有五类意图上均优于人工技能，其中百科和工具辅助场景偏好优势最大"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文明确提到进行了一周的在线A/B实验，比较Stage 3与已部署的Stage 2基线，并报告了互动UV、全文阅读率、平均停留时长和7日回访率等在线指标显著提升。",
+      "limitations": [
+        "在发散推荐场景下人工偏好提升较弱，可能受推荐内容主观性和多样性偏好影响",
+        "定性归纳（Qualitative Induction）模块偶尔会引入对内容导向指标的错误改写，CC和CA维度存在轻微负向影响"
+      ],
+      "practical_value": "SkillChain 为基于图像的电商AI助手提供了可自动适应流量分布和质量信号的技能管理体系，减少了人工维护成本，并验证了离线LLM裁判与在线用户体验的正相关性。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "e23dd40895eb7b59",
+      "tags": [
+        "LLM4Rec",
+        "RecSys",
+        "Evaluation"
+      ],
+      "llm_score": 98,
+      "llm_score_rationale": "论文包含一周期在线A/B实验，证实用户参与度、内容消费和长期留存显著提升，证据等级最高。；作者来自知名电商公司（推测为阿里巴巴/京东等），解决工业级电商图像AI助手问题，实践性强。；研究生成式AI助手在电商的多意图处理，涉及LLM与生成式推荐近邻领域，与生成式推荐/语义ID部分相关。",
+      "preference_signals": [
+        "Online A/B",
+        "Industry company",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 102
     },
     {
       "id": "dblp:conf/www/LiJLWLYZZX26",
@@ -1038,86 +1245,6 @@
       "read_status": "unread",
       "notes": "",
       "score": 108
-    },
-    {
-      "id": "arxiv:2606.12198",
-      "title": "LLM-Based User Personas for Recommendations at Scale",
-      "authors": [
-        "Haoting Wang",
-        "Haokai Lu",
-        "Zheyun Feng",
-        "Jenny Huang",
-        "Yifat Amir",
-        "Gregory Hinkson",
-        "Ben Most",
-        "Zelong Zhao",
-        "Yixin Kelly Cui",
-        "Rein Zhang",
-        "Fabio Soldo",
-        "Yu Xia",
-        "Nihar Bhupalam",
-        "Minmin Chen",
-        "Konstantina Christakopoulou",
-        "Lichan Hong",
-        "Ed H. Chi"
-      ],
-      "affiliations": [
-        "Google",
-        "Google Deepmind"
-      ],
-      "published": "2026-06-10T15:18:32Z",
-      "updated": "2026-06-10T15:18:32Z",
-      "abstract": "Large Language Models (LLMs) offer unprecedented potential for enhancing recommendation systems through their world knowledge and reasoning capabilities. However, existing approaches often rely on structured IDs or offline processing, limiting semantic richness, real-time adaptability, and user-facing interpretability. In this paper, we introduce a novel framework that enables real-time generation of LLM-based user interest personas for a large-scale commercial video recommendation platform. Our method generates natural-language user interest personas that address the exploitation-exploration trade-off by combining the summarization of existing interests with novel topics, directly during serving. To overcome the computational challenges of online LLM inference at a billion-user scale, we design a cost-efficient architecture leveraging knowledge distillation, asynchronous inference, and input optimization via semantically clustered video representations. Extensive offline evaluations, user studies, and live A/B tests demonstrate significant improvements in viewer value. This work bridges the gap between high-level semantic understanding and industrial-scale recommendation, paving the way for more dynamic, explainable, and satisfying personalized experiences.",
-      "categories": [
-        "cs.IR"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.12198v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.12198v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "论文提出一个在亿级用户规模的商业视频推荐平台上，实时生成基于大语言模型的用户兴趣画像的框架。该方法通过结合兴趣总结和探索生成自然语言画像，并利用知识蒸馏、异步推理和语义聚类输入来克服在线推理的计算挑战。",
-      "core_method": "使用知识蒸馏训练小模型，在线上异步推理中根据用户观看历史的语义聚类生成包含兴趣总结和探索话题的自然语言用户画像。",
-      "innovation_points": [
-        "首次将LLM生成的用户画像直接嵌入实时推荐服务路径，作为检索源驱动用户探索",
-        "设计知识蒸馏流程，将大型LLM的多步推理能力迁移到可用于在线推理的小模型，同时处理兴趣总结与探索生成",
-        "提出异步推理架构，结合输入语义聚类和模型量化，在亿级用户规模下实现低延迟、低成本的在线LLM推理"
-      ],
-      "experiment_results": [
-        "大规模在线A/B测试显示，用户满意度和探索行为显著提升",
-        "用户调研表明对LLM生成的兴趣画像准确性有较高满意度",
-        "离线评估验证了语义聚类输入相比原始序列输入的摘要质量更优"
-      ],
-      "ab_test": "yes",
-      "ab_test_evidence": "论文明确提到进行了大规模A/B测试（large-scale A/B testing），并展示了在观看者价值（viewer value）上的统计显著改善，包括用户满意度和探索的增加。",
-      "limitations": [
-        "系统依赖于大型教师模型生成训练数据，可能继承其偏见或错误",
-        "未详细讨论画像生成对推荐结果多样性的长期影响及潜在伦理问题"
-      ],
-      "practical_value": "为工业级推荐系统提供了一种在实时服务中利用LLM语义理解能力、平衡利用与探索的可规模化方案，并可用于用户可解释性功能。",
-      "analysis_basis": "full_text",
-      "analysis_status": "cached",
-      "analysis_signature": "45f4b31d622b12c1",
-      "tags": [
-        "LLM4Rec",
-        "RecSys",
-        "Sequential Rec",
-        "Generative Rec"
-      ],
-      "llm_score": 98,
-      "llm_score_rationale": "明确有live A/B tests且在商业视频推荐平台上线，证据权重最高；作者单位含Google DeepMind和Google，为顶级互联网公司；使用LLM生成用户兴趣persona用于推荐，与生成式推荐强相关",
-      "preference_signals": [
-        "Online A/B",
-        "Industry company",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 101
     },
     {
       "id": "arxiv:2606.08480",
@@ -2493,66 +2620,6 @@
       "read_status": "unread",
       "notes": "",
       "score": 101
-    },
-    {
-      "id": "dblp:conf/www/QiuXHPW26",
-      "title": "Meta-Learning Driven Few-Shot Knowledge Transfer with Dual-Stage Adaptive Data Replay for Cross-Domain Recommendation",
-      "authors": [
-        "Yilei Qiu",
-        "Fei Xiong",
-        "Jun Hu",
-        "Shirui Pan",
-        "Liang Wang"
-      ],
-      "affiliations": [
-        "Beijing Jiaotong University",
-        "University of Chinese Academy of Sciences",
-        "Institute of Software",
-        "Griffith University",
-        "Northwestern Polytechnical University"
-      ],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792443",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792443",
-      "doi": "10.1145/3774904.3792443",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "提出一种元学习驱动的少样本知识迁移框架，通过双阶段自适应数据重放实现跨域推荐。该方法利用元学习从源域提取可迁移知识，并在目标域上通过自适应重放机制缓解灾难性遗忘。论文在WWW会议发表，但未提供具体实验数据。",
-      "core_method": "基于元学习的双阶段自适应数据重放框架，用于跨域推荐的少样本知识迁移。",
-      "innovation_points": [
-        "引入元学习实现跨域少样本知识迁移",
-        "设计双阶段自适应数据重放机制缓解灾难性遗忘"
-      ],
-      "experiment_results": [
-        "论文未提供具体实验结果或评测结论"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏全文，无法评估方法的具体局限性和实验细节"
-      ],
-      "practical_value": "为跨域推荐系统中数据稀疏和灾难性遗忘问题提供了一种潜在的解决方案，可应用于冷启动和少样本场景。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "0104fd9f2e95ac6e",
-      "tags": [
-        "RecSys"
-      ],
-      "llm_score": 0,
-      "llm_score_rationale": "",
-      "preference_signals": [],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": -4
     },
     {
       "id": "arxiv:2606.07688",
