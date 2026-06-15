@@ -4,6 +4,7 @@ from dataclasses import asdict
 from daily_paper.cli import (
     _load_previous_site_papers,
     _merge_site_history,
+    _paper_to_site_dict,
     _reuse_cached_site_analysis,
     _select_site_papers,
 )
@@ -106,6 +107,20 @@ def test_load_previous_site_papers_reads_existing_payload(tmp_path):
     loaded = _load_previous_site_papers(str(path))
 
     assert [paper.id for paper in loaded] == ["arxiv:2606.01234"]
+
+
+def test_paper_to_site_dict_includes_display_affiliations():
+    paper = make_paper("arxiv:2606.01234")
+    paper.affiliations = [
+        "Department of Computer Science, Tsinghua University, Beijing, China",
+        "Tsinghua University",
+        "Unknown affiliation",
+    ]
+
+    values = _paper_to_site_dict(paper)
+
+    assert values["display_affiliations"] == ["Tsinghua University"]
+    assert values["published_date"] == "2026-06-07"
 
 
 def test_merge_site_history_keeps_current_first_and_preserves_older_papers():

@@ -170,7 +170,7 @@ def _site_data_command(args, config) -> int:
             "exclude_keywords": config.arxiv.exclude_keywords,
             "dblp_venues": [venue.name for venue in config.dblp.venues],
         },
-        "papers": [asdict(paper) for paper in papers],
+        "papers": [_paper_to_site_dict(paper) for paper in papers],
     }
     out_dir = os.path.dirname(args.out)
     if out_dir and not os.path.exists(out_dir):
@@ -180,6 +180,15 @@ def _site_data_command(args, config) -> int:
         handle.write("\n")
     print("Wrote site data for %d papers to %s" % (len(papers), args.out))
     return 0
+
+
+def _paper_to_site_dict(paper: Paper):
+    values = asdict(paper)
+    affiliations = normalize_affiliations(paper.affiliations)
+    values["affiliations"] = affiliations
+    values["display_affiliations"] = affiliations or ["Unknown affiliation"]
+    values["published_date"] = paper.published_date
+    return values
 
 
 def _load_ranked_papers(config, limit: int, enrich_results: bool = True):
