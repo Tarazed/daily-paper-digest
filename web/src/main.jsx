@@ -50,6 +50,7 @@ function App() {
       const haystack = [
         paper.title,
         (paper.authors || []).join(" "),
+        displayAffiliations(paper).join(" "),
         (paper.affiliations || []).join(" "),
         paper.generated_summary,
         paper.venue,
@@ -190,7 +191,7 @@ function PaperCard({ paper, onMark }) {
 
       <h2>{paper.title}</h2>
       <p className="authors">{compactList(paper.authors, 8) || "Unknown authors"}</p>
-      <p className="affiliations">{compactList(paper.affiliations, 4) || "Unknown affiliation"}</p>
+      <p className="affiliations">{compactList(displayAffiliations(paper), 4) || "Unknown affiliation"}</p>
       <div className="paperMeta">
         <span>{displayVenue(paper) || paper.status}</span>
         <span>{paper.published_date || (paper.published || "").slice(0, 10)}</span>
@@ -374,6 +375,20 @@ function compactList(values, limit) {
   if (!items.length) return "";
   const visible = items.slice(0, limit).join(", ");
   return items.length > limit ? `${visible} et al.` : visible;
+}
+
+function displayAffiliations(paper) {
+  const values = Array.isArray(paper.display_affiliations) && paper.display_affiliations.length
+    ? paper.display_affiliations
+    : paper.affiliations || [];
+  const seen = new Set();
+  return values.filter((value) => {
+    const text = String(value || "").trim();
+    const key = text.toLowerCase().replace(/^the\s+/, "").replace(/[^a-z0-9]+/g, "");
+    if (!text || !key || key === "unknown" || key === "unknownaffiliation" || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }
 
 function formatGeneratedAt(value) {

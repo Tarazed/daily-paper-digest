@@ -92,6 +92,7 @@
           var haystack = [
             paper.title,
             (paper.authors || []).join(" "),
+            displayAffiliations(paper).join(" "),
             (paper.affiliations || []).join(" "),
             paper.generated_summary,
             paper.venue,
@@ -269,7 +270,7 @@
       ),
       h("h2", null, paper.title),
       h("p", { className: "authors" }, compactList(paper.authors, 8) || "Unknown authors"),
-      h("p", { className: "affiliations" }, compactList(paper.affiliations, 4) || "Unknown affiliation"),
+      h("p", { className: "affiliations" }, compactList(displayAffiliations(paper), 4) || "Unknown affiliation"),
       h(
         "div",
         { className: "paperMeta" },
@@ -463,6 +464,20 @@
     if (!items.length) return "";
     var visible = items.slice(0, limit).join(", ");
     return items.length > limit ? visible + " et al." : visible;
+  }
+
+  function displayAffiliations(paper) {
+    var values = Array.isArray(paper.display_affiliations) && paper.display_affiliations.length
+      ? paper.display_affiliations
+      : paper.affiliations || [];
+    var seen = {};
+    return values.filter(function (value) {
+      var text = String(value || "").trim();
+      var key = text.toLowerCase().replace(/^the\s+/, "").replace(/[^a-z0-9]+/g, "");
+      if (!text || !key || key === "unknown" || key === "unknownaffiliation" || seen[key]) return false;
+      seen[key] = true;
+      return true;
+    });
   }
 
   function formatGeneratedAt(value) {

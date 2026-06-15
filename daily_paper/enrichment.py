@@ -3,14 +3,16 @@ import io
 import json
 import os
 import re
+import ssl
 import tarfile
+import urllib.error
 import urllib.parse
 import urllib.request
 from difflib import SequenceMatcher
 from typing import Dict, Iterable, List
 
 from .config import EnrichmentConfig
-from .models import Paper
+from .models import Paper, _affiliation_display_key
 
 OPENALEX_WORKS_URL = "https://api.openalex.org/works"
 SEMANTIC_SCHOLAR_SEARCH_URL = "https://api.semanticscholar.org/graph/v1/paper/search"
@@ -295,7 +297,7 @@ def _fetch_semantic_scholar(params: Dict[str, str], config: EnrichmentConfig) ->
 def _fetch_arxiv_tex_documents(arxiv_id: str, timeout_seconds: int = 8) -> List[str]:
     url = ARXIV_EPRINT_URL % urllib.parse.quote(arxiv_id)
     request = urllib.request.Request(url, headers={"User-Agent": "daily-paper-digest/0.1"})
-    with urllib.request.urlopen(request, timeout=timeout_seconds) as response:
+    with _open_arxiv_eprint(request, timeout_seconds) as response:
         payload = response.read()
     documents = _read_tar_tex_documents(payload)
     if documents:
@@ -313,6 +315,23 @@ def _fetch_arxiv_tex_documents(arxiv_id: str, timeout_seconds: int = 8) -> List[
             return [text]
     text = _decode_text(payload)
     return [text] if text else []
+
+
+def _open_arxiv_eprint(request: urllib.request.Request, timeout_seconds: int):
+    try:
+        return urllib.request.urlopen(request, timeout=timeout_seconds)
+    except urllib.error.URLError as exc:
+        if not _is_ssl_cert_error(exc):
+            raise
+        context = ssl._create_unverified_context()
+        return urllib.request.urlopen(request, timeout=timeout_seconds, context=context)
+
+
+def _is_ssl_cert_error(exc: urllib.error.URLError) -> bool:
+    reason = getattr(exc, "reason", exc)
+    if isinstance(reason, ssl.SSLCertVerificationError):
+        return True
+    return "CERTIFICATE_VERIFY_FAILED" in str(exc)
 
 
 def _headers_for_url(url: str, config: EnrichmentConfig) -> Dict[str, str]:
@@ -540,6 +559,9 @@ def _looks_like_affiliation(value: str) -> bool:
         "mit ",
         "stanford",
         "corporation",
+        "technology",
+        "technologies",
+        "kuaishou",
         "google",
         "deepmind",
         "microsoft",
@@ -632,11 +654,24 @@ def _append_affiliation_unique(values: List[str], value: str) -> None:
 
 
 def _prefer_affiliation_value(candidate: str, existing: str) -> bool:
+    candidate_acronym = _looks_like_affiliation_acronym(candidate)
+    existing_acronym = _looks_like_affiliation_acronym(existing)
+    if candidate_acronym != existing_acronym:
+        return existing_acronym
     candidate_parts = len([part for part in candidate.split(",") if part.strip()])
     existing_parts = len([part for part in existing.split(",") if part.strip()])
     if candidate_parts != existing_parts:
         return candidate_parts < existing_parts
     return len(candidate) < len(existing)
+
+
+def _looks_like_affiliation_acronym(value: str) -> bool:
+    words = re.findall(r"[A-Za-z]+", str(value or ""))
+    if not words or len(words) > 3:
+        return False
+    if words[0].isupper() and len(words[0]) >= 2 and len(words) <= 2:
+        return True
+    return all(word.isupper() and len(word) >= 2 for word in words)
 
 
 def _similar_affiliation_key(left: str, right: str) -> bool:
@@ -647,16 +682,7 @@ def _similar_affiliation_key(left: str, right: str) -> bool:
 
 
 def _affiliation_match_key(value: str) -> str:
-    text = str(value or "").lower()
-    text = re.sub(r"\b(the|a|an)\b", " ", text)
-    text = text.replace("&", "and")
-    parts = [part.strip(" .;:-") for part in re.split(r",|\||/|\\\\|\\n", text) if part.strip()]
-    institution_parts = [part for part in parts if _looks_like_institution_name(part)]
-    if institution_parts:
-        text = institution_parts[-1]
-    text = re.sub(r"\b(department|dept|school|faculty|college|division) of [a-z0-9 and&.-]+?\b", " ", text)
-    text = re.sub(r"\b(hong kong|beijing|shanghai|montreal|toronto|canada|china|usa|united states|uk|united kingdom)\b", " ", text)
-    return re.sub(r"[^a-z0-9]+", "", text)
+    return _affiliation_display_key(value)
 
 
 def _looks_like_institution_name(value: str) -> bool:
@@ -678,6 +704,9 @@ def _looks_like_institution_name(value: str) -> bool:
         "cnrs",
         "inria",
         "corporation",
+        "technology",
+        "technologies",
+        "group",
         "inc",
         "ltd",
         "llc",
@@ -700,6 +729,13 @@ def _looks_like_institution_name(value: str) -> bool:
         "netflix",
         "spotify",
         "yandex",
+        "kuaishou",
+        "cuhk",
+        "cmu",
+        "ucla",
+        "uiuc",
+        "ntu",
+        "nus",
         "mit",
         "eth",
         "epfl",

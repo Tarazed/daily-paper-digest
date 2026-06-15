@@ -1,7 +1,10 @@
 import json
+import ssl
+import urllib.error
 
 from daily_paper.config import EnrichmentConfig
 from daily_paper.enrichment import (
+    _fetch_arxiv_tex_documents,
     enrich_papers,
     extract_affiliations,
     extract_crossref_affiliations,
@@ -131,13 +134,26 @@ def test_normalize_affiliations_removes_duplicate_location_variants():
         [
             "The Chinese University of Hong Kong, Hong Kong, Hong Kong",
             "Chinese University of Hong Kong",
+            "CUHK Shenzhen",
             "McGill University, Montreal, Canada",
             "McGill University",
+            "Microsoft Research",
+            "MSR",
+            "Massachusetts Institute of Technology",
+            "MIT CSAIL",
+            "Kuaishou Technology, Beijing, China",
+            "Kuaishou",
             "Klara",
         ]
     )
 
-    assert affiliations == ["Chinese University of Hong Kong", "McGill University"]
+    assert affiliations == [
+        "Chinese University of Hong Kong",
+        "McGill University",
+        "Microsoft Research",
+        "Massachusetts Institute of Technology",
+        "Kuaishou",
+    ]
 
 
 def test_extract_affiliations_from_crossref_authors():
@@ -265,3 +281,42 @@ def test_extract_tex_affiliations_from_ieee_author_block():
     affiliations = extract_tex_affiliations(tex)
 
     assert any("Stanford University" in affiliation for affiliation in affiliations)
+
+
+def test_extract_tex_affiliations_from_ecommerce_company_author_block():
+    tex = r"""
+\author{Alice Zhang\\Kuaishou Technology, Beijing, China\\alice@example.com}
+"""
+
+    affiliations = extract_tex_affiliations(tex)
+
+    assert affiliations == ["Kuaishou Technology, Beijing, China"]
+
+
+def test_fetch_arxiv_tex_documents_retries_ssl_certificate_failure(monkeypatch):
+    payload = b"\\begin{document}\\author{Alice\\\\Kuaishou Technology}\\end{document}"
+    calls = []
+
+    class FakeResponse:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+        def read(self):
+            return payload
+
+    def fake_urlopen(request, timeout, context=None):
+        calls.append(context)
+        if len(calls) == 1:
+            raise urllib.error.URLError(ssl.SSLCertVerificationError("certificate verify failed"))
+        assert context is not None
+        return FakeResponse()
+
+    monkeypatch.setattr("urllib.request.urlopen", fake_urlopen)
+
+    documents = _fetch_arxiv_tex_documents("2606.13533", timeout_seconds=8)
+
+    assert documents == [payload.decode("utf-8")]
+    assert len(calls) == 2
