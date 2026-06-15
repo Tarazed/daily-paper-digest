@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-15T05:18:45Z",
+  "generated_at": "2026-06-15T16:26:21Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
@@ -130,213 +130,6 @@
   },
   "papers": [
     {
-      "id": "dblp:conf/www/YuFLZWLWZW26",
-      "title": "ThinkRec: Thinking-based recommendation via LLM",
-      "authors": [
-        "Qihang Yu",
-        "Kairui Fu",
-        "Zheqi Lv",
-        "Shengyu Zhang",
-        "Xinhui Wu",
-        "Chen Lin",
-        "Feng Wei",
-        "Bo Zheng",
-        "Fei Wu"
-      ],
-      "affiliations": [
-        "Zhejiang University",
-        "Zhejiang University, Hangzhou, China and Shanghai AI Laboratory, Shanghai, China"
-      ],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792070",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792070",
-      "doi": "10.1145/3774904.3792070",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "ThinkRec 提出了一种基于大语言模型的思考式推荐方法，旨在通过更深层次的推理过程生成推荐结果。该方法利用 LLM 的思考链能力来提升推荐的可解释性和准确性。论文发表于 WWW 2026，属于前沿的 LLM4Rec 研究。",
-      "core_method": "基于大语言模型的多步推理推荐方法，通过生成思考链来改进推荐质量。",
-      "innovation_points": [
-        "将 LLM 的思维链推理引入推荐系统，实现可解释的推荐生成",
-        "提出 ThinkRec 框架，通过多步思考过程捕捉用户意图和物品关系"
-      ],
-      "experiment_results": [
-        "由于无全文和摘要，具体的实验结果未提供。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "由于只有元数据，具体方法效果和局限未知，可能面临 LLM 推理成本和效率问题。"
-      ],
-      "practical_value": "ThinkRec 为推荐系统引入深度推理能力，有望提升复杂场景下的推荐解释性和准确性。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "8eeca4bfb07efef6",
-      "tags": [
-        "LLM4Rec",
-        "RecSys",
-        "Generative Rec"
-      ],
-      "llm_score": 0,
-      "llm_score_rationale": "",
-      "preference_signals": [],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 111
-    },
-    {
-      "id": "arxiv:2606.13533",
-      "title": "OneRetrieval: Unifying Multi-Branch E-commerce Retrieval with an Editable Generative Model",
-      "authors": [
-        "Xuxin Zhang",
-        "Ben Chen",
-        "Yue Lv",
-        "Siyuan Wang",
-        "Yupeng Li",
-        "Yufei Ma",
-        "Zihan Liang",
-        "Tong Zhao",
-        "Ying Yang",
-        "Huangyu Dai",
-        "Lingtao Mao",
-        "Zhipeng Qian",
-        "Xinyu Sun",
-        "Chenyi Lei",
-        "Wenwu Ou",
-        "Kun Gai"
-      ],
-      "affiliations": [],
-      "published": "2026-06-11T16:21:13Z",
-      "updated": "2026-06-11T16:21:13Z",
-      "abstract": "Industrial e-commerce search serves hundreds of millions of items through a multi-branch retrieval stage fused by hand-tuned merging without joint optimization. Generative retrieval (GR) raises the prospect of collapsing this stage into a single model, yet unification is gated by more than retrieval quality: the inverted-index branch converts below the platform average yet persists because it is almost the only branch where operations can inject a new term within hours without any model update; a one-model substitute must preserve this real-time editability. Existing GR methods structurally lack it: closed-codebook methods fix each slot to a quantized embedding at training, while open-vocabulary methods leave new-term routing to model generalization. We present OneRetrieval, a one-model GR framework built on Keyword-Aligned Encoding (KAE), which ties each identifier position to an interpretable attribute word, pairing competitive recall quality with the editability of the inverted index -- to our knowledge the first editable generative retrieval method. An information-theoretic merging organizes 18 attribute categories into six codebook groups with non-uniform capacity; reserved slots in each codebook can be bound to new words after deployment without retraining; and a four-stage fine-tuning pipeline secures quality and editability jointly. On five million real-traffic requests, OneRetrieval matches the deep recall of the strongest generative baseline, with an intervention hit rate over an order of magnitude above closed-codebook encodings. Online, replacing the inverted-index branch significantly lifts order volume; extending to nearly the entire stage holds conversion while improving CTR. The system is deployed at Kuaishou, serving hundreds of millions of PVs daily.",
-      "categories": [
-        "cs.IR"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.13533v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.13533v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "OneRetrieval提出一种可编辑的生成式检索框架，通过关键词对齐编码(KAE)将每个标识符位置绑定到可解释的属性词，实现倒排索引的实时可编辑性与生成式检索的召回质量统一。在快手电商搜索中，单一模型替代多分支检索，线上A/B测试显示替换倒排索引分支显著提升订单量，替换几乎全部检索阶段则保持转化率同时提升点击率。",
-      "core_method": "基于关键词对齐编码(KAE)的生成式检索，将标识符位置与属性词绑定，并设计预留槽位实现部署后实时干预。",
-      "innovation_points": [
-        "提出关键词对齐编码(KAE)，使每个标识符位置对应可解释的属性词，而非固定量化嵌入，实现透明、可编辑的生成式检索。",
-        "设计基于信息论合并和密度感知非均匀容量的可扩展码本，并预留槽位支持无需重训练的新词注入，首次在生成式检索中恢复倒排索引的实时编辑性。",
-        "提出四阶段有监督微调流水线，通过属性-SID对齐和预留槽位自路由监督，联合保障检索质量与可编辑性。"
-      ],
-      "experiment_results": [
-        "在500万真实流量请求的离线基准上，OneRetrieval在深度召回质量上匹配最强生成式基线，并优于其余密集和生成式基线，干预命中率比封闭码本方法高一个数量级以上。",
-        "线上A/B测试：仅替换倒排索引分支显著提升订单量；将替换扩展到几乎整个检索阶段，转化率无显著变化，但点击率显著提升。",
-        "系统已部署于快手站外搜索，每日服务数百万用户和数亿PV。"
-      ],
-      "ab_test": "yes",
-      "ab_test_evidence": "论文明确提到线上A/B测试：替换倒排索引分支显著提升订单量；扩展到几乎整个检索阶段保持转化率同时显著提升点击率。",
-      "limitations": [
-        "当前评估主要基于快手电商场景，泛化到其他领域或平台的效果尚待验证。",
-        "虽然预留槽位支持实时干预，但可编辑性的上限（如可绑定的新词数量）受限于预留容量，极端情况下可能需要额外处理。"
-      ],
-      "practical_value": "为工业级电商推荐系统提供首个兼具高召回质量和实时可编辑性的统一生成式检索方案，能简化多分支管道并支持运营实时干预。",
-      "analysis_basis": "full_text",
-      "analysis_status": "cached",
-      "analysis_signature": "55cb705195b3f407",
-      "tags": [
-        "Generative Rec",
-        "LLM4Rec",
-        "RecSys",
-        "Sequential Rec"
-      ],
-      "llm_score": 95,
-      "llm_score_rationale": "明确有线上A/B实验，替换倒排索引分支显著提升订单量，扩展至全阶段保持转化并提升CTR，已在快手部署服务数亿PV；论文聚焦生成式检索（GR）统一多分支电商召回，提出可编辑的Keyword-Aligned Encoding实现语义ID与可编辑性，与生成式推荐/语义ID强相关；作者单位包含快手，属于知名互联网公司，论文源自实际工业应用",
-      "preference_signals": [
-        "Online A/B",
-        "Generative Rec / Semantic ID",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 110
-    },
-    {
-      "id": "arxiv:2606.14142",
-      "title": "Implicit Reasoning for Large Language Model-based Generative Recommendation",
-      "authors": [
-        "Yinhan He",
-        "Liam Collins",
-        "Bhuvesh Kumar",
-        "Jundong Li",
-        "Neil Shah",
-        "Donald Loveland"
-      ],
-      "affiliations": [
-        "University of Virginia"
-      ],
-      "published": "2026-06-12T06:04:05Z",
-      "updated": "2026-06-12T06:04:05Z",
-      "abstract": "Large Language Models (LLMs) are increasingly adopted as backbones for Generative Recommendation (GR), promising access to pretrained world knowledge. Yet reliably invoking this knowledge for GR remains poorly understood. A key obstacle is that LLM-based GR typically represents items with Semantic IDs (SIDs), disrupting LLMs' natural-language reasoning interface because these tokens are unseen by the LLM during pretraining. Existing approaches address this with expensive multi-stage pipelines that ground SIDs and elicit explicit rationales, but offer limited insight into when and why each stage is necessary. In this work, we systematically decompose explicit reasoning training pipelines for LLM-based GR, revealing three key limitations: weakened world-knowledge verbalization, misalignment between SID and natural-language token embedding spaces, and sensitivity to rationale quality, all of which hurt explicit reasoning performance. To circumvent these issues, we propose PauseRec, a lightweight implicit reasoning paradigm tailored for GR. PauseRec is exceptionally practical, avoiding costly reasoning trace acquisition and reasoning alignment training, leading to a multitude of benefits: (1) it outperforms standard explicit CoT methods by up to 6.22%, (2) it reduces training cost by up to 65% GPU hours, and (3) it speeds up inference by up to 71.3%. These results position PauseRec as a lightweight alternative to explicit rationale generation, enabling more effective and efficient LLM-based GR.",
-      "categories": [
-        "cs.CL",
-        "cs.AI"
-      ],
-      "primary_category": "cs.CL",
-      "abs_url": "http://arxiv.org/abs/2606.14142v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.14142v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "本文揭示了显式推理在基于语义ID的LLM生成式推荐中的三大缺陷：世界知识表达减弱、文本与SID嵌入空间错位、对推理质量敏感。提出PauseRec，通过插入可训练<pause>令牌实现隐式推理，无需昂贵推理轨迹获取和对齐训练，显著提升推荐性能并降低训练与推理成本。",
-      "core_method": "PauseRec通过在SID生成前插入可训练的<pause>令牌序列，仅优化最终推荐目标，实现隐式推理，连接语言与SID表示空间。",
-      "innovation_points": [
-        "系统分解显式推理训练流程，揭示其在LLM生成式推荐中的三个关键局限。",
-        "提出轻量级隐式推理框架PauseRec，用可训练<pause>令牌替代显示推理轨迹，无需推理标注和对齐。",
-        "通过理论分析证明文本与SID嵌入空间分离会限制推理效果，并用<pause>令牌桥接两个空间。"
-      ],
-      "experiment_results": [
-        "在三个Amazon评论数据集上，PauseRec相比标准SFT和CoT方法推荐性能提升最高6.22%。",
-        "PauseRec训练GPU小时数减少最高65%，推理速度提升最高71.3%。",
-        "消融实验表明预训练的<pause>令牌初始化优于仅用文本嵌入、SID嵌入或默认特殊令牌的初始化。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文全文未报告线上A/B测试",
-      "limitations": [
-        "仅在小规模语言模型（Qwen3-1.7B）和三个Amazon数据集上验证，大规模模型和更多领域的泛化性未实验。",
-        "未探索<pause>令牌数量、插入位置等超参数的敏感性，以及隐式推理的可解释性。"
-      ],
-      "practical_value": "PauseRec为LLM生成式推荐提供了一种高效、轻量的隐式推理方案，避免昂贵的推理轨迹标注和RL后训练，易于在实际系统中部署。",
-      "analysis_basis": "full_text",
-      "analysis_status": "complete",
-      "analysis_signature": "b9c22966784da100",
-      "tags": [
-        "LLM4Rec",
-        "Generative Rec",
-        "Sequential Rec",
-        "Evaluation"
-      ],
-      "llm_score": 75,
-      "llm_score_rationale": "论文聚焦于生成式推荐与大语言模型结合，明确涉及Semantic ID，与主题强相关；提出PauseRec隐式推理范式，在多个数据集上离线实验大幅超越显式CoT基线，但无线上A/B或生产环境验证；未列出顶级会议发表，但2026年arXiv预印本可能投稿顶会，作者单位未知，无知名互联网公司背书",
-      "preference_signals": [
-        "Generative Rec / Semantic ID",
-        "Top venue"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 109
-    },
-    {
       "id": "dblp:conf/www/LiuZHZZZ26",
       "title": "Facilitating Generative Retrieval with Logical Denoising for Interpretable Conversational Search",
       "authors": [
@@ -394,7 +187,12 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 107
+      "score": 122,
+      "display_affiliations": [
+        "Xiamen University",
+        "Hong Kong Polytechnic University"
+      ],
+      "published_date": "2026"
     },
     {
       "id": "dblp:conf/www/LiuFYWGH26",
@@ -451,7 +249,225 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 102
+      "score": 112,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026"
+    },
+    {
+      "id": "dblp:conf/www/ZengQLLLCB26",
+      "title": "RAIE: Region-Aware Incremental Preference Editing with LoRA for LLM-based Recommendation",
+      "authors": [
+        "Jin Zeng",
+        "Yupeng Qi",
+        "Hui Li",
+        "Chengming Li",
+        "Ziyu Lyu",
+        "Lixin Cui",
+        "Lu Bai"
+      ],
+      "affiliations": [
+        "Artificial Intelligence Research Institute, Shenzhen MSU-BIT University, Shenzhen, Guangdong, China"
+      ],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792451",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792451",
+      "doi": "10.1145/3774904.3792451",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "本文提出RAIE方法，通过LoRA进行区域感知的增量式偏好编辑，用于基于大语言模型的推荐系统。该方法旨在高效地更新推荐模型中的用户偏好，同时保持原有知识。RAIE结合了区域感知策略和增量学习，以支持动态用户兴趣变化。",
+      "core_method": "利用LoRA进行区域感知的增量偏好编辑，实现基于大语言模型推荐系统的高效参数更新。",
+      "innovation_points": [
+        "提出区域感知的增量偏好编辑框架，使模型能够聚焦于用户兴趣的特定区域进行更新。",
+        "将LoRA应用于LLM-based推荐，实现参数高效的偏好调整，避免灾难性遗忘。",
+        "增量式编辑机制支持模型在保持原有知识的同时，动态适应用户偏好变化。"
+      ],
+      "experiment_results": [
+        "全文未提供具体实验结果或评测结论（基于元数据无证据）。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏实验结果，有效性和鲁棒性未经验证。",
+        "区域感知策略和增量编辑的具体实现细节未知，可能影响方法的泛化性。"
+      ],
+      "practical_value": "为基于大语言模型的推荐系统提供了一种参数高效且可动态更新的偏好学习方法，有望降低计算成本并提升个性化能力。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "b77a07435afdb51b",
+      "tags": [
+        "LLM4Rec",
+        "RecSys",
+        "Sequential Rec"
+      ],
+      "llm_score": 0,
+      "llm_score_rationale": "",
+      "preference_signals": [],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 111,
+      "display_affiliations": [
+        "Artificial Intelligence Research Institute, Shenzhen MSU-BIT University, Shenzhen, Guangdong, China"
+      ],
+      "published_date": "2026"
+    },
+    {
+      "id": "dblp:conf/www/TangLPLK26",
+      "title": "Verifiable Federated Representation Learning for Cross-domain Sequential Recommendation",
+      "authors": [
+        "Tao Tang",
+        "Botao Liu",
+        "Ciyuan Peng",
+        "Ivan Lee",
+        "Xiangjie Kong"
+      ],
+      "affiliations": [
+        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
+        "Federation University",
+        "Adelaide University, Adelaide, Australia"
+      ],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792533",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792533",
+      "doi": "10.1145/3774904.3792533",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出一种可验证的联邦表征学习方法，用于解决跨域序列推荐中的隐私保护与协同学习问题。",
+      "core_method": "可验证的联邦表征学习框架，结合跨域序列推荐。",
+      "innovation_points": [
+        "将联邦学习引入跨域序列推荐，保护隐私的同时实现多域协同。",
+        "引入可验证机制，增强模型的安全性与可信度。"
+      ],
+      "experiment_results": [
+        "论文元数据未提供具体实验结果或评测结论。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "仅基于元数据，无法评估方法的实际性能和局限性。",
+        "缺乏全文信息，方法的泛化性和效率未经验证。"
+      ],
+      "practical_value": "有望在保护用户隐私的前提下实现跨平台推荐系统的协同学习。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "aa12cbabc7ff6142",
+      "tags": [
+        "RecSys",
+        "Sequential Rec"
+      ],
+      "llm_score": 0,
+      "llm_score_rationale": "",
+      "preference_signals": [],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 110,
+      "display_affiliations": [
+        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
+        "Federation University",
+        "Adelaide University, Adelaide, Australia"
+      ],
+      "published_date": "2026"
+    },
+    {
+      "id": "arxiv:2606.13533",
+      "title": "OneRetrieval: Unifying Multi-Branch E-commerce Retrieval with an Editable Generative Model",
+      "authors": [
+        "Xuxin Zhang",
+        "Ben Chen",
+        "Yue Lv",
+        "Siyuan Wang",
+        "Yupeng Li",
+        "Yufei Ma",
+        "Zihan Liang",
+        "Tong Zhao",
+        "Ying Yang",
+        "Huangyu Dai",
+        "Lingtao Mao",
+        "Zhipeng Qian",
+        "Xinyu Sun",
+        "Chenyi Lei",
+        "Wenwu Ou",
+        "Kun Gai"
+      ],
+      "affiliations": [
+        "Kuaishou Technology"
+      ],
+      "published": "2026-06-11T16:21:13Z",
+      "updated": "2026-06-11T16:21:13Z",
+      "abstract": "Industrial e-commerce search serves hundreds of millions of items through a multi-branch retrieval stage fused by hand-tuned merging without joint optimization. Generative retrieval (GR) raises the prospect of collapsing this stage into a single model, yet unification is gated by more than retrieval quality: the inverted-index branch converts below the platform average yet persists because it is almost the only branch where operations can inject a new term within hours without any model update; a one-model substitute must preserve this real-time editability. Existing GR methods structurally lack it: closed-codebook methods fix each slot to a quantized embedding at training, while open-vocabulary methods leave new-term routing to model generalization. We present OneRetrieval, a one-model GR framework built on Keyword-Aligned Encoding (KAE), which ties each identifier position to an interpretable attribute word, pairing competitive recall quality with the editability of the inverted index -- to our knowledge the first editable generative retrieval method. An information-theoretic merging organizes 18 attribute categories into six codebook groups with non-uniform capacity; reserved slots in each codebook can be bound to new words after deployment without retraining; and a four-stage fine-tuning pipeline secures quality and editability jointly. On five million real-traffic requests, OneRetrieval matches the deep recall of the strongest generative baseline, with an intervention hit rate over an order of magnitude above closed-codebook encodings. Online, replacing the inverted-index branch significantly lifts order volume; extending to nearly the entire stage holds conversion while improving CTR. The system is deployed at Kuaishou, serving hundreds of millions of PVs daily.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.13533v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.13533v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "OneRetrieval提出一种可编辑的生成式检索框架，通过关键词对齐编码(KAE)将每个标识符位置绑定到可解释的属性词，实现倒排索引的实时可编辑性与生成式检索的召回质量统一。在快手电商搜索中，单一模型替代多分支检索，线上A/B测试显示替换倒排索引分支显著提升订单量，替换几乎全部检索阶段则保持转化率同时提升点击率。",
+      "core_method": "基于关键词对齐编码(KAE)的生成式检索，将标识符位置与属性词绑定，并设计预留槽位实现部署后实时干预。",
+      "innovation_points": [
+        "提出关键词对齐编码(KAE)，使每个标识符位置对应可解释的属性词，而非固定量化嵌入，实现透明、可编辑的生成式检索。",
+        "设计基于信息论合并和密度感知非均匀容量的可扩展码本，并预留槽位支持无需重训练的新词注入，首次在生成式检索中恢复倒排索引的实时编辑性。",
+        "提出四阶段有监督微调流水线，通过属性-SID对齐和预留槽位自路由监督，联合保障检索质量与可编辑性。"
+      ],
+      "experiment_results": [
+        "在500万真实流量请求的离线基准上，OneRetrieval在深度召回质量上匹配最强生成式基线，并优于其余密集和生成式基线，干预命中率比封闭码本方法高一个数量级以上。",
+        "线上A/B测试：仅替换倒排索引分支显著提升订单量；将替换扩展到几乎整个检索阶段，转化率无显著变化，但点击率显著提升。",
+        "系统已部署于快手站外搜索，每日服务数百万用户和数亿PV。"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文明确提到线上A/B测试：替换倒排索引分支显著提升订单量；扩展到几乎整个检索阶段保持转化率同时显著提升点击率。",
+      "limitations": [
+        "当前评估主要基于快手电商场景，泛化到其他领域或平台的效果尚待验证。",
+        "虽然预留槽位支持实时干预，但可编辑性的上限（如可绑定的新词数量）受限于预留容量，极端情况下可能需要额外处理。"
+      ],
+      "practical_value": "为工业级电商推荐系统提供首个兼具高召回质量和实时可编辑性的统一生成式检索方案，能简化多分支管道并支持运营实时干预。",
+      "analysis_basis": "full_text",
+      "analysis_status": "cached",
+      "analysis_signature": "55cb705195b3f407",
+      "tags": [
+        "Generative Rec",
+        "LLM4Rec",
+        "RecSys",
+        "Sequential Rec"
+      ],
+      "llm_score": 95,
+      "llm_score_rationale": "明确有线上A/B实验，替换倒排索引分支显著提升订单量，扩展至全阶段保持转化并提升CTR，已在快手部署服务数亿PV；论文聚焦生成式检索（GR）统一多分支电商召回，提出可编辑的Keyword-Aligned Encoding实现语义ID与可编辑性，与生成式推荐/语义ID强相关；作者单位包含快手，属于知名互联网公司，论文源自实际工业应用",
+      "preference_signals": [
+        "Online A/B",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 109,
+      "display_affiliations": [
+        "Kuaishou Technology"
+      ],
+      "published_date": "2026-06-11"
     },
     {
       "id": "arxiv:2606.12198",
@@ -476,7 +492,7 @@
         "Ed H. Chi"
       ],
       "affiliations": [
-        "Google Deepmind",
+        "Google DeepMind",
         "Google"
       ],
       "published": "2026-06-10T15:18:32Z",
@@ -531,7 +547,293 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 101
+      "score": 106,
+      "display_affiliations": [
+        "Google DeepMind",
+        "Google"
+      ],
+      "published_date": "2026-06-10"
+    },
+    {
+      "id": "dblp:conf/www/ZhuCJYWCZ26",
+      "title": "FeedGuard: Online Critic-Guided Reinforcement Learning with Privacy-Preserving Feedback for Recommendation",
+      "authors": [
+        "Mengying Zhu",
+        "Feiyue Chen",
+        "Lifan Jiang",
+        "Mengyuan Yang",
+        "Yangyang Wu",
+        "Guanjie Cheng",
+        "Xiaolin Zheng"
+      ],
+      "affiliations": [
+        "Zhejiang University"
+      ],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792155",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792155",
+      "doi": "10.1145/3774904.3792155",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出FeedGuard框架，结合在线评判与强化学习，实现隐私保护的反馈机制用于推荐系统。",
+      "core_method": "在线评判引导的强化学习并结合隐私保护反馈机制。",
+      "innovation_points": [
+        "引入在线评判器实时引导强化学习模型更新",
+        "设计隐私保护的用户反馈收集与利用方法",
+        "在推荐系统中融合在线强化学习与评判指导"
+      ],
+      "experiment_results": [
+        "全文未提供实验/评测结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "基于元数据无法确认方法的有效性及实验证据",
+        "隐私保护机制的实际效果和开销未知"
+      ],
+      "practical_value": "为推荐系统提供在线学习与隐私保护结合的解决方案，有望提升模型适应性和用户信任。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "afb2e7c1b77438a3",
+      "tags": [
+        "RecSys",
+        "Agent4Rec",
+        "LLM4Rec"
+      ],
+      "llm_score": 0,
+      "llm_score_rationale": "",
+      "preference_signals": [],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 106,
+      "display_affiliations": [
+        "Zhejiang University"
+      ],
+      "published_date": "2026"
+    },
+    {
+      "id": "arxiv:2606.14142",
+      "title": "Implicit Reasoning for Large Language Model-based Generative Recommendation",
+      "authors": [
+        "Yinhan He",
+        "Liam Collins",
+        "Bhuvesh Kumar",
+        "Jundong Li",
+        "Neil Shah",
+        "Donald Loveland"
+      ],
+      "affiliations": [
+        "University of Virginia"
+      ],
+      "published": "2026-06-12T06:04:05Z",
+      "updated": "2026-06-12T06:04:05Z",
+      "abstract": "Large Language Models (LLMs) are increasingly adopted as backbones for Generative Recommendation (GR), promising access to pretrained world knowledge. Yet reliably invoking this knowledge for GR remains poorly understood. A key obstacle is that LLM-based GR typically represents items with Semantic IDs (SIDs), disrupting LLMs' natural-language reasoning interface because these tokens are unseen by the LLM during pretraining. Existing approaches address this with expensive multi-stage pipelines that ground SIDs and elicit explicit rationales, but offer limited insight into when and why each stage is necessary. In this work, we systematically decompose explicit reasoning training pipelines for LLM-based GR, revealing three key limitations: weakened world-knowledge verbalization, misalignment between SID and natural-language token embedding spaces, and sensitivity to rationale quality, all of which hurt explicit reasoning performance. To circumvent these issues, we propose PauseRec, a lightweight implicit reasoning paradigm tailored for GR. PauseRec is exceptionally practical, avoiding costly reasoning trace acquisition and reasoning alignment training, leading to a multitude of benefits: (1) it outperforms standard explicit CoT methods by up to 6.22%, (2) it reduces training cost by up to 65% GPU hours, and (3) it speeds up inference by up to 71.3%. These results position PauseRec as a lightweight alternative to explicit rationale generation, enabling more effective and efficient LLM-based GR.",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "primary_category": "cs.CL",
+      "abs_url": "http://arxiv.org/abs/2606.14142v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.14142v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "本文揭示了显式推理在基于语义ID的LLM生成式推荐中的三大缺陷：世界知识表达减弱、文本与SID嵌入空间错位、对推理质量敏感。提出PauseRec，通过插入可训练<pause>令牌实现隐式推理，无需昂贵推理轨迹获取和对齐训练，显著提升推荐性能并降低训练与推理成本。",
+      "core_method": "PauseRec通过在SID生成前插入可训练的<pause>令牌序列，仅优化最终推荐目标，实现隐式推理，连接语言与SID表示空间。",
+      "innovation_points": [
+        "系统分解显式推理训练流程，揭示其在LLM生成式推荐中的三个关键局限。",
+        "提出轻量级隐式推理框架PauseRec，用可训练<pause>令牌替代显示推理轨迹，无需推理标注和对齐。",
+        "通过理论分析证明文本与SID嵌入空间分离会限制推理效果，并用<pause>令牌桥接两个空间。"
+      ],
+      "experiment_results": [
+        "在三个Amazon评论数据集上，PauseRec相比标准SFT和CoT方法推荐性能提升最高6.22%。",
+        "PauseRec训练GPU小时数减少最高65%，推理速度提升最高71.3%。",
+        "消融实验表明预训练的<pause>令牌初始化优于仅用文本嵌入、SID嵌入或默认特殊令牌的初始化。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试",
+      "limitations": [
+        "仅在小规模语言模型（Qwen3-1.7B）和三个Amazon数据集上验证，大规模模型和更多领域的泛化性未实验。",
+        "未探索<pause>令牌数量、插入位置等超参数的敏感性，以及隐式推理的可解释性。"
+      ],
+      "practical_value": "PauseRec为LLM生成式推荐提供了一种高效、轻量的隐式推理方案，避免昂贵的推理轨迹标注和RL后训练，易于在实际系统中部署。",
+      "analysis_basis": "full_text",
+      "analysis_status": "cached",
+      "analysis_signature": "b9c22966784da100",
+      "tags": [
+        "LLM4Rec",
+        "Generative Rec",
+        "Sequential Rec",
+        "Evaluation"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "论文聚焦于生成式推荐与大语言模型结合，明确涉及Semantic ID，与主题强相关；提出PauseRec隐式推理范式，在多个数据集上离线实验大幅超越显式CoT基线，但无线上A/B或生产环境验证；未列出顶级会议发表，但2026年arXiv预印本可能投稿顶会，作者单位未知，无知名互联网公司背书",
+      "preference_signals": [
+        "Generative Rec / Semantic ID",
+        "Top venue"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 104,
+      "display_affiliations": [
+        "University of Virginia"
+      ],
+      "published_date": "2026-06-12"
+    },
+    {
+      "id": "arxiv:2606.14260",
+      "title": "ChronoID: Infusing Explicit Temporal Signals into Semantic IDs for Generative Recommendation",
+      "authors": [
+        "Dongdong Nian",
+        "Dongqi Fu",
+        "Chenliang Xu",
+        "Yinglong Xia",
+        "Hong Li",
+        "Hong Yan",
+        "Jian Kang"
+      ],
+      "affiliations": [
+        "University of Rochester",
+        "Meta"
+      ],
+      "published": "2026-06-12T08:45:04Z",
+      "updated": "2026-06-12T08:45:04Z",
+      "abstract": "Semantic IDs are crucial in generative recommendation, but with a fundamental limitation: temporal information is not well incorporated into semantic IDs. Instead, time influences recommendation only implicitly (e.g., through session construction heuristics, preference alignment, or sequence order), while existing semantic ID learning remains entirely time-agnostic. This design conflates interactions occurring under distinct temporal contexts into identical semantic representations, implicitly assuming that item semantics and user intent are temporally stationary. Such an assumption is misaligned with real-world recommendation scenarios, where evolving interaction rhythms play a central role. In this work, we investigate where and how the explicit time should be incorporated into semantic ID for generative recommendation. First, we systematically characterize the design space along three orthogonal dimensions of temporal signals and present a unified framework, ChronoID, for time-aware semantic ID learning. Then, by contributing a new time-explicit generation recommendation benchmark, ChronoID answers the questions: what is the effective way of infusing time, how to design the architecture, and where does the gain come from.",
+      "categories": [
+        "cs.IR",
+        "cs.AI"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.14260v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.14260v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "ChronoID针对生成式推荐中语义ID缺乏显式时间建模的问题，提出统一框架将时间信号注入语义ID学习，并通过新基准系统验证了相对时间、延迟融合和并行量化的有效性。",
+      "core_method": "提出ChronoID框架，沿时间编码（绝对/相对）、融合次序（早/晚融合）和量化机制（残差/并行）三个正交维度，将显式时间信号融入语义ID生成。",
+      "innovation_points": [
+        "首次系统地将显式时间信号注入语义ID学习，解决现有方法的时间不可知局限。",
+        "定义了时间感知语义ID的设计空间（时间编码、融合策略、量化方式），并提出统一框架ChronoID。",
+        "构建了新的时间显式生成推荐基准，支持严格的时间感知评测。"
+      ],
+      "experiment_results": [
+        "时间显式语义ID相比时间隐式基线显著提升生成推荐性能。",
+        "相对时间间隔优于绝对时间戳，能更有效建模交互动态。",
+        "延迟融合（晚融合）比早期融合更适合异质模态对齐；简单拼接已足够，复杂架构增益有限。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试。",
+      "limitations": [
+        "仅在公开数据集上进行离线评测，未在真实推荐系统中进行在线验证。",
+        "时间信号注入的具体实现和参数选择可能对不同领域的数据集敏感，泛化性有待进一步验证。"
+      ],
+      "practical_value": "为生成式推荐提供了即插即用的时间感知语义ID学习方案，有望在不改变下游生成模型的情况下提升时序动态建模能力。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "86557ee8ff803735",
+      "tags": [
+        "Generative Rec",
+        "Sequential Rec",
+        "RecSys"
+      ],
+      "llm_score": 65,
+      "llm_score_rationale": "论文主题是生成式推荐中的语义ID，与生成式推荐/语义ID强相关，但缺少工业界作者单位或线上A/B实验证据；发表于arXiv预印本，未在顶级会议发表，学术可信度待验证；未涉及线上实验或工业实践，只有离线基准测试，因此无法给予线上A/B信号加分",
+      "preference_signals": [
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 101,
+      "display_affiliations": [
+        "University of Rochester",
+        "Meta"
+      ],
+      "published_date": "2026-06-12"
+    },
+    {
+      "id": "dblp:conf/www/YuFLZWLWZW26",
+      "title": "ThinkRec: Thinking-based recommendation via LLM",
+      "authors": [
+        "Qihang Yu",
+        "Kairui Fu",
+        "Zheqi Lv",
+        "Shengyu Zhang",
+        "Xinhui Wu",
+        "Chen Lin",
+        "Feng Wei",
+        "Bo Zheng",
+        "Fei Wu"
+      ],
+      "affiliations": [
+        "Zhejiang University",
+        "Ant Group, Hangzhou, China",
+        "Zhejiang University, Hangzhou, China and Shanghai AI Laboratory, Shanghai, China"
+      ],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792070",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792070",
+      "doi": "10.1145/3774904.3792070",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "ThinkRec 提出了一种基于大语言模型的思考式推荐方法，旨在通过更深层次的推理过程生成推荐结果。该方法利用 LLM 的思考链能力来提升推荐的可解释性和准确性。论文发表于 WWW 2026，属于前沿的 LLM4Rec 研究。",
+      "core_method": "基于大语言模型的多步推理推荐方法，通过生成思考链来改进推荐质量。",
+      "innovation_points": [
+        "将 LLM 的思维链推理引入推荐系统，实现可解释的推荐生成",
+        "提出 ThinkRec 框架，通过多步思考过程捕捉用户意图和物品关系"
+      ],
+      "experiment_results": [
+        "由于无全文和摘要，具体的实验结果未提供。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "由于只有元数据，具体方法效果和局限未知，可能面临 LLM 推理成本和效率问题。"
+      ],
+      "practical_value": "ThinkRec 为推荐系统引入深度推理能力，有望提升复杂场景下的推荐解释性和准确性。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "8eeca4bfb07efef6",
+      "tags": [
+        "LLM4Rec",
+        "RecSys",
+        "Generative Rec"
+      ],
+      "llm_score": 0,
+      "llm_score_rationale": "",
+      "preference_signals": [],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 101,
+      "display_affiliations": [
+        "Zhejiang University",
+        "Ant Group, Hangzhou, China",
+        "Zhejiang University, Hangzhou, China and Shanghai AI Laboratory, Shanghai, China"
+      ],
+      "published_date": "2026"
     },
     {
       "id": "arxiv:2606.10357",
@@ -601,128 +903,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 101
-    },
-    {
-      "id": "dblp:conf/www/TangLPLK26",
-      "title": "Verifiable Federated Representation Learning for Cross-domain Sequential Recommendation",
-      "authors": [
-        "Tao Tang",
-        "Botao Liu",
-        "Ciyuan Peng",
-        "Ivan Lee",
-        "Xiangjie Kong"
+      "score": 101,
+      "display_affiliations": [
+        "The Hong Kong Polytechnic University"
       ],
-      "affiliations": [
-        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
-        "Adelaide University, Adelaide, Australia"
-      ],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792533",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792533",
-      "doi": "10.1145/3774904.3792533",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "提出一种可验证的联邦表征学习方法，用于解决跨域序列推荐中的隐私保护与协同学习问题。",
-      "core_method": "可验证的联邦表征学习框架，结合跨域序列推荐。",
-      "innovation_points": [
-        "将联邦学习引入跨域序列推荐，保护隐私的同时实现多域协同。",
-        "引入可验证机制，增强模型的安全性与可信度。"
-      ],
-      "experiment_results": [
-        "论文元数据未提供具体实验结果或评测结论。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "仅基于元数据，无法评估方法的实际性能和局限性。",
-        "缺乏全文信息，方法的泛化性和效率未经验证。"
-      ],
-      "practical_value": "有望在保护用户隐私的前提下实现跨平台推荐系统的协同学习。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "aa12cbabc7ff6142",
-      "tags": [
-        "RecSys",
-        "Sequential Rec"
-      ],
-      "llm_score": 0,
-      "llm_score_rationale": "",
-      "preference_signals": [],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 100
-    },
-    {
-      "id": "dblp:conf/www/ZhuCJYWCZ26",
-      "title": "FeedGuard: Online Critic-Guided Reinforcement Learning with Privacy-Preserving Feedback for Recommendation",
-      "authors": [
-        "Mengying Zhu",
-        "Feiyue Chen",
-        "Lifan Jiang",
-        "Mengyuan Yang",
-        "Yangyang Wu",
-        "Guanjie Cheng",
-        "Xiaolin Zheng"
-      ],
-      "affiliations": [
-        "Zhejiang University"
-      ],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792155",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792155",
-      "doi": "10.1145/3774904.3792155",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "提出FeedGuard框架，结合在线评判与强化学习，实现隐私保护的反馈机制用于推荐系统。",
-      "core_method": "在线评判引导的强化学习并结合隐私保护反馈机制。",
-      "innovation_points": [
-        "引入在线评判器实时引导强化学习模型更新",
-        "设计隐私保护的用户反馈收集与利用方法",
-        "在推荐系统中融合在线强化学习与评判指导"
-      ],
-      "experiment_results": [
-        "全文未提供实验/评测结果"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "基于元数据无法确认方法的有效性及实验证据",
-        "隐私保护机制的实际效果和开销未知"
-      ],
-      "practical_value": "为推荐系统提供在线学习与隐私保护结合的解决方案，有望提升模型适应性和用户信任。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "afb2e7c1b77438a3",
-      "tags": [
-        "RecSys",
-        "Agent4Rec",
-        "LLM4Rec"
-      ],
-      "llm_score": 0,
-      "llm_score_rationale": "",
-      "preference_signals": [],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 96
+      "published_date": "2026-06-09"
     },
     {
       "id": "dblp:conf/www/QiuXHPW26",
@@ -781,7 +966,14 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 91
+      "score": 91,
+      "display_affiliations": [
+        "Beijing Jiaotong University",
+        "University of Chinese Academy of Sciences",
+        "Griffith University",
+        "Northwestern Polytechnical University"
+      ],
+      "published_date": "2026"
     },
     {
       "id": "arxiv:2606.08604",
@@ -844,7 +1036,12 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 129
+      "score": 129,
+      "display_affiliations": [
+        "Yandex Moscow , Russia Yandex Moscow , Russia Yandex Moscow , Russia Yandex Moscow , Russia Yandex Moscow , Russia",
+        "Yandex (Russia)"
+      ],
+      "published_date": "2026-06-07"
     },
     {
       "id": "arxiv:2606.12984",
@@ -911,7 +1108,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 102
+      "score": 102,
+      "display_affiliations": [
+        "Alibaba Group"
+      ],
+      "published_date": "2026-06-11"
     },
     {
       "id": "dblp:conf/www/LiJLWLYZZX26",
@@ -973,7 +1174,12 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 101
+      "score": 101,
+      "display_affiliations": [
+        "Dalian University of Technology",
+        "RMIT University"
+      ],
+      "published_date": "2026"
     },
     {
       "id": "openalex:W4400525124",
@@ -1041,7 +1247,12 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 118
+      "score": 118,
+      "display_affiliations": [
+        "University of Science and Technology of China",
+        "Hong Kong Polytechnic University"
+      ],
+      "published_date": "2024-07-10"
     },
     {
       "id": "openalex:W4400118952",
@@ -1114,7 +1325,13 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 114
+      "score": 114,
+      "display_affiliations": [
+        "University of Science and Technology of China",
+        "Beijing Academy of Artificial Intelligence",
+        "University of Electronic Science and Technology of China"
+      ],
+      "published_date": "2024-06-28"
     },
     {
       "id": "openalex:W4414939390",
@@ -1178,7 +1395,12 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 113
+      "score": 113,
+      "display_affiliations": [
+        "ReMAP Lab, Politecnico di Milano",
+        "University of Klagenfurt"
+      ],
+      "published_date": "2026-02-06"
     },
     {
       "id": "openalex:W4386346386",
@@ -1192,8 +1414,6 @@
       ],
       "affiliations": [
         "Shenzhen University",
-        "Hong Kong Polytechnic University",
-        "Shenzhen Technology University",
         "Guangdong Laboratory of Artificial Intelligence and Digital Economy (SZ), Shenzhen, 518123, China",
         "Peng Cheng Laboratory"
       ],
@@ -1244,7 +1464,13 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 108
+      "score": 108,
+      "display_affiliations": [
+        "Shenzhen University",
+        "Guangdong Laboratory of Artificial Intelligence and Digital Economy (SZ), Shenzhen, 518123, China",
+        "Peng Cheng Laboratory"
+      ],
+      "published_date": "2026-01-27"
     },
     {
       "id": "arxiv:2606.08480",
@@ -1311,7 +1537,12 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 101
+      "score": 101,
+      "display_affiliations": [
+        "Waseda University",
+        "University of Electronic Science and Technology of China"
+      ],
+      "published_date": "2026-06-07"
     },
     {
       "id": "s2:b1c65f38ebd5a93ed6729327f225dd364435ec62",
@@ -1382,7 +1613,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 142
+      "score": 142,
+      "display_affiliations": [
+        "Korea Advanced Institute of Science and Technology"
+      ],
+      "published_date": "2026-03-14"
     },
     {
       "id": "s2:7f23e1e6d62acdd5f6369f843778cd100afb2074",
@@ -1450,7 +1685,13 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 129
+      "score": 129,
+      "display_affiliations": [
+        "University of Electronic Science and Technology of China",
+        "Centre for Artificial Intelligence and Robotics",
+        "Nanyang Technological University"
+      ],
+      "published_date": "2026-03-14"
     },
     {
       "id": "s2:b05b0b91b622e92a753e01bce11144badbf441c1",
@@ -1515,7 +1756,12 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 128
+      "score": 128,
+      "display_affiliations": [
+        "Beijing Institute of Technology",
+        "RMIT University"
+      ],
+      "published_date": "2026-03-14"
     },
     {
       "id": "s2:1c168032d25046e6a304aa3ba40d04ce7f03b11b",
@@ -1587,7 +1833,16 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 128
+      "score": 128,
+      "display_affiliations": [
+        "AWS AI Labs, Santa Clara, CA, USA",
+        "Google DeepMind, Mountain View, CA, USA",
+        "University of California San Diego",
+        "Texas A&M University, College Station, USA",
+        "Snap Inc., Seattle, WA, USA",
+        "University of Minnesota"
+      ],
+      "published_date": "2026-02-21"
     },
     {
       "id": "openalex:W4403767139",
@@ -1652,7 +1907,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 115
+      "score": 115,
+      "display_affiliations": [
+        "Northeastern University"
+      ],
+      "published_date": "2026-01-01"
     },
     {
       "id": "s2:874577ed403f08008a6eea48e432deabbf0fc2ad",
@@ -1666,8 +1925,7 @@
         "Zhiyong Chen"
       ],
       "affiliations": [
-        "Shandong University",
-        "School of Software, Shandong University Dareway Software Co., Ltd"
+        "Shandong University"
       ],
       "published": "2026-03-14",
       "updated": "2026-03-14",
@@ -1718,7 +1976,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 118
+      "score": 118,
+      "display_affiliations": [
+        "Shandong University"
+      ],
+      "published_date": "2026-03-14"
     },
     {
       "id": "s2:b23703ae1e11808638b7a2ebdca7ab102765ade5",
@@ -1784,7 +2046,13 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 114
+      "score": 114,
+      "display_affiliations": [
+        "National Taiwan University",
+        "Genomics Research Center, Academia Sinica",
+        "Institute of Biological Chemistry, Academia Sinica"
+      ],
+      "published_date": "2026-03-14"
     },
     {
       "id": "s2:ae959583f883aec3384cc6a6f33c64d415bed93d",
@@ -1851,7 +2119,12 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 113
+      "score": 113,
+      "display_affiliations": [
+        "Wuhan University",
+        "Central South University of Forestry and Technology"
+      ],
+      "published_date": "2026-03-14"
     },
     {
       "id": "s2:413edab3e04b1b971648018a6f27f858ec90b148",
@@ -1923,7 +2196,16 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 113
+      "score": 113,
+      "display_affiliations": [
+        "China University of Petroleum (East China) Shandong Key Laboratory of Intelligent Oil and Gas Industrial Software",
+        "ByteDance Inc",
+        "Macquarie University",
+        "Lancaster University",
+        "University of North Texas",
+        "Nanjing Institute of Technology"
+      ],
+      "published_date": "2026-03-14"
     },
     {
       "id": "s2:0fa47e5bf0d1eb49c55456066fec3227ddc08654",
@@ -1981,7 +2263,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 108
+      "score": 108,
+      "display_affiliations": [
+        "Northeastern University"
+      ],
+      "published_date": "2026-03-14"
     },
     {
       "id": "arxiv:2606.07972",
@@ -2035,7 +2321,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 107
+      "score": 107,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026-06-06"
     },
     {
       "id": "s2:d112bb5cdd7b4aa01829eb181f78d705a47bc888",
@@ -2102,74 +2392,12 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 119
-    },
-    {
-      "id": "dblp:conf/www/ZengQLLLCB26",
-      "title": "RAIE: Region-Aware Incremental Preference Editing with LoRA for LLM-based Recommendation",
-      "authors": [
-        "Jin Zeng",
-        "Yupeng Qi",
-        "Hui Li",
-        "Chengming Li",
-        "Ziyu Lyu",
-        "Lixin Cui",
-        "Lu Bai"
+      "score": 119,
+      "display_affiliations": [
+        "Zhejiang Normal University",
+        "Southeast University"
       ],
-      "affiliations": [
-        "Sun Yat-sen University",
-        "Xiamen University of Technology",
-        "Shenzhen MSU-BIT University",
-        "Shenzhen University",
-        "Central University of Finance and Economics",
-        "Beijing Normal University"
-      ],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792451",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792451",
-      "doi": "10.1145/3774904.3792451",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "本文提出RAIE方法，通过LoRA进行区域感知的增量式偏好编辑，用于基于大语言模型的推荐系统。该方法旨在高效地更新推荐模型中的用户偏好，同时保持原有知识。RAIE结合了区域感知策略和增量学习，以支持动态用户兴趣变化。",
-      "core_method": "利用LoRA进行区域感知的增量偏好编辑，实现基于大语言模型推荐系统的高效参数更新。",
-      "innovation_points": [
-        "提出区域感知的增量偏好编辑框架，使模型能够聚焦于用户兴趣的特定区域进行更新。",
-        "将LoRA应用于LLM-based推荐，实现参数高效的偏好调整，避免灾难性遗忘。",
-        "增量式编辑机制支持模型在保持原有知识的同时，动态适应用户偏好变化。"
-      ],
-      "experiment_results": [
-        "全文未提供具体实验结果或评测结论（基于元数据无证据）。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏实验结果，有效性和鲁棒性未经验证。",
-        "区域感知策略和增量编辑的具体实现细节未知，可能影响方法的泛化性。"
-      ],
-      "practical_value": "为基于大语言模型的推荐系统提供了一种参数高效且可动态更新的偏好学习方法，有望降低计算成本并提升个性化能力。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "b77a07435afdb51b",
-      "tags": [
-        "LLM4Rec",
-        "RecSys",
-        "Sequential Rec"
-      ],
-      "llm_score": 0,
-      "llm_score_rationale": "",
-      "preference_signals": [],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 106
+      "published_date": "2026-03-14"
     },
     {
       "id": "arxiv:2606.06970",
@@ -2230,7 +2458,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 131
+      "score": 131,
+      "display_affiliations": [
+        "Alibaba"
+      ],
+      "published_date": "2026-06-05"
     },
     {
       "id": "s2:db3ed14bfec6bbaa0fa0e371b47519b3b35c5b21",
@@ -2295,7 +2527,12 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 128
+      "score": 128,
+      "display_affiliations": [
+        "Nanjing University of Information Science and Technology",
+        "Macquarie University"
+      ],
+      "published_date": "2026-02-21"
     },
     {
       "id": "openalex:W4405300788",
@@ -2362,7 +2599,14 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 121
+      "score": 121,
+      "display_affiliations": [
+        "Nanyang Technological University",
+        "Singapore University of Technology and Design",
+        "Zhejiang University",
+        "Chengdu University of Information Technology"
+      ],
+      "published_date": "2026-06-01"
     },
     {
       "id": "s2:3ada3254c8182711e7624f32331147afa9074e3f",
@@ -2425,7 +2669,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 118
+      "score": 118,
+      "display_affiliations": [
+        "Shanghai Jiao Tong University"
+      ],
+      "published_date": "2026-02-21"
     },
     {
       "id": "arxiv:2606.07075",
@@ -2496,7 +2744,13 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 112
+      "score": 112,
+      "display_affiliations": [
+        "Beihang University",
+        "Renmin University of China",
+        "Beijing Information Science and Technology University"
+      ],
+      "published_date": "2026-06-05"
     },
     {
       "id": "arxiv:2606.06947",
@@ -2508,7 +2762,9 @@
         "Linxun Chen",
         "Zhaojie Liu"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "Kuaishou Technology Beijing , China"
+      ],
       "published": "2026-06-05T06:21:01Z",
       "updated": "2026-06-05T06:21:01Z",
       "abstract": "Generative recommendation advances item retrieval by reformulating it as autoregressive generation of Semantic IDs (SIDs), compact token sequences that encode item semantics. While SIDs offer a strong semantic prior, current SID-based methods assign each item a single static identifier through offline tokenization before sufficient user feedback is observed. For cold-start items, this one-shot commitment produces poorly discriminative codes, generating misaligned paths that remain unrefined because the associated tokens are rarely sampled during training. We identify this early static commitment, not model capacity, as the fundamental cold-start bottleneck in SID-based generative recommendation. To overcome this bottleneck and bridge the disjoint objectives of tokenization and generation, we propose DREAM (Dynamic Refinement of Early Assignment Mappings), a three-stage framework that resolves this flaw through progressive refinement. First, an intent-aware tokenizer rebuilds the SID space through counterfactual contrastive learning, generating a diverse pool of behavior-aligned candidates per cold-start item. Second, the frozen recommendation backbone serves as an evaluator, selecting the most reliable candidate based on multi-context user support without retraining. Third, a dynamic beam mechanism maintains multiple weighted SID hypotheses throughout training and inference, preventing premature collapse to a single assignment. Extensive experiments on three Amazon benchmarks show that DREAM substantially outperforms state-of-the-art generative and sequential baselines on cold-start metrics.",
@@ -2557,7 +2813,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 121
+      "score": 121,
+      "display_affiliations": [
+        "Kuaishou Technology Beijing , China"
+      ],
+      "published_date": "2026-06-05"
     },
     {
       "id": "arxiv:2606.08466",
@@ -2619,7 +2879,12 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 101
+      "score": 101,
+      "display_affiliations": [
+        "Huazhong University of Science and Technology",
+        "OPPO AI Center"
+      ],
+      "published_date": "2026-06-07"
     },
     {
       "id": "arxiv:2606.07688",
@@ -2690,7 +2955,16 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 20
+      "score": 20,
+      "display_affiliations": [
+        "Stony Brook University",
+        "University of Massachusetts Lowell",
+        "Columbia University",
+        "Institute of Science and Technology Austria",
+        "Sapienza University of Rome",
+        "National University of Singapore"
+      ],
+      "published_date": "2026-06-05"
     },
     {
       "id": "openalex:W4411030024",
@@ -2748,7 +3022,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 18
+      "score": 18,
+      "display_affiliations": [
+        "Toronto Metropolitan University"
+      ],
+      "published_date": "2025-06-04"
     },
     {
       "id": "arxiv:2606.10375",
@@ -2810,7 +3088,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 16
+      "score": 16,
+      "display_affiliations": [
+        "Huawei Technologies"
+      ],
+      "published_date": "2026-06-09"
     },
     {
       "id": "arxiv:2606.11023",
@@ -2879,7 +3161,13 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 10
+      "score": 10,
+      "display_affiliations": [
+        "Chinese University of Hong Kong",
+        "McGill University",
+        "Tongji University"
+      ],
+      "published_date": "2026-06-09"
     },
     {
       "id": "arxiv:2606.09082",
@@ -2942,7 +3230,12 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 10
+      "score": 10,
+      "display_affiliations": [
+        "Fudan University",
+        "Imperial College London"
+      ],
+      "published_date": "2026-06-08"
     },
     {
       "id": "openalex:W4416050722",
@@ -3011,7 +3304,17 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 8
+      "score": 8,
+      "display_affiliations": [
+        "Alibaba International Digital Commerce Group, Beijing, China",
+        "Alibaba Group (China)",
+        "Peking University",
+        "Beijing University of Aeronautics and Astronautics, Beijing, China",
+        "Beihang University",
+        "Wuhan University, School of Computer Science, Wuhan, China",
+        "Wuhan University"
+      ],
+      "published_date": "2026-02-16"
     },
     {
       "id": "arxiv:2606.07492",
@@ -3082,7 +3385,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 10
+      "score": 10,
+      "display_affiliations": [
+        "HSE University"
+      ],
+      "published_date": "2026-06-05"
     },
     {
       "id": "arxiv:2606.10907",
@@ -3141,7 +3448,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 6
+      "score": 6,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026-06-09"
     },
     {
       "id": "arxiv:2606.05537",
@@ -3204,7 +3515,13 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 10
+      "score": 10,
+      "display_affiliations": [
+        "Hangzhou Dianzi University",
+        "Rocket Force University of Engineering",
+        "NetEase Inc."
+      ],
+      "published_date": "2026-06-04"
     },
     {
       "id": "arxiv:2606.09595",
@@ -3265,7 +3582,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 6
+      "score": 6,
+      "display_affiliations": [
+        "University of Guilan"
+      ],
+      "published_date": "2026-06-08"
     },
     {
       "id": "arxiv:2606.08936",
@@ -3356,7 +3677,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 6
+      "score": 6,
+      "display_affiliations": [
+        "Arizona State University"
+      ],
+      "published_date": "2026-06-08"
     },
     {
       "id": "arxiv:2606.07980",
@@ -3417,7 +3742,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 6
+      "score": 6,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026-06-06"
     },
     {
       "id": "arxiv:2606.07454",
@@ -3490,7 +3819,13 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 6
+      "score": 6,
+      "display_affiliations": [
+        "Qilu University of Technology (Shandong Academy of Sciences)",
+        "University of Chinese Academy of Science",
+        "Shanghai Artificial Intelligence Laboratory"
+      ],
+      "published_date": "2026-06-05"
     },
     {
       "id": "arxiv:2606.07317",
@@ -3552,7 +3887,12 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 6
+      "score": 6,
+      "display_affiliations": [
+        "Yandex Moscow , Russia Yandex Moscow , Russia Yandex Moscow , Russia Yandex Moscow , Russia",
+        "Yandex (Russia)"
+      ],
+      "published_date": "2026-06-05"
     },
     {
       "id": "arxiv:2606.07071",
@@ -3610,7 +3950,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 6
+      "score": 6,
+      "display_affiliations": [
+        "University of Sheffield"
+      ],
+      "published_date": "2026-06-05"
     },
     {
       "id": "arxiv:2606.06779",
@@ -3669,7 +4013,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 6
+      "score": 6,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026-06-04"
     },
     {
       "id": "arxiv:2606.06225",
@@ -3733,7 +4081,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 6
+      "score": 6,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026-06-04"
     },
     {
       "id": "arxiv:2606.06106",
@@ -3794,7 +4146,12 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 6
+      "score": 6,
+      "display_affiliations": [
+        "Technical University of Munich",
+        "Ss. Cyril and Methodius University in Skopje"
+      ],
+      "published_date": "2026-06-04"
     },
     {
       "id": "arxiv:2606.05621",
@@ -3855,7 +4212,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 6
+      "score": 6,
+      "display_affiliations": [
+        "Xidian University"
+      ],
+      "published_date": "2026-06-04"
     },
     {
       "id": "arxiv:2606.09802",
@@ -3917,7 +4278,12 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 4
+      "score": 4,
+      "display_affiliations": [
+        "Univ. Lille , Inria , CNRS , Centrale Lille , UMR 9189 -CRIStAL F-59000 Lille , France",
+        "Centre National de la Recherche Scientifique"
+      ],
+      "published_date": "2026-06-08"
     },
     {
       "id": "arxiv:2606.09204",
@@ -3976,7 +4342,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 4
+      "score": 4,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026-06-08"
     },
     {
       "id": "arxiv:2606.09160",
@@ -4036,7 +4406,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 4
+      "score": 4,
+      "display_affiliations": [
+        "Kathmandu University"
+      ],
+      "published_date": "2026-06-08"
     },
     {
       "id": "arxiv:2606.08921",
@@ -4096,7 +4470,12 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 4
+      "score": 4,
+      "display_affiliations": [
+        "Chung-Ang University",
+        "Mohamed bin Zayed University of Artificial Intelligence"
+      ],
+      "published_date": "2026-06-08"
     },
     {
       "id": "arxiv:2606.08491",
@@ -4154,7 +4533,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 4
+      "score": 4,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026-06-07"
     },
     {
       "id": "arxiv:2606.08212",
@@ -4210,7 +4593,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 4
+      "score": 4,
+      "display_affiliations": [
+        "1 LATECE Lab, Université du Québec à Montréal, Montréal, Canada; 2"
+      ],
+      "published_date": "2026-06-06"
     },
     {
       "id": "arxiv:2606.08051",
@@ -4272,7 +4659,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 4
+      "score": 4,
+      "display_affiliations": [
+        "Singapore Management University"
+      ],
+      "published_date": "2026-06-06"
     },
     {
       "id": "arxiv:2606.07936",
@@ -4341,7 +4732,15 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 4
+      "score": 4,
+      "display_affiliations": [
+        "University of Washington",
+        "National Tsing Hua University",
+        "Seoul National University",
+        "Mila - Quebec AI Institute",
+        "Allen Institute for AI"
+      ],
+      "published_date": "2026-06-06"
     },
     {
       "id": "arxiv:2606.07853",
@@ -4405,7 +4804,12 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 4
+      "score": 4,
+      "display_affiliations": [
+        "Federal University of Rio de Janeiro",
+        "Toronto Metropolitan University"
+      ],
+      "published_date": "2026-06-05"
     },
     {
       "id": "arxiv:2606.07068",
@@ -4465,7 +4869,13 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 4
+      "score": 4,
+      "display_affiliations": [
+        "University of Galway",
+        "ADAPT Centre",
+        "University College Dublin"
+      ],
+      "published_date": "2026-06-05"
     }
   ]
 }
