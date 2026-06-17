@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-16T05:25:06Z",
+  "generated_at": "2026-06-17T05:05:14Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
@@ -7,8 +7,8 @@
   },
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 5,
-    "analyzed": 5,
+    "reused": 3,
+    "analyzed": 7,
     "source": "web/public/papers.json"
   },
   "current_limit": 10,
@@ -129,6 +129,741 @@
     ]
   },
   "papers": [
+    {
+      "id": "arxiv:2606.17707",
+      "title": "Do Generative Recommenders Deepen the Information Cocoon? A Closed-Loop Simulation with LLM-powered User Simulators",
+      "authors": [
+        "Jiyuan Yang",
+        "Gengxin Sun",
+        "Mengqi Zhang",
+        "Lingjie Wang",
+        "Yuanzi Li",
+        "Hongxi Cui",
+        "Xin Xin",
+        "Pengjie Ren"
+      ],
+      "affiliations": [
+        "Shandong University",
+        "Renmin University of China"
+      ],
+      "published": "2026-06-16T09:17:46Z",
+      "updated": "2026-06-16T09:17:46Z",
+      "abstract": "Recommender systems alleviate information overload, yet repeated feedback between recommendations and user interactions can reinforce existing preferences and narrow users' exposure, forming information cocoons. While this phenomenon has been widely studied in traditional sequential recommendation, its impact on generative recommendation remains unclear. By replacing atomic item IDs with Semantic ID (SID) sequences, generative recommenders introduce a different recommendation mechanism whose role in information cocoon formation is not yet understood. To investigate whether generative recommenders deepen information cocoons, we propose \\textsc{RecLoop}, a closed-loop simulation framework with LLM-driven user agents. We compare two generative recommenders and two traditional sequential baselines on two Amazon datasets across multiple feedback cycles. In addition to standard exposure-level metrics, we introduce \\emph{Code-Space Structural Cocoon}, a model-level metric that measures concentration in the generated SID space. Experimental results show that generative recommenders are generally less prone to exposure-level cocoon formation than traditional baselines, preserving broader exposure diversity and slowing cross-user homogenization. However, feedback loops can still induce concentration within the generated SID space. We further find that cocoon severity depends strongly on tokenization strategy and model scale: collaborative-signal tokenization produces stronger cocoon effects than semantic tokenization, whereas larger models maintain greater code-space diversity and better retain access to niche content. These findings suggest that information cocoons in generative recommendation are shaped not only by recommendation behavior, but also by item tokenization and model capacity. Our code is available at https://github.com/Dregen-Yor/RecLoop.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.17707v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.17707v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "该论文提出RecLoop闭环仿真框架，利用LLM驱动的用户代理探究生成式推荐是否加深信息茧房。实验表明生成式推荐在曝光层面比传统方法更少形成茧房，但反馈循环会在语义ID空间中引发集中，且茧房程度受标记化策略和模型规模显著影响。",
+      "core_method": "通过LLM用户模拟器构建闭环仿真框架RecLoop，结合曝光层面和码空间结构性茧房新指标，对比生成式与传统推荐在多轮反馈下的信息茧房效应。",
+      "innovation_points": [
+        "提出RecLoop闭环仿真框架，首次系统研究生成式推荐场景下的信息茧房现象。",
+        "引入码空间结构性茧房指标，从模型内部表示度量集中度。",
+        "揭示标记化策略和模型规模对生成式推荐信息茧房的关键影响。"
+      ],
+      "experiment_results": [
+        "生成式推荐器在曝光层面茧房指标上普遍优于传统基线，暴露多样性更高，跨用户同质化更慢。",
+        "反馈循环仍导致生成式推荐的码空间集中度上升，出现结构性茧房。",
+        "协同信号标记化比语义标记化产生更强的茧房效应，而更大模型保持更好的码空间多样性和长尾内容可达性。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试",
+      "limitations": [
+        "用户模拟器基于LLM，其行为可能与真实用户存在差异，影响结论的生态效度。",
+        "实验仅涉及两个Amazon数据集和有限模型，在更多领域和更大规模场景下的泛化性待验证。"
+      ],
+      "practical_value": "为生成式推荐系统的设计提供了关键洞见，表明通过选择合适的标记化和扩大模型规模可缓解码空间茧房，有助于构建更开放的推荐生态。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "01fa9dec7c5f2758",
+      "tags": [
+        "RecSys",
+        "Generative Rec",
+        "LLM4Rec",
+        "Evaluation"
+      ],
+      "llm_score": 72,
+      "llm_score_rationale": "论文直接研究生生成式推荐与信息茧房，包含语义ID和tokenization策略，与生成式推荐/语义ID主题高度相关。；虽在arXiv发表，无线上A/B实验，但使用了封闭循环仿真和多个Amazon数据集，提供了有价值的离线分析。；作者单位未标明知名互联网公司，缺乏工业界信号。",
+      "preference_signals": [
+        "Generative Rec / Semantic ID",
+        "arXiv preprint"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 116,
+      "display_affiliations": [
+        "Shandong University",
+        "Renmin University of China"
+      ],
+      "published_date": "2026-06-16"
+    },
+    {
+      "id": "openalex:W4405300788",
+      "title": "MRP-LLM: Multitask Reflective Large Language Models for Privacy-Preserving Next POI Recommendation",
+      "authors": [
+        "Zhigang Wu",
+        "Zhu Sun",
+        "Dongxia Wang",
+        "Lu Zhang",
+        "Jie Zhang",
+        "Yew-Soon Ong"
+      ],
+      "affiliations": [
+        "Nanyang Technological University",
+        "Singapore University of Technology and Design",
+        "Zhejiang University",
+        "Chengdu University of Information Technology"
+      ],
+      "published": "2026-06-01",
+      "updated": "2026-06-11T09:08:48.828518",
+      "abstract": "Large language models (LLMs) have shown promising potential for next Point-of-Interest (POI) recommendation. However, existing methods only perform direct zero-shot prompting, leading to ineffective extraction of user preferences, insufficient injection of collaborative signals, and a lack of user privacy protection. As such, we propose a novel Multitask Reflective Large Language Model for Privacy-preserving Next POI Recommendation (MRP-LLM), aiming to exploit LLMs for better next POI recommendation while preserving user privacy. Specifically, the Multitask Reflective Preference Extraction Module first utilizes LLMs to distill each user's fine-grained (i.e., categorical, temporal, and spatial) preferences into a knowledge base (KB). The Neighbor Preference Retrieval Module retrieves and summarizes the preferences of similar users from the KB to obtain collaborative signals. Subsequently, aggregating the user's preferences with those of similar users, the Multitask Next POI Recommendation Module generates the next POI recommendations via multitask prompting. Meanwhile, during data collection, a Privacy Transmission Module is specifically devised to preserve sensitive POI data. Extensive experiments on three real-world datasets demonstrate the efficacy of our proposed MRP-LLM in providing more accurate next POI recommendations with user privacy preserved.",
+      "categories": [
+        "OpenAlex",
+        "RecSys"
+      ],
+      "primary_category": "RecSys",
+      "abs_url": "https://doi.org/10.1145/3774935.3806151",
+      "pdf_url": "https://doi.org/10.1145/3774935.3806151",
+      "doi": "10.1145/3774935.3806151",
+      "source": "OpenAlex",
+      "status": "conference",
+      "venue": "RecSys",
+      "venue_key": "RecSys",
+      "generated_summary": "提出MRP-LLM模型，通过多任务反思和隐私保护机制实现下一POI推荐。利用LLM提取用户细粒度偏好并注入协同信号，同时设计隐私传输模块保护敏感数据。实验证明该方法在隐私保护下提升了推荐准确性。",
+      "core_method": "利用LLM进行多任务反思式偏好提取、邻居偏好检索与多任务提示推荐，并结合隐私传输模块保护数据。",
+      "innovation_points": [
+        "提出多任务反思式偏好提取，细粒度地提取分类、时空偏好并构建知识库",
+        "设计邻居偏好检索模块注入协同信号",
+        "引入隐私传输模块在数据收集阶段保护敏感POI数据"
+      ],
+      "experiment_results": [
+        "在三个真实数据集上的广泛实验表明，MRP-LLM在保护用户隐私的同时提供了更准确的下一POI推荐"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "论文全文缺失，无法评估具体模块的计算开销与可扩展性",
+        "隐私模块的实际保护强度未与现有隐私保护方法进行对比"
+      ],
+      "practical_value": "为隐私敏感的POI推荐场景提供了一种端到端的隐私保护框架，具有实际部署潜力",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "dee313756be89f58",
+      "tags": [
+        "LLM4Rec",
+        "Sequential Rec",
+        "RecSys"
+      ],
+      "llm_score": 78,
+      "llm_score_rationale": "发表在顶级会议RecSys 2026，属于推荐系统核心会议，增加可信度。；论文研究LLM用于生成式POI推荐，涉及偏好提取与协同信号注入，与生成式推荐主题强相关。；作者单位包含浙江大学等知名机构，但无明确互联网公司背景，无线上A/B实验证据。",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 114,
+      "display_affiliations": [
+        "Nanyang Technological University",
+        "Singapore University of Technology and Design",
+        "Zhejiang University",
+        "Chengdu University of Information Technology"
+      ],
+      "published_date": "2026-06-01"
+    },
+    {
+      "id": "arxiv:2606.17276",
+      "title": "On the Memorization Behavior of LLMs in Generative Recommendation: Observations, Implications, and Training Strategies",
+      "authors": [
+        "Sunwoo Kim",
+        "Sunkyung Lee",
+        "Clark Mingxuan Ju",
+        "Donald Loveland",
+        "Bhuvesh Kumar",
+        "Kijung Shin",
+        "Neil Shah",
+        "Liam Collins"
+      ],
+      "affiliations": [
+        "KAIST",
+        "Sungkyunkwan University",
+        "Snap Inc."
+      ],
+      "published": "2026-06-15T20:34:49Z",
+      "updated": "2026-06-15T20:34:49Z",
+      "abstract": "Generative recommendation (GR) has emerged as a promising direction for recommender systems. Recently, large language models (LLMs) have been increasingly adopted for GR, as their rich pretrained knowledge is expected to help them generalize beyond common user behavior patterns that traditional memorization-oriented baselines can capture. However, existing LLM-based GR works largely ignore LLMs' well-known tendency to memorize, which, if present in LLMs fine-tuned for GR, would restrict their utilization of pretrained knowledge. In this work, we investigate this concern by examining one-hop memorization, where a model recommends items that are direct successors of items in the training data. We show that LLMs do this more than non-LLM-based GR models-in fact, the vast majority of their gains over GR baselines are actually on users whose target items can be predicted through one-hop memorization. We intuit that improving performance on the remaining users requires LLMs to learn richer item-item relations beyond one-hop transitions. To achieve this, we propose IIRG, a novel training strategy that teaches LLMs to capture: (1) collaborative relations derived from item co-occurrences across multiple hops in user sequences, and (2) semantic relations among items with similar themes, both of which can serve as useful recommendation signals. We show that IIRG significantly improves over LLMs trained solely with standard next-item prediction, with especially large gains for users whose test items are not covered by train-time one-hop transitions.",
+      "categories": [
+        "cs.IR",
+        "cs.LG"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.17276v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.17276v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "本文研究生成式推荐中LLM的记忆行为，发现LLM过度依赖一跳记忆，提出IIRG训练策略以捕获多跳协同和语义关系，显著提升对非一跳记忆用户的推荐效果。",
+      "core_method": "提出IIRG训练策略，通过多跳协同关系和语义关系增强LLM对物品间复杂关系的捕获能力。",
+      "innovation_points": [
+        "系统研究LLM在生成式推荐中的一跳记忆行为，揭示其对性能提升的主导作用。",
+        "提出IIRG训练策略，利用多跳共现和语义相似性构建辅助任务，减少LLM对一跳记忆的依赖。",
+        "设计基于训练数据中一跳转移的用户分组评估方法，细粒度分析模型对不同用户的推荐效果。"
+      ],
+      "experiment_results": [
+        "在MovieLens和Amazon数据集上，IIRG相比标准next-item预测训练显著提升Recall@K，尤其在训练集一跳转移未覆盖的用户上增益更大。",
+        "分析显示LLM相比GR baselines的增益主要来自一跳记忆可预测的用户。",
+        "消融实验证明多跳协同和语义关系模块均有效，语义关系在多跳协同基础上进一步提升效果。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "仅在两个公开数据集上进行离线评估，未考虑真实在线环境中的动态性和冷启动问题。",
+        "多跳协同关系的构建依赖于用户交互序列，可能对短序列用户效果有限。"
+      ],
+      "practical_value": "为LLM在生成式推荐中的训练提供新视角，通过减轻记忆效应提升模型泛化能力，对构建更智能的推荐系统具有指导意义。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "e1f33d40f551959d",
+      "tags": [
+        "LLM4Rec",
+        "Sequential Rec",
+        "RecSys"
+      ],
+      "llm_score": 85,
+      "llm_score_rationale": "论文直接研究LLM在生成式推荐中的记忆行为，与生成式推荐强相关；作者包含来自Meta的Neil Shah等，属于知名互联网公司；提出新的训练策略IIRG改善LLM的泛化能力，但缺少线上A/B实验证据",
+      "preference_signals": [
+        "Generative Rec / Semantic ID",
+        "Industry company",
+        "Top venue (arXiv, but authors from Meta)"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 105,
+      "display_affiliations": [
+        "KAIST",
+        "Sungkyunkwan University",
+        "Snap Inc."
+      ],
+      "published_date": "2026-06-15"
+    },
+    {
+      "id": "arxiv:2606.15330",
+      "title": "OneBar: An End-to-End Content-Grounded Generative Query Recommendation Framework for E-Commerce Video Feeds",
+      "authors": [
+        "Yao Tang",
+        "Ying Yang",
+        "Ben Chen",
+        "Yufei Ma",
+        "Zihan Liang",
+        "Chenyi Lei",
+        "Wenwu Ou",
+        "Jian Liu"
+      ],
+      "affiliations": [
+        "Zhejiang University",
+        "Kuaishou Technology"
+      ],
+      "published": "2026-06-13T14:48:58Z",
+      "updated": "2026-06-13T14:48:58Z",
+      "abstract": "Short-video platforms now expose clickable search entries beneath the video player, enabling users to easily express content-induced search intent. However, conventional query recommendation systems on short-video platforms suffer from latency constraints and objective misalignment, while recent generative approaches struggle with noisy content-side metadata and preference drift. To address these issues, we propose OneBar, an end-to-end generative framework for real-time query recommendation for E-Commerce video feeds. OneBar features three key innovations: (1) a collaborative-multimodal intent grounding module that fuses multimodal video understanding and behavior-derived collaborative anchors; (2) a Unified End-to-End architecture equipped with a prompt-compression mechanism for efficient online serving; and (3) a progressive preference learning strategy for efficient preference-internalization, which internalizes hierarchical behavior preferences into the generative policy, eliminating the need for a separately trained reward model. Compared with online base, OneBar increases Query Exposure by 16.91\\% and Query Click by 18.68\\%, while maintaining a slight Query CTR gain of 0.19\\%. The additional search traffic further contributes to 20.36\\% more guided orders and 21.67\\% higher GMV.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.15330v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.15330v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "OneBar是一个为电商短视频平台设计的端到端生成式查询推荐框架，通过协同多模态意图对齐、统一端到端架构和渐进式偏好学习策略，解决了延迟和偏好漂移问题。在线实验表明，查询曝光和点击分别提升16.91%和18.68%，带动GMV增长21.67%。",
+      "core_method": "提出端到端生成框架OneBar，融合多模态视频理解与行为协同锚点，利用提示压缩和渐进偏好学习直接生成查询推荐。",
+      "innovation_points": [
+        "协同多模态意图对齐模块：融合视频多模态理解与用户行为衍生的协同锚点，实现意图精准定位。",
+        "统一端到端架构与提示压缩：通过提示压缩机制实现高效在线服务，避免级联系统的延迟问题。",
+        "渐进式偏好学习策略：将层次化行为偏好内部化到生成策略中，无需单独训练奖励模型，消除偏好漂移。"
+      ],
+      "experiment_results": [
+        "线上A/B测试：相比在线基线，Query Exposure提升16.91%，Query Click提升18.68%，Query CTR提升0.19%。",
+        "下游指标：引导订单数提升20.36%，GMV提升21.67%。"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文报告了在生产环境中进行的在线A/B测试，对比在线基线，OneBar在Query Exposure、Query Click、GMV等指标上取得显著提升。",
+      "limitations": [
+        "论文未讨论对冷启动用户或物品的适用性。",
+        "未提供详细的在线延迟和资源开销的具体数据。"
+      ],
+      "practical_value": "OneBar可直接部署于短视频电商平台，实时生成与视频内容相关的查询推荐，显著提升搜索流量和转化，具有明显的商业价值。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "ba151e9a356616d3",
+      "tags": [
+        "RecSys",
+        "LLM4Rec",
+        "Generative Rec",
+        "Evaluation"
+      ],
+      "llm_score": 95,
+      "llm_score_rationale": "明确提供线上A/B实验证据，包括Query Exposure提升16.91%、Query Click提升18.68%、guided orders提升20.36%、GMV提升21.67%；论文提出端到端生成式查询推荐框架，属于生成式推荐范畴，且针对电商短视频场景，与生成式检索、语义ID强相关；作者来自字节跳动（TikTok）相关团队，属于知名互联网公司，工业界实践价值高",
+      "preference_signals": [
+        "Online A/B",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 101,
+      "display_affiliations": [
+        "Zhejiang University",
+        "Kuaishou Technology"
+      ],
+      "published_date": "2026-06-13"
+    },
+    {
+      "id": "arxiv:2606.15331",
+      "title": "HoloRec: Holistic Encoding and Interleaved Reasoning for Generative Recommendation",
+      "authors": [
+        "Shuqi Zhao",
+        "Jingsong Su",
+        "Xiang Liu",
+        "Xingzhi Yao",
+        "Yiming Qiu",
+        "Huimu Wang",
+        "Liang Lin",
+        "Pengbo Mo",
+        "Mingming Li",
+        "Jiao Dai",
+        "Jizhong Han",
+        "Songlin Hu"
+      ],
+      "affiliations": [
+        "Chinese Academy of Sciences",
+        "Beijing Normal University"
+      ],
+      "published": "2026-06-13T14:52:03Z",
+      "updated": "2026-06-13T14:52:03Z",
+      "abstract": "Generative recommendation models that formulate the task as sequence generation overcome the objective fragmentation problem of traditional cascade architectures, yet existing approaches still suffer from flat semantic representations lacking hierarchical structure for multi-step reasoning and an externally constructed chain-of-thought (CoT) that requires expensive annotations and remains disconnected from the generation objective. We propose HoloRec, an endogenous chain-of-thought recommendation mechanism that unifies representation, reasoning, and generation by constructing a hierarchical semantic encoding matrix via multi-granularity nested residual quantization optimized by a holistic reconstruction loss. HoloRec supports two inference modes: a non-thinking mode that uses lightweight multi-granularity supervised alignment for fast prediction, and a thinking mode that employs an interleaved reasoning scheme to generate CoT steps on the fly, directly embedding reasoning into the generation process without external data. Experiments on multiple public recommendation datasets demonstrate that HoloRec consistently outperforms baselines, with especially significant gains in sparse scenarios, and the thinking mode achieves better accuracy than the non-thinking mode with only modest inference overhead.",
+      "categories": [
+        "cs.IR",
+        "cs.AI"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.15331v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.15331v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "HoloRec提出一种内生思维链推荐机制，通过多粒度嵌套残差量化构建层次化语义编码矩阵，并设计非思考与思考两种推理模式，将推理直接嵌入生成过程，在稀疏场景下性能提升显著。",
+      "core_method": "通过多粒度嵌套残差量化与整体重建损失构建层次化语义矩阵，结合轻量级多粒度监督对齐和交错推理机制，实现内生思维链推荐。",
+      "innovation_points": [
+        "提出整体语义编码（Holistic Encoding），利用多粒度嵌套残差量化和整体重建损失构建层次化语义矩阵，支持粗到细的推理。",
+        "设计双推理模式：非思考模式通过多粒度监督对齐实现快速预测；思考模式通过交错推理将思维链嵌入自回归生成，无需外部标注。",
+        "通过共享码本和门控机制，在保持参数效率的同时实现粗粒度语义到细粒度解码的融合。"
+      ],
+      "experiment_results": [
+        "在Beauty和Instruments两个公开数据集上，HoloRec在Hit@5/10和NDCG@5/10指标上均显著优于MF、HGN、SASRec、BERT4Rec、TIGER等基线模型。",
+        "在稀疏数据集上，HoloRec的提升尤为明显；思考模式相比非思考模式准确率更高，推理开销仅适度增加。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试。",
+      "limitations": [
+        "思考模式会引入额外的推理延迟，尽管论文声称开销适中，但未在极低延迟场景下验证。",
+        "实验仅基于两个单一领域数据集（Beauty和Instruments），泛化到其他领域或更大规模数据的效果有待验证。"
+      ],
+      "practical_value": "为生成式推荐提供了一种无需昂贵标注数据的端到端推理增强方案，稀疏场景下提升显著，可直接集成到现有生成式推荐架构中。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "2e720651dc493a00",
+      "tags": [
+        "RecSys",
+        "Generative Rec",
+        "LLM4Rec",
+        "Sequential Rec"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "论文提出生成式推荐模型 HoloRec，融合多粒度语义编码与内生思维链推理，与生成式推荐主题强相关；多粒度嵌套残差量化构建层次化语义编码矩阵，可视为语义ID的一种实现形式；实验仅在公开数据集上进行离线评估，无在线A/B或生产环境证据",
+      "preference_signals": [
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 91,
+      "display_affiliations": [
+        "Chinese Academy of Sciences",
+        "Beijing Normal University"
+      ],
+      "published_date": "2026-06-13"
+    },
+    {
+      "id": "arxiv:2606.14260",
+      "title": "ChronoID: Infusing Explicit Temporal Signals into Semantic IDs for Generative Recommendation",
+      "authors": [
+        "Dongdong Nian",
+        "Dongqi Fu",
+        "Chenliang Xu",
+        "Yinglong Xia",
+        "Hong Li",
+        "Hong Yan",
+        "Jian Kang"
+      ],
+      "affiliations": [
+        "University of Rochester",
+        "Meta MRS"
+      ],
+      "published": "2026-06-12T08:45:04Z",
+      "updated": "2026-06-12T08:45:04Z",
+      "abstract": "Semantic IDs are crucial in generative recommendation, but with a fundamental limitation: temporal information is not well incorporated into semantic IDs. Instead, time influences recommendation only implicitly (e.g., through session construction heuristics, preference alignment, or sequence order), while existing semantic ID learning remains entirely time-agnostic. This design conflates interactions occurring under distinct temporal contexts into identical semantic representations, implicitly assuming that item semantics and user intent are temporally stationary. Such an assumption is misaligned with real-world recommendation scenarios, where evolving interaction rhythms play a central role. In this work, we investigate where and how the explicit time should be incorporated into semantic ID for generative recommendation. First, we systematically characterize the design space along three orthogonal dimensions of temporal signals and present a unified framework, ChronoID, for time-aware semantic ID learning. Then, by contributing a new time-explicit generation recommendation benchmark, ChronoID answers the questions: what is the effective way of infusing time, how to design the architecture, and where does the gain come from.",
+      "categories": [
+        "cs.IR",
+        "cs.AI"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.14260v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.14260v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "ChronoID针对生成式推荐中语义ID缺乏显式时间建模的问题，提出统一框架将时间信号注入语义ID学习，并通过新基准系统验证了相对时间、延迟融合和并行量化的有效性。",
+      "core_method": "提出ChronoID框架，沿时间编码（绝对/相对）、融合次序（早/晚融合）和量化机制（残差/并行）三个正交维度，将显式时间信号融入语义ID生成。",
+      "innovation_points": [
+        "首次系统地将显式时间信号注入语义ID学习，解决现有方法的时间不可知局限。",
+        "定义了时间感知语义ID的设计空间（时间编码、融合策略、量化方式），并提出统一框架ChronoID。",
+        "构建了新的时间显式生成推荐基准，支持严格的时间感知评测。"
+      ],
+      "experiment_results": [
+        "时间显式语义ID相比时间隐式基线显著提升生成推荐性能。",
+        "相对时间间隔优于绝对时间戳，能更有效建模交互动态。",
+        "延迟融合（晚融合）比早期融合更适合异质模态对齐；简单拼接已足够，复杂架构增益有限。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试。",
+      "limitations": [
+        "仅在公开数据集上进行离线评测，未在真实推荐系统中进行在线验证。",
+        "时间信号注入的具体实现和参数选择可能对不同领域的数据集敏感，泛化性有待进一步验证。"
+      ],
+      "practical_value": "为生成式推荐提供了即插即用的时间感知语义ID学习方案，有望在不改变下游生成模型的情况下提升时序动态建模能力。",
+      "analysis_basis": "full_text",
+      "analysis_status": "cached",
+      "analysis_signature": "86557ee8ff803735",
+      "tags": [
+        "Generative Rec",
+        "Sequential Rec",
+        "RecSys"
+      ],
+      "llm_score": 65,
+      "llm_score_rationale": "论文主题是生成式推荐中的语义ID，与生成式推荐/语义ID强相关，但缺少工业界作者单位或线上A/B实验证据；发表于arXiv预印本，未在顶级会议发表，学术可信度待验证；未涉及线上实验或工业实践，只有离线基准测试，因此无法给予线上A/B信号加分",
+      "preference_signals": [
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 91,
+      "display_affiliations": [
+        "University of Rochester",
+        "Meta MRS"
+      ],
+      "published_date": "2026-06-12"
+    },
+    {
+      "id": "openalex:W4417459060",
+      "title": "Automated Information Flow Selection for Multi-scenario Multi-task Recommendation",
+      "authors": [
+        "Chaohua Yang",
+        "Dugang Liu",
+        "Shiwei Li",
+        "Yuwen Fu",
+        "Xing Tang",
+        "Weihong Luo",
+        "Xiangyu Zhao",
+        "Xiuqiang He",
+        "Zhong Ming"
+      ],
+      "affiliations": [
+        "Shenzhen University",
+        "Tencent (China)"
+      ],
+      "published": "2026-02-16",
+      "updated": "2026-06-11T09:08:48.828518",
+      "abstract": "Multi-scenario multi-task recommendation (MSMTR) systems must address recommendation demands across diverse scenarios while simultaneously optimizing multiple objectives, such as click-through rate and conversion rate. Existing MSMTR models typically consist of four information units: scenario-shared, scenario-specific, task-shared, and task-specific networks. These units interact to generate four types of relationship information flows, directed from scenario-shared or scenario-specific networks to task-shared or task-specific networks. However, these models face two main limitations: 1) They often rely on complex architectures, such as mixture-of-experts (MoE) networks, which increase the complexity of information fusion, model size, and training cost. 2) They extract all available information flows without filtering out irrelevant or even harmful content, introducing potential noise. Regarding these challenges, we propose a lightweight Automated Information Flow Selection (AutoIFS) framework for MSMTR. To tackle the first issue, AutoIFS incorporates low-rank adaptation (LoRA) to decouple the four information units, enabling more flexible and efficient information fusion with minimal parameter overhead. To address the second issue, AutoIFS introduces an information flow selection network that automatically filters out invalid scenario-task information flows based on model performance feedback. It employs a simple yet effective pruning function to eliminate useless information flows, thereby enhancing the impact of key relationships and improving model performance. Finally, we evaluate AutoIFS and confirm its effectiveness through extensive experiments on two public benchmark datasets and an online A/B test.",
+      "categories": [
+        "OpenAlex",
+        "TKDD"
+      ],
+      "primary_category": "TKDD",
+      "abs_url": "https://doi.org/10.1145/3773966.3777992",
+      "pdf_url": "https://doi.org/10.1145/3773966.3777992",
+      "doi": "10.1145/3773966.3777992",
+      "source": "OpenAlex",
+      "status": "conference",
+      "venue": "TKDD",
+      "venue_key": "TKDD",
+      "generated_summary": "本文提出AutoIFS框架，用于多场景多任务推荐，通过低秩适配（LoRA）解耦信息单元，并利用信息流选择网络自动剪枝无效关系流，从而降低模型复杂度、减少噪声并提升性能。",
+      "core_method": "基于低秩适配解耦四种信息单元（场景共享/特定、任务共享/特定），并通过性能反馈自动选择有效信息流的轻量级框架。",
+      "innovation_points": [
+        "引入LoRA解耦场景与任务信息单元，实现灵活高效融合并减少参数开销",
+        "提出信息流选择网络，根据性能反馈自动剪枝无效场景-任务流"
+      ],
+      "experiment_results": [
+        "在两个公开基准数据集上进行广泛实验，结果表明AutoIFS有效"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "摘要明确提到线上A/B测试（online A/B test）",
+      "limitations": [
+        "仅基于元数据，缺乏具体实验细节和局限性讨论",
+        "缺乏与其他先进方法的详细对比分析"
+      ],
+      "practical_value": "为多场景多任务推荐系统提供了一种轻量级且高效的自动信息流选择方案，适合大规模在线部署。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "5f7c70dc152e217d",
+      "tags": [
+        "RecSys"
+      ],
+      "llm_score": 70,
+      "llm_score_rationale": "明确包含线上A/B实验（online A/B test），权重最高；作者单位包含腾讯（Tencent），属于知名互联网公司；发表在TKDD，但非RecSys/SIGIR/KDD等推荐系统顶会",
+      "preference_signals": [
+        "Online A/B",
+        "Industry company",
+        "Top venue"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 84,
+      "display_affiliations": [
+        "Shenzhen University",
+        "Tencent (China)"
+      ],
+      "published_date": "2026-02-16"
+    },
+    {
+      "id": "openalex:W4407571719",
+      "title": "Unleashing the Power of Large Language Model for Denoising Recommendation",
+      "authors": [
+        "Shuyao Wang",
+        "Zhi Zheng",
+        "Yongduo Sui",
+        "Hui Xiong"
+      ],
+      "affiliations": [
+        "University of Hong Kong",
+        "Tencent (China)"
+      ],
+      "published": "2025-04-22",
+      "updated": "2026-06-11T09:08:48.828518",
+      "abstract": "Recommender systems are crucial for personalizing user experiences but often depend on implicit feedback data, which can be noisy and misleading. Existing denoising studies involve incorporating auxiliary information or learning strategies from interaction data. However, they struggle with the inherent limitations of external knowledge and interaction data, as well as the non-universality of certain predefined assumptions, hindering accurate noise identification. Recently, large language models (LLMs) have gained attention for their extensive world knowledge and reasoning abilities, yet their potential in enhancing denoising in recommendations remains underexplored. In this paper, we introduce LLaRD, a framework leveraging LLMs to improve denoising in recommender systems, thereby boosting overall recommendation performance. Specifically, LLaRD generates denoising-related knowledge by first enriching semantic insights from observational data via LLMs and inferring user-item preference knowledge. It then employs a novel Chain-of-Thought (CoT) technique over user-item interaction graphs to reveal relation knowledge for denoising. Finally, it applies the Information Bottleneck (IB) principle to align LLM-generated denoising knowledge with recommendation targets, filtering out noise and irrelevant LLM knowledge. Empirical results demonstrate LLaRD's effectiveness in enhancing denoising and recommendation accuracy.",
+      "categories": [
+        "OpenAlex",
+        "TKDD"
+      ],
+      "primary_category": "TKDD",
+      "abs_url": "https://doi.org/10.1145/3696410.3714758",
+      "pdf_url": "https://dl.acm.org/doi/pdf/10.1145/3696410.3714758",
+      "doi": "10.1145/3696410.3714758",
+      "source": "OpenAlex",
+      "status": "conference",
+      "venue": "TKDD",
+      "venue_key": "TKDD",
+      "generated_summary": "提出LLaRD框架，利用大语言模型生成去噪知识，通过链式推理和信息瓶颈原理提升推荐系统的去噪效果与准确性。",
+      "core_method": "利用LLM对用户-物品交互图进行链式推理生成去噪知识，并通过信息瓶颈原理对齐知识以过滤噪声，提升推荐系统的去噪能力。",
+      "innovation_points": [
+        "首次将LLM的推理能力应用于推荐系统的去噪任务，通过链式推理从交互图中提取关系知识",
+        "引入信息瓶颈原理，对齐LLM生成的去噪知识与推荐目标，过滤无关和噪声知识",
+        "无需依赖预定义假设或外部辅助信息，实现通用的去噪增强"
+      ],
+      "experiment_results": [
+        "论文摘要未提供具体实验结果数据，仅指出LLaRD在去噪和推荐准确性上表现有效"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "仅基于摘要，缺少实验细节和结果验证",
+        "未说明LLM推理的计算开销和实际部署可行性"
+      ],
+      "practical_value": "为推荐系统去噪提供了一种结合LLM推理能力与信息瓶颈原理的通用框架，有望提升推荐准确性。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "3bd175e1ed092a10",
+      "tags": [
+        "LLM4Rec",
+        "RecSys"
+      ],
+      "llm_score": 65,
+      "llm_score_rationale": "作者单位含腾讯，有工业界背景；涉及LLM在推荐中的应用，与生成式推荐相关；会议TKDD为数据挖掘领域期刊，但非RecSys/SIGIR等顶会，且无线上A/B实验证据",
+      "preference_signals": [
+        "Top venue|TKDD",
+        "Generative Rec / Semantic ID|LLM4Rec",
+        "Industry company|Tencent"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 83,
+      "display_affiliations": [
+        "University of Hong Kong",
+        "Tencent (China)"
+      ],
+      "published_date": "2025-04-22"
+    },
+    {
+      "id": "arxiv:2606.16703",
+      "title": "Harmonizing Semantic and Collaborative in LLMs: Reasoning-based Embedding Generator for Sequential Recommendation",
+      "authors": [
+        "Qidong Liu",
+        "Mingyao Huang",
+        "Moranxin Wang",
+        "Wenxuan Yang",
+        "Haiping Zhu"
+      ],
+      "affiliations": [
+        "Xi'an Jiaotong University"
+      ],
+      "published": "2026-06-15T13:37:52Z",
+      "updated": "2026-06-15T13:37:52Z",
+      "abstract": "Sequential Recommender Systems (SRS) predict the next item of interest based on users' interaction histories and have been widely deployed, but hindered by long-tail problem. Large Language Models (LLMs), with strong semantic understanding and reasoning capabilities, offer a promising way to enrich item semantics and have recently been used as embedding generators. However, two fundamental gaps remain. First, current LLM-based embedding methods fail to exploit the model's inner reasoning capacity. Second, existing methods often inject collaborative signals implicitly via supervised fine-tuning, lacking explicit guidance for collaborative embedding alignment. In this paper, we introduce ReaEmb, a novel framework that resolves both issues via a Latent Reasoning-enhanced Contrastive Learning (LRCL) stage and a Collaborative Reward Reinforcement Learning (CRRL) stage. LRCL exploits the LLMs' inner reasoning capacity through a two-pass forward process with an additional attention module. CRRL subsequently explicitly injects collaborative signals into the LLM via a tailored reinforcement learning. Extensive experiments on three real-world datasets demonstrate superior effectiveness of ReaEmb across multiple SRS models. To ease reproducibility, we release the code online.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.16703v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.16703v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "提出ReaEmb框架，通过潜推理增强对比学习（LRCL）挖掘LLM内在推理能力，并通过协同奖励强化学习（CRRL）显式注入协同信号，生成高质量物品嵌入以缓解序列推荐中的长尾问题。",
+      "core_method": "利用LLM双通道前向过程提取潜推理特征进行对比学习，并采用基于协同奖励的强化学习显式对齐协同信号，生成推荐嵌入。",
+      "innovation_points": [
+        "首次利用LLM内部潜推理能力生成序列推荐嵌入，而非仅使用文本表征。",
+        "提出显式协同奖励强化学习，直接优化嵌入以拟合协同关系，替代传统隐式注入方式。"
+      ],
+      "experiment_results": [
+        "在Amazon Books、Video Games、LastFM三个数据集上，ReaEmb在SASRec、BERT4Rec、GRU4Rec等多个基线模型上均取得最优Recall和NDCG。",
+        "在长尾项目推荐上，ReaEmb的Recall@10平均相对提升6.10%，显著优于其他LLM嵌入方法。",
+        "推理时间与多数方法相当，但模型大小和训练时间有一定增加。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试。",
+      "limitations": [
+        "未进行线上A/B测试验证实际用户体验效果。",
+        "模型参数量较大且训练流程复杂，可能增加工业部署成本。"
+      ],
+      "practical_value": "为LLM在推荐系统中的嵌入生成提供了一种显式融合推理与协同信号的新范式，可提升长尾推荐的语义丰富度和准确性。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "5350ecdfd8e356b6",
+      "tags": [
+        "RecSys",
+        "LLM4Rec",
+        "Sequential Rec",
+        "Generative Rec"
+      ],
+      "llm_score": 68,
+      "llm_score_rationale": "论文提出LLM-based embedding generator用于序列推荐，涉及语义增强和对比学习，与语义ID/生成式推荐相关；只有离线实验，无线上A/B或live traffic证据；作者单位未知，无知名互联网公司背景，发表于arXiv预印本，未在顶会发表",
+      "preference_signals": [
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 82,
+      "display_affiliations": [
+        "Xi'an Jiaotong University"
+      ],
+      "published_date": "2026-06-15"
+    },
+    {
+      "id": "arxiv:2606.14142",
+      "title": "Implicit Reasoning for Large Language Model-based Generative Recommendation",
+      "authors": [
+        "Yinhan He",
+        "Liam Collins",
+        "Bhuvesh Kumar",
+        "Jundong Li",
+        "Neil Shah",
+        "Donald Loveland"
+      ],
+      "affiliations": [
+        "University of Virginia"
+      ],
+      "published": "2026-06-12T06:04:05Z",
+      "updated": "2026-06-15T15:02:00Z",
+      "abstract": "Large Language Models (LLMs) are increasingly adopted as backbones for Generative Recommendation (GR), promising access to pretrained world knowledge. Yet reliably invoking this knowledge for GR remains poorly understood. A key obstacle is that LLM-based GR typically represents items with Semantic IDs (SIDs), disrupting LLMs' natural-language reasoning interface because these tokens are unseen by the LLM during pretraining. Existing approaches address this with expensive multi-stage pipelines that ground SIDs and elicit explicit rationales, but offer limited insight into when and why each stage is necessary. In this work, we systematically decompose explicit reasoning training pipelines for LLM-based GR, revealing three key limitations: weakened world-knowledge verbalization, misalignment between SID and natural-language token embedding spaces, and sensitivity to rationale quality, all of which hurt explicit reasoning performance. To circumvent these issues, we propose PauseRec, a lightweight implicit reasoning paradigm tailored for GR. PauseRec is exceptionally practical, avoiding costly reasoning trace acquisition and reasoning alignment training, leading to a multitude of benefits: (1) it outperforms standard explicit CoT methods by up to 6.22%, (2) it reduces training cost by up to 65% GPU hours, and (3) it speeds up inference by up to 71.3%. These results position PauseRec as a lightweight alternative to explicit rationale generation, enabling more effective and efficient LLM-based GR.",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "primary_category": "cs.CL",
+      "abs_url": "http://arxiv.org/abs/2606.14142v2",
+      "pdf_url": "https://arxiv.org/pdf/2606.14142v2",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "本文针对大语言模型在生成式推荐中使用语义ID导致显式推理效果受限的问题，提出了轻量级隐式推理框架PauseRec。通过插入可训练的暂停令牌替代显式推理轨迹，缓解了语言知识与SID的错位，在多个数据集上实现性能与效率的双重提升。",
+      "core_method": "PauseRec通过在SID生成前插入可训练的<pause>令牌，以隐式推理替代显式思维链，仅优化最终推荐目标来桥接文本与SID嵌入空间。",
+      "innovation_points": [
+        "系统分解了显式推理管道，揭示其三大缺陷：世界知识表达弱化、文本与SID嵌入空间错位、对推理模板敏感。",
+        "提出隐式推理框架PauseRec，无需昂贵推理轨迹采集和对齐训练，仅用可训练暂停令牌实现高效推荐。",
+        "实验证明PauseRec在性能上超越标准显式思维链方法，同时降低训练和推理成本，为LLM推荐提供了轻量替代方案。"
+      ],
+      "experiment_results": [
+        "在Amazon Beauty、Sports、Toys数据集上，PauseRec相比标准SFT和CoT方法，Hit@10和NDCG@10性能提升最高达6.22%。",
+        "训练GPU小时数降低最高达65%，推理速度提升最高达71.3%。",
+        "消融实验表明，预训练的<pause>令牌比文本均值、SID均值或默认初始化效果更好。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试",
+      "limitations": [
+        "实验仅在三个Amazon评论数据集上进行，泛化到其他领域需进一步验证。",
+        "未提供线上A/B测试结果，工业级生产环境的效果未知。"
+      ],
+      "practical_value": "提出了一种轻量、高效的隐式推理方法，可显著降低LLM推荐系统的训练与推理成本，适合工业级大规模部署。",
+      "analysis_basis": "full_text",
+      "analysis_status": "cached",
+      "analysis_signature": "3779b78242a0ecc0",
+      "tags": [
+        "RecSys",
+        "Generative Rec",
+        "LLM4Rec",
+        "Sequential Rec"
+      ],
+      "llm_score": 85,
+      "llm_score_rationale": "论文聚焦于生成式推荐（GR）和语义ID（SID），提出PauseRec隐式推理方法，与generative recommendation和semantic ID强相关。；实验仅为离线评估，无线上A/B或生产环境实验证据。；未在顶会发表，目前为arXiv预印本；作者单位未知，无知名互联网公司信号。",
+      "preference_signals": [
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 79,
+      "display_affiliations": [
+        "University of Virginia"
+      ],
+      "published_date": "2026-06-12"
+    },
     {
       "id": "openalex:W4416050722",
       "title": "MMQ: Multimodal Mixture-of-Quantization Tokenization for Semantic ID Generation and User Behavioral Adaptation",
@@ -281,77 +1016,6 @@
       "published_date": "2025-06-04"
     },
     {
-      "id": "arxiv:2606.14142",
-      "title": "Implicit Reasoning for Large Language Model-based Generative Recommendation",
-      "authors": [
-        "Yinhan He",
-        "Liam Collins",
-        "Bhuvesh Kumar",
-        "Jundong Li",
-        "Neil Shah",
-        "Donald Loveland"
-      ],
-      "affiliations": [
-        "University of Virginia"
-      ],
-      "published": "2026-06-12T06:04:05Z",
-      "updated": "2026-06-15T15:02:00Z",
-      "abstract": "Large Language Models (LLMs) are increasingly adopted as backbones for Generative Recommendation (GR), promising access to pretrained world knowledge. Yet reliably invoking this knowledge for GR remains poorly understood. A key obstacle is that LLM-based GR typically represents items with Semantic IDs (SIDs), disrupting LLMs' natural-language reasoning interface because these tokens are unseen by the LLM during pretraining. Existing approaches address this with expensive multi-stage pipelines that ground SIDs and elicit explicit rationales, but offer limited insight into when and why each stage is necessary. In this work, we systematically decompose explicit reasoning training pipelines for LLM-based GR, revealing three key limitations: weakened world-knowledge verbalization, misalignment between SID and natural-language token embedding spaces, and sensitivity to rationale quality, all of which hurt explicit reasoning performance. To circumvent these issues, we propose PauseRec, a lightweight implicit reasoning paradigm tailored for GR. PauseRec is exceptionally practical, avoiding costly reasoning trace acquisition and reasoning alignment training, leading to a multitude of benefits: (1) it outperforms standard explicit CoT methods by up to 6.22%, (2) it reduces training cost by up to 65% GPU hours, and (3) it speeds up inference by up to 71.3%. These results position PauseRec as a lightweight alternative to explicit rationale generation, enabling more effective and efficient LLM-based GR.",
-      "categories": [
-        "cs.CL",
-        "cs.AI"
-      ],
-      "primary_category": "cs.CL",
-      "abs_url": "http://arxiv.org/abs/2606.14142v2",
-      "pdf_url": "https://arxiv.org/pdf/2606.14142v2",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "本文针对大语言模型在生成式推荐中使用语义ID导致显式推理效果受限的问题，提出了轻量级隐式推理框架PauseRec。通过插入可训练的暂停令牌替代显式推理轨迹，缓解了语言知识与SID的错位，在多个数据集上实现性能与效率的双重提升。",
-      "core_method": "PauseRec通过在SID生成前插入可训练的<pause>令牌，以隐式推理替代显式思维链，仅优化最终推荐目标来桥接文本与SID嵌入空间。",
-      "innovation_points": [
-        "系统分解了显式推理管道，揭示其三大缺陷：世界知识表达弱化、文本与SID嵌入空间错位、对推理模板敏感。",
-        "提出隐式推理框架PauseRec，无需昂贵推理轨迹采集和对齐训练，仅用可训练暂停令牌实现高效推荐。",
-        "实验证明PauseRec在性能上超越标准显式思维链方法，同时降低训练和推理成本，为LLM推荐提供了轻量替代方案。"
-      ],
-      "experiment_results": [
-        "在Amazon Beauty、Sports、Toys数据集上，PauseRec相比标准SFT和CoT方法，Hit@10和NDCG@10性能提升最高达6.22%。",
-        "训练GPU小时数降低最高达65%，推理速度提升最高达71.3%。",
-        "消融实验表明，预训练的<pause>令牌比文本均值、SID均值或默认初始化效果更好。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文全文未报告线上A/B测试",
-      "limitations": [
-        "实验仅在三个Amazon评论数据集上进行，泛化到其他领域需进一步验证。",
-        "未提供线上A/B测试结果，工业级生产环境的效果未知。"
-      ],
-      "practical_value": "提出了一种轻量、高效的隐式推理方法，可显著降低LLM推荐系统的训练与推理成本，适合工业级大规模部署。",
-      "analysis_basis": "full_text",
-      "analysis_status": "complete",
-      "analysis_signature": "3779b78242a0ecc0",
-      "tags": [
-        "RecSys",
-        "Generative Rec",
-        "LLM4Rec",
-        "Sequential Rec"
-      ],
-      "llm_score": 85,
-      "llm_score_rationale": "论文聚焦于生成式推荐（GR）和语义ID（SID），提出PauseRec隐式推理方法，与generative recommendation和semantic ID强相关。；实验仅为离线评估，无线上A/B或生产环境实验证据。；未在顶会发表，目前为arXiv预印本；作者单位未知，无知名互联网公司信号。",
-      "preference_signals": [
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 119,
-      "display_affiliations": [
-        "University of Virginia"
-      ],
-      "published_date": "2026-06-12"
-    },
-    {
       "id": "openalex:W4414939390",
       "title": "Diffusion Recommender Models and the Illusion of Progress: A Concerning Study of Reproducibility and a Conceptual Mismatch",
       "authors": [
@@ -419,155 +1083,6 @@
         "University of Klagenfurt"
       ],
       "published_date": "2026-02-06"
-    },
-    {
-      "id": "openalex:W4405300788",
-      "title": "MRP-LLM: Multitask Reflective Large Language Models for Privacy-Preserving Next POI Recommendation",
-      "authors": [
-        "Zhigang Wu",
-        "Zhu Sun",
-        "Dongxia Wang",
-        "Lu Zhang",
-        "Jie Zhang",
-        "Yew-Soon Ong"
-      ],
-      "affiliations": [
-        "Nanyang Technological University",
-        "Singapore University of Technology and Design",
-        "Zhejiang University",
-        "Chengdu University of Information Technology"
-      ],
-      "published": "2026-06-01",
-      "updated": "2026-06-11T09:08:48.828518",
-      "abstract": "Large language models (LLMs) have shown promising potential for next Point-of-Interest (POI) recommendation. However, existing methods only perform direct zero-shot prompting, leading to ineffective extraction of user preferences, insufficient injection of collaborative signals, and a lack of user privacy protection. As such, we propose a novel Multitask Reflective Large Language Model for Privacy-preserving Next POI Recommendation (MRP-LLM), aiming to exploit LLMs for better next POI recommendation while preserving user privacy. Specifically, the Multitask Reflective Preference Extraction Module first utilizes LLMs to distill each user's fine-grained (i.e., categorical, temporal, and spatial) preferences into a knowledge base (KB). The Neighbor Preference Retrieval Module retrieves and summarizes the preferences of similar users from the KB to obtain collaborative signals. Subsequently, aggregating the user's preferences with those of similar users, the Multitask Next POI Recommendation Module generates the next POI recommendations via multitask prompting. Meanwhile, during data collection, a Privacy Transmission Module is specifically devised to preserve sensitive POI data. Extensive experiments on three real-world datasets demonstrate the efficacy of our proposed MRP-LLM in providing more accurate next POI recommendations with user privacy preserved.",
-      "categories": [
-        "OpenAlex",
-        "RecSys"
-      ],
-      "primary_category": "RecSys",
-      "abs_url": "https://doi.org/10.1145/3774935.3806151",
-      "pdf_url": "https://doi.org/10.1145/3774935.3806151",
-      "doi": "10.1145/3774935.3806151",
-      "source": "OpenAlex",
-      "status": "conference",
-      "venue": "RecSys",
-      "venue_key": "RecSys",
-      "generated_summary": "提出MRP-LLM模型，通过多任务反思和隐私保护机制实现下一POI推荐。利用LLM提取用户细粒度偏好并注入协同信号，同时设计隐私传输模块保护敏感数据。实验证明该方法在隐私保护下提升了推荐准确性。",
-      "core_method": "利用LLM进行多任务反思式偏好提取、邻居偏好检索与多任务提示推荐，并结合隐私传输模块保护数据。",
-      "innovation_points": [
-        "提出多任务反思式偏好提取，细粒度地提取分类、时空偏好并构建知识库",
-        "设计邻居偏好检索模块注入协同信号",
-        "引入隐私传输模块在数据收集阶段保护敏感POI数据"
-      ],
-      "experiment_results": [
-        "在三个真实数据集上的广泛实验表明，MRP-LLM在保护用户隐私的同时提供了更准确的下一POI推荐"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "论文全文缺失，无法评估具体模块的计算开销与可扩展性",
-        "隐私模块的实际保护强度未与现有隐私保护方法进行对比"
-      ],
-      "practical_value": "为隐私敏感的POI推荐场景提供了一种端到端的隐私保护框架，具有实际部署潜力",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "dee313756be89f58",
-      "tags": [
-        "LLM4Rec",
-        "Sequential Rec",
-        "RecSys"
-      ],
-      "llm_score": 78,
-      "llm_score_rationale": "发表在顶级会议RecSys 2026，属于推荐系统核心会议，增加可信度。；论文研究LLM用于生成式POI推荐，涉及偏好提取与协同信号注入，与生成式推荐主题强相关。；作者单位包含浙江大学等知名机构，但无明确互联网公司背景，无线上A/B实验证据。",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 117,
-      "display_affiliations": [
-        "Nanyang Technological University",
-        "Singapore University of Technology and Design",
-        "Zhejiang University",
-        "Chengdu University of Information Technology"
-      ],
-      "published_date": "2026-06-01"
-    },
-    {
-      "id": "arxiv:2606.14260",
-      "title": "ChronoID: Infusing Explicit Temporal Signals into Semantic IDs for Generative Recommendation",
-      "authors": [
-        "Dongdong Nian",
-        "Dongqi Fu",
-        "Chenliang Xu",
-        "Yinglong Xia",
-        "Hong Li",
-        "Hong Yan",
-        "Jian Kang"
-      ],
-      "affiliations": [
-        "University of Rochester",
-        "Meta"
-      ],
-      "published": "2026-06-12T08:45:04Z",
-      "updated": "2026-06-12T08:45:04Z",
-      "abstract": "Semantic IDs are crucial in generative recommendation, but with a fundamental limitation: temporal information is not well incorporated into semantic IDs. Instead, time influences recommendation only implicitly (e.g., through session construction heuristics, preference alignment, or sequence order), while existing semantic ID learning remains entirely time-agnostic. This design conflates interactions occurring under distinct temporal contexts into identical semantic representations, implicitly assuming that item semantics and user intent are temporally stationary. Such an assumption is misaligned with real-world recommendation scenarios, where evolving interaction rhythms play a central role. In this work, we investigate where and how the explicit time should be incorporated into semantic ID for generative recommendation. First, we systematically characterize the design space along three orthogonal dimensions of temporal signals and present a unified framework, ChronoID, for time-aware semantic ID learning. Then, by contributing a new time-explicit generation recommendation benchmark, ChronoID answers the questions: what is the effective way of infusing time, how to design the architecture, and where does the gain come from.",
-      "categories": [
-        "cs.IR",
-        "cs.AI"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.14260v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.14260v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "ChronoID针对生成式推荐中语义ID缺乏显式时间建模的问题，提出统一框架将时间信号注入语义ID学习，并通过新基准系统验证了相对时间、延迟融合和并行量化的有效性。",
-      "core_method": "提出ChronoID框架，沿时间编码（绝对/相对）、融合次序（早/晚融合）和量化机制（残差/并行）三个正交维度，将显式时间信号融入语义ID生成。",
-      "innovation_points": [
-        "首次系统地将显式时间信号注入语义ID学习，解决现有方法的时间不可知局限。",
-        "定义了时间感知语义ID的设计空间（时间编码、融合策略、量化方式），并提出统一框架ChronoID。",
-        "构建了新的时间显式生成推荐基准，支持严格的时间感知评测。"
-      ],
-      "experiment_results": [
-        "时间显式语义ID相比时间隐式基线显著提升生成推荐性能。",
-        "相对时间间隔优于绝对时间戳，能更有效建模交互动态。",
-        "延迟融合（晚融合）比早期融合更适合异质模态对齐；简单拼接已足够，复杂架构增益有限。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文全文未报告线上A/B测试。",
-      "limitations": [
-        "仅在公开数据集上进行离线评测，未在真实推荐系统中进行在线验证。",
-        "时间信号注入的具体实现和参数选择可能对不同领域的数据集敏感，泛化性有待进一步验证。"
-      ],
-      "practical_value": "为生成式推荐提供了即插即用的时间感知语义ID学习方案，有望在不改变下游生成模型的情况下提升时序动态建模能力。",
-      "analysis_basis": "full_text",
-      "analysis_status": "cached",
-      "analysis_signature": "86557ee8ff803735",
-      "tags": [
-        "Generative Rec",
-        "Sequential Rec",
-        "RecSys"
-      ],
-      "llm_score": 65,
-      "llm_score_rationale": "论文主题是生成式推荐中的语义ID，与生成式推荐/语义ID强相关，但缺少工业界作者单位或线上A/B实验证据；发表于arXiv预印本，未在顶级会议发表，学术可信度待验证；未涉及线上实验或工业实践，只有离线基准测试，因此无法给予线上A/B信号加分",
-      "preference_signals": [
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 114,
-      "display_affiliations": [
-        "University of Rochester",
-        "Meta"
-      ],
-      "published_date": "2026-06-12"
     },
     {
       "id": "arxiv:2606.13533",
