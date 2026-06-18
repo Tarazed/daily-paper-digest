@@ -26,6 +26,13 @@ echo "Generating site data..."
 python3 -m daily_paper --config "$CONFIG" site-data --out web/public/papers.json --limit "$LIMIT"
 
 echo "Building GitHub Pages site into docs/..."
-python3 scripts/build_static_site.py
+if ! command -v npm >/dev/null 2>&1; then
+  echo "Error: npm is required to build the bundled GitHub Pages app without external CDN dependencies." >&2
+  exit 1
+fi
+echo "Installing web dependencies..."
+(cd web && npm ci)
+echo "Building bundled web app..."
+(cd web && npm run build)
 
 echo "Done. Configure GitHub Pages to publish from: main / docs"
