@@ -9,11 +9,11 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Dict, List
 
 from .config import SummaryConfig
-from .filtering import infer_tags
+from .filtering import ALLOWED_TAGS, MAX_TAGS, infer_tags, normalize_tag
 from .fulltext import extract_full_text_for_analysis
 from .models import Paper
 
-ANALYSIS_PROMPT_VERSION = "site-analysis-v1"
+ANALYSIS_PROMPT_VERSION = "site-analysis-v2-tags"
 PREFERENCE_PROMPT_VERSION = "preference-score-v1"
 SITE_ANALYSIS_FIELDS = [
     "generated_summary",
@@ -32,6 +32,7 @@ SITE_ANALYSIS_FIELDS = [
     "llm_score_rationale",
     "preference_signals",
 ]
+TAG_PROMPT = ", ".join(ALLOWED_TAGS)
 
 
 def summarize_papers(papers: List[Paper], config: SummaryConfig) -> List[Paper]:
@@ -414,8 +415,9 @@ class ChatCompletionClient:
         system_prompt = (
             "请面向推荐系统研究者总结论文。输出严格 JSON："
             '{"summary": "不超过三句中文摘要", "tags": ["从给定集合中选择2到4个标签"]}。'
-            "标签集合：RecSys, Generative Rec, LLM4Rec, Agent4Rec, Sequential Rec, "
-            "Conversational Rec, Evaluation, Dataset, Benchmark。不要输出 JSON 以外的文字。"
+            "标签集合：%s。优先选择细粒度主题标签；只有没有更具体标签时才使用 General Rec。"
+            "不要输出 JSON 以外的文字。"
+            % TAG_PROMPT
         )
         payload = {
             "model": self.model,
@@ -482,8 +484,8 @@ class ChatCompletionClient:
             "\"limitations\": [\"1-2条局限或不确定性\"], "
             "\"practical_value\": \"一句中文说明对推荐系统实践的价值\", "
             "\"tags\": [\"从集合中选择2到5个标签\"]"
-            "}。标签集合：RecSys, Generative Rec, LLM4Rec, Agent4Rec, Sequential Rec, "
-            "Conversational Rec, Evaluation, Dataset, Benchmark。"
+            "}。标签集合：%s。优先选择细粒度主题标签；只有没有更具体标签时才使用 General Rec。"
+            % TAG_PROMPT
         )
         payload = self._build_payload(system_prompt=system_prompt, user_prompt=user_prompt, max_tokens=1000)
         data = self._post_chat(payload)
@@ -590,23 +592,15 @@ def _format_http_error(exc: urllib.error.HTTPError) -> str:
 
 
 def _clean_tags(tags) -> List[str]:
-    allowed = {
-        "RecSys",
-        "Generative Rec",
-        "LLM4Rec",
-        "Agent4Rec",
-        "Sequential Rec",
-        "Conversational Rec",
-        "Evaluation",
-        "Dataset",
-        "Benchmark",
-    }
+    allowed = set(ALLOWED_TAGS)
     cleaned = []
     for tag in tags:
-        value = str(tag).strip()
+        value = normalize_tag(tag)
         if value in allowed and value not in cleaned:
             cleaned.append(value)
-    return cleaned
+    if len(cleaned) > 1 and "General Rec" in cleaned:
+        cleaned.remove("General Rec")
+    return cleaned[:MAX_TAGS]
 
 
 def _safe_int(value, default: int = 0) -> int:

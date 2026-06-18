@@ -28,17 +28,147 @@ MEDIUM_PRIORITY_TERMS = [
     "conversational recommendation",
 ]
 
+FALLBACK_TAG = "General Rec"
+MAX_TAGS = 5
+
 TAG_RULES = [
-    ("LLM4Rec", ["llm4rec", "large language model", "llm-based recommendation"]),
-    ("Agent4Rec", ["agent4rec", "agent recommendation", "recommendation agent"]),
-    ("Generative Rec", ["generative recommendation", "generative recommender"]),
+    (
+        "LLM4Rec",
+        [
+            "llm4rec",
+            "large language model recommendation",
+            "large language models for recommendation",
+            "large language model recommender",
+            "llm recommendation",
+            "llm recommender",
+            "llm-based recommendation",
+            "foundation model recommendation",
+            "foundation model recommender",
+        ],
+    ),
+    (
+        "Semantic ID",
+        [
+            "semantic id",
+            "semantic ids",
+            "semantic identifier",
+            "semantic identifiers",
+            "hierarchical identifier",
+            "hierarchical identifier recommendation",
+        ],
+    ),
+    (
+        "Item Tokenization",
+        [
+            "semantic token",
+            "semantic tokens",
+            "semantic tokenization",
+            "item tokenization",
+            "item identifier",
+            "item identifiers",
+            "discrete item token",
+            "discrete token recommendation",
+        ],
+    ),
+    (
+        "Vector Quantization",
+        [
+            "vector quantization",
+            "residual quantization",
+            "rq-vae",
+            "rqvae",
+            "vq-vae",
+            "vqvae",
+            "codebook",
+        ],
+    ),
+    (
+        "Generative Rec",
+        [
+            "generative recommendation",
+            "generative recommender",
+            "generative recommender system",
+            "generative sequential recommendation",
+            "generative collaborative filtering",
+            "autoregressive recommendation",
+        ],
+    ),
+    ("Generative Retrieval", ["generative retrieval", "generative item retrieval"]),
+    ("Generative Ranking", ["generative ranking"]),
+    (
+        "RAG Rec",
+        [
+            "rag recommendation",
+            "rag recommender",
+            "rag-based recommendation",
+            "retrieval augmented recommendation",
+            "retrieval-augmented recommendation",
+            "retrieval augmented generation recommendation",
+        ],
+    ),
+    (
+        "Agent4Rec",
+        [
+            "agent4rec",
+            "agent recommendation",
+            "agent recommender",
+            "agentic recommendation",
+            "llm agent recommendation",
+            "llm agent recommender",
+            "recommendation agent",
+            "recommender agent",
+            "multi-agent recommendation",
+            "multi-agent recommender",
+            "tool-augmented recommendation",
+            "planning recommendation agent",
+            "reasoning recommendation agent",
+        ],
+    ),
+    (
+        "User Modeling",
+        [
+            "user modeling",
+            "user modelling",
+            "user preference modeling",
+            "user preference modelling",
+            "llm user modeling",
+            "personalized llm recommendation",
+            "user simulator recommendation",
+            "llm user simulator",
+        ],
+    ),
     ("Sequential Rec", ["sequential recommendation", "next item recommendation"]),
     ("Conversational Rec", ["conversational recommendation", "dialogue recommendation"]),
-    ("RecSys", ["recommender system", "recommendation"]),
-    ("Evaluation", ["evaluation", "evaluate", "metric"]),
-    ("Dataset", ["dataset", "benchmark data"]),
+    (
+        "Online Eval",
+        [
+            "online a/b",
+            "a/b test",
+            "a/b testing",
+            "online experiment",
+            "production experiment",
+            "live traffic",
+            "bucket test",
+        ],
+    ),
     ("Benchmark", ["benchmark", "leaderboard"]),
+    ("Dataset", ["dataset", "benchmark data", "corpus"]),
+    ("Evaluation", ["evaluation", "evaluate", "evaluating", "metric", "metrics"]),
 ]
+
+ALLOWED_TAGS = tuple([tag for tag, _terms in TAG_RULES] + [FALLBACK_TAG])
+TAG_ALIASES = {
+    "RecSys": FALLBACK_TAG,
+    "General Recommendation": FALLBACK_TAG,
+    "Recommendation": FALLBACK_TAG,
+    "Generative Recommendation": "Generative Rec",
+    "Sequential Recommendation": "Sequential Rec",
+    "Conversational Recommendation": "Conversational Rec",
+    "RAG Recommendation": "RAG Rec",
+    "RAG RecSys": "RAG Rec",
+    "Online A/B": "Online Eval",
+    "Online Evaluation": "Online Eval",
+}
 
 
 def prepare_papers(
@@ -97,7 +227,12 @@ def infer_tags(paper: Paper) -> List[str]:
     for tag, terms in TAG_RULES:
         if any(term in text for term in terms):
             tags.append(tag)
-    return tags or ["RecSys"]
+    return tags[:MAX_TAGS] or [FALLBACK_TAG]
+
+
+def normalize_tag(value) -> str:
+    tag = str(value or "").strip()
+    return TAG_ALIASES.get(tag, tag)
 
 
 def _matches_interest(paper: Paper, config: ArxivConfig) -> bool:
@@ -129,8 +264,15 @@ def _search_text(paper: Paper) -> str:
             paper.abstract,
             paper.venue,
             paper.venue_key,
+            paper.generated_summary,
+            paper.core_method,
+            paper.ab_test_evidence,
+            paper.practical_value,
             " ".join(paper.categories),
             " ".join(paper.affiliations),
+            " ".join(paper.innovation_points),
+            " ".join(paper.experiment_results),
+            " ".join(paper.preference_signals),
         ]
     )
     return re.sub(r"\s+", " ", value).lower()

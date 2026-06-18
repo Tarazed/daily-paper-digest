@@ -60,7 +60,17 @@ def test_infer_tags_for_llm4rec_and_benchmark():
         "A benchmark for large language model based recommendation evaluation.",
     )
 
-    assert infer_tags(paper) == ["LLM4Rec", "RecSys", "Evaluation", "Benchmark"]
+    assert infer_tags(paper) == ["LLM4Rec", "Benchmark", "Evaluation"]
+
+
+def test_infer_tags_for_semantic_id_generative_rec_and_online_eval():
+    paper = make_paper(
+        "arxiv:5",
+        "Semantic ID Generative Recommendation",
+        "We report an online A/B test for a semantic identifier recommender.",
+    )
+
+    assert infer_tags(paper) == ["Semantic ID", "Generative Rec", "Online Eval"]
 
 
 def test_score_paper_boosts_preference_signals():

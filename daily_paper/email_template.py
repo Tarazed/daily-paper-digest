@@ -25,7 +25,7 @@ def render_html(papers: Iterable[Paper], title: str = "Daily Paper Digest") -> s
     <div style="margin-bottom:18px;">
       <div style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#64748b;">Recommendation Systems</div>
       <h1 style="font-size:24px;line-height:1.25;margin:6px 0 4px;color:#0f172a;">{title}</h1>
-      <div style="font-size:14px;color:#64748b;">{count} papers selected for RecSys, Generative Rec, LLM4Rec, and Agent4Rec.</div>
+      <div style="font-size:14px;color:#64748b;">{count} papers selected for LLM4Rec, Semantic ID, Generative Rec, and Agent4Rec.</div>
     </div>
     {cards}
   </div>

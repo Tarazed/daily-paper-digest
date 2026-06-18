@@ -3,6 +3,181 @@
   var MARKS_KEY = "daily-paper-marks-v1";
   var AB_LABELS = { yes: "有线上 A/B", no: "无线上 A/B", unknown: "未说明" };
   var AB_FILTER_LABELS = Object.assign({ All: "全部 A/B 状态" }, AB_LABELS);
+  var CLOUD_TOPIC_GROUPS = [
+    {
+      label: "LLM4Rec",
+      aliases: [
+        "LLM4Rec",
+        "LLM recommendation",
+        "LLM recommender",
+        "LLM-based recommendation",
+        "large language model recommendation",
+        "large language models for recommendation",
+        "large language model recommender",
+        "foundation model recommendation",
+        "foundation model recommender",
+        "大语言模型推荐",
+        "大模型推荐"
+      ]
+    },
+    {
+      label: "Generative Recommendation",
+      aliases: [
+        "generative recommendation",
+        "generative recommender",
+        "generative recommender system",
+        "generative sequential recommendation",
+        "generative collaborative filtering",
+        "生成式推荐",
+        "生成推荐"
+      ]
+    },
+    { label: "Generative Retrieval", aliases: ["generative retrieval", "generative item retrieval", "生成式检索", "生成检索"] },
+    { label: "Generative Ranking", aliases: ["generative ranking", "生成式排序", "生成排序"] },
+    {
+      label: "Semantic ID",
+      aliases: [
+        "semantic id",
+        "semantic ids",
+        "semantic identifier",
+        "semantic identifiers",
+        "item identifier",
+        "item identifiers",
+        "hierarchical identifier",
+        "hierarchical identifier recommendation",
+        "语义id",
+        "语义 id",
+        "语义标识",
+        "语义标识符"
+      ]
+    },
+    { label: "Semantic Tokenization", aliases: ["semantic token", "semantic tokens", "semantic tokenization", "语义token", "语义 token"] },
+    {
+      label: "Item Tokenization",
+      aliases: ["item tokenization", "item token", "item tokens", "discrete item token", "discrete token recommendation"]
+    },
+    { label: "Codebook", aliases: ["codebook", "codebook recommendation", "码本"] },
+    { label: "RQ-VAE", aliases: ["RQ-VAE", "RQVAE", "RQ-VAE recommendation", "residual quantization VAE"] },
+    { label: "VQ-VAE", aliases: ["VQ-VAE", "VQVAE", "VQ-VAE recommendation", "vector quantization VAE"] },
+    {
+      label: "Vector Quantization",
+      aliases: ["vector quantization", "vector quantization recommendation", "residual quantization", "residual quantization recommendation", "向量量化", "残差量化"]
+    },
+    { label: "Autoregressive Rec", aliases: ["autoregressive recommendation", "autoregressive recommender", "自回归推荐"] },
+    { label: "Sequential Recommendation", aliases: ["sequential recommendation", "next item recommendation", "序列推荐"] },
+    { label: "Session-based Recommendation", aliases: ["session-based recommendation", "session based recommendation", "会话推荐"] },
+    { label: "Conversational Recommendation", aliases: ["conversational recommendation", "dialogue recommendation", "对话推荐"] },
+    { label: "Interactive Recommendation", aliases: ["interactive recommendation", "交互式推荐"] },
+    { label: "Explainable Recommendation", aliases: ["explainable recommendation", "可解释推荐"] },
+    { label: "Personalized Recommendation", aliases: ["personalized recommendation", "personalised recommendation", "个性化推荐"] },
+    {
+      label: "RAG Recommendation",
+      aliases: [
+        "RAG recommendation",
+        "RAG recommender",
+        "RAG-based recommendation",
+        "retrieval augmented recommendation",
+        "retrieval augmented generation recommendation",
+        "检索增强推荐"
+      ]
+    },
+    { label: "Instruction Tuning", aliases: ["instruction tuning recommendation", "instruction tuning", "指令微调"] },
+    { label: "Prompt-based Recommendation", aliases: ["prompt-based recommendation", "prompt based recommendation", "prompt-based recommender"] },
+    {
+      label: "In-context Learning",
+      aliases: ["in-context learning recommendation", "in context learning recommendation", "zero-shot recommendation", "few-shot recommendation"]
+    },
+    { label: "User Modeling", aliases: ["LLM user modeling", "user preference modeling LLM", "user preference modeling", "用户建模", "偏好建模"] },
+    {
+      label: "Agent4Rec",
+      aliases: [
+        "Agent4Rec",
+        "agent recommendation",
+        "agent recommender",
+        "agentic recommendation",
+        "LLM agent recommendation",
+        "LLM agent recommender",
+        "recommendation agent",
+        "recommender agent",
+        "智能体推荐",
+        "推荐智能体"
+      ]
+    },
+    { label: "Multi-agent Recommendation", aliases: ["multi-agent recommendation", "multi-agent recommender", "多智能体推荐"] },
+    { label: "User Simulator", aliases: ["user simulator recommendation", "LLM user simulator", "用户模拟器", "用户模拟"] },
+    { label: "Tool-augmented Recommendation", aliases: ["tool-augmented recommendation", "工具增强推荐"] },
+    { label: "Planning Agent", aliases: ["planning recommendation agent", "规划推荐智能体"] },
+    { label: "Reasoning Agent", aliases: ["reasoning recommendation agent", "推理推荐智能体"] }
+  ].map(function (topic) {
+    return Object.assign({}, topic, {
+      aliases: topic.aliases.map(normalizeKeywordKey)
+    });
+  });
+  var CLOUD_LABEL_ALIASES = {
+    "generative rec": "Generative Recommendation",
+    "sequential rec": "Sequential Recommendation",
+    "conversational rec": "Conversational Recommendation",
+    "rag rec": "RAG Recommendation",
+    "general rec": "",
+    recsys: ""
+  };
+  var GENERIC_CLOUD_KEYS = {};
+  [
+    "RecSys",
+    "General Rec",
+    "recommender",
+    "recommenders",
+    "recommender system",
+    "recommender systems",
+    "recommend",
+    "recommendation",
+    "recommendations",
+    "recommendation system",
+    "recommendation systems",
+    "推荐",
+    "推荐系统"
+  ].forEach(function (value) {
+    GENERIC_CLOUD_KEYS[normalizeKeywordKey(value)] = true;
+  });
+  var DISPLAY_TAGS = [
+    "LLM4Rec",
+    "Semantic ID",
+    "Item Tokenization",
+    "Vector Quantization",
+    "Generative Rec",
+    "Generative Retrieval",
+    "Generative Ranking",
+    "RAG Rec",
+    "Agent4Rec",
+    "User Modeling",
+    "Sequential Rec",
+    "Conversational Rec",
+    "Online Eval",
+    "Benchmark",
+    "Dataset",
+    "Evaluation",
+    "General Rec"
+  ];
+  var DISPLAY_TAG_BY_KEY = {};
+  var DISPLAY_TAG_ALIASES = {};
+  var DISPLAY_TAG_PRIORITY = {};
+  DISPLAY_TAGS.forEach(function (label, index) {
+    DISPLAY_TAG_BY_KEY[normalizeKeywordKey(label)] = label;
+    DISPLAY_TAG_PRIORITY[label] = index;
+  });
+  [
+    ["RecSys", "General Rec"],
+    ["Recommendation", "General Rec"],
+    ["Recommendation System", "General Rec"],
+    ["Generative Recommendation", "Generative Rec"],
+    ["Sequential Recommendation", "Sequential Rec"],
+    ["Conversational Recommendation", "Conversational Rec"],
+    ["RAG Recommendation", "RAG Rec"],
+    ["Online A/B", "Online Eval"],
+    ["Online Evaluation", "Online Eval"]
+  ].forEach(function (pair) {
+    DISPLAY_TAG_ALIASES[normalizeKeywordKey(pair[0])] = pair[1];
+  });
 
   function App() {
     var state = React.useState(null);
@@ -51,20 +226,27 @@
       [marks]
     );
 
+    var includeKeywords = React.useMemo(
+      function () {
+        return ((payload && payload.interests) || {}).include_keywords || [];
+      },
+      [payload]
+    );
     var papers = React.useMemo(
       function () {
         return ((payload && payload.papers) || []).map(function (paper) {
           return Object.assign({}, paper, {
-            localMark: marks[paper.id] || paper.importance || "normal"
+            localMark: marks[paper.id] || paper.importance || "normal",
+            displayTags: paperDisplayTags(paper, includeKeywords)
           });
         });
       },
-      [payload, marks]
+      [payload, marks, includeKeywords]
     );
 
     var tags = React.useMemo(
       function () {
-        return unique(flatten(papers.map(function (paper) { return paper.tags || []; })));
+        return unique(flatten(papers.map(function (paper) { return paper.displayTags || []; })));
       },
       [papers]
     );
@@ -112,9 +294,9 @@
     );
     var keywordCloud = React.useMemo(
       function () {
-        return buildKeywordCloud(papers, ((payload && payload.interests) || {}).include_keywords || []);
+        return buildKeywordCloud(papers, includeKeywords);
       },
-      [papers, payload]
+      [papers, includeKeywords]
     );
     var filtered = React.useMemo(
       function () {
@@ -127,7 +309,8 @@
             (paper.affiliations || []).join(" "),
             paper.generated_summary,
             paper.venue,
-            (paper.tags || []).join(" ")
+            (paper.displayTags || []).join(" "),
+            paperKeywordLabels(paper, includeKeywords).join(" ")
           ]
             .join(" ")
             .toLowerCase();
@@ -135,14 +318,14 @@
             (!needle || haystack.indexOf(needle) >= 0) &&
             (archiveMonth === "All" || paperMonth(paper) === archiveMonth) &&
             (archiveDate === "All" || paperDate(paper) === archiveDate) &&
-            (tag === "All" || (paper.tags || []).indexOf(tag) >= 0) &&
+            (tag === "All" || (paper.displayTags || []).indexOf(tag) >= 0) &&
             (venue === "All" || displayVenue(paper) === venue) &&
             (importanceFilter === "All" || paper.localMark === importanceFilter) &&
             (abFilter === "All" || (paper.ab_test || "unknown") === abFilter)
           );
         });
       },
-      [papers, query, archiveMonth, archiveDate, tag, venue, importanceFilter, abFilter]
+      [papers, query, archiveMonth, archiveDate, tag, venue, importanceFilter, abFilter, includeKeywords]
     );
     var groupedPapers = React.useMemo(
       function () {
@@ -164,8 +347,9 @@
     }
 
     function selectKeyword(item) {
+      var tagLabel = canonicalDisplayTag(item.label);
       var matchingTag = tags.find(function (value) {
-        return value.toLowerCase() === item.label.toLowerCase();
+        return value.toLowerCase() === item.label.toLowerCase() || (tagLabel && value.toLowerCase() === tagLabel.toLowerCase());
       });
       if (matchingTag) {
         setTag(tag === matchingTag ? "All" : matchingTag);
@@ -299,6 +483,7 @@
   function PaperCard(props) {
     var paper = props.paper;
     var mark = paper.localMark || "normal";
+    var displayTags = paper.displayTags || paper.tags || [];
     return h(
       "article",
       { className: "paperCard mark-" + mark },
@@ -309,7 +494,7 @@
           "div",
           { className: "tagRow" },
           mark === "high" ? h("span", { className: "badge badgeImportant" }, "重要") : null,
-          (paper.tags || []).slice(0, 5).map(function (item) {
+          displayTags.slice(0, 5).map(function (item) {
             return h("span", { className: "badge", key: item }, item);
           })
         ),
@@ -509,21 +694,9 @@
     var labels = {};
 
     papers.forEach(function (paper) {
-      var text = [
-        paper.title,
-        paper.abstract,
-        paper.generated_summary,
-        paper.core_method,
-        (paper.tags || []).join(" ")
-      ]
-        .join(" ")
-        .toLowerCase();
       var seen = {};
-      (paper.tags || []).forEach(function (value) {
+      paperKeywordLabels(paper, includeKeywords).forEach(function (value) {
         addKeyword(value, seen, labels);
-      });
-      (includeKeywords || []).forEach(function (value) {
-        if (value && text.indexOf(String(value).toLowerCase()) >= 0) addKeyword(value, seen, labels);
       });
       Object.keys(seen).forEach(function (key) {
         counts[key] = (counts[key] || 0) + 1;
@@ -546,6 +719,114 @@
         level: Math.max(1, Math.min(5, Math.round(ratio * 4) + 1))
       });
     });
+  }
+
+  function paperDisplayTags(paper, includeKeywords) {
+    var labels = [];
+    var seen = {};
+    function addLabel(value) {
+      var label = canonicalDisplayTag(value);
+      var key = normalizeKeywordKey(label);
+      if (!label || !key || seen[key]) return;
+      seen[key] = true;
+      labels.push(label);
+    }
+
+    paperKeywordLabels(paper, includeKeywords).forEach(addLabel);
+    (paper.tags || []).forEach(addLabel);
+    if (paper.ab_test === "yes") addLabel("Online Eval");
+
+    var specificLabels = labels.filter(function (label) { return label !== "General Rec"; });
+    var finalLabels = specificLabels.length ? specificLabels : labels;
+    if (!finalLabels.length) finalLabels.push("General Rec");
+
+    return finalLabels
+      .slice()
+      .sort(function (left, right) {
+        var leftIndex = DISPLAY_TAG_PRIORITY[left] == null ? 999 : DISPLAY_TAG_PRIORITY[left];
+        var rightIndex = DISPLAY_TAG_PRIORITY[right] == null ? 999 : DISPLAY_TAG_PRIORITY[right];
+        return leftIndex - rightIndex || left.localeCompare(right);
+      })
+      .slice(0, 5);
+  }
+
+  function canonicalDisplayTag(value) {
+    var key = normalizeKeywordKey(value);
+    if (!key) return "";
+    if (Object.prototype.hasOwnProperty.call(DISPLAY_TAG_ALIASES, key)) return DISPLAY_TAG_ALIASES[key];
+    return DISPLAY_TAG_BY_KEY[key] || "";
+  }
+
+  function paperKeywordLabels(paper, includeKeywords) {
+    var text = paperKeywordText(paper);
+    var labels = [];
+    var seen = {};
+    function addLabel(value) {
+      var label = canonicalCloudLabel(value);
+      var key = normalizeKeywordKey(label);
+      if (!label || !key || seen[key]) return;
+      seen[key] = true;
+      labels.push(label);
+    }
+
+    CLOUD_TOPIC_GROUPS.forEach(function (topic) {
+      if (topic.aliases.some(function (alias) { return keywordTextIncludes(text, alias); })) addLabel(topic.label);
+    });
+    (paper.tags || []).forEach(addLabel);
+    (includeKeywords || []).forEach(function (value) {
+      var keyword = normalizeKeywordKey(value);
+      if (keyword && keywordTextIncludes(text, keyword)) addLabel(value);
+    });
+
+    return labels;
+  }
+
+  function paperKeywordText(paper) {
+    return normalizeKeywordKey(
+      [
+        paper.title,
+        paper.abstract,
+        paper.generated_summary,
+        paper.core_method,
+        paper.practical_value,
+        paper.ab_test_evidence,
+        arrayValues(paper.innovation_points).join(" "),
+        arrayValues(paper.experiment_results).join(" "),
+        arrayValues(paper.preference_signals).join(" "),
+        (paper.tags || []).join(" ")
+      ].join(" ")
+    );
+  }
+
+  function canonicalCloudLabel(value) {
+    var label = String(value || "").replace(/\s+/g, " ").trim();
+    var key = normalizeKeywordKey(label);
+    var topic;
+    if (!label || !key || GENERIC_CLOUD_KEYS[key]) return "";
+    if (Object.prototype.hasOwnProperty.call(CLOUD_LABEL_ALIASES, key)) return CLOUD_LABEL_ALIASES[key];
+    topic = CLOUD_TOPIC_GROUPS.find(function (item) {
+      return normalizeKeywordKey(item.label) === key || item.aliases.indexOf(key) >= 0;
+    });
+    return topic ? topic.label : label;
+  }
+
+  function normalizeKeywordKey(value) {
+    return String(value || "")
+      .toLowerCase()
+      .replace(/&/g, " and ")
+      .replace(/[-_/]+/g, " ")
+      .replace(/[^\w\u4e00-\u9fff]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function keywordTextIncludes(text, keyword) {
+    return Boolean(keyword && (" " + text + " ").indexOf(" " + keyword + " ") >= 0);
+  }
+
+  function arrayValues(value) {
+    if (Array.isArray(value)) return value;
+    return value ? [value] : [];
   }
 
   function addKeyword(value, seen, labels) {

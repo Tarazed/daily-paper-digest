@@ -33,7 +33,7 @@ def test_deepseek_chat_completion_payload(monkeypatch):
             {
                 "message": {
                     "content": json.dumps(
-                        {"summary": "这篇论文研究 LLM4Rec。", "tags": ["LLM4Rec", "RecSys"]}
+                        {"summary": "这篇论文研究 LLM4Rec。", "tags": ["LLM4Rec", "Sequential Rec"]}
                     )
                 }
             }
@@ -71,7 +71,8 @@ def test_deepseek_chat_completion_payload(monkeypatch):
     assert captured["body"]["model"] == "deepseek-v4-flash"
     assert captured["body"]["response_format"] == {"type": "json_object"}
     assert captured["body"]["thinking"] == {"type": "disabled"}
-    assert result["tags"] == ["LLM4Rec", "RecSys"]
+    assert "Semantic ID" in captured["body"]["messages"][0]["content"]
+    assert result["tags"] == ["LLM4Rec", "Sequential Rec"]
 
 
 def test_preference_scoring_payload(monkeypatch):
@@ -266,7 +267,7 @@ def test_analyze_papers_for_site_uses_analysis_model(monkeypatch):
             "ab_test_evidence": "摘要未提及线上 A/B 测试。",
             "limitations": ["需要阅读全文确认数据集。"],
             "practical_value": "可用于 LLM4Rec 方法设计参考。",
-            "tags": ["LLM4Rec", "RecSys"],
+            "tags": ["LLM4Rec", "Semantic ID"],
         }
 
     monkeypatch.setenv("DEEPSEEK_API_KEY", "secret")
@@ -295,6 +296,7 @@ def test_analyze_papers_for_site_uses_analysis_model(monkeypatch):
     assert paper.experiment_results == ["在序列推荐任务上优于基线"]
     assert paper.ab_test == "no"
     assert paper.analysis_basis == "full_text"
+    assert paper.tags == ["LLM4Rec", "Semantic ID"]
 
 
 def test_analyze_papers_for_site_parallel_applies_all_results(monkeypatch):
