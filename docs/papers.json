@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-18T05:40:08Z",
+  "generated_at": "2026-06-18T06:10:05Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
@@ -7,8 +7,8 @@
   },
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 2,
-    "analyzed": 8,
+    "reused": 6,
+    "analyzed": 4,
     "source": "web/public/papers.json"
   },
   "current_limit": 10,
@@ -130,6 +130,714 @@
   },
   "papers": [
     {
+      "id": "openalex:W4412889887",
+      "title": "Knowledge Graph Retrieval-Augmented Generation for LLM-based Recommendation",
+      "authors": [
+        "Shijie Wang",
+        "Wenqi Fan",
+        "Yue Feng",
+        "Lin Shanru",
+        "Xinyu Ma",
+        "Shuaiqiang Wang",
+        "Dawei Yin"
+      ],
+      "affiliations": [],
+      "published": "2025-01-01",
+      "updated": "2026-06-13T07:54:00.901334",
+      "abstract": "Shijie Wang, Wenqi Fan, Yue Feng, Lin Shanru, Xinyu Ma, Shuaiqiang Wang, Dawei Yin. Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers). 2025.",
+      "categories": [
+        "OpenAlex",
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.18653/v1/2025.acl-long.1317",
+      "pdf_url": "https://aclanthology.org/2025.acl-long.1317.pdf",
+      "doi": "10.18653/v1/2025.acl-long.1317",
+      "source": "OpenAlex",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "提出知识图谱检索增强生成框架，将外部知识图谱信息集成到大语言模型推荐系统中，以提升推荐准确性和可解释性。在多个数据集上验证了该方法优于现有基线。",
+      "core_method": "知识图谱检索增强生成框架，将知识图谱信息集成到大语言模型推荐中",
+      "innovation_points": [
+        "提出将知识图谱检索增强生成应用于LLM推荐",
+        "融合外部知识图谱提升推荐可解释性",
+        "在多个数据集上验证有效性"
+      ],
+      "experiment_results": [
+        "在多个数据集上验证了该方法优于现有基线"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "无全文，无法评估具体局限"
+      ],
+      "practical_value": "通过引入知识图谱信息，提升大语言模型推荐系统的准确性和可解释性，具有实际应用潜力",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "342f74b4556750d2",
+      "tags": [
+        "RecSys",
+        "LLM4Rec"
+      ],
+      "llm_score": 87,
+      "llm_score_rationale": "发表在顶会SIGIR 2025，符合高权重会议标准；聚焦LLM-based推荐与知识图谱增强生成，强相关Generative Rec；作者含Dawei Yin，来自百度，具有工业界背景",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 126,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2025-01-01"
+    },
+    {
+      "id": "dblp:conf/www/LiuZHZZZ26",
+      "title": "Facilitating Generative Retrieval with Logical Denoising for Interpretable Conversational Search",
+      "authors": [
+        "Qichuan Liu",
+        "Chentao Zhang",
+        "Yuxuan Hu",
+        "Chenfeng Zheng",
+        "Qinggang Zhang",
+        "Zhihong Zhang"
+      ],
+      "affiliations": [
+        "Xiamen University",
+        "Hong Kong Polytechnic University"
+      ],
+      "published": "2026-04-09",
+      "updated": "2026-06-11T09:08:48.828518",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792544",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792544",
+      "doi": "10.1145/3774904.3792544",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出通过逻辑去噪增强生成式检索，实现可解释的对话式搜索。",
+      "core_method": "逻辑去噪增强的生成式检索方法用于可解释对话式搜索。",
+      "innovation_points": [
+        "将逻辑去噪引入生成式检索以提升可解释性",
+        "针对对话式搜索场景设计"
+      ],
+      "experiment_results": [
+        "论文未提供具体实验结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏实验验证",
+        "方法描述不完整"
+      ],
+      "practical_value": "可提升对话式搜索系统的可解释性与检索质量。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "a685fd73664b89d5",
+      "tags": [
+        "Generative Rec",
+        "Conversational Rec",
+        "RecSys"
+      ],
+      "llm_score": 68,
+      "llm_score_rationale": "WWW顶会论文，标题明确涉及Generative Retrieval，与生成式推荐强相关；作者单位不是知名互联网公司，无工业界A/B实验证据；摘要缺失，无法判断是否有在线实验或工业实践内容",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 122,
+      "display_affiliations": [
+        "Xiamen University",
+        "Hong Kong Polytechnic University"
+      ],
+      "published_date": "2026-04-09"
+    },
+    {
+      "id": "dblp:conf/www/ZengQLLLCB26",
+      "title": "RAIE: Region-Aware Incremental Preference Editing with LoRA for LLM-based Recommendation",
+      "authors": [
+        "Jin Zeng",
+        "Yupeng Qi",
+        "Hui Li",
+        "Chengming Li",
+        "Ziyu Lyu",
+        "Lixin Cui",
+        "Lu Bai"
+      ],
+      "affiliations": [
+        "Shenzhen University"
+      ],
+      "published": "2026-04-12",
+      "updated": "2026-06-11T09:08:48.828518",
+      "abstract": "Large language models (LLMs) are increasingly adopted as the backbone of recommender systems. However, user–item interactions in real-world scenarios are non-stationary, making preference drift over time inevitable. Existing model update strategies mainly rely on global fine-tuning or pointwise editing, but they face two fundamental challenges: (i) imbalanced update granularity, where global updates perturb behaviors unrelated to the target while pointwise edits fail to capture broader preference shifts; (ii) unstable incremental updates, where repeated edits interfere with prior adaptations, leading to catastrophic forgetting and inconsistent recommendations. To address these issues, we propose Region-Aware Incremental Editing (RAIE), a plug-in framework that freezes the backbone model and performs region-level updates. RAIE first constructs semantically coherent preference regions via spherical k-means in the representation space. It then assigns incoming sequences to regions via confidence-aware gating and performs three localized edit operations-Update, Expand, and Add-to dynamically revise the affected region. Each region is equipped with a dedicated Low-Rank Adaptation (LoRA) module, which is trained only on the region's updated data. During inference, RAIE routes each user sequence to its corresponding region and activates the region-specific adapter for prediction. Experiments on two benchmark datasets under a time-sliced protocol that segments data into Set-up (S), Finetune (F), and Test (T) show that RAIE significantly outperforms state-of-the-art baselines while effectively mitigating forgetting. These results demonstrate that region-aware editing offers an accurate and scalable mechanism for continual adaptation in dynamic recommendation scenarios.",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792451",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792451",
+      "doi": "10.1145/3774904.3792451",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "针对LLM推荐系统中用户偏好随时间漂移的问题，提出区域感知的增量编辑框架RAIE，通过球形k均值构建语义偏好区域，利用置信门控分配序列并进行局部编辑（更新/扩展/新增），每个区域配备独立LoRA模块，在时间切片协议下有效缓解灾难性遗忘并提升推荐性能。",
+      "core_method": "基于球形k均值的区域感知增量编辑框架，结合置信门控和区域专属LoRA模块，动态修订偏好区域以适应偏好漂移。",
+      "innovation_points": [
+        "提出区域感知的增量编辑机制，解决全局微调与点编辑的更新粒度失衡问题。",
+        "通过球形k均值构建语义连贯的偏好区域，并设计Update、Expand、Add三种局部编辑操作动态调整区域。",
+        "每个区域配备独立LoRA模块，仅用区域更新数据训练，降低遗忘并提升增量更新稳定性。"
+      ],
+      "experiment_results": [
+        "在两个基准数据集的时间切片协议下，RAIE显著优于现有基线方法，有效缓解灾难性遗忘，但具体评价指标未在元数据中提供。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "元数据未明确报告模型的复杂度或推理延迟，对大规模工业应用的实际效率不明确。",
+        "仅在两个基准数据集上验证，泛化能力可能受限。"
+      ],
+      "practical_value": "为动态推荐场景提供了一种可扩展的增量更新方案，能在保持模型稳定的同时适应偏好漂移，具有工程化潜力。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "4717991e02e30c0e",
+      "tags": [
+        "LLM4Rec",
+        "Sequential Rec",
+        "RecSys"
+      ],
+      "llm_score": 85,
+      "llm_score_rationale": "发表在顶级会议WWW，满足优先级2；研究LLM-based推荐，与生成式推荐相关；作者单位包含985高校，但非明确知名互联网公司，部分作者来自深圳北理莫斯科大学、中央财经大学等，无工业界证据",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 118,
+      "display_affiliations": [
+        "Shenzhen University"
+      ],
+      "published_date": "2026-04-12"
+    },
+    {
+      "id": "openalex:W4409365832",
+      "title": "Harnessing Multimodal Large Language Models for Multimodal Sequential Recommendation",
+      "authors": [
+        "Yuyang Ye",
+        "Zhi Zheng",
+        "Yishan Shen",
+        "Tianshu Wang",
+        "Hengruo Zhang",
+        "Peijun Zhu",
+        "Runlong Yu",
+        "Kai Zhang",
+        "Hui Xiong"
+      ],
+      "affiliations": [
+        "Rutgers University",
+        "University of Science and Technology of China",
+        "University of Pennsylvania",
+        "Bytedance Inc",
+        "Georgia Institute of Technology",
+        "University of Pittsburgh"
+      ],
+      "published": "2025-04-11",
+      "updated": "2026-06-16T09:24:06.705377",
+      "abstract": "Recent advances in Large Language Models (LLMs) have demonstrated significant potential in the field of Recommendation Systems (RSs). Most existing studies have focused on converting user behavior logs into textual prompts and leveraging techniques such as prompt tuning to enable LLMs for recommendation tasks. Meanwhile, research interest has recently grown in multimodal recommendation systems that integrate data from images, text, and other sources using modality fusion techniques. This introduces new challenges to the existing LLM-based recommendation paradigm which relies solely on text modality information. Moreover, although Multimodal Large Language Models (MLLMs) capable of processing multi-modal inputs have emerged, how to equip MLLMs with multi-modal recommendation capabilities remains largely unexplored. To this end, in this paper, we propose the Multimodal Large Language Model-enhanced Sequential Multimodal Recommendation (MLLM-MSR) model. To capture the dynamic user preference, we design a two-stage user preference summarization method. Specifically, we first utilize an MLLM-based item-summarizer to extract image feature given an item and convert the image into text. Then, we employ a recurrent user preference summarization generation paradigm to capture the dynamic changes in user preferences based on an LLM-based user-summarizer. Finally, to enable the MLLM for multi-modal recommendation task, we propose to fine-tune a MLLM-based recommender using Supervised Fine-Tuning (SFT) techniques. Extensive evaluations across various datasets validate the effectiveness of MLLM-MSR, showcasing its superior ability to capture and adapt to the evolving dynamics of user preferences.",
+      "categories": [
+        "OpenAlex",
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1609/aaai.v39i12.33426",
+      "pdf_url": "https://ojs.aaai.org/index.php/AAAI/article/download/33426/35581",
+      "doi": "10.1609/aaai.v39i12.33426",
+      "source": "OpenAlex",
+      "status": "conference",
+      "venue": "Proceedings of the AAAI Conference on Artificial Intelligence",
+      "venue_key": "SIGIR",
+      "generated_summary": "本文提出MLLM-MSR模型，利用多模态大语言模型增强序列推荐。通过两阶段方法：先使用MLLM从物品图像提取特征并转为文本描述，再利用LLM循环生成用户偏好摘要以捕捉动态偏好变化，最后通过监督微调使MLLM具备多模态推荐能力。",
+      "core_method": "两阶段用户偏好总结：MLLM物品摘要器将图像转为文本，LLM用户摘要器循环生成动态偏好摘要，然后对MLLM推荐器进行监督微调。",
+      "innovation_points": [
+        "首次探索将MLLM应用于多模态序列推荐，融合图像和文本等多模态信息。",
+        "设计两阶段用户偏好总结方法，动态捕捉用户兴趣演变。",
+        "通过监督微调直接将MLLM适配为多模态推荐器。"
+      ],
+      "experiment_results": [
+        "在多个数据集上的实验验证了MLLM-MSR的有效性，展示了其捕捉和适应用户偏好动态变化的优越能力。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未明确报告模型训练和推理的计算开销。",
+        "缺乏与其他多模态推荐方法的详细对比分析。"
+      ],
+      "practical_value": "为多模态序列推荐提供了一种基于MLLM的新框架，能有效融合视觉和文本信息，捕捉用户动态偏好，具有实际应用潜力。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "0e9acab4196dccec",
+      "tags": [
+        "RecSys",
+        "Sequential Rec",
+        "LLM4Rec"
+      ],
+      "llm_score": 65,
+      "llm_score_rationale": "发表在AAAI顶会，有较高学术可信度；涉及LLM用于多模态推荐，与生成式推荐相关；作者单位含Bytedance Inc，有工业界背景",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 118,
+      "display_affiliations": [
+        "Rutgers University",
+        "University of Science and Technology of China",
+        "University of Pennsylvania",
+        "Bytedance Inc",
+        "Georgia Institute of Technology",
+        "University of Pittsburgh"
+      ],
+      "published_date": "2025-04-11"
+    },
+    {
+      "id": "dblp:conf/www/LiuFYWGH26",
+      "title": "LLM-Driven Semantic ID for Information Diffusion Prediction",
+      "authors": [
+        "Haoshuang Liu",
+        "Zihan Feng",
+        "Yajun Yang",
+        "Xin Wang",
+        "Hong Gao",
+        "Qinghua Hu"
+      ],
+      "affiliations": [],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792652",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792652",
+      "doi": "10.1145/3774904.3792652",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出利用LLM生成语义ID以改进信息扩散预测，利用语言模型增强序列表示，在WWW会议发表。",
+      "core_method": "利用LLM生成语义ID来增强信息扩散预测的序列表示。",
+      "innovation_points": [
+        "首次将LLM生成的语义ID用于信息扩散预测任务",
+        "通过语言模型增强序列表示，提升预测性能"
+      ],
+      "experiment_results": [
+        "论文未提供具体实验结果或评测结论"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏实验验证，方法有效性未知",
+        "仅基于元数据推断，细节不足"
+      ],
+      "practical_value": "若语义ID能有效捕获信息扩散模式，可为推荐系统的信息传播建模提供新思路",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "7d58c24b0b362531",
+      "tags": [
+        "LLM4Rec",
+        "Sequential Rec"
+      ],
+      "llm_score": 0,
+      "llm_score_rationale": "",
+      "preference_signals": [],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 117,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026"
+    },
+    {
+      "id": "arxiv:2606.17707",
+      "title": "Do Generative Recommenders Deepen the Information Cocoon? A Closed-Loop Simulation with LLM-powered User Simulators",
+      "authors": [
+        "Jiyuan Yang",
+        "Gengxin Sun",
+        "Mengqi Zhang",
+        "Lingjie Wang",
+        "Yuanzi Li",
+        "Hongxi Cui",
+        "Xin Xin",
+        "Pengjie Ren"
+      ],
+      "affiliations": [
+        "Shandong University",
+        "Renmin University of China"
+      ],
+      "published": "2026-06-16T09:17:46Z",
+      "updated": "2026-06-16T09:17:46Z",
+      "abstract": "Recommender systems alleviate information overload, yet repeated feedback between recommendations and user interactions can reinforce existing preferences and narrow users' exposure, forming information cocoons. While this phenomenon has been widely studied in traditional sequential recommendation, its impact on generative recommendation remains unclear. By replacing atomic item IDs with Semantic ID (SID) sequences, generative recommenders introduce a different recommendation mechanism whose role in information cocoon formation is not yet understood. To investigate whether generative recommenders deepen information cocoons, we propose \\textsc{RecLoop}, a closed-loop simulation framework with LLM-driven user agents. We compare two generative recommenders and two traditional sequential baselines on two Amazon datasets across multiple feedback cycles. In addition to standard exposure-level metrics, we introduce \\emph{Code-Space Structural Cocoon}, a model-level metric that measures concentration in the generated SID space. Experimental results show that generative recommenders are generally less prone to exposure-level cocoon formation than traditional baselines, preserving broader exposure diversity and slowing cross-user homogenization. However, feedback loops can still induce concentration within the generated SID space. We further find that cocoon severity depends strongly on tokenization strategy and model scale: collaborative-signal tokenization produces stronger cocoon effects than semantic tokenization, whereas larger models maintain greater code-space diversity and better retain access to niche content. These findings suggest that information cocoons in generative recommendation are shaped not only by recommendation behavior, but also by item tokenization and model capacity. Our code is available at https://github.com/Dregen-Yor/RecLoop.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.17707v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.17707v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "该论文提出RecLoop闭环仿真框架，利用LLM驱动的用户代理探究生成式推荐是否加深信息茧房。实验表明生成式推荐在曝光层面比传统方法更少形成茧房，但反馈循环会在语义ID空间中引发集中，且茧房程度受标记化策略和模型规模显著影响。",
+      "core_method": "通过LLM用户模拟器构建闭环仿真框架RecLoop，结合曝光层面和码空间结构性茧房新指标，对比生成式与传统推荐在多轮反馈下的信息茧房效应。",
+      "innovation_points": [
+        "提出RecLoop闭环仿真框架，首次系统研究生成式推荐场景下的信息茧房现象。",
+        "引入码空间结构性茧房指标，从模型内部表示度量集中度。",
+        "揭示标记化策略和模型规模对生成式推荐信息茧房的关键影响。"
+      ],
+      "experiment_results": [
+        "生成式推荐器在曝光层面茧房指标上普遍优于传统基线，暴露多样性更高，跨用户同质化更慢。",
+        "反馈循环仍导致生成式推荐的码空间集中度上升，出现结构性茧房。",
+        "协同信号标记化比语义标记化产生更强的茧房效应，而更大模型保持更好的码空间多样性和长尾内容可达性。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试",
+      "limitations": [
+        "用户模拟器基于LLM，其行为可能与真实用户存在差异，影响结论的生态效度。",
+        "实验仅涉及两个Amazon数据集和有限模型，在更多领域和更大规模场景下的泛化性待验证。"
+      ],
+      "practical_value": "为生成式推荐系统的设计提供了关键洞见，表明通过选择合适的标记化和扩大模型规模可缓解码空间茧房，有助于构建更开放的推荐生态。",
+      "analysis_basis": "full_text",
+      "analysis_status": "cached",
+      "analysis_signature": "01fa9dec7c5f2758",
+      "tags": [
+        "RecSys",
+        "Generative Rec",
+        "LLM4Rec",
+        "Evaluation"
+      ],
+      "llm_score": 72,
+      "llm_score_rationale": "论文直接研究生生成式推荐与信息茧房，包含语义ID和tokenization策略，与生成式推荐/语义ID主题高度相关。；虽在arXiv发表，无线上A/B实验，但使用了封闭循环仿真和多个Amazon数据集，提供了有价值的离线分析。；作者单位未标明知名互联网公司，缺乏工业界信号。",
+      "preference_signals": [
+        "Generative Rec / Semantic ID",
+        "arXiv preprint"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 114,
+      "display_affiliations": [
+        "Shandong University",
+        "Renmin University of China"
+      ],
+      "published_date": "2026-06-16"
+    },
+    {
+      "id": "s2:0a1962ecebef19728509014eed8c625d38f03deb",
+      "title": "Reassessing the Effectiveness of Reinforcement Learning based Recommender Systems for Sequential Recommendation",
+      "authors": [],
+      "affiliations": [
+        "Trinity College Dublin",
+        "University of Klagenfurt"
+      ],
+      "published": "2025-07-13",
+      "updated": "2025-07-13",
+      "abstract": "Over the past few years, researchers have explored the use of reinforcement learning (RL) for sequential recommendation problems. However, since RL techniques commonly target at optimizing long-term rewards, it is surprising that RL-based models are reported to be competitive with traditional supervised models when evaluated under the myopic next-item prediction protocol. A recent study suggests that reported performance gains of combining RL with supervised learning techniques, as done in the Self-Supervised Q-Learning (SQN) framework, may actually not come from learning an optimal policy, but that the RL component helps to learn embeddings that encode the users' past interactions. Given these observations, we aimed to reassess the performance of RL-enhanced sequential recommendations in the SQN framework. While we were able to reproduce the results reported in the respective papers, we found that properly-tuned supervised learning models like GRU4Rec substantially outperform the proposed RL-models from the literature. Our analyses furthermore revealed that there is a significant inconsistency in terms of evaluation protocols in the literature, and that the use of third-party implementations of existing models may lead to unreliable conclusions. Overall, still more research and alternative evaluation schemes seem required to fully leverage the power of RL for sequential recommendation tasks.",
+      "categories": [
+        "Semantic Scholar",
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://www.semanticscholar.org/paper/0a1962ecebef19728509014eed8c625d38f03deb",
+      "pdf_url": "https://www.semanticscholar.org/paper/0a1962ecebef19728509014eed8c625d38f03deb",
+      "doi": "10.1145/3726302.3730322",
+      "source": "Semantic Scholar",
+      "status": "conference",
+      "venue": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+      "venue_key": "SIGIR",
+      "generated_summary": "本研究重新评估了强化学习在序列推荐中的有效性，发现调参后的监督模型（如GRU4Rec）显著优于现有的RL模型。同时揭示了文献中评估协议的不一致性和第三方实现导致的不可靠结论。",
+      "core_method": "通过复现和重新评估SQN等RL增强序列推荐模型，并与调参后的监督基线进行公平对比，分析评估协议不一致性。",
+      "innovation_points": [
+        "对RL在序列推荐中的有效性提出系统性质疑，指出先前收益可能源自表征学习而非最优策略",
+        "揭示文献中评估协议的不一致性和第三方实现带来的不可靠结论",
+        "呼吁需要更多研究和替代评估方案以充分利用RL"
+      ],
+      "experiment_results": [
+        "调参后的GRU4Rec显著优于SQN等RL模型",
+        "复现了原文结果，但发现优越性在公平对比下消失",
+        "存在评估协议不一致导致结论不可靠的问题"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "仅基于SQN框架进行分析，未涵盖所有RL推荐方法",
+        "未提出新的解决方案，主要进行问题揭示"
+      ],
+      "practical_value": "提醒研究者和实践者审慎对待RL在序列推荐中的性能声明，强调公平比较和评估协议的重要性。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "3cc60dca6ffeb2b6",
+      "tags": [
+        "Sequential Rec",
+        "Evaluation",
+        "RecSys"
+      ],
+      "llm_score": 65,
+      "llm_score_rationale": "发表在顶级会议SIGIR，具有较高可信度；研究重新评估强化学习在序列推荐中的应用，与生成式推荐无关，但属于推荐系统领域；作者单位未知，没有明确的工业界公司信息",
+      "preference_signals": [
+        "Top venue",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 112,
+      "display_affiliations": [
+        "Trinity College Dublin",
+        "University of Klagenfurt"
+      ],
+      "published_date": "2025-07-13"
+    },
+    {
+      "id": "dblp:conf/www/LiJLWLYZZX26",
+      "title": "Explaining Synergistic Effects in Social Recommendations",
+      "authors": [
+        "Yicong Li",
+        "Shan Jin",
+        "Qi Liu",
+        "Shuo Wang",
+        "Jiaying Liu",
+        "Shuo Yu",
+        "Qiang Zhang",
+        "Kuanjiu Zhou",
+        "Feng Xia"
+      ],
+      "affiliations": [
+        "Dalian University of Technology",
+        "RMIT University, Melbourne, Australia"
+      ],
+      "published": "2026-04-12",
+      "updated": "2026-06-11T09:08:48.828518",
+      "abstract": "In social recommenders, the inherent nonlinearity and opacity of synergistic effects across multiple social networks hinders users from understanding how diverse information is leveraged for recommendations, consequently diminishing explainability. However, existing explainers can only identify the topological information in social networks that significantly influences recommendations, failing to further explain the synergistic effects among this information. Inspired by existing findings that synergistic effects enhance mutual information between inputs and predictions to generate information gain, we extend this discovery to graph data. We quantify graph information gain to identify subgraphs embodying synergistic effects. Based on the theoretical insights, we propose SemExplainer, which explains synergistic effects by identifying subgraphs that embody them. SemExplainer first extracts explanatory subgraphs from multi-view social networks to generate preliminary importance explanations for recommendations. A conditional entropy optimization strategy to maximize information gain is developed, thereby further identifying subgraphs that embody synergistic effects from explanatory subgraphs. Finally, SemExplainer searches for paths from users to recommended items within the synergistic subgraphs to generate explanations for the recommendations. Extensive experiments on three datasets demonstrate the superiority of SemExplainer over baseline methods, providing superior explanations of synergistic effects. The implementation is available at https://github.com/yushuowiki/SemExplainer.",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792174",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792174",
+      "doi": "10.1145/3774904.3792174",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "论文提出 SemExplainer，通过量化图信息增益识别多社交网络中体现协同效应的子图，用于生成可解释的推荐；采用条件熵优化策略最大化信息增益，并搜索路径为用户推荐提供协同效应解释。",
+      "core_method": "基于图信息增益量化，通过条件熵优化识别多社交网络中的协同效应子图并生成路径解释。",
+      "innovation_points": [
+        "首次将协同效应的信息增益理论扩展到图数据，量化图信息增益以识别协同子图",
+        "提出条件熵优化策略最大化信息增益，用于提取关键协同子图",
+        "在多社交网络视角下生成从用户到推荐项的路径解释，揭示协同效应"
+      ],
+      "experiment_results": [
+        "基于元数据，仅知在三个数据集上进行了实验，SemExplainer 优于基线方法，但具体指标和数据集未提供。",
+        "实验评估了协同效应解释的优越性，但没有提供详细评测结论。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "元数据未提供具体实验指标和数据集细节，无法评估实际效果范围",
+        "未讨论协同效应解释的稳定性和对大规模动态社交网络的适用性"
+      ],
+      "practical_value": "为社交推荐系统提供可解释的协同效应分析，有助于提升推荐透明度和用户信任。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "d060290448123ae7",
+      "tags": [
+        "RecSys",
+        "Evaluation"
+      ],
+      "llm_score": 60,
+      "llm_score_rationale": "发表在顶级会议 WWW，符合高权重偏好；与生成式推荐、语义ID、大模型推荐无关，但涉及社交推荐的可解释性；作者单位非知名互联网公司，未提及线上 A/B 实验",
+      "preference_signals": [
+        "Top venue"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 109,
+      "display_affiliations": [
+        "Dalian University of Technology",
+        "RMIT University, Melbourne, Australia"
+      ],
+      "published_date": "2026-04-12"
+    },
+    {
+      "id": "dblp:conf/www/ZhuCJYWCZ26",
+      "title": "FeedGuard: Online Critic-Guided Reinforcement Learning with Privacy-Preserving Feedback for Recommendation",
+      "authors": [
+        "Mengying Zhu",
+        "Feiyue Chen",
+        "Lifan Jiang",
+        "Mengyuan Yang",
+        "Yangyang Wu",
+        "Guanjie Cheng",
+        "Xiaolin Zheng"
+      ],
+      "affiliations": [
+        "Zhejiang University",
+        "Ningbo University"
+      ],
+      "published": "2026-04-12",
+      "updated": "2026-06-11T09:08:48.828518",
+      "abstract": "Reinforcement learning-based recommendation systems (RLRS) are increasingly favored for their ability to leverage online interactive feedback, enabling adaptive and personalized decision-making. In this setting, user feedback serves as both a behavioral signal and an optimization target, making it essential for policy learning. However, collecting such feedback, e.g., clicks, ratings, and engagement traces, raises serious privacy concerns, posing critical challenges for value estimation, online adaptation, and privacy protection. In this paper, we propose FeedGuard, a critic-guided reinforcement learning framework with privacy-preserving feedback. FeedGuard enhances trajectory modeling via critic guidance, enables joint online fine-tuning with effective exploration–exploitation tradeoffs, and enforces end-to-end privacy protection across the feedback lifecycle via split federated learning and differential privacy. We further provide a formal analysis of its differential privacy guarantees. Extensive experiments on four public recommendation datasets and the VirtualTB platform show that FeedGuard performs well in both offline and online settings, while maintaining rigorous privacy guarantees with minimal degradation.",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792155",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792155",
+      "doi": "10.1145/3774904.3792155",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出FeedGuard，一种结合评论指导的隐私保护强化学习推荐框架。它通过评论引导增强轨迹建模，利用分裂联邦学习与差分隐私实现端到端隐私保护，并优化在线探索-利用平衡。实验在多个数据集及虚拟平台上验证了其在离线与在线场景下的有效性与隐私保障。",
+      "core_method": "结合评论引导的轨迹建模与差分隐私的分裂联邦学习，在强化学习框架下实现推荐策略的隐私保护在线优化。",
+      "innovation_points": [
+        "提出评论引导的轨迹建模方法，提升强化学习推荐中的状态表示质量",
+        "设计分裂联邦学习与差分隐私结合的端到端隐私保护机制，覆盖反馈全生命周期",
+        "在隐私约束下实现联合在线微调与探索-利用平衡"
+      ],
+      "experiment_results": [
+        "在四个公共推荐数据集和VirtualTB平台上验证了FeedGuard的离线与在线性能，表现良好且隐私保护严格，性能退化极小"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "差分隐私保护下性能仍有轻微退化",
+        "在线评估仅在虚拟平台进行，缺乏真实环境大规模A/B测试验证"
+      ],
+      "practical_value": "为隐私敏感的推荐系统提供了一种端到端的隐私保护强化学习方案，适用于需要严格隐私保障的在线交互场景。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "3e930ea0aad3553b",
+      "tags": [
+        "RecSys",
+        "LLM4Rec",
+        "Agent4Rec",
+        "Sequential Rec"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "发表于顶级会议WWW，符合高分权重。；摘要明确包含线上线下实验，但未提及工业界线上A/B测试或在线流量，无工业公司证据。；研究内容为强化学习推荐系统，与生成式推荐/语义ID不直接相关，无LLM4Rec信号。",
+      "preference_signals": [
+        "Top venue",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 109,
+      "display_affiliations": [
+        "Zhejiang University",
+        "Ningbo University"
+      ],
+      "published_date": "2026-04-12"
+    },
+    {
+      "id": "dblp:conf/www/QiuXHPW26",
+      "title": "Meta-Learning Driven Few-Shot Knowledge Transfer with Dual-Stage Adaptive Data Replay for Cross-Domain Recommendation",
+      "authors": [
+        "Yilei Qiu",
+        "Fei Xiong",
+        "Jun Hu",
+        "Shirui Pan",
+        "Liang Wang"
+      ],
+      "affiliations": [
+        "Beijing Jiaotong University",
+        "University of Chinese Academy of Sciences",
+        "Institute of Software",
+        "Griffith University",
+        "Northwestern Polytechnical University"
+      ],
+      "published": "2026-04-12",
+      "updated": "2026-06-11T09:08:48.828518",
+      "abstract": "Cross-domain recommendation (CDR) has emerged as a promising solution by effectively alleviating data sparsity by leveraging information from auxiliary domains. However, a major challenge in CDR is its dependence on predefined alignment rules (e.g., structural or distribution matching) to achieve cross-domain knowledge transfer, which impose fixed transfer patterns and lack the flexibly need for diverse cross-domain scenarios. Furthermore, most existing approaches still rely on coarse-grained representations. Knowledge transfer built upon imprecise representations can, even with improved alignment rules, instead lead to negative transfer in the target domain. To address these challenges and optimize recommendation efficacy, a new framework named meta-learning driven few-shot knowledge transfer with dual-stage adaptive data replay for cross-domain recommendation (MFACDR) is proposed. Specifically, a new meta-learning driven few-shot knowledge transfer method is proposed. This method leverages overlapping parts as anchors to guide the non-overlapping parts in autonomously exploring alignment rules through meta-learning, thus enabling few-shot knowledge transfer and flexible handling of different cross-domain scenarios. In addition, a dual-stage adaptive data replay mechanism is proposed, which enables fine-grained cross-domain adaptability and helps to mitigate negative transfer. Extensive experiments on three real-world datasets consistently demonstrate the superior effectiveness and robustness of the proposed MFACDR.",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792443",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792443",
+      "doi": "10.1145/3774904.3792443",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "针对跨域推荐中固定对齐规则不灵活和粗粒度表示导致的负迁移问题，提出MFACDR框架，采用元学习驱动的少样本知识转移和双阶段自适应数据重放机制，实现灵活的知识迁移与细粒度跨域适应。实验表明该方法在多个真实数据集上优于现有方法。",
+      "core_method": "基于元学习的少样本知识转移与双阶段自适应数据重放，利用重叠用户作为锚点指导非重叠部分自主探索对齐规则，实现灵活跨域知识迁移。",
+      "innovation_points": [
+        "提出元学习驱动的少样本知识转移方法，利用重叠用户作为锚点，使非重叠部分自主探索对齐规则，无需预定义固定规则。",
+        "设计双阶段自适应数据重放机制，实现细粒度跨域适应，缓解负迁移问题。"
+      ],
+      "experiment_results": [
+        "在三个真实数据集上的实验一致表明MFACDR在有效性和鲁棒性上优于现有方法。",
+        "具体的性能指标和对比基线未提供。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏对模型复杂度和计算开销的分析。",
+        "未讨论冷启动或实时更新场景下的性能。"
+      ],
+      "practical_value": "该方法提供了灵活且细粒度的跨域知识迁移机制，有助于缓解推荐系统中的数据稀疏问题，并减少负迁移风险。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "ab827199ff1a327f",
+      "tags": [
+        "RecSys"
+      ],
+      "llm_score": 70,
+      "llm_score_rationale": "发表在WWW顶会，会议质量高；作者单位包含中国科学院软件研究所，属于国内知名科研机构，但非所列互联网公司；主要研究跨域推荐和元学习，与生成式推荐/语义ID关联不强",
+      "preference_signals": [
+        "Top venue",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 109,
+      "display_affiliations": [
+        "Beijing Jiaotong University",
+        "University of Chinese Academy of Sciences",
+        "Institute of Software",
+        "Griffith University",
+        "Northwestern Polytechnical University"
+      ],
+      "published_date": "2026-04-12"
+    },
+    {
       "id": "dblp:conf/www/YuFLZWLWZW26",
       "title": "ThinkRec: Thinking-based recommendation via LLM",
       "authors": [
@@ -205,425 +913,6 @@
         "Zhejiang University, Hangzhou, China and Shanghai AI Laboratory, Shanghai, China"
       ],
       "published_date": "2026-04-09"
-    },
-    {
-      "id": "dblp:conf/www/ZengQLLLCB26",
-      "title": "RAIE: Region-Aware Incremental Preference Editing with LoRA for LLM-based Recommendation",
-      "authors": [
-        "Jin Zeng",
-        "Yupeng Qi",
-        "Hui Li",
-        "Chengming Li",
-        "Ziyu Lyu",
-        "Lixin Cui",
-        "Lu Bai"
-      ],
-      "affiliations": [
-        "Shenzhen University"
-      ],
-      "published": "2026-04-12",
-      "updated": "2026-06-11T09:08:48.828518",
-      "abstract": "Large language models (LLMs) are increasingly adopted as the backbone of recommender systems. However, user–item interactions in real-world scenarios are non-stationary, making preference drift over time inevitable. Existing model update strategies mainly rely on global fine-tuning or pointwise editing, but they face two fundamental challenges: (i) imbalanced update granularity, where global updates perturb behaviors unrelated to the target while pointwise edits fail to capture broader preference shifts; (ii) unstable incremental updates, where repeated edits interfere with prior adaptations, leading to catastrophic forgetting and inconsistent recommendations. To address these issues, we propose Region-Aware Incremental Editing (RAIE), a plug-in framework that freezes the backbone model and performs region-level updates. RAIE first constructs semantically coherent preference regions via spherical k-means in the representation space. It then assigns incoming sequences to regions via confidence-aware gating and performs three localized edit operations-Update, Expand, and Add-to dynamically revise the affected region. Each region is equipped with a dedicated Low-Rank Adaptation (LoRA) module, which is trained only on the region's updated data. During inference, RAIE routes each user sequence to its corresponding region and activates the region-specific adapter for prediction. Experiments on two benchmark datasets under a time-sliced protocol that segments data into Set-up (S), Finetune (F), and Test (T) show that RAIE significantly outperforms state-of-the-art baselines while effectively mitigating forgetting. These results demonstrate that region-aware editing offers an accurate and scalable mechanism for continual adaptation in dynamic recommendation scenarios.",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792451",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792451",
-      "doi": "10.1145/3774904.3792451",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "针对LLM推荐系统中用户偏好随时间漂移的问题，提出区域感知的增量编辑框架RAIE，通过球形k均值构建语义偏好区域，利用置信门控分配序列并进行局部编辑（更新/扩展/新增），每个区域配备独立LoRA模块，在时间切片协议下有效缓解灾难性遗忘并提升推荐性能。",
-      "core_method": "基于球形k均值的区域感知增量编辑框架，结合置信门控和区域专属LoRA模块，动态修订偏好区域以适应偏好漂移。",
-      "innovation_points": [
-        "提出区域感知的增量编辑机制，解决全局微调与点编辑的更新粒度失衡问题。",
-        "通过球形k均值构建语义连贯的偏好区域，并设计Update、Expand、Add三种局部编辑操作动态调整区域。",
-        "每个区域配备独立LoRA模块，仅用区域更新数据训练，降低遗忘并提升增量更新稳定性。"
-      ],
-      "experiment_results": [
-        "在两个基准数据集的时间切片协议下，RAIE显著优于现有基线方法，有效缓解灾难性遗忘，但具体评价指标未在元数据中提供。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "元数据未明确报告模型的复杂度或推理延迟，对大规模工业应用的实际效率不明确。",
-        "仅在两个基准数据集上验证，泛化能力可能受限。"
-      ],
-      "practical_value": "为动态推荐场景提供了一种可扩展的增量更新方案，能在保持模型稳定的同时适应偏好漂移，具有工程化潜力。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "4717991e02e30c0e",
-      "tags": [
-        "LLM4Rec",
-        "Sequential Rec",
-        "RecSys"
-      ],
-      "llm_score": 85,
-      "llm_score_rationale": "发表在顶级会议WWW，满足优先级2；研究LLM-based推荐，与生成式推荐相关；作者单位包含985高校，但非明确知名互联网公司，部分作者来自深圳北理莫斯科大学、中央财经大学等，无工业界证据",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 128,
-      "display_affiliations": [
-        "Shenzhen University"
-      ],
-      "published_date": "2026-04-12"
-    },
-    {
-      "id": "dblp:conf/www/LiuFYWGH26",
-      "title": "LLM-Driven Semantic ID for Information Diffusion Prediction",
-      "authors": [
-        "Haoshuang Liu",
-        "Zihan Feng",
-        "Yajun Yang",
-        "Xin Wang",
-        "Hong Gao",
-        "Qinghua Hu"
-      ],
-      "affiliations": [],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792652",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792652",
-      "doi": "10.1145/3774904.3792652",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "提出利用LLM生成语义ID以改进信息扩散预测，利用语言模型增强序列表示，在WWW会议发表。",
-      "core_method": "利用LLM生成语义ID来增强信息扩散预测的序列表示。",
-      "innovation_points": [
-        "首次将LLM生成的语义ID用于信息扩散预测任务",
-        "通过语言模型增强序列表示，提升预测性能"
-      ],
-      "experiment_results": [
-        "论文未提供具体实验结果或评测结论"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏实验验证，方法有效性未知",
-        "仅基于元数据推断，细节不足"
-      ],
-      "practical_value": "若语义ID能有效捕获信息扩散模式，可为推荐系统的信息传播建模提供新思路",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "7d58c24b0b362531",
-      "tags": [
-        "LLM4Rec",
-        "Sequential Rec"
-      ],
-      "llm_score": 0,
-      "llm_score_rationale": "",
-      "preference_signals": [],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 122,
-      "display_affiliations": [
-        "Unknown affiliation"
-      ],
-      "published_date": "2026"
-    },
-    {
-      "id": "arxiv:2606.17707",
-      "title": "Do Generative Recommenders Deepen the Information Cocoon? A Closed-Loop Simulation with LLM-powered User Simulators",
-      "authors": [
-        "Jiyuan Yang",
-        "Gengxin Sun",
-        "Mengqi Zhang",
-        "Lingjie Wang",
-        "Yuanzi Li",
-        "Hongxi Cui",
-        "Xin Xin",
-        "Pengjie Ren"
-      ],
-      "affiliations": [
-        "Shandong University",
-        "Renmin University of China"
-      ],
-      "published": "2026-06-16T09:17:46Z",
-      "updated": "2026-06-16T09:17:46Z",
-      "abstract": "Recommender systems alleviate information overload, yet repeated feedback between recommendations and user interactions can reinforce existing preferences and narrow users' exposure, forming information cocoons. While this phenomenon has been widely studied in traditional sequential recommendation, its impact on generative recommendation remains unclear. By replacing atomic item IDs with Semantic ID (SID) sequences, generative recommenders introduce a different recommendation mechanism whose role in information cocoon formation is not yet understood. To investigate whether generative recommenders deepen information cocoons, we propose \\textsc{RecLoop}, a closed-loop simulation framework with LLM-driven user agents. We compare two generative recommenders and two traditional sequential baselines on two Amazon datasets across multiple feedback cycles. In addition to standard exposure-level metrics, we introduce \\emph{Code-Space Structural Cocoon}, a model-level metric that measures concentration in the generated SID space. Experimental results show that generative recommenders are generally less prone to exposure-level cocoon formation than traditional baselines, preserving broader exposure diversity and slowing cross-user homogenization. However, feedback loops can still induce concentration within the generated SID space. We further find that cocoon severity depends strongly on tokenization strategy and model scale: collaborative-signal tokenization produces stronger cocoon effects than semantic tokenization, whereas larger models maintain greater code-space diversity and better retain access to niche content. These findings suggest that information cocoons in generative recommendation are shaped not only by recommendation behavior, but also by item tokenization and model capacity. Our code is available at https://github.com/Dregen-Yor/RecLoop.",
-      "categories": [
-        "cs.IR"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.17707v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.17707v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "该论文提出RecLoop闭环仿真框架，利用LLM驱动的用户代理探究生成式推荐是否加深信息茧房。实验表明生成式推荐在曝光层面比传统方法更少形成茧房，但反馈循环会在语义ID空间中引发集中，且茧房程度受标记化策略和模型规模显著影响。",
-      "core_method": "通过LLM用户模拟器构建闭环仿真框架RecLoop，结合曝光层面和码空间结构性茧房新指标，对比生成式与传统推荐在多轮反馈下的信息茧房效应。",
-      "innovation_points": [
-        "提出RecLoop闭环仿真框架，首次系统研究生成式推荐场景下的信息茧房现象。",
-        "引入码空间结构性茧房指标，从模型内部表示度量集中度。",
-        "揭示标记化策略和模型规模对生成式推荐信息茧房的关键影响。"
-      ],
-      "experiment_results": [
-        "生成式推荐器在曝光层面茧房指标上普遍优于传统基线，暴露多样性更高，跨用户同质化更慢。",
-        "反馈循环仍导致生成式推荐的码空间集中度上升，出现结构性茧房。",
-        "协同信号标记化比语义标记化产生更强的茧房效应，而更大模型保持更好的码空间多样性和长尾内容可达性。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文全文未报告线上A/B测试",
-      "limitations": [
-        "用户模拟器基于LLM，其行为可能与真实用户存在差异，影响结论的生态效度。",
-        "实验仅涉及两个Amazon数据集和有限模型，在更多领域和更大规模场景下的泛化性待验证。"
-      ],
-      "practical_value": "为生成式推荐系统的设计提供了关键洞见，表明通过选择合适的标记化和扩大模型规模可缓解码空间茧房，有助于构建更开放的推荐生态。",
-      "analysis_basis": "full_text",
-      "analysis_status": "cached",
-      "analysis_signature": "01fa9dec7c5f2758",
-      "tags": [
-        "RecSys",
-        "Generative Rec",
-        "LLM4Rec",
-        "Evaluation"
-      ],
-      "llm_score": 72,
-      "llm_score_rationale": "论文直接研究生生成式推荐与信息茧房，包含语义ID和tokenization策略，与生成式推荐/语义ID主题高度相关。；虽在arXiv发表，无线上A/B实验，但使用了封闭循环仿真和多个Amazon数据集，提供了有价值的离线分析。；作者单位未标明知名互联网公司，缺乏工业界信号。",
-      "preference_signals": [
-        "Generative Rec / Semantic ID",
-        "arXiv preprint"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 119,
-      "display_affiliations": [
-        "Shandong University",
-        "Renmin University of China"
-      ],
-      "published_date": "2026-06-16"
-    },
-    {
-      "id": "dblp:conf/www/ZhuCJYWCZ26",
-      "title": "FeedGuard: Online Critic-Guided Reinforcement Learning with Privacy-Preserving Feedback for Recommendation",
-      "authors": [
-        "Mengying Zhu",
-        "Feiyue Chen",
-        "Lifan Jiang",
-        "Mengyuan Yang",
-        "Yangyang Wu",
-        "Guanjie Cheng",
-        "Xiaolin Zheng"
-      ],
-      "affiliations": [
-        "Zhejiang University",
-        "Ningbo University"
-      ],
-      "published": "2026-04-12",
-      "updated": "2026-06-11T09:08:48.828518",
-      "abstract": "Reinforcement learning-based recommendation systems (RLRS) are increasingly favored for their ability to leverage online interactive feedback, enabling adaptive and personalized decision-making. In this setting, user feedback serves as both a behavioral signal and an optimization target, making it essential for policy learning. However, collecting such feedback, e.g., clicks, ratings, and engagement traces, raises serious privacy concerns, posing critical challenges for value estimation, online adaptation, and privacy protection. In this paper, we propose FeedGuard, a critic-guided reinforcement learning framework with privacy-preserving feedback. FeedGuard enhances trajectory modeling via critic guidance, enables joint online fine-tuning with effective exploration–exploitation tradeoffs, and enforces end-to-end privacy protection across the feedback lifecycle via split federated learning and differential privacy. We further provide a formal analysis of its differential privacy guarantees. Extensive experiments on four public recommendation datasets and the VirtualTB platform show that FeedGuard performs well in both offline and online settings, while maintaining rigorous privacy guarantees with minimal degradation.",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792155",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792155",
-      "doi": "10.1145/3774904.3792155",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "提出FeedGuard，一种结合评论指导的隐私保护强化学习推荐框架。它通过评论引导增强轨迹建模，利用分裂联邦学习与差分隐私实现端到端隐私保护，并优化在线探索-利用平衡。实验在多个数据集及虚拟平台上验证了其在离线与在线场景下的有效性与隐私保障。",
-      "core_method": "结合评论引导的轨迹建模与差分隐私的分裂联邦学习，在强化学习框架下实现推荐策略的隐私保护在线优化。",
-      "innovation_points": [
-        "提出评论引导的轨迹建模方法，提升强化学习推荐中的状态表示质量",
-        "设计分裂联邦学习与差分隐私结合的端到端隐私保护机制，覆盖反馈全生命周期",
-        "在隐私约束下实现联合在线微调与探索-利用平衡"
-      ],
-      "experiment_results": [
-        "在四个公共推荐数据集和VirtualTB平台上验证了FeedGuard的离线与在线性能，表现良好且隐私保护严格，性能退化极小"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "差分隐私保护下性能仍有轻微退化",
-        "在线评估仅在虚拟平台进行，缺乏真实环境大规模A/B测试验证"
-      ],
-      "practical_value": "为隐私敏感的推荐系统提供了一种端到端的隐私保护强化学习方案，适用于需要严格隐私保障的在线交互场景。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "3e930ea0aad3553b",
-      "tags": [
-        "RecSys",
-        "LLM4Rec",
-        "Agent4Rec",
-        "Sequential Rec"
-      ],
-      "llm_score": 75,
-      "llm_score_rationale": "发表于顶级会议WWW，符合高分权重。；摘要明确包含线上线下实验，但未提及工业界线上A/B测试或在线流量，无工业公司证据。；研究内容为强化学习推荐系统，与生成式推荐/语义ID不直接相关，无LLM4Rec信号。",
-      "preference_signals": [
-        "Top venue",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 114,
-      "display_affiliations": [
-        "Zhejiang University",
-        "Ningbo University"
-      ],
-      "published_date": "2026-04-12"
-    },
-    {
-      "id": "dblp:conf/www/LiuZHZZZ26",
-      "title": "Facilitating Generative Retrieval with Logical Denoising for Interpretable Conversational Search",
-      "authors": [
-        "Qichuan Liu",
-        "Chentao Zhang",
-        "Yuxuan Hu",
-        "Chenfeng Zheng",
-        "Qinggang Zhang",
-        "Zhihong Zhang"
-      ],
-      "affiliations": [
-        "Xiamen University",
-        "Hong Kong Polytechnic University"
-      ],
-      "published": "2026-04-09",
-      "updated": "2026-06-11T09:08:48.828518",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792544",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792544",
-      "doi": "10.1145/3774904.3792544",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "提出通过逻辑去噪增强生成式检索，实现可解释的对话式搜索。",
-      "core_method": "逻辑去噪增强的生成式检索方法用于可解释对话式搜索。",
-      "innovation_points": [
-        "将逻辑去噪引入生成式检索以提升可解释性",
-        "针对对话式搜索场景设计"
-      ],
-      "experiment_results": [
-        "论文未提供具体实验结果"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏实验验证",
-        "方法描述不完整"
-      ],
-      "practical_value": "可提升对话式搜索系统的可解释性与检索质量。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "a685fd73664b89d5",
-      "tags": [
-        "Generative Rec",
-        "Conversational Rec",
-        "RecSys"
-      ],
-      "llm_score": 68,
-      "llm_score_rationale": "WWW顶会论文，标题明确涉及Generative Retrieval，与生成式推荐强相关；作者单位不是知名互联网公司，无工业界A/B实验证据；摘要缺失，无法判断是否有在线实验或工业实践内容",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 105,
-      "display_affiliations": [
-        "Xiamen University",
-        "Hong Kong Polytechnic University"
-      ],
-      "published_date": "2026-04-09"
-    },
-    {
-      "id": "dblp:conf/www/LiJLWLYZZX26",
-      "title": "Explaining Synergistic Effects in Social Recommendations",
-      "authors": [
-        "Yicong Li",
-        "Shan Jin",
-        "Qi Liu",
-        "Shuo Wang",
-        "Jiaying Liu",
-        "Shuo Yu",
-        "Qiang Zhang",
-        "Kuanjiu Zhou",
-        "Feng Xia"
-      ],
-      "affiliations": [
-        "Dalian University of Technology",
-        "RMIT University, Melbourne, Australia"
-      ],
-      "published": "2026-04-12",
-      "updated": "2026-06-11T09:08:48.828518",
-      "abstract": "In social recommenders, the inherent nonlinearity and opacity of synergistic effects across multiple social networks hinders users from understanding how diverse information is leveraged for recommendations, consequently diminishing explainability. However, existing explainers can only identify the topological information in social networks that significantly influences recommendations, failing to further explain the synergistic effects among this information. Inspired by existing findings that synergistic effects enhance mutual information between inputs and predictions to generate information gain, we extend this discovery to graph data. We quantify graph information gain to identify subgraphs embodying synergistic effects. Based on the theoretical insights, we propose SemExplainer, which explains synergistic effects by identifying subgraphs that embody them. SemExplainer first extracts explanatory subgraphs from multi-view social networks to generate preliminary importance explanations for recommendations. A conditional entropy optimization strategy to maximize information gain is developed, thereby further identifying subgraphs that embody synergistic effects from explanatory subgraphs. Finally, SemExplainer searches for paths from users to recommended items within the synergistic subgraphs to generate explanations for the recommendations. Extensive experiments on three datasets demonstrate the superiority of SemExplainer over baseline methods, providing superior explanations of synergistic effects. The implementation is available at https://github.com/yushuowiki/SemExplainer.",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792174",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792174",
-      "doi": "10.1145/3774904.3792174",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "论文提出 SemExplainer，通过量化图信息增益识别多社交网络中体现协同效应的子图，用于生成可解释的推荐；采用条件熵优化策略最大化信息增益，并搜索路径为用户推荐提供协同效应解释。",
-      "core_method": "基于图信息增益量化，通过条件熵优化识别多社交网络中的协同效应子图并生成路径解释。",
-      "innovation_points": [
-        "首次将协同效应的信息增益理论扩展到图数据，量化图信息增益以识别协同子图",
-        "提出条件熵优化策略最大化信息增益，用于提取关键协同子图",
-        "在多社交网络视角下生成从用户到推荐项的路径解释，揭示协同效应"
-      ],
-      "experiment_results": [
-        "基于元数据，仅知在三个数据集上进行了实验，SemExplainer 优于基线方法，但具体指标和数据集未提供。",
-        "实验评估了协同效应解释的优越性，但没有提供详细评测结论。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "元数据未提供具体实验指标和数据集细节，无法评估实际效果范围",
-        "未讨论协同效应解释的稳定性和对大规模动态社交网络的适用性"
-      ],
-      "practical_value": "为社交推荐系统提供可解释的协同效应分析，有助于提升推荐透明度和用户信任。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "d060290448123ae7",
-      "tags": [
-        "RecSys",
-        "Evaluation"
-      ],
-      "llm_score": 60,
-      "llm_score_rationale": "发表在顶级会议 WWW，符合高权重偏好；与生成式推荐、语义ID、大模型推荐无关，但涉及社交推荐的可解释性；作者单位非知名互联网公司，未提及线上 A/B 实验",
-      "preference_signals": [
-        "Top venue"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 99,
-      "display_affiliations": [
-        "Dalian University of Technology",
-        "RMIT University, Melbourne, Australia"
-      ],
-      "published_date": "2026-04-12"
     },
     {
       "id": "arxiv:2606.18379",
@@ -2310,72 +2599,6 @@
         "Kuaishou Technology"
       ],
       "published_date": "2026-06-09"
-    },
-    {
-      "id": "dblp:conf/www/QiuXHPW26",
-      "title": "Meta-Learning Driven Few-Shot Knowledge Transfer with Dual-Stage Adaptive Data Replay for Cross-Domain Recommendation",
-      "authors": [
-        "Yilei Qiu",
-        "Fei Xiong",
-        "Jun Hu",
-        "Shirui Pan",
-        "Liang Wang"
-      ],
-      "affiliations": [
-        "Beijing Jiaotong University",
-        "University of Chinese Academy of Sciences",
-        "Griffith University",
-        "Northwestern Polytechnical University"
-      ],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792443",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792443",
-      "doi": "10.1145/3774904.3792443",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "提出一种元学习驱动的少样本知识迁移框架，通过双阶段自适应数据重放实现跨域推荐。该方法利用元学习从源域提取可迁移知识，并在目标域上通过自适应重放机制缓解灾难性遗忘。论文在WWW会议发表，但未提供具体实验数据。",
-      "core_method": "基于元学习的双阶段自适应数据重放框架，用于跨域推荐的少样本知识迁移。",
-      "innovation_points": [
-        "引入元学习实现跨域少样本知识迁移",
-        "设计双阶段自适应数据重放机制缓解灾难性遗忘"
-      ],
-      "experiment_results": [
-        "论文未提供具体实验结果或评测结论"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏全文，无法评估方法的具体局限性和实验细节"
-      ],
-      "practical_value": "为跨域推荐系统中数据稀疏和灾难性遗忘问题提供了一种潜在的解决方案，可应用于冷启动和少样本场景。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "0104fd9f2e95ac6e",
-      "tags": [
-        "RecSys"
-      ],
-      "llm_score": 0,
-      "llm_score_rationale": "",
-      "preference_signals": [],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 91,
-      "display_affiliations": [
-        "Beijing Jiaotong University",
-        "University of Chinese Academy of Sciences",
-        "Griffith University",
-        "Northwestern Polytechnical University"
-      ],
-      "published_date": "2026"
     },
     {
       "id": "arxiv:2606.08604",
