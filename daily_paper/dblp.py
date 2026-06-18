@@ -10,7 +10,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Dict, Iterable, List
 
 from .config import DblpConfig, DblpVenueConfig
-from .conference_sources import fetch_fallback_venue_papers
+from .conference_sources import fetch_fallback_venue_papers, supplement_papers_from_external_sources
 from .models import Paper
 
 API_URL = "https://dblp.org/search/publ/api"
@@ -92,10 +92,12 @@ def fetch_venue_papers(venue: DblpVenueConfig, config: DblpConfig) -> List[Paper
     try:
         toc_papers = fetch_venue_toc_papers(venue, config)
         if toc_papers:
-            return filter_dblp_papers(toc_papers, config)
+            return supplement_papers_from_external_sources(
+                filter_dblp_papers(toc_papers, config), venue, config
+            )
         search_papers = fetch_venue_search_papers(venue, config)
         if search_papers:
-            return search_papers
+            return supplement_papers_from_external_sources(search_papers, venue, config)
     except Exception as exc:
         if not config.fallback_enabled:
             raise

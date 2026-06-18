@@ -11,6 +11,9 @@
     var queryState = React.useState("");
     var query = queryState[0];
     var setQuery = queryState[1];
+    var archiveMonthState = React.useState("All");
+    var archiveMonth = archiveMonthState[0];
+    var setArchiveMonth = archiveMonthState[1];
     var archiveDateState = React.useState("All");
     var archiveDate = archiveDateState[0];
     var setArchiveDate = archiveDateState[1];
@@ -75,6 +78,16 @@
       },
       [papers]
     );
+    var archiveMonths = React.useMemo(
+      function () {
+        return uniqueDesc(
+          papers
+            .map(function (paper) { return paperMonth(paper); })
+            .filter(Boolean)
+        );
+      },
+      [papers]
+    );
     var archiveDates = React.useMemo(
       function () {
         return uniqueDesc(
@@ -84,6 +97,24 @@
         );
       },
       [papers]
+    );
+    var archiveMonthLabels = React.useMemo(
+      function () {
+        return optionLabels(archiveMonths, formatArchiveMonth, "全部月份");
+      },
+      [archiveMonths]
+    );
+    var archiveDateLabels = React.useMemo(
+      function () {
+        return optionLabels(archiveDates, formatArchiveDate, "全部日期");
+      },
+      [archiveDates]
+    );
+    var keywordCloud = React.useMemo(
+      function () {
+        return buildKeywordCloud(papers, ((payload && payload.interests) || {}).include_keywords || []);
+      },
+      [papers, payload]
     );
     var filtered = React.useMemo(
       function () {
@@ -102,6 +133,7 @@
             .toLowerCase();
           return (
             (!needle || haystack.indexOf(needle) >= 0) &&
+            (archiveMonth === "All" || paperMonth(paper) === archiveMonth) &&
             (archiveDate === "All" || paperDate(paper) === archiveDate) &&
             (tag === "All" || (paper.tags || []).indexOf(tag) >= 0) &&
             (venue === "All" || displayVenue(paper) === venue) &&
@@ -110,11 +142,11 @@
           );
         });
       },
-      [papers, query, archiveDate, tag, venue, importanceFilter, abFilter]
+      [papers, query, archiveMonth, archiveDate, tag, venue, importanceFilter, abFilter]
     );
     var groupedPapers = React.useMemo(
       function () {
-        return groupPapersByDate(filtered);
+        return groupPapersByMonth(filtered);
       },
       [filtered]
     );
@@ -129,6 +161,17 @@
         next[paperId] = value;
         return next;
       });
+    }
+
+    function selectKeyword(item) {
+      var matchingTag = tags.find(function (value) {
+        return value.toLowerCase() === item.label.toLowerCase();
+      });
+      if (matchingTag) {
+        setTag(tag === matchingTag ? "All" : matchingTag);
+        return;
+      }
+      setQuery(query.trim().toLowerCase() === item.label.toLowerCase() ? "" : item.label);
     }
 
     return h(
@@ -155,11 +198,12 @@
         "section",
         { className: "statsGrid", "aria-label": "Digest statistics" },
         h(Stat, { label: "Papers", value: stats.total }),
-        h(Stat, { label: "Archive Days", value: archiveDates.length }),
+        h(Stat, { label: "Archive Months", value: archiveMonths.length }),
         h(Stat, { label: "Important", value: stats.important }),
         h(Stat, { label: "A/B Evidence", value: stats.abTests }),
         h(Stat, { label: "Analysis Cache", value: (cache.reused || 0) + "/" + ((cache.reused || 0) + (cache.analyzed || 0)) })
       ),
+      h(WordCloud, { items: keywordCloud, activeTag: tag, activeQuery: query, onSelect: selectKeyword }),
       payload && payload.analysis_enabled === false
         ? h(
             "div",
@@ -176,7 +220,8 @@
           onChange: function (event) { return setQuery(event.target.value); },
           placeholder: "搜索标题、作者、机构、标签..."
         }),
-        h(FilterGroup, { label: "日期", value: archiveDate, onChange: setArchiveDate, options: ["All"].concat(archiveDates) }),
+        h(FilterGroup, { label: "月份", value: archiveMonth, onChange: setArchiveMonth, options: ["All"].concat(archiveMonths), optionLabels: archiveMonthLabels }),
+        h(FilterGroup, { label: "日期", value: archiveDate, onChange: setArchiveDate, options: ["All"].concat(archiveDates), optionLabels: archiveDateLabels }),
         h(FilterGroup, { label: "标签", value: tag, onChange: setTag, options: ["All"].concat(tags) }),
         h(FilterGroup, { label: "会议", value: venue, onChange: setVenue, options: ["All"].concat(venues) }),
         h(FilterGroup, {
@@ -199,7 +244,11 @@
         h(
           "span",
           null,
-          (archiveDate === "All" ? "全部日期" : formatArchiveDate(archiveDate)) + " · " + (AB_FILTER_LABELS[abFilter] || AB_FILTER_LABELS.All)
+          (archiveMonth === "All" ? "全部月份" : formatArchiveMonth(archiveMonth)) +
+            " · " +
+            (archiveDate === "All" ? "全部日期" : formatArchiveDate(archiveDate)) +
+            " · " +
+            (AB_FILTER_LABELS[abFilter] || AB_FILTER_LABELS.All)
         ),
         h("strong", null, filtered.length + " 篇论文")
       ),
@@ -210,18 +259,34 @@
           ? groupedPapers.map(function (group) {
               return h(
                 "section",
-                { className: "archiveSection", key: group.date },
+                { className: "archiveSection", key: group.month },
                 h(
                   "div",
                   { className: "archiveSectionHeader" },
-                  h("h2", null, formatArchiveDate(group.date)),
+                  h("h2", null, formatArchiveMonth(group.month)),
                   h("span", null, group.papers.length + " 篇")
                 ),
                 h(
                   "div",
-                  { className: "paperGrid" },
-                  group.papers.map(function (paper) {
-                    return h(PaperCard, { key: paper.id, paper: paper, onMark: setMark });
+                  { className: "dateGroupList" },
+                  group.dateGroups.map(function (dateGroup) {
+                    return h(
+                      "section",
+                      { className: "dateGroup", key: dateGroup.date },
+                      h(
+                        "div",
+                        { className: "dateGroupHeader" },
+                        h("span", null, formatDateWithinMonth(dateGroup.date, group.month)),
+                        h("strong", null, dateGroup.papers.length + " 篇")
+                      ),
+                      h(
+                        "div",
+                        { className: "paperGrid" },
+                        dateGroup.papers.map(function (paper) {
+                          return h(PaperCard, { key: paper.id, paper: paper, onMark: setMark });
+                        })
+                      )
+                    );
                   })
                 )
               );
@@ -275,7 +340,7 @@
         "div",
         { className: "paperMeta" },
         h("span", null, displayVenue(paper) || paper.status),
-        h("span", null, paper.published_date || (paper.published || "").slice(0, 10)),
+        h("span", null, formatPaperDate(paper)),
         h("span", null, paper.analysis_basis === "full_text" ? "全文分析" : "元数据分析")
       ),
       h("div", { className: "statusLine" }, h("span", null, markLabel(mark))),
@@ -311,6 +376,42 @@
         paper.abs_url ? h("a", { href: paper.abs_url, target: "_blank", rel: "noreferrer" }, "Paper") : null,
         paper.pdf_url ? h("a", { href: paper.pdf_url, target: "_blank", rel: "noreferrer" }, "PDF") : null,
         paper.doi ? h("a", { href: "https://doi.org/" + paper.doi, target: "_blank", rel: "noreferrer" }, "DOI") : null
+      )
+    );
+  }
+
+  function WordCloud(props) {
+    var items = props.items || [];
+    if (!items.length) return null;
+    var topCount = (items[0] && items[0].count) || 0;
+    return h(
+      "section",
+      { className: "keywordCloud", "aria-label": "Keyword cloud" },
+      h(
+        "div",
+        { className: "keywordCloudHeader" },
+        h("h2", null, "关键词词云"),
+        h("span", null, items.length + " 个关键词 · 最高 " + topCount + " 篇")
+      ),
+      h(
+        "div",
+        { className: "cloudTerms" },
+        items.map(function (item) {
+          var active =
+            props.activeTag.toLowerCase() === item.label.toLowerCase() ||
+            props.activeQuery.trim().toLowerCase() === item.label.toLowerCase();
+          return h(
+            "button",
+            {
+              className: "cloudTerm cloudLevel-" + item.level + (active ? " active" : ""),
+              key: item.label,
+              onClick: function () { return props.onSelect(item); },
+              title: item.count + " 篇论文"
+            },
+            item.label,
+            h("span", null, item.count)
+          );
+        })
       )
     );
   }
@@ -374,6 +475,7 @@
       h(
         "select",
         {
+          "aria-label": props.label,
           value: props.value,
           onChange: function (event) { return props.onChange(event.target.value); }
         },
@@ -399,29 +501,121 @@
         )
           .slice(0, 3)
           .join(" · ") || "N/A"
-    };
+      };
   }
 
-  function groupPapersByDate(papers) {
+  function buildKeywordCloud(papers, includeKeywords) {
+    var counts = {};
+    var labels = {};
+
+    papers.forEach(function (paper) {
+      var text = [
+        paper.title,
+        paper.abstract,
+        paper.generated_summary,
+        paper.core_method,
+        (paper.tags || []).join(" ")
+      ]
+        .join(" ")
+        .toLowerCase();
+      var seen = {};
+      (paper.tags || []).forEach(function (value) {
+        addKeyword(value, seen, labels);
+      });
+      (includeKeywords || []).forEach(function (value) {
+        if (value && text.indexOf(String(value).toLowerCase()) >= 0) addKeyword(value, seen, labels);
+      });
+      Object.keys(seen).forEach(function (key) {
+        counts[key] = (counts[key] || 0) + 1;
+      });
+    });
+
+    var values = Object.keys(counts)
+      .map(function (key) {
+        return { label: labels[key], count: counts[key] };
+      })
+      .sort(function (left, right) {
+        return right.count - left.count || left.label.localeCompare(right.label);
+      })
+      .slice(0, 36);
+    var max = Math.max.apply(null, values.map(function (item) { return item.count; }).concat([0]));
+    var min = Math.min.apply(null, values.map(function (item) { return item.count; }).concat([max]));
+    return values.map(function (item) {
+      var ratio = max === min ? 1 : (item.count - min) / (max - min);
+      return Object.assign({}, item, {
+        level: Math.max(1, Math.min(5, Math.round(ratio * 4) + 1))
+      });
+    });
+  }
+
+  function addKeyword(value, seen, labels) {
+    var label = String(value || "").replace(/\s+/g, " ").trim();
+    if (!label || label.length > 48) return;
+    var key = label.toLowerCase();
+    if (!key || seen[key]) return;
+    seen[key] = true;
+    if (!labels[key]) labels[key] = label;
+  }
+
+  function groupPapersByMonth(papers) {
     var groups = {};
     papers.forEach(function (paper) {
+      var month = paperMonth(paper) || "Unknown";
       var date = paperDate(paper) || "Unknown";
-      if (!groups[date]) groups[date] = [];
-      groups[date].push(paper);
+      if (!groups[month]) groups[month] = { papers: [], dates: {} };
+      groups[month].papers.push(paper);
+      if (!groups[month].dates[date]) groups[month].dates[date] = [];
+      groups[month].dates[date].push(paper);
     });
     return Object.keys(groups)
-      .sort(function (left, right) {
-        if (left === "Unknown") return 1;
-        if (right === "Unknown") return -1;
-        return right.localeCompare(left);
-      })
-      .map(function (date) {
-        return { date: date, papers: groups[date] };
+      .sort(compareArchiveKeys)
+      .map(function (month) {
+        return {
+          month: month,
+          papers: groups[month].papers,
+          dateGroups: Object.keys(groups[month].dates)
+            .sort(compareArchiveKeys)
+            .map(function (date) {
+              return { date: date, papers: groups[month].dates[date] };
+            })
+        };
       });
   }
 
   function paperDate(paper) {
-    return paper.published_date || (paper.published || "").slice(0, 10) || "";
+    return paperDateParts(paper).date;
+  }
+
+  function paperMonth(paper) {
+    return paperDateParts(paper).month;
+  }
+
+  function paperDateParts(paper) {
+    var candidates = [paper.published_date, paper.published];
+    var ranks = { year: 1, month: 2, day: 3 };
+    return candidates.reduce(function (best, value) {
+      var parsed = parseArchiveDate(value);
+      if (!parsed) return best;
+      if (!best || ranks[parsed.precision] > ranks[best.precision]) return parsed;
+      return best;
+    }, null) || { date: "", month: "", year: "", precision: "unknown" };
+  }
+
+  function parseArchiveDate(value) {
+    var match = String(value || "").trim().match(/^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?/);
+    if (!match) return null;
+    var year = match[1];
+    var month = match[2];
+    var day = match[3];
+    if (month && day) return { year: year, month: year + "-" + month, date: year + "-" + month + "-" + day, precision: "day" };
+    if (month) return { year: year, month: year + "-" + month, date: year + "-" + month, precision: "month" };
+    return { year: year, month: year, date: year, precision: "year" };
+  }
+
+  function compareArchiveKeys(left, right) {
+    if (left === "Unknown") return 1;
+    if (right === "Unknown") return -1;
+    return right.localeCompare(left);
   }
 
   function displayVenue(paper) {
@@ -453,6 +647,13 @@
 
   function uniqueDesc(values) {
     return Array.from(new Set(values)).sort(function (a, b) { return b.localeCompare(a); });
+  }
+
+  function optionLabels(options, formatter, allLabel) {
+    return options.reduce(function (labels, option) {
+      labels[option] = formatter(option);
+      return labels;
+    }, { All: allLabel });
   }
 
   function flatten(values) {
@@ -491,7 +692,33 @@
 
   function formatArchiveDate(value) {
     if (!value || value === "Unknown") return "未知日期";
-    return value;
+    var parsed = parseArchiveDate(value);
+    if (!parsed) return value;
+    if (parsed.precision === "year") return parsed.year + " 年";
+    var month = Number(parsed.month.slice(5, 7));
+    if (parsed.precision === "month") return parsed.year + " 年 " + month + " 月";
+    var day = Number(parsed.date.slice(8, 10));
+    return parsed.year + " 年 " + month + " 月 " + day + " 日";
+  }
+
+  function formatArchiveMonth(value) {
+    if (!value || value === "Unknown") return "未知月份";
+    var parsed = parseArchiveDate(value);
+    if (!parsed) return value;
+    if (parsed.precision === "year") return parsed.year + " 年 · 月份未标注";
+    return parsed.year + " 年 " + Number(parsed.month.slice(5, 7)) + " 月";
+  }
+
+  function formatDateWithinMonth(date, month) {
+    if (!date || date === "Unknown") return "未知日期";
+    if (date === month) return "日期未细分";
+    var parsed = parseArchiveDate(date);
+    if (!parsed || parsed.precision !== "day") return formatArchiveDate(date);
+    return Number(parsed.date.slice(8, 10)) + " 日";
+  }
+
+  function formatPaperDate(paper) {
+    return formatArchiveDate(paperDate(paper));
   }
 
   ReactDOM.render(h(App), document.getElementById("root"));

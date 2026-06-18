@@ -120,7 +120,7 @@ h1 {
 
 .toolbar {
   display: grid;
-  grid-template-columns: minmax(240px, 2fr) repeat(5, minmax(130px, 1fr));
+  grid-template-columns: minmax(240px, 2fr) repeat(6, minmax(120px, 1fr));
   gap: 10px;
   align-items: end;
   margin-bottom: 18px;
@@ -128,6 +128,97 @@ h1 {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: rgba(255, 253, 249, 0.74);
+}
+
+.keywordCloud {
+  margin: 0 0 16px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 253, 249, 0.72);
+}
+
+.keywordCloudHeader,
+.dateGroupHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.keywordCloudHeader {
+  margin-bottom: 12px;
+}
+
+.keywordCloudHeader h2 {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+
+.keywordCloudHeader span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.cloudTerms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.cloudTerm {
+  display: inline-flex;
+  gap: 6px;
+  align-items: baseline;
+  min-height: 34px;
+  padding: 4px 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: #edf4f1;
+  color: var(--blue-ink);
+  cursor: pointer;
+  line-height: 1.1;
+}
+
+.cloudTerm:hover,
+.cloudTerm.active {
+  border-color: #8aa9a6;
+  background: #dbe9e6;
+}
+
+.cloudTerm span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.cloudLevel-1 {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.cloudLevel-2 {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.cloudLevel-3 {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.cloudLevel-4 {
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.cloudLevel-5 {
+  font-size: 20px;
+  font-weight: 900;
 }
 
 .archiveSummary {
@@ -181,6 +272,31 @@ h1 {
   font-size: 13px;
   font-weight: 800;
   white-space: nowrap;
+}
+
+.dateGroupList {
+  display: grid;
+  gap: 16px;
+}
+
+.dateGroup {
+  min-width: 0;
+}
+
+.dateGroupHeader {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.dateGroupHeader span {
+  color: var(--blue-ink);
+}
+
+.dateGroupHeader strong {
+  color: var(--muted);
+  font-size: 13px;
 }
 
 .notice {
@@ -533,7 +649,9 @@ h1 {
 
 @media (max-width: 980px) {
   .topbar,
-  .cardHeader {
+  .cardHeader,
+  .keywordCloudHeader,
+  .dateGroupHeader {
     flex-direction: column;
     align-items: stretch;
   }

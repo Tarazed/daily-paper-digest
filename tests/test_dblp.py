@@ -2,6 +2,8 @@ from daily_paper.config import DblpConfig, DblpVenueConfig
 from daily_paper.conference_sources import (
     fetch_fallback_venue_papers,
     fetch_semantic_scholar_venue_papers,
+    lookup_external_paper_metadata,
+    supplement_papers_from_external_sources,
 )
 from daily_paper.dblp import fetch_venue_papers, filter_dblp_papers, parse_results, parse_toc_xml
 
@@ -191,3 +193,51 @@ def test_fallback_source_order_dedupes_titles(monkeypatch):
 
     assert len(papers) == 1
     assert papers[0].title == "Generative Recommendation with Large Language Models"
+
+
+def test_external_metadata_supplements_year_only_dblp_paper(monkeypatch):
+    cfg = config()
+    venue = DblpVenueConfig(name="RecSys", query="RecSys")
+    paper = parse_results(SAMPLE_DBLP, venue)[0]
+    external = parse_results(SAMPLE_DBLP, venue)[0]
+    external.source = "Semantic Scholar"
+    external.published = "2026-09-22"
+    external.updated = "2026-09-22"
+    external.abstract = "A recommender system paper."
+    external.affiliations = ["Tsinghua University", "Google DeepMind"]
+    external.pdf_url = "https://example.com/paper.pdf"
+
+    monkeypatch.setattr(
+        "daily_paper.conference_sources.lookup_external_paper_metadata",
+        lambda paper, venue, config: external,
+    )
+
+    papers = supplement_papers_from_external_sources([paper], venue, cfg)
+
+    assert papers[0].source == "DBLP"
+    assert papers[0].published == "2026-09-22"
+    assert papers[0].abstract == "A recommender system paper."
+    assert papers[0].affiliations == ["Tsinghua University", "Google DeepMind"]
+    assert papers[0].pdf_url == "https://example.com/paper.pdf"
+
+
+def test_external_metadata_merges_multiple_providers(monkeypatch):
+    cfg = config()
+    cfg.fallback_providers = ["openalex", "semantic_scholar"]
+    venue = DblpVenueConfig(name="RecSys", query="RecSys")
+    paper = parse_results(SAMPLE_DBLP, venue)[0]
+    openalex = parse_results(SAMPLE_DBLP, venue)[0]
+    openalex.source = "OpenAlex"
+    openalex.published = "2026-09-22"
+    openalex.updated = "2026-09-22"
+    semantic = parse_results(SAMPLE_DBLP, venue)[0]
+    semantic.source = "Semantic Scholar"
+    semantic.affiliations = ["Tsinghua University", "Google DeepMind"]
+
+    monkeypatch.setattr("daily_paper.conference_sources.lookup_openalex_paper_metadata", lambda *args: openalex)
+    monkeypatch.setattr("daily_paper.conference_sources.lookup_semantic_scholar_paper_metadata", lambda *args: semantic)
+
+    external = lookup_external_paper_metadata(paper, venue, cfg)
+
+    assert external.published == "2026-09-22"
+    assert external.affiliations == ["Tsinghua University", "Google DeepMind"]

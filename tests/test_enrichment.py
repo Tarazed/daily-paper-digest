@@ -129,6 +129,21 @@ def test_enrich_papers_replaces_unknown_or_invalid_affiliations(monkeypatch):
     assert enriched[0].affiliations == ["The Chinese University of Hong Kong"]
 
 
+def test_enrich_papers_merges_incomplete_affiliations(monkeypatch):
+    paper = make_paper()
+    paper.authors = ["Alice Zhang", "Bob Lee", "Carol Smith"]
+    paper.affiliations = ["Tsinghua University"]
+
+    monkeypatch.setattr(
+        "daily_paper.enrichment.lookup_confirmed_affiliations",
+        lambda *args, **kwargs: (["Tsinghua University", "Google DeepMind"], False),
+    )
+
+    enriched = enrich_papers([paper], config(confirm_providers=["openalex"]))
+
+    assert enriched[0].affiliations == ["Tsinghua University", "Google DeepMind"]
+
+
 def test_normalize_affiliations_removes_duplicate_location_variants():
     affiliations = normalize_affiliations(
         [

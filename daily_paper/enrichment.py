@@ -31,8 +31,9 @@ def enrich_papers(
         return items
     source_attempts = 0
     for paper in items:
-        paper.affiliations = normalize_affiliations(paper.affiliations)
-        if _has_affiliations(paper):
+        raw_affiliations = list(paper.affiliations or [])
+        paper.affiliations = normalize_affiliations(raw_affiliations)
+        if not _needs_affiliation_enrichment(paper, raw_affiliations):
             continue
         allow_source_lookup = config.source_enabled and source_attempts < config.source_max_papers
         affiliations, used_source_lookup = lookup_confirmed_affiliations(
@@ -45,7 +46,7 @@ def enrich_papers(
         if used_source_lookup:
             source_attempts += 1
         if affiliations:
-            paper.affiliations = normalize_affiliations(affiliations)
+            paper.affiliations = merge_affiliations(paper.affiliations, affiliations)
     return items
 
 
@@ -57,6 +58,15 @@ def normalize_affiliations(values: Iterable[str]) -> List[str]:
             continue
         _append_affiliation_unique(affiliations, cleaned)
     return affiliations
+
+
+def merge_affiliations(existing: Iterable[str], incoming: Iterable[str]) -> List[str]:
+    merged = []
+    for value in list(existing or []) + list(incoming or []):
+        cleaned = _clean_affiliation_name(value)
+        if cleaned and _looks_like_institution_name(cleaned):
+            _append_affiliation_unique(merged, cleaned)
+    return merged
 
 
 def lookup_confirmed_affiliations(
@@ -625,8 +635,20 @@ def _dedupe(values: List[str]) -> List[str]:
     return cleaned
 
 
-def _has_affiliations(paper: Paper) -> bool:
-    return bool(normalize_affiliations(paper.affiliations))
+def _needs_affiliation_enrichment(paper: Paper, raw_affiliations: Iterable[str] = None) -> bool:
+    normalized = normalize_affiliations(paper.affiliations)
+    raw_source = raw_affiliations if raw_affiliations is not None else paper.affiliations
+    raw_values = [str(value).strip() for value in raw_source or []]
+    if not normalized:
+        return True
+    if len(normalized) < len([value for value in raw_values if value]):
+        return True
+    author_count = len([author for author in paper.authors or [] if str(author).strip()])
+    if author_count >= 3 and len(normalized) <= 1:
+        return True
+    if paper.status == "conference" and author_count >= 2 and len(normalized) <= 1:
+        return True
+    return False
 
 
 def _append_unique(values: List[str], value: str) -> None:

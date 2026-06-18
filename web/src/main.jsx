@@ -16,6 +16,7 @@ const AB_FILTER_LABELS = {
 function App() {
   const [payload, setPayload] = useState(null);
   const [query, setQuery] = useState("");
+  const [archiveMonth, setArchiveMonth] = useState("All");
   const [archiveDate, setArchiveDate] = useState("All");
   const [tag, setTag] = useState("All");
   const [venue, setVenue] = useState("All");
@@ -43,7 +44,14 @@ function App() {
 
   const tags = useMemo(() => unique(papers.flatMap((paper) => paper.tags || [])), [papers]);
   const venues = useMemo(() => unique(papers.map((paper) => displayVenue(paper)).filter(Boolean)), [papers]);
+  const archiveMonths = useMemo(() => uniqueDesc(papers.map((paper) => paperMonth(paper)).filter(Boolean)), [papers]);
   const archiveDates = useMemo(() => uniqueDesc(papers.map((paper) => paperDate(paper)).filter(Boolean)), [papers]);
+  const archiveMonthLabels = useMemo(() => optionLabels(archiveMonths, formatArchiveMonth, "全部月份"), [archiveMonths]);
+  const archiveDateLabels = useMemo(() => optionLabels(archiveDates, formatArchiveDate, "全部日期"), [archiveDates]);
+  const keywordCloud = useMemo(
+    () => buildKeywordCloud(papers, payload?.interests?.include_keywords || []),
+    [papers, payload]
+  );
   const filtered = useMemo(() => {
     const needle = query.trim().toLowerCase();
     return papers.filter((paper) => {
@@ -60,6 +68,7 @@ function App() {
         .toLowerCase();
       return (
         (!needle || haystack.includes(needle)) &&
+        (archiveMonth === "All" || paperMonth(paper) === archiveMonth) &&
         (archiveDate === "All" || paperDate(paper) === archiveDate) &&
         (tag === "All" || (paper.tags || []).includes(tag)) &&
         (venue === "All" || displayVenue(paper) === venue) &&
@@ -67,8 +76,8 @@ function App() {
         (abFilter === "All" || (paper.ab_test || "unknown") === abFilter)
       );
     });
-  }, [papers, query, archiveDate, tag, venue, importanceFilter, abFilter]);
-  const groupedPapers = useMemo(() => groupPapersByDate(filtered), [filtered]);
+  }, [papers, query, archiveMonth, archiveDate, tag, venue, importanceFilter, abFilter]);
+  const groupedPapers = useMemo(() => groupPapersByMonth(filtered), [filtered]);
 
   const stats = useMemo(() => buildStats(papers), [papers]);
   const site = payload?.site || {};
@@ -76,6 +85,15 @@ function App() {
 
   function setMark(paperId, value) {
     setMarks((current) => ({ ...current, [paperId]: value }));
+  }
+
+  function selectKeyword(item) {
+    const matchingTag = tags.find((value) => value.toLowerCase() === item.label.toLowerCase());
+    if (matchingTag) {
+      setTag(tag === matchingTag ? "All" : matchingTag);
+      return;
+    }
+    setQuery(query.trim().toLowerCase() === item.label.toLowerCase() ? "" : item.label);
   }
 
   return (
@@ -94,11 +112,13 @@ function App() {
 
       <section className="statsGrid" aria-label="Digest statistics">
         <Stat label="Papers" value={stats.total} />
-        <Stat label="Archive Days" value={archiveDates.length} />
+        <Stat label="Archive Months" value={archiveMonths.length} />
         <Stat label="Important" value={stats.important} />
         <Stat label="A/B Evidence" value={stats.abTests} />
         <Stat label="Analysis Cache" value={`${cache.reused || 0}/${(cache.reused || 0) + (cache.analyzed || 0)}`} />
       </section>
+
+      <WordCloud items={keywordCloud} activeTag={tag} activeQuery={query} onSelect={selectKeyword} />
 
       {payload?.analysis_enabled === false && (
         <div className="notice">
@@ -113,7 +133,8 @@ function App() {
           onChange={(event) => setQuery(event.target.value)}
           placeholder="搜索标题、作者、机构、标签..."
         />
-        <FilterGroup label="日期" value={archiveDate} onChange={setArchiveDate} options={["All", ...archiveDates]} />
+        <FilterGroup label="月份" value={archiveMonth} onChange={setArchiveMonth} options={["All", ...archiveMonths]} optionLabels={archiveMonthLabels} />
+        <FilterGroup label="日期" value={archiveDate} onChange={setArchiveDate} options={["All", ...archiveDates]} optionLabels={archiveDateLabels} />
         <FilterGroup label="标签" value={tag} onChange={setTag} options={["All", ...tags]} />
         <FilterGroup label="会议" value={venue} onChange={setVenue} options={["All", ...venues]} />
         <FilterGroup
@@ -133,6 +154,8 @@ function App() {
 
       <section className="archiveSummary">
         <span>
+          {archiveMonth === "All" ? "全部月份" : formatArchiveMonth(archiveMonth)}
+          {" · "}
           {archiveDate === "All" ? "全部日期" : formatArchiveDate(archiveDate)}
           {" · "}
           {AB_FILTER_LABELS[abFilter] || AB_FILTER_LABELS.All}
@@ -143,14 +166,24 @@ function App() {
       <section className="archiveList">
         {filtered.length ? (
           groupedPapers.map((group) => (
-            <section className="archiveSection" key={group.date}>
+            <section className="archiveSection" key={group.month}>
               <div className="archiveSectionHeader">
-                <h2>{formatArchiveDate(group.date)}</h2>
+                <h2>{formatArchiveMonth(group.month)}</h2>
                 <span>{group.papers.length} 篇</span>
               </div>
-              <div className="paperGrid">
-                {group.papers.map((paper) => (
-                  <PaperCard key={paper.id} paper={paper} onMark={setMark} />
+              <div className="dateGroupList">
+                {group.dateGroups.map((dateGroup) => (
+                  <section className="dateGroup" key={dateGroup.date}>
+                    <div className="dateGroupHeader">
+                      <span>{formatDateWithinMonth(dateGroup.date, group.month)}</span>
+                      <strong>{dateGroup.papers.length} 篇</strong>
+                    </div>
+                    <div className="paperGrid">
+                      {dateGroup.papers.map((paper) => (
+                        <PaperCard key={paper.id} paper={paper} onMark={setMark} />
+                      ))}
+                    </div>
+                  </section>
                 ))}
               </div>
             </section>
@@ -194,7 +227,7 @@ function PaperCard({ paper, onMark }) {
       <p className="affiliations">{compactList(displayAffiliations(paper), 4) || "Unknown affiliation"}</p>
       <div className="paperMeta">
         <span>{displayVenue(paper) || paper.status}</span>
-        <span>{paper.published_date || (paper.published || "").slice(0, 10)}</span>
+        <span>{formatPaperDate(paper)}</span>
         <span>{paper.analysis_basis === "full_text" ? "全文分析" : "元数据分析"}</span>
       </div>
       <div className="statusLine"><span>{markLabel(mark)}</span></div>
@@ -242,6 +275,37 @@ function PaperCard({ paper, onMark }) {
         )}
       </div>
     </article>
+  );
+}
+
+function WordCloud({ items, activeTag, activeQuery, onSelect }) {
+  if (!items.length) return null;
+  const topCount = items[0]?.count || 0;
+  return (
+    <section className="keywordCloud" aria-label="Keyword cloud">
+      <div className="keywordCloudHeader">
+        <h2>关键词词云</h2>
+        <span>{items.length} 个关键词 · 最高 {topCount} 篇</span>
+      </div>
+      <div className="cloudTerms">
+        {items.map((item) => {
+          const active =
+            activeTag.toLowerCase() === item.label.toLowerCase() ||
+            activeQuery.trim().toLowerCase() === item.label.toLowerCase();
+          return (
+            <button
+              className={`cloudTerm cloudLevel-${item.level}${active ? " active" : ""}`}
+              key={item.label}
+              onClick={() => onSelect(item)}
+              title={`${item.count} 篇论文`}
+            >
+              {item.label}
+              <span>{item.count}</span>
+            </button>
+          );
+        })}
+      </div>
+    </section>
   );
 }
 
@@ -299,7 +363,7 @@ function FilterGroup({ label, value, onChange, options, optionLabels = {} }) {
   return (
     <label className="filterGroup">
       <span>{label}</span>
-      <select value={value} onChange={(event) => onChange(event.target.value)}>
+      <select aria-label={label} value={value} onChange={(event) => onChange(event.target.value)}>
         {options.map((option) => (
           <option key={option} value={option}>
             {optionLabels[option] || option}
@@ -319,24 +383,105 @@ function buildStats(papers) {
   };
 }
 
-function groupPapersByDate(papers) {
+function buildKeywordCloud(papers, includeKeywords = []) {
+  const counts = new Map();
+  const labels = new Map();
+
+  papers.forEach((paper) => {
+    const text = [
+      paper.title,
+      paper.abstract,
+      paper.generated_summary,
+      paper.core_method,
+      (paper.tags || []).join(" ")
+    ]
+      .join(" ")
+      .toLowerCase();
+    const seen = new Set();
+    (paper.tags || []).forEach((value) => addKeyword(value, seen, labels));
+    includeKeywords.forEach((value) => {
+      if (value && text.includes(String(value).toLowerCase())) addKeyword(value, seen, labels);
+    });
+    seen.forEach((key) => counts.set(key, (counts.get(key) || 0) + 1));
+  });
+
+  const values = Array.from(counts.entries())
+    .map(([key, count]) => ({ label: labels.get(key), count }))
+    .sort((left, right) => right.count - left.count || left.label.localeCompare(right.label))
+    .slice(0, 36);
+  const max = Math.max(...values.map((item) => item.count), 0);
+  const min = Math.min(...values.map((item) => item.count), max);
+  return values.map((item) => {
+    const ratio = max === min ? 1 : (item.count - min) / (max - min);
+    return { ...item, level: Math.max(1, Math.min(5, Math.round(ratio * 4) + 1)) };
+  });
+}
+
+function addKeyword(value, seen, labels) {
+  const label = String(value || "").replace(/\s+/g, " ").trim();
+  if (!label || label.length > 48) return;
+  const key = label.toLowerCase();
+  if (!key || seen.has(key)) return;
+  seen.add(key);
+  if (!labels.has(key)) labels.set(key, label);
+}
+
+function groupPapersByMonth(papers) {
   const groups = new Map();
   papers.forEach((paper) => {
+    const month = paperMonth(paper) || "Unknown";
     const date = paperDate(paper) || "Unknown";
-    if (!groups.has(date)) groups.set(date, []);
-    groups.get(date).push(paper);
+    if (!groups.has(month)) groups.set(month, { papers: [], dates: new Map() });
+    const group = groups.get(month);
+    group.papers.push(paper);
+    if (!group.dates.has(date)) group.dates.set(date, []);
+    group.dates.get(date).push(paper);
   });
   return Array.from(groups.entries())
-    .sort(([left], [right]) => {
-      if (left === "Unknown") return 1;
-      if (right === "Unknown") return -1;
-      return right.localeCompare(left);
-    })
-    .map(([date, values]) => ({ date, papers: values }));
+    .sort(([left], [right]) => compareArchiveKeys(left, right))
+    .map(([month, group]) => ({
+      month,
+      papers: group.papers,
+      dateGroups: Array.from(group.dates.entries())
+        .sort(([left], [right]) => compareArchiveKeys(left, right))
+        .map(([date, values]) => ({ date, papers: values }))
+    }));
 }
 
 function paperDate(paper) {
-  return paper.published_date || (paper.published || "").slice(0, 10) || "";
+  return paperDateParts(paper).date;
+}
+
+function paperMonth(paper) {
+  return paperDateParts(paper).month;
+}
+
+function paperDateParts(paper) {
+  const candidates = [paper.published_date, paper.published];
+  const ranks = { year: 1, month: 2, day: 3 };
+  return candidates.reduce((best, value) => {
+    const parsed = parseArchiveDate(value);
+    if (!parsed) return best;
+    if (!best || ranks[parsed.precision] > ranks[best.precision]) return parsed;
+    return best;
+  }, null) || { date: "", month: "", year: "", precision: "unknown" };
+}
+
+function parseArchiveDate(value) {
+  const match = String(value || "").trim().match(/^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?/);
+  if (!match) return null;
+  const year = match[1];
+  const month = match[2];
+  const day = match[3];
+  if (month && day) return { year, month: `${year}-${month}`, date: `${year}-${month}-${day}`, precision: "day" };
+  if (month) return { year, month: `${year}-${month}`, date: `${year}-${month}`, precision: "month" };
+  return { year, month: year, date: year, precision: "year" };
+}
+
+function compareArchiveKeys(left, right) {
+  if (left === "Unknown") return 1;
+  if (right === "Unknown") return -1;
+  return right.localeCompare(left);
 }
 
 function displayVenue(paper) {
@@ -368,6 +513,10 @@ function unique(values) {
 
 function uniqueDesc(values) {
   return Array.from(new Set(values)).sort((a, b) => b.localeCompare(a));
+}
+
+function optionLabels(options, formatter, allLabel) {
+  return options.reduce((labels, option) => ({ ...labels, [option]: formatter(option) }), { All: allLabel });
 }
 
 function compactList(values, limit) {
@@ -402,7 +551,33 @@ function formatGeneratedAt(value) {
 
 function formatArchiveDate(value) {
   if (!value || value === "Unknown") return "未知日期";
-  return value;
+  const parsed = parseArchiveDate(value);
+  if (!parsed) return value;
+  if (parsed.precision === "year") return `${parsed.year} 年`;
+  const month = Number(parsed.month.slice(5, 7));
+  if (parsed.precision === "month") return `${parsed.year} 年 ${month} 月`;
+  const day = Number(parsed.date.slice(8, 10));
+  return `${parsed.year} 年 ${month} 月 ${day} 日`;
+}
+
+function formatArchiveMonth(value) {
+  if (!value || value === "Unknown") return "未知月份";
+  const parsed = parseArchiveDate(value);
+  if (!parsed) return value;
+  if (parsed.precision === "year") return `${parsed.year} 年 · 月份未标注`;
+  return `${parsed.year} 年 ${Number(parsed.month.slice(5, 7))} 月`;
+}
+
+function formatDateWithinMonth(date, month) {
+  if (!date || date === "Unknown") return "未知日期";
+  if (date === month) return "日期未细分";
+  const parsed = parseArchiveDate(date);
+  if (!parsed || parsed.precision !== "day") return formatArchiveDate(date);
+  return `${Number(parsed.date.slice(8, 10))} 日`;
+}
+
+function formatPaperDate(paper) {
+  return formatArchiveDate(paperDate(paper));
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
