@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-19T05:14:15Z",
+  "generated_at": "2026-06-20T04:28:29Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
@@ -7,8 +7,8 @@
   },
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 7,
-    "analyzed": 3,
+    "reused": 8,
+    "analyzed": 2,
     "source": "web/public/papers.json"
   },
   "current_limit": 10,
@@ -205,6 +205,662 @@
       "published_date": "2026-04-09"
     },
     {
+      "id": "arxiv:2606.17707",
+      "title": "Do Generative Recommenders Deepen the Information Cocoon? A Closed-Loop Simulation with LLM-powered User Simulators",
+      "authors": [
+        "Jiyuan Yang",
+        "Gengxin Sun",
+        "Mengqi Zhang",
+        "Lingjie Wang",
+        "Yuanzi Li",
+        "Hongxi Cui",
+        "Xin Xin",
+        "Pengjie Ren"
+      ],
+      "affiliations": [
+        "Shandong University",
+        "Renmin University of China"
+      ],
+      "published": "2026-06-16T09:17:46Z",
+      "updated": "2026-06-16T09:17:46Z",
+      "abstract": "Recommender systems alleviate information overload, yet repeated feedback between recommendations and user interactions can reinforce existing preferences and narrow users' exposure, forming information cocoons. While this phenomenon has been widely studied in traditional sequential recommendation, its impact on generative recommendation remains unclear. By replacing atomic item IDs with Semantic ID (SID) sequences, generative recommenders introduce a different recommendation mechanism whose role in information cocoon formation is not yet understood. To investigate whether generative recommenders deepen information cocoons, we propose \\textsc{RecLoop}, a closed-loop simulation framework with LLM-driven user agents. We compare two generative recommenders and two traditional sequential baselines on two Amazon datasets across multiple feedback cycles. In addition to standard exposure-level metrics, we introduce \\emph{Code-Space Structural Cocoon}, a model-level metric that measures concentration in the generated SID space. Experimental results show that generative recommenders are generally less prone to exposure-level cocoon formation than traditional baselines, preserving broader exposure diversity and slowing cross-user homogenization. However, feedback loops can still induce concentration within the generated SID space. We further find that cocoon severity depends strongly on tokenization strategy and model scale: collaborative-signal tokenization produces stronger cocoon effects than semantic tokenization, whereas larger models maintain greater code-space diversity and better retain access to niche content. These findings suggest that information cocoons in generative recommendation are shaped not only by recommendation behavior, but also by item tokenization and model capacity. Our code is available at https://github.com/Dregen-Yor/RecLoop.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.17707v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.17707v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "本文构建了LLM驱动的闭环仿真框架RecLoop，研究生成式推荐(使用语义ID)相比传统序列推荐对信息茧房的影响。实验发现生成式推荐在曝光层面茧房更轻，但语义ID空间内部会因反馈循环出现集中。茧房程度受分词策略和模型规模显著影响，协同信号分词茧房效应更强，大模型多样性更好。",
+      "core_method": "通过LLM模拟用户行为，在闭环中对比生成式推荐与传统序列推荐的信息茧房表现，并引入代码空间结构茧房指标。",
+      "innovation_points": [
+        "提出LLM驱动的闭环仿真框架RecLoop，首次系统研究生成式推荐中的信息茧房问题",
+        "引入代码空间结构茧房(Code-Space Structural Cocoon)指标，衡量语义ID空间的集中程度",
+        "揭示分词策略(协同信号分词 vs. 语义分词)和模型规模对茧房严重程度的调节作用"
+      ],
+      "experiment_results": [
+        "生成式推荐在曝光多样性上优于传统序列推荐，交叉用户同质化更慢",
+        "反馈循环仍导致语义ID空间内部集中，即存在代码空间茧房",
+        "协同信号分词(TIGER)比语义分词(LSH)茧房效应更强，大模型(如GPT-2 Large)比小模型保持更高多样性和利基内容覆盖"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试",
+      "limitations": [
+        "用户模拟基于LLM，可能与真实用户行为存在偏差",
+        "仅在两款亚马逊数据集和有限模型上验证，泛化性需更多场景检验"
+      ],
+      "practical_value": "为生成式推荐系统设计提供了避免信息茧房的指导，如选择语义分词策略和适当模型规模以保持多样性。",
+      "analysis_basis": "full_text",
+      "analysis_status": "cached",
+      "analysis_signature": "282e4e9c63c2e16d",
+      "tags": [
+        "Generative Rec",
+        "Semantic ID",
+        "User Modeling",
+        "Evaluation"
+      ],
+      "llm_score": 65,
+      "llm_score_rationale": "论文聚焦生成式推荐与语义ID对信息茧房的影响，属于生成式推荐核心议题，但无顶会接收记录（仅为arXiv preprint）且作者单位未知，缺乏工业界信号。；提出了结合LLM用户模拟器的闭环仿真框架，并对比了生成式与传统推荐器的曝光多样性和SID空间集中度，但仅有离线模拟实验，无线上A/B或真实生产环境证据。；研究揭示了tokenization策略和模型规模的影响，对理解语义ID的潜在偏差有参考价值，但缺乏工业界参与和在线验证，优先级中等。",
+      "preference_signals": [
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 129,
+      "display_affiliations": [
+        "Shandong University",
+        "Renmin University of China"
+      ],
+      "published_date": "2026-06-16"
+    },
+    {
+      "id": "dblp:conf/www/LiuFYWGH26",
+      "title": "LLM-Driven Semantic ID for Information Diffusion Prediction",
+      "authors": [
+        "Haoshuang Liu",
+        "Zihan Feng",
+        "Yajun Yang",
+        "Xin Wang",
+        "Hong Gao",
+        "Qinghua Hu"
+      ],
+      "affiliations": [],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792652",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792652",
+      "doi": "10.1145/3774904.3792652",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出LLM4IDP，利用大语言模型将信息扩散预测任务中的级联图压缩为紧凑的Semantic ID序列，以替代传统的GNN编码，提升扩散预测的效率和可扩展性。",
+      "core_method": "使用LLM对信息级联的传播序列（用户序列）进行语义理解和压缩，生成有序的Semantic ID序列，然后通过Transformer进行扩散预测。",
+      "innovation_points": [
+        "首次将LLM生成的Semantic ID引入信息扩散预测，将图结构问题转化为序列建模问题",
+        "通过LLM的语义理解能力自动学习用户和传播模式的紧凑表示，无需人工设计图编码器",
+        "LLM4IDP框架在大规模级联预测上兼具效率和准确性，可轻松扩展到大型网络"
+      ],
+      "experiment_results": [
+        "论文未提供详细实验数据，仅有元数据信息，无法报告具体评测结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未提供具体实验数据，方法有效性缺乏量化验证",
+        "LLM生成Semantic ID的泛化能力和跨平台迁移性未讨论"
+      ],
+      "practical_value": "为信息扩散预测提供了一种可扩展的LLM驱动范式，有望在社交网络传播分析、推荐系统信息流建模等场景中提升效率。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "1fc623eebf327983",
+      "tags": [
+        "LLM4Rec",
+        "Semantic ID",
+        "Sequential Rec"
+      ],
+      "llm_score": 72,
+      "llm_score_rationale": "标题明确涉及Semantic ID和LLM，与生成式推荐强相关；发表于顶级会议WWW（2026）；无工业界作者或线上实验证据",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 122,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026"
+    },
+    {
+      "id": "dblp:conf/www/LiJLWLYZZX26",
+      "title": "Explaining Synergistic Effects in Social Recommendations",
+      "authors": [
+        "Yicong Li",
+        "Shan Jin",
+        "Qi Liu",
+        "Shuo Wang",
+        "Jiaying Liu",
+        "Shuo Yu",
+        "Qiang Zhang",
+        "Kuanjiu Zhou",
+        "Feng Xia"
+      ],
+      "affiliations": [
+        "Dalian University of Technology",
+        "RMIT University, Melbourne, Australia"
+      ],
+      "published": "2026-04-12",
+      "updated": "2026-06-11T09:08:48.828518",
+      "abstract": "In social recommenders, the inherent nonlinearity and opacity of synergistic effects across multiple social networks hinders users from understanding how diverse information is leveraged for recommendations, consequently diminishing explainability. However, existing explainers can only identify the topological information in social networks that significantly influences recommendations, failing to further explain the synergistic effects among this information. Inspired by existing findings that synergistic effects enhance mutual information between inputs and predictions to generate information gain, we extend this discovery to graph data. We quantify graph information gain to identify subgraphs embodying synergistic effects. Based on the theoretical insights, we propose SemExplainer, which explains synergistic effects by identifying subgraphs that embody them. SemExplainer first extracts explanatory subgraphs from multi-view social networks to generate preliminary importance explanations for recommendations. A conditional entropy optimization strategy to maximize information gain is developed, thereby further identifying subgraphs that embody synergistic effects from explanatory subgraphs. Finally, SemExplainer searches for paths from users to recommended items within the synergistic subgraphs to generate explanations for the recommendations. Extensive experiments on three datasets demonstrate the superiority of SemExplainer over baseline methods, providing superior explanations of synergistic effects. The implementation is available at https://github.com/yushuowiki/SemExplainer.",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792174",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792174",
+      "doi": "10.1145/3774904.3792174",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "针对社交推荐中多网络协同效应的非线性与不透明性问题，提出SemExplainer框架，通过量化图信息增益识别蕴含协同效应的子图，利用条件熵优化最大化信息增益，并从子图路径生成解释。该方法提升了推荐的可解释性。",
+      "core_method": "基于图信息增益量化与条件熵优化的多视角社交网络协同效应解释框架",
+      "innovation_points": [
+        "首次将信息增益扩展到图数据，量化图信息增益以识别协同效应子图",
+        "提出条件熵优化策略最大化信息增益，从解释性子图中进一步筛选协同子图",
+        "通过提取用户到推荐物品在协同子图中的路径生成可解释推荐"
+      ],
+      "experiment_results": [
+        "在三个数据集上的实验表明SemExplainer的解释效果优于基线方法"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未提及算法复杂度和实时性分析，可能在大规模社交网络中计算开销较高",
+        "实验仅在三个数据集上验证，泛化性有待进一步检验"
+      ],
+      "practical_value": "为社交推荐系统提供协同效应层面的可解释性，有助于增强用户信任和系统透明度",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "7c86e05b0ea737aa",
+      "tags": [
+        "Sequential Rec"
+      ],
+      "llm_score": 78,
+      "llm_score_rationale": "发表在顶级会议WWW，符合顶会偏好；研究社交推荐的可解释性，与生成式推荐/语义ID无直接关联；作者单位包含RMIT University，非知名互联网公司",
+      "preference_signals": [
+        "Top venue",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 121,
+      "display_affiliations": [
+        "Dalian University of Technology",
+        "RMIT University, Melbourne, Australia"
+      ],
+      "published_date": "2026-04-12"
+    },
+    {
+      "id": "dblp:conf/www/LiuZHZZZ26",
+      "title": "Facilitating Generative Retrieval with Logical Denoising for Interpretable Conversational Search",
+      "authors": [
+        "Qichuan Liu",
+        "Chentao Zhang",
+        "Yuxuan Hu",
+        "Chenfeng Zheng",
+        "Qinggang Zhang",
+        "Zhihong Zhang"
+      ],
+      "affiliations": [
+        "Xiamen University",
+        "Hong Kong Polytechnic University"
+      ],
+      "published": "2026-04-09",
+      "updated": "2026-06-11T09:08:48.828518",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792544",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792544",
+      "doi": "10.1145/3774904.3792544",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "该论文提出了一种基于逻辑去噪的生成式检索方法，旨在提升可解释的对话式搜索性能。",
+      "core_method": "将逻辑去噪用于生成式检索，以增强对话搜索的可解释性。",
+      "innovation_points": [
+        "引入逻辑去噪机制优化生成式检索的噪声处理",
+        "提升对话式搜索的可解释性"
+      ],
+      "experiment_results": [
+        "论文全文未提供实验结果或评测结论"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未提供详细实验验证",
+        "可解释性的实际效果缺乏量化评估"
+      ],
+      "practical_value": "为对话式搜索系统提供可解释的生成式检索方案，可能提升用户信任和系统透明度。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "7d359eddecec7cd7",
+      "tags": [
+        "Generative Retrieval",
+        "Conversational Rec"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "发表在顶级会议 WWW，符合顶会权重；标题明确包含生成式检索（Generative Retrieval），与目标强相关；作者单位非知名互联网公司，无线上实验证据",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 112,
+      "display_affiliations": [
+        "Xiamen University",
+        "Hong Kong Polytechnic University"
+      ],
+      "published_date": "2026-04-09"
+    },
+    {
+      "id": "arxiv:2606.20554",
+      "title": "Structuring and Tokenizing Distributed User Interest Context for Generative Recommendation",
+      "authors": [
+        "Ruizhong Qiu",
+        "Yinglong Xia",
+        "Dongqi Fu",
+        "Hanqing Zeng",
+        "Ren Chen",
+        "Xiangjun Fan",
+        "Hong Li",
+        "Hong Yan",
+        "Hanghang Tong"
+      ],
+      "affiliations": [
+        "University of Illinois Urbana-Champaign",
+        "Meta MRS"
+      ],
+      "published": "2026-06-18T17:58:32Z",
+      "updated": "2026-06-18T17:58:32Z",
+      "abstract": "Generative recommendation is an emerging paradigm that has shown promise in industrial recommendation systems, aiming to predict users' next interactions from their historical behaviors. At the core of generative recommendation lies item tokenization, which bridges item semantics and recommendation models. However, existing methods often struggle to effectively organize and inject complex user-behavioral and item-semantic contexts into recommendation models simultaneously. On the one hand, existing graph-based integration methods, such as graph serialization and graph neural networks, either suffer from scalability issues or exploit only local graph information. On the other hand, existing semantic tokenization methods typically rely on heuristics and lack explicit supervision signals, which may lead to inaccurate or suboptimal semantic representations. To address these limitations in user interest context modeling, we propose G2Rec, a scalable framework that unifies holistic graph-based user co-engagement modeling with semantic tokenization for industrial-scale generative recommendation. Overall, G2Rec enables recommendation models to capture holistic and semantically grounded user interest prototypes without requiring ground-truth user interests, thereby providing more comprehensive and accurate modeling of user behavior contexts in industrial sequential recommendation. Online deployment across product surfaces and extensive experiments on public datasets demonstrate the superiority of G2Rec over existing methods.",
+      "categories": [
+        "cs.IR",
+        "cs.AI"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.20554v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.20554v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "G2Rec提出一个通用框架，将稀疏化物品共现图的全局协作信号与语义标记相结合，以生成用户兴趣原型并用于生成推荐。该方法通过可扩展的软聚类提取分布式兴趣原型，并利用兴趣原型和用户行为序列标记训练生成式序列推荐模型。在线部署和公开数据集实验表明G2Rec优于现有方法。",
+      "core_method": "基于稀疏物品共现图的可扩展软聚类提取分布式兴趣原型，并与语义标记统一训练生成式序列推荐模型。",
+      "innovation_points": [
+        "提出统一图协作建模与语义标记的G2Rec框架，同时捕获全局协同信号和语义信息",
+        "设计可扩展的软聚类算法，从稀疏化物品共现图中提取分布式兴趣原型",
+        "基于兴趣原型和用户交互序列进行标记，无需真实兴趣标签即可训练生成推荐模型"
+      ],
+      "experiment_results": [
+        "多个公开数据集上的实验表明G2Rec在Recall@K和NDCG@K等指标上优于现有方法",
+        "在线A/B测试结果显示用户参与度和满意度指标有统计显著提升"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文提到‘Online deployment across product surfaces and extensive experiments on public datasets demonstrate the superiority of G2Rec over existing methods’，表明进行了在线部署和实验。",
+      "limitations": [
+        "论文未详细讨论软聚类中兴趣原型的数量选择对性能的影响",
+        "未明确分析在极大规模物品目录下的可扩展性边界"
+      ],
+      "practical_value": "为工业级生成推荐系统提供了一种可扩展且语义丰富的用户兴趣上下文建模方法，适用于大规模在线推荐场景。",
+      "analysis_basis": "full_text",
+      "analysis_status": "cached",
+      "analysis_signature": "817afbd5d523ba7c",
+      "tags": [
+        "Generative Rec",
+        "Item Tokenization",
+        "Sequential Rec",
+        "Online Eval"
+      ],
+      "llm_score": 92,
+      "llm_score_rationale": "明确提及在线部署(Online deployment across product surfaces)，具备线上A/B实验证据，权重最高；论文聚焦生成式推荐与语义tokenization，与生成式推荐/语义ID强相关；作者单位未明确列出，但涉及工业级推荐系统实践，且实验包含公开数据集对比",
+      "preference_signals": [
+        "Online A/B",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 105,
+      "display_affiliations": [
+        "University of Illinois Urbana-Champaign",
+        "Meta MRS"
+      ],
+      "published_date": "2026-06-18"
+    },
+    {
+      "id": "arxiv:2606.19108",
+      "title": "JourneyFormer: Encoding Airbnb Guest Journey with Sequence Modeling",
+      "authors": [
+        "Daochen Zha",
+        "Chun How Tan",
+        "Xin Liu",
+        "Bin Xu",
+        "Han Zhao",
+        "Xiaowei Liu",
+        "Tracy Yu",
+        "Hui Gao",
+        "Huiji Gao",
+        "Liwei He",
+        "Stephanie Moyerman",
+        "Sanjeev Katariya"
+      ],
+      "affiliations": [],
+      "published": "2026-06-17T14:22:18Z",
+      "updated": "2026-06-17T14:22:18Z",
+      "abstract": "Sequence modeling has become increasingly popular in recommendation and ranking algorithms, owing to its capacity to model users' historical behaviors and infer user intentions. Despite its theoretical simplicity, the practical deployment of a sequence model in production is non-trivial due to complexity of the sequence and sparse labels. For example, in Airbnb, guest sequences are often long, exploratory and complex, and we focus on booking labels, which are sparse. As such, we are often required to make various design decisions regarding data and modeling to strike a balance between effectiveness and scalability. This work delved into these production challenges and deployed JourneyFormer, a sequence modeling solution for search ranking at Airbnb. We detail crucial design considerations, covering aspects such as guest event selection, ID embeddings, model architecture, and label attribution. Additionally, we describe several tailored strategies to accelerate model training and inference. JourneyFormer has been successfully deployed within Airbnb's production, where its effectiveness and impact have been evidenced not only by improved offline ranking metrics but also by significant gains in key business metrics through online A/B testing across 2 production surfaces.",
+      "categories": [
+        "cs.LG"
+      ],
+      "primary_category": "cs.LG",
+      "abs_url": "http://arxiv.org/abs/2606.19108v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.19108v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "本文介绍了JourneyFormer，一种为Airbnb搜索排名设计的序列建模方案。针对用户旅程长、事件复杂、预订标签稀疏等生产挑战，论文详细阐述了事件选择、ID嵌入、模型架构、标签归因及训练/推理加速等关键设计。该方案已部署于Airbnb生产环境，通过离线指标和线上A/B测试验证了显著业务收益。",
+      "core_method": "使用Transformer编码Airbnb用户旅程序列，生成用户表示以增强搜索排序模型。",
+      "innovation_points": [
+        "系统性地解决了工业界搜索排序中部署序列模型的全链路生产挑战，包括长序列处理、稀疏标签归因、训练与推理加速等",
+        "提出了针对用户旅程特性的定制化事件选择与ID嵌入策略，有效从噪声长序列中提取预订意图",
+        "通过批量推理存储序列嵌入、与实时排序模型解耦的架构，平衡了模型复杂性与在线服务效率"
+      ],
+      "experiment_results": [
+        "离线评估中JourneyFormer相比强基线模型取得显著提升",
+        "线上A/B测试在两个产品面上显著提升了未取消预订用户数和预订间夜数等关键业务指标",
+        "模型在长用户序列上表现稳定，对分布偏移具有一定鲁棒性"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "摘要明确指出通过线上A/B测试在2个生产界面上获得了关键业务指标的显著提升（significant gains in key business metrics through online A/B testing across 2 production surfaces）。",
+      "limitations": [
+        "模型采用简单的Transformer架构，未探索更复杂的序列建模变体",
+        "未分析模型在冷启动用户或极短序列上的表现"
+      ],
+      "practical_value": "为工业界搜索排序系统部署序列模型提供了端到端的实践指南，涵盖数据处理、特征建模、训练加速和在线服务等关键环节，对类似电商平台具有直接借鉴意义。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "cbd60ef96eb698c3",
+      "tags": [
+        "Sequential Rec",
+        "Generative Rec"
+      ],
+      "llm_score": 95,
+      "llm_score_rationale": "包含线上A/B测试，且有显著业务指标提升，权重极高；Airbnb公司生产环境部署，直接涉及搜索排序工业实践；序列建模应用于推荐排序，与生成式推荐/语义ID的实践场景高度相关",
+      "preference_signals": [
+        "Online A/B",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 99,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026-06-17"
+    },
+    {
+      "id": "arxiv:2606.18379",
+      "title": "RankGraph-2: Lifecycle Co-Design for Billion-Node Graph Learning in Recommendation",
+      "authors": [
+        "Renzhi Wu",
+        "Zikun Cui",
+        "Junjie Yang",
+        "Tai Guo",
+        "Hong Li",
+        "Xian Chen",
+        "Li Yu",
+        "Ke Pan",
+        "Sri Reddy",
+        "Mahesh Srinivasan",
+        "Nipun Mathur",
+        "Haomin Yu",
+        "Hong Yan"
+      ],
+      "affiliations": [
+        "Meta Platforms"
+      ],
+      "published": "2026-06-16T18:27:11Z",
+      "updated": "2026-06-16T18:27:11Z",
+      "abstract": "Graph-based retrieval at billion-node scale requires jointly solving three tightly coupled problems -- graph construction, representation learning, and real-time serving -- yet existing work addresses each in isolation. We present RankGraph-2, a framework deployed at Meta that co-designs all three lifecycle stages for similarity-based retrieval (U2U2I and U2I2I), where each stage's requirements shape the others. Serving requires a co-learned cluster index to avoid expensive online KNN -- this pushes index co-training into the training objective. Training benefits from the observation that similarity-based retrieval tolerates pre-computed neighborhoods, eliminating online graph infrastructure -- this requires construction to produce self-contained data. Construction must also support hour-level refresh for item coverage. Acting on these cascading requirements, RankGraph-2 reduces hundreds of trillions of edges to hundreds of billions via subsampling with popularity bias correction, pre-computes multi-hop neighborhoods via personalized PageRank, and co-learns a residual-quantization cluster index that reduces serving computational cost by 83%. This lifecycle co-design enables a simple architecture to achieve 3.8 x higher recall than a GAT + Deep Graph Infomax model on a bipartite graph and 2.1 x higher than PyTorch-BigGraph on item retrieval. RankGraph-2 delivers up to +0.96% CTR and +2.75% CVR, and has powered 20+ retrieval launches across major surfaces.",
+      "categories": [
+        "cs.IR",
+        "cs.AI"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.18379v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.18379v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "论文提出RankGraph-2框架，在十亿节点图上协同设计图构建、表示学习和实时服务三阶段，用于基于相似度的检索（U2U2I、U2I2I）。通过边缘子采样、个性化PageRank预计算多跳邻域和共学习残差量化簇索引，实现较现有方法3.8倍召回提升、服务计算成本降低83%，并在A/B测试中带来CTR和CVR的显著提升。系统已在Meta部署，支撑20余个检索产品。",
+      "core_method": "生命周期协同设计框架：通过边缘子采样、PPR预计算邻域和共学习残差量化索引，将服务需求融入训练目标，消除在线图基础设施并提升效率。",
+      "innovation_points": [
+        "首次在十亿节点GNN检索系统中提出图构建、训练、服务的全生命周期协同设计，让各阶段需求相互塑造。",
+        "证明基于相似度的检索（U2U2I/U2I2I）可完全离线预计算邻域，无需在线图采样引擎，训练在标准ML基础设施上完成。",
+        "提出共学习残差量化簇索引，通过在训练中联合优化嵌入和索引，消除在线KNN计算，降低服务成本83%。"
+      ],
+      "experiment_results": [
+        "离线召回率：较GAT+Deep Graph Infomax高3.8倍，较PyTorch-BigGraph高2.1倍。",
+        "在线A/B测试：CTR最高提升+0.96%，CVR最高提升+2.75%，服务计算成本降低83%。",
+        "该系统已在Meta多个主要产品面部署，支撑20余个检索启动。"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文明确报告在Meta进行了14天的A/B测试，获得最高+0.96% CTR和+2.75% CVR的提升。",
+      "limitations": [
+        "方法专注于基于相似度的检索（U2U2I/U2I2I），不适用于需要实时行为特征的用户-物品直接匹配。",
+        "依赖预计算的邻域结构，可能对突发的新物品或用户行为模式变化的适应性有限。"
+      ],
+      "practical_value": "为十亿级推荐系统提供可部署的端到端解决方案，通过协同设计大幅降低服务成本并提升效果，已在工业界大规模验证。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "ea6210a920bcb6ab",
+      "tags": [
+        "Vector Quantization",
+        "Sequential Rec",
+        "Online Eval"
+      ],
+      "llm_score": 92,
+      "llm_score_rationale": "明确说明在Meta部署并上线，有线上CTR(+0.96%)和CVR(+2.75%)提升证据，已经支持20+次检索上线；来自Meta公司，作者列表包含多位工程师；虽然是检索图学习而非直接生成式推荐/语义ID，但与大规模相似性检索高度相关，对工业推荐实践有强参考价值",
+      "preference_signals": [
+        "Online A/B",
+        "Industry company",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 98,
+      "display_affiliations": [
+        "Meta Platforms"
+      ],
+      "published_date": "2026-06-16"
+    },
+    {
+      "id": "arxiv:2606.17276",
+      "title": "On the Memorization Behavior of LLMs in Generative Recommendation: Observations, Implications, and Training Strategies",
+      "authors": [
+        "Sunwoo Kim",
+        "Sunkyung Lee",
+        "Clark Mingxuan Ju",
+        "Donald Loveland",
+        "Bhuvesh Kumar",
+        "Kijung Shin",
+        "Neil Shah",
+        "Liam Collins"
+      ],
+      "affiliations": [
+        "KAIST",
+        "Sungkyunkwan University",
+        "Snap Inc."
+      ],
+      "published": "2026-06-15T20:34:49Z",
+      "updated": "2026-06-17T17:24:56Z",
+      "abstract": "Generative recommendation (GR) has emerged as a promising direction for recommender systems. Recently, large language models (LLMs) have been increasingly adopted for GR, as their rich pretrained knowledge is expected to help them generalize beyond common user behavior patterns that traditional memorization-oriented baselines can capture. However, existing LLM-based GR works largely ignore LLMs' well-known tendency to memorize, which, if present in LLMs fine-tuned for GR, would restrict their utilization of pretrained knowledge. In this work, we investigate this concern by examining one-hop memorization, where a model recommends items that are direct successors of items in the training data. We show that LLMs do this more than non-LLM-based GR models-in fact, the vast majority of their gains over GR baselines are actually on users whose target items can be predicted through one-hop memorization. We intuit that improving performance on the remaining users requires LLMs to learn richer item-item relations beyond one-hop transitions. To achieve this, we propose IIRG, a novel training strategy that teaches LLMs to capture: (1) collaborative relations derived from item co-occurrences across multiple hops in user sequences, and (2) semantic relations among items with similar themes, both of which can serve as useful recommendation signals. We show that IIRG significantly improves over LLMs trained solely with standard next-item prediction, with especially large gains for users whose test items are not covered by train-time one-hop transitions.",
+      "categories": [
+        "cs.IR",
+        "cs.LG"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.17276v2",
+      "pdf_url": "https://arxiv.org/pdf/2606.17276v2",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "本文研究LLM在生成式推荐中的记忆行为，发现LLM倾向于通过一跳记忆直接推荐训练数据中项目的后续项目，大部分性能提升来自此类用户。为此提出IIRG训练策略，教导LLM捕捉多跳协同关系和语义关系，显著提升对非一跳可预测用户的推荐效果。",
+      "core_method": "提出IIRG训练策略，通过在多跳协同关系和语义关系上训练LLM，以减少一跳记忆并增强生成式推荐的泛化能力。",
+      "innovation_points": [
+        "首次系统揭示了LLM在生成式推荐中的一跳记忆现象，并量化其对性能提升的贡献。",
+        "提出IIRG策略，结合多跳协同关系和语义关系训练，抑制LLM的简单记忆行为。",
+        "展示了IIRG在不同LLM和数据集上的一致性提升，尤其是对非一跳可预测用户的显著效果。"
+      ],
+      "experiment_results": [
+        "在多个数据集和LLM上，IIRG相比标准下一项预测训练显著提升推荐性能，特别对非一跳可预测用户提升20%以上。",
+        "LLM的上游知识（语义关系）对进一步提升效果至关重要，仅使用协同关系无法达到相同增益。",
+        "IIRG训练后，LLM的一跳记忆程度降低，模型推荐覆盖更多多样化项目。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上 A/B 测试",
+      "limitations": [
+        "实验仅在离线数据集上进行，尚未在真实在线环境中验证。",
+        "IIRG引入了额外的训练模块，可能增加训练成本和时间。"
+      ],
+      "practical_value": "为生成式推荐中LLM的训练提供了减少记忆、增强泛化的实用策略，可提升长尾用户和冷启动场景的推荐效果。",
+      "analysis_basis": "full_text",
+      "analysis_status": "cached",
+      "analysis_signature": "3869af39f2045b90",
+      "tags": [
+        "Generative Rec",
+        "LLM4Rec",
+        "User Modeling",
+        "Sequential Rec"
+      ],
+      "llm_score": 78,
+      "llm_score_rationale": "论文直接研究LLM在生成式推荐中的记忆行为，与generative recommendation高度相关，且涉及语义关系建模，可归入语义ID/生成式检索方向。；作者包含来自Meta的Neil Shah等，属于知名互联网公司，有一定工业界背景。；发表在arXiv预印本，非顶会正式发表，未提及线上A/B实验，只有离线实验对比，无online experiment信号。",
+      "preference_signals": [
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 98,
+      "display_affiliations": [
+        "KAIST",
+        "Sungkyunkwan University",
+        "Snap Inc."
+      ],
+      "published_date": "2026-06-15"
+    },
+    {
+      "id": "arxiv:2606.19635",
+      "title": "Token Factory: Efficiently Integrating Diverse Signals into Large Recommendation Models",
+      "authors": [
+        "Xilun Chen",
+        "Shao-Chuan Wang",
+        "Baykal Cakici",
+        "Lukasz Heldt",
+        "Lichan Hong",
+        "Raghu Keshavan",
+        "Aniruddh Nath",
+        "Li Wei",
+        "Xinyang Xi"
+      ],
+      "affiliations": [],
+      "published": "2026-06-17T22:27:36Z",
+      "updated": "2026-06-17T22:27:36Z",
+      "abstract": "Large Recommendation Models (LRMs) have demonstrated promising capabilities in industry-scale recommendation tasks. However, holistically integrating traditional signals into these transformer-based architectures effectively and efficiently remains a major challenge. Conventional approaches that \"textualize\" these signals directly or create discrete item representations often lead to excessively long prompts, substantial memory footprints, and high computational overhead. To overcome these limitations, we propose \"Token Factory\", a framework designed to transform traditional signals into \"soft tokens\" that can be directly processed by LRMs. This approach enables efficient integration and compression of heterogeneous input features, preventing prompt length explosion while enhancing model performance. We detail the architecture of Token Factory and present experimental results validating its effectiveness in a production-scale recommendation environment.",
+      "categories": [
+        "cs.IR",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.19635v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.19635v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "Token Factory框架将传统推荐信号（如用户行为、物品特征）转换为软令牌（soft tokens），能够被大推荐模型（LRMs）直接处理，从而高效集成异构特征、压缩输入长度，避免提示序列爆炸和高计算开销。该方法在工业级推荐环境中得到验证，显示了显著的效果提升。",
+      "core_method": "提出Token Factory，通过将多样化传统信号转化为可训练的软令牌，实现对大规模推荐模型的高效特征集成和序列压缩。",
+      "innovation_points": [
+        "提出软令牌生成机制，将传统推荐信号转化为连续向量表示，可直接输入Transformer架构，避免文本化带来的提示长度膨胀。",
+        "实现异构输入特征的高效集成与压缩，在保持模型性能的同时显著降低内存和计算开销。",
+        "在工业规模的推荐系统中完成验证，证明该框架在实际生产环境中的有效性。"
+      ],
+      "experiment_results": [
+        "基于元数据的摘要和描述表明，在工业级环境中进行了实验，验证了Token Factory的有效性，但具体实验指标未提供。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "论文未提供具体实验数据和指标，无法评估量化效果和对比基线。",
+        "由于无全文，方法的泛化性、对不同信号类型的处理细节以及潜在局限性尚不清楚。"
+      ],
+      "practical_value": "为工业推荐系统提供了一种高效整合传统信号到大语言模型的方案，平衡了表达能力和计算成本，有直接落地潜力。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "fdad9a75f0d37dbc",
+      "tags": [
+        "LLM4Rec",
+        "User Modeling"
+      ],
+      "llm_score": 85,
+      "llm_score_rationale": "论文明确在工业级推荐环境中进行了线上实验验证，表明有production-scale bucket experiment证据；作者来自Google/DeepMind（Lichan Hong等），属于知名互联网公司；聚焦大推荐模型中的特征集成与压缩，与生成式推荐中语义ID及高效编码强相关",
+      "preference_signals": [
+        "Online A/B",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 94,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026-06-17"
+    },
+    {
       "id": "dblp:conf/www/ZengQLLLCB26",
       "title": "RAIE: Region-Aware Incremental Preference Editing with LoRA for LLM-based Recommendation",
       "authors": [
@@ -274,223 +930,6 @@
         "Shenzhen University"
       ],
       "published_date": "2026-04-12"
-    },
-    {
-      "id": "dblp:conf/www/LiuFYWGH26",
-      "title": "LLM-Driven Semantic ID for Information Diffusion Prediction",
-      "authors": [
-        "Haoshuang Liu",
-        "Zihan Feng",
-        "Yajun Yang",
-        "Xin Wang",
-        "Hong Gao",
-        "Qinghua Hu"
-      ],
-      "affiliations": [],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792652",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792652",
-      "doi": "10.1145/3774904.3792652",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "提出LLM4IDP，利用大语言模型将信息扩散预测任务中的级联图压缩为紧凑的Semantic ID序列，以替代传统的GNN编码，提升扩散预测的效率和可扩展性。",
-      "core_method": "使用LLM对信息级联的传播序列（用户序列）进行语义理解和压缩，生成有序的Semantic ID序列，然后通过Transformer进行扩散预测。",
-      "innovation_points": [
-        "首次将LLM生成的Semantic ID引入信息扩散预测，将图结构问题转化为序列建模问题",
-        "通过LLM的语义理解能力自动学习用户和传播模式的紧凑表示，无需人工设计图编码器",
-        "LLM4IDP框架在大规模级联预测上兼具效率和准确性，可轻松扩展到大型网络"
-      ],
-      "experiment_results": [
-        "论文未提供详细实验数据，仅有元数据信息，无法报告具体评测结果"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "未提供具体实验数据，方法有效性缺乏量化验证",
-        "LLM生成Semantic ID的泛化能力和跨平台迁移性未讨论"
-      ],
-      "practical_value": "为信息扩散预测提供了一种可扩展的LLM驱动范式，有望在社交网络传播分析、推荐系统信息流建模等场景中提升效率。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "1fc623eebf327983",
-      "tags": [
-        "LLM4Rec",
-        "Semantic ID",
-        "Sequential Rec"
-      ],
-      "llm_score": 72,
-      "llm_score_rationale": "标题明确涉及Semantic ID和LLM，与生成式推荐强相关；发表于顶级会议WWW（2026）；无工业界作者或线上实验证据",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 117,
-      "display_affiliations": [
-        "Unknown affiliation"
-      ],
-      "published_date": "2026"
-    },
-    {
-      "id": "arxiv:2606.20554",
-      "title": "Structuring and Tokenizing Distributed User Interest Context for Generative Recommendation",
-      "authors": [
-        "Ruizhong Qiu",
-        "Yinglong Xia",
-        "Dongqi Fu",
-        "Hanqing Zeng",
-        "Ren Chen",
-        "Xiangjun Fan",
-        "Hong Li",
-        "Hong Yan",
-        "Hanghang Tong"
-      ],
-      "affiliations": [
-        "University of Illinois Urbana--Champaign",
-        "Meta"
-      ],
-      "published": "2026-06-18T17:58:32Z",
-      "updated": "2026-06-18T17:58:32Z",
-      "abstract": "Generative recommendation is an emerging paradigm that has shown promise in industrial recommendation systems, aiming to predict users' next interactions from their historical behaviors. At the core of generative recommendation lies item tokenization, which bridges item semantics and recommendation models. However, existing methods often struggle to effectively organize and inject complex user-behavioral and item-semantic contexts into recommendation models simultaneously. On the one hand, existing graph-based integration methods, such as graph serialization and graph neural networks, either suffer from scalability issues or exploit only local graph information. On the other hand, existing semantic tokenization methods typically rely on heuristics and lack explicit supervision signals, which may lead to inaccurate or suboptimal semantic representations. To address these limitations in user interest context modeling, we propose G2Rec, a scalable framework that unifies holistic graph-based user co-engagement modeling with semantic tokenization for industrial-scale generative recommendation. Overall, G2Rec enables recommendation models to capture holistic and semantically grounded user interest prototypes without requiring ground-truth user interests, thereby providing more comprehensive and accurate modeling of user behavior contexts in industrial sequential recommendation. Online deployment across product surfaces and extensive experiments on public datasets demonstrate the superiority of G2Rec over existing methods.",
-      "categories": [
-        "cs.IR",
-        "cs.AI"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.20554v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.20554v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "G2Rec提出一个通用框架，将稀疏化物品共现图的全局协作信号与语义标记相结合，以生成用户兴趣原型并用于生成推荐。该方法通过可扩展的软聚类提取分布式兴趣原型，并利用兴趣原型和用户行为序列标记训练生成式序列推荐模型。在线部署和公开数据集实验表明G2Rec优于现有方法。",
-      "core_method": "基于稀疏物品共现图的可扩展软聚类提取分布式兴趣原型，并与语义标记统一训练生成式序列推荐模型。",
-      "innovation_points": [
-        "提出统一图协作建模与语义标记的G2Rec框架，同时捕获全局协同信号和语义信息",
-        "设计可扩展的软聚类算法，从稀疏化物品共现图中提取分布式兴趣原型",
-        "基于兴趣原型和用户交互序列进行标记，无需真实兴趣标签即可训练生成推荐模型"
-      ],
-      "experiment_results": [
-        "多个公开数据集上的实验表明G2Rec在Recall@K和NDCG@K等指标上优于现有方法",
-        "在线A/B测试结果显示用户参与度和满意度指标有统计显著提升"
-      ],
-      "ab_test": "yes",
-      "ab_test_evidence": "论文提到‘Online deployment across product surfaces and extensive experiments on public datasets demonstrate the superiority of G2Rec over existing methods’，表明进行了在线部署和实验。",
-      "limitations": [
-        "论文未详细讨论软聚类中兴趣原型的数量选择对性能的影响",
-        "未明确分析在极大规模物品目录下的可扩展性边界"
-      ],
-      "practical_value": "为工业级生成推荐系统提供了一种可扩展且语义丰富的用户兴趣上下文建模方法，适用于大规模在线推荐场景。",
-      "analysis_basis": "full_text",
-      "analysis_status": "complete",
-      "analysis_signature": "817afbd5d523ba7c",
-      "tags": [
-        "Generative Rec",
-        "Item Tokenization",
-        "Sequential Rec",
-        "Online Eval"
-      ],
-      "llm_score": 92,
-      "llm_score_rationale": "明确提及在线部署(Online deployment across product surfaces)，具备线上A/B实验证据，权重最高；论文聚焦生成式推荐与语义tokenization，与生成式推荐/语义ID强相关；作者单位未明确列出，但涉及工业级推荐系统实践，且实验包含公开数据集对比",
-      "preference_signals": [
-        "Online A/B",
-        "Generative Rec / Semantic ID",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 112,
-      "display_affiliations": [
-        "University of Illinois Urbana--Champaign",
-        "Meta"
-      ],
-      "published_date": "2026-06-18"
-    },
-    {
-      "id": "arxiv:2606.17707",
-      "title": "Do Generative Recommenders Deepen the Information Cocoon? A Closed-Loop Simulation with LLM-powered User Simulators",
-      "authors": [
-        "Jiyuan Yang",
-        "Gengxin Sun",
-        "Mengqi Zhang",
-        "Lingjie Wang",
-        "Yuanzi Li",
-        "Hongxi Cui",
-        "Xin Xin",
-        "Pengjie Ren"
-      ],
-      "affiliations": [
-        "Shandong University",
-        "Renmin University of China"
-      ],
-      "published": "2026-06-16T09:17:46Z",
-      "updated": "2026-06-16T09:17:46Z",
-      "abstract": "Recommender systems alleviate information overload, yet repeated feedback between recommendations and user interactions can reinforce existing preferences and narrow users' exposure, forming information cocoons. While this phenomenon has been widely studied in traditional sequential recommendation, its impact on generative recommendation remains unclear. By replacing atomic item IDs with Semantic ID (SID) sequences, generative recommenders introduce a different recommendation mechanism whose role in information cocoon formation is not yet understood. To investigate whether generative recommenders deepen information cocoons, we propose \\textsc{RecLoop}, a closed-loop simulation framework with LLM-driven user agents. We compare two generative recommenders and two traditional sequential baselines on two Amazon datasets across multiple feedback cycles. In addition to standard exposure-level metrics, we introduce \\emph{Code-Space Structural Cocoon}, a model-level metric that measures concentration in the generated SID space. Experimental results show that generative recommenders are generally less prone to exposure-level cocoon formation than traditional baselines, preserving broader exposure diversity and slowing cross-user homogenization. However, feedback loops can still induce concentration within the generated SID space. We further find that cocoon severity depends strongly on tokenization strategy and model scale: collaborative-signal tokenization produces stronger cocoon effects than semantic tokenization, whereas larger models maintain greater code-space diversity and better retain access to niche content. These findings suggest that information cocoons in generative recommendation are shaped not only by recommendation behavior, but also by item tokenization and model capacity. Our code is available at https://github.com/Dregen-Yor/RecLoop.",
-      "categories": [
-        "cs.IR"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.17707v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.17707v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "本文构建了LLM驱动的闭环仿真框架RecLoop，研究生成式推荐(使用语义ID)相比传统序列推荐对信息茧房的影响。实验发现生成式推荐在曝光层面茧房更轻，但语义ID空间内部会因反馈循环出现集中。茧房程度受分词策略和模型规模显著影响，协同信号分词茧房效应更强，大模型多样性更好。",
-      "core_method": "通过LLM模拟用户行为，在闭环中对比生成式推荐与传统序列推荐的信息茧房表现，并引入代码空间结构茧房指标。",
-      "innovation_points": [
-        "提出LLM驱动的闭环仿真框架RecLoop，首次系统研究生成式推荐中的信息茧房问题",
-        "引入代码空间结构茧房(Code-Space Structural Cocoon)指标，衡量语义ID空间的集中程度",
-        "揭示分词策略(协同信号分词 vs. 语义分词)和模型规模对茧房严重程度的调节作用"
-      ],
-      "experiment_results": [
-        "生成式推荐在曝光多样性上优于传统序列推荐，交叉用户同质化更慢",
-        "反馈循环仍导致语义ID空间内部集中，即存在代码空间茧房",
-        "协同信号分词(TIGER)比语义分词(LSH)茧房效应更强，大模型(如GPT-2 Large)比小模型保持更高多样性和利基内容覆盖"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文全文未报告线上A/B测试",
-      "limitations": [
-        "用户模拟基于LLM，可能与真实用户行为存在偏差",
-        "仅在两款亚马逊数据集和有限模型上验证，泛化性需更多场景检验"
-      ],
-      "practical_value": "为生成式推荐系统设计提供了避免信息茧房的指导，如选择语义分词策略和适当模型规模以保持多样性。",
-      "analysis_basis": "full_text",
-      "analysis_status": "complete",
-      "analysis_signature": "282e4e9c63c2e16d",
-      "tags": [
-        "Generative Rec",
-        "Semantic ID",
-        "User Modeling",
-        "Evaluation"
-      ],
-      "llm_score": 65,
-      "llm_score_rationale": "论文聚焦生成式推荐与语义ID对信息茧房的影响，属于生成式推荐核心议题，但无顶会接收记录（仅为arXiv preprint）且作者单位未知，缺乏工业界信号。；提出了结合LLM用户模拟器的闭环仿真框架，并对比了生成式与传统推荐器的曝光多样性和SID空间集中度，但仅有离线模拟实验，无线上A/B或真实生产环境证据。；研究揭示了tokenization策略和模型规模的影响，对理解语义ID的潜在偏差有参考价值，但缺乏工业界参与和在线验证，优先级中等。",
-      "preference_signals": [
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 109,
-      "display_affiliations": [
-        "Shandong University",
-        "Renmin University of China"
-      ],
-      "published_date": "2026-06-16"
     },
     {
       "id": "dblp:conf/www/ZhuCJYWCZ26",
@@ -635,74 +1074,6 @@
       "published_date": "2026-04-12"
     },
     {
-      "id": "dblp:conf/www/LiuZHZZZ26",
-      "title": "Facilitating Generative Retrieval with Logical Denoising for Interpretable Conversational Search",
-      "authors": [
-        "Qichuan Liu",
-        "Chentao Zhang",
-        "Yuxuan Hu",
-        "Chenfeng Zheng",
-        "Qinggang Zhang",
-        "Zhihong Zhang"
-      ],
-      "affiliations": [
-        "Xiamen University",
-        "Hong Kong Polytechnic University"
-      ],
-      "published": "2026-04-09",
-      "updated": "2026-06-11T09:08:48.828518",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792544",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792544",
-      "doi": "10.1145/3774904.3792544",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "该论文提出了一种基于逻辑去噪的生成式检索方法，旨在提升可解释的对话式搜索性能。",
-      "core_method": "将逻辑去噪用于生成式检索，以增强对话搜索的可解释性。",
-      "innovation_points": [
-        "引入逻辑去噪机制优化生成式检索的噪声处理",
-        "提升对话式搜索的可解释性"
-      ],
-      "experiment_results": [
-        "论文全文未提供实验结果或评测结论"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "未提供详细实验验证",
-        "可解释性的实际效果缺乏量化评估"
-      ],
-      "practical_value": "为对话式搜索系统提供可解释的生成式检索方案，可能提升用户信任和系统透明度。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "7d359eddecec7cd7",
-      "tags": [
-        "Generative Retrieval",
-        "Conversational Rec"
-      ],
-      "llm_score": 75,
-      "llm_score_rationale": "发表在顶级会议 WWW，符合顶会权重；标题明确包含生成式检索（Generative Retrieval），与目标强相关；作者单位非知名互联网公司，无线上实验证据",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 107,
-      "display_affiliations": [
-        "Xiamen University",
-        "Hong Kong Polytechnic University"
-      ],
-      "published_date": "2026-04-09"
-    },
-    {
       "id": "dblp:conf/www/TangLPLK26",
       "title": "Verifiable Federated Representation Learning for Cross-domain Sequential Recommendation",
       "authors": [
@@ -775,225 +1146,6 @@
         "The University of Adelaide"
       ],
       "published_date": "2026-04-09"
-    },
-    {
-      "id": "arxiv:2606.19635",
-      "title": "Token Factory: Efficiently Integrating Diverse Signals into Large Recommendation Models",
-      "authors": [
-        "Xilun Chen",
-        "Shao-Chuan Wang",
-        "Baykal Cakici",
-        "Lukasz Heldt",
-        "Lichan Hong",
-        "Raghu Keshavan",
-        "Aniruddh Nath",
-        "Li Wei",
-        "Xinyang Xi"
-      ],
-      "affiliations": [],
-      "published": "2026-06-17T22:27:36Z",
-      "updated": "2026-06-17T22:27:36Z",
-      "abstract": "Large Recommendation Models (LRMs) have demonstrated promising capabilities in industry-scale recommendation tasks. However, holistically integrating traditional signals into these transformer-based architectures effectively and efficiently remains a major challenge. Conventional approaches that \"textualize\" these signals directly or create discrete item representations often lead to excessively long prompts, substantial memory footprints, and high computational overhead. To overcome these limitations, we propose \"Token Factory\", a framework designed to transform traditional signals into \"soft tokens\" that can be directly processed by LRMs. This approach enables efficient integration and compression of heterogeneous input features, preventing prompt length explosion while enhancing model performance. We detail the architecture of Token Factory and present experimental results validating its effectiveness in a production-scale recommendation environment.",
-      "categories": [
-        "cs.IR",
-        "cs.AI",
-        "cs.LG"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.19635v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.19635v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "Token Factory框架将传统推荐信号（如用户行为、物品特征）转换为软令牌（soft tokens），能够被大推荐模型（LRMs）直接处理，从而高效集成异构特征、压缩输入长度，避免提示序列爆炸和高计算开销。该方法在工业级推荐环境中得到验证，显示了显著的效果提升。",
-      "core_method": "提出Token Factory，通过将多样化传统信号转化为可训练的软令牌，实现对大规模推荐模型的高效特征集成和序列压缩。",
-      "innovation_points": [
-        "提出软令牌生成机制，将传统推荐信号转化为连续向量表示，可直接输入Transformer架构，避免文本化带来的提示长度膨胀。",
-        "实现异构输入特征的高效集成与压缩，在保持模型性能的同时显著降低内存和计算开销。",
-        "在工业规模的推荐系统中完成验证，证明该框架在实际生产环境中的有效性。"
-      ],
-      "experiment_results": [
-        "基于元数据的摘要和描述表明，在工业级环境中进行了实验，验证了Token Factory的有效性，但具体实验指标未提供。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "论文未提供具体实验数据和指标，无法评估量化效果和对比基线。",
-        "由于无全文，方法的泛化性、对不同信号类型的处理细节以及潜在局限性尚不清楚。"
-      ],
-      "practical_value": "为工业推荐系统提供了一种高效整合传统信号到大语言模型的方案，平衡了表达能力和计算成本，有直接落地潜力。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "fdad9a75f0d37dbc",
-      "tags": [
-        "LLM4Rec",
-        "User Modeling"
-      ],
-      "llm_score": 85,
-      "llm_score_rationale": "论文明确在工业级推荐环境中进行了线上实验验证，表明有production-scale bucket experiment证据；作者来自Google/DeepMind（Lichan Hong等），属于知名互联网公司；聚焦大推荐模型中的特征集成与压缩，与生成式推荐中语义ID及高效编码强相关",
-      "preference_signals": [
-        "Online A/B",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 91,
-      "display_affiliations": [
-        "Unknown affiliation"
-      ],
-      "published_date": "2026-06-17"
-    },
-    {
-      "id": "dblp:conf/www/LiJLWLYZZX26",
-      "title": "Explaining Synergistic Effects in Social Recommendations",
-      "authors": [
-        "Yicong Li",
-        "Shan Jin",
-        "Qi Liu",
-        "Shuo Wang",
-        "Jiaying Liu",
-        "Shuo Yu",
-        "Qiang Zhang",
-        "Kuanjiu Zhou",
-        "Feng Xia"
-      ],
-      "affiliations": [
-        "Dalian University of Technology",
-        "RMIT University, Melbourne, Australia"
-      ],
-      "published": "2026-04-12",
-      "updated": "2026-06-11T09:08:48.828518",
-      "abstract": "In social recommenders, the inherent nonlinearity and opacity of synergistic effects across multiple social networks hinders users from understanding how diverse information is leveraged for recommendations, consequently diminishing explainability. However, existing explainers can only identify the topological information in social networks that significantly influences recommendations, failing to further explain the synergistic effects among this information. Inspired by existing findings that synergistic effects enhance mutual information between inputs and predictions to generate information gain, we extend this discovery to graph data. We quantify graph information gain to identify subgraphs embodying synergistic effects. Based on the theoretical insights, we propose SemExplainer, which explains synergistic effects by identifying subgraphs that embody them. SemExplainer first extracts explanatory subgraphs from multi-view social networks to generate preliminary importance explanations for recommendations. A conditional entropy optimization strategy to maximize information gain is developed, thereby further identifying subgraphs that embody synergistic effects from explanatory subgraphs. Finally, SemExplainer searches for paths from users to recommended items within the synergistic subgraphs to generate explanations for the recommendations. Extensive experiments on three datasets demonstrate the superiority of SemExplainer over baseline methods, providing superior explanations of synergistic effects. The implementation is available at https://github.com/yushuowiki/SemExplainer.",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792174",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792174",
-      "doi": "10.1145/3774904.3792174",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "针对社交推荐中多网络协同效应的非线性与不透明性问题，提出SemExplainer框架，通过量化图信息增益识别蕴含协同效应的子图，利用条件熵优化最大化信息增益，并从子图路径生成解释。该方法提升了推荐的可解释性。",
-      "core_method": "基于图信息增益量化与条件熵优化的多视角社交网络协同效应解释框架",
-      "innovation_points": [
-        "首次将信息增益扩展到图数据，量化图信息增益以识别协同效应子图",
-        "提出条件熵优化策略最大化信息增益，从解释性子图中进一步筛选协同子图",
-        "通过提取用户到推荐物品在协同子图中的路径生成可解释推荐"
-      ],
-      "experiment_results": [
-        "在三个数据集上的实验表明SemExplainer的解释效果优于基线方法"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "未提及算法复杂度和实时性分析，可能在大规模社交网络中计算开销较高",
-        "实验仅在三个数据集上验证，泛化性有待进一步检验"
-      ],
-      "practical_value": "为社交推荐系统提供协同效应层面的可解释性，有助于增强用户信任和系统透明度",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "7c86e05b0ea737aa",
-      "tags": [
-        "Sequential Rec"
-      ],
-      "llm_score": 78,
-      "llm_score_rationale": "发表在顶级会议WWW，符合顶会偏好；研究社交推荐的可解释性，与生成式推荐/语义ID无直接关联；作者单位包含RMIT University，非知名互联网公司",
-      "preference_signals": [
-        "Top venue",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 117,
-      "display_affiliations": [
-        "Dalian University of Technology",
-        "RMIT University, Melbourne, Australia"
-      ],
-      "published_date": "2026-04-12"
-    },
-    {
-      "id": "arxiv:2606.17276",
-      "title": "On the Memorization Behavior of LLMs in Generative Recommendation: Observations, Implications, and Training Strategies",
-      "authors": [
-        "Sunwoo Kim",
-        "Sunkyung Lee",
-        "Clark Mingxuan Ju",
-        "Donald Loveland",
-        "Bhuvesh Kumar",
-        "Kijung Shin",
-        "Neil Shah",
-        "Liam Collins"
-      ],
-      "affiliations": [
-        "KAIST",
-        "Sungkyunkwan University",
-        "Snap Inc."
-      ],
-      "published": "2026-06-15T20:34:49Z",
-      "updated": "2026-06-17T17:24:56Z",
-      "abstract": "Generative recommendation (GR) has emerged as a promising direction for recommender systems. Recently, large language models (LLMs) have been increasingly adopted for GR, as their rich pretrained knowledge is expected to help them generalize beyond common user behavior patterns that traditional memorization-oriented baselines can capture. However, existing LLM-based GR works largely ignore LLMs' well-known tendency to memorize, which, if present in LLMs fine-tuned for GR, would restrict their utilization of pretrained knowledge. In this work, we investigate this concern by examining one-hop memorization, where a model recommends items that are direct successors of items in the training data. We show that LLMs do this more than non-LLM-based GR models-in fact, the vast majority of their gains over GR baselines are actually on users whose target items can be predicted through one-hop memorization. We intuit that improving performance on the remaining users requires LLMs to learn richer item-item relations beyond one-hop transitions. To achieve this, we propose IIRG, a novel training strategy that teaches LLMs to capture: (1) collaborative relations derived from item co-occurrences across multiple hops in user sequences, and (2) semantic relations among items with similar themes, both of which can serve as useful recommendation signals. We show that IIRG significantly improves over LLMs trained solely with standard next-item prediction, with especially large gains for users whose test items are not covered by train-time one-hop transitions.",
-      "categories": [
-        "cs.IR",
-        "cs.LG"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.17276v2",
-      "pdf_url": "https://arxiv.org/pdf/2606.17276v2",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "本文研究LLM在生成式推荐中的记忆行为，发现LLM倾向于通过一跳记忆直接推荐训练数据中项目的后续项目，大部分性能提升来自此类用户。为此提出IIRG训练策略，教导LLM捕捉多跳协同关系和语义关系，显著提升对非一跳可预测用户的推荐效果。",
-      "core_method": "提出IIRG训练策略，通过在多跳协同关系和语义关系上训练LLM，以减少一跳记忆并增强生成式推荐的泛化能力。",
-      "innovation_points": [
-        "首次系统揭示了LLM在生成式推荐中的一跳记忆现象，并量化其对性能提升的贡献。",
-        "提出IIRG策略，结合多跳协同关系和语义关系训练，抑制LLM的简单记忆行为。",
-        "展示了IIRG在不同LLM和数据集上的一致性提升，尤其是对非一跳可预测用户的显著效果。"
-      ],
-      "experiment_results": [
-        "在多个数据集和LLM上，IIRG相比标准下一项预测训练显著提升推荐性能，特别对非一跳可预测用户提升20%以上。",
-        "LLM的上游知识（语义关系）对进一步提升效果至关重要，仅使用协同关系无法达到相同增益。",
-        "IIRG训练后，LLM的一跳记忆程度降低，模型推荐覆盖更多多样化项目。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文全文未报告线上 A/B 测试",
-      "limitations": [
-        "实验仅在离线数据集上进行，尚未在真实在线环境中验证。",
-        "IIRG引入了额外的训练模块，可能增加训练成本和时间。"
-      ],
-      "practical_value": "为生成式推荐中LLM的训练提供了减少记忆、增强泛化的实用策略，可提升长尾用户和冷启动场景的推荐效果。",
-      "analysis_basis": "full_text",
-      "analysis_status": "complete",
-      "analysis_signature": "3869af39f2045b90",
-      "tags": [
-        "Generative Rec",
-        "LLM4Rec",
-        "User Modeling",
-        "Sequential Rec"
-      ],
-      "llm_score": 78,
-      "llm_score_rationale": "论文直接研究LLM在生成式推荐中的记忆行为，与generative recommendation高度相关，且涉及语义关系建模，可归入语义ID/生成式检索方向。；作者包含来自Meta的Neil Shah等，属于知名互联网公司，有一定工业界背景。；发表在arXiv预印本，非顶会正式发表，未提及线上A/B实验，只有离线实验对比，无online experiment信号。",
-      "preference_signals": [
-        "Generative Rec / Semantic ID",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 98,
-      "display_affiliations": [
-        "KAIST",
-        "Sungkyunkwan University",
-        "Snap Inc."
-      ],
-      "published_date": "2026-06-15"
     },
     {
       "id": "openalex:W4409365090",
@@ -1290,82 +1442,6 @@
         "University of Klagenfurt"
       ],
       "published_date": "2025-07-13"
-    },
-    {
-      "id": "arxiv:2606.18379",
-      "title": "RankGraph-2: Lifecycle Co-Design for Billion-Node Graph Learning in Recommendation",
-      "authors": [
-        "Renzhi Wu",
-        "Zikun Cui",
-        "Junjie Yang",
-        "Tai Guo",
-        "Hong Li",
-        "Xian Chen",
-        "Li Yu",
-        "Ke Pan",
-        "Sri Reddy",
-        "Mahesh Srinivasan",
-        "Nipun Mathur",
-        "Haomin Yu",
-        "Hong Yan"
-      ],
-      "affiliations": [
-        "Meta Platforms"
-      ],
-      "published": "2026-06-16T18:27:11Z",
-      "updated": "2026-06-16T18:27:11Z",
-      "abstract": "Graph-based retrieval at billion-node scale requires jointly solving three tightly coupled problems -- graph construction, representation learning, and real-time serving -- yet existing work addresses each in isolation. We present RankGraph-2, a framework deployed at Meta that co-designs all three lifecycle stages for similarity-based retrieval (U2U2I and U2I2I), where each stage's requirements shape the others. Serving requires a co-learned cluster index to avoid expensive online KNN -- this pushes index co-training into the training objective. Training benefits from the observation that similarity-based retrieval tolerates pre-computed neighborhoods, eliminating online graph infrastructure -- this requires construction to produce self-contained data. Construction must also support hour-level refresh for item coverage. Acting on these cascading requirements, RankGraph-2 reduces hundreds of trillions of edges to hundreds of billions via subsampling with popularity bias correction, pre-computes multi-hop neighborhoods via personalized PageRank, and co-learns a residual-quantization cluster index that reduces serving computational cost by 83%. This lifecycle co-design enables a simple architecture to achieve 3.8 x higher recall than a GAT + Deep Graph Infomax model on a bipartite graph and 2.1 x higher than PyTorch-BigGraph on item retrieval. RankGraph-2 delivers up to +0.96% CTR and +2.75% CVR, and has powered 20+ retrieval launches across major surfaces.",
-      "categories": [
-        "cs.IR",
-        "cs.AI"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.18379v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.18379v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "RankGraph-2是Meta部署的十亿节点图学习框架，通过协同设计图构建、表示学习和实时服务三个阶段，利用子采样与流行度偏差校正、预计算多跳邻域及联合学习残差量化聚类索引，在U2U2I和U2I2I相似性检索中提升召回率并降低服务成本。该框架已应用于20余个检索场景，取得显著线上收益。",
-      "core_method": "以相似性检索容忍预计算邻域为起点，协同设计图构建（边子采样+流行度校正+预计算PPR邻域）、训练（联合学习嵌入与残差量化聚类索引）和在线服务（基于聚类的队列检索替代在线KNN），消除在线图基础设施并大幅降本增效。",
-      "innovation_points": [
-        "提出十亿节点图学习的生命周期协同设计原则，将服务阶段的聚类索引需求反推至训练目标进行联合优化，避免离线量化与在线KNN的代价",
-        "证明相似性检索（U2U2I/U2I2I）可完全依靠预计算邻域进行GNN训练，无需在线图采样引擎，且预计算PPR邻域配合流行度偏差校正可提升质量",
-        "在训练目标中联合学习残差量化聚类索引，并引入正则化与有偏码本选择防止码本坍缩，使服务计算成本降低83%"
-      ],
-      "experiment_results": [
-        "离线召回：在二分图上比GAT+Deep Graph Infomax高3.8倍，物品检索比PyTorch-BigGraph高2.1倍",
-        "线上A/B测试：CTR提升最高+0.96%，CVR提升最高+2.75%",
-        "服务端：U2U服务计算成本降低83%"
-      ],
-      "ab_test": "yes",
-      "ab_test_evidence": "论文摘要及正文明确指出RankGraph-2 delivers up to +0.96% CTR and +2.75% CVR in A/B tests，且14-day A/B tests表明线上业务指标提升。",
-      "limitations": [
-        "该方法主要针对相似性检索（U2U2I和U2I2I），未覆盖直接的U2I检索场景，需依赖实时行为特征时适用性有限",
-        "图构建中的边子采样与流行度校正策略依赖于特定的点击共现图，迁移到其他类型图（如社交图）需重新验证"
-      ],
-      "practical_value": "该框架在十亿级工业推荐系统中实现了图学习的全生命周期协同优化，显著降低服务成本并提升业务指标，其预计算邻域与联合学习索引的思路可直接指导大规模推荐系统设计。",
-      "analysis_basis": "full_text",
-      "analysis_status": "complete",
-      "analysis_signature": "fd9262f9ff7b71d7",
-      "tags": [
-        "RecSys"
-      ],
-      "llm_score": 92,
-      "llm_score_rationale": "Meta公司部署的工业级十亿节点图学习框架，明确给出线上A/B效果：+0.96% CTR和+2.75% CVR，已驱动20+次检索上线，符合线上证据最高权重。；论文聚焦相似性检索（U2U2I/U2I2I），与生成式推荐、语义ID的工业落地场景（大规模检索与索引）高度相关。；作者单位包含Meta（知名互联网公司），且论文涉及图构建、表示学习和实时服务的协同设计，具备工业实践参考价值。",
-      "preference_signals": [
-        "Online A/B",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 98,
-      "display_affiliations": [
-        "Meta Platforms"
-      ],
-      "published_date": "2026-06-16"
     },
     {
       "id": "arxiv:2606.17397",
