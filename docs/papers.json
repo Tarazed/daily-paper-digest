@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-26T04:27:08Z",
+  "generated_at": "2026-06-27T04:13:47Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
@@ -7,8 +7,8 @@
   },
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 8,
-    "analyzed": 2,
+    "reused": 7,
+    "analyzed": 3,
     "source": "web/public/papers.json"
   },
   "current_limit": 10,
@@ -130,70 +130,6 @@
   },
   "papers": [
     {
-      "id": "s2:b1c65f38ebd5a93ed6729327f225dd364435ec62",
-      "title": "Think Wise, Collaborate Effectively: A Rationale-Aware LLM-Based Recommender with Reinforcement Learning from Collaborative Signals",
-      "authors": [],
-      "affiliations": [
-        "Korea Advanced Institute of Science and Technology"
-      ],
-      "published": "2026-03-14",
-      "updated": "2026-03-14",
-      "abstract": "Large Language Models (LLMs) have recently emerged as powerful reasoning engines in recommender systems, generating natural-language explanations that foster user engagement.\nHowever, their recommendation performance remains limited, as they lack exposure to collaborative user-item interaction patterns.\nIn contrast, collaborative filtering (CF) models achieve strong performance by learning from these behavioral patterns at scale.\nTo unify the strengths of both paradigms, we propose TWiCE-Rec (Think Wise, Collaborate Effectively), a rationale-aware LLM-based recommender that incorporates collaborative user-item interactions.\nIn the first stage, we construct a rationale dataset by applying in-context learning with self-annotated curation. \nA state-of-the-art LLM is guided to generate persuasive rationales that explain the causal relationship between the user’s interaction sequence and the ground-truth next item, resulting in a curated post-hoc training dataset.\nIn the second stage, we perform multi-task instruction-tuned adaptation—based on the rationale-augmented training dataset—comprising item description generation and both non-reasoning and reasoning-based sequential recommendation, to equip the LLM with the ability to generate rationales that reflect how user preferences align with item characteristics.\nFinally, we aim to enhance the LLM’s recommendation performance by incorporating user-item interaction patterns derived from the CF-Rec model.\nTo achieve this, we propose a confidence-weighted reinforcement learning strategy that adjusts rewards in proportion to both the LLM’s prediction alignment with the ground-truth and the confidence from the pretrained CF-Rec model.\nOur method outperforms both CF- and LLM-Rec models on Amazon datasets in terms of recommendation performance and rationale quality. \nIn an online A/B test, it achieved about 8% higher click-through rate than existing models, demonstrating practical value.",
-      "categories": [
-        "Semantic Scholar",
-        "AAAI"
-      ],
-      "primary_category": "AAAI",
-      "abs_url": "https://www.semanticscholar.org/paper/b1c65f38ebd5a93ed6729327f225dd364435ec62",
-      "pdf_url": "https://www.semanticscholar.org/paper/b1c65f38ebd5a93ed6729327f225dd364435ec62",
-      "doi": "10.1609/aaai.v40i18.38590",
-      "source": "Semantic Scholar",
-      "status": "conference",
-      "venue": "AAAI Conference on Artificial Intelligence",
-      "venue_key": "AAAI",
-      "generated_summary": "本文提出TWiCE-Rec，一个结合大语言模型推理能力和协同过滤协作信号的理性感知推荐模型。通过两阶段训练（自注释理性数据集构建与多任务指令微调）及置信度加权强化学习，将协同过滤的先验知识融入LLM优化。在Amazon数据集与线上A/B测试中，推荐性能及理性解释质量均优于基线，点击率相对提升约8%。",
-      "core_method": "基于协同过滤置信度奖励的强化学习，将协同信号注入LLM以提高推荐性能。",
-      "innovation_points": [
-        "引入理性数据集自注释流程，利用上下文学习生成用户行为因果解释，增强LLM对序列模式的理解。",
-        "提出置信度加权强化学习策略，通过协同过滤模型置信度调整奖励，实现协同信号与LLM推理的有效融合。"
-      ],
-      "experiment_results": [
-        "在Amazon多个数据集上，推荐性能和理性质量均超过单独CF和LLM基线。",
-        "在线A/B测试中，点击率相对现有模型提升约8%。"
-      ],
-      "ab_test": "yes",
-      "ab_test_evidence": "摘要中明确提及在线A/B测试，点击率比现有模型高出约8%。",
-      "limitations": [
-        "论文未提供全文，无法评估离线实验与在线实验的详细设置及统计显著性。",
-        "未见讨论多领域泛化能力或计算开销。"
-      ],
-      "practical_value": "该方法证明了协同信号融入LLM推荐的有效性，能提升在线点击率，为实际推荐系统结合两类模型优势提供了可行方案。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "e06c59b25df9b0da",
-      "tags": [
-        "LLM4Rec",
-        "Sequential Rec",
-        "Online Eval"
-      ],
-      "llm_score": 80,
-      "llm_score_rationale": "AAAI顶级会议论文，发表年份2026，符合顶会权重；涉及LLM增强推荐系统，包含解释生成与协同信号融合，与生成式推荐/语义ID相关；有明确在线A/B测试，点击率提升约8%，具备线上实验证据",
-      "preference_signals": [
-        "Online A/B",
-        "Top venue",
-        "Generative Rec / Semantic ID",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 139,
-      "display_affiliations": [
-        "Korea Advanced Institute of Science and Technology"
-      ],
-      "published_date": "2026-03-14"
-    },
-    {
       "id": "dblp:conf/www/YuFLZWLWZW26",
       "title": "ThinkRec: Thinking-based recommendation via LLM",
       "authors": [
@@ -213,7 +149,7 @@
         "Zhejiang University, Hangzhou, China and Shanghai AI Laboratory, Shanghai, China"
       ],
       "published": "2026-04-09",
-      "updated": "2026-06-24T13:16:06.693445",
+      "updated": "2026-06-26T08:34:08.712188",
       "abstract": "Recent advances in large language models (LLMs) have enabled more semantic-aware recommendations through natural language generation. Existing LLM for recommendation (LLM4Rec) methods mostly operate in a System 1-like manner, relying on superficial features to match similar items based on click history, rather than reasoning through deeper behavioral logic. This often leads to superficial and erroneous recommendations. Motivated by this, we propose ThinkRec, a thinking-based framework that shifts LLM4Rec from System 1 to System 2 (rational system). Technically, ThinkRec introduces a thinking activation mechanism that augments item metadata with keyword summarization and injects synthetic reasoning traces, guiding the model to form interpretable reasoning chains that consist of analyzing interaction histories, identifying user preferences, and making decisions based on target items. On top of this, we propose an instance-wise expert fusion mechanism to reduce the reasoning difficulty. By dynamically assigning weights to expert models based on users' latent features, ThinkRec adapts its reasoning path to individual users, thereby enhancing precision and personalization. Extensive experiments on real-world datasets demonstrate that ThinkRec significantly improves the accuracy and interpretability of recommendations. Our implementations are available at https://github.com/Yu-Qi-hang/ThinkRec.",
       "categories": [
         "WWW"
@@ -226,34 +162,32 @@
       "status": "conference",
       "venue": "WWW",
       "venue_key": "WWW",
-      "generated_summary": "ThinkRec提出一个思考型推荐框架，通过思考激活机制和实例级专家融合，引导大语言模型从浅层特征匹配转向深层推理，生成可解释的推荐链。",
-      "core_method": "基于思考激活的LLM推理框架，通过关键词总结注入合成推理轨迹，并动态融合专家模型以适应不同用户。",
+      "generated_summary": "ThinkRec提出将LLM4Rec从快速直觉的System 1推进到慢速理性的System 2，通过思维激活机制注入合成推理轨迹形成可解释推理链，并利用实例级专家融合动态分配推理路径以增强个性化。",
+      "core_method": "基于思维激活机制与实例级专家融合的System 2式LLM推荐框架。",
       "innovation_points": [
-        "提出从系统1到系统2的思考型推荐转变，增强大语言模型的推理能力",
-        "设计思考激活机制，利用关键词总结和合成推理链引导可解释推荐",
-        "提出实例级专家融合，动态分配专家权重提升个性化精度"
+        "引入思维激活机制，通过关键词摘要和合成推理轨迹引导LLM生成可解释推理链",
+        "提出实例级专家融合机制，根据用户潜在特征动态分配专家权重以降低推理难度并提升个性化"
       ],
       "experiment_results": [
-        "在真实数据集上实验表明，ThinkRec在推荐准确性和可解释性上显著优于现有方法"
+        "在真实世界数据集上，ThinkRec显著提高了推荐的准确性和可解释性"
       ],
       "ab_test": "no",
       "ab_test_evidence": "论文未报告线上 A/B 测试。",
       "limitations": [
-        "思考激活机制依赖于合成推理轨迹的质量，可能引入偏差",
-        "实例级专家融合的计算复杂度和可扩展性未明确讨论"
+        "未提供具体数据集规模或推理效率实验",
+        "合成推理轨迹的质量依赖人工或自动生成策略，可能引入偏差"
       ],
-      "practical_value": "为构建可解释、推理能力强的推荐系统提供新范式，尤其适用于需要深度理解用户行为的场景。",
+      "practical_value": "为推荐系统引入可解释的理性推理范式，有助于提升复杂场景下的推荐精度与用户信任度。",
       "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "dae737551e013f4b",
+      "analysis_status": "complete",
+      "analysis_signature": "ae2d68f9d560e017",
       "tags": [
         "LLM4Rec",
         "Generative Rec",
-        "Agent4Rec",
-        "Sequential Rec"
+        "User Modeling"
       ],
-      "llm_score": 75,
-      "llm_score_rationale": "发表于顶会WWW，符合偏好；专注于LLM4Rec，通过推理链生成推荐解释，属于生成式推荐方向；作者单位包括Ant Group，为工业互联网公司",
+      "llm_score": 80,
+      "llm_score_rationale": "WWW是顶级会议，满足顶会发表；论文涉及LLM用于推荐生成，属于生成式推荐范畴；作者单位包含蚂蚁集团，为知名互联网公司",
       "preference_signals": [
         "Top venue",
         "Generative Rec / Semantic ID",
@@ -262,7 +196,7 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 129,
+      "score": 139,
       "display_affiliations": [
         "Zhejiang University",
         "Ant Group, Hangzhou, China",
@@ -349,11 +283,81 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 128,
+      "score": 125,
       "display_affiliations": [
         "Google DeepMind"
       ],
       "published_date": "2026-06-23"
+    },
+    {
+      "id": "dblp:conf/www/ZhuCJYWCZ26",
+      "title": "FeedGuard: Online Critic-Guided Reinforcement Learning with Privacy-Preserving Feedback for Recommendation",
+      "authors": [
+        "Mengying Zhu",
+        "Feiyue Chen",
+        "Lifan Jiang",
+        "Mengyuan Yang",
+        "Yangyang Wu",
+        "Guanjie Cheng",
+        "Xiaolin Zheng"
+      ],
+      "affiliations": [
+        "Zhejiang University",
+        "Ningbo University"
+      ],
+      "published": "2026-04-12",
+      "updated": "2026-06-11T09:08:48.828518",
+      "abstract": "Reinforcement learning-based recommendation systems (RLRS) are increasingly favored for their ability to leverage online interactive feedback, enabling adaptive and personalized decision-making. In this setting, user feedback serves as both a behavioral signal and an optimization target, making it essential for policy learning. However, collecting such feedback, e.g., clicks, ratings, and engagement traces, raises serious privacy concerns, posing critical challenges for value estimation, online adaptation, and privacy protection. In this paper, we propose FeedGuard, a critic-guided reinforcement learning framework with privacy-preserving feedback. FeedGuard enhances trajectory modeling via critic guidance, enables joint online fine-tuning with effective exploration–exploitation tradeoffs, and enforces end-to-end privacy protection across the feedback lifecycle via split federated learning and differential privacy. We further provide a formal analysis of its differential privacy guarantees. Extensive experiments on four public recommendation datasets and the VirtualTB platform show that FeedGuard performs well in both offline and online settings, while maintaining rigorous privacy guarantees with minimal degradation.",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792155",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792155",
+      "doi": "10.1145/3774904.3792155",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出FeedGuard框架，结合评论家指导的强化学习与隐私保护反馈，通过分裂联邦学习和差分隐私实现端到端隐私保护，在推荐系统中平衡隐私、在线适应和推荐性能。",
+      "core_method": "基于评论家指导的强化学习框架，结合分裂联邦学习和差分隐私，实现用户反馈的端到端隐私保护与在线策略优化。",
+      "innovation_points": [
+        "提出评论家指导的轨迹建模方法，增强强化学习在推荐系统中的表示能力",
+        "设计分裂联邦学习和差分隐私结合的端到端隐私保护机制，覆盖反馈全生命周期",
+        "实现在线联合微调，在保护隐私的同时保持探索与利用的平衡"
+      ],
+      "experiment_results": [
+        "在四个公开推荐数据集和VirtualTB平台上验证，FeedGuard在离线和在线设置下均表现良好，且隐私保护严格，性能下降极小"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "摘要提到在VirtualTB平台进行在线实验，表明进行了在线A/B测试（online settings）",
+      "limitations": [
+        "论文未提供全文，无法评估方法在大规模真实场景下的可扩展性",
+        "隐私保护带来的性能下降虽小但未量化具体影响"
+      ],
+      "practical_value": "为推荐系统提供了一种平衡隐私保护和在线学习性能的解决方案，适用于对用户数据隐私敏感的推荐场景。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "3b008c5b3ea0c0a9",
+      "tags": [
+        "LLM4Rec",
+        "Online Eval"
+      ],
+      "llm_score": 65,
+      "llm_score_rationale": "WWW顶会已发表，属于顶级会议论文；；作者单位包含浙江大学，不属于知名互联网公司，无行业合作单位；；研究方向为强化学习推荐和隐私保护，与生成式推荐/语义ID无直接关联，虽提到在线实验但基于公开数据集和模拟平台，非真实线上A/B测试。",
+      "preference_signals": [
+        "Top venue",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 124,
+      "display_affiliations": [
+        "Zhejiang University",
+        "Ningbo University"
+      ],
+      "published_date": "2026-04-12"
     },
     {
       "id": "dblp:conf/www/TangLPLK26",
@@ -419,7 +423,7 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 127,
+      "score": 115,
       "display_affiliations": [
         "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
         "Zhejiang University of Technology",
@@ -428,72 +432,6 @@
         "The University of Adelaide"
       ],
       "published_date": "2026-04-09"
-    },
-    {
-      "id": "s2:7f23e1e6d62acdd5f6369f843778cd100afb2074",
-      "title": "From Dialogue to Destination: Geography-Aware Large Language Models with Multimodal Fusion for Conversational Recommendation",
-      "authors": [],
-      "affiliations": [
-        "University of Electronic Science and Technology of China",
-        "Centre for Artificial Intelligence and Robotics",
-        "Nanyang Technological University"
-      ],
-      "published": "2026-03-14",
-      "updated": "2026-03-14",
-      "abstract": "Conversational Recommender Systems (CRS) aim to provide personalized recommendations by interacting with users through natural language dialogue. However, in scenarios requiring deep geospatial awareness, existing methods, including those based on Large Language Models (LLMs), still face significant challenges in effectively fusing heterogeneous, multimodal geographic information with dynamic dialogue context. Simple fusion strategies struggle to resolve the asymmetric dependencies between dynamic user intent and static geographic context and fail to bridge the semantic gap between LLMs and structured geospatial data. To address these issues, we propose a framework for geography-aware CRS, named GeoCRS. Our core idea is to empower a frozen LLM with powerful geospatial reasoning capabilities by conditioning it on a dynamic, multimodal guidance signal generated by an external fusion architecture, all without altering the LLM's internal parameters. Specifically, we first design a hierarchical geographical encoder to uniformly represent heterogeneous geographic data. Subsequently, we introduce a contextual feature modulation module that asymmetrically injects the geographic context into the user's dialogue intent via a novel modulation mechanism to improve conversational recommendation via both geographic and dialogue context. Extensive experiments on public benchmark datasets demonstrate that our proposed GeoCRS significantly outperforms state-of-the-art baselines on the geography-aware conversational recommendation task.",
-      "categories": [
-        "Semantic Scholar",
-        "AAAI"
-      ],
-      "primary_category": "AAAI",
-      "abs_url": "https://www.semanticscholar.org/paper/7f23e1e6d62acdd5f6369f843778cd100afb2074",
-      "pdf_url": "https://www.semanticscholar.org/paper/7f23e1e6d62acdd5f6369f843778cd100afb2074",
-      "doi": "10.1609/aaai.v40i23.39002",
-      "source": "Semantic Scholar",
-      "status": "conference",
-      "venue": "AAAI Conference on Artificial Intelligence",
-      "venue_key": "AAAI",
-      "generated_summary": "论文提出GeoCRS框架，通过多模态地理信息融合增强大语言模型在地理感知对话推荐中的表现。该方法在不修改LLM参数的前提下，利用外部融合架构生成动态多模态引导信号，提升地理空间推理能力。实验表明，GeoCRS在公开数据集上显著优于现有基线。",
-      "core_method": "利用冻结LLM结合外部多模态地理融合架构，通过层次地理编码器和上下文特征调制模块实现地理上下文与对话意图的非对称融合。",
-      "innovation_points": [
-        "提出冻结LLM参数下通过外部动态多模态引导信号实现地理感知推荐的新范式",
-        "设计层次地理编码器统一表示异构地理数据",
-        "引入上下文特征调制模块实现地理上下文向对话意图的非对称注入"
-      ],
-      "experiment_results": [
-        "在公开基准数据集上，GeoCRS在地理感知对话推荐任务中显著优于现有最先进基线"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "元数据中未说明具体数据集和评测指标细节",
-        "仅基于离线数据集评估，实际在线效果未知"
-      ],
-      "practical_value": "为需要地理空间感知的对话推荐场景（如本地服务推荐）提供了一种简单高效的LLM增强方案，无需修改模型参数即可融合多模态地理信息。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "f051368e2fb41d82",
-      "tags": [
-        "Conversational Rec",
-        "LLM4Rec",
-        "User Modeling"
-      ],
-      "llm_score": 72,
-      "llm_score_rationale": "发表在AAAI 2026顶级会议，符合顶会加分条件；论文涉及LLM和推荐（CRS），但未明确提及生成式推荐或语义ID，相关性一般；无在线实验或线上A/B测试，仅有离线实验结果",
-      "preference_signals": [
-        "Top venue",
-        "Industry company (none listed)"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 119,
-      "display_affiliations": [
-        "University of Electronic Science and Technology of China",
-        "Centre for Artificial Intelligence and Robotics",
-        "Nanyang Technological University"
-      ],
-      "published_date": "2026-03-14"
     },
     {
       "id": "dblp:conf/www/LiuFYWGH26",
@@ -555,275 +493,135 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 119,
+      "score": 107,
       "display_affiliations": [
         "Unknown affiliation"
       ],
       "published_date": "2026"
     },
     {
-      "id": "s2:ae959583f883aec3384cc6a6f33c64d415bed93d",
-      "title": "Federated Context-Aware Personalized Recommendation",
-      "authors": [],
-      "affiliations": [
-        "Wuhan University",
-        "Central South University of Forestry and Technology"
-      ],
-      "published": "2026-03-14",
-      "updated": "2026-03-14",
-      "abstract": "Federated recommender system is emerging as a new paradigm for providing personalized services while preserving user data privacy. Most existing personalized federated recommender systems predict the user's next item by discretely training user and item embeddings. However, this training approach overlooks the user's behavioral patterns, suffers from low interpretability, and requires a substantial amount of data and meticulous fine-tuning to achieve stable and accurate embeddings. To address these limitations, we propose Federated Context-Aware Personalized Recommendation (FedCAR), a novel framework that leverages users’ recent interactions as behavioral context to guide prediction. Instead of static user embeddings, FedCAR dynamically constructs context representations by aggregating and weighting recently interacted item embeddings. Additionally, we incorporate a contrastive learning strategy that enables the model to capture shared behavioral structures across clients while maintaining personalized preferences, enhancing both generalization and robustness in heterogeneous settings. Experiments on 5 benchmark datasets show that FedCAR consistently outperforms state-of-the-art methods and provides interpretable recommendations by explicitly modeling context dependencies.",
-      "categories": [
-        "Semantic Scholar",
-        "AAAI"
-      ],
-      "primary_category": "AAAI",
-      "abs_url": "https://www.semanticscholar.org/paper/ae959583f883aec3384cc6a6f33c64d415bed93d",
-      "pdf_url": "https://www.semanticscholar.org/paper/ae959583f883aec3384cc6a6f33c64d415bed93d",
-      "doi": "10.1609/aaai.v40i31.39888",
-      "source": "Semantic Scholar",
-      "status": "conference",
-      "venue": "AAAI Conference on Artificial Intelligence",
-      "venue_key": "AAAI",
-      "generated_summary": "提出FedCAR框架，利用用户近期交互作为行为上下文动态构建表示，并引入对比学习增强泛化性与鲁棒性，在联邦推荐场景下实现可解释的个性化推荐。",
-      "core_method": "FedCAR动态聚合近期交互物品嵌入作为用户上下文表示，结合对比学习捕捉跨客户端共享行为模式以提升个性化与鲁棒性。",
-      "innovation_points": [
-        "提出用近期交互序列作为行为上下文动态生成用户表示，替代传统静态嵌入，增强可解释性",
-        "引入对比学习策略在联邦学习框架下捕捉跨用户共享的行为结构，平衡全局泛化与个性化偏好"
-      ],
-      "experiment_results": [
-        "在5个基准数据集上，FedCAR一致优于现有最先进的联邦推荐方法，并提供可解释的推荐结果"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏线上A/B测试验证，实际部署效果待考证",
-        "对比学习和动态上下文的计算复杂度可能在超大规模数据下成为瓶颈"
-      ],
-      "practical_value": "FedCAR为隐私敏感的推荐场景提供了一种可解释且性能优越的联邦学习方案，动态上下文建模增强了冷启动和实时适应能力。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "5a09032dcfe4bdb0",
-      "tags": [
-        "Sequential Rec"
-      ],
-      "llm_score": 65,
-      "llm_score_rationale": "发表在顶级会议AAAI，具有学术可信度；论文主题为联邦推荐，与生成式推荐/语义ID相关性较弱；无明确线上A/B实验证据，仅离线benchmark评估；作者单位未知，无知名互联网公司信号",
-      "preference_signals": [
-        "Top venue"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 118,
-      "display_affiliations": [
-        "Wuhan University",
-        "Central South University of Forestry and Technology"
-      ],
-      "published_date": "2026-03-14"
-    },
-    {
-      "id": "dblp:conf/www/ZhuCJYWCZ26",
-      "title": "FeedGuard: Online Critic-Guided Reinforcement Learning with Privacy-Preserving Feedback for Recommendation",
+      "id": "arxiv:2606.26859",
+      "title": "AgentX: Towards Agent-Driven Self-Iteration of Industrial Recommender Systems",
       "authors": [
-        "Mengying Zhu",
-        "Feiyue Chen",
-        "Lifan Jiang",
-        "Mengyuan Yang",
-        "Yangyang Wu",
-        "Guanjie Cheng",
-        "Xiaolin Zheng"
+        "Changxin Lao",
+        "Fei Pan",
+        "Guozhuang Ma",
+        "Han Li",
+        "Huihuang Lin",
+        "Jijun Shi",
+        "Kangzhi Zhao",
+        "Kun Gai",
+        "Mo Zhou",
+        "Qinqin Zhou",
+        "Quan Chen",
+        "Ruochen Yang",
+        "Shifu Bie",
+        "Shuang Yang",
+        "Shuo Yang",
+        "Wenhao Li",
+        "Wentao Xie",
+        "Xiao Lv",
+        "Xuming Wang",
+        "Yijun Wang",
+        "Yiming Chen",
+        "Yusheng Huang",
+        "Zhongyuan Wang",
+        "Zibo Zhao",
+        "Zijie Zhuang",
+        "Baoning Xia",
+        "Chao Liu",
+        "Chaoyi Ma",
+        "Chubo He",
+        "Dawei Cong",
+        "Feng Jiang",
+        "Gang Wang",
+        "Guilin Xia",
+        "Hanwen Xu",
+        "Jiahong Xie",
+        "Jiahui Qiao",
+        "Jian Liang",
+        "Jiangfan Yue",
+        "Jing Wang",
+        "Jinghan Yang",
+        "Jinghui Jia",
+        "Kan Qin",
+        "Lei Wang",
+        "Ming Li",
+        "Peilin Song",
+        "Pengbo Xu",
+        "Qiang Luo",
+        "Ruiming Tang",
+        "Shiyang Liu",
+        "Shuxian Jin",
+        "Tao Wang",
+        "Tao Zhang",
+        "Xiang Gao",
+        "Xianghan Li",
+        "Yingsong Luo",
+        "Yiwen Ning",
+        "Yongcheng Liu",
+        "Yuan Guo",
+        "Zhaojie Liu",
+        "Zhenkai Cui"
       ],
-      "affiliations": [
-        "Zhejiang University",
-        "Ningbo University"
-      ],
-      "published": "2026-04-12",
-      "updated": "2026-06-11T09:08:48.828518",
-      "abstract": "Reinforcement learning-based recommendation systems (RLRS) are increasingly favored for their ability to leverage online interactive feedback, enabling adaptive and personalized decision-making. In this setting, user feedback serves as both a behavioral signal and an optimization target, making it essential for policy learning. However, collecting such feedback, e.g., clicks, ratings, and engagement traces, raises serious privacy concerns, posing critical challenges for value estimation, online adaptation, and privacy protection. In this paper, we propose FeedGuard, a critic-guided reinforcement learning framework with privacy-preserving feedback. FeedGuard enhances trajectory modeling via critic guidance, enables joint online fine-tuning with effective exploration–exploitation tradeoffs, and enforces end-to-end privacy protection across the feedback lifecycle via split federated learning and differential privacy. We further provide a formal analysis of its differential privacy guarantees. Extensive experiments on four public recommendation datasets and the VirtualTB platform show that FeedGuard performs well in both offline and online settings, while maintaining rigorous privacy guarantees with minimal degradation.",
+      "affiliations": [],
+      "published": "2026-06-25T10:42:28Z",
+      "updated": "2026-06-25T10:42:28Z",
+      "abstract": "Recommendation algorithm iteration is moving from an artisanal, engineer-bound process toward an industrialized research loop, but this transition remains blocked by a structural execution bottleneck: the idea-to-launch cycle still depends on human engineers to generate hypotheses, modify production code, launch A/B experiments, and attribute online results. Innovation therefore scales linearly with headcount rather than compounding with evidence, compute, and accumulated experimental knowledge. We present AgentX, a production-deployed multi-agent system that fundamentally restructures this production function. AgentX operates as a self-evolving development engine: it autonomously generates, implements, evaluates, and learns from recommendation experiments at a scale and pace that no manual workflow can sustain. The system orchestrates four tightly coupled stages in a closed loop. A Brainstorm Agent synthesizes evidence from historical experiments, system architecture, data analysis, and external research into ranked, executable proposals. A Developing Agent translates each proposal into production-ready code through repository-grounded generation and multi-dimensional reliability verification. An Evaluation Agent conducts safe online rollout with guardrail-vetoed A/B judgment, converting both successes and failures into structured knowledge assets. A Harness Evolution layer (SGPO) then distills execution trajectories into semantic-gradient updates that continuously sharpen the agents themselves -- making the system not merely automated, but self-improving.",
       "categories": [
-        "WWW"
+        "cs.AI",
+        "cs.CL",
+        "cs.IR"
       ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792155",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792155",
-      "doi": "10.1145/3774904.3792155",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "提出FeedGuard框架，结合评论家指导的强化学习与隐私保护反馈，通过分裂联邦学习和差分隐私实现端到端隐私保护，在推荐系统中平衡隐私、在线适应和推荐性能。",
-      "core_method": "基于评论家指导的强化学习框架，结合分裂联邦学习和差分隐私，实现用户反馈的端到端隐私保护与在线策略优化。",
+      "primary_category": "cs.AI",
+      "abs_url": "http://arxiv.org/abs/2606.26859v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.26859v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "AgentX是一个生产部署的多智能体系统，通过自主生成、实现、评估和学习推荐实验，重构推荐算法的迭代过程。系统由四个紧密耦合的阶段组成：头脑风暴、开发、评估和进化，实现自我进化的闭环。在快手App三周部署中，AgentX显著提升了迭代效率和业务指标。",
+      "core_method": "基于多智能体闭环（Brainstorm、Developing、Evaluation、Harness Evolution）的推荐系统自我迭代框架，结合语义梯度策略优化（SGPO）实现系统自进化。",
       "innovation_points": [
-        "提出评论家指导的轨迹建模方法，增强强化学习在推荐系统中的表示能力",
-        "设计分裂联邦学习和差分隐私结合的端到端隐私保护机制，覆盖反馈全生命周期",
-        "实现在线联合微调，在保护隐私的同时保持探索与利用的平衡"
+        "首次提出并部署了面向推荐算法迭代的全流程自动化多智能体系统，将想法到上线周期压缩为闭环流水线。",
+        "引入Harness Evolution层，利用执行轨迹的语义梯度更新持续提升智能体自身能力，实现系统的自我改进。",
+        "在工业推荐场景中验证了智能体自我进化带来的效率复合增长和显著业务收益。"
       ],
       "experiment_results": [
-        "在四个公开推荐数据集和VirtualTB平台上验证，FeedGuard在离线和在线设置下均表现良好，且隐私保护严格，性能下降极小"
+        "三周内，3个AgentX工作者将374个想法转化为10个可上线的方案，单工作者周均吞吐量通过自进化翻倍。",
+        "相比人工工程师，AgentX实现8倍并发和3.7倍业务价值，用户使用时长提升0.561%，年化收入超过1亿人民币。"
       ],
       "ab_test": "yes",
-      "ab_test_evidence": "摘要提到在VirtualTB平台进行在线实验，表明进行了在线A/B测试（online settings）",
+      "ab_test_evidence": "论文明确提到Evaluation Agent进行A/B实验，并报告了线上部署后的用户时长提升0.561%等指标。",
       "limitations": [
-        "论文未提供全文，无法评估方法在大规模真实场景下的可扩展性",
-        "隐私保护带来的性能下降虽小但未量化具体影响"
+        "论文主要在快手App的特定场景（主推荐和本地生活推荐）验证，泛化到其他推荐场景的效果未知。",
+        "智能体生成代码的可靠性仍依赖多维验证，复杂场景下的鲁棒性需进一步测试。"
       ],
-      "practical_value": "为推荐系统提供了一种平衡隐私保护和在线学习性能的解决方案，适用于对用户数据隐私敏感的推荐场景。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "3b008c5b3ea0c0a9",
+      "practical_value": "提供了一套可实现推荐算法迭代自动化和智能体自进化的工业级系统方案，有望大幅提升推荐研发效率并降低人力依赖。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "b217bdcd441e12b8",
       "tags": [
-        "LLM4Rec",
+        "Agent4Rec",
+        "Generative Rec",
         "Online Eval"
       ],
-      "llm_score": 65,
-      "llm_score_rationale": "WWW顶会已发表，属于顶级会议论文；；作者单位包含浙江大学，不属于知名互联网公司，无行业合作单位；；研究方向为强化学习推荐和隐私保护，与生成式推荐/语义ID无直接关联，虽提到在线实验但基于公开数据集和模拟平台，非真实线上A/B测试。",
+      "llm_score": 95,
+      "llm_score_rationale": "论文部署于生产环境，具有明确的在线A/B实验、安全上线、自动线上评估等完整证据，符合最高权重偏好；面向生成式推荐与LLM驱动的推荐系统，涉及多智能体自主迭代、语义梯度更新，与生成式推荐高度相关；作者来自快手，属于知名互联网公司，且摘要提及工业级部署和规模化实验",
       "preference_signals": [
-        "Top venue",
+        "Online A/B",
+        "Generative Rec / Semantic ID",
         "Industry company"
       ],
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 114,
+      "score": 105,
       "display_affiliations": [
-        "Zhejiang University",
-        "Ningbo University"
+        "Unknown affiliation"
       ],
-      "published_date": "2026-04-12"
-    },
-    {
-      "id": "dblp:conf/www/LiuZHZZZ26",
-      "title": "Facilitating Generative Retrieval with Logical Denoising for Interpretable Conversational Search",
-      "authors": [
-        "Qichuan Liu",
-        "Chentao Zhang",
-        "Yuxuan Hu",
-        "Chenfeng Zheng",
-        "Qinggang Zhang",
-        "Zhihong Zhang"
-      ],
-      "affiliations": [
-        "Xiamen University",
-        "Hong Kong Polytechnic University"
-      ],
-      "published": "2026-04-09",
-      "updated": "2026-06-11T09:08:48.828518",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792544",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792544",
-      "doi": "10.1145/3774904.3792544",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "该论文提出了一种基于逻辑去噪的生成式检索方法，旨在提升可解释的对话式搜索性能。",
-      "core_method": "将逻辑去噪用于生成式检索，以增强对话搜索的可解释性。",
-      "innovation_points": [
-        "引入逻辑去噪机制优化生成式检索的噪声处理",
-        "提升对话式搜索的可解释性"
-      ],
-      "experiment_results": [
-        "论文全文未提供实验结果或评测结论"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "未提供详细实验验证",
-        "可解释性的实际效果缺乏量化评估"
-      ],
-      "practical_value": "为对话式搜索系统提供可解释的生成式检索方案，可能提升用户信任和系统透明度。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "7d359eddecec7cd7",
-      "tags": [
-        "Generative Retrieval",
-        "Conversational Rec"
-      ],
-      "llm_score": 75,
-      "llm_score_rationale": "发表在顶级会议 WWW，符合顶会权重；标题明确包含生成式检索（Generative Retrieval），与目标强相关；作者单位非知名互联网公司，无线上实验证据",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 112,
-      "display_affiliations": [
-        "Xiamen University",
-        "Hong Kong Polytechnic University"
-      ],
-      "published_date": "2026-04-09"
-    },
-    {
-      "id": "s2:b23703ae1e11808638b7a2ebdca7ab102765ade5",
-      "title": "MM4Rec: Multi-Source and Multi-Scenario Recommender for Unified User Preference",
-      "authors": [],
-      "affiliations": [
-        "National Taiwan University",
-        "Genomics Research Center, Academia Sinica",
-        "Institute of Biological Chemistry, Academia Sinica"
-      ],
-      "published": "2026-03-14",
-      "updated": "2026-03-14",
-      "abstract": "As online ecosystems grow increasingly complex, personalized recommendation systems must integrate user preferences across heterogeneous content sources and interaction scenarios. However, conventional methods typically model each source and scenario in isolation, hindering their ability to capture shared and complementary signals across contexts. In this work, we propose MM4Rec, a unified framework for multi-source and multi-scenario recommendation. MM4Rec introduces a Source-Aware Transformer Encoder to jointly model heterogeneous inputs, a Multi-Scenario Behavior Extraction Layer based on a multi-mixture-of-experts architecture to capture scenario-specific dynamics, and a Trend-Aware Learner to enhance temporal representation learning. Extensive experiments on three real-world datasets demonstrate that MM4Rec consistently outperforms strong baselines across standard recommendation metrics. To facilitate future research, we also release two large-scale datasets encompassing diverse sources and scenarios.",
-      "categories": [
-        "Semantic Scholar",
-        "AAAI"
-      ],
-      "primary_category": "AAAI",
-      "abs_url": "https://www.semanticscholar.org/paper/b23703ae1e11808638b7a2ebdca7ab102765ade5",
-      "pdf_url": "https://www.semanticscholar.org/paper/b23703ae1e11808638b7a2ebdca7ab102765ade5",
-      "doi": "10.1609/aaai.v40i19.38655",
-      "source": "Semantic Scholar",
-      "status": "conference",
-      "venue": "AAAI Conference on Artificial Intelligence",
-      "venue_key": "AAAI",
-      "generated_summary": "MM4Rec是一个面向多源多场景的统一推荐框架，通过源感知Transformer编码器联合建模异构输入，多场景行为提取层捕捉场景动态，并引入趋势感知学习器增强时序表示，在三个真实数据集上超越基线，并开源两组大规模多源多场景数据集。",
-      "core_method": "基于源感知Transformer编码器、多专家混合的多场景行为提取层和趋势感知学习器的统一多源多场景推荐框架",
-      "innovation_points": [
-        "提出源感知Transformer编码器以联合建模异构输入源",
-        "设计多场景行为提取层利用多专家混合架构捕获场景特定动态",
-        "引入趋势感知学习器增强时序表示学习"
-      ],
-      "experiment_results": [
-        "在三个真实数据集上MM4Rec在标准推荐指标上一致超越多个强基线",
-        "开源两组大规模多源多场景数据集"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "仅离线实验验证，缺乏线上A/B测试结果",
-        "模型复杂度较高，可能增加实际部署的工程挑战"
-      ],
-      "practical_value": "为需要整合异构源和多场景的工业推荐系统提供了统一建模框架，并开源数据集促进研究",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "0b26dcce014d780d",
-      "tags": [
-        "Sequential Rec",
-        "Dataset"
-      ],
-      "llm_score": 72,
-      "llm_score_rationale": "发表在 AAAI 2026，为顶会论文，提升可信度与优先级；论文提出多源多场景统一推荐框架，与工业实践相关；作者单位未知，未明确知名互联网公司，缺乏线上 A/B 实验证据",
-      "preference_signals": [
-        "Top venue",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 111,
-      "display_affiliations": [
-        "National Taiwan University",
-        "Genomics Research Center, Academia Sinica",
-        "Institute of Biological Chemistry, Academia Sinica"
-      ],
-      "published_date": "2026-03-14"
+      "published_date": "2026-06-25"
     },
     {
       "id": "dblp:conf/www/ZengQLLLCB26",
@@ -890,7 +688,7 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 128,
+      "score": 103,
       "display_affiliations": [
         "Shenzhen University"
       ],
@@ -960,12 +758,404 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 104,
+      "score": 97,
       "display_affiliations": [
         "Dalian University of Technology",
         "RMIT University, Melbourne, Australia"
       ],
       "published_date": "2026-04-12"
+    },
+    {
+      "id": "dblp:conf/www/LiuZHZZZ26",
+      "title": "Facilitating Generative Retrieval with Logical Denoising for Interpretable Conversational Search",
+      "authors": [
+        "Qichuan Liu",
+        "Chentao Zhang",
+        "Yuxuan Hu",
+        "Chenfeng Zheng",
+        "Qinggang Zhang",
+        "Zhihong Zhang"
+      ],
+      "affiliations": [
+        "Xiamen University",
+        "Hong Kong Polytechnic University"
+      ],
+      "published": "2026-04-09",
+      "updated": "2026-06-11T09:08:48.828518",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792544",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792544",
+      "doi": "10.1145/3774904.3792544",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "该论文提出了一种基于逻辑去噪的生成式检索方法，旨在提升可解释的对话式搜索性能。",
+      "core_method": "将逻辑去噪用于生成式检索，以增强对话搜索的可解释性。",
+      "innovation_points": [
+        "引入逻辑去噪机制优化生成式检索的噪声处理",
+        "提升对话式搜索的可解释性"
+      ],
+      "experiment_results": [
+        "论文全文未提供实验结果或评测结论"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未提供详细实验验证",
+        "可解释性的实际效果缺乏量化评估"
+      ],
+      "practical_value": "为对话式搜索系统提供可解释的生成式检索方案，可能提升用户信任和系统透明度。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "7d359eddecec7cd7",
+      "tags": [
+        "Generative Retrieval",
+        "Conversational Rec"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "发表在顶级会议 WWW，符合顶会权重；标题明确包含生成式检索（Generative Retrieval），与目标强相关；作者单位非知名互联网公司，无线上实验证据",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 97,
+      "display_affiliations": [
+        "Xiamen University",
+        "Hong Kong Polytechnic University"
+      ],
+      "published_date": "2026-04-09"
+    },
+    {
+      "id": "openalex:W4407571719",
+      "title": "Unleashing the Power of Large Language Model for Denoising Recommendation",
+      "authors": [
+        "Shuyao Wang",
+        "Zhi Zheng",
+        "Yongduo Sui",
+        "Hui Xiong"
+      ],
+      "affiliations": [
+        "University of Hong Kong",
+        "Tencent (China)"
+      ],
+      "published": "2025-04-22",
+      "updated": "2026-06-11T09:08:48.828518",
+      "abstract": "Recommender systems are crucial for personalizing user experiences but often depend on implicit feedback data, which can be noisy and misleading. Existing denoising studies involve incorporating auxiliary information or learning strategies from interaction data. However, they struggle with the inherent limitations of external knowledge and interaction data, as well as the non-universality of certain predefined assumptions, hindering accurate noise identification. Recently, large language models (LLMs) have gained attention for their extensive world knowledge and reasoning abilities, yet their potential in enhancing denoising in recommendations remains underexplored. In this paper, we introduce LLaRD, a framework leveraging LLMs to improve denoising in recommender systems, thereby boosting overall recommendation performance. Specifically, LLaRD generates denoising-related knowledge by first enriching semantic insights from observational data via LLMs and inferring user-item preference knowledge. It then employs a novel Chain-of-Thought (CoT) technique over user-item interaction graphs to reveal relation knowledge for denoising. Finally, it applies the Information Bottleneck (IB) principle to align LLM-generated denoising knowledge with recommendation targets, filtering out noise and irrelevant LLM knowledge. Empirical results demonstrate LLaRD's effectiveness in enhancing denoising and recommendation accuracy.",
+      "categories": [
+        "OpenAlex",
+        "TKDD"
+      ],
+      "primary_category": "TKDD",
+      "abs_url": "https://doi.org/10.1145/3696410.3714758",
+      "pdf_url": "https://dl.acm.org/doi/pdf/10.1145/3696410.3714758",
+      "doi": "10.1145/3696410.3714758",
+      "source": "OpenAlex",
+      "status": "conference",
+      "venue": "TKDD",
+      "venue_key": "TKDD",
+      "generated_summary": "本文提出LLaRD框架，利用大语言模型的知识与推理能力来增强推荐系统的去噪过程。通过LLM丰富语义洞察、推断用户-物品偏好，并设计图链式思维技术挖掘关系知识，再结合信息瓶颈原理过滤噪声，提升了推荐准确性。",
+      "core_method": "利用LLM生成去噪相关知识，并结合图链式思维与信息瓶颈原理的对齐框架LLaRD。",
+      "innovation_points": [
+        "首次探索LLM在推荐去噪中的应用，利用其世界知识和推理能力识别噪声",
+        "提出一种新颖的图链式思维（Chain-of-Thought）技术，在用户-物品交互图上揭示关系知识用于去噪",
+        "引入信息瓶颈原理对齐LLM生成的知识与推荐目标，过滤无关噪声"
+      ],
+      "experiment_results": [
+        "论文摘要声称LLaRD在去噪和推荐准确性方面表现出有效性，但元数据未提供具体实验指标或对比结果。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "仅基于元数据，缺乏具体实验细节和量化结果支持",
+        "LLM知识的引入可能增加计算开销和推理延迟，文中未讨论"
+      ],
+      "practical_value": "为利用大语言模型提升推荐系统数据质量提供了新思路，有望改善噪声反馈场景下的推荐效果。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "a85105c2539af994",
+      "tags": [
+        "LLM4Rec"
+      ],
+      "llm_score": 78,
+      "llm_score_rationale": "TKDD 是数据挖掘领域知名期刊，视觉上符合 'Top venue' 信号；作者单位包含腾讯 (Tencent)，满足知名互联网公司加分；论文利用 LLM 增强推荐去噪，与生成式推荐/LLM4Rec 相关",
+      "preference_signals": [
+        "Top venue",
+        "Industry company",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 96,
+      "display_affiliations": [
+        "University of Hong Kong",
+        "Tencent (China)"
+      ],
+      "published_date": "2025-04-22"
+    },
+    {
+      "id": "s2:b1c65f38ebd5a93ed6729327f225dd364435ec62",
+      "title": "Think Wise, Collaborate Effectively: A Rationale-Aware LLM-Based Recommender with Reinforcement Learning from Collaborative Signals",
+      "authors": [],
+      "affiliations": [
+        "Korea Advanced Institute of Science and Technology"
+      ],
+      "published": "2026-03-14",
+      "updated": "2026-03-14",
+      "abstract": "Large Language Models (LLMs) have recently emerged as powerful reasoning engines in recommender systems, generating natural-language explanations that foster user engagement.\nHowever, their recommendation performance remains limited, as they lack exposure to collaborative user-item interaction patterns.\nIn contrast, collaborative filtering (CF) models achieve strong performance by learning from these behavioral patterns at scale.\nTo unify the strengths of both paradigms, we propose TWiCE-Rec (Think Wise, Collaborate Effectively), a rationale-aware LLM-based recommender that incorporates collaborative user-item interactions.\nIn the first stage, we construct a rationale dataset by applying in-context learning with self-annotated curation. \nA state-of-the-art LLM is guided to generate persuasive rationales that explain the causal relationship between the user’s interaction sequence and the ground-truth next item, resulting in a curated post-hoc training dataset.\nIn the second stage, we perform multi-task instruction-tuned adaptation—based on the rationale-augmented training dataset—comprising item description generation and both non-reasoning and reasoning-based sequential recommendation, to equip the LLM with the ability to generate rationales that reflect how user preferences align with item characteristics.\nFinally, we aim to enhance the LLM’s recommendation performance by incorporating user-item interaction patterns derived from the CF-Rec model.\nTo achieve this, we propose a confidence-weighted reinforcement learning strategy that adjusts rewards in proportion to both the LLM’s prediction alignment with the ground-truth and the confidence from the pretrained CF-Rec model.\nOur method outperforms both CF- and LLM-Rec models on Amazon datasets in terms of recommendation performance and rationale quality. \nIn an online A/B test, it achieved about 8% higher click-through rate than existing models, demonstrating practical value.",
+      "categories": [
+        "Semantic Scholar",
+        "AAAI"
+      ],
+      "primary_category": "AAAI",
+      "abs_url": "https://www.semanticscholar.org/paper/b1c65f38ebd5a93ed6729327f225dd364435ec62",
+      "pdf_url": "https://www.semanticscholar.org/paper/b1c65f38ebd5a93ed6729327f225dd364435ec62",
+      "doi": "10.1609/aaai.v40i18.38590",
+      "source": "Semantic Scholar",
+      "status": "conference",
+      "venue": "AAAI Conference on Artificial Intelligence",
+      "venue_key": "AAAI",
+      "generated_summary": "本文提出TWiCE-Rec，一个结合大语言模型推理能力和协同过滤协作信号的理性感知推荐模型。通过两阶段训练（自注释理性数据集构建与多任务指令微调）及置信度加权强化学习，将协同过滤的先验知识融入LLM优化。在Amazon数据集与线上A/B测试中，推荐性能及理性解释质量均优于基线，点击率相对提升约8%。",
+      "core_method": "基于协同过滤置信度奖励的强化学习，将协同信号注入LLM以提高推荐性能。",
+      "innovation_points": [
+        "引入理性数据集自注释流程，利用上下文学习生成用户行为因果解释，增强LLM对序列模式的理解。",
+        "提出置信度加权强化学习策略，通过协同过滤模型置信度调整奖励，实现协同信号与LLM推理的有效融合。"
+      ],
+      "experiment_results": [
+        "在Amazon多个数据集上，推荐性能和理性质量均超过单独CF和LLM基线。",
+        "在线A/B测试中，点击率相对现有模型提升约8%。"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "摘要中明确提及在线A/B测试，点击率比现有模型高出约8%。",
+      "limitations": [
+        "论文未提供全文，无法评估离线实验与在线实验的详细设置及统计显著性。",
+        "未见讨论多领域泛化能力或计算开销。"
+      ],
+      "practical_value": "该方法证明了协同信号融入LLM推荐的有效性，能提升在线点击率，为实际推荐系统结合两类模型优势提供了可行方案。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "e06c59b25df9b0da",
+      "tags": [
+        "LLM4Rec",
+        "Sequential Rec",
+        "Online Eval"
+      ],
+      "llm_score": 80,
+      "llm_score_rationale": "AAAI顶级会议论文，发表年份2026，符合顶会权重；涉及LLM增强推荐系统，包含解释生成与协同信号融合，与生成式推荐/语义ID相关；有明确在线A/B测试，点击率提升约8%，具备线上实验证据",
+      "preference_signals": [
+        "Online A/B",
+        "Top venue",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 139,
+      "display_affiliations": [
+        "Korea Advanced Institute of Science and Technology"
+      ],
+      "published_date": "2026-03-14"
+    },
+    {
+      "id": "s2:7f23e1e6d62acdd5f6369f843778cd100afb2074",
+      "title": "From Dialogue to Destination: Geography-Aware Large Language Models with Multimodal Fusion for Conversational Recommendation",
+      "authors": [],
+      "affiliations": [
+        "University of Electronic Science and Technology of China",
+        "Centre for Artificial Intelligence and Robotics",
+        "Nanyang Technological University"
+      ],
+      "published": "2026-03-14",
+      "updated": "2026-03-14",
+      "abstract": "Conversational Recommender Systems (CRS) aim to provide personalized recommendations by interacting with users through natural language dialogue. However, in scenarios requiring deep geospatial awareness, existing methods, including those based on Large Language Models (LLMs), still face significant challenges in effectively fusing heterogeneous, multimodal geographic information with dynamic dialogue context. Simple fusion strategies struggle to resolve the asymmetric dependencies between dynamic user intent and static geographic context and fail to bridge the semantic gap between LLMs and structured geospatial data. To address these issues, we propose a framework for geography-aware CRS, named GeoCRS. Our core idea is to empower a frozen LLM with powerful geospatial reasoning capabilities by conditioning it on a dynamic, multimodal guidance signal generated by an external fusion architecture, all without altering the LLM's internal parameters. Specifically, we first design a hierarchical geographical encoder to uniformly represent heterogeneous geographic data. Subsequently, we introduce a contextual feature modulation module that asymmetrically injects the geographic context into the user's dialogue intent via a novel modulation mechanism to improve conversational recommendation via both geographic and dialogue context. Extensive experiments on public benchmark datasets demonstrate that our proposed GeoCRS significantly outperforms state-of-the-art baselines on the geography-aware conversational recommendation task.",
+      "categories": [
+        "Semantic Scholar",
+        "AAAI"
+      ],
+      "primary_category": "AAAI",
+      "abs_url": "https://www.semanticscholar.org/paper/7f23e1e6d62acdd5f6369f843778cd100afb2074",
+      "pdf_url": "https://www.semanticscholar.org/paper/7f23e1e6d62acdd5f6369f843778cd100afb2074",
+      "doi": "10.1609/aaai.v40i23.39002",
+      "source": "Semantic Scholar",
+      "status": "conference",
+      "venue": "AAAI Conference on Artificial Intelligence",
+      "venue_key": "AAAI",
+      "generated_summary": "论文提出GeoCRS框架，通过多模态地理信息融合增强大语言模型在地理感知对话推荐中的表现。该方法在不修改LLM参数的前提下，利用外部融合架构生成动态多模态引导信号，提升地理空间推理能力。实验表明，GeoCRS在公开数据集上显著优于现有基线。",
+      "core_method": "利用冻结LLM结合外部多模态地理融合架构，通过层次地理编码器和上下文特征调制模块实现地理上下文与对话意图的非对称融合。",
+      "innovation_points": [
+        "提出冻结LLM参数下通过外部动态多模态引导信号实现地理感知推荐的新范式",
+        "设计层次地理编码器统一表示异构地理数据",
+        "引入上下文特征调制模块实现地理上下文向对话意图的非对称注入"
+      ],
+      "experiment_results": [
+        "在公开基准数据集上，GeoCRS在地理感知对话推荐任务中显著优于现有最先进基线"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "元数据中未说明具体数据集和评测指标细节",
+        "仅基于离线数据集评估，实际在线效果未知"
+      ],
+      "practical_value": "为需要地理空间感知的对话推荐场景（如本地服务推荐）提供了一种简单高效的LLM增强方案，无需修改模型参数即可融合多模态地理信息。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "f051368e2fb41d82",
+      "tags": [
+        "Conversational Rec",
+        "LLM4Rec",
+        "User Modeling"
+      ],
+      "llm_score": 72,
+      "llm_score_rationale": "发表在AAAI 2026顶级会议，符合顶会加分条件；论文涉及LLM和推荐（CRS），但未明确提及生成式推荐或语义ID，相关性一般；无在线实验或线上A/B测试，仅有离线实验结果",
+      "preference_signals": [
+        "Top venue",
+        "Industry company (none listed)"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 119,
+      "display_affiliations": [
+        "University of Electronic Science and Technology of China",
+        "Centre for Artificial Intelligence and Robotics",
+        "Nanyang Technological University"
+      ],
+      "published_date": "2026-03-14"
+    },
+    {
+      "id": "s2:ae959583f883aec3384cc6a6f33c64d415bed93d",
+      "title": "Federated Context-Aware Personalized Recommendation",
+      "authors": [],
+      "affiliations": [
+        "Wuhan University",
+        "Central South University of Forestry and Technology"
+      ],
+      "published": "2026-03-14",
+      "updated": "2026-03-14",
+      "abstract": "Federated recommender system is emerging as a new paradigm for providing personalized services while preserving user data privacy. Most existing personalized federated recommender systems predict the user's next item by discretely training user and item embeddings. However, this training approach overlooks the user's behavioral patterns, suffers from low interpretability, and requires a substantial amount of data and meticulous fine-tuning to achieve stable and accurate embeddings. To address these limitations, we propose Federated Context-Aware Personalized Recommendation (FedCAR), a novel framework that leverages users’ recent interactions as behavioral context to guide prediction. Instead of static user embeddings, FedCAR dynamically constructs context representations by aggregating and weighting recently interacted item embeddings. Additionally, we incorporate a contrastive learning strategy that enables the model to capture shared behavioral structures across clients while maintaining personalized preferences, enhancing both generalization and robustness in heterogeneous settings. Experiments on 5 benchmark datasets show that FedCAR consistently outperforms state-of-the-art methods and provides interpretable recommendations by explicitly modeling context dependencies.",
+      "categories": [
+        "Semantic Scholar",
+        "AAAI"
+      ],
+      "primary_category": "AAAI",
+      "abs_url": "https://www.semanticscholar.org/paper/ae959583f883aec3384cc6a6f33c64d415bed93d",
+      "pdf_url": "https://www.semanticscholar.org/paper/ae959583f883aec3384cc6a6f33c64d415bed93d",
+      "doi": "10.1609/aaai.v40i31.39888",
+      "source": "Semantic Scholar",
+      "status": "conference",
+      "venue": "AAAI Conference on Artificial Intelligence",
+      "venue_key": "AAAI",
+      "generated_summary": "提出FedCAR框架，利用用户近期交互作为行为上下文动态构建表示，并引入对比学习增强泛化性与鲁棒性，在联邦推荐场景下实现可解释的个性化推荐。",
+      "core_method": "FedCAR动态聚合近期交互物品嵌入作为用户上下文表示，结合对比学习捕捉跨客户端共享行为模式以提升个性化与鲁棒性。",
+      "innovation_points": [
+        "提出用近期交互序列作为行为上下文动态生成用户表示，替代传统静态嵌入，增强可解释性",
+        "引入对比学习策略在联邦学习框架下捕捉跨用户共享的行为结构，平衡全局泛化与个性化偏好"
+      ],
+      "experiment_results": [
+        "在5个基准数据集上，FedCAR一致优于现有最先进的联邦推荐方法，并提供可解释的推荐结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏线上A/B测试验证，实际部署效果待考证",
+        "对比学习和动态上下文的计算复杂度可能在超大规模数据下成为瓶颈"
+      ],
+      "practical_value": "FedCAR为隐私敏感的推荐场景提供了一种可解释且性能优越的联邦学习方案，动态上下文建模增强了冷启动和实时适应能力。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "5a09032dcfe4bdb0",
+      "tags": [
+        "Sequential Rec"
+      ],
+      "llm_score": 65,
+      "llm_score_rationale": "发表在顶级会议AAAI，具有学术可信度；论文主题为联邦推荐，与生成式推荐/语义ID相关性较弱；无明确线上A/B实验证据，仅离线benchmark评估；作者单位未知，无知名互联网公司信号",
+      "preference_signals": [
+        "Top venue"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 118,
+      "display_affiliations": [
+        "Wuhan University",
+        "Central South University of Forestry and Technology"
+      ],
+      "published_date": "2026-03-14"
+    },
+    {
+      "id": "s2:b23703ae1e11808638b7a2ebdca7ab102765ade5",
+      "title": "MM4Rec: Multi-Source and Multi-Scenario Recommender for Unified User Preference",
+      "authors": [],
+      "affiliations": [
+        "National Taiwan University",
+        "Genomics Research Center, Academia Sinica",
+        "Institute of Biological Chemistry, Academia Sinica"
+      ],
+      "published": "2026-03-14",
+      "updated": "2026-03-14",
+      "abstract": "As online ecosystems grow increasingly complex, personalized recommendation systems must integrate user preferences across heterogeneous content sources and interaction scenarios. However, conventional methods typically model each source and scenario in isolation, hindering their ability to capture shared and complementary signals across contexts. In this work, we propose MM4Rec, a unified framework for multi-source and multi-scenario recommendation. MM4Rec introduces a Source-Aware Transformer Encoder to jointly model heterogeneous inputs, a Multi-Scenario Behavior Extraction Layer based on a multi-mixture-of-experts architecture to capture scenario-specific dynamics, and a Trend-Aware Learner to enhance temporal representation learning. Extensive experiments on three real-world datasets demonstrate that MM4Rec consistently outperforms strong baselines across standard recommendation metrics. To facilitate future research, we also release two large-scale datasets encompassing diverse sources and scenarios.",
+      "categories": [
+        "Semantic Scholar",
+        "AAAI"
+      ],
+      "primary_category": "AAAI",
+      "abs_url": "https://www.semanticscholar.org/paper/b23703ae1e11808638b7a2ebdca7ab102765ade5",
+      "pdf_url": "https://www.semanticscholar.org/paper/b23703ae1e11808638b7a2ebdca7ab102765ade5",
+      "doi": "10.1609/aaai.v40i19.38655",
+      "source": "Semantic Scholar",
+      "status": "conference",
+      "venue": "AAAI Conference on Artificial Intelligence",
+      "venue_key": "AAAI",
+      "generated_summary": "MM4Rec是一个面向多源多场景的统一推荐框架，通过源感知Transformer编码器联合建模异构输入，多场景行为提取层捕捉场景动态，并引入趋势感知学习器增强时序表示，在三个真实数据集上超越基线，并开源两组大规模多源多场景数据集。",
+      "core_method": "基于源感知Transformer编码器、多专家混合的多场景行为提取层和趋势感知学习器的统一多源多场景推荐框架",
+      "innovation_points": [
+        "提出源感知Transformer编码器以联合建模异构输入源",
+        "设计多场景行为提取层利用多专家混合架构捕获场景特定动态",
+        "引入趋势感知学习器增强时序表示学习"
+      ],
+      "experiment_results": [
+        "在三个真实数据集上MM4Rec在标准推荐指标上一致超越多个强基线",
+        "开源两组大规模多源多场景数据集"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "仅离线实验验证，缺乏线上A/B测试结果",
+        "模型复杂度较高，可能增加实际部署的工程挑战"
+      ],
+      "practical_value": "为需要整合异构源和多场景的工业推荐系统提供了统一建模框架，并开源数据集促进研究",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "0b26dcce014d780d",
+      "tags": [
+        "Sequential Rec",
+        "Dataset"
+      ],
+      "llm_score": 72,
+      "llm_score_rationale": "发表在 AAAI 2026，为顶会论文，提升可信度与优先级；论文提出多源多场景统一推荐框架，与工业实践相关；作者单位未知，未明确知名互联网公司，缺乏线上 A/B 实验证据",
+      "preference_signals": [
+        "Top venue",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 111,
+      "display_affiliations": [
+        "National Taiwan University",
+        "Genomics Research Center, Academia Sinica",
+        "Institute of Biological Chemistry, Academia Sinica"
+      ],
+      "published_date": "2026-03-14"
     },
     {
       "id": "dblp:conf/www/QiuXHPW26",
@@ -2850,75 +3040,6 @@
         "Tencent (China)"
       ],
       "published_date": "2026-02-16"
-    },
-    {
-      "id": "openalex:W4407571719",
-      "title": "Unleashing the Power of Large Language Model for Denoising Recommendation",
-      "authors": [
-        "Shuyao Wang",
-        "Zhi Zheng",
-        "Yongduo Sui",
-        "Hui Xiong"
-      ],
-      "affiliations": [
-        "University of Hong Kong",
-        "Tencent (China)"
-      ],
-      "published": "2025-04-22",
-      "updated": "2026-06-11T09:08:48.828518",
-      "abstract": "Recommender systems are crucial for personalizing user experiences but often depend on implicit feedback data, which can be noisy and misleading. Existing denoising studies involve incorporating auxiliary information or learning strategies from interaction data. However, they struggle with the inherent limitations of external knowledge and interaction data, as well as the non-universality of certain predefined assumptions, hindering accurate noise identification. Recently, large language models (LLMs) have gained attention for their extensive world knowledge and reasoning abilities, yet their potential in enhancing denoising in recommendations remains underexplored. In this paper, we introduce LLaRD, a framework leveraging LLMs to improve denoising in recommender systems, thereby boosting overall recommendation performance. Specifically, LLaRD generates denoising-related knowledge by first enriching semantic insights from observational data via LLMs and inferring user-item preference knowledge. It then employs a novel Chain-of-Thought (CoT) technique over user-item interaction graphs to reveal relation knowledge for denoising. Finally, it applies the Information Bottleneck (IB) principle to align LLM-generated denoising knowledge with recommendation targets, filtering out noise and irrelevant LLM knowledge. Empirical results demonstrate LLaRD's effectiveness in enhancing denoising and recommendation accuracy.",
-      "categories": [
-        "OpenAlex",
-        "TKDD"
-      ],
-      "primary_category": "TKDD",
-      "abs_url": "https://doi.org/10.1145/3696410.3714758",
-      "pdf_url": "https://dl.acm.org/doi/pdf/10.1145/3696410.3714758",
-      "doi": "10.1145/3696410.3714758",
-      "source": "OpenAlex",
-      "status": "conference",
-      "venue": "TKDD",
-      "venue_key": "TKDD",
-      "generated_summary": "提出LLaRD框架，利用大语言模型生成去噪知识，通过链式推理和信息瓶颈原理提升推荐系统的去噪效果与准确性。",
-      "core_method": "利用LLM对用户-物品交互图进行链式推理生成去噪知识，并通过信息瓶颈原理对齐知识以过滤噪声，提升推荐系统的去噪能力。",
-      "innovation_points": [
-        "首次将LLM的推理能力应用于推荐系统的去噪任务，通过链式推理从交互图中提取关系知识",
-        "引入信息瓶颈原理，对齐LLM生成的去噪知识与推荐目标，过滤无关和噪声知识",
-        "无需依赖预定义假设或外部辅助信息，实现通用的去噪增强"
-      ],
-      "experiment_results": [
-        "论文摘要未提供具体实验结果数据，仅指出LLaRD在去噪和推荐准确性上表现有效"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "仅基于摘要，缺少实验细节和结果验证",
-        "未说明LLM推理的计算开销和实际部署可行性"
-      ],
-      "practical_value": "为推荐系统去噪提供了一种结合LLM推理能力与信息瓶颈原理的通用框架，有望提升推荐准确性。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "3bd175e1ed092a10",
-      "tags": [
-        "LLM4Rec",
-        "RecSys"
-      ],
-      "llm_score": 65,
-      "llm_score_rationale": "作者单位含腾讯，有工业界背景；涉及LLM在推荐中的应用，与生成式推荐相关；会议TKDD为数据挖掘领域期刊，但非RecSys/SIGIR等顶会，且无线上A/B实验证据",
-      "preference_signals": [
-        "Top venue|TKDD",
-        "Generative Rec / Semantic ID|LLM4Rec",
-        "Industry company|Tencent"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 83,
-      "display_affiliations": [
-        "University of Hong Kong",
-        "Tencent (China)"
-      ],
-      "published_date": "2025-04-22"
     },
     {
       "id": "arxiv:2606.16703",
