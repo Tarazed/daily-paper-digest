@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T04:55:12Z",
+  "generated_at": "2026-06-30T04:23:35Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
@@ -130,6 +130,81 @@
   },
   "papers": [
     {
+      "id": "dblp:conf/www/YuFLZWLWZW26",
+      "title": "ThinkRec: Thinking-based recommendation via LLM",
+      "authors": [
+        "Qihang Yu",
+        "Kairui Fu",
+        "Zheqi Lv",
+        "Shengyu Zhang",
+        "Xinhui Wu",
+        "Chen Lin",
+        "Feng Wei",
+        "Bo Zheng",
+        "Fei Wu"
+      ],
+      "affiliations": [
+        "Zhejiang University",
+        "Ant Group, Hangzhou, China",
+        "Zhejiang University, Hangzhou, China and Shanghai AI Laboratory, Shanghai, China"
+      ],
+      "published": "2026-04-09",
+      "updated": "2026-06-29T08:53:18.405633",
+      "abstract": "Recent advances in large language models (LLMs) have enabled more semantic-aware recommendations through natural language generation. Existing LLM for recommendation (LLM4Rec) methods mostly operate in a System 1-like manner, relying on superficial features to match similar items based on click history, rather than reasoning through deeper behavioral logic. This often leads to superficial and erroneous recommendations. Motivated by this, we propose ThinkRec, a thinking-based framework that shifts LLM4Rec from System 1 to System 2 (rational system). Technically, ThinkRec introduces a thinking activation mechanism that augments item metadata with keyword summarization and injects synthetic reasoning traces, guiding the model to form interpretable reasoning chains that consist of analyzing interaction histories, identifying user preferences, and making decisions based on target items. On top of this, we propose an instance-wise expert fusion mechanism to reduce the reasoning difficulty. By dynamically assigning weights to expert models based on users' latent features, ThinkRec adapts its reasoning path to individual users, thereby enhancing precision and personalization. Extensive experiments on real-world datasets demonstrate that ThinkRec significantly improves the accuracy and interpretability of recommendations. Our implementations are available at https://github.com/Yu-Qi-hang/ThinkRec.",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792070",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792070",
+      "doi": "10.1145/3774904.3792070",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "ThinkRec提出了一种将LLM4Rec从表层特征（系统1）转向理性推理（系统2）的框架，通过思维激活机制生成可解释的推理链，并引入实例级专家融合机制动态调整模型，以提升推荐的准确性和可解释性。",
+      "core_method": "提出ThinkRec框架，结合思维激活机制（利用关键词总结与合成推理轨迹）和实例级专家融合机制，引导大语言模型形成可解释的推理链进行推荐。",
+      "innovation_points": [
+        "将双系统理论引入LLM4Rec，推动模型从系统1向系统2推理转变。",
+        "设计思维激活机制，通过关键词总结和注入合成推理轨迹生成可解释的推理链。",
+        "提出实例级专家融合机制，根据用户潜在特征动态分配专家权重，实现个性化推理路径。"
+      ],
+      "experiment_results": [
+        "基于摘要，在真实数据集上的大量实验表明ThinkRec显著提升了推荐的准确性和可解释性，但未提供具体指标。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "论文元数据未提供具体实验细节和局限性说明，无法确定方法在冷启动或大规模场景下的表现。",
+        "合成推理轨迹的质量和泛化性未在现有信息中体现。"
+      ],
+      "practical_value": "该框架通过引入显式推理过程，有望提升推荐系统的透明度和用户信任度，同时增强个性化推荐的准确性。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "b5535d8b0e76ee5e",
+      "tags": [
+        "LLM4Rec",
+        "Generative Rec",
+        "User Modeling"
+      ],
+      "llm_score": 72,
+      "llm_score_rationale": "发表在顶级会议WWW，符合顶会加分；提出基于LLM的生成式推荐框架，涉及思维链推理，与生成式推荐相关；作者单位包含Ant Group，属于知名互联网公司，但无线上A/B实验证据",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 131,
+      "display_affiliations": [
+        "Zhejiang University",
+        "Ant Group, Hangzhou, China",
+        "Zhejiang University, Hangzhou, China and Shanghai AI Laboratory, Shanghai, China"
+      ],
+      "published_date": "2026-04-09"
+    },
+    {
       "id": "arxiv:2606.25147",
       "title": "TokenMinds: Pretrained User Tokens and Embeddings for User Understanding in Large Recommender Systems",
       "authors": [
@@ -208,11 +283,83 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 125,
+      "score": 122,
       "display_affiliations": [
         "Google DeepMind"
       ],
       "published_date": "2026-06-23"
+    },
+    {
+      "id": "dblp:conf/www/QiuXHPW26",
+      "title": "Meta-Learning Driven Few-Shot Knowledge Transfer with Dual-Stage Adaptive Data Replay for Cross-Domain Recommendation",
+      "authors": [
+        "Yilei Qiu",
+        "Fei Xiong",
+        "Jun Hu",
+        "Shirui Pan",
+        "Liang Wang"
+      ],
+      "affiliations": [
+        "Beijing Jiaotong University",
+        "University of Chinese Academy of Sciences",
+        "Institute of Software",
+        "Griffith University",
+        "Northwestern Polytechnical University"
+      ],
+      "published": "2026-04-12",
+      "updated": "2026-06-11T09:08:48.828518",
+      "abstract": "Cross-domain recommendation (CDR) has emerged as a promising solution by effectively alleviating data sparsity by leveraging information from auxiliary domains. However, a major challenge in CDR is its dependence on predefined alignment rules (e.g., structural or distribution matching) to achieve cross-domain knowledge transfer, which impose fixed transfer patterns and lack the flexibly need for diverse cross-domain scenarios. Furthermore, most existing approaches still rely on coarse-grained representations. Knowledge transfer built upon imprecise representations can, even with improved alignment rules, instead lead to negative transfer in the target domain. To address these challenges and optimize recommendation efficacy, a new framework named meta-learning driven few-shot knowledge transfer with dual-stage adaptive data replay for cross-domain recommendation (MFACDR) is proposed. Specifically, a new meta-learning driven few-shot knowledge transfer method is proposed. This method leverages overlapping parts as anchors to guide the non-overlapping parts in autonomously exploring alignment rules through meta-learning, thus enabling few-shot knowledge transfer and flexible handling of different cross-domain scenarios. In addition, a dual-stage adaptive data replay mechanism is proposed, which enables fine-grained cross-domain adaptability and helps to mitigate negative transfer. Extensive experiments on three real-world datasets consistently demonstrate the superior effectiveness and robustness of the proposed MFACDR.",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792443",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792443",
+      "doi": "10.1145/3774904.3792443",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "本文提出MFACDR框架，通过元学习驱动的少样本知识转移，使非重叠部分能自主探索对齐规则，实现灵活的跨域知识转移；同时引入双阶段自适应数据重放机制，缓解粗粒度表示导致的负迁移问题。在三个真实数据集上的实验验证了方法的优越性和鲁棒性。",
+      "core_method": "基于元学习的少样本知识转移和双阶段自适应数据重放机制，利用重叠用户作为锚点引导非重叠部分的对齐规则学习。",
+      "innovation_points": [
+        "提出元学习驱动的少样本知识转移方法，无需预定义对齐规则，可灵活适应不同跨域场景",
+        "设计双阶段自适应数据重放机制，通过细粒度跨域适应性缓解负迁移"
+      ],
+      "experiment_results": [
+        "在三个真实数据集上，MFACDR相比现有方法表现出更优的推荐效果和鲁棒性"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "论文发表于2026年，目前无法获取全文，具体局限未详述",
+        "方法效果依赖重叠用户锚点的质量，冷启动场景下的表现未明确"
+      ],
+      "practical_value": "为跨域推荐提供了一种灵活、自适应的知识转移框架，可有效缓解负迁移，提升推荐系统在稀疏数据场景下的性能。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "9ecf54c7a6ee03b7",
+      "tags": [
+        "General Rec"
+      ],
+      "llm_score": 65,
+      "llm_score_rationale": "发表于顶级会议 WWW，满足顶会已发表权重。；作者单位包含中科院和高校，但无知名互联网公司，行业公司信号较弱。；研究主题为跨域推荐，非生成式推荐或语义ID强相关，且无线上A/B实验证据。",
+      "preference_signals": [
+        "Top venue",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 119,
+      "display_affiliations": [
+        "Beijing Jiaotong University",
+        "University of Chinese Academy of Sciences",
+        "Institute of Software",
+        "Griffith University",
+        "Northwestern Polytechnical University"
+      ],
+      "published_date": "2026-04-12"
     },
     {
       "id": "dblp:conf/www/ZhuCJYWCZ26",
@@ -277,377 +424,12 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 124,
+      "score": 117,
       "display_affiliations": [
         "Zhejiang University",
         "Ningbo University"
       ],
       "published_date": "2026-04-12"
-    },
-    {
-      "id": "dblp:conf/www/YuFLZWLWZW26",
-      "title": "ThinkRec: Thinking-based recommendation via LLM",
-      "authors": [
-        "Qihang Yu",
-        "Kairui Fu",
-        "Zheqi Lv",
-        "Shengyu Zhang",
-        "Xinhui Wu",
-        "Chen Lin",
-        "Feng Wei",
-        "Bo Zheng",
-        "Fei Wu"
-      ],
-      "affiliations": [
-        "Zhejiang University",
-        "Ant Group, Hangzhou, China",
-        "Zhejiang University, Hangzhou, China and Shanghai AI Laboratory, Shanghai, China"
-      ],
-      "published": "2026-04-09",
-      "updated": "2026-06-28T08:01:55.173337",
-      "abstract": "Recent advances in large language models (LLMs) have enabled more semantic-aware recommendations through natural language generation. Existing LLM for recommendation (LLM4Rec) methods mostly operate in a System 1-like manner, relying on superficial features to match similar items based on click history, rather than reasoning through deeper behavioral logic. This often leads to superficial and erroneous recommendations. Motivated by this, we propose ThinkRec, a thinking-based framework that shifts LLM4Rec from System 1 to System 2 (rational system). Technically, ThinkRec introduces a thinking activation mechanism that augments item metadata with keyword summarization and injects synthetic reasoning traces, guiding the model to form interpretable reasoning chains that consist of analyzing interaction histories, identifying user preferences, and making decisions based on target items. On top of this, we propose an instance-wise expert fusion mechanism to reduce the reasoning difficulty. By dynamically assigning weights to expert models based on users' latent features, ThinkRec adapts its reasoning path to individual users, thereby enhancing precision and personalization. Extensive experiments on real-world datasets demonstrate that ThinkRec significantly improves the accuracy and interpretability of recommendations. Our implementations are available at https://github.com/Yu-Qi-hang/ThinkRec.",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792070",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792070",
-      "doi": "10.1145/3774904.3792070",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "ThinkRec提出基于思考的推荐框架，将LLM从系统1（直觉式）转向系统2（理性分析），通过思维激活机制生成可解释推理链，并结合实例级专家融合降低推理难度，提升推荐的准确性和可解释性。",
-      "core_method": "利用思维激活机制注入合成推理痕迹，引导LLM分析交互历史、识别用户偏好并基于目标项做出决策，同时通过实例级专家融合动态调整推理路径。",
-      "innovation_points": [
-        "将双系统理论引入LLM4Rec，提出从系统1到系统2的范式转变，增强深层推理能力。",
-        "设计思维激活机制，通过关键词摘要和合成推理痕迹增强物品元数据，形成可解释推理链。",
-        "提出实例级专家融合机制，根据用户潜在特征动态分配专家权重，实现个性化推理路径。"
-      ],
-      "experiment_results": [
-        "在真实数据集上的大量实验表明，ThinkRec在推荐准确性和可解释性上显著优于现有方法。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "论文未报告计算开销和推理效率，可能限制实时应用。",
-        "依赖合成推理痕迹的质量，在实际复杂场景中的泛化性有待验证。"
-      ],
-      "practical_value": "通过增强推理能力和可解释性，ThinkRec有望提升推荐系统在需要透明决策的场景中的实用价值，如金融、医疗推荐。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "f4033744624c0a7a",
-      "tags": [
-        "LLM4Rec",
-        "Generative Rec"
-      ],
-      "llm_score": 65,
-      "llm_score_rationale": "发表于WWW顶会，涉及LLM推荐推理；论文提出思考激活机制和专家融合，增强推荐解释性，但无线上A/B实验；作者单位包含Ant Group，属于知名互联网公司，但论文没有直接涉及生成式检索或语义ID",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 124,
-      "display_affiliations": [
-        "Zhejiang University",
-        "Ant Group, Hangzhou, China",
-        "Zhejiang University, Hangzhou, China and Shanghai AI Laboratory, Shanghai, China"
-      ],
-      "published_date": "2026-04-09"
-    },
-    {
-      "id": "dblp:conf/www/TangLPLK26",
-      "title": "Verifiable Federated Representation Learning for Cross-domain Sequential Recommendation",
-      "authors": [
-        "Tao Tang",
-        "Botao Liu",
-        "Ciyuan Peng",
-        "Ivan Lee",
-        "Xiangjie Kong"
-      ],
-      "affiliations": [
-        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
-        "Zhejiang University of Technology",
-        "Federation University",
-        "Adelaide University, Adelaide, Australia",
-        "The University of Adelaide"
-      ],
-      "published": "2026-04-09",
-      "updated": "2026-06-11T09:08:48.828518",
-      "abstract": "Cross-domain sequential recommendation (CDSR) plays a critical role in decentralized Web applications by leveraging user behavior sequences across multiple platforms to alleviate data sparsity and capture dynamic preferences. However, existing federated CDSR frameworks face two fundamental challenges: (i) heterogeneous sequential interactions that encode domain-exclusive semantics and cannot be directly shared under privacy constraints, and (ii) strong trust assumptions that both servers and clients behave honestly, leaving federated training vulnerable to misreporting, malicious updates, and negative transfer. In this paper, we propose VeriFRL, a verifiable federated representation learning framework for cross-domain sequential recommendation. VeriFRL adopts a dual-module design that integrates representation learning with verifiable training: an attention-based variational encoder disentangles domain-shared and domain-exclusive representations to support transferable and privacy-preserving knowledge sharing, while a contribution evaluation module quantifies client-level and feature-level influences to enable verifiability, interpretability, and negative transfer detection. Extensive experiments on real-world multi-domain datasets demonstrate that VeriFRL achieves competitive or superior recommendation performance over state-of-the-art federated CDSR methods, while providing fine-grained insights into cross-domain knowledge transfer dynamics.",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792533",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792533",
-      "doi": "10.1145/3774904.3792533",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "本文提出VeriFRL，一个可验证的联邦表示学习框架，用于跨域序列推荐。它通过变分编码器解耦域共享与域独占表示，并引入贡献评估模块来验证客户端与特征的重要性，从而在保护隐私的同时实现知识迁移与负迁移检测。",
-      "core_method": "基于注意力变分编码器的可验证联邦表示学习框架，包含表示解耦与贡献评估双模块设计。",
-      "innovation_points": [
-        "提出注意力变分编码器解耦域共享与域独占表示，支持可迁移且隐私保护的知识共享",
-        "设计贡献评估模块量化客户端和特征影响力，实现可验证性、可解释性与负迁移检测",
-        "在联邦跨域序列推荐中整合表示学习与可验证训练，增强模型鲁棒性"
-      ],
-      "experiment_results": [
-        "在真实多域数据集上，VeriFRL相比最先进的联邦CDSR方法取得了有竞争力或更优的推荐性能",
-        "提供了跨域知识迁移动态的细粒度洞察"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "元数据未提供具体的局限性说明，但联邦学习场景下通信开销与隐私保护强度可能影响实际部署效率",
-        "贡献评估模块的可扩展性在大规模客户端环境下未经验证"
-      ],
-      "practical_value": "为去中心化Web应用中的跨域序列推荐提供了一种隐私保护且可验证的联邦学习方案，有助于在实际平台中安全地利用多域用户行为数据。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "afc05bc934e6b57e",
-      "tags": [
-        "Sequential Rec"
-      ],
-      "llm_score": 70,
-      "llm_score_rationale": "发表在顶级会议WWW，学术可信度高；涉及跨域序列推荐和联邦学习，与工业推荐系统相关，但未提及生成式推荐或语义ID；作者单位包括知名大学但无明确互联网公司（如Google、Meta等），且论文未提及在线A/B测试或线上实验证据",
-      "preference_signals": [
-        "Top venue",
-        "Industry relevance (partially, via cross-domain recommendation and federated learning)"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 118,
-      "display_affiliations": [
-        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
-        "Zhejiang University of Technology",
-        "Federation University",
-        "Adelaide University, Adelaide, Australia",
-        "The University of Adelaide"
-      ],
-      "published_date": "2026-04-09"
-    },
-    {
-      "id": "dblp:conf/www/LiJLWLYZZX26",
-      "title": "Explaining Synergistic Effects in Social Recommendations",
-      "authors": [
-        "Yicong Li",
-        "Shan Jin",
-        "Qi Liu",
-        "Shuo Wang",
-        "Jiaying Liu",
-        "Shuo Yu",
-        "Qiang Zhang",
-        "Kuanjiu Zhou",
-        "Feng Xia"
-      ],
-      "affiliations": [
-        "Dalian University of Technology",
-        "RMIT University, Melbourne, Australia"
-      ],
-      "published": "2026-04-12",
-      "updated": "2026-06-11T09:08:48.828518",
-      "abstract": "In social recommenders, the inherent nonlinearity and opacity of synergistic effects across multiple social networks hinders users from understanding how diverse information is leveraged for recommendations, consequently diminishing explainability. However, existing explainers can only identify the topological information in social networks that significantly influences recommendations, failing to further explain the synergistic effects among this information. Inspired by existing findings that synergistic effects enhance mutual information between inputs and predictions to generate information gain, we extend this discovery to graph data. We quantify graph information gain to identify subgraphs embodying synergistic effects. Based on the theoretical insights, we propose SemExplainer, which explains synergistic effects by identifying subgraphs that embody them. SemExplainer first extracts explanatory subgraphs from multi-view social networks to generate preliminary importance explanations for recommendations. A conditional entropy optimization strategy to maximize information gain is developed, thereby further identifying subgraphs that embody synergistic effects from explanatory subgraphs. Finally, SemExplainer searches for paths from users to recommended items within the synergistic subgraphs to generate explanations for the recommendations. Extensive experiments on three datasets demonstrate the superiority of SemExplainer over baseline methods, providing superior explanations of synergistic effects. The implementation is available at https://github.com/yushuowiki/SemExplainer.",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792174",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792174",
-      "doi": "10.1145/3774904.3792174",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "针对社交推荐中多网络协同效应的非线性与不透明性问题，提出SemExplainer框架，通过量化图信息增益识别蕴含协同效应的子图，利用条件熵优化最大化信息增益，并从子图路径生成解释。该方法提升了推荐的可解释性。",
-      "core_method": "基于图信息增益量化与条件熵优化的多视角社交网络协同效应解释框架",
-      "innovation_points": [
-        "首次将信息增益扩展到图数据，量化图信息增益以识别协同效应子图",
-        "提出条件熵优化策略最大化信息增益，从解释性子图中进一步筛选协同子图",
-        "通过提取用户到推荐物品在协同子图中的路径生成可解释推荐"
-      ],
-      "experiment_results": [
-        "在三个数据集上的实验表明SemExplainer的解释效果优于基线方法"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "未提及算法复杂度和实时性分析，可能在大规模社交网络中计算开销较高",
-        "实验仅在三个数据集上验证，泛化性有待进一步检验"
-      ],
-      "practical_value": "为社交推荐系统提供协同效应层面的可解释性，有助于增强用户信任和系统透明度",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "7c86e05b0ea737aa",
-      "tags": [
-        "Sequential Rec"
-      ],
-      "llm_score": 78,
-      "llm_score_rationale": "发表在顶级会议WWW，符合顶会偏好；研究社交推荐的可解释性，与生成式推荐/语义ID无直接关联；作者单位包含RMIT University，非知名互联网公司",
-      "preference_signals": [
-        "Top venue",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 117,
-      "display_affiliations": [
-        "Dalian University of Technology",
-        "RMIT University, Melbourne, Australia"
-      ],
-      "published_date": "2026-04-12"
-    },
-    {
-      "id": "dblp:conf/www/LiuZHZZZ26",
-      "title": "Facilitating Generative Retrieval with Logical Denoising for Interpretable Conversational Search",
-      "authors": [
-        "Qichuan Liu",
-        "Chentao Zhang",
-        "Yuxuan Hu",
-        "Chenfeng Zheng",
-        "Qinggang Zhang",
-        "Zhihong Zhang"
-      ],
-      "affiliations": [
-        "Xiamen University",
-        "Hong Kong Polytechnic University"
-      ],
-      "published": "2026-04-09",
-      "updated": "2026-06-11T09:08:48.828518",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792544",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792544",
-      "doi": "10.1145/3774904.3792544",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "该论文提出了一种基于逻辑去噪的生成式检索方法，旨在提升可解释的对话式搜索性能。",
-      "core_method": "将逻辑去噪用于生成式检索，以增强对话搜索的可解释性。",
-      "innovation_points": [
-        "引入逻辑去噪机制优化生成式检索的噪声处理",
-        "提升对话式搜索的可解释性"
-      ],
-      "experiment_results": [
-        "论文全文未提供实验结果或评测结论"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "未提供详细实验验证",
-        "可解释性的实际效果缺乏量化评估"
-      ],
-      "practical_value": "为对话式搜索系统提供可解释的生成式检索方案，可能提升用户信任和系统透明度。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "7d359eddecec7cd7",
-      "tags": [
-        "Generative Retrieval",
-        "Conversational Rec"
-      ],
-      "llm_score": 75,
-      "llm_score_rationale": "发表在顶级会议 WWW，符合顶会权重；标题明确包含生成式检索（Generative Retrieval），与目标强相关；作者单位非知名互联网公司，无线上实验证据",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 113,
-      "display_affiliations": [
-        "Xiamen University",
-        "Hong Kong Polytechnic University"
-      ],
-      "published_date": "2026-04-09"
-    },
-    {
-      "id": "arxiv:2606.27058",
-      "title": "UniFormer: Efficient and Unified Model-Centric Scaling for Industrial Recommendation",
-      "authors": [
-        "Bo Chen",
-        "Jinlong Jiao",
-        "Tijian Hu",
-        "Ruihao Zhang",
-        "Yanzhi Liu",
-        "Chenghou Jin",
-        "Qinglin Jia",
-        "Baixuan He",
-        "Hechang Pan",
-        "Yiwu Liu",
-        "Jian Liang",
-        "Chaoyi Ma",
-        "Ruiming Tang",
-        "Han Li",
-        "Kun Gai"
-      ],
-      "affiliations": [
-        "Kuaishou Technology"
-      ],
-      "published": "2026-06-25T14:03:28Z",
-      "updated": "2026-06-25T14:03:28Z",
-      "abstract": "Recently, substantial progress has been made in industrial recommendation through component-centric model scaling, where individual components such as behavior modeling, feature interaction, or task modeling are independently scaled to improve model capacity. Although recent methods such as HyFormer and OneTrans further explore cross-module co-scaling by jointly modeling behavior and interaction, their designs are still confined to the feature space and lack a unified model-centric scaling framework over the overall modeling space. In this paper, we propose UniFormer, an efficient and unified model-centric scaling framework for industrial recommender systems. To improve efficiency, UniFormer decomposes the overall modeling space into feature and task spaces, which are modeled by stacked Feature-space Interaction Modules and Task-space Interaction Modules, respectively. Moreover, UniFormer introduces semantic-based tokenization scheme to enable user-item decoupling, thereby achieving request-level inference acceleration. To prevent preference collapse, UniFormer employs multi-sequence cross-attention to separately capture heterogeneous behavior patterns, followed by the self-attention to enhance interaction modeling. Besides, dedicated multi-view FFNs are introduced to support flexible and scalable parameter scaling across different modeling components. Extensive online A/B testing in two production scenarios, Kuaishou and Kuaishou Lite, shows that UniFormer consistently improves user engagement and interaction metrics, achieving gains of +0.101%/+0.260% in App Stay Time and +0.729%/+1.113% in Watch Time, respectively.",
-      "categories": [
-        "cs.IR"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.27058v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.27058v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "UniFormer提出了一种高效统一的模型中心缩放框架，将建模空间分解为特征空间和任务空间，通过堆叠的交互模块进行联合建模。采用语义令牌化实现用户-物品解耦和请求级推理加速，并引入多序列交叉注意力与多视图FFN防止偏好崩溃并支持灵活参数缩放。",
-      "core_method": "基于语义令牌化的特征与任务空间分解，结合多序列交叉注意力和多视图FFN的统一模型中心缩放框架。",
-      "innovation_points": [
-        "首次提出模型中心缩放范式，统一考虑整体建模空间而非单独组件缩放",
-        "设计语义令牌化方案实现用户-物品解耦，支持高效请求级推理加速",
-        "通过多序列交叉注意力和多视图FFN分别捕获异质行为模式并支持灵活参数扩展"
-      ],
-      "experiment_results": [
-        "在快手主站和快手极速版的在线A/B测试中，App Stay Time提升0.101%和0.260%，Watch Time提升0.729%和1.113%"
-      ],
-      "ab_test": "yes",
-      "ab_test_evidence": "论文明确指出在快手和快手极速版两个生产场景进行了广泛的线上A/B测试，并报告了App Stay Time和Watch Time的具体提升指标。",
-      "limitations": [
-        "框架仅在快手场景验证，泛化至其他推荐场景的效果尚需探索",
-        "未详细报告离线评估指标和对比基准"
-      ],
-      "practical_value": "为工业推荐系统提供了一种高效可扩展的模型架构，通过统一缩放和推理加速在快手实际业务中显著提升用户参与度。",
-      "analysis_basis": "full_text",
-      "analysis_status": "complete",
-      "analysis_signature": "8c14a1f94342c131",
-      "tags": [
-        "Generative Ranking",
-        "User Modeling",
-        "Sequential Rec",
-        "Online Eval"
-      ],
-      "llm_score": 98,
-      "llm_score_rationale": "包含明确的在线A/B实验证据，在快手和快手极速版两个生产环境取得App Stay Time和Watch Time的提升；作者单位含快手(Kuaishou)，属于知名互联网公司；论文提出工业推荐系统的统一模型缩放框架，涉及语义token化、用户-物品解耦等，与工业推荐实践高度相关",
-      "preference_signals": [
-        "Online A/B",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 108,
-      "display_affiliations": [
-        "Kuaishou Technology"
-      ],
-      "published_date": "2026-06-25"
     },
     {
       "id": "dblp:conf/www/LiuFYWGH26",
@@ -709,11 +491,91 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 107,
+      "score": 117,
       "display_affiliations": [
         "Unknown affiliation"
       ],
       "published_date": "2026"
+    },
+    {
+      "id": "arxiv:2606.27058",
+      "title": "UniFormer: Efficient and Unified Model-Centric Scaling for Industrial Recommendation",
+      "authors": [
+        "Bo Chen",
+        "Jinlong Jiao",
+        "Tijian Hu",
+        "Ruihao Zhang",
+        "Yanzhi Liu",
+        "Chenghou Jin",
+        "Qinglin Jia",
+        "Baixuan He",
+        "Hechang Pan",
+        "Yiwu Liu",
+        "Jian Liang",
+        "Chaoyi Ma",
+        "Ruiming Tang",
+        "Han Li",
+        "Kun Gai"
+      ],
+      "affiliations": [
+        "Kuaishou Technology",
+        "Noah's Ark Lab, Huawei"
+      ],
+      "published": "2026-06-25T14:03:28Z",
+      "updated": "2026-06-25T14:03:28Z",
+      "abstract": "Recently, substantial progress has been made in industrial recommendation through component-centric model scaling, where individual components such as behavior modeling, feature interaction, or task modeling are independently scaled to improve model capacity. Although recent methods such as HyFormer and OneTrans further explore cross-module co-scaling by jointly modeling behavior and interaction, their designs are still confined to the feature space and lack a unified model-centric scaling framework over the overall modeling space. In this paper, we propose UniFormer, an efficient and unified model-centric scaling framework for industrial recommender systems. To improve efficiency, UniFormer decomposes the overall modeling space into feature and task spaces, which are modeled by stacked Feature-space Interaction Modules and Task-space Interaction Modules, respectively. Moreover, UniFormer introduces semantic-based tokenization scheme to enable user-item decoupling, thereby achieving request-level inference acceleration. To prevent preference collapse, UniFormer employs multi-sequence cross-attention to separately capture heterogeneous behavior patterns, followed by the self-attention to enhance interaction modeling. Besides, dedicated multi-view FFNs are introduced to support flexible and scalable parameter scaling across different modeling components. Extensive online A/B testing in two production scenarios, Kuaishou and Kuaishou Lite, shows that UniFormer consistently improves user engagement and interaction metrics, achieving gains of +0.101%/+0.260% in App Stay Time and +0.729%/+1.113% in Watch Time, respectively.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.27058v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.27058v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "UniFormer提出了一种高效统一的模型中心缩放框架，将建模空间分解为特征空间和任务空间，通过堆叠的交互模块进行联合建模。采用语义令牌化实现用户-物品解耦和请求级推理加速，并引入多序列交叉注意力与多视图FFN防止偏好崩溃并支持灵活参数缩放。",
+      "core_method": "基于语义令牌化的特征与任务空间分解，结合多序列交叉注意力和多视图FFN的统一模型中心缩放框架。",
+      "innovation_points": [
+        "首次提出模型中心缩放范式，统一考虑整体建模空间而非单独组件缩放",
+        "设计语义令牌化方案实现用户-物品解耦，支持高效请求级推理加速",
+        "通过多序列交叉注意力和多视图FFN分别捕获异质行为模式并支持灵活参数扩展"
+      ],
+      "experiment_results": [
+        "在快手主站和快手极速版的在线A/B测试中，App Stay Time提升0.101%和0.260%，Watch Time提升0.729%和1.113%"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文明确指出在快手和快手极速版两个生产场景进行了广泛的线上A/B测试，并报告了App Stay Time和Watch Time的具体提升指标。",
+      "limitations": [
+        "框架仅在快手场景验证，泛化至其他推荐场景的效果尚需探索",
+        "未详细报告离线评估指标和对比基准"
+      ],
+      "practical_value": "为工业推荐系统提供了一种高效可扩展的模型架构，通过统一缩放和推理加速在快手实际业务中显著提升用户参与度。",
+      "analysis_basis": "full_text",
+      "analysis_status": "cached",
+      "analysis_signature": "8c14a1f94342c131",
+      "tags": [
+        "Generative Ranking",
+        "User Modeling",
+        "Sequential Rec",
+        "Online Eval"
+      ],
+      "llm_score": 98,
+      "llm_score_rationale": "包含明确的在线A/B实验证据，在快手和快手极速版两个生产环境取得App Stay Time和Watch Time的提升；作者单位含快手(Kuaishou)，属于知名互联网公司；论文提出工业推荐系统的统一模型缩放框架，涉及语义token化、用户-物品解耦等，与工业推荐实践高度相关",
+      "preference_signals": [
+        "Online A/B",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 105,
+      "display_affiliations": [
+        "Kuaishou Technology",
+        "Noah's Ark Lab, Huawei"
+      ],
+      "published_date": "2026-06-25"
     },
     {
       "id": "dblp:conf/www/ZengQLLLCB26",
@@ -787,60 +649,276 @@
       "published_date": "2026-04-12"
     },
     {
-      "id": "dblp:conf/www/QiuXHPW26",
-      "title": "Meta-Learning Driven Few-Shot Knowledge Transfer with Dual-Stage Adaptive Data Replay for Cross-Domain Recommendation",
+      "id": "dblp:conf/www/TangLPLK26",
+      "title": "Verifiable Federated Representation Learning for Cross-domain Sequential Recommendation",
       "authors": [
-        "Yilei Qiu",
-        "Fei Xiong",
-        "Jun Hu",
-        "Shirui Pan",
-        "Liang Wang"
+        "Tao Tang",
+        "Botao Liu",
+        "Ciyuan Peng",
+        "Ivan Lee",
+        "Xiangjie Kong"
       ],
       "affiliations": [
-        "Beijing Jiaotong University",
-        "University of Chinese Academy of Sciences",
-        "Institute of Software",
-        "Griffith University",
-        "Northwestern Polytechnical University"
+        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
+        "Zhejiang University of Technology",
+        "Federation University",
+        "Adelaide University, Adelaide, Australia",
+        "The University of Adelaide"
       ],
-      "published": "2026-04-12",
+      "published": "2026-04-09",
       "updated": "2026-06-11T09:08:48.828518",
-      "abstract": "Cross-domain recommendation (CDR) has emerged as a promising solution by effectively alleviating data sparsity by leveraging information from auxiliary domains. However, a major challenge in CDR is its dependence on predefined alignment rules (e.g., structural or distribution matching) to achieve cross-domain knowledge transfer, which impose fixed transfer patterns and lack the flexibly need for diverse cross-domain scenarios. Furthermore, most existing approaches still rely on coarse-grained representations. Knowledge transfer built upon imprecise representations can, even with improved alignment rules, instead lead to negative transfer in the target domain. To address these challenges and optimize recommendation efficacy, a new framework named meta-learning driven few-shot knowledge transfer with dual-stage adaptive data replay for cross-domain recommendation (MFACDR) is proposed. Specifically, a new meta-learning driven few-shot knowledge transfer method is proposed. This method leverages overlapping parts as anchors to guide the non-overlapping parts in autonomously exploring alignment rules through meta-learning, thus enabling few-shot knowledge transfer and flexible handling of different cross-domain scenarios. In addition, a dual-stage adaptive data replay mechanism is proposed, which enables fine-grained cross-domain adaptability and helps to mitigate negative transfer. Extensive experiments on three real-world datasets consistently demonstrate the superior effectiveness and robustness of the proposed MFACDR.",
+      "abstract": "Cross-domain sequential recommendation (CDSR) plays a critical role in decentralized Web applications by leveraging user behavior sequences across multiple platforms to alleviate data sparsity and capture dynamic preferences. However, existing federated CDSR frameworks face two fundamental challenges: (i) heterogeneous sequential interactions that encode domain-exclusive semantics and cannot be directly shared under privacy constraints, and (ii) strong trust assumptions that both servers and clients behave honestly, leaving federated training vulnerable to misreporting, malicious updates, and negative transfer. In this paper, we propose VeriFRL, a verifiable federated representation learning framework for cross-domain sequential recommendation. VeriFRL adopts a dual-module design that integrates representation learning with verifiable training: an attention-based variational encoder disentangles domain-shared and domain-exclusive representations to support transferable and privacy-preserving knowledge sharing, while a contribution evaluation module quantifies client-level and feature-level influences to enable verifiability, interpretability, and negative transfer detection. Extensive experiments on real-world multi-domain datasets demonstrate that VeriFRL achieves competitive or superior recommendation performance over state-of-the-art federated CDSR methods, while providing fine-grained insights into cross-domain knowledge transfer dynamics.",
       "categories": [
         "WWW"
       ],
       "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792443",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792443",
-      "doi": "10.1145/3774904.3792443",
+      "abs_url": "https://doi.org/10.1145/3774904.3792533",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792533",
+      "doi": "10.1145/3774904.3792533",
       "source": "DBLP",
       "status": "conference",
       "venue": "WWW",
       "venue_key": "WWW",
-      "generated_summary": "本文提出MFACDR框架，通过元学习驱动的少样本知识转移，使非重叠部分能自主探索对齐规则，实现灵活的跨域知识转移；同时引入双阶段自适应数据重放机制，缓解粗粒度表示导致的负迁移问题。在三个真实数据集上的实验验证了方法的优越性和鲁棒性。",
-      "core_method": "基于元学习的少样本知识转移和双阶段自适应数据重放机制，利用重叠用户作为锚点引导非重叠部分的对齐规则学习。",
+      "generated_summary": "本文提出VeriFRL，一个可验证的联邦表示学习框架，用于跨域序列推荐。它通过变分编码器解耦域共享与域独占表示，并引入贡献评估模块来验证客户端与特征的重要性，从而在保护隐私的同时实现知识迁移与负迁移检测。",
+      "core_method": "基于注意力变分编码器的可验证联邦表示学习框架，包含表示解耦与贡献评估双模块设计。",
       "innovation_points": [
-        "提出元学习驱动的少样本知识转移方法，无需预定义对齐规则，可灵活适应不同跨域场景",
-        "设计双阶段自适应数据重放机制，通过细粒度跨域适应性缓解负迁移"
+        "提出注意力变分编码器解耦域共享与域独占表示，支持可迁移且隐私保护的知识共享",
+        "设计贡献评估模块量化客户端和特征影响力，实现可验证性、可解释性与负迁移检测",
+        "在联邦跨域序列推荐中整合表示学习与可验证训练，增强模型鲁棒性"
       ],
       "experiment_results": [
-        "在三个真实数据集上，MFACDR相比现有方法表现出更优的推荐效果和鲁棒性"
+        "在真实多域数据集上，VeriFRL相比最先进的联邦CDSR方法取得了有竞争力或更优的推荐性能",
+        "提供了跨域知识迁移动态的细粒度洞察"
       ],
       "ab_test": "no",
       "ab_test_evidence": "论文未报告线上 A/B 测试。",
       "limitations": [
-        "论文发表于2026年，目前无法获取全文，具体局限未详述",
-        "方法效果依赖重叠用户锚点的质量，冷启动场景下的表现未明确"
+        "元数据未提供具体的局限性说明，但联邦学习场景下通信开销与隐私保护强度可能影响实际部署效率",
+        "贡献评估模块的可扩展性在大规模客户端环境下未经验证"
       ],
-      "practical_value": "为跨域推荐提供了一种灵活、自适应的知识转移框架，可有效缓解负迁移，提升推荐系统在稀疏数据场景下的性能。",
+      "practical_value": "为去中心化Web应用中的跨域序列推荐提供了一种隐私保护且可验证的联邦学习方案，有助于在实际平台中安全地利用多域用户行为数据。",
       "analysis_basis": "metadata",
       "analysis_status": "cached",
-      "analysis_signature": "9ecf54c7a6ee03b7",
+      "analysis_signature": "afc05bc934e6b57e",
       "tags": [
-        "General Rec"
+        "Sequential Rec"
       ],
-      "llm_score": 65,
-      "llm_score_rationale": "发表于顶级会议 WWW，满足顶会已发表权重。；作者单位包含中科院和高校，但无知名互联网公司，行业公司信号较弱。；研究主题为跨域推荐，非生成式推荐或语义ID强相关，且无线上A/B实验证据。",
+      "llm_score": 70,
+      "llm_score_rationale": "发表在顶级会议WWW，学术可信度高；涉及跨域序列推荐和联邦学习，与工业推荐系统相关，但未提及生成式推荐或语义ID；作者单位包括知名大学但无明确互联网公司（如Google、Meta等），且论文未提及在线A/B测试或线上实验证据",
+      "preference_signals": [
+        "Top venue",
+        "Industry relevance (partially, via cross-domain recommendation and federated learning)"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 103,
+      "display_affiliations": [
+        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
+        "Zhejiang University of Technology",
+        "Federation University",
+        "Adelaide University, Adelaide, Australia",
+        "The University of Adelaide"
+      ],
+      "published_date": "2026-04-09"
+    },
+    {
+      "id": "dblp:conf/www/LiuZHZZZ26",
+      "title": "Facilitating Generative Retrieval with Logical Denoising for Interpretable Conversational Search",
+      "authors": [
+        "Qichuan Liu",
+        "Chentao Zhang",
+        "Yuxuan Hu",
+        "Chenfeng Zheng",
+        "Qinggang Zhang",
+        "Zhihong Zhang"
+      ],
+      "affiliations": [
+        "Xiamen University",
+        "Hong Kong Polytechnic University"
+      ],
+      "published": "2026-04-09",
+      "updated": "2026-06-11T09:08:48.828518",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792544",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792544",
+      "doi": "10.1145/3774904.3792544",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "该论文提出了一种基于逻辑去噪的生成式检索方法，旨在提升可解释的对话式搜索性能。",
+      "core_method": "将逻辑去噪用于生成式检索，以增强对话搜索的可解释性。",
+      "innovation_points": [
+        "引入逻辑去噪机制优化生成式检索的噪声处理",
+        "提升对话式搜索的可解释性"
+      ],
+      "experiment_results": [
+        "论文全文未提供实验结果或评测结论"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未提供详细实验验证",
+        "可解释性的实际效果缺乏量化评估"
+      ],
+      "practical_value": "为对话式搜索系统提供可解释的生成式检索方案，可能提升用户信任和系统透明度。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "7d359eddecec7cd7",
+      "tags": [
+        "Generative Retrieval",
+        "Conversational Rec"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "发表在顶级会议 WWW，符合顶会权重；标题明确包含生成式检索（Generative Retrieval），与目标强相关；作者单位非知名互联网公司，无线上实验证据",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 97,
+      "display_affiliations": [
+        "Xiamen University",
+        "Hong Kong Polytechnic University"
+      ],
+      "published_date": "2026-04-09"
+    },
+    {
+      "id": "arxiv:2606.29946",
+      "title": "POEM: Partial-Order Enhanced Real-Time Sequential Modeling for Recommendation",
+      "authors": [
+        "Linxiao Che",
+        "Yijia Sun",
+        "Siyuan Lou",
+        "Shanshan Huang",
+        "Qiang Luo",
+        "Ruiming Tang",
+        "Han Li",
+        "Kun Gai"
+      ],
+      "affiliations": [
+        "Kuaishou Technology"
+      ],
+      "published": "2026-06-29T08:23:04Z",
+      "updated": "2026-06-29T08:23:04Z",
+      "abstract": "Real-time recommendation systems suffer from the dynamic drift of user interests and varying contextual conditions. Conventional sequential recommendation models only exploit static historical click sequences, which fail to capture instant preference changes and overlook structured signals hidden within the multi-stage ranking pipeline of industrial recommendation systems. To tackle these limitations, we propose POEM (Partial-Order Enhanced Modeling), a new real-time sequential modeling framework built upon intrinsic partial-order relations from the recommendation cascade. POEM takes real-time multi-task ranking scores (including predicted CTR and predicted watch duration) generated by upstream ranking modules as supervision to construct dynamic partial-order sequences, supporting fine-grained real-time interest modeling and consistent optimization between system ranking targets and user behavioral patterns. We summarize our core contributions as three aspects: (1) a partial-order guided sequence construction paradigm, which enriches vanilla chronological sequences via dynamic grouping and sampling conditioned on real-time ranking scores to reassess user interests per request; (2) a multi-objective score fusion module that unifies heterogeneous ranking signals into a compact quintuple representation with normalized rank-aware weighting; (3) a hierarchical sample learning strategy, which adopts system-favored high-ranked items and user positive feedback (e.g., long-duration watched videos) as positive instances, paired with graph-mined hard negatives and a margin-based pairwise loss for robust training. Fully deployed on Kuaishou online traffic, POEM achieves significant online gains: average per-user watch time lifts by 0.249% on the KS Single Page and 0.213% on the KS Lite Page.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.29946v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.29946v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "POEM旨在解决实时推荐中用户兴趣漂移和排序管道结构化信息缺失问题。它利用上游排序模块产生的多任务实时分数构建偏序序列，通过多目标分数融合与分层样本学习，实现细粒度实时兴趣建模，并在快手线上部署后取得用户观看时长的显著提升。",
+      "core_method": "基于排序级联中偏序关系的实时序列建模框架，利用实时多任务排序分数构建动态偏序序列，并采用多目标分数融合和分层样本学习进行训练。",
+      "innovation_points": [
+        "提出偏序引导的序列构造范式，基于实时排序分数对用户行为进行动态分组与采样，实现每次请求的兴趣重评估。",
+        "设计多目标分数融合模块，将异构排序信号转化为归一化排名加权的紧凑五元组表示。",
+        "提出分层样本学习策略，综合系统偏好项和用户正向反馈作为正样本，并结合图挖掘硬负样本和基于间隔的成对损失进行鲁棒训练。"
+      ],
+      "experiment_results": [
+        "在快手平台全量部署后，KS Single Page 和 KS Lite Page 的用户平均观看时长分别提升0.249%和0.213%。",
+        "消融实验验证了偏序序列构造、融合模块和分层学习各组件均对性能有正向贡献。"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "Fully deployed on Kuaishou online traffic, POEM achieves significant online gains: average per-user watch time lifts by 0.249% on the KS Single Page and 0.213% on the KS Lite Page.",
+      "limitations": [
+        "论文未讨论在非视频推荐场景或不同规模平台上的泛化能力。",
+        "偏序序列的构建依赖上游排序模块的输出质量，若上游信号存在偏差可能影响模型效果。"
+      ],
+      "practical_value": "为工业级推荐系统提供了一种直接利用排序管道内部信号进行实时兴趣建模的有效方案，可提升核心业务指标。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "8d5ffe9c2dfde0df",
+      "tags": [
+        "Sequential Rec",
+        "Generative Rec",
+        "Online Eval"
+      ],
+      "llm_score": 85,
+      "llm_score_rationale": "Kuaishou全量部署并报告了线上A/B收益（人均观看时长提升0.249%和0.213%），有明确的online experiment证据。；作者来自快手，工业界知名公司，且论文来自arXiv预印本，但未标明顶会发表。；工作聚焦实时序列建模与多阶段排序一致性，未涉及生成式推荐或语义ID，但属于工业推荐系统实践范畴。",
+      "preference_signals": [
+        "Online A/B",
+        "Industry company",
+        "Top venue|Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 95,
+      "display_affiliations": [
+        "Kuaishou Technology"
+      ],
+      "published_date": "2026-06-29"
+    },
+    {
+      "id": "dblp:conf/www/LiJLWLYZZX26",
+      "title": "Explaining Synergistic Effects in Social Recommendations",
+      "authors": [
+        "Yicong Li",
+        "Shan Jin",
+        "Qi Liu",
+        "Shuo Wang",
+        "Jiaying Liu",
+        "Shuo Yu",
+        "Qiang Zhang",
+        "Kuanjiu Zhou",
+        "Feng Xia"
+      ],
+      "affiliations": [
+        "Dalian University of Technology",
+        "RMIT University, Melbourne, Australia"
+      ],
+      "published": "2026-04-12",
+      "updated": "2026-06-11T09:08:48.828518",
+      "abstract": "In social recommenders, the inherent nonlinearity and opacity of synergistic effects across multiple social networks hinders users from understanding how diverse information is leveraged for recommendations, consequently diminishing explainability. However, existing explainers can only identify the topological information in social networks that significantly influences recommendations, failing to further explain the synergistic effects among this information. Inspired by existing findings that synergistic effects enhance mutual information between inputs and predictions to generate information gain, we extend this discovery to graph data. We quantify graph information gain to identify subgraphs embodying synergistic effects. Based on the theoretical insights, we propose SemExplainer, which explains synergistic effects by identifying subgraphs that embody them. SemExplainer first extracts explanatory subgraphs from multi-view social networks to generate preliminary importance explanations for recommendations. A conditional entropy optimization strategy to maximize information gain is developed, thereby further identifying subgraphs that embody synergistic effects from explanatory subgraphs. Finally, SemExplainer searches for paths from users to recommended items within the synergistic subgraphs to generate explanations for the recommendations. Extensive experiments on three datasets demonstrate the superiority of SemExplainer over baseline methods, providing superior explanations of synergistic effects. The implementation is available at https://github.com/yushuowiki/SemExplainer.",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792174",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792174",
+      "doi": "10.1145/3774904.3792174",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "针对社交推荐中多网络协同效应的非线性与不透明性问题，提出SemExplainer框架，通过量化图信息增益识别蕴含协同效应的子图，利用条件熵优化最大化信息增益，并从子图路径生成解释。该方法提升了推荐的可解释性。",
+      "core_method": "基于图信息增益量化与条件熵优化的多视角社交网络协同效应解释框架",
+      "innovation_points": [
+        "首次将信息增益扩展到图数据，量化图信息增益以识别协同效应子图",
+        "提出条件熵优化策略最大化信息增益，从解释性子图中进一步筛选协同子图",
+        "通过提取用户到推荐物品在协同子图中的路径生成可解释推荐"
+      ],
+      "experiment_results": [
+        "在三个数据集上的实验表明SemExplainer的解释效果优于基线方法"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未提及算法复杂度和实时性分析，可能在大规模社交网络中计算开销较高",
+        "实验仅在三个数据集上验证，泛化性有待进一步检验"
+      ],
+      "practical_value": "为社交推荐系统提供协同效应层面的可解释性，有助于增强用户信任和系统透明度",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "7c86e05b0ea737aa",
+      "tags": [
+        "Sequential Rec"
+      ],
+      "llm_score": 78,
+      "llm_score_rationale": "发表在顶级会议WWW，符合顶会偏好；研究社交推荐的可解释性，与生成式推荐/语义ID无直接关联；作者单位包含RMIT University，非知名互联网公司",
       "preference_signals": [
         "Top venue",
         "Industry company"
@@ -848,13 +926,10 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 94,
+      "score": 117,
       "display_affiliations": [
-        "Beijing Jiaotong University",
-        "University of Chinese Academy of Sciences",
-        "Institute of Software",
-        "Griffith University",
-        "Northwestern Polytechnical University"
+        "Dalian University of Technology",
+        "RMIT University, Melbourne, Australia"
       ],
       "published_date": "2026-04-12"
     },
@@ -1813,7 +1888,8 @@
         "Hong Yan"
       ],
       "affiliations": [
-        "Meta Platforms"
+        "Meta Platforms",
+        "Meta"
       ],
       "published": "2026-06-16T18:27:11Z",
       "updated": "2026-06-16T18:27:11Z",
@@ -1869,7 +1945,8 @@
       "notes": "",
       "score": 101,
       "display_affiliations": [
-        "Meta Platforms"
+        "Meta Platforms",
+        "Meta"
       ],
       "published_date": "2026-06-16"
     },
