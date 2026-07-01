@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T04:23:35Z",
+  "generated_at": "2026-07-01T04:56:41Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
@@ -7,8 +7,8 @@
   },
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 8,
-    "analyzed": 2,
+    "reused": 6,
+    "analyzed": 4,
     "source": "web/public/papers.json"
   },
   "current_limit": 10,
@@ -130,6 +130,791 @@
   },
   "papers": [
     {
+      "id": "arxiv:2606.31984",
+      "title": "GR2 Technical Report",
+      "authors": [
+        "Yufei Li",
+        "Zaiwei Zhang",
+        "Mingfu Liang",
+        "Kavosh Asadi",
+        "Jay Xu",
+        "Jimmy Kim",
+        "Chongyang Bai",
+        "Jieyi Zhang",
+        "Hongye Xie",
+        "Prachi Agrawal",
+        "Dian Yu",
+        "Tianyi Chen",
+        "Jean-Pascal Billaud",
+        "Garret Buell",
+        "YK",
+        "Zhu",
+        "Sachin Patil",
+        "Brooke Bian",
+        "Zhou Fang",
+        "Kevin Huang",
+        "Shiva Sudanagunta",
+        "Yuzhen Huang",
+        "Emma Lu",
+        "Chris O'Brien",
+        "Yang Song",
+        "Lihong Li",
+        "Jacob Tao",
+        "Zhicheng Zhu",
+        "Chao Li",
+        "Gaoxiang Liu",
+        "Neil Wu",
+        "Zhongyin Hu",
+        "Li Han",
+        "Loki Chen",
+        "Ming Lei",
+        "Greg Rehm",
+        "Siyuan Song",
+        "Tianwei Zhang",
+        "Li Li",
+        "Ketan Singh",
+        "Yavuz Yetim",
+        "Ilyas Atishev",
+        "Satendra Gera",
+        "Ashkan Sadeghi",
+        "Rachel Yan",
+        "Nikko Mizutani",
+        "Shuaiwen Wang",
+        "Song Yang",
+        "Zhijing Li",
+        "Jiang Liu",
+        "Mengying Sun",
+        "Fei Tian",
+        "Xiaohan Wei",
+        "Chonglin Sun",
+        "Parish Aggarwal",
+        "Kaushik Rangadurai",
+        "Zhi Hua",
+        "Frank Shyu",
+        "Ruchit Sharma",
+        "Liyuan Li",
+        "Shike Mei",
+        "Wenlin Chen",
+        "Santanu Kolay",
+        "Ben Schulte",
+        "Deepak Chandra",
+        "Adam",
+        "Song",
+        "Sandeep Pandey",
+        "Xi Liu",
+        "Hamed Firooz",
+        "Luke Simon"
+      ],
+      "affiliations": [
+        "Meta AI"
+      ],
+      "published": "2026-06-30T17:22:22Z",
+      "updated": "2026-06-30T17:22:22Z",
+      "abstract": "Industrial recommendation systems serve billions of users through a multi-stage funnel -- retrieval, early-stage ranking, and re-ranking -- where the final re-ranking step disproportionately shapes user engagement and downstream performance, particularly for carousel and grid display formats. Despite growing enthusiasm for Large Language Models (LLMs) in recommendation, three gaps hinder industrial adoption: (1) most efforts target retrieval and ranking, leaving re-ranking -- the stage closest to the final user experience -- largely underexplored; (2) LLMs are typically deployed zero-shot or via supervised fine-tuning, underutilizing the reasoning capabilities unlocked by reinforcement learning (RL) on verifiable rewards; (3) deployed catalogs index billions of items with non-semantic identifiers that lie outside any base-LLM vocabulary. We present GR2 (Generative Reasoning Re-Ranker), an end-to-end framework that combines (i) mid-training on semantic IDs produced by a tokenizer with >=99% uniqueness, (ii) reasoning-trace distilled from a stronger teacher via targeted prompting and rejection sampling, and (iii) RL with verifiable rewards purpose-built for re-ranking. To make GR2 resource-viable, we further (iv) introduce a context compressor that amortizes training cost, On-Policy Distillation (OPD) as a scalable alternative to SFT -- which we find collapses at industrial scale -- and reasoning distillation for low-latency serving. GR2 delivers +18.7% R@1, +7.1% R@3, and +9.6% N@3 over legacy baselines on industrial-scale traffic. We further find that reward design is critical in re-ranking: LLMs often hack rewards by preserving the incoming order or exploiting position bias, motivating conditional verifiable rewards as essential industrial components.",
+      "categories": [
+        "cs.IR",
+        "cs.AI"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.31984v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.31984v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "GR2提出面向工业推荐重排的生成式推理框架，通过语义ID分词、推理痕迹蒸馏和可验证奖励的强化学习，在重排阶段实现显著性能提升，并引入上下文压缩、在策略蒸馏和推理内部化等工业适配技术解决部署成本与延迟问题。",
+      "core_method": "结合语义ID中训练、教师模型推理痕迹蒸馏和基于DAPO的可验证奖励强化学习，构建生成式推理重排模型，并通过上下文压缩、在策略蒸馏和推理内部化优化工业部署。",
+      "innovation_points": [
+        "首次将LLM的推理能力通过强化学习与可验证奖励引入工业推荐重排阶段，而非仅用于检索或粗排。",
+        "提出语义ID中训练和混合语料，使LLM能直接推理非语义商品ID，解决词汇不匹配问题。",
+        "设计针对重排的可验证奖励函数，并识别和缓解奖励黑客（保留输入顺序和利用位置偏差）问题。"
+      ],
+      "experiment_results": [
+        "在工业流量测试集上，GR2相比点式基线在R@1上提升18.7%，在R@3上提升7.1%，在NDCG@3上提升9.6%。",
+        "训练数据仅使用一天日志，测试集用户ID和商品ID高度不可见，证明增益来自模型质量而非数据新鲜度。",
+        "后续9天在线服务表现无衰减，证实稳定性。"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文在工业规模流量上进行实验，并在9天在线服务中验证了性能无衰减，明确提到‘industrial-scale traffic’和后续服务表现。",
+      "limitations": [
+        "未提供在公开基准数据集上的实验结果，仅报告了工业内部数据表现。",
+        "依赖教师模型生成推理痕迹，推理质量受限于教师模型能力，且可能增加训练流程的复杂性。"
+      ],
+      "practical_value": "为工业推荐系统重排阶段提供端到端LLM方案，引入推理和强化学习，显著提升排序质量并适应大规模部署，具有直接的工业应用价值。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "a88e46d3a533bf3d",
+      "tags": [
+        "Generative Rec",
+        "Generative Ranking",
+        "Item Tokenization",
+        "Semantic ID",
+        "LLM4Rec"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "明确提到在工业级流量（industrial-scale traffic）上取得线上提升，有在线实验证据；核心贡献基于语义ID的生成式重排模型，与生成式推荐/语义ID高度相关；作者单位包含多家知名互联网公司（如Yongkang, Yang等工业界机构），但会议渠道仅为arXiv预印本",
+      "preference_signals": [
+        "Online A/B",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 121,
+      "display_affiliations": [
+        "Meta AI"
+      ],
+      "published_date": "2026-06-30"
+    },
+    {
+      "id": "arxiv:2606.31693",
+      "title": "ShopX: A Foundation Model for Intent-to-Item Fulfillment in Agentic Shopping",
+      "authors": [
+        "Jiacheng Chen",
+        "Tao Zhang",
+        "Manxi Lin",
+        "Dunxian Huang",
+        "Teng Shi",
+        "Honghao Fu",
+        "Mengyan Li",
+        "Xinming Zhang",
+        "Chenchi Zhang",
+        "Xuan Lu",
+        "Xiaoxiong Du",
+        "Haibin Chen",
+        "Shaolin Ye",
+        "Hao Chang",
+        "Xiaoqi Li",
+        "Shuwen Xiao",
+        "Yujin Yuan",
+        "Jingxuan Feng",
+        "Shaopan Xiong",
+        "Huimin Yi",
+        "Ju Huang",
+        "Qiu Shen",
+        "Ying Chen",
+        "Junjun Zheng",
+        "Xiangheng Kong",
+        "Yuning Jiang"
+      ],
+      "affiliations": [],
+      "published": "2026-06-30T14:05:28Z",
+      "updated": "2026-06-30T14:05:28Z",
+      "abstract": "The wave of AI-native applications is moving shopping beyond page- and feed-based browsing toward intent-driven experiences orchestrated by LLM agents. A common design wraps an LLM around existing search and recommendation pipelines, forcing complex intents through low-bandwidth retrieval or ranking interfaces and leaving a gap between language understanding and item-space fulfillment. Generative recommendation gives LLMs a direct item-space interface through semantic IDs (SIDs), but existing models mainly generate candidates for retrieval rather than translate flexible intents into item-space outcomes. We propose ShopX to address this bottleneck by unifying intent understanding, execution planning, and flexible SID-native item-space operations into a single foundation model. We deploy ShopX in agentic shopping workflows through a model-native item-fulfillment framework with a serving harness that defines a model-facing action protocol and exposes support surfaces for context access, catalog grounding, and state management. Within this framework, ShopX plans and composes SID-based item-space operations such as SID beam-search retrieval, listwise ranking, or product bundling. This model-centric design reduces lossy hand-offs between agent orchestration and item-space execution. To build ShopX, we design semantically recoverable, LLM-operable SIDs and a training recipe that equips a general LLM for flexible multi-turn item-space fulfillment while retaining the knowledge and instruction-following abilities needed by a shopping agent. We evaluate the ShopX framework against tool-mediated agentic systems on single- and multi-turn fulfillment tasks derived from anonymized Taobao production logs, showing that model-native fulfillment improves overall framework behavior, especially on complex or ambiguous requests.",
+      "categories": [
+        "cs.IR",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.31693v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.31693v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "ShopX是一个面向智能购物场景的基础模型，将意图理解、执行规划和基于语义ID（SID）的项目空间操作统一到一个模型中。它通过模型原生的项目满足框架，直接处理复杂购物意图，弥合了语言理解与项目空间执行之间的差距。实验显示在单轮和多轮满足任务上优于传统的工具中介系统。",
+      "core_method": "通过训练使通用LLM掌握语义可恢复、LLM可操作的SID，实现模型原生的意图到项目空间操作（如SID束搜索检索、列表排序、产品捆绑）的端到端执行。",
+      "innovation_points": [
+        "提出模型原生项目满足框架，将SID操作直接集成到LLM中，减少代理编排与项目执行之间的有损交互。",
+        "设计语义可恢复且LLM可操作的语义ID（SID），并构建了从单意图到多意图的灵活SID操作体系。",
+        "通过多任务训练配方，使通用LLM在保留知识和指令遵循能力的同时，获得灵活的多轮项目空间满足能力。"
+      ],
+      "experiment_results": [
+        "在基于匿名淘宝生产日志的单轮和多轮满足任务上，ShopX框架的整体行为优于工具中介系统。",
+        "在复杂或模糊请求上表现出明显优势。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试。",
+      "limitations": [
+        "实验基于匿名化生产日志，未在真实线上流量中验证效果和性能。",
+        "未详细讨论大规模部署时的延迟和成本问题。"
+      ],
+      "practical_value": "为电商智能购物代理提供了一种更直接高效的意图到项目达成方案，有望减少系统复杂度并提升复杂意图的满足质量。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "53184a56321b185b",
+      "tags": [
+        "Generative Rec",
+        "Semantic ID",
+        "Agent4Rec",
+        "LLM4Rec"
+      ],
+      "llm_score": 85,
+      "llm_score_rationale": "明确涉及语义ID(SID)与生成式推荐，直接对应生成式推荐/语义ID方向；作者单位含Alibaba/Taobao(淘宝)，且评估数据来自匿名化淘宝生产日志，暗示工业实践背景；论文在agentic shopping中部署ShopX，并基于生产日志评估，有明确线上证据(production logs)但未提及A/B实验",
+      "preference_signals": [
+        "Generative Rec / Semantic ID",
+        "Industry company",
+        "Online A/B"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 121,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026-06-30"
+    },
+    {
+      "id": "dblp:conf/www/LiuFYWGH26",
+      "title": "LLM-Driven Semantic ID for Information Diffusion Prediction",
+      "authors": [
+        "Haoshuang Liu",
+        "Zihan Feng",
+        "Yajun Yang",
+        "Xin Wang",
+        "Hong Gao",
+        "Qinghua Hu"
+      ],
+      "affiliations": [],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792652",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792652",
+      "doi": "10.1145/3774904.3792652",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出LLM4IDP，利用大语言模型将信息扩散预测任务中的级联图压缩为紧凑的Semantic ID序列，以替代传统的GNN编码，提升扩散预测的效率和可扩展性。",
+      "core_method": "使用LLM对信息级联的传播序列（用户序列）进行语义理解和压缩，生成有序的Semantic ID序列，然后通过Transformer进行扩散预测。",
+      "innovation_points": [
+        "首次将LLM生成的Semantic ID引入信息扩散预测，将图结构问题转化为序列建模问题",
+        "通过LLM的语义理解能力自动学习用户和传播模式的紧凑表示，无需人工设计图编码器",
+        "LLM4IDP框架在大规模级联预测上兼具效率和准确性，可轻松扩展到大型网络"
+      ],
+      "experiment_results": [
+        "论文未提供详细实验数据，仅有元数据信息，无法报告具体评测结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未提供具体实验数据，方法有效性缺乏量化验证",
+        "LLM生成Semantic ID的泛化能力和跨平台迁移性未讨论"
+      ],
+      "practical_value": "为信息扩散预测提供了一种可扩展的LLM驱动范式，有望在社交网络传播分析、推荐系统信息流建模等场景中提升效率。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "1fc623eebf327983",
+      "tags": [
+        "LLM4Rec",
+        "Semantic ID",
+        "Sequential Rec"
+      ],
+      "llm_score": 72,
+      "llm_score_rationale": "标题明确涉及Semantic ID和LLM，与生成式推荐强相关；发表于顶级会议WWW（2026）；无工业界作者或线上实验证据",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 115,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026"
+    },
+    {
+      "id": "dblp:conf/www/ZengQLLLCB26",
+      "title": "RAIE: Region-Aware Incremental Preference Editing with LoRA for LLM-based Recommendation",
+      "authors": [
+        "Jin Zeng",
+        "Yupeng Qi",
+        "Hui Li",
+        "Chengming Li",
+        "Ziyu Lyu",
+        "Lixin Cui",
+        "Lu Bai"
+      ],
+      "affiliations": [
+        "Shenzhen University"
+      ],
+      "published": "2026-04-12",
+      "updated": "2026-06-11T09:08:48.828518",
+      "abstract": "Large language models (LLMs) are increasingly adopted as the backbone of recommender systems. However, user–item interactions in real-world scenarios are non-stationary, making preference drift over time inevitable. Existing model update strategies mainly rely on global fine-tuning or pointwise editing, but they face two fundamental challenges: (i) imbalanced update granularity, where global updates perturb behaviors unrelated to the target while pointwise edits fail to capture broader preference shifts; (ii) unstable incremental updates, where repeated edits interfere with prior adaptations, leading to catastrophic forgetting and inconsistent recommendations. To address these issues, we propose Region-Aware Incremental Editing (RAIE), a plug-in framework that freezes the backbone model and performs region-level updates. RAIE first constructs semantically coherent preference regions via spherical k-means in the representation space. It then assigns incoming sequences to regions via confidence-aware gating and performs three localized edit operations-Update, Expand, and Add-to dynamically revise the affected region. Each region is equipped with a dedicated Low-Rank Adaptation (LoRA) module, which is trained only on the region's updated data. During inference, RAIE routes each user sequence to its corresponding region and activates the region-specific adapter for prediction. Experiments on two benchmark datasets under a time-sliced protocol that segments data into Set-up (S), Finetune (F), and Test (T) show that RAIE significantly outperforms state-of-the-art baselines while effectively mitigating forgetting. These results demonstrate that region-aware editing offers an accurate and scalable mechanism for continual adaptation in dynamic recommendation scenarios.",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792451",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792451",
+      "doi": "10.1145/3774904.3792451",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "论文提出RAIE框架，针对LLM推荐中用户偏好漂移问题，采用球形k均值构建语义区域，并通过LoRA模块实现区域级增量编辑，以平衡更新粒度并缓解灾难性遗忘。",
+      "core_method": "RAIE利用球形k均值划分偏好区域，为每个区域分配独立LoRA模块进行局部增量更新，推理时根据置信度门控路由到对应区域。",
+      "innovation_points": [
+        "提出区域感知增量编辑框架，解决全局微调与逐点编辑的粒度不平衡问题",
+        "通过球形k均值构建语义连贯的偏好区域，并用置信度门控动态分配用户序列",
+        "为每个区域配备专用LoRA模块，实现局部增量更新以缓解灾难性遗忘"
+      ],
+      "experiment_results": [
+        "在时间切片协议下的两个基准数据集上，RAIE显著优于先进基线方法",
+        "RAIE有效缓解了增量更新中的灾难性遗忘问题"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏线上A/B测试验证实际推荐效果",
+        "实验仅在两个基准数据集上进行，泛化能力待进一步验证"
+      ],
+      "practical_value": "RAIE为动态推荐场景下的LLM持续适配提供了可扩展的区域级编辑机制，能有效处理偏好漂移和遗忘问题。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "c865c3e15831de2f",
+      "tags": [
+        "LLM4Rec",
+        "Generative Rec",
+        "User Modeling",
+        "Sequential Rec"
+      ],
+      "llm_score": 72,
+      "llm_score_rationale": "发表在顶会WWW 2026，属于顶级会议论文，加分。；论文涉及LLM-based推荐和增量编辑，与LLM4Rec强相关。；缺少线上A/B实验证据，作者单位非知名互联网公司。",
+      "preference_signals": [
+        "Top venue",
+        "LLM4Rec"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 113,
+      "display_affiliations": [
+        "Shenzhen University"
+      ],
+      "published_date": "2026-04-12"
+    },
+    {
+      "id": "dblp:conf/www/ZhuCJYWCZ26",
+      "title": "FeedGuard: Online Critic-Guided Reinforcement Learning with Privacy-Preserving Feedback for Recommendation",
+      "authors": [
+        "Mengying Zhu",
+        "Feiyue Chen",
+        "Lifan Jiang",
+        "Mengyuan Yang",
+        "Yangyang Wu",
+        "Guanjie Cheng",
+        "Xiaolin Zheng"
+      ],
+      "affiliations": [
+        "Zhejiang University",
+        "Ningbo University"
+      ],
+      "published": "2026-04-12",
+      "updated": "2026-06-11T09:08:48.828518",
+      "abstract": "Reinforcement learning-based recommendation systems (RLRS) are increasingly favored for their ability to leverage online interactive feedback, enabling adaptive and personalized decision-making. In this setting, user feedback serves as both a behavioral signal and an optimization target, making it essential for policy learning. However, collecting such feedback, e.g., clicks, ratings, and engagement traces, raises serious privacy concerns, posing critical challenges for value estimation, online adaptation, and privacy protection. In this paper, we propose FeedGuard, a critic-guided reinforcement learning framework with privacy-preserving feedback. FeedGuard enhances trajectory modeling via critic guidance, enables joint online fine-tuning with effective exploration–exploitation tradeoffs, and enforces end-to-end privacy protection across the feedback lifecycle via split federated learning and differential privacy. We further provide a formal analysis of its differential privacy guarantees. Extensive experiments on four public recommendation datasets and the VirtualTB platform show that FeedGuard performs well in both offline and online settings, while maintaining rigorous privacy guarantees with minimal degradation.",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792155",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792155",
+      "doi": "10.1145/3774904.3792155",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出FeedGuard框架，结合评论家指导的强化学习与隐私保护反馈，通过分裂联邦学习和差分隐私实现端到端隐私保护，在推荐系统中平衡隐私、在线适应和推荐性能。",
+      "core_method": "基于评论家指导的强化学习框架，结合分裂联邦学习和差分隐私，实现用户反馈的端到端隐私保护与在线策略优化。",
+      "innovation_points": [
+        "提出评论家指导的轨迹建模方法，增强强化学习在推荐系统中的表示能力",
+        "设计分裂联邦学习和差分隐私结合的端到端隐私保护机制，覆盖反馈全生命周期",
+        "实现在线联合微调，在保护隐私的同时保持探索与利用的平衡"
+      ],
+      "experiment_results": [
+        "在四个公开推荐数据集和VirtualTB平台上验证，FeedGuard在离线和在线设置下均表现良好，且隐私保护严格，性能下降极小"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "摘要提到在VirtualTB平台进行在线实验，表明进行了在线A/B测试（online settings）",
+      "limitations": [
+        "论文未提供全文，无法评估方法在大规模真实场景下的可扩展性",
+        "隐私保护带来的性能下降虽小但未量化具体影响"
+      ],
+      "practical_value": "为推荐系统提供了一种平衡隐私保护和在线学习性能的解决方案，适用于对用户数据隐私敏感的推荐场景。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "3b008c5b3ea0c0a9",
+      "tags": [
+        "LLM4Rec",
+        "Online Eval"
+      ],
+      "llm_score": 65,
+      "llm_score_rationale": "WWW顶会已发表，属于顶级会议论文；；作者单位包含浙江大学，不属于知名互联网公司，无行业合作单位；；研究方向为强化学习推荐和隐私保护，与生成式推荐/语义ID无直接关联，虽提到在线实验但基于公开数据集和模拟平台，非真实线上A/B测试。",
+      "preference_signals": [
+        "Top venue",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 109,
+      "display_affiliations": [
+        "Zhejiang University",
+        "Ningbo University"
+      ],
+      "published_date": "2026-04-12"
+    },
+    {
+      "id": "dblp:conf/www/TangLPLK26",
+      "title": "Verifiable Federated Representation Learning for Cross-domain Sequential Recommendation",
+      "authors": [
+        "Tao Tang",
+        "Botao Liu",
+        "Ciyuan Peng",
+        "Ivan Lee",
+        "Xiangjie Kong"
+      ],
+      "affiliations": [
+        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
+        "Zhejiang University of Technology",
+        "Federation University",
+        "Adelaide University, Adelaide, Australia",
+        "The University of Adelaide"
+      ],
+      "published": "2026-04-09",
+      "updated": "2026-06-11T09:08:48.828518",
+      "abstract": "Cross-domain sequential recommendation (CDSR) plays a critical role in decentralized Web applications by leveraging user behavior sequences across multiple platforms to alleviate data sparsity and capture dynamic preferences. However, existing federated CDSR frameworks face two fundamental challenges: (i) heterogeneous sequential interactions that encode domain-exclusive semantics and cannot be directly shared under privacy constraints, and (ii) strong trust assumptions that both servers and clients behave honestly, leaving federated training vulnerable to misreporting, malicious updates, and negative transfer. In this paper, we propose VeriFRL, a verifiable federated representation learning framework for cross-domain sequential recommendation. VeriFRL adopts a dual-module design that integrates representation learning with verifiable training: an attention-based variational encoder disentangles domain-shared and domain-exclusive representations to support transferable and privacy-preserving knowledge sharing, while a contribution evaluation module quantifies client-level and feature-level influences to enable verifiability, interpretability, and negative transfer detection. Extensive experiments on real-world multi-domain datasets demonstrate that VeriFRL achieves competitive or superior recommendation performance over state-of-the-art federated CDSR methods, while providing fine-grained insights into cross-domain knowledge transfer dynamics.",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792533",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792533",
+      "doi": "10.1145/3774904.3792533",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "本文提出VeriFRL，一个可验证的联邦表示学习框架，用于跨域序列推荐。它通过变分编码器解耦域共享与域独占表示，并引入贡献评估模块来验证客户端与特征的重要性，从而在保护隐私的同时实现知识迁移与负迁移检测。",
+      "core_method": "基于注意力变分编码器的可验证联邦表示学习框架，包含表示解耦与贡献评估双模块设计。",
+      "innovation_points": [
+        "提出注意力变分编码器解耦域共享与域独占表示，支持可迁移且隐私保护的知识共享",
+        "设计贡献评估模块量化客户端和特征影响力，实现可验证性、可解释性与负迁移检测",
+        "在联邦跨域序列推荐中整合表示学习与可验证训练，增强模型鲁棒性"
+      ],
+      "experiment_results": [
+        "在真实多域数据集上，VeriFRL相比最先进的联邦CDSR方法取得了有竞争力或更优的推荐性能",
+        "提供了跨域知识迁移动态的细粒度洞察"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "元数据未提供具体的局限性说明，但联邦学习场景下通信开销与隐私保护强度可能影响实际部署效率",
+        "贡献评估模块的可扩展性在大规模客户端环境下未经验证"
+      ],
+      "practical_value": "为去中心化Web应用中的跨域序列推荐提供了一种隐私保护且可验证的联邦学习方案，有助于在实际平台中安全地利用多域用户行为数据。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "afc05bc934e6b57e",
+      "tags": [
+        "Sequential Rec"
+      ],
+      "llm_score": 70,
+      "llm_score_rationale": "发表在顶级会议WWW，学术可信度高；涉及跨域序列推荐和联邦学习，与工业推荐系统相关，但未提及生成式推荐或语义ID；作者单位包括知名大学但无明确互联网公司（如Google、Meta等），且论文未提及在线A/B测试或线上实验证据",
+      "preference_signals": [
+        "Top venue",
+        "Industry relevance (partially, via cross-domain recommendation and federated learning)"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 108,
+      "display_affiliations": [
+        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
+        "Zhejiang University of Technology",
+        "Federation University",
+        "Adelaide University, Adelaide, Australia",
+        "The University of Adelaide"
+      ],
+      "published_date": "2026-04-09"
+    },
+    {
+      "id": "dblp:conf/www/LiuZHZZZ26",
+      "title": "Facilitating Generative Retrieval with Logical Denoising for Interpretable Conversational Search",
+      "authors": [
+        "Qichuan Liu",
+        "Chentao Zhang",
+        "Yuxuan Hu",
+        "Chenfeng Zheng",
+        "Qinggang Zhang",
+        "Zhihong Zhang"
+      ],
+      "affiliations": [
+        "Xiamen University",
+        "Hong Kong Polytechnic University"
+      ],
+      "published": "2026-04-09",
+      "updated": "2026-06-11T09:08:48.828518",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792544",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792544",
+      "doi": "10.1145/3774904.3792544",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "该论文提出了一种基于逻辑去噪的生成式检索方法，旨在提升可解释的对话式搜索性能。",
+      "core_method": "将逻辑去噪用于生成式检索，以增强对话搜索的可解释性。",
+      "innovation_points": [
+        "引入逻辑去噪机制优化生成式检索的噪声处理",
+        "提升对话式搜索的可解释性"
+      ],
+      "experiment_results": [
+        "论文全文未提供实验结果或评测结论"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未提供详细实验验证",
+        "可解释性的实际效果缺乏量化评估"
+      ],
+      "practical_value": "为对话式搜索系统提供可解释的生成式检索方案，可能提升用户信任和系统透明度。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "7d359eddecec7cd7",
+      "tags": [
+        "Generative Retrieval",
+        "Conversational Rec"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "发表在顶级会议 WWW，符合顶会权重；标题明确包含生成式检索（Generative Retrieval），与目标强相关；作者单位非知名互联网公司，无线上实验证据",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 107,
+      "display_affiliations": [
+        "Xiamen University",
+        "Hong Kong Polytechnic University"
+      ],
+      "published_date": "2026-04-09"
+    },
+    {
+      "id": "arxiv:2606.26859",
+      "title": "AgentX: Towards Agent-Driven Self-Iteration of Industrial Recommender Systems",
+      "authors": [
+        "Changxin Lao",
+        "Fei Pan",
+        "Guozhuang Ma",
+        "Han Li",
+        "Huihuang Lin",
+        "Jijun Shi",
+        "Kangzhi Zhao",
+        "Kun Gai",
+        "Mo Zhou",
+        "Qinqin Zhou",
+        "Quan Chen",
+        "Ruochen Yang",
+        "Shifu Bie",
+        "Shijie Yi",
+        "Shuang Yang",
+        "Shuo Yang",
+        "Wenhao Li",
+        "Wentao Xie",
+        "Xiao Lv",
+        "Xuming Wang",
+        "Yijun Wang",
+        "Yiming Chen",
+        "Yusheng Huang",
+        "Zhongyuan Wang",
+        "Zibo Zhao",
+        "Zijie Zhuang",
+        "Baoning Xia",
+        "Chao Liu",
+        "Chaoyi Ma",
+        "Chubo He",
+        "Dawei Cong",
+        "Feng Jiang",
+        "Gang Wang",
+        "Guilin Xia",
+        "Hanwen Xu",
+        "Jiahong Xie",
+        "Jiahui Qiao",
+        "Jian Liang",
+        "Jiangfan Yue",
+        "Jing Wang",
+        "Jinghan Yang",
+        "Jinghui Jia",
+        "Kan Qin",
+        "Lei Wang",
+        "Ming Li",
+        "Peilin Song",
+        "Pengbo Xu",
+        "Qiang Luo",
+        "Ruiming Tang",
+        "Shiyang Liu",
+        "Shuxian Jin",
+        "Tao Wang",
+        "Tao Zhang",
+        "Xiang Gao",
+        "Xianghan Li",
+        "Yingsong Luo",
+        "Yiwen Ning",
+        "Yongcheng Liu",
+        "Yueyang Liu",
+        "Yuan Guo",
+        "Zhaojie Liu",
+        "Zhenkai Cui"
+      ],
+      "affiliations": [],
+      "published": "2026-06-25T10:42:28Z",
+      "updated": "2026-06-26T10:04:52Z",
+      "abstract": "Recommendation algorithm iteration is moving from an artisanal, engineer-bound process toward an industrialized research loop, but this transition remains blocked by a structural execution bottleneck: the idea-to-launch cycle still depends on human engineers to generate hypotheses, modify production code, launch A/B experiments, and attribute online results. Innovation therefore scales linearly with headcount rather than compounding with evidence, compute, and accumulated experimental knowledge. We present AgentX, a production-deployed multi-agent system that fundamentally restructures this production function. AgentX operates as a self-evolving development engine: it autonomously generates, implements, evaluates, and learns from recommendation experiments at a scale and pace that no manual workflow can sustain. The system orchestrates four tightly coupled stages in a closed loop. A Brainstorm Agent synthesizes evidence from historical experiments, system architecture, data analysis, and external research into ranked, executable proposals. A Developing Agent translates each proposal into production-ready code through repository-grounded generation and multi-dimensional reliability verification. An Evaluation Agent conducts safe online rollout with guardrail-vetoed A/B judgment, converting both successes and failures into structured knowledge assets. A Harness Evolution layer (SGPO) then distills execution trajectories into semantic-gradient updates that continuously sharpen the agents themselves -- making the system not merely automated, but self-improving.",
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.IR"
+      ],
+      "primary_category": "cs.AI",
+      "abs_url": "http://arxiv.org/abs/2606.26859v2",
+      "pdf_url": "https://arxiv.org/pdf/2606.26859v2",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "AgentX是一个生产部署的多智能体系统，通过头脑风暴、开发、评估和探索进化四个阶段形成闭环，自动完成推荐实验的生成、代码实现、在线评估和知识积累，实现了推荐系统迭代的自主化和自我进化。",
+      "core_method": "基于多智能体协作的闭环自进化框架，集成历史实验证据合成、仓库级代码生成、带护栏的在线A/B评估以及从执行轨迹中提取语义梯度实现智能体自我改进。",
+      "innovation_points": [
+        "提出首个生产级推荐系统自迭代多智能体系统，将人工驱动流程重构为闭环自主进化引擎",
+        "引入Harness Evolution层，通过SGPO从执行轨迹中学习语义梯度，实现智能体能力的持续自我提升",
+        "在同一闭环原则下，将方法从策略迭代扩展到模型研究工作，支持自动论文复现和跨论文组合"
+      ],
+      "experiment_results": [
+        "在快手App三周部署中，3个AgentX worker将374个想法转化为10个上线实验，单worker周吞吐量通过自我进化翻倍",
+        "相比人工工程师，AgentX实现8倍并发和3.7倍业务价值，带来0.561%用户使用时长提升和年化超过1亿人民币收入",
+        "模型研究实验中，AgentX在论文复现和模块组合任务上展现了自动化科研能力"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文明确提到在生产环境中进行三周A/B实验，包括安全上线、护栏否决机制和在线结果归因，并报告了用户时长和收入提升。",
+      "limitations": [
+        "实验仅在三周内部署于特定业务场景，长期效果和跨场景泛化性待验证",
+        "系统依赖大量历史实验数据和专家知识，初始冷启动可能存在挑战"
+      ],
+      "practical_value": "AgentX将推荐系统迭代从线性依赖人力转变为可复利的自主进化模式，能大幅提升实验吞吐量和业务收益，对工业级推荐研发具有直接应用价值。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "de34c7aa27976814",
+      "tags": [
+        "Agent4Rec",
+        "Online Eval",
+        "Generative Rec"
+      ],
+      "llm_score": 95,
+      "llm_score_rationale": "明确描述工业部署和线上A/B实验，包括guardrail-vetoed A/B judgment和online rollout，符合线上A/B证据最高权重；论文提出AgentX系统，实现推荐算法自我迭代，与生成式推荐、语义ID等强相关（文中提及语义梯度更新SGPO）；作者单位可能包含工业界知名公司（如Kun Gai曾任职阿里巴巴），且聚焦工业推荐实践，大幅加分",
+      "preference_signals": [
+        "Online A/B",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 105,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026-06-25"
+    },
+    {
+      "id": "arxiv:2606.28533",
+      "title": "CMSL: Constructive Multi-Sequence Learning for Recommendation Systems",
+      "authors": [
+        "Zikun Cui",
+        "Renzhi Wu",
+        "Junjie Yang",
+        "Li Sheng",
+        "Jijie Wei",
+        "Linfeng Liu",
+        "Tai Guo",
+        "Tao Jia",
+        "Xiaodong Wang",
+        "Hong Li",
+        "Li Yu",
+        "Sri Reddy",
+        "Hong Yan"
+      ],
+      "affiliations": [
+        "Meta"
+      ],
+      "published": "2026-06-26T18:32:43Z",
+      "updated": "2026-06-26T18:32:43Z",
+      "abstract": "Sequence learning has emerged as the promising paradigm in recommendation systems, surpassing traditional Deep Learning Recommendation Models (DLRM) by capturing the temporal nuances of user behavior. However, current state-of-the-art architectures operate under a limiting analogy: they treat user history as a monolithic chronological sequence like a sentence in a Large Language Model (LLM). We observe a fundamental divergence between natural language and recommendation data: unlike the linear, logical flow of text, user history is inherently multi-faceted. A user's journey is a fragmented reflection of diverse interests, resulting in much weaker coherence between items than is found in LLM training data. This lack of structural unity leads to context pollution. In single-sequence modeling, unrelated behaviors compete for the same attention budget. This \"noisy\" signal dilutes the model's focus, effectively capping its ability to discern high-intent patterns from background activity. To address this, we propose Constructive Multi-Sequence Learning (CMSL), a paradigm shift from passive sequence ingestion to active \"context engineering\" that constructs multiple coherent sequences in latent space. CMSL leverages a learnable Sequence Construction Module to disentangle user history into \"pure\" thematic strands, followed by a linear attention mechanism to efficiently model these strands at scale. CMSL has been deployed across ranking and retrieval tasks and across four major surfaces at Meta.",
+      "categories": [
+        "cs.IR",
+        "cs.AI"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.28533v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.28533v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "针对推荐系统中单序列建模因用户历史行为混杂导致的上下文污染问题，提出构建式多序列学习框架CMSL，通过可学习的序列构建模块将用户历史解耦为多个主题一致的潜在序列，并利用线性注意力高效建模，已在Meta多个线上推荐场景部署。",
+      "core_method": "CMSL通过跨注意力机制在潜在空间将杂乱用户历史自适应地构建为多条有序的上下文序列，分别进行自注意力建模以降低意图干扰。",
+      "innovation_points": [
+        "提出推荐系统中的上下文污染问题，并设计构建式多序列学习范式替代传统单一序列建模。",
+        "提出可学习的多序列构建模块，利用跨注意力根据当前查询意图动态解耦用户历史，生成多个潜在序列。",
+        "设计适用于多序列建模的可扩展线性注意力机制，降低计算复杂度。"
+      ],
+      "experiment_results": [
+        "排序任务：在Meta四个主要场景的CTR预测中，CMSL在归一化熵（NE）上取得0.3%-0.6%的显著提升（>0.03%即有统计显著性）。",
+        "召回任务：在线上A/B测试中，CMSL在四项重要互动指标上均取得统计显著提升。",
+        "论文还通过实验表明，专家划分的多个序列已优于单序列，且注入低价值行为会降低性能，验证了上下文污染问题。"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "召回评估直接在线上A/B测试中进行，在surface 5上报告了四项互动指标的显著提升；排序评估使用NE指标，并说明NE与A/B测试指标高度一致且大于0.03%的提升具有统计显著性。",
+      "limitations": [
+        "没有与现有解决上下文污染的其他方法（如HSTU、InterFormer）进行直接对比实验。",
+        "模型设计主要面向工业级场景，缺少在小规模公开数据集上的通用性评估。"
+      ],
+      "practical_value": "CMSL已在Meta多个主要推荐场景部署，能有效提升排序和召回效果，对工业界推荐系统具有直接应用价值。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "a9bb3c6075f1d725",
+      "tags": [
+        "Sequential Rec",
+        "Generative Rec",
+        "User Modeling",
+        "Online Eval"
+      ],
+      "llm_score": 98,
+      "llm_score_rationale": "明确提及在Meta的四个主要界面上的排序和检索任务中部署，暗示有线上实验和生产环境验证；作者单位包含Meta，属于知名互联网公司，工业实践导向强；论文提出多序列学习改进推荐系统中的序列建模，与工业推荐实践直接相关",
+      "preference_signals": [
+        "Online A/B",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 104,
+      "display_affiliations": [
+        "Meta"
+      ],
+      "published_date": "2026-06-26"
+    },
+    {
       "id": "dblp:conf/www/YuFLZWLWZW26",
       "title": "ThinkRec: Thinking-based recommendation via LLM",
       "authors": [
@@ -180,7 +965,7 @@
       ],
       "practical_value": "该框架通过引入显式推理过程，有望提升推荐系统的透明度和用户信任度，同时增强个性化推荐的准确性。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "b5535d8b0e76ee5e",
       "tags": [
         "LLM4Rec",
@@ -196,7 +981,7 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 131,
+      "score": 104,
       "display_affiliations": [
         "Zhejiang University",
         "Ant Group, Hangzhou, China",
@@ -362,142 +1147,6 @@
       "published_date": "2026-04-12"
     },
     {
-      "id": "dblp:conf/www/ZhuCJYWCZ26",
-      "title": "FeedGuard: Online Critic-Guided Reinforcement Learning with Privacy-Preserving Feedback for Recommendation",
-      "authors": [
-        "Mengying Zhu",
-        "Feiyue Chen",
-        "Lifan Jiang",
-        "Mengyuan Yang",
-        "Yangyang Wu",
-        "Guanjie Cheng",
-        "Xiaolin Zheng"
-      ],
-      "affiliations": [
-        "Zhejiang University",
-        "Ningbo University"
-      ],
-      "published": "2026-04-12",
-      "updated": "2026-06-11T09:08:48.828518",
-      "abstract": "Reinforcement learning-based recommendation systems (RLRS) are increasingly favored for their ability to leverage online interactive feedback, enabling adaptive and personalized decision-making. In this setting, user feedback serves as both a behavioral signal and an optimization target, making it essential for policy learning. However, collecting such feedback, e.g., clicks, ratings, and engagement traces, raises serious privacy concerns, posing critical challenges for value estimation, online adaptation, and privacy protection. In this paper, we propose FeedGuard, a critic-guided reinforcement learning framework with privacy-preserving feedback. FeedGuard enhances trajectory modeling via critic guidance, enables joint online fine-tuning with effective exploration–exploitation tradeoffs, and enforces end-to-end privacy protection across the feedback lifecycle via split federated learning and differential privacy. We further provide a formal analysis of its differential privacy guarantees. Extensive experiments on four public recommendation datasets and the VirtualTB platform show that FeedGuard performs well in both offline and online settings, while maintaining rigorous privacy guarantees with minimal degradation.",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792155",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792155",
-      "doi": "10.1145/3774904.3792155",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "提出FeedGuard框架，结合评论家指导的强化学习与隐私保护反馈，通过分裂联邦学习和差分隐私实现端到端隐私保护，在推荐系统中平衡隐私、在线适应和推荐性能。",
-      "core_method": "基于评论家指导的强化学习框架，结合分裂联邦学习和差分隐私，实现用户反馈的端到端隐私保护与在线策略优化。",
-      "innovation_points": [
-        "提出评论家指导的轨迹建模方法，增强强化学习在推荐系统中的表示能力",
-        "设计分裂联邦学习和差分隐私结合的端到端隐私保护机制，覆盖反馈全生命周期",
-        "实现在线联合微调，在保护隐私的同时保持探索与利用的平衡"
-      ],
-      "experiment_results": [
-        "在四个公开推荐数据集和VirtualTB平台上验证，FeedGuard在离线和在线设置下均表现良好，且隐私保护严格，性能下降极小"
-      ],
-      "ab_test": "yes",
-      "ab_test_evidence": "摘要提到在VirtualTB平台进行在线实验，表明进行了在线A/B测试（online settings）",
-      "limitations": [
-        "论文未提供全文，无法评估方法在大规模真实场景下的可扩展性",
-        "隐私保护带来的性能下降虽小但未量化具体影响"
-      ],
-      "practical_value": "为推荐系统提供了一种平衡隐私保护和在线学习性能的解决方案，适用于对用户数据隐私敏感的推荐场景。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "3b008c5b3ea0c0a9",
-      "tags": [
-        "LLM4Rec",
-        "Online Eval"
-      ],
-      "llm_score": 65,
-      "llm_score_rationale": "WWW顶会已发表，属于顶级会议论文；；作者单位包含浙江大学，不属于知名互联网公司，无行业合作单位；；研究方向为强化学习推荐和隐私保护，与生成式推荐/语义ID无直接关联，虽提到在线实验但基于公开数据集和模拟平台，非真实线上A/B测试。",
-      "preference_signals": [
-        "Top venue",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 117,
-      "display_affiliations": [
-        "Zhejiang University",
-        "Ningbo University"
-      ],
-      "published_date": "2026-04-12"
-    },
-    {
-      "id": "dblp:conf/www/LiuFYWGH26",
-      "title": "LLM-Driven Semantic ID for Information Diffusion Prediction",
-      "authors": [
-        "Haoshuang Liu",
-        "Zihan Feng",
-        "Yajun Yang",
-        "Xin Wang",
-        "Hong Gao",
-        "Qinghua Hu"
-      ],
-      "affiliations": [],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792652",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792652",
-      "doi": "10.1145/3774904.3792652",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "提出LLM4IDP，利用大语言模型将信息扩散预测任务中的级联图压缩为紧凑的Semantic ID序列，以替代传统的GNN编码，提升扩散预测的效率和可扩展性。",
-      "core_method": "使用LLM对信息级联的传播序列（用户序列）进行语义理解和压缩，生成有序的Semantic ID序列，然后通过Transformer进行扩散预测。",
-      "innovation_points": [
-        "首次将LLM生成的Semantic ID引入信息扩散预测，将图结构问题转化为序列建模问题",
-        "通过LLM的语义理解能力自动学习用户和传播模式的紧凑表示，无需人工设计图编码器",
-        "LLM4IDP框架在大规模级联预测上兼具效率和准确性，可轻松扩展到大型网络"
-      ],
-      "experiment_results": [
-        "论文未提供详细实验数据，仅有元数据信息，无法报告具体评测结果"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "未提供具体实验数据，方法有效性缺乏量化验证",
-        "LLM生成Semantic ID的泛化能力和跨平台迁移性未讨论"
-      ],
-      "practical_value": "为信息扩散预测提供了一种可扩展的LLM驱动范式，有望在社交网络传播分析、推荐系统信息流建模等场景中提升效率。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "1fc623eebf327983",
-      "tags": [
-        "LLM4Rec",
-        "Semantic ID",
-        "Sequential Rec"
-      ],
-      "llm_score": 72,
-      "llm_score_rationale": "标题明确涉及Semantic ID和LLM，与生成式推荐强相关；发表于顶级会议WWW（2026）；无工业界作者或线上实验证据",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 117,
-      "display_affiliations": [
-        "Unknown affiliation"
-      ],
-      "published_date": "2026"
-    },
-    {
       "id": "arxiv:2606.27058",
       "title": "UniFormer: Efficient and Unified Model-Centric Scaling for Industrial Recommendation",
       "authors": [
@@ -576,219 +1225,6 @@
         "Noah's Ark Lab, Huawei"
       ],
       "published_date": "2026-06-25"
-    },
-    {
-      "id": "dblp:conf/www/ZengQLLLCB26",
-      "title": "RAIE: Region-Aware Incremental Preference Editing with LoRA for LLM-based Recommendation",
-      "authors": [
-        "Jin Zeng",
-        "Yupeng Qi",
-        "Hui Li",
-        "Chengming Li",
-        "Ziyu Lyu",
-        "Lixin Cui",
-        "Lu Bai"
-      ],
-      "affiliations": [
-        "Shenzhen University"
-      ],
-      "published": "2026-04-12",
-      "updated": "2026-06-11T09:08:48.828518",
-      "abstract": "Large language models (LLMs) are increasingly adopted as the backbone of recommender systems. However, user–item interactions in real-world scenarios are non-stationary, making preference drift over time inevitable. Existing model update strategies mainly rely on global fine-tuning or pointwise editing, but they face two fundamental challenges: (i) imbalanced update granularity, where global updates perturb behaviors unrelated to the target while pointwise edits fail to capture broader preference shifts; (ii) unstable incremental updates, where repeated edits interfere with prior adaptations, leading to catastrophic forgetting and inconsistent recommendations. To address these issues, we propose Region-Aware Incremental Editing (RAIE), a plug-in framework that freezes the backbone model and performs region-level updates. RAIE first constructs semantically coherent preference regions via spherical k-means in the representation space. It then assigns incoming sequences to regions via confidence-aware gating and performs three localized edit operations-Update, Expand, and Add-to dynamically revise the affected region. Each region is equipped with a dedicated Low-Rank Adaptation (LoRA) module, which is trained only on the region's updated data. During inference, RAIE routes each user sequence to its corresponding region and activates the region-specific adapter for prediction. Experiments on two benchmark datasets under a time-sliced protocol that segments data into Set-up (S), Finetune (F), and Test (T) show that RAIE significantly outperforms state-of-the-art baselines while effectively mitigating forgetting. These results demonstrate that region-aware editing offers an accurate and scalable mechanism for continual adaptation in dynamic recommendation scenarios.",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792451",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792451",
-      "doi": "10.1145/3774904.3792451",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "论文提出RAIE框架，针对LLM推荐中用户偏好漂移问题，采用球形k均值构建语义区域，并通过LoRA模块实现区域级增量编辑，以平衡更新粒度并缓解灾难性遗忘。",
-      "core_method": "RAIE利用球形k均值划分偏好区域，为每个区域分配独立LoRA模块进行局部增量更新，推理时根据置信度门控路由到对应区域。",
-      "innovation_points": [
-        "提出区域感知增量编辑框架，解决全局微调与逐点编辑的粒度不平衡问题",
-        "通过球形k均值构建语义连贯的偏好区域，并用置信度门控动态分配用户序列",
-        "为每个区域配备专用LoRA模块，实现局部增量更新以缓解灾难性遗忘"
-      ],
-      "experiment_results": [
-        "在时间切片协议下的两个基准数据集上，RAIE显著优于先进基线方法",
-        "RAIE有效缓解了增量更新中的灾难性遗忘问题"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏线上A/B测试验证实际推荐效果",
-        "实验仅在两个基准数据集上进行，泛化能力待进一步验证"
-      ],
-      "practical_value": "RAIE为动态推荐场景下的LLM持续适配提供了可扩展的区域级编辑机制，能有效处理偏好漂移和遗忘问题。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "c865c3e15831de2f",
-      "tags": [
-        "LLM4Rec",
-        "Generative Rec",
-        "User Modeling",
-        "Sequential Rec"
-      ],
-      "llm_score": 72,
-      "llm_score_rationale": "发表在顶会WWW 2026，属于顶级会议论文，加分。；论文涉及LLM-based推荐和增量编辑，与LLM4Rec强相关。；缺少线上A/B实验证据，作者单位非知名互联网公司。",
-      "preference_signals": [
-        "Top venue",
-        "LLM4Rec"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 103,
-      "display_affiliations": [
-        "Shenzhen University"
-      ],
-      "published_date": "2026-04-12"
-    },
-    {
-      "id": "dblp:conf/www/TangLPLK26",
-      "title": "Verifiable Federated Representation Learning for Cross-domain Sequential Recommendation",
-      "authors": [
-        "Tao Tang",
-        "Botao Liu",
-        "Ciyuan Peng",
-        "Ivan Lee",
-        "Xiangjie Kong"
-      ],
-      "affiliations": [
-        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
-        "Zhejiang University of Technology",
-        "Federation University",
-        "Adelaide University, Adelaide, Australia",
-        "The University of Adelaide"
-      ],
-      "published": "2026-04-09",
-      "updated": "2026-06-11T09:08:48.828518",
-      "abstract": "Cross-domain sequential recommendation (CDSR) plays a critical role in decentralized Web applications by leveraging user behavior sequences across multiple platforms to alleviate data sparsity and capture dynamic preferences. However, existing federated CDSR frameworks face two fundamental challenges: (i) heterogeneous sequential interactions that encode domain-exclusive semantics and cannot be directly shared under privacy constraints, and (ii) strong trust assumptions that both servers and clients behave honestly, leaving federated training vulnerable to misreporting, malicious updates, and negative transfer. In this paper, we propose VeriFRL, a verifiable federated representation learning framework for cross-domain sequential recommendation. VeriFRL adopts a dual-module design that integrates representation learning with verifiable training: an attention-based variational encoder disentangles domain-shared and domain-exclusive representations to support transferable and privacy-preserving knowledge sharing, while a contribution evaluation module quantifies client-level and feature-level influences to enable verifiability, interpretability, and negative transfer detection. Extensive experiments on real-world multi-domain datasets demonstrate that VeriFRL achieves competitive or superior recommendation performance over state-of-the-art federated CDSR methods, while providing fine-grained insights into cross-domain knowledge transfer dynamics.",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792533",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792533",
-      "doi": "10.1145/3774904.3792533",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "本文提出VeriFRL，一个可验证的联邦表示学习框架，用于跨域序列推荐。它通过变分编码器解耦域共享与域独占表示，并引入贡献评估模块来验证客户端与特征的重要性，从而在保护隐私的同时实现知识迁移与负迁移检测。",
-      "core_method": "基于注意力变分编码器的可验证联邦表示学习框架，包含表示解耦与贡献评估双模块设计。",
-      "innovation_points": [
-        "提出注意力变分编码器解耦域共享与域独占表示，支持可迁移且隐私保护的知识共享",
-        "设计贡献评估模块量化客户端和特征影响力，实现可验证性、可解释性与负迁移检测",
-        "在联邦跨域序列推荐中整合表示学习与可验证训练，增强模型鲁棒性"
-      ],
-      "experiment_results": [
-        "在真实多域数据集上，VeriFRL相比最先进的联邦CDSR方法取得了有竞争力或更优的推荐性能",
-        "提供了跨域知识迁移动态的细粒度洞察"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "元数据未提供具体的局限性说明，但联邦学习场景下通信开销与隐私保护强度可能影响实际部署效率",
-        "贡献评估模块的可扩展性在大规模客户端环境下未经验证"
-      ],
-      "practical_value": "为去中心化Web应用中的跨域序列推荐提供了一种隐私保护且可验证的联邦学习方案，有助于在实际平台中安全地利用多域用户行为数据。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "afc05bc934e6b57e",
-      "tags": [
-        "Sequential Rec"
-      ],
-      "llm_score": 70,
-      "llm_score_rationale": "发表在顶级会议WWW，学术可信度高；涉及跨域序列推荐和联邦学习，与工业推荐系统相关，但未提及生成式推荐或语义ID；作者单位包括知名大学但无明确互联网公司（如Google、Meta等），且论文未提及在线A/B测试或线上实验证据",
-      "preference_signals": [
-        "Top venue",
-        "Industry relevance (partially, via cross-domain recommendation and federated learning)"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 103,
-      "display_affiliations": [
-        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
-        "Zhejiang University of Technology",
-        "Federation University",
-        "Adelaide University, Adelaide, Australia",
-        "The University of Adelaide"
-      ],
-      "published_date": "2026-04-09"
-    },
-    {
-      "id": "dblp:conf/www/LiuZHZZZ26",
-      "title": "Facilitating Generative Retrieval with Logical Denoising for Interpretable Conversational Search",
-      "authors": [
-        "Qichuan Liu",
-        "Chentao Zhang",
-        "Yuxuan Hu",
-        "Chenfeng Zheng",
-        "Qinggang Zhang",
-        "Zhihong Zhang"
-      ],
-      "affiliations": [
-        "Xiamen University",
-        "Hong Kong Polytechnic University"
-      ],
-      "published": "2026-04-09",
-      "updated": "2026-06-11T09:08:48.828518",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792544",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792544",
-      "doi": "10.1145/3774904.3792544",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "该论文提出了一种基于逻辑去噪的生成式检索方法，旨在提升可解释的对话式搜索性能。",
-      "core_method": "将逻辑去噪用于生成式检索，以增强对话搜索的可解释性。",
-      "innovation_points": [
-        "引入逻辑去噪机制优化生成式检索的噪声处理",
-        "提升对话式搜索的可解释性"
-      ],
-      "experiment_results": [
-        "论文全文未提供实验结果或评测结论"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "未提供详细实验验证",
-        "可解释性的实际效果缺乏量化评估"
-      ],
-      "practical_value": "为对话式搜索系统提供可解释的生成式检索方案，可能提升用户信任和系统透明度。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "7d359eddecec7cd7",
-      "tags": [
-        "Generative Retrieval",
-        "Conversational Rec"
-      ],
-      "llm_score": 75,
-      "llm_score_rationale": "发表在顶级会议 WWW，符合顶会权重；标题明确包含生成式检索（Generative Retrieval），与目标强相关；作者单位非知名互联网公司，无线上实验证据",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 97,
-      "display_affiliations": [
-        "Xiamen University",
-        "Hong Kong Polytechnic University"
-      ],
-      "published_date": "2026-04-09"
     },
     {
       "id": "arxiv:2606.29946",
@@ -932,130 +1368,6 @@
         "RMIT University, Melbourne, Australia"
       ],
       "published_date": "2026-04-12"
-    },
-    {
-      "id": "arxiv:2606.26859",
-      "title": "AgentX: Towards Agent-Driven Self-Iteration of Industrial Recommender Systems",
-      "authors": [
-        "Changxin Lao",
-        "Fei Pan",
-        "Guozhuang Ma",
-        "Han Li",
-        "Huihuang Lin",
-        "Jijun Shi",
-        "Kangzhi Zhao",
-        "Kun Gai",
-        "Mo Zhou",
-        "Qinqin Zhou",
-        "Quan Chen",
-        "Ruochen Yang",
-        "Shifu Bie",
-        "Shuang Yang",
-        "Shuo Yang",
-        "Wenhao Li",
-        "Wentao Xie",
-        "Xiao Lv",
-        "Xuming Wang",
-        "Yijun Wang",
-        "Yiming Chen",
-        "Yusheng Huang",
-        "Zhongyuan Wang",
-        "Zibo Zhao",
-        "Zijie Zhuang",
-        "Baoning Xia",
-        "Chao Liu",
-        "Chaoyi Ma",
-        "Chubo He",
-        "Dawei Cong",
-        "Feng Jiang",
-        "Gang Wang",
-        "Guilin Xia",
-        "Hanwen Xu",
-        "Jiahong Xie",
-        "Jiahui Qiao",
-        "Jian Liang",
-        "Jiangfan Yue",
-        "Jing Wang",
-        "Jinghan Yang",
-        "Jinghui Jia",
-        "Kan Qin",
-        "Lei Wang",
-        "Ming Li",
-        "Peilin Song",
-        "Pengbo Xu",
-        "Qiang Luo",
-        "Ruiming Tang",
-        "Shiyang Liu",
-        "Shuxian Jin",
-        "Tao Wang",
-        "Tao Zhang",
-        "Xiang Gao",
-        "Xianghan Li",
-        "Yingsong Luo",
-        "Yiwen Ning",
-        "Yongcheng Liu",
-        "Yuan Guo",
-        "Zhaojie Liu",
-        "Zhenkai Cui"
-      ],
-      "affiliations": [],
-      "published": "2026-06-25T10:42:28Z",
-      "updated": "2026-06-25T10:42:28Z",
-      "abstract": "Recommendation algorithm iteration is moving from an artisanal, engineer-bound process toward an industrialized research loop, but this transition remains blocked by a structural execution bottleneck: the idea-to-launch cycle still depends on human engineers to generate hypotheses, modify production code, launch A/B experiments, and attribute online results. Innovation therefore scales linearly with headcount rather than compounding with evidence, compute, and accumulated experimental knowledge. We present AgentX, a production-deployed multi-agent system that fundamentally restructures this production function. AgentX operates as a self-evolving development engine: it autonomously generates, implements, evaluates, and learns from recommendation experiments at a scale and pace that no manual workflow can sustain. The system orchestrates four tightly coupled stages in a closed loop. A Brainstorm Agent synthesizes evidence from historical experiments, system architecture, data analysis, and external research into ranked, executable proposals. A Developing Agent translates each proposal into production-ready code through repository-grounded generation and multi-dimensional reliability verification. An Evaluation Agent conducts safe online rollout with guardrail-vetoed A/B judgment, converting both successes and failures into structured knowledge assets. A Harness Evolution layer (SGPO) then distills execution trajectories into semantic-gradient updates that continuously sharpen the agents themselves -- making the system not merely automated, but self-improving.",
-      "categories": [
-        "cs.AI",
-        "cs.CL",
-        "cs.IR"
-      ],
-      "primary_category": "cs.AI",
-      "abs_url": "http://arxiv.org/abs/2606.26859v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.26859v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "AgentX是一个生产部署的多智能体系统，通过自主生成、实现、评估和学习推荐实验，重构推荐算法的迭代过程。系统由四个紧密耦合的阶段组成：头脑风暴、开发、评估和进化，实现自我进化的闭环。在快手App三周部署中，AgentX显著提升了迭代效率和业务指标。",
-      "core_method": "基于多智能体闭环（Brainstorm、Developing、Evaluation、Harness Evolution）的推荐系统自我迭代框架，结合语义梯度策略优化（SGPO）实现系统自进化。",
-      "innovation_points": [
-        "首次提出并部署了面向推荐算法迭代的全流程自动化多智能体系统，将想法到上线周期压缩为闭环流水线。",
-        "引入Harness Evolution层，利用执行轨迹的语义梯度更新持续提升智能体自身能力，实现系统的自我改进。",
-        "在工业推荐场景中验证了智能体自我进化带来的效率复合增长和显著业务收益。"
-      ],
-      "experiment_results": [
-        "三周内，3个AgentX工作者将374个想法转化为10个可上线的方案，单工作者周均吞吐量通过自进化翻倍。",
-        "相比人工工程师，AgentX实现8倍并发和3.7倍业务价值，用户使用时长提升0.561%，年化收入超过1亿人民币。"
-      ],
-      "ab_test": "yes",
-      "ab_test_evidence": "论文明确提到Evaluation Agent进行A/B实验，并报告了线上部署后的用户时长提升0.561%等指标。",
-      "limitations": [
-        "论文主要在快手App的特定场景（主推荐和本地生活推荐）验证，泛化到其他推荐场景的效果未知。",
-        "智能体生成代码的可靠性仍依赖多维验证，复杂场景下的鲁棒性需进一步测试。"
-      ],
-      "practical_value": "提供了一套可实现推荐算法迭代自动化和智能体自进化的工业级系统方案，有望大幅提升推荐研发效率并降低人力依赖。",
-      "analysis_basis": "full_text",
-      "analysis_status": "complete",
-      "analysis_signature": "b217bdcd441e12b8",
-      "tags": [
-        "Agent4Rec",
-        "Generative Rec",
-        "Online Eval"
-      ],
-      "llm_score": 95,
-      "llm_score_rationale": "论文部署于生产环境，具有明确的在线A/B实验、安全上线、自动线上评估等完整证据，符合最高权重偏好；面向生成式推荐与LLM驱动的推荐系统，涉及多智能体自主迭代、语义梯度更新，与生成式推荐高度相关；作者来自快手，属于知名互联网公司，且摘要提及工业级部署和规模化实验",
-      "preference_signals": [
-        "Online A/B",
-        "Generative Rec / Semantic ID",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 105,
-      "display_affiliations": [
-        "Unknown affiliation"
-      ],
-      "published_date": "2026-06-25"
     },
     {
       "id": "openalex:W4407571719",
