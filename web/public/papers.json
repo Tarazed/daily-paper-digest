@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-02T04:20:19Z",
+  "generated_at": "2026-07-03T04:05:44Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
@@ -7,12 +7,12 @@
   },
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 7,
-    "analyzed": 1,
+    "reused": 3,
+    "analyzed": 7,
     "source": "web/public/papers.json"
   },
   "current_limit": 10,
-  "current_paper_count": 8,
+  "current_paper_count": 10,
   "interests": {
     "arxiv_categories": [
       "cs.IR",
@@ -129,6 +129,853 @@
     ]
   },
   "papers": [
+    {
+      "id": "arxiv:2606.31984",
+      "title": "GR2 Technical Report",
+      "authors": [
+        "Yufei Li",
+        "Zaiwei Zhang",
+        "Mingfu Liang",
+        "Kavosh Asadi",
+        "Jay Xu",
+        "Jimmy Kim",
+        "Chongyang Bai",
+        "Jieyi Zhang",
+        "Hongye Xie",
+        "Prachi Agrawal",
+        "Dian Yu",
+        "Tianyi Chen",
+        "Jean-Pascal Billaud",
+        "Garret Buell",
+        "YK",
+        "Zhu",
+        "Sachin Patil",
+        "Brooke Bian",
+        "Zhou Fang",
+        "Kevin Huang",
+        "Shiva Sudanagunta",
+        "Yuzhen Huang",
+        "Emma Lu",
+        "Chris O'Brien",
+        "Yang Song",
+        "Lihong Li",
+        "Jacob Tao",
+        "Zhicheng Zhu",
+        "Chao Li",
+        "Gaoxiang Liu",
+        "Neil Wu",
+        "Li Han",
+        "Loki Chen",
+        "Ming Lei",
+        "Greg Rehm",
+        "Siyuan Song",
+        "Tianwei Zhang",
+        "Li Li",
+        "Ketan Singh",
+        "Yavuz Yetim",
+        "Ilyas Atishev",
+        "Satendra Gera",
+        "Ashkan Sadeghi",
+        "Rachel Yan",
+        "Nikko Mizutani",
+        "Shuaiwen Wang",
+        "Song Yang",
+        "Zhijing Li",
+        "Jiang Liu",
+        "Mengying Sun",
+        "Fei Tian",
+        "Xiaohan Wei",
+        "Chonglin Sun",
+        "Shuo Gu",
+        "Parish Aggarwal",
+        "Kaushik Rangadurai",
+        "Zhi Hua",
+        "Frank Shyu",
+        "Ruchit Sharma",
+        "Liyuan Li",
+        "Shike Mei",
+        "Wenlin Chen",
+        "Santanu Kolay",
+        "Ben Schulte",
+        "Deepak Chandra",
+        "Adam",
+        "Song",
+        "Sandeep Pandey",
+        "Xi Liu",
+        "Hamed Firooz",
+        "Luke Simon"
+      ],
+      "affiliations": [
+        "Meta AI"
+      ],
+      "published": "2026-06-30T17:22:22Z",
+      "updated": "2026-07-01T23:39:37Z",
+      "abstract": "Industrial recommendation systems serve billions of users through a multi-stage funnel -- retrieval, early-stage ranking, and re-ranking -- where the final re-ranking step disproportionately shapes user engagement and downstream performance, particularly for carousel and grid display formats. Despite growing enthusiasm for Large Language Models (LLMs) in recommendation, three gaps hinder industrial adoption: (1) most efforts target retrieval and ranking, leaving re-ranking -- the stage closest to the final user experience -- largely underexplored; (2) LLMs are typically deployed zero-shot or via supervised fine-tuning, underutilizing the reasoning capabilities unlocked by reinforcement learning (RL) on verifiable rewards; (3) deployed catalogs index billions of items with non-semantic identifiers that lie outside any base-LLM vocabulary. We present GR2 (Generative Reasoning Re-Ranker), an end-to-end framework that combines (i) mid-training on semantic IDs produced by a tokenizer with >=99% uniqueness, (ii) reasoning-trace distilled from a stronger teacher via targeted prompting and rejection sampling, and (iii) RL with verifiable rewards purpose-built for re-ranking. To make GR2 resource-viable, we further (iv) introduce a context compressor that amortizes training cost, On-Policy Distillation (OPD) as a scalable alternative to SFT -- which we find collapses at industrial scale -- and reasoning distillation for low-latency serving. GR2 delivers +18.7% R@1, +7.1% R@3, and +9.6% N@3 over legacy baselines on industrial-scale traffic. We further find that reward design is critical in re-ranking: LLMs often hack rewards by preserving the incoming order or exploiting position bias, motivating conditional verifiable rewards as essential industrial components.",
+      "categories": [
+        "cs.IR",
+        "cs.AI"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.31984v2",
+      "pdf_url": "https://arxiv.org/pdf/2606.31984v2",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "GR2是一个面向工业推荐系统重排阶段的生成式推理重排器，结合语义ID、推理蒸馏和可验证奖励的强化学习，通过上下文压缩、在线策略蒸馏等技术实现高效部署。在工业流量上，相比基线实现R@1提升18.7%、R@3提升7.1%、N@3提升9.6%",
+      "core_method": "基于语义ID的LLM重排器，通过中训练、推理蒸馏与可验证奖励强化学习三阶段训练，并辅以上下文压缩和在线策略蒸馏",
+      "innovation_points": [
+        "针对重排阶段设计LLM框架，利用推理能力和可验证奖励强化学习提升排序质量",
+        "提出语义ID中训练，将非语义商品ID转化为高唯一性的语义ID，使LLM能直接推理目录商品",
+        "引入可验证条件奖励以缓解奖励黑客现象，并在工业部署中使用上下文压缩、在线策略蒸馏和推理蒸馏以降低资源消耗"
+      ],
+      "experiment_results": [
+        "相比工业基线，R@1提升18.7%、R@3提升7.1%、N@3提升9.6%",
+        "在后续9天服务中表现无衰减，表明增益稳定",
+        "消融实验证实在线策略蒸馏提供推理先验，强化学习在此基础上锐化排序目标"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文报告了在工业流量上的在线实验结果，如'GR2 delivers +18.7% R@1, +7.1% R@3, and +9.6% N@3 over legacy baselines on industrial-scale traffic'，且提到'no decay over subsequent 9 days serving'，表明进行了线上A/B测试",
+      "limitations": [
+        "学生模型仅恢复32B教师模型82%的增益，蒸馏效率仍有提升空间",
+        "实验基于单日70k会话训练，长期在线收益需更长时间验证"
+      ],
+      "practical_value": "为工业推荐系统重排阶段提供了可实际部署的LLM增强方案，在提升排序效果的同时控制了推理成本",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "926098efcf6e5121",
+      "tags": [
+        "Generative Rec",
+        "Generative Ranking",
+        "Semantic ID",
+        "LLM4Rec",
+        "Online Eval"
+      ],
+      "llm_score": 95,
+      "llm_score_rationale": "明确提到工业级流量（industrial-scale traffic）带来显著线上指标提升（+18.7% R@1等），表明有线上A/B实验证据。；核心探讨生成式重排序（Generative Reasoning Re-Ranker）并训练语义ID，与生成式推荐强相关。；作者来自Google/DeepMind等顶级工业实验室，工业实践导向极强。",
+      "preference_signals": [
+        "Online A/B",
+        "Generative Rec / Semantic ID",
+        "Industry company",
+        "Top venue"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 141,
+      "display_affiliations": [
+        "Meta AI"
+      ],
+      "published_date": "2026-06-30"
+    },
+    {
+      "id": "openalex:W4405300788",
+      "title": "MRP-LLM: Multitask Reflective Large Language Models for Privacy-Preserving Next POI Recommendation",
+      "authors": [
+        "Zhigang Wu",
+        "Zhu Sun",
+        "Dongxia Wang",
+        "Lu Zhang",
+        "Jie Zhang",
+        "Yew-Soon Ong"
+      ],
+      "affiliations": [
+        "Nanyang Technological University",
+        "Singapore University of Technology and Design",
+        "Zhejiang University",
+        "Chengdu University of Information Technology"
+      ],
+      "published": "2026-06-01",
+      "updated": "2026-07-01T08:55:40.977307",
+      "abstract": "Large language models (LLMs) have shown promising potential for next Point-of-Interest (POI) recommendation. However, existing methods only perform direct zero-shot prompting, leading to ineffective extraction of user preferences, insufficient injection of collaborative signals, and a lack of user privacy protection. As such, we propose a novel Multitask Reflective Large Language Model for Privacy-preserving Next POI Recommendation (MRP-LLM), aiming to exploit LLMs for better next POI recommendation while preserving user privacy. Specifically, the Multitask Reflective Preference Extraction Module first utilizes LLMs to distill each user's fine-grained (i.e., categorical, temporal, and spatial) preferences into a knowledge base (KB). The Neighbor Preference Retrieval Module retrieves and summarizes the preferences of similar users from the KB to obtain collaborative signals. Subsequently, aggregating the user's preferences with those of similar users, the Multitask Next POI Recommendation Module generates the next POI recommendations via multitask prompting. Meanwhile, during data collection, a Privacy Transmission Module is specifically devised to preserve sensitive POI data. Extensive experiments on three real-world datasets demonstrate the efficacy of our proposed MRP-LLM in providing more accurate next POI recommendations with user privacy preserved.",
+      "categories": [
+        "OpenAlex",
+        "RecSys"
+      ],
+      "primary_category": "RecSys",
+      "abs_url": "https://doi.org/10.1145/3774935.3806151",
+      "pdf_url": "https://doi.org/10.1145/3774935.3806151",
+      "doi": "10.1145/3774935.3806151",
+      "source": "OpenAlex",
+      "status": "conference",
+      "venue": "RecSys",
+      "venue_key": "RecSys",
+      "generated_summary": "提出MRP-LLM，利用大型语言模型进行多任务反射式隐私保护的下一个兴趣点推荐，通过提取用户细粒度偏好、聚合协同信号并设计隐私传输模块，在保护隐私的同时提升推荐准确性。",
+      "core_method": "MRP-LLM通过多任务反射式偏好提取、邻居偏好检索和隐私传输模块，结合LLM实现隐私保护的下一个POI推荐。",
+      "innovation_points": [
+        "提出多任务反射式偏好提取模块，利用LLM蒸馏用户细粒度（类别、时间、空间）偏好至知识库。",
+        "设计邻居偏好检索模块，从知识库中检索相似用户偏好以获得协同信号。",
+        "构建隐私传输模块，在数据收集时保护敏感POI数据。"
+      ],
+      "experiment_results": [
+        "在三个真实世界数据集上的实验表明，MRP-LLM在保护隐私的同时提供了更准确的下一个POI推荐。",
+        "论文摘要未提供具体数值或对比评测结果。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "论文仅提供摘要，未详细说明隐私保护机制的具体实现和可能的安全风险。",
+        "未报告线上A/B测试结果，实际部署效果未知。"
+      ],
+      "practical_value": "为位置推荐系统提供了一种在保护用户隐私前提下利用LLM提升推荐准确性的方案。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "e7760f674dd4ccef",
+      "tags": [
+        "LLM4Rec",
+        "Generative Rec",
+        "Generative Ranking",
+        "User Modeling"
+      ],
+      "llm_score": 85,
+      "llm_score_rationale": "发表地点为 RecSys，属于顶会；论文专注生成式推荐，使用 LLM 做 POI 推荐；没有线上 A/B 或工业实践证据，但偏学术且与生成式推荐相关",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID",
+        "Industry company? No, but academic"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 124,
+      "display_affiliations": [
+        "Nanyang Technological University",
+        "Singapore University of Technology and Design",
+        "Zhejiang University",
+        "Chengdu University of Information Technology"
+      ],
+      "published_date": "2026-06-01"
+    },
+    {
+      "id": "openalex:W4411030024",
+      "title": "LLM4Rec: A Comprehensive Survey on the Integration of Large Language Models in Recommender Systems—Approaches, Applications and Challenges",
+      "authors": [
+        "Sarama Shehmir",
+        "Rasha Kashef"
+      ],
+      "affiliations": [
+        "Toronto Metropolitan University"
+      ],
+      "published": "2025-06-04",
+      "updated": "2026-06-29T08:53:18.405633",
+      "abstract": "The synthesis of large language models (LLMs) and recommender systems has been a game-changer in tailored content onslaught with applications ranging from e-commerce, social media, and education to health care. This survey covers the usage of LLMs for content recommendations (LLM4Rec). LLM4Rec has opened up a whole set of challenges in terms of scale, real-time processing, and data privacy, all of which we touch upon along with potential future directions for research in areas such as multimodal recommendations and reinforcement learning for long-term engagement. This survey combines existing developments and outlines possible future developments, thus becoming a point of reference for other researchers and practitioners in developing the future of LLM-based recommendation systems.",
+      "categories": [
+        "OpenAlex",
+        "RecSys"
+      ],
+      "primary_category": "RecSys",
+      "abs_url": "https://doi.org/10.3390/fi17060252",
+      "pdf_url": "https://www.mdpi.com/1999-5903/17/6/252/pdf?version=1749033633",
+      "doi": "10.3390/fi17060252",
+      "source": "OpenAlex",
+      "status": "conference",
+      "venue": "Future Internet",
+      "venue_key": "RecSys",
+      "generated_summary": "综合评述大语言模型与推荐系统的融合，涵盖应用、挑战及未来方向，如多模态推荐和强化学习。",
+      "core_method": "对LLM4Rec领域的方法、应用和挑战进行系统性综述",
+      "innovation_points": [
+        "全面梳理LLM在推荐系统中的集成方式、应用场景和挑战",
+        "提出多模态推荐、强化学习等未来研究方向"
+      ],
+      "experiment_results": [
+        "论文为综述，未提供具体实验评测结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "作为综述，未提出新的实验验证或算法",
+        "可能缺乏对特定方法的深入实证分析"
+      ],
+      "practical_value": "为研究人员和从业者提供LLM增强推荐系统的全面参考和未来方向指引",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "61ff28a8b67ee972",
+      "tags": [
+        "LLM4Rec"
+      ],
+      "llm_score": 65,
+      "llm_score_rationale": "发表在RecSys会议，属于顶级会议；虽然是2025年，但会议匹配偏好。；标题和摘要明确涉及LLM与推荐系统集成（LLM4Rec），与生成式推荐强相关。；无工业界作者单位，仅为高校，缺少线上A/B实验证据。",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 118,
+      "display_affiliations": [
+        "Toronto Metropolitan University"
+      ],
+      "published_date": "2025-06-04"
+    },
+    {
+      "id": "arxiv:2606.31693",
+      "title": "ShopX: A Foundation Model for Intent-to-Item Fulfillment in Agentic Shopping",
+      "authors": [
+        "Jiacheng Chen",
+        "Tao Zhang",
+        "Manxi Lin",
+        "Dunxian Huang",
+        "Teng Shi",
+        "Honghao Fu",
+        "Mengyan Li",
+        "Xinming Zhang",
+        "Chenchi Zhang",
+        "Xuan Lu",
+        "Xiaoxiong Du",
+        "Haibin Chen",
+        "Shaolin Ye",
+        "Hao Chang",
+        "Xiaoqi Li",
+        "Shuwen Xiao",
+        "Yujin Yuan",
+        "Jingxuan Feng",
+        "Shaopan Xiong",
+        "Huimin Yi",
+        "Ju Huang",
+        "Qiu Shen",
+        "Ying Chen",
+        "Junjun Zheng",
+        "Xiangheng Kong",
+        "Yuning Jiang"
+      ],
+      "affiliations": [],
+      "published": "2026-06-30T14:05:28Z",
+      "updated": "2026-06-30T14:05:28Z",
+      "abstract": "The wave of AI-native applications is moving shopping beyond page- and feed-based browsing toward intent-driven experiences orchestrated by LLM agents. A common design wraps an LLM around existing search and recommendation pipelines, forcing complex intents through low-bandwidth retrieval or ranking interfaces and leaving a gap between language understanding and item-space fulfillment. Generative recommendation gives LLMs a direct item-space interface through semantic IDs (SIDs), but existing models mainly generate candidates for retrieval rather than translate flexible intents into item-space outcomes. We propose ShopX to address this bottleneck by unifying intent understanding, execution planning, and flexible SID-native item-space operations into a single foundation model. We deploy ShopX in agentic shopping workflows through a model-native item-fulfillment framework with a serving harness that defines a model-facing action protocol and exposes support surfaces for context access, catalog grounding, and state management. Within this framework, ShopX plans and composes SID-based item-space operations such as SID beam-search retrieval, listwise ranking, or product bundling. This model-centric design reduces lossy hand-offs between agent orchestration and item-space execution. To build ShopX, we design semantically recoverable, LLM-operable SIDs and a training recipe that equips a general LLM for flexible multi-turn item-space fulfillment while retaining the knowledge and instruction-following abilities needed by a shopping agent. We evaluate the ShopX framework against tool-mediated agentic systems on single- and multi-turn fulfillment tasks derived from anonymized Taobao production logs, showing that model-native fulfillment improves overall framework behavior, especially on complex or ambiguous requests.",
+      "categories": [
+        "cs.IR",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.31693v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.31693v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "ShopX是一个面向智能购物场景的基础模型，将意图理解、执行规划和基于语义ID（SID）的项目空间操作统一到一个模型中。它通过模型原生的项目满足框架，直接处理复杂购物意图，弥合了语言理解与项目空间执行之间的差距。实验显示在单轮和多轮满足任务上优于传统的工具中介系统。",
+      "core_method": "通过训练使通用LLM掌握语义可恢复、LLM可操作的SID，实现模型原生的意图到项目空间操作（如SID束搜索检索、列表排序、产品捆绑）的端到端执行。",
+      "innovation_points": [
+        "提出模型原生项目满足框架，将SID操作直接集成到LLM中，减少代理编排与项目执行之间的有损交互。",
+        "设计语义可恢复且LLM可操作的语义ID（SID），并构建了从单意图到多意图的灵活SID操作体系。",
+        "通过多任务训练配方，使通用LLM在保留知识和指令遵循能力的同时，获得灵活的多轮项目空间满足能力。"
+      ],
+      "experiment_results": [
+        "在基于匿名淘宝生产日志的单轮和多轮满足任务上，ShopX框架的整体行为优于工具中介系统。",
+        "在复杂或模糊请求上表现出明显优势。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试。",
+      "limitations": [
+        "实验基于匿名化生产日志，未在真实线上流量中验证效果和性能。",
+        "未详细讨论大规模部署时的延迟和成本问题。"
+      ],
+      "practical_value": "为电商智能购物代理提供了一种更直接高效的意图到项目达成方案，有望减少系统复杂度并提升复杂意图的满足质量。",
+      "analysis_basis": "full_text",
+      "analysis_status": "cached",
+      "analysis_signature": "53184a56321b185b",
+      "tags": [
+        "Generative Rec",
+        "Semantic ID",
+        "Agent4Rec",
+        "LLM4Rec"
+      ],
+      "llm_score": 85,
+      "llm_score_rationale": "明确涉及语义ID(SID)与生成式推荐，直接对应生成式推荐/语义ID方向；作者单位含Alibaba/Taobao(淘宝)，且评估数据来自匿名化淘宝生产日志，暗示工业实践背景；论文在agentic shopping中部署ShopX，并基于生产日志评估，有明确线上证据(production logs)但未提及A/B实验",
+      "preference_signals": [
+        "Generative Rec / Semantic ID",
+        "Industry company",
+        "Online A/B"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 114,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026-06-30"
+    },
+    {
+      "id": "openalex:W4414939390",
+      "title": "Diffusion Recommender Models and the Illusion of Progress: A Concerning Study of Reproducibility and a Conceptual Mismatch",
+      "authors": [
+        "Michael Benigni",
+        "Maurizio Ferrari Dacrema",
+        "Dietmar Jannach"
+      ],
+      "affiliations": [
+        "ReMAP Lab, Politecnico di Milano",
+        "University of Klagenfurt"
+      ],
+      "published": "2026-02-06",
+      "updated": "2026-07-01T08:55:40.977307",
+      "abstract": "Countless new machine learning models are published every year and are reported to significantly advance the state-of-the-art in top-n recommendation. However, earlier reproducibility studies indicate that progress in this area may be quite limited, due to widespread methodological issues, e.g., comparisons with untuned baseline models, creating an illusion of progress . In this work, we examine whether these problems persist in today’s research by attempting to reproduce nine SIGIR 2023 and 2024 recommendation algorithms based on Denoising Diffusion Probabilistic Models, a recent but rapidly expanding research area. Only 25% of reported results are fully reproducible and, since the original papers relied on weak baselines , they do not establish the superiority of diffusion models over state-of-the-art methods. In our controlled evaluations, well-tuned simpler baselines consistently exceed the diffusion-based models’ effectiveness reported in the original papers. Furthermore, we identify key mismatches between the characteristics of diffusion models and those of the traditional top-n recommendation task, raising doubts about their suitability for recommendation. Moreover, in the analyzed papers, the generative capabilities of these models are constrained to a minimum. Overall, our results call for greater scientific rigor and a disruptive change in the research and publication culture in this area.",
+      "categories": [
+        "OpenAlex",
+        "RecSys"
+      ],
+      "primary_category": "RecSys",
+      "abs_url": "https://doi.org/10.1145/3795792",
+      "pdf_url": "https://arxiv.org/pdf/2505.09364",
+      "doi": "10.1145/3795792",
+      "source": "OpenAlex",
+      "status": "conference",
+      "venue": "ACM Transactions on Recommender Systems",
+      "venue_key": "RecSys",
+      "generated_summary": "该论文对SIGIR 2023/2024的九种基于去噪扩散概率模型的推荐算法进行可重复性研究，发现仅25%的结果可完全复现，且经过良好调优的简单基线方法在有效性上持续超越这些扩散模型方法。研究指出扩散模型与传统top-n推荐任务存在概念不匹配，其生成能力在研究中被过度约束，揭示了该领域的进步可能是一种假象。",
+      "core_method": "通过对九种扩散推荐模型进行严格复现实验，并与调优的基线对比，分析扩散模型在推荐任务中的适用性。",
+      "innovation_points": [
+        "首次大规模复现SIGIR近两年扩散推荐模型，揭示可重复性危机",
+        "指出扩散模型与top-n推荐任务间的概念不匹配",
+        "通过受控实验证明调优的简单基线优于扩散模型"
+      ],
+      "experiment_results": [
+        "仅25%的扩散模型推荐结果可完全复现",
+        "在受控评估中，调优的简单基线持续优于扩散模型的原始报告效果",
+        "扩散模型在推荐任务中的生成能力被过度限制，未展现实际优势"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上 A/B 测试",
+      "limitations": [
+        "研究仅针对特定会议论文，可能无法代表所有扩散推荐模型",
+        "未深入分析概念不匹配的具体机制和潜在解决方案"
+      ],
+      "practical_value": "警示工业界谨慎采用扩散推荐模型，建议优先使用经过充分调优的简单基线方法。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "3f8bacea900879d3",
+      "tags": [
+        "Generative Rec",
+        "Evaluation"
+      ],
+      "llm_score": 62,
+      "llm_score_rationale": "发表于RecSys顶级会议，增加可信度；主题涉及生成式模型（扩散模型）在推荐中的应用，与生成式推荐相关；无在线A/B实验，仅为离线可复现性研究，缺乏工业应用证据",
+      "preference_signals": [
+        "Top venue"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 105,
+      "display_affiliations": [
+        "ReMAP Lab, Politecnico di Milano",
+        "University of Klagenfurt"
+      ],
+      "published_date": "2026-02-06"
+    },
+    {
+      "id": "openalex:W4386346386",
+      "title": "A survey on multi-behavior sequential recommendation",
+      "authors": [
+        "Xiaoqing Chen",
+        "Zhitao Li",
+        "Weike Pan",
+        "Qiang Yang",
+        "Zhong Ming"
+      ],
+      "affiliations": [
+        "Shenzhen University",
+        "Guangdong Laboratory of Artificial Intelligence and Digital Economy (SZ), Shenzhen, 518123, China",
+        "Peng Cheng Laboratory"
+      ],
+      "published": "2026-01-27",
+      "updated": "2026-07-02T09:51:11.867554",
+      "abstract": "",
+      "categories": [
+        "OpenAlex",
+        "RecSys"
+      ],
+      "primary_category": "RecSys",
+      "abs_url": "https://doi.org/10.1007/s11432-024-4568-7",
+      "pdf_url": "https://arxiv.org/pdf/2308.15701",
+      "doi": "10.1007/s11432-024-4568-7",
+      "source": "OpenAlex",
+      "status": "conference",
+      "venue": "Science China Information Sciences",
+      "venue_key": "RecSys",
+      "generated_summary": "针对多行为序列推荐任务的综述论文，系统梳理了现有方法、挑战与未来方向。",
+      "core_method": "对多行为序列推荐领域的方法、评价指标和数据集进行系统综述与分类。",
+      "innovation_points": [
+        "全面综述了多行为序列推荐的方法论与进展",
+        "系统分类了现有模型并指出挑战与未来方向"
+      ],
+      "experiment_results": [
+        "论文为综述性质，未提供具体实验结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "作为综述，未提出新的实验验证，局限于方法分类与总结"
+      ],
+      "practical_value": "为多行为序列推荐的研究者提供系统的领域概览和未来研究指引。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "5a84c3228adf7e4f",
+      "tags": [
+        "Sequential Rec"
+      ],
+      "llm_score": 55,
+      "llm_score_rationale": "发表在RecSys会议，属于推荐系统领域顶会；是综述论文，非原创研究，可能缺乏线上实验证据；未涉及生成式推荐或语义ID等强相关主题",
+      "preference_signals": [
+        "Top venue"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 98,
+      "display_affiliations": [
+        "Shenzhen University",
+        "Guangdong Laboratory of Artificial Intelligence and Digital Economy (SZ), Shenzhen, 518123, China",
+        "Peng Cheng Laboratory"
+      ],
+      "published_date": "2026-01-27"
+    },
+    {
+      "id": "arxiv:2606.28533",
+      "title": "CMSL: Constructive Multi-Sequence Learning for Recommendation Systems",
+      "authors": [
+        "Zikun Cui",
+        "Renzhi Wu",
+        "Junjie Yang",
+        "Li Sheng",
+        "Jijie Wei",
+        "Linfeng Liu",
+        "Tai Guo",
+        "Tao Jia",
+        "Xiaodong Wang",
+        "Hong Li",
+        "Li Yu",
+        "Sri Reddy",
+        "Hong Yan"
+      ],
+      "affiliations": [
+        "Meta"
+      ],
+      "published": "2026-06-26T18:32:43Z",
+      "updated": "2026-06-26T18:32:43Z",
+      "abstract": "Sequence learning has emerged as the promising paradigm in recommendation systems, surpassing traditional Deep Learning Recommendation Models (DLRM) by capturing the temporal nuances of user behavior. However, current state-of-the-art architectures operate under a limiting analogy: they treat user history as a monolithic chronological sequence like a sentence in a Large Language Model (LLM). We observe a fundamental divergence between natural language and recommendation data: unlike the linear, logical flow of text, user history is inherently multi-faceted. A user's journey is a fragmented reflection of diverse interests, resulting in much weaker coherence between items than is found in LLM training data. This lack of structural unity leads to context pollution. In single-sequence modeling, unrelated behaviors compete for the same attention budget. This \"noisy\" signal dilutes the model's focus, effectively capping its ability to discern high-intent patterns from background activity. To address this, we propose Constructive Multi-Sequence Learning (CMSL), a paradigm shift from passive sequence ingestion to active \"context engineering\" that constructs multiple coherent sequences in latent space. CMSL leverages a learnable Sequence Construction Module to disentangle user history into \"pure\" thematic strands, followed by a linear attention mechanism to efficiently model these strands at scale. CMSL has been deployed across ranking and retrieval tasks and across four major surfaces at Meta.",
+      "categories": [
+        "cs.IR",
+        "cs.AI"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.28533v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.28533v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "针对推荐系统中单序列建模因用户历史行为混杂导致的上下文污染问题，提出构建式多序列学习框架CMSL，通过可学习的序列构建模块将用户历史解耦为多个主题一致的潜在序列，并利用线性注意力高效建模，已在Meta多个线上推荐场景部署。",
+      "core_method": "CMSL通过跨注意力机制在潜在空间将杂乱用户历史自适应地构建为多条有序的上下文序列，分别进行自注意力建模以降低意图干扰。",
+      "innovation_points": [
+        "提出推荐系统中的上下文污染问题，并设计构建式多序列学习范式替代传统单一序列建模。",
+        "提出可学习的多序列构建模块，利用跨注意力根据当前查询意图动态解耦用户历史，生成多个潜在序列。",
+        "设计适用于多序列建模的可扩展线性注意力机制，降低计算复杂度。"
+      ],
+      "experiment_results": [
+        "排序任务：在Meta四个主要场景的CTR预测中，CMSL在归一化熵（NE）上取得0.3%-0.6%的显著提升（>0.03%即有统计显著性）。",
+        "召回任务：在线上A/B测试中，CMSL在四项重要互动指标上均取得统计显著提升。",
+        "论文还通过实验表明，专家划分的多个序列已优于单序列，且注入低价值行为会降低性能，验证了上下文污染问题。"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "召回评估直接在线上A/B测试中进行，在surface 5上报告了四项互动指标的显著提升；排序评估使用NE指标，并说明NE与A/B测试指标高度一致且大于0.03%的提升具有统计显著性。",
+      "limitations": [
+        "没有与现有解决上下文污染的其他方法（如HSTU、InterFormer）进行直接对比实验。",
+        "模型设计主要面向工业级场景，缺少在小规模公开数据集上的通用性评估。"
+      ],
+      "practical_value": "CMSL已在Meta多个主要推荐场景部署，能有效提升排序和召回效果，对工业界推荐系统具有直接应用价值。",
+      "analysis_basis": "full_text",
+      "analysis_status": "cached",
+      "analysis_signature": "a9bb3c6075f1d725",
+      "tags": [
+        "Sequential Rec",
+        "Generative Rec",
+        "User Modeling",
+        "Online Eval"
+      ],
+      "llm_score": 98,
+      "llm_score_rationale": "明确提及在Meta的四个主要界面上的排序和检索任务中部署，暗示有线上实验和生产环境验证；作者单位包含Meta，属于知名互联网公司，工业实践导向强；论文提出多序列学习改进推荐系统中的序列建模，与工业推荐实践直接相关",
+      "preference_signals": [
+        "Online A/B",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 91,
+      "display_affiliations": [
+        "Meta"
+      ],
+      "published_date": "2026-06-26"
+    },
+    {
+      "id": "arxiv:2606.29946",
+      "title": "POEM: Partial-Order Enhanced Real-Time Sequential Modeling for Recommendation",
+      "authors": [
+        "Linxiao Che",
+        "Yijia Sun",
+        "Siyuan Lou",
+        "Shanshan Huang",
+        "Qiang Luo",
+        "Ruiming Tang",
+        "Han Li",
+        "Kun Gai"
+      ],
+      "affiliations": [
+        "Kuaishou Technology"
+      ],
+      "published": "2026-06-29T08:23:04Z",
+      "updated": "2026-06-29T08:23:04Z",
+      "abstract": "Real-time recommendation systems suffer from the dynamic drift of user interests and varying contextual conditions. Conventional sequential recommendation models only exploit static historical click sequences, which fail to capture instant preference changes and overlook structured signals hidden within the multi-stage ranking pipeline of industrial recommendation systems. To tackle these limitations, we propose POEM (Partial-Order Enhanced Modeling), a new real-time sequential modeling framework built upon intrinsic partial-order relations from the recommendation cascade. POEM takes real-time multi-task ranking scores (including predicted CTR and predicted watch duration) generated by upstream ranking modules as supervision to construct dynamic partial-order sequences, supporting fine-grained real-time interest modeling and consistent optimization between system ranking targets and user behavioral patterns. We summarize our core contributions as three aspects: (1) a partial-order guided sequence construction paradigm, which enriches vanilla chronological sequences via dynamic grouping and sampling conditioned on real-time ranking scores to reassess user interests per request; (2) a multi-objective score fusion module that unifies heterogeneous ranking signals into a compact quintuple representation with normalized rank-aware weighting; (3) a hierarchical sample learning strategy, which adopts system-favored high-ranked items and user positive feedback (e.g., long-duration watched videos) as positive instances, paired with graph-mined hard negatives and a margin-based pairwise loss for robust training. Fully deployed on Kuaishou online traffic, POEM achieves significant online gains: average per-user watch time lifts by 0.249% on the KS Single Page and 0.213% on the KS Lite Page.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.29946v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.29946v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "POEM旨在解决实时推荐中用户兴趣漂移和排序管道结构化信息缺失问题。它利用上游排序模块产生的多任务实时分数构建偏序序列，通过多目标分数融合与分层样本学习，实现细粒度实时兴趣建模，并在快手线上部署后取得用户观看时长的显著提升。",
+      "core_method": "基于排序级联中偏序关系的实时序列建模框架，利用实时多任务排序分数构建动态偏序序列，并采用多目标分数融合和分层样本学习进行训练。",
+      "innovation_points": [
+        "提出偏序引导的序列构造范式，基于实时排序分数对用户行为进行动态分组与采样，实现每次请求的兴趣重评估。",
+        "设计多目标分数融合模块，将异构排序信号转化为归一化排名加权的紧凑五元组表示。",
+        "提出分层样本学习策略，综合系统偏好项和用户正向反馈作为正样本，并结合图挖掘硬负样本和基于间隔的成对损失进行鲁棒训练。"
+      ],
+      "experiment_results": [
+        "在快手平台全量部署后，KS Single Page 和 KS Lite Page 的用户平均观看时长分别提升0.249%和0.213%。",
+        "消融实验验证了偏序序列构造、融合模块和分层学习各组件均对性能有正向贡献。"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "Fully deployed on Kuaishou online traffic, POEM achieves significant online gains: average per-user watch time lifts by 0.249% on the KS Single Page and 0.213% on the KS Lite Page.",
+      "limitations": [
+        "论文未讨论在非视频推荐场景或不同规模平台上的泛化能力。",
+        "偏序序列的构建依赖上游排序模块的输出质量，若上游信号存在偏差可能影响模型效果。"
+      ],
+      "practical_value": "为工业级推荐系统提供了一种直接利用排序管道内部信号进行实时兴趣建模的有效方案，可提升核心业务指标。",
+      "analysis_basis": "full_text",
+      "analysis_status": "cached",
+      "analysis_signature": "8d5ffe9c2dfde0df",
+      "tags": [
+        "Sequential Rec",
+        "Generative Rec",
+        "Online Eval"
+      ],
+      "llm_score": 85,
+      "llm_score_rationale": "Kuaishou全量部署并报告了线上A/B收益（人均观看时长提升0.249%和0.213%），有明确的online experiment证据。；作者来自快手，工业界知名公司，且论文来自arXiv预印本，但未标明顶会发表。；工作聚焦实时序列建模与多阶段排序一致性，未涉及生成式推荐或语义ID，但属于工业推荐系统实践范畴。",
+      "preference_signals": [
+        "Online A/B",
+        "Industry company",
+        "Top venue|Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 90,
+      "display_affiliations": [
+        "Kuaishou Technology"
+      ],
+      "published_date": "2026-06-29"
+    },
+    {
+      "id": "arxiv:2606.28070",
+      "title": "JD Oxygen AI Item Center (Oxygen AIIC) V1: An Industrial-Scale LLM/VLM-Centric Solution for Item Understanding, Management, and Applications",
+      "authors": [
+        "Oxygen AIIC",
+        "Chan Long",
+        "Chao Liu",
+        "Chaofan Chen",
+        "Chaohui Dong",
+        "Chunyuan Guo",
+        "Danping Liu",
+        "Debin Liu",
+        "Deping Xiang",
+        "Fulai Xu",
+        "Guangyue Liu",
+        "Hao Li",
+        "Huichun Hu",
+        "Jian Yang",
+        "Jianan Wang",
+        "Jianbo Zhao",
+        "Jiaoyang Li",
+        "Jiaxing Wang",
+        "Jinglong Li",
+        "Jinjin Guo",
+        "Jun Fang",
+        "Jun Liu",
+        "Kai Zhou",
+        "Li Wang",
+        "Lili Gao",
+        "Liying Chen",
+        "Luning Yang",
+        "Mengdi Zhou",
+        "Pengzhang Liu",
+        "Qi Lv",
+        "Qianyun Wang",
+        "Qixia Jiang",
+        "Ruyue Li",
+        "Shimu Liang",
+        "Shuxing Wang",
+        "Sijie Zhang",
+        "Siqi Li",
+        "Tianhao Gao",
+        "Wang Ke",
+        "Weihu Huang",
+        "Wencan Lai",
+        "Wenjie Zhang",
+        "Xiaohui Zhang",
+        "Xiaojing Dong",
+        "Ya Liu",
+        "Yifeng Zhang",
+        "Yixiang Wang",
+        "Yongtai Zhang",
+        "Yongyi Liao",
+        "Zhaoru Chen",
+        "Zhen Chen",
+        "Zhiyong Ma",
+        "Zhiyuan Liu",
+        "Zhongwei Liu",
+        "Ziyan Xing"
+      ],
+      "affiliations": [],
+      "published": "2026-06-26T13:33:27Z",
+      "updated": "2026-06-29T06:29:34Z",
+      "abstract": "JD$.$com, one of the world's largest e-commerce platforms, serves over 700 million active users and millions of merchants, with a catalog of tens of billions of SKUs. At this scale, high-quality, structured item knowledge underpins a better consumer experience, lower management costs, and higher operational efficiency-yet producing and serving it poses three industrial-scale challenges: fast-emerging concepts, high-quality knowledge production for massive SKUs, and diverse downstream requirements. To address these challenges, we present the JD Oxygen AI Item Center (Oxygen AIIC), an industrial-scale platform built on LLMs/VLMs for item-knowledge production and service. Oxygen AIIC is built around four core pillars: (i) ontology engineering driven by efficient human-AI collaboration, which supports the dynamic evolution and agile expansion of an ontology with millions of entries; (ii) a \"Semantic Search then Discrimination\"(S2D) knowledge identification architecture that, combined with throughput improvement strategies, enables scalable, extensible, and high-throughput AI Item Library production for tens of billions of SKUs; (iii) self-evolving item-understanding LLMs/VLMs that improve in a stable and controllable manner, enabling knowledge production with 94.2% precision and 82.8% recall; and (iv) a unified item tunnel that serves as the data and service hub. Oxygen AIIC now covers tens of thousands of JD categories and processes hundreds of millions of item updates per day on Huawei Ascend NPUs. It has accumulated hundreds of billions of item-knowledge assets. Deployed across core business scenarios-including search, recommendation, operations, category planning-Oxygen AIIC has delivered measurable gains at scale. Search-traffic coverage reaches 80.4%, item-information quality issues drop by 37%, the automated fill rate of core attributes during item listing exceeds 80%.",
+      "categories": [
+        "cs.AI"
+      ],
+      "primary_category": "cs.AI",
+      "abs_url": "http://arxiv.org/abs/2606.28070v2",
+      "pdf_url": "https://arxiv.org/pdf/2606.28070v2",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "京东提出Oxygen AIIC平台，基于大语言模型和视觉语言模型构建工业级商品知识生产与服务体系，通过四核心支柱实现数十亿SKU的高质量知识管理，并在搜索、推荐等场景取得显著业务提升。",
+      "core_method": "基于LLM/VLM的“语义搜索再判别”(S2D)架构，结合自进化模型和统一商品隧道，实现大规模商品知识生产与分发。",
+      "innovation_points": [
+        "提出人机协作的本体工程，支持数百万条目的动态演化与敏捷扩展。",
+        "设计“语义搜索再判别”(S2D)知识识别架构，实现可扩展、高通量的数十亿SKU级AI商品库生产。",
+        "构建自进化商品理解LLM/VLM，通过增量学习与模型自进化，稳定可控地提升知识生产质量。"
+      ],
+      "experiment_results": [
+        "知识生产精度达94.2%，召回达82.8%。",
+        "搜索流量覆盖率提升至80.4%，商品信息质量问题减少37%，核心属性自动填充率超80%。",
+        "商品创意智能优化使点击率提升约9%。"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "全文明确提到在搜索、推荐等核心业务场景部署并取得可衡量的大规模收益，包括搜索流量覆盖率达到80.4%、点击率提升9%等线上指标，属于production experiment。",
+      "limitations": [
+        "论文未报告线上A/B测试的具体实验设计、统计显著性或详细指标，部分业务收益可能混合多因素影响。",
+        "系统强依赖于LLM/VLM推理，高并发场景下的延迟与成本控制仍可能是挑战，尽管文章提到10倍吞吐优化。"
+      ],
+      "practical_value": "为工业级电商平台提供了以LLM/VLM为核心的商品知识基础设施，能直接提升搜索、推荐等核心场景的用户体验与运营效率，具有广泛的借鉴意义。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "31450ac28a60939d",
+      "tags": [
+        "LLM4Rec",
+        "Item Tokenization",
+        "Generative Rec",
+        "User Modeling"
+      ],
+      "llm_score": 85,
+      "llm_score_rationale": "公开了搜索和推荐等核心业务场景的线上指标提升（搜索流量覆盖80.4%、商品信息质量问题下降37%），表明有线上实验或生产环境效果；京东为知名互联网公司，工作聚焦于工业级商品知识生产与服务，与生成式推荐/语义ID的底层知识构建相关；未提及顶会发表，当前为arXiv预印本",
+      "preference_signals": [
+        "Online A/B",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 89,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026-06-26"
+    },
+    {
+      "id": "arxiv:2606.28059",
+      "title": "Fast and Feasible: Permutation-based Constrained Reranking for Revenue Maximization",
+      "authors": [
+        "Svetlana Shirokovskikh",
+        "Anastasiia Soboleva",
+        "Ekaterina Solodneva",
+        "Aleksandr Katrutsa",
+        "Roman Loginov",
+        "Egor Samosvat"
+      ],
+      "affiliations": [
+        "Avito & MSU, AI Center",
+        "Both authors contributed equally to this research."
+      ],
+      "published": "2026-06-26T13:04:00Z",
+      "updated": "2026-06-26T13:04:00Z",
+      "abstract": "Search and recommender systems have produced highly relevant search results. A natural next step in the development of such systems in e-commerce is to rerank these results to increase the platform's revenue from paid promotion products. However, maximizing revenue alone may degrade the user experience by reducing relevance or increasing fraud risk. To avoid this, we state the reranking problem as an integer linear program ($ILP$) that maximizes revenue subject to per-query constraints on other metrics, e.g., relevance. Since solving $ILP$ exactly for every query is slow for deployment to the online service, we propose a lightweight permutation-based reranking approximation algorithm PermR. At each step, the algorithm selects a pair of neighboring items and swaps them to either improve the objective or repair a violated constraint. We evaluate PermR across multiple categories of a large classified platform in offline and online settings. PermR achieves about 63\\% of the ILP revenue improvement, within production latency limits, preserving all constraints. In a 14-day online A/B test over 56 million search queries, PermR increased revenue by $2$\\%.",
+      "categories": [
+        "cs.IR",
+        "math.OC"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2606.28059v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.28059v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "本文针对电商平台重排序中最大化收入可能损害相关性和欺诈风险等问题，提出基于排列的约束优化近似算法PermR。该算法通过相邻商品交换来逐步优化收入目标或修复违反的约束，在满足延迟和约束限制下，实现ILP最优收入提升的约63%。在线A/B测试在5600万搜索查询中实现收入增加2%。",
+      "core_method": "提出轻量级排列搜索算法PermR，通过迭代交换相邻商品来近似求解收入最大化约束优化问题。",
+      "innovation_points": [
+        "将收益感知的重排序问题形式化为整数线性规划(ILP)，约束条件相对于当前生产排序设定。",
+        "提出可部署于实时系统的轻量近似算法PermR，通过贪心相邻交换优化目标或修复约束。",
+        "在工业数据上验证了PermR相比ILP求解器在推理时间上的显著优势，以及与遗传算法的性能对比。"
+      ],
+      "experiment_results": [
+        "离线实验中，PermR在0.05秒内实现ILP最优收入提升的63%，远超遗传算法的0.4%。",
+        "在线14天A/B测试覆盖5600万搜索查询，收入平均提升2%，家具园艺子类提升最高达6.0%。",
+        "PermR在所有品类中保持平台约束不变，延迟满足生产环境要求（<0.05秒）。"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文明确描述14天在线A/B测试，覆盖35%搜索流量（约5600万查询），收入提升2%。",
+      "limitations": [
+        "ILP求解器推理时间过长不适合实时部署，但PermR仅为近似解，无法达到最优收入提升。",
+        "不同品类的收益提升效果不一，部分品类置信区间较宽，稳定性待进一步验证。"
+      ],
+      "practical_value": "PermR为电商平台提供了一种轻量、可部署的重排序后处理方案，能在保障相关性和安全性约束的同时高效提升平台收入。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "5f5b466aca3ac727",
+      "tags": [
+        "Online Eval"
+      ],
+      "llm_score": 80,
+      "llm_score_rationale": "包含14天线上A/B测试，在5600万搜索查询上收入提升2%，提供强在线证据。；面向工业级电商平台重排序问题，强调在线服务延迟约束，实践性强。；未提及顶会发表，未涉及生成式推荐或语义ID，与核心主题关联弱。",
+      "preference_signals": [
+        "Online A/B",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 86,
+      "display_affiliations": [
+        "Avito & MSU, AI Center",
+        "Both authors contributed equally to this research."
+      ],
+      "published_date": "2026-06-26"
+    },
     {
       "id": "dblp:conf/www/YuFLZWLWZW26",
       "title": "ThinkRec: Thinking-based recommendation via LLM",
@@ -698,236 +1545,6 @@
       "published_date": "2026-04-12"
     },
     {
-      "id": "arxiv:2606.31984",
-      "title": "GR2 Technical Report",
-      "authors": [
-        "Yufei Li",
-        "Zaiwei Zhang",
-        "Mingfu Liang",
-        "Kavosh Asadi",
-        "Jay Xu",
-        "Jimmy Kim",
-        "Chongyang Bai",
-        "Jieyi Zhang",
-        "Hongye Xie",
-        "Prachi Agrawal",
-        "Dian Yu",
-        "Tianyi Chen",
-        "Jean-Pascal Billaud",
-        "Garret Buell",
-        "YK",
-        "Zhu",
-        "Sachin Patil",
-        "Brooke Bian",
-        "Zhou Fang",
-        "Kevin Huang",
-        "Shiva Sudanagunta",
-        "Yuzhen Huang",
-        "Emma Lu",
-        "Chris O'Brien",
-        "Yang Song",
-        "Lihong Li",
-        "Jacob Tao",
-        "Zhicheng Zhu",
-        "Chao Li",
-        "Gaoxiang Liu",
-        "Neil Wu",
-        "Zhongyin Hu",
-        "Li Han",
-        "Loki Chen",
-        "Ming Lei",
-        "Greg Rehm",
-        "Siyuan Song",
-        "Tianwei Zhang",
-        "Li Li",
-        "Ketan Singh",
-        "Yavuz Yetim",
-        "Ilyas Atishev",
-        "Satendra Gera",
-        "Ashkan Sadeghi",
-        "Rachel Yan",
-        "Nikko Mizutani",
-        "Shuaiwen Wang",
-        "Song Yang",
-        "Zhijing Li",
-        "Jiang Liu",
-        "Mengying Sun",
-        "Fei Tian",
-        "Xiaohan Wei",
-        "Chonglin Sun",
-        "Parish Aggarwal",
-        "Kaushik Rangadurai",
-        "Zhi Hua",
-        "Frank Shyu",
-        "Ruchit Sharma",
-        "Liyuan Li",
-        "Shike Mei",
-        "Wenlin Chen",
-        "Santanu Kolay",
-        "Ben Schulte",
-        "Deepak Chandra",
-        "Adam",
-        "Song",
-        "Sandeep Pandey",
-        "Xi Liu",
-        "Hamed Firooz",
-        "Luke Simon"
-      ],
-      "affiliations": [
-        "Meta AI"
-      ],
-      "published": "2026-06-30T17:22:22Z",
-      "updated": "2026-06-30T17:22:22Z",
-      "abstract": "Industrial recommendation systems serve billions of users through a multi-stage funnel -- retrieval, early-stage ranking, and re-ranking -- where the final re-ranking step disproportionately shapes user engagement and downstream performance, particularly for carousel and grid display formats. Despite growing enthusiasm for Large Language Models (LLMs) in recommendation, three gaps hinder industrial adoption: (1) most efforts target retrieval and ranking, leaving re-ranking -- the stage closest to the final user experience -- largely underexplored; (2) LLMs are typically deployed zero-shot or via supervised fine-tuning, underutilizing the reasoning capabilities unlocked by reinforcement learning (RL) on verifiable rewards; (3) deployed catalogs index billions of items with non-semantic identifiers that lie outside any base-LLM vocabulary. We present GR2 (Generative Reasoning Re-Ranker), an end-to-end framework that combines (i) mid-training on semantic IDs produced by a tokenizer with >=99% uniqueness, (ii) reasoning-trace distilled from a stronger teacher via targeted prompting and rejection sampling, and (iii) RL with verifiable rewards purpose-built for re-ranking. To make GR2 resource-viable, we further (iv) introduce a context compressor that amortizes training cost, On-Policy Distillation (OPD) as a scalable alternative to SFT -- which we find collapses at industrial scale -- and reasoning distillation for low-latency serving. GR2 delivers +18.7% R@1, +7.1% R@3, and +9.6% N@3 over legacy baselines on industrial-scale traffic. We further find that reward design is critical in re-ranking: LLMs often hack rewards by preserving the incoming order or exploiting position bias, motivating conditional verifiable rewards as essential industrial components.",
-      "categories": [
-        "cs.IR",
-        "cs.AI"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.31984v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.31984v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "GR2提出面向工业推荐重排的生成式推理框架，通过语义ID分词、推理痕迹蒸馏和可验证奖励的强化学习，在重排阶段实现显著性能提升，并引入上下文压缩、在策略蒸馏和推理内部化等工业适配技术解决部署成本与延迟问题。",
-      "core_method": "结合语义ID中训练、教师模型推理痕迹蒸馏和基于DAPO的可验证奖励强化学习，构建生成式推理重排模型，并通过上下文压缩、在策略蒸馏和推理内部化优化工业部署。",
-      "innovation_points": [
-        "首次将LLM的推理能力通过强化学习与可验证奖励引入工业推荐重排阶段，而非仅用于检索或粗排。",
-        "提出语义ID中训练和混合语料，使LLM能直接推理非语义商品ID，解决词汇不匹配问题。",
-        "设计针对重排的可验证奖励函数，并识别和缓解奖励黑客（保留输入顺序和利用位置偏差）问题。"
-      ],
-      "experiment_results": [
-        "在工业流量测试集上，GR2相比点式基线在R@1上提升18.7%，在R@3上提升7.1%，在NDCG@3上提升9.6%。",
-        "训练数据仅使用一天日志，测试集用户ID和商品ID高度不可见，证明增益来自模型质量而非数据新鲜度。",
-        "后续9天在线服务表现无衰减，证实稳定性。"
-      ],
-      "ab_test": "yes",
-      "ab_test_evidence": "论文在工业规模流量上进行实验，并在9天在线服务中验证了性能无衰减，明确提到‘industrial-scale traffic’和后续服务表现。",
-      "limitations": [
-        "未提供在公开基准数据集上的实验结果，仅报告了工业内部数据表现。",
-        "依赖教师模型生成推理痕迹，推理质量受限于教师模型能力，且可能增加训练流程的复杂性。"
-      ],
-      "practical_value": "为工业推荐系统重排阶段提供端到端LLM方案，引入推理和强化学习，显著提升排序质量并适应大规模部署，具有直接的工业应用价值。",
-      "analysis_basis": "full_text",
-      "analysis_status": "complete",
-      "analysis_signature": "a88e46d3a533bf3d",
-      "tags": [
-        "Generative Rec",
-        "Generative Ranking",
-        "Item Tokenization",
-        "Semantic ID",
-        "LLM4Rec"
-      ],
-      "llm_score": 75,
-      "llm_score_rationale": "明确提到在工业级流量（industrial-scale traffic）上取得线上提升，有在线实验证据；核心贡献基于语义ID的生成式重排模型，与生成式推荐/语义ID高度相关；作者单位包含多家知名互联网公司（如Yongkang, Yang等工业界机构），但会议渠道仅为arXiv预印本",
-      "preference_signals": [
-        "Online A/B",
-        "Generative Rec / Semantic ID",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 121,
-      "display_affiliations": [
-        "Meta AI"
-      ],
-      "published_date": "2026-06-30"
-    },
-    {
-      "id": "arxiv:2606.31693",
-      "title": "ShopX: A Foundation Model for Intent-to-Item Fulfillment in Agentic Shopping",
-      "authors": [
-        "Jiacheng Chen",
-        "Tao Zhang",
-        "Manxi Lin",
-        "Dunxian Huang",
-        "Teng Shi",
-        "Honghao Fu",
-        "Mengyan Li",
-        "Xinming Zhang",
-        "Chenchi Zhang",
-        "Xuan Lu",
-        "Xiaoxiong Du",
-        "Haibin Chen",
-        "Shaolin Ye",
-        "Hao Chang",
-        "Xiaoqi Li",
-        "Shuwen Xiao",
-        "Yujin Yuan",
-        "Jingxuan Feng",
-        "Shaopan Xiong",
-        "Huimin Yi",
-        "Ju Huang",
-        "Qiu Shen",
-        "Ying Chen",
-        "Junjun Zheng",
-        "Xiangheng Kong",
-        "Yuning Jiang"
-      ],
-      "affiliations": [],
-      "published": "2026-06-30T14:05:28Z",
-      "updated": "2026-06-30T14:05:28Z",
-      "abstract": "The wave of AI-native applications is moving shopping beyond page- and feed-based browsing toward intent-driven experiences orchestrated by LLM agents. A common design wraps an LLM around existing search and recommendation pipelines, forcing complex intents through low-bandwidth retrieval or ranking interfaces and leaving a gap between language understanding and item-space fulfillment. Generative recommendation gives LLMs a direct item-space interface through semantic IDs (SIDs), but existing models mainly generate candidates for retrieval rather than translate flexible intents into item-space outcomes. We propose ShopX to address this bottleneck by unifying intent understanding, execution planning, and flexible SID-native item-space operations into a single foundation model. We deploy ShopX in agentic shopping workflows through a model-native item-fulfillment framework with a serving harness that defines a model-facing action protocol and exposes support surfaces for context access, catalog grounding, and state management. Within this framework, ShopX plans and composes SID-based item-space operations such as SID beam-search retrieval, listwise ranking, or product bundling. This model-centric design reduces lossy hand-offs between agent orchestration and item-space execution. To build ShopX, we design semantically recoverable, LLM-operable SIDs and a training recipe that equips a general LLM for flexible multi-turn item-space fulfillment while retaining the knowledge and instruction-following abilities needed by a shopping agent. We evaluate the ShopX framework against tool-mediated agentic systems on single- and multi-turn fulfillment tasks derived from anonymized Taobao production logs, showing that model-native fulfillment improves overall framework behavior, especially on complex or ambiguous requests.",
-      "categories": [
-        "cs.IR",
-        "cs.AI",
-        "cs.CL"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.31693v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.31693v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "ShopX是一个面向智能购物场景的基础模型，将意图理解、执行规划和基于语义ID（SID）的项目空间操作统一到一个模型中。它通过模型原生的项目满足框架，直接处理复杂购物意图，弥合了语言理解与项目空间执行之间的差距。实验显示在单轮和多轮满足任务上优于传统的工具中介系统。",
-      "core_method": "通过训练使通用LLM掌握语义可恢复、LLM可操作的SID，实现模型原生的意图到项目空间操作（如SID束搜索检索、列表排序、产品捆绑）的端到端执行。",
-      "innovation_points": [
-        "提出模型原生项目满足框架，将SID操作直接集成到LLM中，减少代理编排与项目执行之间的有损交互。",
-        "设计语义可恢复且LLM可操作的语义ID（SID），并构建了从单意图到多意图的灵活SID操作体系。",
-        "通过多任务训练配方，使通用LLM在保留知识和指令遵循能力的同时，获得灵活的多轮项目空间满足能力。"
-      ],
-      "experiment_results": [
-        "在基于匿名淘宝生产日志的单轮和多轮满足任务上，ShopX框架的整体行为优于工具中介系统。",
-        "在复杂或模糊请求上表现出明显优势。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文全文未报告线上A/B测试。",
-      "limitations": [
-        "实验基于匿名化生产日志，未在真实线上流量中验证效果和性能。",
-        "未详细讨论大规模部署时的延迟和成本问题。"
-      ],
-      "practical_value": "为电商智能购物代理提供了一种更直接高效的意图到项目达成方案，有望减少系统复杂度并提升复杂意图的满足质量。",
-      "analysis_basis": "full_text",
-      "analysis_status": "complete",
-      "analysis_signature": "53184a56321b185b",
-      "tags": [
-        "Generative Rec",
-        "Semantic ID",
-        "Agent4Rec",
-        "LLM4Rec"
-      ],
-      "llm_score": 85,
-      "llm_score_rationale": "明确涉及语义ID(SID)与生成式推荐，直接对应生成式推荐/语义ID方向；作者单位含Alibaba/Taobao(淘宝)，且评估数据来自匿名化淘宝生产日志，暗示工业实践背景；论文在agentic shopping中部署ShopX，并基于生产日志评估，有明确线上证据(production logs)但未提及A/B实验",
-      "preference_signals": [
-        "Generative Rec / Semantic ID",
-        "Industry company",
-        "Online A/B"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 121,
-      "display_affiliations": [
-        "Unknown affiliation"
-      ],
-      "published_date": "2026-06-30"
-    },
-    {
       "id": "arxiv:2606.26859",
       "title": "AgentX: Towards Agent-Driven Self-Iteration of Industrial Recommender Systems",
       "authors": [
@@ -1053,85 +1670,6 @@
         "Unknown affiliation"
       ],
       "published_date": "2026-06-25"
-    },
-    {
-      "id": "arxiv:2606.28533",
-      "title": "CMSL: Constructive Multi-Sequence Learning for Recommendation Systems",
-      "authors": [
-        "Zikun Cui",
-        "Renzhi Wu",
-        "Junjie Yang",
-        "Li Sheng",
-        "Jijie Wei",
-        "Linfeng Liu",
-        "Tai Guo",
-        "Tao Jia",
-        "Xiaodong Wang",
-        "Hong Li",
-        "Li Yu",
-        "Sri Reddy",
-        "Hong Yan"
-      ],
-      "affiliations": [
-        "Meta"
-      ],
-      "published": "2026-06-26T18:32:43Z",
-      "updated": "2026-06-26T18:32:43Z",
-      "abstract": "Sequence learning has emerged as the promising paradigm in recommendation systems, surpassing traditional Deep Learning Recommendation Models (DLRM) by capturing the temporal nuances of user behavior. However, current state-of-the-art architectures operate under a limiting analogy: they treat user history as a monolithic chronological sequence like a sentence in a Large Language Model (LLM). We observe a fundamental divergence between natural language and recommendation data: unlike the linear, logical flow of text, user history is inherently multi-faceted. A user's journey is a fragmented reflection of diverse interests, resulting in much weaker coherence between items than is found in LLM training data. This lack of structural unity leads to context pollution. In single-sequence modeling, unrelated behaviors compete for the same attention budget. This \"noisy\" signal dilutes the model's focus, effectively capping its ability to discern high-intent patterns from background activity. To address this, we propose Constructive Multi-Sequence Learning (CMSL), a paradigm shift from passive sequence ingestion to active \"context engineering\" that constructs multiple coherent sequences in latent space. CMSL leverages a learnable Sequence Construction Module to disentangle user history into \"pure\" thematic strands, followed by a linear attention mechanism to efficiently model these strands at scale. CMSL has been deployed across ranking and retrieval tasks and across four major surfaces at Meta.",
-      "categories": [
-        "cs.IR",
-        "cs.AI"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.28533v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.28533v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "针对推荐系统中单序列建模因用户历史行为混杂导致的上下文污染问题，提出构建式多序列学习框架CMSL，通过可学习的序列构建模块将用户历史解耦为多个主题一致的潜在序列，并利用线性注意力高效建模，已在Meta多个线上推荐场景部署。",
-      "core_method": "CMSL通过跨注意力机制在潜在空间将杂乱用户历史自适应地构建为多条有序的上下文序列，分别进行自注意力建模以降低意图干扰。",
-      "innovation_points": [
-        "提出推荐系统中的上下文污染问题，并设计构建式多序列学习范式替代传统单一序列建模。",
-        "提出可学习的多序列构建模块，利用跨注意力根据当前查询意图动态解耦用户历史，生成多个潜在序列。",
-        "设计适用于多序列建模的可扩展线性注意力机制，降低计算复杂度。"
-      ],
-      "experiment_results": [
-        "排序任务：在Meta四个主要场景的CTR预测中，CMSL在归一化熵（NE）上取得0.3%-0.6%的显著提升（>0.03%即有统计显著性）。",
-        "召回任务：在线上A/B测试中，CMSL在四项重要互动指标上均取得统计显著提升。",
-        "论文还通过实验表明，专家划分的多个序列已优于单序列，且注入低价值行为会降低性能，验证了上下文污染问题。"
-      ],
-      "ab_test": "yes",
-      "ab_test_evidence": "召回评估直接在线上A/B测试中进行，在surface 5上报告了四项互动指标的显著提升；排序评估使用NE指标，并说明NE与A/B测试指标高度一致且大于0.03%的提升具有统计显著性。",
-      "limitations": [
-        "没有与现有解决上下文污染的其他方法（如HSTU、InterFormer）进行直接对比实验。",
-        "模型设计主要面向工业级场景，缺少在小规模公开数据集上的通用性评估。"
-      ],
-      "practical_value": "CMSL已在Meta多个主要推荐场景部署，能有效提升排序和召回效果，对工业界推荐系统具有直接应用价值。",
-      "analysis_basis": "full_text",
-      "analysis_status": "complete",
-      "analysis_signature": "a9bb3c6075f1d725",
-      "tags": [
-        "Sequential Rec",
-        "Generative Rec",
-        "User Modeling",
-        "Online Eval"
-      ],
-      "llm_score": 98,
-      "llm_score_rationale": "明确提及在Meta的四个主要界面上的排序和检索任务中部署，暗示有线上实验和生产环境验证；作者单位包含Meta，属于知名互联网公司，工业实践导向强；论文提出多序列学习改进推荐系统中的序列建模，与工业推荐实践直接相关",
-      "preference_signals": [
-        "Online A/B",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 104,
-      "display_affiliations": [
-        "Meta"
-      ],
-      "published_date": "2026-06-26"
     },
     {
       "id": "arxiv:2606.25147",
@@ -1297,78 +1835,6 @@
         "Noah's Ark Lab, Huawei"
       ],
       "published_date": "2026-06-25"
-    },
-    {
-      "id": "arxiv:2606.29946",
-      "title": "POEM: Partial-Order Enhanced Real-Time Sequential Modeling for Recommendation",
-      "authors": [
-        "Linxiao Che",
-        "Yijia Sun",
-        "Siyuan Lou",
-        "Shanshan Huang",
-        "Qiang Luo",
-        "Ruiming Tang",
-        "Han Li",
-        "Kun Gai"
-      ],
-      "affiliations": [
-        "Kuaishou Technology"
-      ],
-      "published": "2026-06-29T08:23:04Z",
-      "updated": "2026-06-29T08:23:04Z",
-      "abstract": "Real-time recommendation systems suffer from the dynamic drift of user interests and varying contextual conditions. Conventional sequential recommendation models only exploit static historical click sequences, which fail to capture instant preference changes and overlook structured signals hidden within the multi-stage ranking pipeline of industrial recommendation systems. To tackle these limitations, we propose POEM (Partial-Order Enhanced Modeling), a new real-time sequential modeling framework built upon intrinsic partial-order relations from the recommendation cascade. POEM takes real-time multi-task ranking scores (including predicted CTR and predicted watch duration) generated by upstream ranking modules as supervision to construct dynamic partial-order sequences, supporting fine-grained real-time interest modeling and consistent optimization between system ranking targets and user behavioral patterns. We summarize our core contributions as three aspects: (1) a partial-order guided sequence construction paradigm, which enriches vanilla chronological sequences via dynamic grouping and sampling conditioned on real-time ranking scores to reassess user interests per request; (2) a multi-objective score fusion module that unifies heterogeneous ranking signals into a compact quintuple representation with normalized rank-aware weighting; (3) a hierarchical sample learning strategy, which adopts system-favored high-ranked items and user positive feedback (e.g., long-duration watched videos) as positive instances, paired with graph-mined hard negatives and a margin-based pairwise loss for robust training. Fully deployed on Kuaishou online traffic, POEM achieves significant online gains: average per-user watch time lifts by 0.249% on the KS Single Page and 0.213% on the KS Lite Page.",
-      "categories": [
-        "cs.IR"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2606.29946v1",
-      "pdf_url": "https://arxiv.org/pdf/2606.29946v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "POEM旨在解决实时推荐中用户兴趣漂移和排序管道结构化信息缺失问题。它利用上游排序模块产生的多任务实时分数构建偏序序列，通过多目标分数融合与分层样本学习，实现细粒度实时兴趣建模，并在快手线上部署后取得用户观看时长的显著提升。",
-      "core_method": "基于排序级联中偏序关系的实时序列建模框架，利用实时多任务排序分数构建动态偏序序列，并采用多目标分数融合和分层样本学习进行训练。",
-      "innovation_points": [
-        "提出偏序引导的序列构造范式，基于实时排序分数对用户行为进行动态分组与采样，实现每次请求的兴趣重评估。",
-        "设计多目标分数融合模块，将异构排序信号转化为归一化排名加权的紧凑五元组表示。",
-        "提出分层样本学习策略，综合系统偏好项和用户正向反馈作为正样本，并结合图挖掘硬负样本和基于间隔的成对损失进行鲁棒训练。"
-      ],
-      "experiment_results": [
-        "在快手平台全量部署后，KS Single Page 和 KS Lite Page 的用户平均观看时长分别提升0.249%和0.213%。",
-        "消融实验验证了偏序序列构造、融合模块和分层学习各组件均对性能有正向贡献。"
-      ],
-      "ab_test": "yes",
-      "ab_test_evidence": "Fully deployed on Kuaishou online traffic, POEM achieves significant online gains: average per-user watch time lifts by 0.249% on the KS Single Page and 0.213% on the KS Lite Page.",
-      "limitations": [
-        "论文未讨论在非视频推荐场景或不同规模平台上的泛化能力。",
-        "偏序序列的构建依赖上游排序模块的输出质量，若上游信号存在偏差可能影响模型效果。"
-      ],
-      "practical_value": "为工业级推荐系统提供了一种直接利用排序管道内部信号进行实时兴趣建模的有效方案，可提升核心业务指标。",
-      "analysis_basis": "full_text",
-      "analysis_status": "complete",
-      "analysis_signature": "8d5ffe9c2dfde0df",
-      "tags": [
-        "Sequential Rec",
-        "Generative Rec",
-        "Online Eval"
-      ],
-      "llm_score": 85,
-      "llm_score_rationale": "Kuaishou全量部署并报告了线上A/B收益（人均观看时长提升0.249%和0.213%），有明确的online experiment证据。；作者来自快手，工业界知名公司，且论文来自arXiv预印本，但未标明顶会发表。；工作聚焦实时序列建模与多阶段排序一致性，未涉及生成式推荐或语义ID，但属于工业推荐系统实践范畴。",
-      "preference_signals": [
-        "Online A/B",
-        "Industry company",
-        "Top venue|Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 95,
-      "display_affiliations": [
-        "Kuaishou Technology"
-      ],
-      "published_date": "2026-06-29"
     },
     {
       "id": "openalex:W4407571719",
@@ -3135,82 +3601,6 @@
       "published_date": "2026-03-14"
     },
     {
-      "id": "openalex:W4405300788",
-      "title": "MRP-LLM: Multitask Reflective Large Language Models for Privacy-Preserving Next POI Recommendation",
-      "authors": [
-        "Zhigang Wu",
-        "Zhu Sun",
-        "Dongxia Wang",
-        "Lu Zhang",
-        "Jie Zhang",
-        "Yew-Soon Ong"
-      ],
-      "affiliations": [
-        "Nanyang Technological University",
-        "Singapore University of Technology and Design",
-        "Zhejiang University",
-        "Chengdu University of Information Technology"
-      ],
-      "published": "2026-06-01",
-      "updated": "2026-06-11T09:08:48.828518",
-      "abstract": "Large language models (LLMs) have shown promising potential for next Point-of-Interest (POI) recommendation. However, existing methods only perform direct zero-shot prompting, leading to ineffective extraction of user preferences, insufficient injection of collaborative signals, and a lack of user privacy protection. As such, we propose a novel Multitask Reflective Large Language Model for Privacy-preserving Next POI Recommendation (MRP-LLM), aiming to exploit LLMs for better next POI recommendation while preserving user privacy. Specifically, the Multitask Reflective Preference Extraction Module first utilizes LLMs to distill each user's fine-grained (i.e., categorical, temporal, and spatial) preferences into a knowledge base (KB). The Neighbor Preference Retrieval Module retrieves and summarizes the preferences of similar users from the KB to obtain collaborative signals. Subsequently, aggregating the user's preferences with those of similar users, the Multitask Next POI Recommendation Module generates the next POI recommendations via multitask prompting. Meanwhile, during data collection, a Privacy Transmission Module is specifically devised to preserve sensitive POI data. Extensive experiments on three real-world datasets demonstrate the efficacy of our proposed MRP-LLM in providing more accurate next POI recommendations with user privacy preserved.",
-      "categories": [
-        "OpenAlex",
-        "RecSys"
-      ],
-      "primary_category": "RecSys",
-      "abs_url": "https://doi.org/10.1145/3774935.3806151",
-      "pdf_url": "https://doi.org/10.1145/3774935.3806151",
-      "doi": "10.1145/3774935.3806151",
-      "source": "OpenAlex",
-      "status": "conference",
-      "venue": "RecSys",
-      "venue_key": "RecSys",
-      "generated_summary": "提出MRP-LLM模型，通过多任务反思和隐私保护机制实现下一POI推荐。利用LLM提取用户细粒度偏好并注入协同信号，同时设计隐私传输模块保护敏感数据。实验证明该方法在隐私保护下提升了推荐准确性。",
-      "core_method": "利用LLM进行多任务反思式偏好提取、邻居偏好检索与多任务提示推荐，并结合隐私传输模块保护数据。",
-      "innovation_points": [
-        "提出多任务反思式偏好提取，细粒度地提取分类、时空偏好并构建知识库",
-        "设计邻居偏好检索模块注入协同信号",
-        "引入隐私传输模块在数据收集阶段保护敏感POI数据"
-      ],
-      "experiment_results": [
-        "在三个真实数据集上的广泛实验表明，MRP-LLM在保护用户隐私的同时提供了更准确的下一POI推荐"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "论文全文缺失，无法评估具体模块的计算开销与可扩展性",
-        "隐私模块的实际保护强度未与现有隐私保护方法进行对比"
-      ],
-      "practical_value": "为隐私敏感的POI推荐场景提供了一种端到端的隐私保护框架，具有实际部署潜力",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "dee313756be89f58",
-      "tags": [
-        "LLM4Rec",
-        "Sequential Rec",
-        "RecSys"
-      ],
-      "llm_score": 78,
-      "llm_score_rationale": "发表在顶级会议RecSys 2026，属于推荐系统核心会议，增加可信度。；论文研究LLM用于生成式POI推荐，涉及偏好提取与协同信号注入，与生成式推荐主题强相关。；作者单位包含浙江大学等知名机构，但无明确互联网公司背景，无线上A/B实验证据。",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 114,
-      "display_affiliations": [
-        "Nanyang Technological University",
-        "Singapore University of Technology and Design",
-        "Zhejiang University",
-        "Chengdu University of Information Technology"
-      ],
-      "published_date": "2026-06-01"
-    },
-    {
       "id": "arxiv:2606.15330",
       "title": "OneBar: An End-to-End Content-Grounded Generative Query Recommendation Framework for E-Commerce Video Feeds",
       "authors": [
@@ -3734,138 +4124,6 @@
         "Wuhan University"
       ],
       "published_date": "2026-02-16"
-    },
-    {
-      "id": "openalex:W4411030024",
-      "title": "LLM4Rec: A Comprehensive Survey on the Integration of Large Language Models in Recommender Systems—Approaches, Applications and Challenges",
-      "authors": [
-        "Sarama Shehmir",
-        "Rasha Kashef"
-      ],
-      "affiliations": [
-        "Toronto Metropolitan University"
-      ],
-      "published": "2025-06-04",
-      "updated": "2026-06-12T08:23:45.883708",
-      "abstract": "The synthesis of large language models (LLMs) and recommender systems has been a game-changer in tailored content onslaught with applications ranging from e-commerce, social media, and education to health care. This survey covers the usage of LLMs for content recommendations (LLM4Rec). LLM4Rec has opened up a whole set of challenges in terms of scale, real-time processing, and data privacy, all of which we touch upon along with potential future directions for research in areas such as multimodal recommendations and reinforcement learning for long-term engagement. This survey combines existing developments and outlines possible future developments, thus becoming a point of reference for other researchers and practitioners in developing the future of LLM-based recommendation systems.",
-      "categories": [
-        "OpenAlex",
-        "RecSys"
-      ],
-      "primary_category": "RecSys",
-      "abs_url": "https://doi.org/10.3390/fi17060252",
-      "pdf_url": "https://www.mdpi.com/1999-5903/17/6/252/pdf?version=1749033633",
-      "doi": "10.3390/fi17060252",
-      "source": "OpenAlex",
-      "status": "conference",
-      "venue": "Future Internet",
-      "venue_key": "RecSys",
-      "generated_summary": "该综述全面探讨了大语言模型（LLMs）在推荐系统中的整合，涵盖从电商到医疗的应用，并分析了规模、实时处理和数据隐私等挑战，同时展望了多模态推荐和强化学习等未来方向。",
-      "core_method": "对LLM4Rec领域的各类方法和应用进行全面分类与综述。",
-      "innovation_points": [
-        "系统梳理了LLM在推荐系统中的集成方式与应用场景",
-        "总结了LLM4Rec面临的可扩展性、实时性和隐私等关键挑战",
-        "指出了多模态推荐和强化学习等未来研究方向"
-      ],
-      "experiment_results": [
-        "论文为综述性文章，未提供具体实验结果"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "仅基于已发表文献进行综述，未提供原创实验验证",
-        "未来方向探讨的实践可行性尚待验证"
-      ],
-      "practical_value": "为研究者提供LLM4Rec领域的全景视图，帮助理解当前进展与未来趋势，对推荐系统实践具有指导意义。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "ad6065e4c9d8b161",
-      "tags": [
-        "LLM4Rec",
-        "RecSys"
-      ],
-      "llm_score": 88,
-      "llm_score_rationale": "全面综述LLM在推荐系统中的应用，涵盖生成式推荐方向；发表于2025年，内容较新，涉及多模态和强化学习等前沿方向；综述类型为研究者提供全面参考，但非顶会且无工业界实证",
-      "preference_signals": [
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 141,
-      "display_affiliations": [
-        "Toronto Metropolitan University"
-      ],
-      "published_date": "2025-06-04"
-    },
-    {
-      "id": "openalex:W4414939390",
-      "title": "Diffusion Recommender Models and the Illusion of Progress: A Concerning Study of Reproducibility and a Conceptual Mismatch",
-      "authors": [
-        "Michael Benigni",
-        "Maurizio Ferrari Dacrema",
-        "Dietmar Jannach"
-      ],
-      "affiliations": [
-        "ReMAP Lab, Politecnico di Milano",
-        "University of Klagenfurt"
-      ],
-      "published": "2026-02-06",
-      "updated": "2026-06-14T07:44:22.658603",
-      "abstract": "Countless new machine learning models are published every year and are reported to significantly advance the state-of-the-art in top-n recommendation. However, earlier reproducibility studies indicate that progress in this area may be quite limited, due to widespread methodological issues, e.g., comparisons with untuned baseline models, creating an illusion of progress . In this work, we examine whether these problems persist in today’s research by attempting to reproduce nine SIGIR 2023 and 2024 recommendation algorithms based on Denoising Diffusion Probabilistic Models, a recent but rapidly expanding research area. Only 25% of reported results are fully reproducible and, since the original papers relied on weak baselines , they do not establish the superiority of diffusion models over state-of-the-art methods. In our controlled evaluations, well-tuned simpler baselines consistently exceed the diffusion-based models’ effectiveness reported in the original papers. Furthermore, we identify key mismatches between the characteristics of diffusion models and those of the traditional top-n recommendation task, raising doubts about their suitability for recommendation. Moreover, in the analyzed papers, the generative capabilities of these models are constrained to a minimum. Overall, our results call for greater scientific rigor and a disruptive change in the research and publication culture in this area.",
-      "categories": [
-        "OpenAlex",
-        "RecSys"
-      ],
-      "primary_category": "RecSys",
-      "abs_url": "https://doi.org/10.1145/3795792",
-      "pdf_url": "https://arxiv.org/pdf/2505.09364",
-      "doi": "10.1145/3795792",
-      "source": "OpenAlex",
-      "status": "conference",
-      "venue": "ACM Transactions on Recommender Systems",
-      "venue_key": "RecSys",
-      "generated_summary": "本文复现了9个基于扩散模型的推荐算法，发现仅25%的结果可复现，且原始论文因基线方法调优不足未能证明扩散模型的优越性。控制实验表明，调优后的简单基线方法效果更优。作者指出扩散模型特性与传统top-n推荐任务存在不匹配，呼吁提升研究严谨性。",
-      "core_method": "通过系统性复现9个SIGIR 2023-2024扩散推荐模型并进行控制实验，评估其可复现性、有效性及与推荐任务的匹配度。",
-      "innovation_points": [
-        "对9个最新扩散推荐模型进行大规模复现研究，揭示普遍可复现性问题",
-        "通过控制实验证明调优的简单基线优于扩散模型，指出原论文依赖弱基线导致进步幻觉",
-        "分析扩散模型与top-n推荐任务的概念性不匹配，质疑其适用性"
-      ],
-      "experiment_results": [
-        "仅25%的扩散模型结果可完全复现",
-        "在控制实验中，调优的简单基线一致优于原论文报告的扩散模型效果",
-        "扩散模型未能建立对现有先进方法的优越性"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "复现仅限于9个SIGIR论文，可能无法完全代表所有扩散推荐模型",
-        "研究主要关注top-n推荐，结论可能不适用于其他推荐场景"
-      ],
-      "practical_value": "警示扩散模型在推荐系统中的进步可能被夸大，强调基线调优和可复现性对实际应用的关键作用。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "adec88514aacc227",
-      "tags": [
-        "RecSys",
-        "Evaluation"
-      ],
-      "llm_score": 75,
-      "llm_score_rationale": "发表于RecSys（ACM Transactions on Recommender Systems），为顶会论文。；作者来自Politecnico di Milano和University of Klagenfurt，其中一作Michael Benigni此前曾在Spotify实习，有一定工业背景。；论文批判扩散模型在推荐中的进展假象，涉及生成式推荐（扩散模型）的适用性讨论，与生成式推荐主题相关。",
-      "preference_signals": [
-        "Top venue",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 118,
-      "display_affiliations": [
-        "ReMAP Lab, Politecnico di Milano",
-        "University of Klagenfurt"
-      ],
-      "published_date": "2026-02-06"
     },
     {
       "id": "arxiv:2606.13533",
@@ -4400,76 +4658,6 @@
         "University of Electronic Science and Technology of China"
       ],
       "published_date": "2024-06-28"
-    },
-    {
-      "id": "openalex:W4386346386",
-      "title": "A survey on multi-behavior sequential recommendation",
-      "authors": [
-        "Xiaoqing Chen",
-        "Zhitao Li",
-        "Weike Pan",
-        "Qiang Yang",
-        "Zhong Ming"
-      ],
-      "affiliations": [
-        "Shenzhen University",
-        "Guangdong Laboratory of Artificial Intelligence and Digital Economy (SZ), Shenzhen, 518123, China",
-        "Peng Cheng Laboratory"
-      ],
-      "published": "2026-01-27",
-      "updated": "2026-06-12T08:23:45.883708",
-      "abstract": "",
-      "categories": [
-        "OpenAlex",
-        "ICML"
-      ],
-      "primary_category": "ICML",
-      "abs_url": "https://doi.org/10.1007/s11432-024-4568-7",
-      "pdf_url": "https://arxiv.org/pdf/2308.15701",
-      "doi": "10.1007/s11432-024-4568-7",
-      "source": "OpenAlex",
-      "status": "conference",
-      "venue": "Science China Information Sciences",
-      "venue_key": "ICML",
-      "generated_summary": "本综述聚焦于多行为序列推荐方法，涵盖其模型、应用与挑战，为研究者提供系统性参考。",
-      "core_method": "综述了多行为序列推荐的现有方法与技术。",
-      "innovation_points": [
-        "对多行为序列推荐领域进行系统性综述",
-        "梳理了多行为建模与序列推荐相结合的方法",
-        "讨论了挑战和未来方向"
-      ],
-      "experiment_results": [
-        "全文未提供具体实验结果。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "仅基于元数据，可能遗漏细节",
-        "缺乏对具体方法的深入对比"
-      ],
-      "practical_value": "为推荐系统研究者提供多行为序列推荐方向的整体视角和参考。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "91c081bdf25bb858",
-      "tags": [
-        "Sequential Rec",
-        "RecSys"
-      ],
-      "llm_score": 65,
-      "llm_score_rationale": "发表于ICML顶会；综述文章，非原创算法，无线上实验证据；主题为多行为序列推荐，与生成式推荐/语义ID关联度一般",
-      "preference_signals": [
-        "Top venue"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 108,
-      "display_affiliations": [
-        "Shenzhen University",
-        "Guangdong Laboratory of Artificial Intelligence and Digital Economy (SZ), Shenzhen, 518123, China",
-        "Peng Cheng Laboratory"
-      ],
-      "published_date": "2026-01-27"
     },
     {
       "id": "arxiv:2606.08480",
