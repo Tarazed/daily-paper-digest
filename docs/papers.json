@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-12T03:44:19Z",
+  "generated_at": "2026-07-13T03:47:20Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
@@ -7,8 +7,8 @@
   },
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 7,
-    "analyzed": 3,
+    "reused": 8,
+    "analyzed": 2,
     "source": "web/public/papers.json"
   },
   "current_limit": 10,
@@ -180,7 +180,7 @@
       ],
       "practical_value": "通过可解释推理提升推荐准确性，适用于需要高可靠性和透明度的推荐场景",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "10f12f6b97d387ec",
       "tags": [
         "LLM4Rec",
@@ -204,6 +204,152 @@
         "Zhejiang University, Hangzhou, China and Shanghai AI Laboratory, Shanghai, China"
       ],
       "published_date": "2026-04-09"
+    },
+    {
+      "id": "dblp:conf/www/ZhuCJYWCZ26",
+      "title": "FeedGuard: Online Critic-Guided Reinforcement Learning with Privacy-Preserving Feedback for Recommendation",
+      "authors": [
+        "Mengying Zhu",
+        "Feiyue Chen",
+        "Lifan Jiang",
+        "Mengyuan Yang",
+        "Yangyang Wu",
+        "Guanjie Cheng",
+        "Xiaolin Zheng"
+      ],
+      "affiliations": [
+        "Zhejiang University",
+        "Ningbo University"
+      ],
+      "published": "2026-04-12",
+      "updated": "2026-06-11T09:08:48.828518",
+      "abstract": "Reinforcement learning-based recommendation systems (RLRS) are increasingly favored for their ability to leverage online interactive feedback, enabling adaptive and personalized decision-making. In this setting, user feedback serves as both a behavioral signal and an optimization target, making it essential for policy learning. However, collecting such feedback, e.g., clicks, ratings, and engagement traces, raises serious privacy concerns, posing critical challenges for value estimation, online adaptation, and privacy protection. In this paper, we propose FeedGuard, a critic-guided reinforcement learning framework with privacy-preserving feedback. FeedGuard enhances trajectory modeling via critic guidance, enables joint online fine-tuning with effective exploration–exploitation tradeoffs, and enforces end-to-end privacy protection across the feedback lifecycle via split federated learning and differential privacy. We further provide a formal analysis of its differential privacy guarantees. Extensive experiments on four public recommendation datasets and the VirtualTB platform show that FeedGuard performs well in both offline and online settings, while maintaining rigorous privacy guarantees with minimal degradation.",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792155",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792155",
+      "doi": "10.1145/3774904.3792155",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出FeedGuard框架，结合评论家指导的强化学习与隐私保护反馈，通过分裂联邦学习和差分隐私实现端到端隐私保护，在推荐系统中平衡隐私、在线适应和推荐性能。",
+      "core_method": "基于评论家指导的强化学习框架，结合分裂联邦学习和差分隐私，实现用户反馈的端到端隐私保护与在线策略优化。",
+      "innovation_points": [
+        "提出评论家指导的轨迹建模方法，增强强化学习在推荐系统中的表示能力",
+        "设计分裂联邦学习和差分隐私结合的端到端隐私保护机制，覆盖反馈全生命周期",
+        "实现在线联合微调，在保护隐私的同时保持探索与利用的平衡"
+      ],
+      "experiment_results": [
+        "在四个公开推荐数据集和VirtualTB平台上验证，FeedGuard在离线和在线设置下均表现良好，且隐私保护严格，性能下降极小"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "摘要提到在VirtualTB平台进行在线实验，表明进行了在线A/B测试（online settings）",
+      "limitations": [
+        "论文未提供全文，无法评估方法在大规模真实场景下的可扩展性",
+        "隐私保护带来的性能下降虽小但未量化具体影响"
+      ],
+      "practical_value": "为推荐系统提供了一种平衡隐私保护和在线学习性能的解决方案，适用于对用户数据隐私敏感的推荐场景。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "3b008c5b3ea0c0a9",
+      "tags": [
+        "LLM4Rec",
+        "Online Eval"
+      ],
+      "llm_score": 65,
+      "llm_score_rationale": "WWW顶会已发表，属于顶级会议论文；；作者单位包含浙江大学，不属于知名互联网公司，无行业合作单位；；研究方向为强化学习推荐和隐私保护，与生成式推荐/语义ID无直接关联，虽提到在线实验但基于公开数据集和模拟平台，非真实线上A/B测试。",
+      "preference_signals": [
+        "Top venue",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 117,
+      "display_affiliations": [
+        "Zhejiang University",
+        "Ningbo University"
+      ],
+      "published_date": "2026-04-12"
+    },
+    {
+      "id": "arxiv:2607.09540",
+      "title": "From Raw IDs to Semantic Planning: How Recommender Systems Utilize Information at Scale",
+      "authors": [
+        "Changhong Jin",
+        "Shiqiu Yang",
+        "Roger Zhe Li",
+        "Yingjie Niu",
+        "Aghiles Salah",
+        "Mete Sertkan",
+        "Zheng Ju",
+        "Xingsheng Guo",
+        "Huifeng Guo",
+        "Ruihai Dong",
+        "Barry Smyth"
+      ],
+      "affiliations": [
+        "University College Dublin",
+        "Huawei Ireland Research Centre"
+      ],
+      "published": "2026-07-10T15:46:12Z",
+      "updated": "2026-07-10T15:46:12Z",
+      "abstract": "The evolution of recommender systems can be explored by asking how they utilize information at scale. Throughout most of the historical period under consideration during the past two decades, industrial systems have relied on raw IDs, which are discrete, globally unique, and semantically opaque identifiers that enable exact lookup, logging, and item-specific memorization at scale. Over time, however, recommender systems have sought to utilize richer sources of information, including item content, context, multimodal signals, and cross-domain structure. This development has led to a new stage in which part of such information is no longer used solely as auxiliary features around item identity, but is increasingly encapsulated in semantic IDs that provide a more structured, model-facing form of identity. We argue that this shift goes beyond the rise of generative recommendation over traditional methods. Indeed, it reflects a broader evolution in how recommender systems utilize information under industrial-scale constraints. This paper looks at the past, present, and future to examine three connected questions: why raw IDs dominated the early development of recommender systems, why semantic information is increasingly being encapsulated in IDs today, and what may come next once recommendations move beyond semantic retrieval. In particular, we introduce semantic planning as a possible future direction in which the system first predicts the semantic target of the next exposure, and only then instantiates that target as a specific item or generated creative. We further argue that such a shift may require changes not only in model design but also in evaluation and in the way recommender systems coordinate the objectives of users, platforms, and providers.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2607.09540v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.09540v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "本文回顾了推荐系统从依赖原始ID到语义ID的演进历程，指出语义ID能更好地封装多模态和跨域信息，并提出了“语义规划”作为未来方向——系统先预测语义目标，再实例化为具体物品。该转变不仅影响模型设计，还需改变评估方式和多方目标协调。",
+      "core_method": "提出语义规划（Semantic Planning）范式，先预测曝光应达成的语义目标，再将其具现化为物品或生成内容，以协调用户、平台和供给方目标。",
+      "innovation_points": [
+        "提出语义规划框架，将推荐从被动匹配转向主动决策，先确定曝光目标再生成物品。",
+        "系统梳理推荐系统信息利用的演进路径：从原始ID到语义ID，再到语义规划。",
+        "强调多利益方目标协调，使推荐系统成为协调用户、平台和供给方需求的中心智能体。"
+      ],
+      "experiment_results": [
+        "论文为立场性/前瞻性文章，未提供具体实验数据或评测结果。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试。",
+      "limitations": [
+        "语义规划仅作为未来方向提出，缺乏具体实现和验证。",
+        "文中未解决语义ID稳定性、目标接地和多方目标可观测性等关键挑战。"
+      ],
+      "practical_value": "为工业级推荐系统提供了从检索匹配向多目标规划演进的思路，有助于构建更协调的多利益方决策系统。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "d871ab200f149188",
+      "tags": [
+        "Semantic ID",
+        "Generative Rec",
+        "Agent4Rec"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "论文明确聚焦生成式推荐与语义ID的演进，并展望语义规划（semantic planning），与生成式推荐/语义ID强相关。；作者包括来自华为/荣耀等互联网公司的研究员，且在摘要中讨论了工业级推荐系统的信息利用。；尽管发表在arXiv预印本，但主题契合度高，且具有前瞻性观点，可能为领域提供重要参考。",
+      "preference_signals": [
+        "Generative Rec / Semantic ID",
+        "Industry company",
+        "Top venue"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 115,
+      "display_affiliations": [
+        "University College Dublin",
+        "Huawei Ireland Research Centre"
+      ],
+      "published_date": "2026-07-10"
     },
     {
       "id": "dblp:conf/www/ZengQLLLCB26",
@@ -270,79 +416,11 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 118,
+      "score": 113,
       "display_affiliations": [
         "Shenzhen University"
       ],
       "published_date": "2026-04-12"
-    },
-    {
-      "id": "dblp:conf/www/LiuZHZZZ26",
-      "title": "Facilitating Generative Retrieval with Logical Denoising for Interpretable Conversational Search",
-      "authors": [
-        "Qichuan Liu",
-        "Chentao Zhang",
-        "Yuxuan Hu",
-        "Chenfeng Zheng",
-        "Qinggang Zhang",
-        "Zhihong Zhang"
-      ],
-      "affiliations": [
-        "Xiamen University",
-        "Hong Kong Polytechnic University"
-      ],
-      "published": "2026-04-09",
-      "updated": "2026-06-11T09:08:48.828518",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792544",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792544",
-      "doi": "10.1145/3774904.3792544",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "该论文提出了一种基于逻辑去噪的生成式检索方法，旨在提升可解释的对话式搜索性能。",
-      "core_method": "将逻辑去噪用于生成式检索，以增强对话搜索的可解释性。",
-      "innovation_points": [
-        "引入逻辑去噪机制优化生成式检索的噪声处理",
-        "提升对话式搜索的可解释性"
-      ],
-      "experiment_results": [
-        "论文全文未提供实验结果或评测结论"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "未提供详细实验验证",
-        "可解释性的实际效果缺乏量化评估"
-      ],
-      "practical_value": "为对话式搜索系统提供可解释的生成式检索方案，可能提升用户信任和系统透明度。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "7d359eddecec7cd7",
-      "tags": [
-        "Generative Retrieval",
-        "Conversational Rec"
-      ],
-      "llm_score": 75,
-      "llm_score_rationale": "发表在顶级会议 WWW，符合顶会权重；标题明确包含生成式检索（Generative Retrieval），与目标强相关；作者单位非知名互联网公司，无线上实验证据",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 112,
-      "display_affiliations": [
-        "Xiamen University",
-        "Hong Kong Polytechnic University"
-      ],
-      "published_date": "2026-04-09"
     },
     {
       "id": "dblp:conf/www/LiuFYWGH26",
@@ -411,6 +489,148 @@
       "published_date": "2026"
     },
     {
+      "id": "dblp:conf/www/TangLPLK26",
+      "title": "Verifiable Federated Representation Learning for Cross-domain Sequential Recommendation",
+      "authors": [
+        "Tao Tang",
+        "Botao Liu",
+        "Ciyuan Peng",
+        "Ivan Lee",
+        "Xiangjie Kong"
+      ],
+      "affiliations": [
+        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
+        "Zhejiang University of Technology",
+        "Federation University",
+        "Adelaide University, Adelaide, Australia",
+        "The University of Adelaide"
+      ],
+      "published": "2026-04-09",
+      "updated": "2026-06-11T09:08:48.828518",
+      "abstract": "Cross-domain sequential recommendation (CDSR) plays a critical role in decentralized Web applications by leveraging user behavior sequences across multiple platforms to alleviate data sparsity and capture dynamic preferences. However, existing federated CDSR frameworks face two fundamental challenges: (i) heterogeneous sequential interactions that encode domain-exclusive semantics and cannot be directly shared under privacy constraints, and (ii) strong trust assumptions that both servers and clients behave honestly, leaving federated training vulnerable to misreporting, malicious updates, and negative transfer. In this paper, we propose VeriFRL, a verifiable federated representation learning framework for cross-domain sequential recommendation. VeriFRL adopts a dual-module design that integrates representation learning with verifiable training: an attention-based variational encoder disentangles domain-shared and domain-exclusive representations to support transferable and privacy-preserving knowledge sharing, while a contribution evaluation module quantifies client-level and feature-level influences to enable verifiability, interpretability, and negative transfer detection. Extensive experiments on real-world multi-domain datasets demonstrate that VeriFRL achieves competitive or superior recommendation performance over state-of-the-art federated CDSR methods, while providing fine-grained insights into cross-domain knowledge transfer dynamics.",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792533",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792533",
+      "doi": "10.1145/3774904.3792533",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "本文提出VeriFRL，一个可验证的联邦表示学习框架，用于跨域序列推荐。它通过变分编码器解耦域共享与域独占表示，并引入贡献评估模块来验证客户端与特征的重要性，从而在保护隐私的同时实现知识迁移与负迁移检测。",
+      "core_method": "基于注意力变分编码器的可验证联邦表示学习框架，包含表示解耦与贡献评估双模块设计。",
+      "innovation_points": [
+        "提出注意力变分编码器解耦域共享与域独占表示，支持可迁移且隐私保护的知识共享",
+        "设计贡献评估模块量化客户端和特征影响力，实现可验证性、可解释性与负迁移检测",
+        "在联邦跨域序列推荐中整合表示学习与可验证训练，增强模型鲁棒性"
+      ],
+      "experiment_results": [
+        "在真实多域数据集上，VeriFRL相比最先进的联邦CDSR方法取得了有竞争力或更优的推荐性能",
+        "提供了跨域知识迁移动态的细粒度洞察"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "元数据未提供具体的局限性说明，但联邦学习场景下通信开销与隐私保护强度可能影响实际部署效率",
+        "贡献评估模块的可扩展性在大规模客户端环境下未经验证"
+      ],
+      "practical_value": "为去中心化Web应用中的跨域序列推荐提供了一种隐私保护且可验证的联邦学习方案，有助于在实际平台中安全地利用多域用户行为数据。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "afc05bc934e6b57e",
+      "tags": [
+        "Sequential Rec"
+      ],
+      "llm_score": 70,
+      "llm_score_rationale": "发表在顶级会议WWW，学术可信度高；涉及跨域序列推荐和联邦学习，与工业推荐系统相关，但未提及生成式推荐或语义ID；作者单位包括知名大学但无明确互联网公司（如Google、Meta等），且论文未提及在线A/B测试或线上实验证据",
+      "preference_signals": [
+        "Top venue",
+        "Industry relevance (partially, via cross-domain recommendation and federated learning)"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 103,
+      "display_affiliations": [
+        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
+        "Zhejiang University of Technology",
+        "Federation University",
+        "Adelaide University, Adelaide, Australia",
+        "The University of Adelaide"
+      ],
+      "published_date": "2026-04-09"
+    },
+    {
+      "id": "dblp:conf/www/LiuZHZZZ26",
+      "title": "Facilitating Generative Retrieval with Logical Denoising for Interpretable Conversational Search",
+      "authors": [
+        "Qichuan Liu",
+        "Chentao Zhang",
+        "Yuxuan Hu",
+        "Chenfeng Zheng",
+        "Qinggang Zhang",
+        "Zhihong Zhang"
+      ],
+      "affiliations": [
+        "Xiamen University",
+        "Hong Kong Polytechnic University"
+      ],
+      "published": "2026-04-09",
+      "updated": "2026-06-11T09:08:48.828518",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792544",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792544",
+      "doi": "10.1145/3774904.3792544",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "该论文提出了一种基于逻辑去噪的生成式检索方法，旨在提升可解释的对话式搜索性能。",
+      "core_method": "将逻辑去噪用于生成式检索，以增强对话搜索的可解释性。",
+      "innovation_points": [
+        "引入逻辑去噪机制优化生成式检索的噪声处理",
+        "提升对话式搜索的可解释性"
+      ],
+      "experiment_results": [
+        "论文全文未提供实验结果或评测结论"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未提供详细实验验证",
+        "可解释性的实际效果缺乏量化评估"
+      ],
+      "practical_value": "为对话式搜索系统提供可解释的生成式检索方案，可能提升用户信任和系统透明度。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "7d359eddecec7cd7",
+      "tags": [
+        "Generative Retrieval",
+        "Conversational Rec"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "发表在顶级会议 WWW，符合顶会权重；标题明确包含生成式检索（Generative Retrieval），与目标强相关；作者单位非知名互联网公司，无线上实验证据",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 102,
+      "display_affiliations": [
+        "Xiamen University",
+        "Hong Kong Polytechnic University"
+      ],
+      "published_date": "2026-04-09"
+    },
+    {
       "id": "dblp:conf/www/QiuXHPW26",
       "title": "Meta-Learning Driven Few-Shot Knowledge Transfer with Dual-Stage Adaptive Data Replay for Cross-Domain Recommendation",
       "authors": [
@@ -472,7 +692,7 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 111,
+      "score": 99,
       "display_affiliations": [
         "Beijing Jiaotong University",
         "University of Chinese Academy of Sciences",
@@ -481,6 +701,139 @@
         "Northwestern Polytechnical University"
       ],
       "published_date": "2026-04-12"
+    },
+    {
+      "id": "arxiv:2607.08202",
+      "title": "PIT-SUN: A Deployable Empirical Marginal Transform Framework with Expectation-Consistent Recovery for Regression in Recommender Systems",
+      "authors": [
+        "Mingyu Zhao",
+        "Zhaohan Li",
+        "Zhenxiong Miao",
+        "Xu Zhang",
+        "Dewei Leng",
+        "Yanan Niu",
+        "Kun Gai"
+      ],
+      "affiliations": [
+        "Kuaishou Technology"
+      ],
+      "published": "2026-07-09T08:00:06Z",
+      "updated": "2026-07-09T08:00:06Z",
+      "abstract": "Estimating original-space conditional expectations is central to value-driven recommender systems, including dwell time, GMV, and LTV forecasting. Standard MSE is expectation-consistent in principle, but its gradients become unstable on heavy-tailed, zero-inflated, and multimodal targets, causing mean collapse and tail shrinkage. Target transformation alleviates this scale conflict, yet any useful nonlinear marginal transform loses expectation consistency under direct inversion. This is not an implementation oversight: a direct inverse-transform estimator is universally expectation-consistent only when the inverse transform is affine, which cannot simultaneously provide bounded tail compression. Existing conditionally linear recovery methods restore expectation consistency, but still leave open which coordinate, inverse lookup, recovery base, and deployment monitor should be selected for sparse complex marginals. We propose \\textbf{P}robability-\\textbf{I}ntegral-\\textbf{TranS}formed \\textbf{Un}biased recovery (\\textbf{PIT-SUN}), a deployable empirical marginal recovery framework. PIT-SUN uses one empirical marginal table to define a bounded normal-score coordinate, its inverse-quantile lookup, a variance-controlled recovery base, and drift monitoring, then applies multiplicative SUN recovery to estimate the original-space expectation instead of directly inverting transformed predictions. Experiments on synthetic distributions, public benchmarks, large-scale industrial datasets, and online deployment show robust improvements in point accuracy, calibration, and ranking quality with lightweight deployment overhead.",
+      "categories": [
+        "cs.LG"
+      ],
+      "primary_category": "cs.LG",
+      "abs_url": "http://arxiv.org/abs/2607.08202v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.08202v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "PIT-SUN提出一种可部署的经验边际变换与期望一致恢复框架，通过一条经验CDF表统一定义正态得分坐标、逆分位数查找、方差控制的恢复基和漂移监控，解决推荐系统中重尾、零膨胀等多峰目标回归时的MSE梯度不稳定与逆变换偏差问题。",
+      "core_method": "使用经验边际概率积分变换（PIT）得到有界正态得分坐标，结合基于逆分位数的稳定恢复基和乘性SUN恢复，实现原始空间条件期望的无偏估计。",
+      "innovation_points": [
+        "提出经验边际恢复闭包设计：单条CDF表同时定义坐标、逆查找、恢复基和监控，无需手动选择变换",
+        "通过PIT坐标的有界性控制和逆分位数恢复基的方差稳定，解决重尾/稀疏目标下的数值不稳定",
+        "在工业级在线A/B测试中验证，涵盖观看时长、GMV等复杂边际，证明效果与轻量级部署"
+      ],
+      "experiment_results": [
+        "在合成数据、公开基准（CIKM16, DTMart）和两个工业数据集上，PIT-SUN在点误差、校准和排序质量上稳健优于MSE、对数变换及手动变换恢复基线",
+        "在线A/B测试中，基于PIT-SUN的激励模型使观看时长、视频观看数和深度互动用户显著提升，核心商业指标保持稳定",
+        "PIT-SUN相比现有基线缩短训练时间并降低推理延迟，适合高QPS部署"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文明确报告了在在线激励分配系统中进行了7天A/B测试，使用用户级bootstrap检验，结果显示观看时长等指标有统计显著提升，并描述了随机分桶、固定生产控制等实验设计。",
+      "limitations": [
+        "仅将PIT-SUN用于激励分配场景，未在推荐系统其他常见回归任务（如CTR、CVR）中验证",
+        "在线测试的商业价值（如广告收入）提升未达到统计显著，仅为方向性积极信号"
+      ],
+      "practical_value": "为推荐系统中重尾、零膨胀等复杂连续目标的深度回归提供了一套即插即用的经验边际恢复方案，已证明在线可行且开销低。",
+      "analysis_basis": "full_text",
+      "analysis_status": "cached",
+      "analysis_signature": "36966f33624584ae",
+      "tags": [
+        "LLM4Rec",
+        "Online Eval"
+      ],
+      "llm_score": 80,
+      "llm_score_rationale": "明确提到在线部署和线上实验（online deployment），符合线上A/B信号；作者单位未知名但工作涉及工业推荐系统的大规模数据集，且框架轻量部署，具有较强的工业实践参考价值；虽然与生成式推荐弱相关，但作为工业推荐中回归任务的实用方法，对读者有一定参考意义",
+      "preference_signals": [
+        "Industry company",
+        "Online A/B"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 89,
+      "display_affiliations": [
+        "Kuaishou Technology"
+      ],
+      "published_date": "2026-07-09"
+    },
+    {
+      "id": "arxiv:2607.08365",
+      "title": "DaV-Gen: End-to-End Generative Retrieval via Draft-and-Verify",
+      "authors": [
+        "Meng Zhao",
+        "Chunmei Liu",
+        "Qinyong Wang"
+      ],
+      "affiliations": [],
+      "published": "2026-07-09T11:22:50Z",
+      "updated": "2026-07-09T11:22:50Z",
+      "abstract": "Mainstream industrial information retrieval systems (e.g., search and recommendation) are usually built upon Multi-Stage Cascade Architectures (MCAs), which balance effectiveness and efficiency through a coarse-to-fine ``retrieval-ranking'' pipeline. However, the optimization objectives across different stages are substantially inconsistent, propagating or even amplifying the early-stage errors that ultimately degrade the quality of final results. While emerging end-to-end generative models offer a potential solution by unifying the pipeline, their online serving performance is severely hindered by the auto-regressive process inherited from the standard decoder-only structure. To bridge this gap, we introduce \\textbf{DaV-Gen}, a novel unified solution designed to fundamentally refactor the paradigm for both search and recommendation via a ``Draft-and-Verify'' mechanism. Inspired by the process used by speculative decoding, our framework redesigns the generation task into two synergistic operations within a single model. During training, the model is concurrently optimized for both candidate drafting and fine-grained verification. This is achieved by a composite loss function that jointly trains the model on two distinct but related objectives: 1) a contrastive loss that structures the embedding space for efficient drafting, and 2) a fusion loss that combines generative likelihood with vector similarity to produce a superior verification score. This integrated training strategy equips the model with dual capabilities. At inference time, it first performs highly efficient vector-based drafting to generate a candidate set, and then verifies these candidates using the more powerful fused scoring function, thereby achieving both the speed of sparse drafting and the precision of advanced generative models within a unified, end-to-end architecture.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2607.08365v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.08365v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "DaV-Gen提出了一种端到端的生成式检索框架，通过“草稿-验证”机制将传统多阶段级联架构统一为单一模型。训练时联合优化对比损失和融合损失，使模型同时具备高效的向量化草稿生成和精确的生成式验证能力。推理时采用并行流水线，先通过ANN检索生成候选集，再批量验证以突破自回归解码的延迟瓶颈。",
+      "core_method": "融合对比学习与生成式训练的草稿-验证双阶段统一检索框架",
+      "innovation_points": [
+        "提出草稿-验证范式，将生成式检索从顺序生成重构为并行验证，突破自回归模型延迟瓶颈",
+        "设计混合稀疏稠密表示，融合RQ-VAE编码的稠密向量与语义ID，兼顾检索效率与语义精度",
+        "构建统一优化框架，通过对比损失和融合损失端到端协同训练，消除级联架构的目标不一致问题"
+      ],
+      "experiment_results": [
+        "论文全文未提供实验数据集、对比方法及具体评测指标等实验结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "论文未报告任何实验数据，方法的有效性和效率均缺乏实证验证",
+        "提出的混合表示和并行推理在实际工业系统中的可扩展性和资源消耗未讨论"
+      ],
+      "practical_value": "为搜索和推荐系统提供了统一且低延迟的端到端架构，有望替代传统级联方案",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "ca90471c79fb5e7d",
+      "tags": [
+        "Generative Rec",
+        "Generative Retrieval",
+        "Semantic ID",
+        "Vector Quantization"
+      ],
+      "llm_score": 65,
+      "llm_score_rationale": "论文涉及端到端生成式检索，属于生成式推荐/语义ID相关方向，但不在顶级会议发表。；作者单位未知，无知名互联网公司背书，无线上A/B实验证据。；仅为预印本，缺乏工业实践验证。",
+      "preference_signals": [
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 81,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026-07-09"
     },
     {
       "id": "arxiv:2607.04433",
@@ -559,220 +912,6 @@
         "University of Science and Technology of China"
       ],
       "published_date": "2026-07-05"
-    },
-    {
-      "id": "arxiv:2607.08202",
-      "title": "PIT-SUN: A Deployable Empirical Marginal Transform Framework with Expectation-Consistent Recovery for Regression in Recommender Systems",
-      "authors": [
-        "Mingyu Zhao",
-        "Zhaohan Li",
-        "Zhenxiong Miao",
-        "Xu Zhang",
-        "Dewei Leng",
-        "Yanan Niu",
-        "Kun Gai"
-      ],
-      "affiliations": [
-        "Kuaishou Technology"
-      ],
-      "published": "2026-07-09T08:00:06Z",
-      "updated": "2026-07-09T08:00:06Z",
-      "abstract": "Estimating original-space conditional expectations is central to value-driven recommender systems, including dwell time, GMV, and LTV forecasting. Standard MSE is expectation-consistent in principle, but its gradients become unstable on heavy-tailed, zero-inflated, and multimodal targets, causing mean collapse and tail shrinkage. Target transformation alleviates this scale conflict, yet any useful nonlinear marginal transform loses expectation consistency under direct inversion. This is not an implementation oversight: a direct inverse-transform estimator is universally expectation-consistent only when the inverse transform is affine, which cannot simultaneously provide bounded tail compression. Existing conditionally linear recovery methods restore expectation consistency, but still leave open which coordinate, inverse lookup, recovery base, and deployment monitor should be selected for sparse complex marginals. We propose \\textbf{P}robability-\\textbf{I}ntegral-\\textbf{TranS}formed \\textbf{Un}biased recovery (\\textbf{PIT-SUN}), a deployable empirical marginal recovery framework. PIT-SUN uses one empirical marginal table to define a bounded normal-score coordinate, its inverse-quantile lookup, a variance-controlled recovery base, and drift monitoring, then applies multiplicative SUN recovery to estimate the original-space expectation instead of directly inverting transformed predictions. Experiments on synthetic distributions, public benchmarks, large-scale industrial datasets, and online deployment show robust improvements in point accuracy, calibration, and ranking quality with lightweight deployment overhead.",
-      "categories": [
-        "cs.LG"
-      ],
-      "primary_category": "cs.LG",
-      "abs_url": "http://arxiv.org/abs/2607.08202v1",
-      "pdf_url": "https://arxiv.org/pdf/2607.08202v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "PIT-SUN提出一种可部署的经验边际变换与期望一致恢复框架，通过一条经验CDF表统一定义正态得分坐标、逆分位数查找、方差控制的恢复基和漂移监控，解决推荐系统中重尾、零膨胀等多峰目标回归时的MSE梯度不稳定与逆变换偏差问题。",
-      "core_method": "使用经验边际概率积分变换（PIT）得到有界正态得分坐标，结合基于逆分位数的稳定恢复基和乘性SUN恢复，实现原始空间条件期望的无偏估计。",
-      "innovation_points": [
-        "提出经验边际恢复闭包设计：单条CDF表同时定义坐标、逆查找、恢复基和监控，无需手动选择变换",
-        "通过PIT坐标的有界性控制和逆分位数恢复基的方差稳定，解决重尾/稀疏目标下的数值不稳定",
-        "在工业级在线A/B测试中验证，涵盖观看时长、GMV等复杂边际，证明效果与轻量级部署"
-      ],
-      "experiment_results": [
-        "在合成数据、公开基准（CIKM16, DTMart）和两个工业数据集上，PIT-SUN在点误差、校准和排序质量上稳健优于MSE、对数变换及手动变换恢复基线",
-        "在线A/B测试中，基于PIT-SUN的激励模型使观看时长、视频观看数和深度互动用户显著提升，核心商业指标保持稳定",
-        "PIT-SUN相比现有基线缩短训练时间并降低推理延迟，适合高QPS部署"
-      ],
-      "ab_test": "yes",
-      "ab_test_evidence": "论文明确报告了在在线激励分配系统中进行了7天A/B测试，使用用户级bootstrap检验，结果显示观看时长等指标有统计显著提升，并描述了随机分桶、固定生产控制等实验设计。",
-      "limitations": [
-        "仅将PIT-SUN用于激励分配场景，未在推荐系统其他常见回归任务（如CTR、CVR）中验证",
-        "在线测试的商业价值（如广告收入）提升未达到统计显著，仅为方向性积极信号"
-      ],
-      "practical_value": "为推荐系统中重尾、零膨胀等复杂连续目标的深度回归提供了一套即插即用的经验边际恢复方案，已证明在线可行且开销低。",
-      "analysis_basis": "full_text",
-      "analysis_status": "complete",
-      "analysis_signature": "36966f33624584ae",
-      "tags": [
-        "LLM4Rec",
-        "Online Eval"
-      ],
-      "llm_score": 80,
-      "llm_score_rationale": "明确提到在线部署和线上实验（online deployment），符合线上A/B信号；作者单位未知名但工作涉及工业推荐系统的大规模数据集，且框架轻量部署，具有较强的工业实践参考价值；虽然与生成式推荐弱相关，但作为工业推荐中回归任务的实用方法，对读者有一定参考意义",
-      "preference_signals": [
-        "Industry company",
-        "Online A/B"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 84,
-      "display_affiliations": [
-        "Kuaishou Technology"
-      ],
-      "published_date": "2026-07-09"
-    },
-    {
-      "id": "dblp:conf/www/ZhuCJYWCZ26",
-      "title": "FeedGuard: Online Critic-Guided Reinforcement Learning with Privacy-Preserving Feedback for Recommendation",
-      "authors": [
-        "Mengying Zhu",
-        "Feiyue Chen",
-        "Lifan Jiang",
-        "Mengyuan Yang",
-        "Yangyang Wu",
-        "Guanjie Cheng",
-        "Xiaolin Zheng"
-      ],
-      "affiliations": [
-        "Zhejiang University",
-        "Ningbo University"
-      ],
-      "published": "2026-04-12",
-      "updated": "2026-06-11T09:08:48.828518",
-      "abstract": "Reinforcement learning-based recommendation systems (RLRS) are increasingly favored for their ability to leverage online interactive feedback, enabling adaptive and personalized decision-making. In this setting, user feedback serves as both a behavioral signal and an optimization target, making it essential for policy learning. However, collecting such feedback, e.g., clicks, ratings, and engagement traces, raises serious privacy concerns, posing critical challenges for value estimation, online adaptation, and privacy protection. In this paper, we propose FeedGuard, a critic-guided reinforcement learning framework with privacy-preserving feedback. FeedGuard enhances trajectory modeling via critic guidance, enables joint online fine-tuning with effective exploration–exploitation tradeoffs, and enforces end-to-end privacy protection across the feedback lifecycle via split federated learning and differential privacy. We further provide a formal analysis of its differential privacy guarantees. Extensive experiments on four public recommendation datasets and the VirtualTB platform show that FeedGuard performs well in both offline and online settings, while maintaining rigorous privacy guarantees with minimal degradation.",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792155",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792155",
-      "doi": "10.1145/3774904.3792155",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "提出FeedGuard框架，结合评论家指导的强化学习与隐私保护反馈，通过分裂联邦学习和差分隐私实现端到端隐私保护，在推荐系统中平衡隐私、在线适应和推荐性能。",
-      "core_method": "基于评论家指导的强化学习框架，结合分裂联邦学习和差分隐私，实现用户反馈的端到端隐私保护与在线策略优化。",
-      "innovation_points": [
-        "提出评论家指导的轨迹建模方法，增强强化学习在推荐系统中的表示能力",
-        "设计分裂联邦学习和差分隐私结合的端到端隐私保护机制，覆盖反馈全生命周期",
-        "实现在线联合微调，在保护隐私的同时保持探索与利用的平衡"
-      ],
-      "experiment_results": [
-        "在四个公开推荐数据集和VirtualTB平台上验证，FeedGuard在离线和在线设置下均表现良好，且隐私保护严格，性能下降极小"
-      ],
-      "ab_test": "yes",
-      "ab_test_evidence": "摘要提到在VirtualTB平台进行在线实验，表明进行了在线A/B测试（online settings）",
-      "limitations": [
-        "论文未提供全文，无法评估方法在大规模真实场景下的可扩展性",
-        "隐私保护带来的性能下降虽小但未量化具体影响"
-      ],
-      "practical_value": "为推荐系统提供了一种平衡隐私保护和在线学习性能的解决方案，适用于对用户数据隐私敏感的推荐场景。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "3b008c5b3ea0c0a9",
-      "tags": [
-        "LLM4Rec",
-        "Online Eval"
-      ],
-      "llm_score": 65,
-      "llm_score_rationale": "WWW顶会已发表，属于顶级会议论文；；作者单位包含浙江大学，不属于知名互联网公司，无行业合作单位；；研究方向为强化学习推荐和隐私保护，与生成式推荐/语义ID无直接关联，虽提到在线实验但基于公开数据集和模拟平台，非真实线上A/B测试。",
-      "preference_signals": [
-        "Top venue",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 84,
-      "display_affiliations": [
-        "Zhejiang University",
-        "Ningbo University"
-      ],
-      "published_date": "2026-04-12"
-    },
-    {
-      "id": "dblp:conf/www/TangLPLK26",
-      "title": "Verifiable Federated Representation Learning for Cross-domain Sequential Recommendation",
-      "authors": [
-        "Tao Tang",
-        "Botao Liu",
-        "Ciyuan Peng",
-        "Ivan Lee",
-        "Xiangjie Kong"
-      ],
-      "affiliations": [
-        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
-        "Zhejiang University of Technology",
-        "Federation University",
-        "Adelaide University, Adelaide, Australia",
-        "The University of Adelaide"
-      ],
-      "published": "2026-04-09",
-      "updated": "2026-06-11T09:08:48.828518",
-      "abstract": "Cross-domain sequential recommendation (CDSR) plays a critical role in decentralized Web applications by leveraging user behavior sequences across multiple platforms to alleviate data sparsity and capture dynamic preferences. However, existing federated CDSR frameworks face two fundamental challenges: (i) heterogeneous sequential interactions that encode domain-exclusive semantics and cannot be directly shared under privacy constraints, and (ii) strong trust assumptions that both servers and clients behave honestly, leaving federated training vulnerable to misreporting, malicious updates, and negative transfer. In this paper, we propose VeriFRL, a verifiable federated representation learning framework for cross-domain sequential recommendation. VeriFRL adopts a dual-module design that integrates representation learning with verifiable training: an attention-based variational encoder disentangles domain-shared and domain-exclusive representations to support transferable and privacy-preserving knowledge sharing, while a contribution evaluation module quantifies client-level and feature-level influences to enable verifiability, interpretability, and negative transfer detection. Extensive experiments on real-world multi-domain datasets demonstrate that VeriFRL achieves competitive or superior recommendation performance over state-of-the-art federated CDSR methods, while providing fine-grained insights into cross-domain knowledge transfer dynamics.",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792533",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792533",
-      "doi": "10.1145/3774904.3792533",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "本文提出VeriFRL，一个可验证的联邦表示学习框架，用于跨域序列推荐。它通过变分编码器解耦域共享与域独占表示，并引入贡献评估模块来验证客户端与特征的重要性，从而在保护隐私的同时实现知识迁移与负迁移检测。",
-      "core_method": "基于注意力变分编码器的可验证联邦表示学习框架，包含表示解耦与贡献评估双模块设计。",
-      "innovation_points": [
-        "提出注意力变分编码器解耦域共享与域独占表示，支持可迁移且隐私保护的知识共享",
-        "设计贡献评估模块量化客户端和特征影响力，实现可验证性、可解释性与负迁移检测",
-        "在联邦跨域序列推荐中整合表示学习与可验证训练，增强模型鲁棒性"
-      ],
-      "experiment_results": [
-        "在真实多域数据集上，VeriFRL相比最先进的联邦CDSR方法取得了有竞争力或更优的推荐性能",
-        "提供了跨域知识迁移动态的细粒度洞察"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "元数据未提供具体的局限性说明，但联邦学习场景下通信开销与隐私保护强度可能影响实际部署效率",
-        "贡献评估模块的可扩展性在大规模客户端环境下未经验证"
-      ],
-      "practical_value": "为去中心化Web应用中的跨域序列推荐提供了一种隐私保护且可验证的联邦学习方案，有助于在实际平台中安全地利用多域用户行为数据。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "afc05bc934e6b57e",
-      "tags": [
-        "Sequential Rec"
-      ],
-      "llm_score": 70,
-      "llm_score_rationale": "发表在顶级会议WWW，学术可信度高；涉及跨域序列推荐和联邦学习，与工业推荐系统相关，但未提及生成式推荐或语义ID；作者单位包括知名大学但无明确互联网公司（如Google、Meta等），且论文未提及在线A/B测试或线上实验证据",
-      "preference_signals": [
-        "Top venue",
-        "Industry relevance (partially, via cross-domain recommendation and federated learning)"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 72,
-      "display_affiliations": [
-        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
-        "Zhejiang University of Technology",
-        "Federation University",
-        "Adelaide University, Adelaide, Australia",
-        "The University of Adelaide"
-      ],
-      "published_date": "2026-04-09"
     },
     {
       "id": "dblp:conf/www/LiJLWLYZZX26",
