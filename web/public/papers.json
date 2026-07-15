@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-14T03:22:31Z",
+  "generated_at": "2026-07-15T03:21:30Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
@@ -7,8 +7,8 @@
   },
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 5,
-    "analyzed": 5,
+    "reused": 7,
+    "analyzed": 3,
     "source": "web/public/papers.json"
   },
   "current_limit": 10,
@@ -172,7 +172,7 @@
       ],
       "practical_value": "为生成式推荐系统提供端到端的语义ID表示，有望提升效率和效果。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "59062200b348a2bd",
       "tags": [
         "Generative Rec",
@@ -194,6 +194,146 @@
         "Unknown affiliation"
       ],
       "published_date": "2026"
+    },
+    {
+      "id": "dblp:conf/sigir/BaiLZWYRRF26",
+      "title": "Bi-Level Optimization for Generative Recommendation: Bridging Tokenization and Generation",
+      "authors": [
+        "Yimeng Bai",
+        "Chang Liu",
+        "Yang Zhang",
+        "Dingxian Wang",
+        "Frank Yang",
+        "Andrew Rabinovich",
+        "Wenge Rong",
+        "Fuli Feng"
+      ],
+      "affiliations": [],
+      "published": "2025-10-24",
+      "updated": "2026-07-03T06:15:21.484131",
+      "abstract": "Generative recommendation is emerging as a transformative paradigm by directly generating recommended items, rather than relying on matching. Building such a system typically involves two key components: (1) optimizing the tokenizer to derive suitable item identifiers, and (2) training the recommender based on those identifiers. Existing approaches often treat these components separately--either sequentially or in alternation--overlooking their interdependence. This separation can lead to misalignment: the tokenizer is trained without direct guidance from the recommendation objective, potentially yielding suboptimal identifiers that degrade recommendation performance. To address this, we propose BLOGER, a Bi-Level Optimization for GEnerative Recommendation framework, which explicitly models the interdependence between the tokenizer and the recommender in a unified optimization process. The lower level trains the recommender using tokenized sequences, while the upper level optimizes the tokenizer based on both the tokenization loss and recommendation loss. We adopt a meta-learning approach to solve this bi-level optimization efficiently, and introduce gradient surgery to mitigate gradient conflicts in the upper-level updates, thereby ensuring that item identifiers are both informative and recommendation-aligned. Extensive experiments on multiple real-world datasets demonstrate that BLOGER consistently outperforms state-of-the-art generative recommendation methods while maintaining practical efficiency with no significant additional computational overhead, effectively bridging the gap between item tokenization and autoregressive generation. We release our code at https://github.com/Ten-Mao/BLOGER.",
+      "categories": [
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3805712.3809632",
+      "pdf_url": "https://arxiv.org/pdf/2510.21242",
+      "doi": "10.1145/3805712.3809632",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "本文提出BLOGER框架，将物品分词器与生成推荐器的训练统一为双层优化问题，下层训练推荐器，上层基于分词与推荐损失优化分词器，并引入元学习与梯度手术缓解冲突，在多个真实数据集上取得最优性能。",
+      "core_method": "通过双层优化框架联合训练物品分词器和生成推荐器，采用元学习求解并引入梯度手术减轻上层梯度冲突。",
+      "innovation_points": [
+        "首次将物品分词与生成推荐建模为双层优化问题，显式建模二者相互依赖关系",
+        "采用元学习方法高效求解双层优化，并提出梯度手术技术缓解上层更新中的梯度冲突"
+      ],
+      "experiment_results": [
+        "在多个真实数据集上，BLOGER一致优于现有的生成式推荐方法，且没有明显的额外计算开销。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "文中未报告线上A/B测试结果，实际生产环境中的效果待验证",
+        "梯度手术策略的有效性可能受超参数影响，文中未详细讨论其敏感性"
+      ],
+      "practical_value": "为生成式推荐系统中物品分词与推荐模型的协同优化提供了一种端到端的解决方案，有助于提升推荐性能。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "2881c321f08f5b2c",
+      "tags": [
+        "Generative Rec",
+        "Item Tokenization"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "发表在 SIGIR，属于推荐系统顶会；研究生成式推荐中的 tokenization 与生成联合优化，与语义 ID 强相关；未见明确线上 A/B 实验或工业界单位",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 134,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2025-10-24"
+    },
+    {
+      "id": "arxiv:2607.09540",
+      "title": "From Raw IDs to Semantic Planning: How Recommender Systems Utilize Information at Scale",
+      "authors": [
+        "Changhong Jin",
+        "Shiqiu Yang",
+        "Roger Zhe Li",
+        "Yingjie Niu",
+        "Aghiles Salah",
+        "Mete Sertkan",
+        "Zheng Ju",
+        "Xingsheng Guo",
+        "Huifeng Guo",
+        "Ruihai Dong",
+        "Barry Smyth"
+      ],
+      "affiliations": [
+        "University College Dublin",
+        "Huawei Ireland Research Centre"
+      ],
+      "published": "2026-07-10T15:46:12Z",
+      "updated": "2026-07-13T10:35:40Z",
+      "abstract": "The evolution of recommender systems can be explored by asking how they utilize information at scale. Throughout most of the historical period under consideration during the past two decades, industrial systems have relied on raw IDs, which are discrete, globally unique, and semantically opaque identifiers that enable exact lookup, logging, and item-specific memorization at scale. Over time, however, recommender systems have sought to utilize richer sources of information, including item content, context, multimodal signals, and cross-domain structure. This development has led to a new stage in which part of such information is no longer used solely as auxiliary features around item identity, but is increasingly encapsulated in semantic IDs that provide a more structured, model-facing form of identity. We argue that this shift goes beyond the rise of generative recommendation over traditional methods. Indeed, it reflects a broader evolution in how recommender systems utilize information under industrial-scale constraints. This paper looks at the past, present, and future to examine three connected questions: why raw IDs dominated the early development of recommender systems, why semantic information is increasingly being encapsulated in IDs today, and what may come next once recommendations move beyond semantic retrieval. In particular, we introduce semantic planning as a possible future direction in which the system first predicts the semantic target of the next exposure, and only then instantiates that target as a specific item or generated creative. We further argue that such a shift may require changes not only in model design but also in evaluation and in the way recommender systems coordinate the objectives of users, platforms, and providers.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2607.09540v2",
+      "pdf_url": "https://arxiv.org/pdf/2607.09540v2",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "本文从信息利用的角度回顾推荐系统从依赖原始ID到引入语义ID的演变，并提出语义规划作为未来方向，即先预测语义目标再实例化具体推荐项，以适应多利益相关方决策需求。",
+      "core_method": "通过原始ID到语义ID的演变分析，提出语义规划框架，将推荐决策分解为语义目标预测与实例化两步。",
+      "innovation_points": [
+        "提出语义规划的概念，将推荐从直接物品匹配转向先预测语义目标再实例化的范式。",
+        "从工业规模信息利用的视角，系统梳理推荐系统从原始ID到语义ID的演进路径。",
+        "探讨语义规划对多利益相关方协调、评估方式变革的潜在影响。"
+      ],
+      "experiment_results": [
+        "论文为观点性/前瞻性文章，未提供具体实验评测结果。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上A/B测试，且作为前瞻性观点论文，未包含实验部分。",
+      "limitations": [
+        "语义规划尚停留在概念阶段，缺乏具体实现和实验验证。",
+        "语义ID的稳定性、目标可满足性等关键挑战尚未有解决方案。"
+      ],
+      "practical_value": "为工业推荐系统的长期演进提供方向性指引，强调从匹配引擎到主动决策系统的转变。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "aaedc23cd9498e26",
+      "tags": [
+        "Semantic ID",
+        "Generative Rec"
+      ],
+      "llm_score": 90,
+      "llm_score_rationale": "论文主题高度聚焦生成式推荐和语义ID，提出语义规划的未来方向，与生成式推荐/语义ID强相关。；作者中包含多个工业界研究者（如华为诺亚方舟实验室的Huifeng Guo、Aghiles Salah等曾任职于工业界公司），可能来自工业背景。；虽为arXiv预印本且无明确线上A/B实验证据，但属于综述/展望型论文，对理解该领域发展脉络和工业实践有较高参考价值。",
+      "preference_signals": [
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 130,
+      "display_affiliations": [
+        "University College Dublin",
+        "Huawei Ireland Research Centre"
+      ],
+      "published_date": "2026-07-10"
     },
     {
       "id": "dblp:conf/www/YuFLZWLWZW26",
@@ -263,13 +403,427 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 134,
+      "score": 129,
       "display_affiliations": [
         "Zhejiang University",
         "Ant Group, Hangzhou, China",
         "Zhejiang University, Hangzhou, China and Shanghai AI Laboratory, Shanghai, China"
       ],
       "published_date": "2026-04-09"
+    },
+    {
+      "id": "dblp:conf/sigir/TeodoroSTS26",
+      "title": "CATS: Cluster-Aware Thompson Sampling for Negative Mining in Sequential Recommendation",
+      "authors": [
+        "Giulia Di Teodoro",
+        "Federico Siciliano",
+        "Nicola Tonellotto",
+        "Fabrizio Silvestri"
+      ],
+      "affiliations": [],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3805712.3809539",
+      "pdf_url": "https://doi.org/10.1145/3805712.3809539",
+      "doi": "10.1145/3805712.3809539",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "提出CATS方法，使用聚类感知的汤普森采样在序列推荐中挖掘负样本，发表于SIGIR。",
+      "core_method": "聚类感知的汤普森采样用于序列推荐中的负样本挖掘。",
+      "innovation_points": [
+        "引入聚类感知的汤普森采样策略进行负样本选择"
+      ],
+      "experiment_results": [
+        "全文未提供具体实验结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏实验验证",
+        "方法适用场景未明确"
+      ],
+      "practical_value": "可能提升序列推荐负采样效率，但缺乏实验支撑。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "aace2c2b88f4f658",
+      "tags": [
+        "Sequential Rec"
+      ],
+      "llm_score": 85,
+      "llm_score_rationale": "SIGIR 2026 是信息检索顶会，权重高；论文可能与工业实践相关，但摘要缺失，无法确认具体内容；作者单位未标注，无法判断是否来自知名互联网公司，无明确线上A/B信号",
+      "preference_signals": [
+        "Top venue",
+        "Industry company (uncertain)"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 120,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026"
+    },
+    {
+      "id": "arxiv:2607.11392",
+      "title": "Beyond Semantic IDs: Encoding Business-Value Ranking into Document Identifiers for Generative Retrieval",
+      "authors": [
+        "Gui Ling",
+        "Zhihong Chen",
+        "Yu Li",
+        "Tong Xiong",
+        "Kunhai Lin",
+        "Kaixuan Zhang",
+        "Yuliang Yan",
+        "Dan Ou",
+        "Haihong Tang",
+        "Bo Zheng"
+      ],
+      "affiliations": [
+        "Alibaba",
+        "Alibaba Group"
+      ],
+      "published": "2026-07-13T10:57:20Z",
+      "updated": "2026-07-13T10:57:20Z",
+      "abstract": "Generative Retrieval (GR) formulates retrieval as a sequence-to-sequence generation task, assigning each document a document identifier (DocID) and retrieving it through autoregressive decoding, making DocID design a critical factor in retrieval quality. However, existing schemes based on discrete representation learning suffer from inherent collision issues and create a mismatch between the DocID's encoding objective and the system's business optimization target. To address these limitations, we propose Cluster-Ranked Identifier (CRID), which decouples DocID into semantic clustering and business-value ranking, yielding collision-free identifiers that support incremental updates via intra-cluster reranking. We further introduce an analytical framework that decomposes retrieval gains into personalized preference and statistical prior generalization, revealing how semantic cluster size governs the balance between the two components. Experiments on a 300M-item Taobao e-commerce corpus show that CRID surpasses the strongest embedding-based retrieval baseline on top-K Hitrate, and delivers +1.06% GMV in full-traffic deployment.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2607.11392v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.11392v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "现有生成式检索的DocID设计存在语义冲突和编码目标与业务优化不匹配的问题。本文提出Cluster-Ranked Identifier (CRID)，将DocID解耦为语义聚类和业务价值排序，实现无冲突标识符并支持增量更新。在淘宝3亿商品数据集上，CRID在Top-K命中率上超越最强基线，全流量A/B测试实现GMV增长1.06%。",
+      "core_method": "CRID将文档标识符解耦为语义聚类编码和业务价值排序，通过语义码本捕捉粗粒度语义，最后一级码本编码统计先验排名，消除冲突并支持增量重排。",
+      "innovation_points": [
+        "首次将业务价值以有序排名形式编码到DocID中，弥合编码目标与业务优化之间的不匹配。",
+        "提出分析框架，将检索增益分解为个性化偏好和统计先验泛化，揭示语义簇大小对两者的权衡。",
+        "CRID支持通过簇内重排实现增量更新，无需重新训练码本。"
+      ],
+      "experiment_results": [
+        "在淘宝3亿商品数据上，CRID在Top-K命中率上超越最强嵌入检索基线（HR@20提升13.26%）。",
+        "在线A/B测试中，全量部署带来+1.06% GMV提升。",
+        "消融实验表明，业务价值排序和零冲突特性互补，且模型对排序信号的选择具有鲁棒性。"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文在淘宝全量生产流量上进行了1%流量A/B测试，持续30天，结果显示IPV提升+0.18%、订单数提升+0.54%、GMV提升+1.06%，且已部署到全量流量。",
+      "limitations": [
+        "仅在淘宝电商搜索场景下验证，泛化到其他领域的效果尚不明确。",
+        "业务价值排序依赖于预定义的统计信号，可能难以适应快速变化的业务指标。"
+      ],
+      "practical_value": "为工业级生成式检索系统提供了一种简单有效且业务对齐的DocID设计，支持高效增量更新，可直接应用于大规模推荐和搜索场景。",
+      "analysis_basis": "full_text",
+      "analysis_status": "cached",
+      "analysis_signature": "dfbb3d422822e367",
+      "tags": [
+        "Generative Retrieval",
+        "Semantic ID",
+        "Item Tokenization",
+        "Online Eval"
+      ],
+      "llm_score": 92,
+      "llm_score_rationale": "明确有全流量部署GMV+1.06%，提供线上A/B证据；与生成式检索和语义ID强相关，提出Cluster-Ranked Identifier；Alibaba(Taobao)公司，300M商品工业级语料",
+      "preference_signals": [
+        "Online A/B",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 117,
+      "display_affiliations": [
+        "Alibaba",
+        "Alibaba Group"
+      ],
+      "published_date": "2026-07-13"
+    },
+    {
+      "id": "dblp:conf/sigir/AnZYQGGY26",
+      "title": "Beyond the Single Path: Divergent Reasoning for LLM-based Recommendation",
+      "authors": [
+        "Guojia An",
+        "Jie Zou",
+        "Yuhan Yang",
+        "Shuai Qin",
+        "Weikang Guo",
+        "Jinyu Guo",
+        "Yang Yang"
+      ],
+      "affiliations": [
+        "University of Electronic Science and Technology of China",
+        "Southwest University",
+        "Southwestern University of Finance and Economics"
+      ],
+      "published": "2026-07-10",
+      "updated": "2026-07-11T05:49:48.208612",
+      "abstract": "Large Language Models (LLMs) have demonstrated strong potential in recommendations due to their powerful reasoning capabilities. However, existing methods typically rely on a single reasoning path to drive the entire Top-K recommendations. This paradigm is prone to reasoning path collapse, where limiting exploration of potentially superior and diverse reasoning paths within the LLMs space. As a result, both the accuracy and diversity of the recommendation outcomes are constrained.",
+      "categories": [
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3805712.3809732",
+      "pdf_url": "https://doi.org/10.1145/3805712.3809732",
+      "doi": "10.1145/3805712.3809732",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "本文针对基于LLM的推荐中单一推理路径导致的推理路径崩溃问题，提出了一种基于发散推理的方法，通过探索LLM空间中的多种潜在推理路径来提升推荐的准确性和多样性。实验表明该方法在多个基准上优于现有方法。",
+      "core_method": "本文提出Divergent Reasoning方法，从LLM中采样多个推理路径以缓解单一路径崩溃，提升推荐的准确性和多样性。",
+      "innovation_points": [
+        "首次识别并定义LLM推荐中单一推理路径导致的‘推理路径崩溃’问题。",
+        "提出发散推理框架，在LLM内部探索多条潜在推理路径以增强Top-K推荐。",
+        "无需额外训练或知识库，仅利用LLM自身能力实现多样化推理。"
+      ],
+      "experiment_results": [
+        "论文未提供具体实验结果，仅摘要提及在多个基准上优于现有方法。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏具体实验结果和实现细节，无法评估实际效果和效率。",
+        "方法依赖LLM自身能力，可能受限于模型规模和推理成本。"
+      ],
+      "practical_value": "该方法为提升LLM推荐系统的多样性和准确性提供了一种轻量级思路，无需额外训练即可应用。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "0cf8821104812447",
+      "tags": [
+        "LLM4Rec",
+        "Generative Rec"
+      ],
+      "llm_score": 78,
+      "llm_score_rationale": "SIGIR 2026 发表，是推荐系统顶会；论文主题为基于 LLM 的推荐，属于 LLM4Rec 范畴，与生成式推荐相关；无工业界作者或线上 A/B 证据，作者单位非知名互联网公司",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 117,
+      "display_affiliations": [
+        "University of Electronic Science and Technology of China",
+        "Southwest University",
+        "Southwestern University of Finance and Economics"
+      ],
+      "published_date": "2026-07-10"
+    },
+    {
+      "id": "dblp:conf/www/LiuFYWGH26",
+      "title": "LLM-Driven Semantic ID for Information Diffusion Prediction",
+      "authors": [
+        "Haoshuang Liu",
+        "Zihan Feng",
+        "Yajun Yang",
+        "Xin Wang",
+        "Hong Gao",
+        "Qinghua Hu"
+      ],
+      "affiliations": [],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792652",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792652",
+      "doi": "10.1145/3774904.3792652",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出LLM4IDP，利用大语言模型将信息扩散预测任务中的级联图压缩为紧凑的Semantic ID序列，以替代传统的GNN编码，提升扩散预测的效率和可扩展性。",
+      "core_method": "使用LLM对信息级联的传播序列（用户序列）进行语义理解和压缩，生成有序的Semantic ID序列，然后通过Transformer进行扩散预测。",
+      "innovation_points": [
+        "首次将LLM生成的Semantic ID引入信息扩散预测，将图结构问题转化为序列建模问题",
+        "通过LLM的语义理解能力自动学习用户和传播模式的紧凑表示，无需人工设计图编码器",
+        "LLM4IDP框架在大规模级联预测上兼具效率和准确性，可轻松扩展到大型网络"
+      ],
+      "experiment_results": [
+        "论文未提供详细实验数据，仅有元数据信息，无法报告具体评测结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未提供具体实验数据，方法有效性缺乏量化验证",
+        "LLM生成Semantic ID的泛化能力和跨平台迁移性未讨论"
+      ],
+      "practical_value": "为信息扩散预测提供了一种可扩展的LLM驱动范式，有望在社交网络传播分析、推荐系统信息流建模等场景中提升效率。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "1fc623eebf327983",
+      "tags": [
+        "LLM4Rec",
+        "Semantic ID",
+        "Sequential Rec"
+      ],
+      "llm_score": 72,
+      "llm_score_rationale": "标题明确涉及Semantic ID和LLM，与生成式推荐强相关；发表于顶级会议WWW（2026）；无工业界作者或线上实验证据",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 117,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026"
+    },
+    {
+      "id": "dblp:conf/sigir/FengLHLGZLG26",
+      "title": "Drift-Aware Incremental Token Adaptation with Collaborative Semantics for Generative Recommendation",
+      "authors": [
+        "Yuebo Feng",
+        "Jiahao Liu",
+        "Mingzhe Han",
+        "Dongsheng Li",
+        "Hansu Gu",
+        "Peng Zhang",
+        "Tun Lu",
+        "Ning Gu"
+      ],
+      "affiliations": [],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3805712.3809645",
+      "pdf_url": "https://doi.org/10.1145/3805712.3809645",
+      "doi": "10.1145/3805712.3809645",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "该论文针对生成式推荐中的概念漂移问题，提出一种漂移感知的增量令牌适应方法，利用协作语义来动态更新推荐模型的令牌表示。",
+      "core_method": "提出漂移感知的增量令牌适应机制，结合协作语义进行令牌表示的动态更新。",
+      "innovation_points": [
+        "首次将概念漂移感知引入生成式推荐的令牌适应过程",
+        "设计协作语义增强的增量令牌更新策略"
+      ],
+      "experiment_results": [
+        "论文摘要未提供具体实验结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏实验证据，方法有效性未知",
+        "仅基于标题和元数据，具体技术细节不明确"
+      ],
+      "practical_value": "若有效，可提升生成式推荐系统在动态环境下的适应能力和推荐质量",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "42b62859fa130b27",
+      "tags": [
+        "Generative Rec",
+        "Sequential Rec",
+        "User Modeling"
+      ],
+      "llm_score": 80,
+      "llm_score_rationale": "SIGIR顶会已发表，加高分；标题明确涉及生成式推荐和语义Token，强相关；缺乏工业界单位或线上A/B证据，未列出知名公司",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 116,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026"
+    },
+    {
+      "id": "dblp:conf/www/LiJLWLYZZX26",
+      "title": "Explaining Synergistic Effects in Social Recommendations",
+      "authors": [
+        "Yicong Li",
+        "Shan Jin",
+        "Qi Liu",
+        "Shuo Wang",
+        "Jiaying Liu",
+        "Shuo Yu",
+        "Qiang Zhang",
+        "Kuanjiu Zhou",
+        "Feng Xia"
+      ],
+      "affiliations": [
+        "Dalian University of Technology",
+        "RMIT University, Melbourne, Australia"
+      ],
+      "published": "2026-04-12",
+      "updated": "2026-07-03T08:13:44.112507",
+      "abstract": "In social recommenders, the inherent nonlinearity and opacity of synergistic effects across multiple social networks hinders users from understanding how diverse information is leveraged for recommendations, consequently diminishing explainability. However, existing explainers can only identify the topological information in social networks that significantly influences recommendations, failing to further explain the synergistic effects among this information. Inspired by existing findings that synergistic effects enhance mutual information between inputs and predictions to generate information gain, we extend this discovery to graph data. We quantify graph information gain to identify subgraphs embodying synergistic effects. Based on the theoretical insights, we propose SemExplainer, which explains synergistic effects by identifying subgraphs that embody them. SemExplainer first extracts explanatory subgraphs from multi-view social networks to generate preliminary importance explanations for recommendations. A conditional entropy optimization strategy to maximize information gain is developed, thereby further identifying subgraphs that embody synergistic effects from explanatory subgraphs. Finally, SemExplainer searches for paths from users to recommended items within the synergistic subgraphs to generate explanations for the recommendations. Extensive experiments on three datasets demonstrate the superiority of SemExplainer over baseline methods, providing superior explanations of synergistic effects. The implementation is available at https://github.com/yushuowiki/SemExplainer.",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792174",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792174",
+      "doi": "10.1145/3774904.3792174",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "针对社会推荐中多网络协同效应的非线性与不透明性，导致用户难以理解推荐理由的问题，SemExplainer通过量化图信息增益识别体现协同效应的子图，并以条件熵优化最大化信息增益，从协同子图中搜索路径生成可解释的推荐解释。在三个数据集上的实验表明，该方法优于现有基线，能有效解释协同效应。",
+      "core_method": "SemExplainer通过量化图信息增益识别协同子图，并利用条件熵优化最大化信息增益，生成路径解释。",
+      "innovation_points": [
+        "首次将信息增益扩展到图数据，量化图信息增益以识别协同效应子图。",
+        "提出条件熵优化策略来最大化信息增益，从解释子图中筛选协同子图。",
+        "通过从协同子图中搜索用户到物品的路径，生成可理解的推荐解释。"
+      ],
+      "experiment_results": [
+        "在三个数据集上，SemExplainer在解释协同效应方面显著优于基线方法。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "论文元数据中未提及方法是否适用于大规模动态社交网络。",
+        "实验仅在三个数据集上进行，实际效果未在真实生产环境中验证。"
+      ],
+      "practical_value": "为社交推荐系统提供了一种可解释协同效应的新方法，有助于提升用户对推荐结果的信任度。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "7323c070411d979f",
+      "tags": [
+        "User Modeling",
+        "Sequential Rec"
+      ],
+      "llm_score": 70,
+      "llm_score_rationale": "发表于顶级会议WWW，满足顶会加分；研究社交推荐的可解释性，与生成式推荐/语义ID/工业实践无直接关联；仅有离线实验，无线上A/B或工业部署证据",
+      "preference_signals": [
+        "Top venue"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 114,
+      "display_affiliations": [
+        "Dalian University of Technology",
+        "RMIT University, Melbourne, Australia"
+      ],
+      "published_date": "2026-04-12"
     },
     {
       "id": "openalex:W4392576636",
@@ -336,217 +890,6 @@
         "Unknown affiliation"
       ],
       "published_date": "2026-01-01"
-    },
-    {
-      "id": "arxiv:2607.11392",
-      "title": "Beyond Semantic IDs: Encoding Business-Value Ranking into Document Identifiers for Generative Retrieval",
-      "authors": [
-        "Gui Ling",
-        "Zhihong Chen",
-        "Yu Li",
-        "Tong Xiong",
-        "Kunhai Lin",
-        "Kaixuan Zhang",
-        "Yuliang Yan",
-        "Dan Ou",
-        "Haihong Tang",
-        "Bo Zheng"
-      ],
-      "affiliations": [
-        "Alibaba",
-        "Alibaba Group"
-      ],
-      "published": "2026-07-13T10:57:20Z",
-      "updated": "2026-07-13T10:57:20Z",
-      "abstract": "Generative Retrieval (GR) formulates retrieval as a sequence-to-sequence generation task, assigning each document a document identifier (DocID) and retrieving it through autoregressive decoding, making DocID design a critical factor in retrieval quality. However, existing schemes based on discrete representation learning suffer from inherent collision issues and create a mismatch between the DocID's encoding objective and the system's business optimization target. To address these limitations, we propose Cluster-Ranked Identifier (CRID), which decouples DocID into semantic clustering and business-value ranking, yielding collision-free identifiers that support incremental updates via intra-cluster reranking. We further introduce an analytical framework that decomposes retrieval gains into personalized preference and statistical prior generalization, revealing how semantic cluster size governs the balance between the two components. Experiments on a 300M-item Taobao e-commerce corpus show that CRID surpasses the strongest embedding-based retrieval baseline on top-K Hitrate, and delivers +1.06% GMV in full-traffic deployment.",
-      "categories": [
-        "cs.IR"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2607.11392v1",
-      "pdf_url": "https://arxiv.org/pdf/2607.11392v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "现有生成式检索的DocID设计存在语义冲突和编码目标与业务优化不匹配的问题。本文提出Cluster-Ranked Identifier (CRID)，将DocID解耦为语义聚类和业务价值排序，实现无冲突标识符并支持增量更新。在淘宝3亿商品数据集上，CRID在Top-K命中率上超越最强基线，全流量A/B测试实现GMV增长1.06%。",
-      "core_method": "CRID将文档标识符解耦为语义聚类编码和业务价值排序，通过语义码本捕捉粗粒度语义，最后一级码本编码统计先验排名，消除冲突并支持增量重排。",
-      "innovation_points": [
-        "首次将业务价值以有序排名形式编码到DocID中，弥合编码目标与业务优化之间的不匹配。",
-        "提出分析框架，将检索增益分解为个性化偏好和统计先验泛化，揭示语义簇大小对两者的权衡。",
-        "CRID支持通过簇内重排实现增量更新，无需重新训练码本。"
-      ],
-      "experiment_results": [
-        "在淘宝3亿商品数据上，CRID在Top-K命中率上超越最强嵌入检索基线（HR@20提升13.26%）。",
-        "在线A/B测试中，全量部署带来+1.06% GMV提升。",
-        "消融实验表明，业务价值排序和零冲突特性互补，且模型对排序信号的选择具有鲁棒性。"
-      ],
-      "ab_test": "yes",
-      "ab_test_evidence": "论文在淘宝全量生产流量上进行了1%流量A/B测试，持续30天，结果显示IPV提升+0.18%、订单数提升+0.54%、GMV提升+1.06%，且已部署到全量流量。",
-      "limitations": [
-        "仅在淘宝电商搜索场景下验证，泛化到其他领域的效果尚不明确。",
-        "业务价值排序依赖于预定义的统计信号，可能难以适应快速变化的业务指标。"
-      ],
-      "practical_value": "为工业级生成式检索系统提供了一种简单有效且业务对齐的DocID设计，支持高效增量更新，可直接应用于大规模推荐和搜索场景。",
-      "analysis_basis": "full_text",
-      "analysis_status": "complete",
-      "analysis_signature": "dfbb3d422822e367",
-      "tags": [
-        "Generative Retrieval",
-        "Semantic ID",
-        "Item Tokenization",
-        "Online Eval"
-      ],
-      "llm_score": 92,
-      "llm_score_rationale": "明确有全流量部署GMV+1.06%，提供线上A/B证据；与生成式检索和语义ID强相关，提出Cluster-Ranked Identifier；Alibaba(Taobao)公司，300M商品工业级语料",
-      "preference_signals": [
-        "Online A/B",
-        "Generative Rec / Semantic ID",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 124,
-      "display_affiliations": [
-        "Alibaba",
-        "Alibaba Group"
-      ],
-      "published_date": "2026-07-13"
-    },
-    {
-      "id": "dblp:conf/sigir/BaiLZWYRRF26",
-      "title": "Bi-Level Optimization for Generative Recommendation: Bridging Tokenization and Generation",
-      "authors": [
-        "Yimeng Bai",
-        "Chang Liu",
-        "Yang Zhang",
-        "Dingxian Wang",
-        "Frank Yang",
-        "Andrew Rabinovich",
-        "Wenge Rong",
-        "Fuli Feng"
-      ],
-      "affiliations": [],
-      "published": "2025-10-24",
-      "updated": "2026-07-03T06:15:21.484131",
-      "abstract": "Generative recommendation is emerging as a transformative paradigm by directly generating recommended items, rather than relying on matching. Building such a system typically involves two key components: (1) optimizing the tokenizer to derive suitable item identifiers, and (2) training the recommender based on those identifiers. Existing approaches often treat these components separately--either sequentially or in alternation--overlooking their interdependence. This separation can lead to misalignment: the tokenizer is trained without direct guidance from the recommendation objective, potentially yielding suboptimal identifiers that degrade recommendation performance. To address this, we propose BLOGER, a Bi-Level Optimization for GEnerative Recommendation framework, which explicitly models the interdependence between the tokenizer and the recommender in a unified optimization process. The lower level trains the recommender using tokenized sequences, while the upper level optimizes the tokenizer based on both the tokenization loss and recommendation loss. We adopt a meta-learning approach to solve this bi-level optimization efficiently, and introduce gradient surgery to mitigate gradient conflicts in the upper-level updates, thereby ensuring that item identifiers are both informative and recommendation-aligned. Extensive experiments on multiple real-world datasets demonstrate that BLOGER consistently outperforms state-of-the-art generative recommendation methods while maintaining practical efficiency with no significant additional computational overhead, effectively bridging the gap between item tokenization and autoregressive generation. We release our code at https://github.com/Ten-Mao/BLOGER.",
-      "categories": [
-        "SIGIR"
-      ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3805712.3809632",
-      "pdf_url": "https://arxiv.org/pdf/2510.21242",
-      "doi": "10.1145/3805712.3809632",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "本文提出BLOGER框架，将物品分词器与生成推荐器的训练统一为双层优化问题，下层训练推荐器，上层基于分词与推荐损失优化分词器，并引入元学习与梯度手术缓解冲突，在多个真实数据集上取得最优性能。",
-      "core_method": "通过双层优化框架联合训练物品分词器和生成推荐器，采用元学习求解并引入梯度手术减轻上层梯度冲突。",
-      "innovation_points": [
-        "首次将物品分词与生成推荐建模为双层优化问题，显式建模二者相互依赖关系",
-        "采用元学习方法高效求解双层优化，并提出梯度手术技术缓解上层更新中的梯度冲突"
-      ],
-      "experiment_results": [
-        "在多个真实数据集上，BLOGER一致优于现有的生成式推荐方法，且没有明显的额外计算开销。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "文中未报告线上A/B测试结果，实际生产环境中的效果待验证",
-        "梯度手术策略的有效性可能受超参数影响，文中未详细讨论其敏感性"
-      ],
-      "practical_value": "为生成式推荐系统中物品分词与推荐模型的协同优化提供了一种端到端的解决方案，有助于提升推荐性能。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "2881c321f08f5b2c",
-      "tags": [
-        "Generative Rec",
-        "Item Tokenization"
-      ],
-      "llm_score": 75,
-      "llm_score_rationale": "发表在 SIGIR，属于推荐系统顶会；研究生成式推荐中的 tokenization 与生成联合优化，与语义 ID 强相关；未见明确线上 A/B 实验或工业界单位",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 124,
-      "display_affiliations": [
-        "Unknown affiliation"
-      ],
-      "published_date": "2025-10-24"
-    },
-    {
-      "id": "dblp:conf/sigir/FengLHLGZLG26",
-      "title": "Drift-Aware Incremental Token Adaptation with Collaborative Semantics for Generative Recommendation",
-      "authors": [
-        "Yuebo Feng",
-        "Jiahao Liu",
-        "Mingzhe Han",
-        "Dongsheng Li",
-        "Hansu Gu",
-        "Peng Zhang",
-        "Tun Lu",
-        "Ning Gu"
-      ],
-      "affiliations": [],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "SIGIR"
-      ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3805712.3809645",
-      "pdf_url": "https://doi.org/10.1145/3805712.3809645",
-      "doi": "10.1145/3805712.3809645",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "该论文针对生成式推荐中的概念漂移问题，提出一种漂移感知的增量令牌适应方法，利用协作语义来动态更新推荐模型的令牌表示。",
-      "core_method": "提出漂移感知的增量令牌适应机制，结合协作语义进行令牌表示的动态更新。",
-      "innovation_points": [
-        "首次将概念漂移感知引入生成式推荐的令牌适应过程",
-        "设计协作语义增强的增量令牌更新策略"
-      ],
-      "experiment_results": [
-        "论文摘要未提供具体实验结果"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏实验证据，方法有效性未知",
-        "仅基于标题和元数据，具体技术细节不明确"
-      ],
-      "practical_value": "若有效，可提升生成式推荐系统在动态环境下的适应能力和推荐质量",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "42b62859fa130b27",
-      "tags": [
-        "Generative Rec",
-        "Sequential Rec",
-        "User Modeling"
-      ],
-      "llm_score": 80,
-      "llm_score_rationale": "SIGIR顶会已发表，加高分；标题明确涉及生成式推荐和语义Token，强相关；缺乏工业界单位或线上A/B证据，未列出知名公司",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 121,
-      "display_affiliations": [
-        "Unknown affiliation"
-      ],
-      "published_date": "2026"
     },
     {
       "id": "openalex:W4410636390",
@@ -756,72 +1099,6 @@
       "published_date": "2026-04-12"
     },
     {
-      "id": "dblp:conf/www/LiuFYWGH26",
-      "title": "LLM-Driven Semantic ID for Information Diffusion Prediction",
-      "authors": [
-        "Haoshuang Liu",
-        "Zihan Feng",
-        "Yajun Yang",
-        "Xin Wang",
-        "Hong Gao",
-        "Qinghua Hu"
-      ],
-      "affiliations": [],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792652",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792652",
-      "doi": "10.1145/3774904.3792652",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "提出LLM4IDP，利用大语言模型将信息扩散预测任务中的级联图压缩为紧凑的Semantic ID序列，以替代传统的GNN编码，提升扩散预测的效率和可扩展性。",
-      "core_method": "使用LLM对信息级联的传播序列（用户序列）进行语义理解和压缩，生成有序的Semantic ID序列，然后通过Transformer进行扩散预测。",
-      "innovation_points": [
-        "首次将LLM生成的Semantic ID引入信息扩散预测，将图结构问题转化为序列建模问题",
-        "通过LLM的语义理解能力自动学习用户和传播模式的紧凑表示，无需人工设计图编码器",
-        "LLM4IDP框架在大规模级联预测上兼具效率和准确性，可轻松扩展到大型网络"
-      ],
-      "experiment_results": [
-        "论文未提供详细实验数据，仅有元数据信息，无法报告具体评测结果"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "未提供具体实验数据，方法有效性缺乏量化验证",
-        "LLM生成Semantic ID的泛化能力和跨平台迁移性未讨论"
-      ],
-      "practical_value": "为信息扩散预测提供了一种可扩展的LLM驱动范式，有望在社交网络传播分析、推荐系统信息流建模等场景中提升效率。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "1fc623eebf327983",
-      "tags": [
-        "LLM4Rec",
-        "Semantic ID",
-        "Sequential Rec"
-      ],
-      "llm_score": 72,
-      "llm_score_rationale": "标题明确涉及Semantic ID和LLM，与生成式推荐强相关；发表于顶级会议WWW（2026）；无工业界作者或线上实验证据",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 112,
-      "display_affiliations": [
-        "Unknown affiliation"
-      ],
-      "published_date": "2026"
-    },
-    {
       "id": "dblp:conf/www/ZhuCJYWCZ26",
       "title": "FeedGuard: Online Critic-Guided Reinforcement Learning with Privacy-Preserving Feedback for Recommendation",
       "authors": [
@@ -890,82 +1167,6 @@
         "Ningbo University"
       ],
       "published_date": "2026-04-12"
-    },
-    {
-      "id": "arxiv:2607.09540",
-      "title": "From Raw IDs to Semantic Planning: How Recommender Systems Utilize Information at Scale",
-      "authors": [
-        "Changhong Jin",
-        "Shiqiu Yang",
-        "Roger Zhe Li",
-        "Yingjie Niu",
-        "Aghiles Salah",
-        "Mete Sertkan",
-        "Zheng Ju",
-        "Xingsheng Guo",
-        "Huifeng Guo",
-        "Ruihai Dong",
-        "Barry Smyth"
-      ],
-      "affiliations": [
-        "University College Dublin",
-        "Huawei Ireland Research Centre"
-      ],
-      "published": "2026-07-10T15:46:12Z",
-      "updated": "2026-07-10T15:46:12Z",
-      "abstract": "The evolution of recommender systems can be explored by asking how they utilize information at scale. Throughout most of the historical period under consideration during the past two decades, industrial systems have relied on raw IDs, which are discrete, globally unique, and semantically opaque identifiers that enable exact lookup, logging, and item-specific memorization at scale. Over time, however, recommender systems have sought to utilize richer sources of information, including item content, context, multimodal signals, and cross-domain structure. This development has led to a new stage in which part of such information is no longer used solely as auxiliary features around item identity, but is increasingly encapsulated in semantic IDs that provide a more structured, model-facing form of identity. We argue that this shift goes beyond the rise of generative recommendation over traditional methods. Indeed, it reflects a broader evolution in how recommender systems utilize information under industrial-scale constraints. This paper looks at the past, present, and future to examine three connected questions: why raw IDs dominated the early development of recommender systems, why semantic information is increasingly being encapsulated in IDs today, and what may come next once recommendations move beyond semantic retrieval. In particular, we introduce semantic planning as a possible future direction in which the system first predicts the semantic target of the next exposure, and only then instantiates that target as a specific item or generated creative. We further argue that such a shift may require changes not only in model design but also in evaluation and in the way recommender systems coordinate the objectives of users, platforms, and providers.",
-      "categories": [
-        "cs.IR"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2607.09540v1",
-      "pdf_url": "https://arxiv.org/pdf/2607.09540v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "本文回顾了推荐系统从依赖原始ID到语义ID的演进历程，指出语义ID能更好地封装多模态和跨域信息，并提出了“语义规划”作为未来方向——系统先预测语义目标，再实例化为具体物品。该转变不仅影响模型设计，还需改变评估方式和多方目标协调。",
-      "core_method": "提出语义规划（Semantic Planning）范式，先预测曝光应达成的语义目标，再将其具现化为物品或生成内容，以协调用户、平台和供给方目标。",
-      "innovation_points": [
-        "提出语义规划框架，将推荐从被动匹配转向主动决策，先确定曝光目标再生成物品。",
-        "系统梳理推荐系统信息利用的演进路径：从原始ID到语义ID，再到语义规划。",
-        "强调多利益方目标协调，使推荐系统成为协调用户、平台和供给方需求的中心智能体。"
-      ],
-      "experiment_results": [
-        "论文为立场性/前瞻性文章，未提供具体实验数据或评测结果。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文全文未报告线上A/B测试。",
-      "limitations": [
-        "语义规划仅作为未来方向提出，缺乏具体实现和验证。",
-        "文中未解决语义ID稳定性、目标接地和多方目标可观测性等关键挑战。"
-      ],
-      "practical_value": "为工业级推荐系统提供了从检索匹配向多目标规划演进的思路，有助于构建更协调的多利益方决策系统。",
-      "analysis_basis": "full_text",
-      "analysis_status": "complete",
-      "analysis_signature": "d871ab200f149188",
-      "tags": [
-        "Semantic ID",
-        "Generative Rec",
-        "Agent4Rec"
-      ],
-      "llm_score": 75,
-      "llm_score_rationale": "论文明确聚焦生成式推荐与语义ID的演进，并展望语义规划（semantic planning），与生成式推荐/语义ID强相关。；作者包括来自华为/荣耀等互联网公司的研究员，且在摘要中讨论了工业级推荐系统的信息利用。；尽管发表在arXiv预印本，但主题契合度高，且具有前瞻性观点，可能为领域提供重要参考。",
-      "preference_signals": [
-        "Generative Rec / Semantic ID",
-        "Industry company",
-        "Top venue"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 115,
-      "display_affiliations": [
-        "University College Dublin",
-        "Huawei Ireland Research Centre"
-      ],
-      "published_date": "2026-07-10"
     },
     {
       "id": "dblp:conf/www/TangLPLK26",
@@ -1325,77 +1526,6 @@
         "University of Science and Technology of China"
       ],
       "published_date": "2026-07-05"
-    },
-    {
-      "id": "dblp:conf/www/LiJLWLYZZX26",
-      "title": "Explaining Synergistic Effects in Social Recommendations",
-      "authors": [
-        "Yicong Li",
-        "Shan Jin",
-        "Qi Liu",
-        "Shuo Wang",
-        "Jiaying Liu",
-        "Shuo Yu",
-        "Qiang Zhang",
-        "Kuanjiu Zhou",
-        "Feng Xia"
-      ],
-      "affiliations": [
-        "Dalian University of Technology",
-        "RMIT University, Melbourne, Australia"
-      ],
-      "published": "2026-04-12",
-      "updated": "2026-07-03T08:13:44.112507",
-      "abstract": "In social recommenders, the inherent nonlinearity and opacity of synergistic effects across multiple social networks hinders users from understanding how diverse information is leveraged for recommendations, consequently diminishing explainability. However, existing explainers can only identify the topological information in social networks that significantly influences recommendations, failing to further explain the synergistic effects among this information. Inspired by existing findings that synergistic effects enhance mutual information between inputs and predictions to generate information gain, we extend this discovery to graph data. We quantify graph information gain to identify subgraphs embodying synergistic effects. Based on the theoretical insights, we propose SemExplainer, which explains synergistic effects by identifying subgraphs that embody them. SemExplainer first extracts explanatory subgraphs from multi-view social networks to generate preliminary importance explanations for recommendations. A conditional entropy optimization strategy to maximize information gain is developed, thereby further identifying subgraphs that embody synergistic effects from explanatory subgraphs. Finally, SemExplainer searches for paths from users to recommended items within the synergistic subgraphs to generate explanations for the recommendations. Extensive experiments on three datasets demonstrate the superiority of SemExplainer over baseline methods, providing superior explanations of synergistic effects. The implementation is available at https://github.com/yushuowiki/SemExplainer.",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792174",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792174",
-      "doi": "10.1145/3774904.3792174",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "针对社会推荐中多网络协同效应的非线性与不透明性，导致用户难以理解推荐理由的问题，SemExplainer通过量化图信息增益识别体现协同效应的子图，并以条件熵优化最大化信息增益，从协同子图中搜索路径生成可解释的推荐解释。在三个数据集上的实验表明，该方法优于现有基线，能有效解释协同效应。",
-      "core_method": "SemExplainer通过量化图信息增益识别协同子图，并利用条件熵优化最大化信息增益，生成路径解释。",
-      "innovation_points": [
-        "首次将信息增益扩展到图数据，量化图信息增益以识别协同效应子图。",
-        "提出条件熵优化策略来最大化信息增益，从解释子图中筛选协同子图。",
-        "通过从协同子图中搜索用户到物品的路径，生成可理解的推荐解释。"
-      ],
-      "experiment_results": [
-        "在三个数据集上，SemExplainer在解释协同效应方面显著优于基线方法。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "论文元数据中未提及方法是否适用于大规模动态社交网络。",
-        "实验仅在三个数据集上进行，实际效果未在真实生产环境中验证。"
-      ],
-      "practical_value": "为社交推荐系统提供了一种可解释协同效应的新方法，有助于提升用户对推荐结果的信任度。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "7323c070411d979f",
-      "tags": [
-        "User Modeling",
-        "Sequential Rec"
-      ],
-      "llm_score": 70,
-      "llm_score_rationale": "发表于顶级会议WWW，满足顶会加分；研究社交推荐的可解释性，与生成式推荐/语义ID/工业实践无直接关联；仅有离线实验，无线上A/B或工业部署证据",
-      "preference_signals": [
-        "Top venue"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 59,
-      "display_affiliations": [
-        "Dalian University of Technology",
-        "RMIT University, Melbourne, Australia"
-      ],
-      "published_date": "2026-04-12"
     },
     {
       "id": "openalex:W4405300788",
@@ -2186,7 +2316,10 @@
         "Xiangheng Kong",
         "Yuning Jiang"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "Nanyang Technological University",
+        "The University of Queensland"
+      ],
       "published": "2026-06-30T14:05:28Z",
       "updated": "2026-06-30T14:05:28Z",
       "abstract": "The wave of AI-native applications is moving shopping beyond page- and feed-based browsing toward intent-driven experiences orchestrated by LLM agents. A common design wraps an LLM around existing search and recommendation pipelines, forcing complex intents through low-bandwidth retrieval or ranking interfaces and leaving a gap between language understanding and item-space fulfillment. Generative recommendation gives LLMs a direct item-space interface through semantic IDs (SIDs), but existing models mainly generate candidates for retrieval rather than translate flexible intents into item-space outcomes. We propose ShopX to address this bottleneck by unifying intent understanding, execution planning, and flexible SID-native item-space operations into a single foundation model. We deploy ShopX in agentic shopping workflows through a model-native item-fulfillment framework with a serving harness that defines a model-facing action protocol and exposes support surfaces for context access, catalog grounding, and state management. Within this framework, ShopX plans and composes SID-based item-space operations such as SID beam-search retrieval, listwise ranking, or product bundling. This model-centric design reduces lossy hand-offs between agent orchestration and item-space execution. To build ShopX, we design semantically recoverable, LLM-operable SIDs and a training recipe that equips a general LLM for flexible multi-turn item-space fulfillment while retaining the knowledge and instruction-following abilities needed by a shopping agent. We evaluate the ShopX framework against tool-mediated agentic systems on single- and multi-turn fulfillment tasks derived from anonymized Taobao production logs, showing that model-native fulfillment improves overall framework behavior, especially on complex or ambiguous requests.",
@@ -2242,7 +2375,8 @@
       "notes": "",
       "score": 116,
       "display_affiliations": [
-        "Unknown affiliation"
+        "Nanyang Technological University",
+        "The University of Queensland"
       ],
       "published_date": "2026-06-30"
     },
