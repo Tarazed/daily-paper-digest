@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T03:36:13Z",
+  "generated_at": "2026-07-22T03:34:12Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
@@ -181,7 +181,7 @@
       ],
       "practical_value": "为生成式推荐提供了一种端到端优化语义ID的方案，有助于提升推荐效果和模型训练的协同性。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "cd4ec725c310ab87",
       "tags": [
         "Generative Rec",
@@ -199,7 +199,7 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 154,
+      "score": 141,
       "display_affiliations": [
         "University of Glasgow",
         "Shandong University",
@@ -207,83 +207,6 @@
         "Telefónica Scientific Research, Telefónica Innovación Digital, Barcelona, Spain",
         "Telefonica Research and Development",
         "Leiden University"
-      ],
-      "published_date": "2026-07-15"
-    },
-    {
-      "id": "dblp:conf/sigir/BaiLZWYRRF26",
-      "title": "Bi-Level Optimization for Generative Recommendation: Bridging Tokenization and Generation",
-      "authors": [
-        "Yimeng Bai",
-        "Chang Liu",
-        "Yang Zhang",
-        "Dingxian Wang",
-        "Frank Yang",
-        "Andrew Rabinovich",
-        "Wenge Rong",
-        "Fuli Feng"
-      ],
-      "affiliations": [
-        "University of Science and Technology of China",
-        "Beihang University",
-        "National University of Singapore",
-        "ResearchWorks (United States)"
-      ],
-      "published": "2026-07-15",
-      "updated": "2026-07-17T05:52:16.776730",
-      "abstract": "Generative recommendation is emerging as a transformative paradigm by directly generating recommended items, rather than relying on matching. Building such a system typically involves two key components: (1) optimizing the tokenizer to derive suitable item identifiers, and (2) training the recommender based on those identifiers. Existing approaches often treat these components separately—either sequentially or in alternation—overlooking their interdependence. This separation can lead to misalignment: the tokenizer is trained without direct guidance from the recommendation objective, potentially yielding suboptimal identifiers that degrade recommendation performance. To address this, we propose BLOGER, a Bi-Level Optimization for GEnerative Recommendation framework, which explicitly models the interdependence between the tokenizer and the recommender in a unified optimization process. The lower level trains the recommender using tokenized sequences, while the upper level optimizes the tokenizer based on both the tokenization loss and recommendation loss. We adopt a meta-learning approach to solve this bi-level optimization efficiently, and introduce gradient surgery to mitigate gradient conflicts in the upper-level updates, thereby ensuring that item identifiers are both informative and recommendation-aligned. Extensive experiments on multiple real-world datasets demonstrate that BLOGER consistently outperforms state-of-the-art generative recommendation methods while maintaining practical efficiency with no significant additional computational overhead, effectively bridging the gap between item tokenization and autoregressive generation. We release our code at https://github.com/Ten-Mao/BLOGER.",
-      "categories": [
-        "SIGIR"
-      ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3805712.3809632",
-      "pdf_url": "https://doi.org/10.1145/3805712.3809632",
-      "doi": "10.1145/3805712.3809632",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "提出BLOGER框架，通过双层优化统一建模生成式推荐中的分词器与推荐器，利用元学习和梯度手术缓解冲突。实验证明该方法在多个数据集上优于现有方法，且未显著增加计算开销。",
-      "core_method": "基于元学习的双层优化框架，下层训练推荐器，上层优化分词器，并引入梯度手术缓解梯度冲突。",
-      "innovation_points": [
-        "首次将生成式推荐中的分词器和推荐器联合建模为双层优化问题",
-        "采用元学习方法高效求解双层优化，并引入梯度手术缓解上层梯度冲突",
-        "在多个真实数据集上验证了方法的有效性和效率"
-      ],
-      "experiment_results": [
-        "在多个真实数据集上，BLOGER一致优于现有生成式推荐方法",
-        "方法没有显著增加计算开销，具有实用性"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "摘要未讨论方法在大规模工业场景下的可扩展性或冷启动问题",
-        "未提及对推荐多样性和新颖性的影响"
-      ],
-      "practical_value": "为生成式推荐中分词器与推荐器的联合优化提供了实用且高效的解决方案，可提升推荐准确性。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "18b46bbb912a0c5b",
-      "tags": [
-        "Generative Rec",
-        "Item Tokenization",
-        "Generative Retrieval"
-      ],
-      "llm_score": 78,
-      "llm_score_rationale": "提出面向生成式推荐的 bi-level 优化框架，显式建模 tokenization 与生成的对齐，核心聚焦生成式推荐范式；发表于 SIGIR 2026，为信息检索顶级会议；仅基于离线实验验证，未提供线上 A/B 证据",
-      "preference_signals": [
-        "Generative Rec / Semantic ID",
-        "Top venue"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 134,
-      "display_affiliations": [
-        "University of Science and Technology of China",
-        "Beihang University",
-        "National University of Singapore",
-        "ResearchWorks (United States)"
       ],
       "published_date": "2026-07-15"
     },
@@ -354,7 +277,7 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 134,
+      "score": 139,
       "display_affiliations": [
         "Zhejiang University",
         "Ant Group, Hangzhou, China",
@@ -363,143 +286,93 @@
       "published_date": "2026-04-09"
     },
     {
-      "id": "dblp:conf/sigir/ChenGCYH26",
-      "title": "Beyond Static Best-of-N: Bayesian List-wise Alignment for LLM-based Recommendation",
+      "id": "arxiv:2607.15591",
+      "title": "RecGPT-V3 Technical Report",
       "authors": [
-        "Ruijun Chen",
-        "Chongming Gao",
-        "Jiawei Chen",
-        "Weiqin Yang",
-        "Xiangnan He"
+        "Bowen Zheng",
+        "Chao Yi",
+        "Dian Chen",
+        "Gaoyang Guo",
+        "Han Zhu",
+        "Jiakai Tang",
+        "Jian Wu",
+        "Mao Zhang",
+        "Wen Chen",
+        "Yifan Lu",
+        "Yujie Luo",
+        "Yuning Jiang",
+        "Zhujin Gao",
+        "Bo Zheng",
+        "Dixuan Wang",
+        "Hao Fang",
+        "Jiancai Liu",
+        "Jing Yu",
+        "Ke Chen",
+        "Kewei Zhu",
+        "Mingke Xu",
+        "Wenjun Yang",
+        "Xunke Xi",
+        "Zile Zhou"
       ],
-      "affiliations": [
-        "University of Science and Technology of China",
-        "Zhejiang University"
-      ],
-      "published": "2026-07-15",
-      "updated": "2026-07-17T05:52:16.776730",
-      "abstract": "Large Language Models have revolutionized recommender systems (LLM4Rec) by leveraging their generative capabilities to model complex user preferences. However, existing LLM4Rec methods primarily rely on token-level objectives, making it difficult to optimize list-level and non-differentiable metrics (e.g., NDCG, fairness) that define actual recommendation quality. While Best-of-N (BoN) directly optimizes these metrics during inference, its high computational cost hinders real-world deployment. To address this, BoN Alignment aims to distill the search capability into the model itself, yet current approaches suffer from two critical limitations: (1) Indiscriminate Supervision, where the static reference fails to distinguish the relative quality of candidates exceeding its empirical range, leading to a loss of ranking guidance; and (2) Gradient Decay, where the effective supervision signal rapidly diminishes as the evolving policy improves, resulting in inefficient optimization.",
+      "affiliations": [],
+      "published": "2026-07-17T03:25:43Z",
+      "updated": "2026-07-17T03:25:43Z",
+      "abstract": "Large language models (LLMs) are transforming recommender systems from matching co-occurrence patterns in historical behavior toward reasoning about the intent that drives it. RecGPT-V1 pioneered this paradigm on Taobao by centering user understanding, and RecGPT-V2 scaled it via coordinated multi-agent reasoning; both are deployed in production with consistent gains in user experience and commercial outcomes. However, operating RecGPT at scale reveals three challenges: (1) stateless behavior modeling, where each request reprocesses full user history, wasting computation and discarding prior analysis; (2) a tag-to-item information bottleneck, where natural-language tags form a lossy channel between user understanding and item grounding; and (3) inefficient explicit reasoning, whose lengthy chain-of-thought incurs untenable latency and compute overhead. We present RecGPT-V3, a stateful, hybrid-modal recommender that reasons over natural language for open-world knowledge and Semantic IDs (SIDs) for concrete item grounding. A Memory Hub maintains structured, continually evolving user memory that distills long-horizon behavior into condensed units, cutting user-modeling computation by 55.8%. A Hybrid-modal Foundation Model allows the LLM jointly reason over text tags and SIDs, opening a high-bandwidth channel into the item space. Latent Intent Reasoning internalizes verbose rationales into compact learnable latent tokens that remain decodable into readable explanations, lowering output token cost by 200x. Deployed in Taobao's \"Guess What You Like\" feed, RecGPT-V3 achieves consistent gains in large-scale online A/B tests: IPV +1.28%, CTR +1.00%, TC +1.97%, GMV +3.97%, while cutting end-to-end serving resource consumption by 52.4%.",
       "categories": [
-        "SIGIR"
+        "cs.IR"
       ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3805712.3809535",
-      "pdf_url": "https://doi.org/10.1145/3805712.3809535",
-      "doi": "10.1145/3805712.3809535",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "针对LLM推荐中BoN对齐的静态监督与梯度衰减问题，提出贝叶斯列表对齐方法BLA，通过动态参考集和自适应梯度增强优化列表级指标，提升推荐效率与质量。",
-      "core_method": "基于贝叶斯优化的动态参考集构建与自适应梯度加权，实现列表级对齐训练。",
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2607.15591v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.15591v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "RecGPT-V3 提出了一种状态化、混合模态的推荐系统，通过记忆中心减少用户建模计算量55.8%，利用混合模态基础模型联合推理文本标签和语义ID，并采用潜在意图推理将推理成本降低200倍，在淘宝线上部署中实现了CTR +1.00%和GMV +3.97%的提升，同时服务资源消耗减少52.4%。",
+      "core_method": "状态化混合模态基础模型，联合文本标签与语义ID推理，并通过记忆中心和潜在意图推理实现高效可解释推荐。",
       "innovation_points": [
-        "提出动态参考集机制，区分候选相对质量以提供更细粒度的排序指导",
-        "设计自适应梯度方案，缓解策略提升时有效监督信号衰减的问题"
+        "引入状态化记忆中心，将长周期行为凝练为可演化的结构化用户记忆，降低计算开销55.8%。",
+        "提出混合模态基础模型，使LLM能同时推理自然语言标签和语义ID，打通了从用户理解到物品空间的高带宽通道。",
+        "设计潜在意图推理，将冗长的显式推理内部化为紧凑可学习的潜在令牌，输出token成本降低200倍且保持可解释性。"
       ],
       "experiment_results": [
-        "论文全文未提供具体实验数据"
+        "线上A/B测试：IPV +1.28%, CTR +1.00%, TC +1.97%, GMV +3.97%。",
+        "端到端服务资源消耗降低52.4%。",
+        "用户建模计算量减少55.8%，输出token成本降低200倍。"
       ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "ab_test": "yes",
+      "ab_test_evidence": "论文明确报告在淘宝“猜你喜欢”信息流进行了大规模在线A/B测试，指标包括IPV +1.28%, CTR +1.00%, TC +1.97%, GMV +3.97%。",
       "limitations": [
-        "摘要中未报告实验验证结果，方法有效性未知",
-        "贝叶斯方法的近似推断可能引入额外误差"
+        "论文未明确讨论方法是否适用于非电商场景或小规模数据。",
+        "潜在意图推理的可解释性需依赖解码器，可能增加模型复杂度。"
       ],
-      "practical_value": "为LLM推荐系统提供了一种更高效的列表级对齐方法，有望在保持推理效率的同时提升推荐指标。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "821b264a7610c81a",
+      "practical_value": "通过状态化记忆和混合模态推理，显著提升大规模推荐系统效率与效果，尤其适用于需要长周期行为理解和可解释性的商业场景。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "3d70ebe2ed2585d6",
       "tags": [
         "LLM4Rec",
-        "Generative Rec"
+        "Semantic ID",
+        "Generative Rec",
+        "User Modeling",
+        "Online Eval"
       ],
-      "llm_score": 65,
-      "llm_score_rationale": "发表在信息检索顶会SIGIR，但2026年尚未召开，当前无实际线上A/B证据；与LLM4Rec强相关，属于生成式推荐方向，但未涉及语义ID或生成式检索；作者单位包含中国科学技术大学和浙江大学，无互联网公司背景",
+      "llm_score": 100,
+      "llm_score_rationale": "明确包含大规模在线A/B测试，且指标全面（IPV/CTR/TC/GMV均有提升），同时降低资源消耗；论文核心围绕Semantic ID和生成式推荐范式，是生成式检索/推荐方向的强相关工作；作者来自阿里巴巴（Taobao），工业界头部公司，且明确提到已部署生产环境",
       "preference_signals": [
-        "Top venue",
+        "Online A/B",
         "Generative Rec / Semantic ID",
-        "No online A/B evidence"
+        "Industry company"
       ],
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 128,
+      "score": 126,
       "display_affiliations": [
-        "University of Science and Technology of China",
-        "Zhejiang University"
+        "Unknown affiliation"
       ],
-      "published_date": "2026-07-15"
-    },
-    {
-      "id": "dblp:conf/sigir/AnZYQGGY26",
-      "title": "Beyond the Single Path: Divergent Reasoning for LLM-based Recommendation",
-      "authors": [
-        "Guojia An",
-        "Jie Zou",
-        "Yuhan Yang",
-        "Shuai Qin",
-        "Weikang Guo",
-        "Jinyu Guo",
-        "Yang Yang"
-      ],
-      "affiliations": [
-        "University of Electronic Science and Technology of China",
-        "Southwest University",
-        "Southwestern University of Finance and Economics"
-      ],
-      "published": "2026-07-10",
-      "updated": "2026-07-16T13:24:37.021932",
-      "abstract": "Large Language Models (LLMs) have demonstrated strong potential in recommendations due to their powerful reasoning capabilities. However, existing methods typically rely on a single reasoning path to drive the entire Top-K recommendations. This paradigm is prone to reasoning path collapse, where limiting exploration of potentially superior and diverse reasoning paths within the LLMs space. As a result, both the accuracy and diversity of the recommendation outcomes are constrained.",
-      "categories": [
-        "SIGIR"
-      ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3805712.3809732",
-      "pdf_url": "https://doi.org/10.1145/3805712.3809732",
-      "doi": "10.1145/3805712.3809732",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "针对LLM推荐中单路径推理导致的路径塌陷问题，提出多路径发散推理方法，提升推荐准确性和多样性。",
-      "core_method": "采用多路径发散推理，通过探索多种推理路径来增强LLM推荐的准确性和多样性。",
-      "innovation_points": [
-        "提出多路径发散推理框架，突破传统单路径推理的限制",
-        "显式建模并利用多种推理路径，缓解推理路径塌陷"
-      ],
-      "experiment_results": [
-        "元数据未提供具体实验结果"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "元数据未提及方法局限性",
-        "缺少具体实验结果验证"
-      ],
-      "practical_value": "为LLM推荐系统提供了一种探索多样化推理路径的思路，有望提升推荐结果的准确性和多样性。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "f984f9dd2545a2ea",
-      "tags": [
-        "LLM4Rec",
-        "Generative Rec"
-      ],
-      "llm_score": 88,
-      "llm_score_rationale": "发表于顶级会议SIGIR（2026）；研究LLM基于推理的推荐，属于生成式推荐相关方向；提出发散推理（Divergent Reasoning）方法，旨在提升推荐的准确性和多样性",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 127,
-      "display_affiliations": [
-        "University of Electronic Science and Technology of China",
-        "Southwest University",
-        "Southwestern University of Finance and Economics"
-      ],
-      "published_date": "2026-07-10"
+      "published_date": "2026-07-17"
     },
     {
       "id": "dblp:conf/sigir/FengLHLGZLG26",
@@ -571,6 +444,434 @@
         "Fudan University",
         "Microsoft Research Asia (China)",
         "Seattle University"
+      ],
+      "published_date": "2026-07-15"
+    },
+    {
+      "id": "dblp:conf/www/LiuFYWGH26",
+      "title": "LLM-Driven Semantic ID for Information Diffusion Prediction",
+      "authors": [
+        "Haoshuang Liu",
+        "Zihan Feng",
+        "Yajun Yang",
+        "Xin Wang",
+        "Hong Gao",
+        "Qinghua Hu"
+      ],
+      "affiliations": [],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792652",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792652",
+      "doi": "10.1145/3774904.3792652",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出LLM4IDP，利用大语言模型将信息扩散预测任务中的级联图压缩为紧凑的Semantic ID序列，以替代传统的GNN编码，提升扩散预测的效率和可扩展性。",
+      "core_method": "使用LLM对信息级联的传播序列（用户序列）进行语义理解和压缩，生成有序的Semantic ID序列，然后通过Transformer进行扩散预测。",
+      "innovation_points": [
+        "首次将LLM生成的Semantic ID引入信息扩散预测，将图结构问题转化为序列建模问题",
+        "通过LLM的语义理解能力自动学习用户和传播模式的紧凑表示，无需人工设计图编码器",
+        "LLM4IDP框架在大规模级联预测上兼具效率和准确性，可轻松扩展到大型网络"
+      ],
+      "experiment_results": [
+        "论文未提供详细实验数据，仅有元数据信息，无法报告具体评测结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未提供具体实验数据，方法有效性缺乏量化验证",
+        "LLM生成Semantic ID的泛化能力和跨平台迁移性未讨论"
+      ],
+      "practical_value": "为信息扩散预测提供了一种可扩展的LLM驱动范式，有望在社交网络传播分析、推荐系统信息流建模等场景中提升效率。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "1fc623eebf327983",
+      "tags": [
+        "LLM4Rec",
+        "Semantic ID",
+        "Sequential Rec"
+      ],
+      "llm_score": 72,
+      "llm_score_rationale": "标题明确涉及Semantic ID和LLM，与生成式推荐强相关；发表于顶级会议WWW（2026）；无工业界作者或线上实验证据",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 125,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026"
+    },
+    {
+      "id": "dblp:conf/sigir/ChenGCYH26",
+      "title": "Beyond Static Best-of-N: Bayesian List-wise Alignment for LLM-based Recommendation",
+      "authors": [
+        "Ruijun Chen",
+        "Chongming Gao",
+        "Jiawei Chen",
+        "Weiqin Yang",
+        "Xiangnan He"
+      ],
+      "affiliations": [
+        "University of Science and Technology of China",
+        "Zhejiang University"
+      ],
+      "published": "2026-07-15",
+      "updated": "2026-07-17T05:52:16.776730",
+      "abstract": "Large Language Models have revolutionized recommender systems (LLM4Rec) by leveraging their generative capabilities to model complex user preferences. However, existing LLM4Rec methods primarily rely on token-level objectives, making it difficult to optimize list-level and non-differentiable metrics (e.g., NDCG, fairness) that define actual recommendation quality. While Best-of-N (BoN) directly optimizes these metrics during inference, its high computational cost hinders real-world deployment. To address this, BoN Alignment aims to distill the search capability into the model itself, yet current approaches suffer from two critical limitations: (1) Indiscriminate Supervision, where the static reference fails to distinguish the relative quality of candidates exceeding its empirical range, leading to a loss of ranking guidance; and (2) Gradient Decay, where the effective supervision signal rapidly diminishes as the evolving policy improves, resulting in inefficient optimization.",
+      "categories": [
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3805712.3809535",
+      "pdf_url": "https://doi.org/10.1145/3805712.3809535",
+      "doi": "10.1145/3805712.3809535",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "针对LLM推荐中BoN对齐的静态监督与梯度衰减问题，提出贝叶斯列表对齐方法BLA，通过动态参考集和自适应梯度增强优化列表级指标，提升推荐效率与质量。",
+      "core_method": "基于贝叶斯优化的动态参考集构建与自适应梯度加权，实现列表级对齐训练。",
+      "innovation_points": [
+        "提出动态参考集机制，区分候选相对质量以提供更细粒度的排序指导",
+        "设计自适应梯度方案，缓解策略提升时有效监督信号衰减的问题"
+      ],
+      "experiment_results": [
+        "论文全文未提供具体实验数据"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "摘要中未报告实验验证结果，方法有效性未知",
+        "贝叶斯方法的近似推断可能引入额外误差"
+      ],
+      "practical_value": "为LLM推荐系统提供了一种更高效的列表级对齐方法，有望在保持推理效率的同时提升推荐指标。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "821b264a7610c81a",
+      "tags": [
+        "LLM4Rec",
+        "Generative Rec"
+      ],
+      "llm_score": 65,
+      "llm_score_rationale": "发表在信息检索顶会SIGIR，但2026年尚未召开，当前无实际线上A/B证据；与LLM4Rec强相关，属于生成式推荐方向，但未涉及语义ID或生成式检索；作者单位包含中国科学技术大学和浙江大学，无互联网公司背景",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID",
+        "No online A/B evidence"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 123,
+      "display_affiliations": [
+        "University of Science and Technology of China",
+        "Zhejiang University"
+      ],
+      "published_date": "2026-07-15"
+    },
+    {
+      "id": "arxiv:2607.18796",
+      "title": "TSGR: Taobao Search Generative Retrieval",
+      "authors": [
+        "Tianyu Zhan",
+        "Gui Ling",
+        "Tong Xiong",
+        "Kunhai Lin",
+        "Yang Wang",
+        "Kaixuan Zhang",
+        "Zhihong Chen",
+        "Yuliang Yan",
+        "Dan Ou",
+        "Shengyu Zhang",
+        "Haihong Tang",
+        "Bo Zheng"
+      ],
+      "affiliations": [
+        "Zhejiang University",
+        "Alibaba"
+      ],
+      "published": "2026-07-21T07:17:43Z",
+      "updated": "2026-07-21T07:17:43Z",
+      "abstract": "Generative retrieval (GR) has demonstrated strong promise for industrial e-commerce search by training a single autoregressive model to directly generate the Semantic IDs (SIDs) of target items. However, existing GR systems are primarily optimized for semantic matching and remain insensitive to item business value: SID construction is value-unaware, and candidates are ranked without access to item side-info. Consequently, high-value items are often missed or deprioritized at the retrieval stage, limiting downstream business impact. This limitation is particularly critical in industrial settings such as Taobao Search, where business objectives are central to system design. To address this, we propose $\\textbf{T}$aobao $\\textbf{S}$earch $\\textbf{G}$enerative $\\textbf{R}$etrieval ($\\textbf{TSGR}$), a unified generative retrieval framework that incorporates value awareness into both item representation and candidate ranking. 1) For item representation, TSGR introduces $\\textbf{Query-aware Parallel SID (QP-SID)}$, which encodes query-conditioned value orderings into the SID construction by building parallel codebooks derived from query-item statistics, so that higher-value and query-relevant items are assigned better token indices. 2) For candidate ranking, we introduce a $\\textbf{Value-aware Ranking Module (VRM)}$ that is built upon and jointly optimized with the GR, enabling a single model to seamlessly serve as both retriever and pre-ranker without a dedicated pre-ranking stage. A progressive training pipeline further aligns the model with semantic relevance, user preferences, and business objectives. Offline experiments show that TSGR achieves an 9.16% improvement in HR@1000, and online A/B tests further validate its effectiveness, yielding gains of +0.43% in IPV, +1.12% in Transaction Count, and +1.64% in GMV.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2607.18796v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.18796v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "TSGR提出了一种面向淘宝搜索的统一生成式检索框架，通过查询感知的并行语义ID（QP-SID）将业务价值编码到商品表示中，并引入价值感知排序模块（VRM）使单一模型同时担任检索和预排序角色。离线实验HR@1000提升9.16%，在线A/B测试IPV、交易数和GMV分别增长0.43%、1.12%和1.64%。",
+      "core_method": "通过查询感知并行语义ID（QP-SID）和价值感知排序模块（VRM）将业务价值融入生成式检索的item表示与候选排序中。",
+      "innovation_points": [
+        "提出查询感知并行语义ID（QP-SID），利用查询-商品统计信息构建并行码本，将查询相关的业务价值顺序编码进语义ID。",
+        "设计价值感知排序模块（VRM）与生成式检索模型联合优化，使单一模型同时完成检索和预排序，省去独立预排序阶段。",
+        "采用渐进式训练管道，依次对齐语义相关性、用户偏好和业务目标。"
+      ],
+      "experiment_results": [
+        "离线评估中TSGR在HR@1000上比现有生成式检索方法提升9.16%。",
+        "在线A/B测试显示IPV+0.43%、交易量+1.12%、GMV+1.64%。"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "在线A/B测试验证了其有效性，取得了IPV+0.43%、交易数+1.12%和GMV+1.64%的增益。",
+      "limitations": [
+        "论文未讨论QP-SID构建中码本大小和并行数量对性能的影响。",
+        "缺乏对业务价值指标（如GMV）与用户满意度指标（如停留时长）之间权衡的分析。"
+      ],
+      "practical_value": "TSGR为电商搜索场景提供了一种兼顾语义匹配和业务价值的统一生成式检索方案，可减少检索-预排序两阶段架构的系统复杂度并提升业务指标。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "c48d72ddc0b9cb20",
+      "tags": [
+        "Generative Retrieval",
+        "Semantic ID",
+        "LLM4Rec",
+        "Online Eval"
+      ],
+      "llm_score": 90,
+      "llm_score_rationale": "包含线上A/B测试，IPV+0.43%, Transaction+1.12%, GMV+1.64%；与生成式检索、语义ID强相关，提出Query-aware Parallel SID和Value-aware Ranking；来自阿里巴巴淘宝搜索，工业级实践",
+      "preference_signals": [
+        "Online A/B",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 122,
+      "display_affiliations": [
+        "Zhejiang University",
+        "Alibaba"
+      ],
+      "published_date": "2026-07-21"
+    },
+    {
+      "id": "dblp:conf/sigir/AnZYQGGY26",
+      "title": "Beyond the Single Path: Divergent Reasoning for LLM-based Recommendation",
+      "authors": [
+        "Guojia An",
+        "Jie Zou",
+        "Yuhan Yang",
+        "Shuai Qin",
+        "Weikang Guo",
+        "Jinyu Guo",
+        "Yang Yang"
+      ],
+      "affiliations": [
+        "University of Electronic Science and Technology of China",
+        "Southwest University",
+        "Southwestern University of Finance and Economics"
+      ],
+      "published": "2026-07-10",
+      "updated": "2026-07-16T13:24:37.021932",
+      "abstract": "Large Language Models (LLMs) have demonstrated strong potential in recommendations due to their powerful reasoning capabilities. However, existing methods typically rely on a single reasoning path to drive the entire Top-K recommendations. This paradigm is prone to reasoning path collapse, where limiting exploration of potentially superior and diverse reasoning paths within the LLMs space. As a result, both the accuracy and diversity of the recommendation outcomes are constrained.",
+      "categories": [
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3805712.3809732",
+      "pdf_url": "https://doi.org/10.1145/3805712.3809732",
+      "doi": "10.1145/3805712.3809732",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "针对LLM推荐中单路径推理导致的路径塌陷问题，提出多路径发散推理方法，提升推荐准确性和多样性。",
+      "core_method": "采用多路径发散推理，通过探索多种推理路径来增强LLM推荐的准确性和多样性。",
+      "innovation_points": [
+        "提出多路径发散推理框架，突破传统单路径推理的限制",
+        "显式建模并利用多种推理路径，缓解推理路径塌陷"
+      ],
+      "experiment_results": [
+        "元数据未提供具体实验结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "元数据未提及方法局限性",
+        "缺少具体实验结果验证"
+      ],
+      "practical_value": "为LLM推荐系统提供了一种探索多样化推理路径的思路，有望提升推荐结果的准确性和多样性。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "f984f9dd2545a2ea",
+      "tags": [
+        "LLM4Rec",
+        "Generative Rec"
+      ],
+      "llm_score": 88,
+      "llm_score_rationale": "发表于顶级会议SIGIR（2026）；研究LLM基于推理的推荐，属于生成式推荐相关方向；提出发散推理（Divergent Reasoning）方法，旨在提升推荐的准确性和多样性",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 121,
+      "display_affiliations": [
+        "University of Electronic Science and Technology of China",
+        "Southwest University",
+        "Southwestern University of Finance and Economics"
+      ],
+      "published_date": "2026-07-10"
+    },
+    {
+      "id": "dblp:conf/sigir/DangZPDCCC26",
+      "title": "MLLMRec: A Preference Reasoning Paradigm with Graph Refinement for Multimodal Recommendation",
+      "authors": [
+        "Yuzhuo Dang",
+        "Xin Zhang",
+        "Zhiqiang Pan",
+        "Yuxiao Duan",
+        "Wanyu Chen",
+        "Fei Cai",
+        "Honghui Chen"
+      ],
+      "affiliations": [
+        "National University of Defense Technology"
+      ],
+      "published": "2026-07-10",
+      "updated": "2026-07-21T08:15:58.654021",
+      "abstract": "Multimodal recommendation combines the user historical behaviors with the modal features of items to capture the tangible user preferences, presenting superior performance compared to the conventional ID-based recommender systems. However, existing methods still encounter two key problems in the representation learning of users and items, respectively: (1) the initialization of multimodal user representations is either agnostic to historical behaviors or contaminated by irrelevant modal noise, and (2) the widely used KNN-based item-item graph contains noisy edges with low similarities and lacks audience co-occurrence relationships. To address such issues, we propose MLLMRec, a novel preference reasoning paradigm with graph refinement for multimodal recommendation. Specifically, on the one hand, the item images are first converted into high-quality semantic descriptions using a multimodal large language model (MLLM), thereby bridging the semantic gap between visual and textual modalities. Then, we construct a behavioral description list for each user and feed it into the MLLM to reason about the purified user preference profiles that contain the latent interaction intents. On the other hand, we develop the threshold-controlled denoising and topology-aware enhancement strategies to refine the suboptimal item-item graph, thereby improving the accuracy of item representation learning. Extensive experiments on three publicly available datasets demonstrate that MLLMRec achieves the state-of-the-art performance with an average improvement of 21.48% over the optimal baselines. The source code is provided at https://github.com/Yuzhuo-Dang/MLLMRec.",
+      "categories": [
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3805712.3809749",
+      "pdf_url": "https://doi.org/10.1145/3805712.3809749",
+      "doi": "10.1145/3805712.3809749",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "MLLMRec利用多模态大语言模型将物品图像转为语义描述，推理用户偏好并细化物品图，在多模态推荐中平均提升21.48%。",
+      "core_method": "提出基于多模态大语言模型的偏好推理范式，并结合图去噪与拓扑增强来细化物品-物品图。",
+      "innovation_points": [
+        "使用MLLM从物品图像生成高质量语义描述，弥合视觉与文本模态的语义鸿沟",
+        "基于用户行为描述列表，利用MLLM推理出净化后的用户偏好画像",
+        "提出阈值控制去噪和拓扑感知增强策略来优化物品图结构"
+      ],
+      "experiment_results": [
+        "在三个公开数据集上，MLLMRec比最优基线平均提升21.48%"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "元数据未提及MLLM推理可能带来的计算开销和实时性问题",
+        "未提供线上实验验证，实际线上效果未知"
+      ],
+      "practical_value": "将MLLM用于用户偏好推理和物品图细化，提升多模态推荐效果，具有较强实践潜力。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "ee370b3177bbbd1a",
+      "tags": [
+        "LLM4Rec"
+      ],
+      "llm_score": 78,
+      "llm_score_rationale": "发表于SIGIR顶会，论文声称达到SOTA性能，提出利用MLLM进行偏好推理和图去噪的多模态推荐框架；作者单位非知名互联网公司，缺少在线A/B实验或线上流量验证；方法涉及LLM和多模态推荐，但与生成式推荐/语义ID的关联较弱",
+      "preference_signals": [
+        "Top venue",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 121,
+      "display_affiliations": [
+        "National University of Defense Technology"
+      ],
+      "published_date": "2026-07-10"
+    },
+    {
+      "id": "dblp:conf/sigir/BaiLZWYRRF26",
+      "title": "Bi-Level Optimization for Generative Recommendation: Bridging Tokenization and Generation",
+      "authors": [
+        "Yimeng Bai",
+        "Chang Liu",
+        "Yang Zhang",
+        "Dingxian Wang",
+        "Frank Yang",
+        "Andrew Rabinovich",
+        "Wenge Rong",
+        "Fuli Feng"
+      ],
+      "affiliations": [
+        "University of Science and Technology of China",
+        "Beihang University",
+        "National University of Singapore",
+        "ResearchWorks (United States)"
+      ],
+      "published": "2026-07-15",
+      "updated": "2026-07-17T05:52:16.776730",
+      "abstract": "Generative recommendation is emerging as a transformative paradigm by directly generating recommended items, rather than relying on matching. Building such a system typically involves two key components: (1) optimizing the tokenizer to derive suitable item identifiers, and (2) training the recommender based on those identifiers. Existing approaches often treat these components separately—either sequentially or in alternation—overlooking their interdependence. This separation can lead to misalignment: the tokenizer is trained without direct guidance from the recommendation objective, potentially yielding suboptimal identifiers that degrade recommendation performance. To address this, we propose BLOGER, a Bi-Level Optimization for GEnerative Recommendation framework, which explicitly models the interdependence between the tokenizer and the recommender in a unified optimization process. The lower level trains the recommender using tokenized sequences, while the upper level optimizes the tokenizer based on both the tokenization loss and recommendation loss. We adopt a meta-learning approach to solve this bi-level optimization efficiently, and introduce gradient surgery to mitigate gradient conflicts in the upper-level updates, thereby ensuring that item identifiers are both informative and recommendation-aligned. Extensive experiments on multiple real-world datasets demonstrate that BLOGER consistently outperforms state-of-the-art generative recommendation methods while maintaining practical efficiency with no significant additional computational overhead, effectively bridging the gap between item tokenization and autoregressive generation. We release our code at https://github.com/Ten-Mao/BLOGER.",
+      "categories": [
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3805712.3809632",
+      "pdf_url": "https://doi.org/10.1145/3805712.3809632",
+      "doi": "10.1145/3805712.3809632",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "提出BLOGER框架，通过双层优化统一建模生成式推荐中的分词器与推荐器，利用元学习和梯度手术缓解冲突。实验证明该方法在多个数据集上优于现有方法，且未显著增加计算开销。",
+      "core_method": "基于元学习的双层优化框架，下层训练推荐器，上层优化分词器，并引入梯度手术缓解梯度冲突。",
+      "innovation_points": [
+        "首次将生成式推荐中的分词器和推荐器联合建模为双层优化问题",
+        "采用元学习方法高效求解双层优化，并引入梯度手术缓解上层梯度冲突",
+        "在多个真实数据集上验证了方法的有效性和效率"
+      ],
+      "experiment_results": [
+        "在多个真实数据集上，BLOGER一致优于现有生成式推荐方法",
+        "方法没有显著增加计算开销，具有实用性"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "摘要未讨论方法在大规模工业场景下的可扩展性或冷启动问题",
+        "未提及对推荐多样性和新颖性的影响"
+      ],
+      "practical_value": "为生成式推荐中分词器与推荐器的联合优化提供了实用且高效的解决方案，可提升推荐准确性。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "18b46bbb912a0c5b",
+      "tags": [
+        "Generative Rec",
+        "Item Tokenization",
+        "Generative Retrieval"
+      ],
+      "llm_score": 78,
+      "llm_score_rationale": "提出面向生成式推荐的 bi-level 优化框架，显式建模 tokenization 与生成的对齐，核心聚焦生成式推荐范式；发表于 SIGIR 2026，为信息检索顶级会议；仅基于离线实验验证，未提供线上 A/B 证据",
+      "preference_signals": [
+        "Generative Rec / Semantic ID",
+        "Top venue"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 119,
+      "display_affiliations": [
+        "University of Science and Technology of China",
+        "Beihang University",
+        "National University of Singapore",
+        "ResearchWorks (United States)"
       ],
       "published_date": "2026-07-15"
     },
@@ -648,72 +949,6 @@
         "The University of Adelaide"
       ],
       "published_date": "2026-04-09"
-    },
-    {
-      "id": "dblp:conf/www/LiuFYWGH26",
-      "title": "LLM-Driven Semantic ID for Information Diffusion Prediction",
-      "authors": [
-        "Haoshuang Liu",
-        "Zihan Feng",
-        "Yajun Yang",
-        "Xin Wang",
-        "Hong Gao",
-        "Qinghua Hu"
-      ],
-      "affiliations": [],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792652",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792652",
-      "doi": "10.1145/3774904.3792652",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "提出LLM4IDP，利用大语言模型将信息扩散预测任务中的级联图压缩为紧凑的Semantic ID序列，以替代传统的GNN编码，提升扩散预测的效率和可扩展性。",
-      "core_method": "使用LLM对信息级联的传播序列（用户序列）进行语义理解和压缩，生成有序的Semantic ID序列，然后通过Transformer进行扩散预测。",
-      "innovation_points": [
-        "首次将LLM生成的Semantic ID引入信息扩散预测，将图结构问题转化为序列建模问题",
-        "通过LLM的语义理解能力自动学习用户和传播模式的紧凑表示，无需人工设计图编码器",
-        "LLM4IDP框架在大规模级联预测上兼具效率和准确性，可轻松扩展到大型网络"
-      ],
-      "experiment_results": [
-        "论文未提供详细实验数据，仅有元数据信息，无法报告具体评测结果"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "未提供具体实验数据，方法有效性缺乏量化验证",
-        "LLM生成Semantic ID的泛化能力和跨平台迁移性未讨论"
-      ],
-      "practical_value": "为信息扩散预测提供了一种可扩展的LLM驱动范式，有望在社交网络传播分析、推荐系统信息流建模等场景中提升效率。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "1fc623eebf327983",
-      "tags": [
-        "LLM4Rec",
-        "Semantic ID",
-        "Sequential Rec"
-      ],
-      "llm_score": 72,
-      "llm_score_rationale": "标题明确涉及Semantic ID和LLM，与生成式推荐强相关；发表于顶级会议WWW（2026）；无工业界作者或线上实验证据",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 122,
-      "display_affiliations": [
-        "Unknown affiliation"
-      ],
-      "published_date": "2026"
     },
     {
       "id": "dblp:conf/sigir/CuiLWZWWC26",
@@ -1063,73 +1298,6 @@
         "Shenzhen University"
       ],
       "published_date": "2026-04-12"
-    },
-    {
-      "id": "dblp:conf/sigir/DangZPDCCC26",
-      "title": "MLLMRec: A Preference Reasoning Paradigm with Graph Refinement for Multimodal Recommendation",
-      "authors": [
-        "Yuzhuo Dang",
-        "Xin Zhang",
-        "Zhiqiang Pan",
-        "Yuxiao Duan",
-        "Wanyu Chen",
-        "Fei Cai",
-        "Honghui Chen"
-      ],
-      "affiliations": [
-        "National University of Defense Technology"
-      ],
-      "published": "2026-07-10",
-      "updated": "2026-07-18T07:39:51.176621",
-      "abstract": "Multimodal recommendation combines the user historical behaviors with the modal features of items to capture the tangible user preferences, presenting superior performance compared to the conventional ID-based recommender systems. However, existing methods still encounter two key problems in the representation learning of users and items, respectively: (1) the initialization of multimodal user representations is either agnostic to historical behaviors or contaminated by irrelevant modal noise, and (2) the widely used KNN-based item-item graph contains noisy edges with low similarities and lacks audience co-occurrence relationships. To address such issues, we propose MLLMRec, a novel preference reasoning paradigm with graph refinement for multimodal recommendation. Specifically, on the one hand, the item images are first converted into high-quality semantic descriptions using a multimodal large language model (MLLM), thereby bridging the semantic gap between visual and textual modalities. Then, we construct a behavioral description list for each user and feed it into the MLLM to reason about the purified user preference profiles that contain the latent interaction intents. On the other hand, we develop the threshold-controlled denoising and topology-aware enhancement strategies to refine the suboptimal item-item graph, thereby improving the accuracy of item representation learning. Extensive experiments on three publicly available datasets demonstrate that MLLMRec achieves the state-of-the-art performance with an average improvement of 21.48% over the optimal baselines. The source code is provided at https://github.com/Yuzhuo-Dang/MLLMRec.",
-      "categories": [
-        "SIGIR"
-      ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3805712.3809749",
-      "pdf_url": "https://doi.org/10.1145/3805712.3809749",
-      "doi": "10.1145/3805712.3809749",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "提出MLLMRec框架，利用多模态大语言模型将物品图像转为语义描述并推理出纯净的用户偏好，同时通过阈值降噪和拓扑增强优化物品图，在三个公开数据集上取得SOTA性能，平均提升21.48%。",
-      "core_method": "利用MLLM生成物品语义描述并推理用户偏好，结合图优化的多模态推荐范式。",
-      "innovation_points": [
-        "提出基于MLLM的用户偏好推理机制，从行为描述中提取纯净偏好意图。",
-        "设计阈值控制和拓扑感知的图优化策略，提升物品表示学习准确性。"
-      ],
-      "experiment_results": [
-        "在三个公开数据集上实验，与最优基线相比平均性能提升21.48%。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "未展示在线A/B测试或大规模生产环境验证。",
-        "计算开销可能因MLLM调用而较高。"
-      ],
-      "practical_value": "通过MLLM增强多模态推荐中用户和物品的表示学习，有望提升精准推荐能力。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "a9d05070cde000be",
-      "tags": [
-        "LLM4Rec",
-        "User Modeling"
-      ],
-      "llm_score": 75,
-      "llm_score_rationale": "发表在顶级会议SIGIR上，符合顶会发表权重；虽然使用了MLLM进行偏好推理，但核心是推荐系统表示学习，而非生成式检索或语义ID；作者单位来自国防科技大学，缺少知名互联网公司背景",
-      "preference_signals": [
-        "Top venue",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 118,
-      "display_affiliations": [
-        "National University of Defense Technology"
-      ],
-      "published_date": "2026-07-10"
     },
     {
       "id": "arxiv:2607.11392",
