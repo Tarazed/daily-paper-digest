@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-24T03:36:22Z",
+  "generated_at": "2026-07-25T03:31:50Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
@@ -7,8 +7,8 @@
   },
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 6,
-    "analyzed": 4,
+    "reused": 10,
+    "analyzed": 0,
     "source": "web/public/papers.json"
   },
   "current_limit": 10,
@@ -199,7 +199,7 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 147,
+      "score": 154,
       "display_affiliations": [
         "University of Glasgow",
         "Shandong University",
@@ -209,80 +209,6 @@
         "Leiden University"
       ],
       "published_date": "2026-07-15"
-    },
-    {
-      "id": "arxiv:2607.21028",
-      "title": "Bridging the Structural Gap: Adapting Autoregressive Generation for Recommendation",
-      "authors": [
-        "Junchao Zeng",
-        "Junzhang Zhu",
-        "Junyang Chen",
-        "Yudong Li",
-        "Wei Liu",
-        "Chengxiang Zhuo",
-        "Zang Li"
-      ],
-      "affiliations": [
-        "Shenzhen University",
-        "Tencent"
-      ],
-      "published": "2026-07-23T08:11:57Z",
-      "updated": "2026-07-23T08:11:57Z",
-      "abstract": "Generative Recommendation (GR) has emerged as a new paradigm for sequential recommendation, in which a representative line of work encodes items into hierarchical semantic IDs via residual quantization and predicts the IDs token by token. However, this generative formulation still exhibits structural gaps with respect to the recommendation task: flattening multi-token IDs into a single sequence destroys item-level structure, and the inconsistency between training and inference over a hierarchical codebook gives rise to semantic drift. To bridge these two gaps, we propose BARGE, which employs Item Context-Aware Attention (ICA) to restore item-level structure during encoding, and Hierarchical Path Reranking (HPR) together with Dual-Path Decoding (DPD) to suppress semantic drift from two complementary angles during decoding. Extensive experiments and analytical studies on public benchmarks and a large-scale offline test demonstrate that BARGE achieves superior recommendation performance. An online A/B test on a Tencent platform yields improvements of 0.60% in click-through rate, 1.34% in click unique visitors, and 1.70% in total reading time, confirming the practical value of BARGE in industrial-scale recommendation.",
-      "categories": [
-        "cs.IR"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2607.21028v1",
-      "pdf_url": "https://arxiv.org/pdf/2607.21028v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "本文提出BARGE模型，通过项目上下文感知注意力恢复项目级结构，并通过分层路径重排序和双路径解码从两个互补角度抑制语义漂移，解决了生成式推荐中序列扁平化和分层解码不一致的结构性缺陷。在公开数据集和大规模离线测试中取得显著提升，线上A/B测试验证了其在腾讯内容平台的工业应用价值。",
-      "core_method": "BARGE通过ICA恢复编码器端项目边界，结合HPR和DPD在解码端从路径内和跨通道两个角度抑制分层语义ID生成中的语义漂移。",
-      "innovation_points": [
-        "显式识别生成式推荐中的两项结构性缺陷：项目级结构丢失和分层解码语义漂移，并提出互补的模块化解决方案。",
-        "提出Item Context-Aware Attention (ICA)，通过项目内token聚合和门控融合恢复编码器序列中的项目边界信息。",
-        "提出Hierarchical Path Reranking (HPR)进行路径级对比重排序，并设计Dual-Path Decoding (DPD)通过正交通道双解码器融合提升候选覆盖，联合缓解语义漂移。"
-      ],
-      "experiment_results": [
-        "在Amazon Beauty和Sports数据集上，BARGE在Recall@5/10和NDCG@5/10上均超越TIGER等生成式基线以及SASRec等判别式基线。",
-        "大规模工业离线测试中，BARGE相比线上基线在Recall等多个指标上取得显著提升。"
-      ],
-      "ab_test": "yes",
-      "ab_test_evidence": "论文摘要及全文明确指出在腾讯某平台进行了线上A/B测试，结果显示点击率提升0.60%、点击独立访客数提升1.34%、总阅读时长提升1.70%。",
-      "limitations": [
-        "仅在两个公开电商数据集和一个腾讯内部数据集上验证，跨领域泛化性未充分探索。",
-        "双路径解码增加了模型复杂度和推理成本，未详细分析相比单路径的额外计算开销。"
-      ],
-      "practical_value": "BARGE提供了一套轻量级模块，可直接嵌入现有生成式推荐框架以提升推荐准确性和工业部署效果，已实际应用于腾讯内容平台并获得核心指标提升。",
-      "analysis_basis": "full_text",
-      "analysis_status": "complete",
-      "analysis_signature": "e679711d02407a02",
-      "tags": [
-        "Generative Rec",
-        "Semantic ID",
-        "Item Tokenization",
-        "Vector Quantization"
-      ],
-      "llm_score": 98,
-      "llm_score_rationale": "论文在腾讯平台进行了线上A/B测试，点击率、点击独立访客和总阅读时间均有显著提升，提供直接生产环境证据。；研究聚焦生成式推荐中的语义ID、残差量化和自回归生成，与生成式推荐/语义ID强相关。；作者单位包含腾讯（Tencent），属于知名互联网公司，增加工业实践可信度。",
-      "preference_signals": [
-        "Online A/B",
-        "Generative Rec / Semantic ID",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 138,
-      "display_affiliations": [
-        "Shenzhen University",
-        "Tencent"
-      ],
-      "published_date": "2026-07-23"
     },
     {
       "id": "dblp:conf/sigir/FengLHLGZLG26",
@@ -349,13 +275,235 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 136,
+      "score": 139,
       "display_affiliations": [
         "Fudan University",
         "Microsoft Research Asia (China)",
         "Seattle University"
       ],
       "published_date": "2026-07-15"
+    },
+    {
+      "id": "dblp:conf/sigir/ChenGCYH26",
+      "title": "Beyond Static Best-of-N: Bayesian List-wise Alignment for LLM-based Recommendation",
+      "authors": [
+        "Ruijun Chen",
+        "Chongming Gao",
+        "Jiawei Chen",
+        "Weiqin Yang",
+        "Xiangnan He"
+      ],
+      "affiliations": [
+        "University of Science and Technology of China",
+        "Zhejiang University"
+      ],
+      "published": "2026-07-15",
+      "updated": "2026-07-17T05:52:16.776730",
+      "abstract": "Large Language Models have revolutionized recommender systems (LLM4Rec) by leveraging their generative capabilities to model complex user preferences. However, existing LLM4Rec methods primarily rely on token-level objectives, making it difficult to optimize list-level and non-differentiable metrics (e.g., NDCG, fairness) that define actual recommendation quality. While Best-of-N (BoN) directly optimizes these metrics during inference, its high computational cost hinders real-world deployment. To address this, BoN Alignment aims to distill the search capability into the model itself, yet current approaches suffer from two critical limitations: (1) Indiscriminate Supervision, where the static reference fails to distinguish the relative quality of candidates exceeding its empirical range, leading to a loss of ranking guidance; and (2) Gradient Decay, where the effective supervision signal rapidly diminishes as the evolving policy improves, resulting in inefficient optimization.",
+      "categories": [
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3805712.3809535",
+      "pdf_url": "https://doi.org/10.1145/3805712.3809535",
+      "doi": "10.1145/3805712.3809535",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "针对LLM推荐中BoN对齐的静态监督与梯度衰减问题，提出贝叶斯列表对齐方法BLA，通过动态参考集和自适应梯度增强优化列表级指标，提升推荐效率与质量。",
+      "core_method": "基于贝叶斯优化的动态参考集构建与自适应梯度加权，实现列表级对齐训练。",
+      "innovation_points": [
+        "提出动态参考集机制，区分候选相对质量以提供更细粒度的排序指导",
+        "设计自适应梯度方案，缓解策略提升时有效监督信号衰减的问题"
+      ],
+      "experiment_results": [
+        "论文全文未提供具体实验数据"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "摘要中未报告实验验证结果，方法有效性未知",
+        "贝叶斯方法的近似推断可能引入额外误差"
+      ],
+      "practical_value": "为LLM推荐系统提供了一种更高效的列表级对齐方法，有望在保持推理效率的同时提升推荐指标。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "821b264a7610c81a",
+      "tags": [
+        "LLM4Rec",
+        "Generative Rec"
+      ],
+      "llm_score": 65,
+      "llm_score_rationale": "发表在信息检索顶会SIGIR，但2026年尚未召开，当前无实际线上A/B证据；与LLM4Rec强相关，属于生成式推荐方向，但未涉及语义ID或生成式检索；作者单位包含中国科学技术大学和浙江大学，无互联网公司背景",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID",
+        "No online A/B evidence"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 138,
+      "display_affiliations": [
+        "University of Science and Technology of China",
+        "Zhejiang University"
+      ],
+      "published_date": "2026-07-15"
+    },
+    {
+      "id": "arxiv:2607.21028",
+      "title": "Bridging the Structural Gap: Adapting Autoregressive Generation for Recommendation",
+      "authors": [
+        "Junchao Zeng",
+        "Junzhang Zhu",
+        "Junyang Chen",
+        "Yudong Li",
+        "Wei Liu",
+        "Chengxiang Zhuo",
+        "Zang Li"
+      ],
+      "affiliations": [
+        "Tencent",
+        "Shenzhen University"
+      ],
+      "published": "2026-07-23T08:11:57Z",
+      "updated": "2026-07-23T08:11:57Z",
+      "abstract": "Generative Recommendation (GR) has emerged as a new paradigm for sequential recommendation, in which a representative line of work encodes items into hierarchical semantic IDs via residual quantization and predicts the IDs token by token. However, this generative formulation still exhibits structural gaps with respect to the recommendation task: flattening multi-token IDs into a single sequence destroys item-level structure, and the inconsistency between training and inference over a hierarchical codebook gives rise to semantic drift. To bridge these two gaps, we propose BARGE, which employs Item Context-Aware Attention (ICA) to restore item-level structure during encoding, and Hierarchical Path Reranking (HPR) together with Dual-Path Decoding (DPD) to suppress semantic drift from two complementary angles during decoding. Extensive experiments and analytical studies on public benchmarks and a large-scale offline test demonstrate that BARGE achieves superior recommendation performance. An online A/B test on a Tencent platform yields improvements of 0.60% in click-through rate, 1.34% in click unique visitors, and 1.70% in total reading time, confirming the practical value of BARGE in industrial-scale recommendation.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2607.21028v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.21028v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "本文提出BARGE模型，通过项目上下文感知注意力恢复项目级结构，并通过分层路径重排序和双路径解码从两个互补角度抑制语义漂移，解决了生成式推荐中序列扁平化和分层解码不一致的结构性缺陷。在公开数据集和大规模离线测试中取得显著提升，线上A/B测试验证了其在腾讯内容平台的工业应用价值。",
+      "core_method": "BARGE通过ICA恢复编码器端项目边界，结合HPR和DPD在解码端从路径内和跨通道两个角度抑制分层语义ID生成中的语义漂移。",
+      "innovation_points": [
+        "显式识别生成式推荐中的两项结构性缺陷：项目级结构丢失和分层解码语义漂移，并提出互补的模块化解决方案。",
+        "提出Item Context-Aware Attention (ICA)，通过项目内token聚合和门控融合恢复编码器序列中的项目边界信息。",
+        "提出Hierarchical Path Reranking (HPR)进行路径级对比重排序，并设计Dual-Path Decoding (DPD)通过正交通道双解码器融合提升候选覆盖，联合缓解语义漂移。"
+      ],
+      "experiment_results": [
+        "在Amazon Beauty和Sports数据集上，BARGE在Recall@5/10和NDCG@5/10上均超越TIGER等生成式基线以及SASRec等判别式基线。",
+        "大规模工业离线测试中，BARGE相比线上基线在Recall等多个指标上取得显著提升。"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文摘要及全文明确指出在腾讯某平台进行了线上A/B测试，结果显示点击率提升0.60%、点击独立访客数提升1.34%、总阅读时长提升1.70%。",
+      "limitations": [
+        "仅在两个公开电商数据集和一个腾讯内部数据集上验证，跨领域泛化性未充分探索。",
+        "双路径解码增加了模型复杂度和推理成本，未详细分析相比单路径的额外计算开销。"
+      ],
+      "practical_value": "BARGE提供了一套轻量级模块，可直接嵌入现有生成式推荐框架以提升推荐准确性和工业部署效果，已实际应用于腾讯内容平台并获得核心指标提升。",
+      "analysis_basis": "full_text",
+      "analysis_status": "cached",
+      "analysis_signature": "e679711d02407a02",
+      "tags": [
+        "Generative Rec",
+        "Semantic ID",
+        "Item Tokenization",
+        "Vector Quantization"
+      ],
+      "llm_score": 98,
+      "llm_score_rationale": "论文在腾讯平台进行了线上A/B测试，点击率、点击独立访客和总阅读时间均有显著提升，提供直接生产环境证据。；研究聚焦生成式推荐中的语义ID、残差量化和自回归生成，与生成式推荐/语义ID强相关。；作者单位包含腾讯（Tencent），属于知名互联网公司，增加工业实践可信度。",
+      "preference_signals": [
+        "Online A/B",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 135,
+      "display_affiliations": [
+        "Tencent",
+        "Shenzhen University"
+      ],
+      "published_date": "2026-07-23"
+    },
+    {
+      "id": "arxiv:2607.18796",
+      "title": "TSGR: Taobao Search Generative Retrieval",
+      "authors": [
+        "Tianyu Zhan",
+        "Gui Ling",
+        "Tong Xiong",
+        "Kunhai Lin",
+        "Yang Wang",
+        "Kaixuan Zhang",
+        "Zhihong Chen",
+        "Yuliang Yan",
+        "Dan Ou",
+        "Shengyu Zhang",
+        "Haihong Tang",
+        "Bo Zheng"
+      ],
+      "affiliations": [
+        "Zhejiang University",
+        "Taobao & Tmall Group of Alibaba"
+      ],
+      "published": "2026-07-21T07:17:43Z",
+      "updated": "2026-07-22T08:19:23Z",
+      "abstract": "Generative retrieval (GR) has demonstrated strong promise for industrial e-commerce search by training a single autoregressive model to directly generate the Semantic IDs (SIDs) of target items. However, existing GR systems are primarily optimized for semantic matching and remain insensitive to item business value: SID construction is value-unaware, and candidates are ranked without access to item side-info. Consequently, high-value items are often missed or deprioritized at the retrieval stage, limiting downstream business impact. This limitation is particularly critical in industrial settings such as Taobao Search, where business objectives are central to system design. To address this, we propose $\\textbf{T}$aobao $\\textbf{S}$earch $\\textbf{G}$enerative $\\textbf{R}$etrieval ($\\textbf{TSGR}$), a unified generative retrieval framework that incorporates value awareness into both item representation and candidate ranking. 1) For item representation, TSGR introduces $\\textbf{Query-aware Parallel SID (QP-SID)}$, which encodes query-conditioned value orderings into the SID construction by building parallel codebooks derived from query-item statistics, so that higher-value and query-relevant items are assigned better token indices. 2) For candidate ranking, we introduce a $\\textbf{Value-aware Ranking Module (VRM)}$ that is built upon and jointly optimized with the GR, enabling a single model to seamlessly serve as both retriever and pre-ranker without a dedicated pre-ranking stage. A progressive training pipeline further aligns the model with semantic relevance, user preferences, and business objectives. Offline experiments show that TSGR achieves a 9.16\\% improvement in HR@1000, and online A/B tests further validate its effectiveness, yielding gains of +0.43\\% in IPV, +1.12\\% in Transaction Count, and +1.64\\% in GMV. TSGR has been fully deployed in production.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2607.18796v2",
+      "pdf_url": "https://arxiv.org/pdf/2607.18796v2",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "针对电商搜索中生成式检索对商品业务价值不敏感的问题，提出TSGR框架，通过查询感知并行语义ID（QP-SID）编码查询相关价值排序，以及价值感知排序模块（VRM）实现检索与预排序一体化，在淘宝搜索中全面上线并取得显著业务指标提升。",
+      "core_method": "通过查询感知并行语义ID（QP-SID）和价值感知排序模块（VRM），将业务价值指标注入商品表征与候选排序，使单一生成模型同时完成检索与预排序。",
+      "innovation_points": [
+        "提出查询感知并行语义ID（QP-SID），基于查询-商品统计构建平行码本，将价值排序编码到语义ID中，使高价值相关商品获得更优token索引。",
+        "设计价值感知排序模块（VRM），与生成式检索联合优化，使单一模型同时承担检索和预排序功能，省去独立预排序阶段。",
+        "设计渐进式训练流程，逐步对齐语义相关性、用户偏好和业务目标，实现多目标统一优化。"
+      ],
+      "experiment_results": [
+        "离线实验中HR@1000提升9.16%，显著优于基线生成检索模型。",
+        "在线A/B测试中IPV提升+0.43%，交易笔数提升+1.12%，GMV提升+1.64%。",
+        "消融实验验证QP-SID和VRM各模块的有效性。"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "在线A/B测试显示TSGR带来IPV +0.43%，交易笔数+1.12%，GMV +1.64%，且已全量部署于生产环境。",
+      "limitations": [
+        "离线实验仅在淘宝搜索场景下评估，跨域或冷启动场景的适用性未探讨。",
+        "业务价值建模依赖历史统计信息，可能对数据分布敏感，迁移成本较高。"
+      ],
+      "practical_value": "为大规模工业电商搜索提供价值感知的生成式检索方案，可直接提升点击、成交和GMV等核心业务指标，已实际部署于淘宝搜索并验证效果。",
+      "analysis_basis": "full_text",
+      "analysis_status": "cached",
+      "analysis_signature": "03df8e725d101d73",
+      "tags": [
+        "Generative Retrieval",
+        "Semantic ID",
+        "LLM4Rec",
+        "Online Eval"
+      ],
+      "llm_score": 92,
+      "llm_score_rationale": "具备明确的在线A/B实验证据且已在生产环境全量部署，与生成式推荐和语义ID强相关；作者单位来自阿里巴巴（淘宝搜索）等知名互联网公司；论文聚焦于生成式检索中的语义ID构建与价值感知，直接面向工业搜索推荐实践",
+      "preference_signals": [
+        "Online A/B",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 127,
+      "display_affiliations": [
+        "Zhejiang University",
+        "Taobao & Tmall Group of Alibaba"
+      ],
+      "published_date": "2026-07-21"
     },
     {
       "id": "dblp:conf/sigir/BaiLZWYRRF26",
@@ -425,80 +573,12 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 134,
+      "score": 127,
       "display_affiliations": [
         "University of Science and Technology of China",
         "Beihang University",
         "National University of Singapore",
         "ResearchWorks (United States)"
-      ],
-      "published_date": "2026-07-15"
-    },
-    {
-      "id": "dblp:conf/sigir/ChenGCYH26",
-      "title": "Beyond Static Best-of-N: Bayesian List-wise Alignment for LLM-based Recommendation",
-      "authors": [
-        "Ruijun Chen",
-        "Chongming Gao",
-        "Jiawei Chen",
-        "Weiqin Yang",
-        "Xiangnan He"
-      ],
-      "affiliations": [
-        "University of Science and Technology of China",
-        "Zhejiang University"
-      ],
-      "published": "2026-07-15",
-      "updated": "2026-07-17T05:52:16.776730",
-      "abstract": "Large Language Models have revolutionized recommender systems (LLM4Rec) by leveraging their generative capabilities to model complex user preferences. However, existing LLM4Rec methods primarily rely on token-level objectives, making it difficult to optimize list-level and non-differentiable metrics (e.g., NDCG, fairness) that define actual recommendation quality. While Best-of-N (BoN) directly optimizes these metrics during inference, its high computational cost hinders real-world deployment. To address this, BoN Alignment aims to distill the search capability into the model itself, yet current approaches suffer from two critical limitations: (1) Indiscriminate Supervision, where the static reference fails to distinguish the relative quality of candidates exceeding its empirical range, leading to a loss of ranking guidance; and (2) Gradient Decay, where the effective supervision signal rapidly diminishes as the evolving policy improves, resulting in inefficient optimization.",
-      "categories": [
-        "SIGIR"
-      ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3805712.3809535",
-      "pdf_url": "https://doi.org/10.1145/3805712.3809535",
-      "doi": "10.1145/3805712.3809535",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "针对LLM推荐中BoN对齐的静态监督与梯度衰减问题，提出贝叶斯列表对齐方法BLA，通过动态参考集和自适应梯度增强优化列表级指标，提升推荐效率与质量。",
-      "core_method": "基于贝叶斯优化的动态参考集构建与自适应梯度加权，实现列表级对齐训练。",
-      "innovation_points": [
-        "提出动态参考集机制，区分候选相对质量以提供更细粒度的排序指导",
-        "设计自适应梯度方案，缓解策略提升时有效监督信号衰减的问题"
-      ],
-      "experiment_results": [
-        "论文全文未提供具体实验数据"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "摘要中未报告实验验证结果，方法有效性未知",
-        "贝叶斯方法的近似推断可能引入额外误差"
-      ],
-      "practical_value": "为LLM推荐系统提供了一种更高效的列表级对齐方法，有望在保持推理效率的同时提升推荐指标。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "821b264a7610c81a",
-      "tags": [
-        "LLM4Rec",
-        "Generative Rec"
-      ],
-      "llm_score": 65,
-      "llm_score_rationale": "发表在信息检索顶会SIGIR，但2026年尚未召开，当前无实际线上A/B证据；与LLM4Rec强相关，属于生成式推荐方向，但未涉及语义ID或生成式检索；作者单位包含中国科学技术大学和浙江大学，无互联网公司背景",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID",
-        "No online A/B evidence"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 128,
-      "display_affiliations": [
-        "University of Science and Technology of China",
-        "Zhejiang University"
       ],
       "published_date": "2026-07-15"
     },
@@ -577,84 +657,210 @@
       "published_date": "2026-04-09"
     },
     {
-      "id": "arxiv:2607.18796",
-      "title": "TSGR: Taobao Search Generative Retrieval",
+      "id": "dblp:conf/www/ZhuCJYWCZ26",
+      "title": "FeedGuard: Online Critic-Guided Reinforcement Learning with Privacy-Preserving Feedback for Recommendation",
       "authors": [
-        "Tianyu Zhan",
-        "Gui Ling",
-        "Tong Xiong",
-        "Kunhai Lin",
-        "Yang Wang",
-        "Kaixuan Zhang",
-        "Zhihong Chen",
-        "Yuliang Yan",
-        "Dan Ou",
-        "Shengyu Zhang",
-        "Haihong Tang",
-        "Bo Zheng"
+        "Mengying Zhu",
+        "Feiyue Chen",
+        "Lifan Jiang",
+        "Mengyuan Yang",
+        "Yangyang Wu",
+        "Guanjie Cheng",
+        "Xiaolin Zheng"
       ],
       "affiliations": [
         "Zhejiang University",
-        "Alibaba"
+        "Ningbo University"
       ],
-      "published": "2026-07-21T07:17:43Z",
-      "updated": "2026-07-22T08:19:23Z",
-      "abstract": "Generative retrieval (GR) has demonstrated strong promise for industrial e-commerce search by training a single autoregressive model to directly generate the Semantic IDs (SIDs) of target items. However, existing GR systems are primarily optimized for semantic matching and remain insensitive to item business value: SID construction is value-unaware, and candidates are ranked without access to item side-info. Consequently, high-value items are often missed or deprioritized at the retrieval stage, limiting downstream business impact. This limitation is particularly critical in industrial settings such as Taobao Search, where business objectives are central to system design. To address this, we propose $\\textbf{T}$aobao $\\textbf{S}$earch $\\textbf{G}$enerative $\\textbf{R}$etrieval ($\\textbf{TSGR}$), a unified generative retrieval framework that incorporates value awareness into both item representation and candidate ranking. 1) For item representation, TSGR introduces $\\textbf{Query-aware Parallel SID (QP-SID)}$, which encodes query-conditioned value orderings into the SID construction by building parallel codebooks derived from query-item statistics, so that higher-value and query-relevant items are assigned better token indices. 2) For candidate ranking, we introduce a $\\textbf{Value-aware Ranking Module (VRM)}$ that is built upon and jointly optimized with the GR, enabling a single model to seamlessly serve as both retriever and pre-ranker without a dedicated pre-ranking stage. A progressive training pipeline further aligns the model with semantic relevance, user preferences, and business objectives. Offline experiments show that TSGR achieves a 9.16\\% improvement in HR@1000, and online A/B tests further validate its effectiveness, yielding gains of +0.43\\% in IPV, +1.12\\% in Transaction Count, and +1.64\\% in GMV. TSGR has been fully deployed in production.",
+      "published": "2026-04-12",
+      "updated": "2026-07-14T23:27:15.235271",
+      "abstract": "Reinforcement learning-based recommendation systems (RLRS) are increasingly favored for their ability to leverage online interactive feedback, enabling adaptive and personalized decision-making. In this setting, user feedback serves as both a behavioral signal and an optimization target, making it essential for policy learning. However, collecting such feedback, e.g., clicks, ratings, and engagement traces, raises serious privacy concerns, posing critical challenges for value estimation, online adaptation, and privacy protection. In this paper, we propose FeedGuard, a critic-guided reinforcement learning framework with privacy-preserving feedback. FeedGuard enhances trajectory modeling via critic guidance, enables joint online fine-tuning with effective exploration–exploitation tradeoffs, and enforces end-to-end privacy protection across the feedback lifecycle via split federated learning and differential privacy. We further provide a formal analysis of its differential privacy guarantees. Extensive experiments on four public recommendation datasets and the VirtualTB platform show that FeedGuard performs well in both offline and online settings, while maintaining rigorous privacy guarantees with minimal degradation.",
       "categories": [
-        "cs.IR"
+        "WWW"
       ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2607.18796v2",
-      "pdf_url": "https://arxiv.org/pdf/2607.18796v2",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "针对电商搜索中生成式检索对商品业务价值不敏感的问题，提出TSGR框架，通过查询感知并行语义ID（QP-SID）编码查询相关价值排序，以及价值感知排序模块（VRM）实现检索与预排序一体化，在淘宝搜索中全面上线并取得显著业务指标提升。",
-      "core_method": "通过查询感知并行语义ID（QP-SID）和价值感知排序模块（VRM），将业务价值指标注入商品表征与候选排序，使单一生成模型同时完成检索与预排序。",
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792155",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792155",
+      "doi": "10.1145/3774904.3792155",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "FeedGuard提出一种隐私保护的评论家指导强化学习推荐框架，通过分裂联邦学习和差分隐私在反馈全生命周期实施端到端隐私保护，并实现联合在线微调与探索-利用权衡。实验在四个公共数据集和模拟平台VirtualTB上验证了离线与在线性能，表明能在严格隐私保证下保持推荐效果。",
+      "core_method": "基于评论家指导的强化学习框架，结合分裂联邦学习与差分隐私实现隐私保护下的在线微调与自适应推荐。",
       "innovation_points": [
-        "提出查询感知并行语义ID（QP-SID），基于查询-商品统计构建平行码本，将价值排序编码到语义ID中，使高价值相关商品获得更优token索引。",
-        "设计价值感知排序模块（VRM），与生成式检索联合优化，使单一模型同时承担检索和预排序功能，省去独立预排序阶段。",
-        "设计渐进式训练流程，逐步对齐语义相关性、用户偏好和业务目标，实现多目标统一优化。"
+        "提出Critic-Guided的轨迹建模增强方法，强化评论家对策略更新的指导",
+        "设计端到端隐私保护机制，覆盖从反馈收集到模型更新的全生命周期",
+        "实现联合在线微调与探索-利用权衡，并给出差分隐私的形式化分析"
       ],
       "experiment_results": [
-        "离线实验中HR@1000提升9.16%，显著优于基线生成检索模型。",
-        "在线A/B测试中IPV提升+0.43%，交易笔数提升+1.12%，GMV提升+1.64%。",
-        "消融实验验证QP-SID和VRM各模块的有效性。"
+        "在四个公开推荐数据集和VirtualTB模拟平台上进行离线和在线评估，FeedGuard在保持严格隐私保障的同时性能下降极小"
       ],
-      "ab_test": "yes",
-      "ab_test_evidence": "在线A/B测试显示TSGR带来IPV +0.43%，交易笔数+1.12%，GMV +1.64%，且已全量部署于生产环境。",
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
       "limitations": [
-        "离线实验仅在淘宝搜索场景下评估，跨域或冷启动场景的适用性未探讨。",
-        "业务价值建模依赖历史统计信息，可能对数据分布敏感，迁移成本较高。"
+        "未在真实工业线上流量中验证，仅依赖模拟平台和离线数据集",
+        "差分隐私引入的噪声对推荐质量的长期影响未深入探讨"
       ],
-      "practical_value": "为大规模工业电商搜索提供价值感知的生成式检索方案，可直接提升点击、成交和GMV等核心业务指标，已实际部署于淘宝搜索并验证效果。",
-      "analysis_basis": "full_text",
-      "analysis_status": "complete",
-      "analysis_signature": "03df8e725d101d73",
+      "practical_value": "为需要在线学习和隐私保护的推荐场景提供了可行的端到端解决方案，平衡了推荐效果与用户隐私。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "3bca0e3942f7e747",
       "tags": [
-        "Generative Retrieval",
-        "Semantic ID",
         "LLM4Rec",
+        "Generative Rec",
         "Online Eval"
       ],
-      "llm_score": 92,
-      "llm_score_rationale": "具备明确的在线A/B实验证据且已在生产环境全量部署，与生成式推荐和语义ID强相关；作者单位来自阿里巴巴（淘宝搜索）等知名互联网公司；论文聚焦于生成式检索中的语义ID构建与价值感知，直接面向工业搜索推荐实践",
+      "llm_score": 85,
+      "llm_score_rationale": "发表在WWW顶会，有online实验验证（VirtualTB平台），但未明确提及线上A/B或production实验。；强化学习推荐框架，与生成式推荐或语义ID无直接关联，但涉及在线反馈和协同微调，可能对读者有参考价值。；作者单位非知名互联网公司（浙江大学），无工业实验室合作。",
       "preference_signals": [
-        "Online A/B",
-        "Generative Rec / Semantic ID",
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 117,
+      "display_affiliations": [
+        "Zhejiang University",
+        "Ningbo University"
+      ],
+      "published_date": "2026-04-12"
+    },
+    {
+      "id": "dblp:conf/www/LiuZHZZZ26",
+      "title": "Facilitating Generative Retrieval with Logical Denoising for Interpretable Conversational Search",
+      "authors": [
+        "Qichuan Liu",
+        "Chentao Zhang",
+        "Yuxuan Hu",
+        "Chenfeng Zheng",
+        "Qinggang Zhang",
+        "Zhihong Zhang"
+      ],
+      "affiliations": [
+        "Xiamen University",
+        "Hong Kong Polytechnic University"
+      ],
+      "published": "2026-04-09",
+      "updated": "2026-07-14T23:27:15.235271",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792544",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792544",
+      "doi": "10.1145/3774904.3792544",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出逻辑去噪方法以提升生成式检索在可解释对话搜索中的效果。",
+      "core_method": "通过逻辑去噪优化生成式检索模型，增强对话搜索的可解释性。",
+      "innovation_points": [
+        "提出逻辑去噪机制以提高生成式检索的鲁棒性",
+        "应用于可解释对话搜索场景，改善检索结果的可解释性"
+      ],
+      "experiment_results": [
+        "论文全文未提供详细实验结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏详细实验数据支持",
+        "方法适用场景的边界未明确"
+      ],
+      "practical_value": "可提升对话搜索系统的可解释性和检索质量，具有潜在应用价值。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "d26211f7432f8e58",
+      "tags": [
+        "Generative Retrieval",
+        "Conversational Rec"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "发表在顶级会议WWW，主题涉及生成式检索，与生成式推荐/语义ID相关；但缺乏工业界作者单位和线上A/B实验证据，因此分数受限。",
+      "preference_signals": [
+        "Top venue"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 117,
+      "display_affiliations": [
+        "Xiamen University",
+        "Hong Kong Polytechnic University"
+      ],
+      "published_date": "2026-04-09"
+    },
+    {
+      "id": "dblp:conf/sigir/ChenWY26",
+      "title": "Advantage-Conditioned Flow Policy for Offline Reinforcement Learning in Recommendation",
+      "authors": [
+        "Xiaocong Chen",
+        "Siyu Wang",
+        "Lina Yao"
+      ],
+      "affiliations": [
+        "Macquarie University",
+        "The University of New South Wales, Sydney, NSW, Australia"
+      ],
+      "published": "2026-07-10",
+      "updated": "2026-07-14T23:27:15.235271",
+      "abstract": "Offline reinforcement learning (RL) is a useful approach for recommender systems because it can optimize long-term user feedback from logged interaction data without online exploration. A key challenge is the multi-modal nature of user preferences: a user may like several unrelated item types, so a unimodal policy (for example, a Gaussian) tends to average across modes and generate actions that do not match any interest. Recent diffusion-based policies can model complex preference distributions, but they often require many denoising steps. We propose PerfRec (Preference-aware Flow for Recommendation), a flow-matching offline RL framework that learns an expressive behavioral policy and distills it into an efficient one-step policy. PerfRec (i) trains a conditional flow model to clone the logged action distribution, (ii) trains twin Q-networks using next actions sampled from the learned flow policy, and (iii) trains an advantage-conditioned one-step policy with Q-guidance for improvement and a distillation loss that keeps the policy close to the flow policy. We use binary advantage conditioning to separate high-advantage and low-advantage regions of the flow-induced action distribution, so that at inference we can sample from the high-advantage mode with a single forward pass. Experiments on five benchmark datasets and one online simulation platform show that PerfRec improves recommendation performance over strong offline RL baselines.",
+      "categories": [
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3805712.3809626",
+      "pdf_url": "https://doi.org/10.1145/3805712.3809626",
+      "doi": "10.1145/3805712.3809626",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "本文提出PerfRec，一种基于流匹配的离线强化学习推荐框架。它利用条件流模型学习用户行为分布，并通过优势条件化的一步策略解决用户偏好的多模态问题。在多个基准和在线仿真平台上取得了优于现有离线RL方法的推荐效果。",
+      "core_method": "基于流匹配的优势条件化一步离线强化学习推荐策略",
+      "innovation_points": [
+        "将流匹配引入推荐离线RL，建模多模态用户偏好分布",
+        "设计优势条件化一步策略，通过Q-引导和蒸馏损失实现高效推理",
+        "在五个基准数据集和一个在线仿真平台验证有效性"
+      ],
+      "experiment_results": [
+        "在五个基准数据集和一个在线仿真平台上的实验表明，PerfRec优于现有强离线RL基线",
+        "摘要未提供具体指标数值"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "摘要未提及方法局限；实验仅在仿真平台开展，未在真实生产环境验证",
+        "未讨论计算效率或扩展到大规模场景的实际瓶颈"
+      ],
+      "practical_value": "为离线强化学习推荐提供了一种能够建模复杂用户偏好且推理高效的方法，有助于提升长期用户反馈优化",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "64b56dd7c9eb2b88",
+      "tags": [
+        "Generative Rec",
+        "User Modeling",
+        "Online Eval"
+      ],
+      "llm_score": 70,
+      "llm_score_rationale": "SIGIR顶会论文，符合顶会发表权重；作者单位Data61/CSIRO非知名互联网公司，但无线上A/B实验证据；论文关注离线RL推荐，非生成式推荐/语义ID方向",
+      "preference_signals": [
+        "Top venue",
         "Industry company"
       ],
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 124,
+      "score": 115,
       "display_affiliations": [
-        "Zhejiang University",
-        "Alibaba"
+        "Macquarie University",
+        "The University of New South Wales, Sydney, NSW, Australia"
       ],
-      "published_date": "2026-07-21"
+      "published_date": "2026-07-10"
     },
     {
       "id": "dblp:conf/sigir/AnZYQGGY26",
@@ -1017,77 +1223,6 @@
       "published_date": "2026-04-12"
     },
     {
-      "id": "dblp:conf/www/ZhuCJYWCZ26",
-      "title": "FeedGuard: Online Critic-Guided Reinforcement Learning with Privacy-Preserving Feedback for Recommendation",
-      "authors": [
-        "Mengying Zhu",
-        "Feiyue Chen",
-        "Lifan Jiang",
-        "Mengyuan Yang",
-        "Yangyang Wu",
-        "Guanjie Cheng",
-        "Xiaolin Zheng"
-      ],
-      "affiliations": [
-        "Zhejiang University",
-        "Ningbo University"
-      ],
-      "published": "2026-04-12",
-      "updated": "2026-07-14T23:27:15.235271",
-      "abstract": "Reinforcement learning-based recommendation systems (RLRS) are increasingly favored for their ability to leverage online interactive feedback, enabling adaptive and personalized decision-making. In this setting, user feedback serves as both a behavioral signal and an optimization target, making it essential for policy learning. However, collecting such feedback, e.g., clicks, ratings, and engagement traces, raises serious privacy concerns, posing critical challenges for value estimation, online adaptation, and privacy protection. In this paper, we propose FeedGuard, a critic-guided reinforcement learning framework with privacy-preserving feedback. FeedGuard enhances trajectory modeling via critic guidance, enables joint online fine-tuning with effective exploration–exploitation tradeoffs, and enforces end-to-end privacy protection across the feedback lifecycle via split federated learning and differential privacy. We further provide a formal analysis of its differential privacy guarantees. Extensive experiments on four public recommendation datasets and the VirtualTB platform show that FeedGuard performs well in both offline and online settings, while maintaining rigorous privacy guarantees with minimal degradation.",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792155",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792155",
-      "doi": "10.1145/3774904.3792155",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "FeedGuard提出一种隐私保护的评论家指导强化学习推荐框架，通过分裂联邦学习和差分隐私在反馈全生命周期实施端到端隐私保护，并实现联合在线微调与探索-利用权衡。实验在四个公共数据集和模拟平台VirtualTB上验证了离线与在线性能，表明能在严格隐私保证下保持推荐效果。",
-      "core_method": "基于评论家指导的强化学习框架，结合分裂联邦学习与差分隐私实现隐私保护下的在线微调与自适应推荐。",
-      "innovation_points": [
-        "提出Critic-Guided的轨迹建模增强方法，强化评论家对策略更新的指导",
-        "设计端到端隐私保护机制，覆盖从反馈收集到模型更新的全生命周期",
-        "实现联合在线微调与探索-利用权衡，并给出差分隐私的形式化分析"
-      ],
-      "experiment_results": [
-        "在四个公开推荐数据集和VirtualTB模拟平台上进行离线和在线评估，FeedGuard在保持严格隐私保障的同时性能下降极小"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "未在真实工业线上流量中验证，仅依赖模拟平台和离线数据集",
-        "差分隐私引入的噪声对推荐质量的长期影响未深入探讨"
-      ],
-      "practical_value": "为需要在线学习和隐私保护的推荐场景提供了可行的端到端解决方案，平衡了推荐效果与用户隐私。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "3bca0e3942f7e747",
-      "tags": [
-        "LLM4Rec",
-        "Generative Rec",
-        "Online Eval"
-      ],
-      "llm_score": 85,
-      "llm_score_rationale": "发表在WWW顶会，有online实验验证（VirtualTB平台），但未明确提及线上A/B或production实验。；强化学习推荐框架，与生成式推荐或语义ID无直接关联，但涉及在线反馈和协同微调，可能对读者有参考价值。；作者单位非知名互联网公司（浙江大学），无工业实验室合作。",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 117,
-      "display_affiliations": [
-        "Zhejiang University",
-        "Ningbo University"
-      ],
-      "published_date": "2026-04-12"
-    },
-    {
       "id": "dblp:conf/sigir/CuiLWZWWC26",
       "title": "SpecTran: Spectral-Aware Transformer-based Adapter for LLM-Enhanced Sequential Recommendation",
       "authors": [
@@ -1156,73 +1291,6 @@
         "OPPO Research Institute, Shenzhen, China"
       ],
       "published_date": "2026-07-15"
-    },
-    {
-      "id": "dblp:conf/www/LiuZHZZZ26",
-      "title": "Facilitating Generative Retrieval with Logical Denoising for Interpretable Conversational Search",
-      "authors": [
-        "Qichuan Liu",
-        "Chentao Zhang",
-        "Yuxuan Hu",
-        "Chenfeng Zheng",
-        "Qinggang Zhang",
-        "Zhihong Zhang"
-      ],
-      "affiliations": [
-        "Xiamen University",
-        "Hong Kong Polytechnic University"
-      ],
-      "published": "2026-04-09",
-      "updated": "2026-07-14T23:27:15.235271",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792544",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792544",
-      "doi": "10.1145/3774904.3792544",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "提出逻辑去噪方法以提升生成式检索在可解释对话搜索中的效果。",
-      "core_method": "通过逻辑去噪优化生成式检索模型，增强对话搜索的可解释性。",
-      "innovation_points": [
-        "提出逻辑去噪机制以提高生成式检索的鲁棒性",
-        "应用于可解释对话搜索场景，改善检索结果的可解释性"
-      ],
-      "experiment_results": [
-        "论文全文未提供详细实验结果"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏详细实验数据支持",
-        "方法适用场景的边界未明确"
-      ],
-      "practical_value": "可提升对话搜索系统的可解释性和检索质量，具有潜在应用价值。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "d26211f7432f8e58",
-      "tags": [
-        "Generative Retrieval",
-        "Conversational Rec"
-      ],
-      "llm_score": 75,
-      "llm_score_rationale": "发表在顶级会议WWW，主题涉及生成式检索，与生成式推荐/语义ID相关；但缺乏工业界作者单位和线上A/B实验证据，因此分数受限。",
-      "preference_signals": [
-        "Top venue"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 112,
-      "display_affiliations": [
-        "Xiamen University",
-        "Hong Kong Polytechnic University"
-      ],
-      "published_date": "2026-04-09"
     },
     {
       "id": "arxiv:2607.15591",
@@ -1454,74 +1522,6 @@
         "The University of Adelaide"
       ],
       "published_date": "2026-04-09"
-    },
-    {
-      "id": "dblp:conf/sigir/ChenWY26",
-      "title": "Advantage-Conditioned Flow Policy for Offline Reinforcement Learning in Recommendation",
-      "authors": [
-        "Xiaocong Chen",
-        "Siyu Wang",
-        "Lina Yao"
-      ],
-      "affiliations": [
-        "Macquarie University",
-        "The University of New South Wales, Sydney, NSW, Australia"
-      ],
-      "published": "2026-07-10",
-      "updated": "2026-07-14T23:27:15.235271",
-      "abstract": "Offline reinforcement learning (RL) is a useful approach for recommender systems because it can optimize long-term user feedback from logged interaction data without online exploration. A key challenge is the multi-modal nature of user preferences: a user may like several unrelated item types, so a unimodal policy (for example, a Gaussian) tends to average across modes and generate actions that do not match any interest. Recent diffusion-based policies can model complex preference distributions, but they often require many denoising steps. We propose PerfRec (Preference-aware Flow for Recommendation), a flow-matching offline RL framework that learns an expressive behavioral policy and distills it into an efficient one-step policy. PerfRec (i) trains a conditional flow model to clone the logged action distribution, (ii) trains twin Q-networks using next actions sampled from the learned flow policy, and (iii) trains an advantage-conditioned one-step policy with Q-guidance for improvement and a distillation loss that keeps the policy close to the flow policy. We use binary advantage conditioning to separate high-advantage and low-advantage regions of the flow-induced action distribution, so that at inference we can sample from the high-advantage mode with a single forward pass. Experiments on five benchmark datasets and one online simulation platform show that PerfRec improves recommendation performance over strong offline RL baselines.",
-      "categories": [
-        "SIGIR"
-      ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3805712.3809626",
-      "pdf_url": "https://doi.org/10.1145/3805712.3809626",
-      "doi": "10.1145/3805712.3809626",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "本文提出PerfRec，一种基于流匹配的离线强化学习推荐框架。它利用条件流模型学习用户行为分布，并通过优势条件化的一步策略解决用户偏好的多模态问题。在多个基准和在线仿真平台上取得了优于现有离线RL方法的推荐效果。",
-      "core_method": "基于流匹配的优势条件化一步离线强化学习推荐策略",
-      "innovation_points": [
-        "将流匹配引入推荐离线RL，建模多模态用户偏好分布",
-        "设计优势条件化一步策略，通过Q-引导和蒸馏损失实现高效推理",
-        "在五个基准数据集和一个在线仿真平台验证有效性"
-      ],
-      "experiment_results": [
-        "在五个基准数据集和一个在线仿真平台上的实验表明，PerfRec优于现有强离线RL基线",
-        "摘要未提供具体指标数值"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "摘要未提及方法局限；实验仅在仿真平台开展，未在真实生产环境验证",
-        "未讨论计算效率或扩展到大规模场景的实际瓶颈"
-      ],
-      "practical_value": "为离线强化学习推荐提供了一种能够建模复杂用户偏好且推理高效的方法，有助于提升长期用户反馈优化",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "64b56dd7c9eb2b88",
-      "tags": [
-        "Generative Rec",
-        "User Modeling",
-        "Online Eval"
-      ],
-      "llm_score": 70,
-      "llm_score_rationale": "SIGIR顶会论文，符合顶会发表权重；作者单位Data61/CSIRO非知名互联网公司，但无线上A/B实验证据；论文关注离线RL推荐，非生成式推荐/语义ID方向",
-      "preference_signals": [
-        "Top venue",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 113,
-      "display_affiliations": [
-        "Macquarie University",
-        "The University of New South Wales, Sydney, NSW, Australia"
-      ],
-      "published_date": "2026-07-10"
     },
     {
       "id": "arxiv:2607.11392",
