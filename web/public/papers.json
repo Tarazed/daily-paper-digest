@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-10T02:29:33Z",
+  "generated_at": "2026-08-12T02:37:59Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
@@ -7,8 +7,8 @@
   },
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 9,
-    "analyzed": 1,
+    "reused": 5,
+    "analyzed": 5,
     "source": "web/public/papers.json"
   },
   "current_limit": 10,
@@ -199,7 +199,7 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 146,
+      "score": 144,
       "display_affiliations": [
         "University of Glasgow",
         "Shandong University",
@@ -207,6 +207,74 @@
         "Telefónica Scientific Research, Telefónica Innovación Digital, Barcelona, Spain",
         "Telefonica Research and Development",
         "Leiden University"
+      ],
+      "published_date": "2026-07-15"
+    },
+    {
+      "id": "dblp:conf/sigir/ChenGCYH26",
+      "title": "Beyond Static Best-of-N: Bayesian List-wise Alignment for LLM-based Recommendation",
+      "authors": [
+        "Ruijun Chen",
+        "Chongming Gao",
+        "Jiawei Chen",
+        "Weiqin Yang",
+        "Xiangnan He"
+      ],
+      "affiliations": [
+        "University of Science and Technology of China",
+        "Zhejiang University"
+      ],
+      "published": "2026-07-15",
+      "updated": "2026-08-08T01:25:22.217667",
+      "abstract": "Large Language Models have revolutionized recommender systems (LLM4Rec) by leveraging their generative capabilities to model complex user preferences. However, existing LLM4Rec methods primarily rely on token-level objectives, making it difficult to optimize list-level and non-differentiable metrics (e.g., NDCG, fairness) that define actual recommendation quality. While Best-of-N (BoN) directly optimizes these metrics during inference, its high computational cost hinders real-world deployment. To address this, BoN Alignment aims to distill the search capability into the model itself, yet current approaches suffer from two critical limitations: (1) Indiscriminate Supervision, where the static reference fails to distinguish the relative quality of candidates exceeding its empirical range, leading to a loss of ranking guidance; and (2) Gradient Decay, where the effective supervision signal rapidly diminishes as the evolving policy improves, resulting in inefficient optimization.",
+      "categories": [
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3805712.3809535",
+      "pdf_url": "https://doi.org/10.1145/3805712.3809535",
+      "doi": "10.1145/3805712.3809535",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "现有LLM4Rec方法难以优化列表级指标，本文提出贝叶斯列表级对齐方法，解决Best-of-N蒸馏中的无差别监督和梯度衰减问题，提升推荐质量。",
+      "core_method": "提出贝叶斯列表级对齐，通过概率分布建模候选质量并动态调整监督信号，克服静态BoN蒸馏的局限。",
+      "innovation_points": [
+        "提出贝叶斯视角下的列表级对齐框架，建模候选质量的概率分布以提供细粒度排序指导",
+        "设计动态监督机制缓解BoN蒸馏中的梯度衰减问题，提升优化效率",
+        "兼顾列表级非可微指标（如NDCG、公平性）的优化"
+      ],
+      "experiment_results": [
+        "论文全文未提供具体实验结果（仅基于元数据）"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "仅基于元数据分析，缺少实验验证细节",
+        "贝叶斯建模可能引入计算开销，实际效率待验证"
+      ],
+      "practical_value": "通过高效对齐列表级指标，提升LLM推荐系统在真实场景中的部署可行性。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "fb8f9e9f63f6fb0e",
+      "tags": [
+        "LLM4Rec",
+        "Generative Rec"
+      ],
+      "llm_score": 80,
+      "llm_score_rationale": "SIGIR 顶会论文，聚焦 LLM4Rec 的列表级对齐优化，属于生成式推荐范畴；提出贝叶斯列表对齐方法解决 Best-of-N 在生成式推荐中的效率和静态监督问题；仅离线实验，无线上 A/B 证据，作者单位非顶级互联网公司",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 138,
+      "display_affiliations": [
+        "University of Science and Technology of China",
+        "Zhejiang University"
       ],
       "published_date": "2026-07-15"
     },
@@ -354,13 +422,156 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 127,
+      "score": 129,
       "display_affiliations": [
         "Zhejiang University",
         "Ant Group, Hangzhou, China",
         "Zhejiang University, Hangzhou, China and Shanghai AI Laboratory, Shanghai, China"
       ],
       "published_date": "2026-04-09"
+    },
+    {
+      "id": "arxiv:2608.07989",
+      "title": "PushDualGen: Enabling LLMs to Generate Semantic IDs with Interpretable Copy for Industrial Push Recommendation",
+      "authors": [
+        "Manjia Lin",
+        "Da Li",
+        "Yan Wang",
+        "Yong Jin",
+        "Zheming Ding",
+        "Wei Yuan",
+        "Lei Yan",
+        "Yanan Xia",
+        "Lu Zhang",
+        "Fan Yang",
+        "Xuanping Li",
+        "Yanan Niu"
+      ],
+      "affiliations": [
+        "Kuaishou Technology"
+      ],
+      "published": "2026-08-08T07:56:55Z",
+      "updated": "2026-08-08T07:56:55Z",
+      "abstract": "Push recommendation in KuaiShou proactively delivers personalized content to nearly one billion users to facilitate their engagement. Recently, generative recommendation has achieved end-to-end user personalization through semantic ID. However, their black- box characteristics make recommendation logics difficult to trace, hindering their deployment. OneRec-Thinking addresses this by incorporating CoT before generating SIDs, but this significantly increases inference cost. To support large-scale industrial applications, we propose PushDualGen, a lightweight generator, which first generates the SID and then produces a copy as a skippable explanation. PushDualGen has been deployed in Kuaishou's push recommendation system. Online A/B tests demonstrate the effectiveness of PushDualGen, delivering significant improvements in both user attraction and satisfaction. The effective play rate for videos recommended to users has relatively increased by 8.50%, while the dissatisfaction rate has relatively fallen by 37.70%. In the long term, PushDualGen optimises the content ecosystem, providing more exposure for long-tail videos.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2608.07989v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.07989v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "PushDualGen是一个轻量级生成式推荐系统，通过先生成语义ID再生成可跳过的解释副本来提升推荐的可解释性，已在快手推送系统中部署，显著提高了用户吸引力和满意度。",
+      "core_method": "提出PushDualGen，一个先生成语义ID后生成可跳过解释副本的轻量级生成器，用于工业级推送推荐。",
+      "innovation_points": [
+        "引入可跳过的解释副本机制，在保证推荐性能的同时提供可解释性，且不增加推理成本。",
+        "设计轻量级生成架构，适合大规模工业部署，解决现有CoT方法推理代价高的问题。"
+      ],
+      "experiment_results": [
+        "在线A/B测试显示，有效播放率相对提升8.50%，不满意率相对下降37.70%。",
+        "长期效果上，PushDualGen优化内容生态，增加长尾视频曝光。"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文明确提及在线A/B测试，并报告了有效播放率和不满意率的提升结果。",
+      "limitations": [
+        "未分析解释副本的质量和用户接受度，可解释性的实际效果评估有限。",
+        "方法在快手推送场景验证，迁移到其他推荐类型（如流内推荐）仍需评估。"
+      ],
+      "practical_value": "为工业级推荐系统提供了一种低延迟、可解释的生成式推荐方案，可直接部署提升用户参与度和满意度。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "c8ab588907cccd4f",
+      "tags": [
+        "Generative Rec",
+        "Semantic ID",
+        "Item Tokenization",
+        "Online Eval",
+        "LLM4Rec"
+      ],
+      "llm_score": 92,
+      "llm_score_rationale": "明确有线上 A/B 测试，有效播放率提升 8.50%，不满意率下降 37.70%；专注于生成式推荐和语义 ID 生成，并针对工业推送场景设计轻量级生成器；作者单位 Kuaishou 是知名互联网公司，且论文已部署到线上系统",
+      "preference_signals": [
+        "Online A/B",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 128,
+      "display_affiliations": [
+        "Kuaishou Technology"
+      ],
+      "published_date": "2026-08-08"
+    },
+    {
+      "id": "openalex:W4392576636",
+      "title": "Bridging Language and Items for Retrieval and Recommendation: Benchmarking LLMs as Semantic Encoders",
+      "authors": [
+        "Yupeng Hou",
+        "Jiacheng Li",
+        "Xiangjun Fu",
+        "Zhankui He",
+        "An Yan",
+        "Xiusi Chen",
+        "Julian McAuley"
+      ],
+      "affiliations": [],
+      "published": "2026-01-01",
+      "updated": "2026-08-11T07:18:39.950985",
+      "abstract": "Yupeng Hou, Jiacheng Li, Xiangjun Fu, Zhankui He, An Yan, Xiusi Chen, Julian McAuley. Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers). 2026.",
+      "categories": [
+        "OpenAlex",
+        "KDD"
+      ],
+      "primary_category": "KDD",
+      "abs_url": "https://doi.org/10.18653/v1/2026.acl-long.147",
+      "pdf_url": "https://aclanthology.org/2026.acl-long.147.pdf",
+      "doi": "10.18653/v1/2026.acl-long.147",
+      "source": "OpenAlex",
+      "status": "conference",
+      "venue": "KDD",
+      "venue_key": "KDD",
+      "generated_summary": "系统评估大型语言模型作为语义编码器用于检索与推荐任务，构建基准测试。LLM编码器在文本丰富场景下表现优异，但在零样本和跨域场景存在挑战。为LLM在推荐系统中的应用提供实验依据。",
+      "core_method": "将LLM作为语义编码器进行基准测试，评估其在检索和推荐场景中的性能。",
+      "innovation_points": [
+        "系统性地基准测试LLM作为语义编码器在检索和推荐中的应用",
+        "对比LLM编码器在文本丰富场景、零样本和跨域场景下的表现"
+      ],
+      "experiment_results": [
+        "LLM编码器在文本丰富场景下表现优异",
+        "零样本和跨域场景下LLM编码器仍面临挑战"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺少对实时推理效率的评估"
+      ],
+      "practical_value": "为工业界选型LLM编码器用于检索和推荐提供实验参考",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "707675b9d968db54",
+      "tags": [
+        "LLM4Rec",
+        "Evaluation"
+      ],
+      "llm_score": 87,
+      "llm_score_rationale": "发表在顶级会议KDD，与语义编码、检索和推荐相关，属于生成式推荐/语义ID范畴；摘要虽未提及线上A/B，但题目明确涉及将LLMs作为语义编码器进行推荐检索，与generative recommendation强相关；作者单位未知，缺少工业界大公司背景加成，否则分数可更高",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 126,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026-01-01"
     },
     {
       "id": "dblp:conf/sigir/CuiLWZWWC26",
@@ -425,7 +636,7 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 125,
+      "score": 123,
       "display_affiliations": [
         "Zhejiang University",
         "OPPO Research Institute, Shenzhen, China"
@@ -433,72 +644,216 @@
       "published_date": "2026-07-15"
     },
     {
-      "id": "dblp:conf/sigir/ChenGCYH26",
-      "title": "Beyond Static Best-of-N: Bayesian List-wise Alignment for LLM-based Recommendation",
+      "id": "dblp:conf/www/QiuXHPW26",
+      "title": "Meta-Learning Driven Few-Shot Knowledge Transfer with Dual-Stage Adaptive Data Replay for Cross-Domain Recommendation",
       "authors": [
-        "Ruijun Chen",
-        "Chongming Gao",
-        "Jiawei Chen",
-        "Weiqin Yang",
-        "Xiangnan He"
+        "Yilei Qiu",
+        "Fei Xiong",
+        "Jun Hu",
+        "Shirui Pan",
+        "Liang Wang"
       ],
       "affiliations": [
-        "University of Science and Technology of China",
-        "Zhejiang University"
+        "Beijing Jiaotong University",
+        "University of Chinese Academy of Sciences",
+        "Institute of Software",
+        "Griffith University",
+        "Northwestern Polytechnical University"
       ],
-      "published": "2026-07-15",
-      "updated": "2026-08-08T01:25:22.217667",
-      "abstract": "Large Language Models have revolutionized recommender systems (LLM4Rec) by leveraging their generative capabilities to model complex user preferences. However, existing LLM4Rec methods primarily rely on token-level objectives, making it difficult to optimize list-level and non-differentiable metrics (e.g., NDCG, fairness) that define actual recommendation quality. While Best-of-N (BoN) directly optimizes these metrics during inference, its high computational cost hinders real-world deployment. To address this, BoN Alignment aims to distill the search capability into the model itself, yet current approaches suffer from two critical limitations: (1) Indiscriminate Supervision, where the static reference fails to distinguish the relative quality of candidates exceeding its empirical range, leading to a loss of ranking guidance; and (2) Gradient Decay, where the effective supervision signal rapidly diminishes as the evolving policy improves, resulting in inefficient optimization.",
+      "published": "2026-04-12",
+      "updated": "2026-07-29T14:22:42.915294",
+      "abstract": "Cross-domain recommendation (CDR) has emerged as a promising solution by effectively alleviating data sparsity by leveraging information from auxiliary domains. However, a major challenge in CDR is its dependence on predefined alignment rules (e.g., structural or distribution matching) to achieve cross-domain knowledge transfer, which impose fixed transfer patterns and lack the flexibly need for diverse cross-domain scenarios. Furthermore, most existing approaches still rely on coarse-grained representations. Knowledge transfer built upon imprecise representations can, even with improved alignment rules, instead lead to negative transfer in the target domain. To address these challenges and optimize recommendation efficacy, a new framework named meta-learning driven few-shot knowledge transfer with dual-stage adaptive data replay for cross-domain recommendation (MFACDR) is proposed. Specifically, a new meta-learning driven few-shot knowledge transfer method is proposed. This method leverages overlapping parts as anchors to guide the non-overlapping parts in autonomously exploring alignment rules through meta-learning, thus enabling few-shot knowledge transfer and flexible handling of different cross-domain scenarios. In addition, a dual-stage adaptive data replay mechanism is proposed, which enables fine-grained cross-domain adaptability and helps to mitigate negative transfer. Extensive experiments on three real-world datasets consistently demonstrate the superior effectiveness and robustness of the proposed MFACDR.",
       "categories": [
-        "SIGIR"
+        "WWW"
       ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3805712.3809535",
-      "pdf_url": "https://doi.org/10.1145/3805712.3809535",
-      "doi": "10.1145/3805712.3809535",
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792443",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792443",
+      "doi": "10.1145/3774904.3792443",
       "source": "DBLP",
       "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "现有LLM4Rec方法难以优化列表级指标，本文提出贝叶斯列表级对齐方法，解决Best-of-N蒸馏中的无差别监督和梯度衰减问题，提升推荐质量。",
-      "core_method": "提出贝叶斯列表级对齐，通过概率分布建模候选质量并动态调整监督信号，克服静态BoN蒸馏的局限。",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "针对跨域推荐中依赖固定对齐规则和粗粒度表征导致负迁移的问题，提出MFACDR框架，利用元学习驱动锚点引导非重叠部分自主探索对齐规则，实现少样本知识迁移，并设计双阶段自适应数据回放机制以细化跨域适应性。在三个真实数据集上验证了其有效性和鲁棒性。",
+      "core_method": "提出元学习驱动的少样本知识迁移方法，结合双阶段自适应数据回放机制，实现跨域推荐中的灵活知识迁移与负迁移缓解。",
       "innovation_points": [
-        "提出贝叶斯视角下的列表级对齐框架，建模候选质量的概率分布以提供细粒度排序指导",
-        "设计动态监督机制缓解BoN蒸馏中的梯度衰减问题，提升优化效率",
-        "兼顾列表级非可微指标（如NDCG、公平性）的优化"
+        "提出元学习驱动的小样本知识迁移方法，利用重叠用户/物品作为锚点，使非重叠部分自主探索对齐规则，无需预定义固定模式。",
+        "设计双阶段自适应数据回放机制，在领域间和领域内进行细粒度数据回放，增强跨域适应能力并减轻负迁移。"
       ],
       "experiment_results": [
-        "论文全文未提供具体实验结果（仅基于元数据）"
+        "在三个真实数据集上进行了实验，结果表明MFACDR相比基线方法在推荐准确率上有显著提升，验证了其有效性和鲁棒性。"
       ],
       "ab_test": "no",
       "ab_test_evidence": "论文未报告线上 A/B 测试。",
       "limitations": [
-        "仅基于元数据分析，缺少实验验证细节",
-        "贝叶斯建模可能引入计算开销，实际效率待验证"
+        "仅基于元数据，未提供具体实验数据分析或方法局限性说明。",
+        "未提及计算开销或在线部署的可行性分析。"
       ],
-      "practical_value": "通过高效对齐列表级指标，提升LLM推荐系统在真实场景中的部署可行性。",
+      "practical_value": "该方法通过元学习和自适应数据回放实现灵活的跨域知识迁移，可提升稀疏数据场景下的推荐性能，具有较好的工业应用潜力。",
       "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "fb8f9e9f63f6fb0e",
+      "analysis_status": "complete",
+      "analysis_signature": "facb37a5bbfd9e50",
       "tags": [
-        "LLM4Rec",
-        "Generative Rec"
+        "General Rec"
       ],
-      "llm_score": 80,
-      "llm_score_rationale": "SIGIR 顶会论文，聚焦 LLM4Rec 的列表级对齐优化，属于生成式推荐范畴；提出贝叶斯列表对齐方法解决 Best-of-N 在生成式推荐中的效率和静态监督问题；仅离线实验，无线上 A/B 证据，作者单位非顶级互联网公司",
+      "llm_score": 82,
+      "llm_score_rationale": "发表于顶级会议WWW，符合顶会偏好；研究主题为跨域推荐，与生成式推荐或语义ID无直接关联；作者单位均为学术机构，无知名互联网公司",
       "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
+        "Top venue"
       ],
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 123,
+      "score": 121,
       "display_affiliations": [
-        "University of Science and Technology of China",
-        "Zhejiang University"
+        "Beijing Jiaotong University",
+        "University of Chinese Academy of Sciences",
+        "Institute of Software",
+        "Griffith University",
+        "Northwestern Polytechnical University"
       ],
-      "published_date": "2026-07-15"
+      "published_date": "2026-04-12"
+    },
+    {
+      "id": "arxiv:2608.09634",
+      "title": "IntHQ: Task-Interactive Hierarchical Query on Dual-Stream Representations for Generative Recommendation",
+      "authors": [
+        "Junjie Sun",
+        "Longfei Xu",
+        "Huimin Yan",
+        "Wei Luo",
+        "Kaikui Liu",
+        "Xiangxiang Chu"
+      ],
+      "affiliations": [
+        "Alibaba Group"
+      ],
+      "published": "2026-08-10T14:13:47Z",
+      "updated": "2026-08-10T14:13:47Z",
+      "abstract": "Multi-task learning over heterogeneous data is fundamental to modern recommendation, while generative models are emerging as the backbone of next-generation recommenders. However, the integration of multi-task learning into the generative paradigm remains largely unexplored. Existing multi-task recommenders, in both discriminative and generative paradigms, extract task-relevant features from a single task-agnostic representation and wire tasks into a predefined conversion funnel. We show that this scheme is inherently prone to a threefold collapse. Source collapse, where task-specific signals are injected late and diluted in the shared latent space. Relational collapse, where task dependencies are either implicitly absorbed by the backbone or statically fixed by predefined funnels. Hierarchical collapse, where tasks depend on features at different scales and shift across training stages. We propose IntHQ, a multi-task generative recommender with three components, each alleviating one collapse. Dual-Stream Decoupling (DSD) injects task identity into computation stream early and separates the shared context stream from the task-specific stream, alleviating signal dilution. Task-Interactive Modeling (TIM) replaces the predefined funnel with explicit cross-task interaction, letting each task condition on the realized outcomes of its predecessors with learned, input-adaptive strength. Hierarchical Querying (HQ) lets each task gather multi-scale information across different layers at different training stages. In offline evaluations, IntHQ consistently outperforms competitive encoder backbones under four representative task-head configurations. Deployed in production on Amap, serving hundreds of millions of users for travel recommendation, IntHQ yields a 1.60\\% relative UVCTR lift.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2608.09634v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.09634v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "IntHQ针对生成式推荐中的多任务学习，提出双流解耦、任务交互建模和层次查询三个组件，分别缓解源坍缩、关系坍缩和层次坍缩，在离线评测和生产环境中均取得显著提升。",
+      "core_method": "通过双流解耦注入任务身份并分离共享与任务专属流，利用任务交互建模实现输入自适应的显式跨任务依赖，以及层次查询让任务在不同训练阶段聚合多尺度信息。",
+      "innovation_points": [
+        "首次系统分析生成式多任务推荐中的三种坍缩问题（源坍缩、关系坍缩、层次坍缩）",
+        "提出双流解耦机制，在计算流早期注入任务身份并分离共享与任务特定流",
+        "设计任务交互建模，以学到的输入自适应强度显式建模任务间依赖，替代预定义漏斗"
+      ],
+      "experiment_results": [
+        "离线评测中，IntHQ在四种代表性任务头配置下均优于竞争编码器骨干",
+        "在高德地图千万级用户旅行推荐的生产部署中，UVCTR相对提升1.60%"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文全文明确说明部署在高德地图生产环境，服务数亿用户旅行推荐，取得1.60% UVCTR相对提升。",
+      "limitations": [
+        "仅在单一业务场景（旅行推荐）验证线上效果，其他领域的泛化性待检验",
+        "模型复杂度增加可能带来更高的训练和推理成本，论文未详细讨论资源开销"
+      ],
+      "practical_value": "为生成式推荐中的多任务学习提供了可部署的解决方案，已在工业级场景验证效果，对大规模推荐系统有直接参考价值。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "b956d19c1f21fb75",
+      "tags": [
+        "Generative Rec",
+        "User Modeling",
+        "Online Eval"
+      ],
+      "llm_score": 93,
+      "llm_score_rationale": "明确提及线上部署和A/B测试，获得1.60% UVCTR提升；主题为生成式推荐，解决多任务学习中的坍缩问题；已在生产环境服务数亿用户，公司Amap为知名互联网公司",
+      "preference_signals": [
+        "Online A/B",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 119,
+      "display_affiliations": [
+        "Alibaba Group"
+      ],
+      "published_date": "2026-08-10"
+    },
+    {
+      "id": "dblp:conf/www/ZhuCJYWCZ26",
+      "title": "FeedGuard: Online Critic-Guided Reinforcement Learning with Privacy-Preserving Feedback for Recommendation",
+      "authors": [
+        "Mengying Zhu",
+        "Feiyue Chen",
+        "Lifan Jiang",
+        "Mengyuan Yang",
+        "Yangyang Wu",
+        "Guanjie Cheng",
+        "Xiaolin Zheng"
+      ],
+      "affiliations": [
+        "Zhejiang University",
+        "Ningbo University"
+      ],
+      "published": "2026-04-12",
+      "updated": "2026-07-29T14:22:42.915294",
+      "abstract": "Reinforcement learning-based recommendation systems (RLRS) are increasingly favored for their ability to leverage online interactive feedback, enabling adaptive and personalized decision-making. In this setting, user feedback serves as both a behavioral signal and an optimization target, making it essential for policy learning. However, collecting such feedback, e.g., clicks, ratings, and engagement traces, raises serious privacy concerns, posing critical challenges for value estimation, online adaptation, and privacy protection. In this paper, we propose FeedGuard, a critic-guided reinforcement learning framework with privacy-preserving feedback. FeedGuard enhances trajectory modeling via critic guidance, enables joint online fine-tuning with effective exploration–exploitation tradeoffs, and enforces end-to-end privacy protection across the feedback lifecycle via split federated learning and differential privacy. We further provide a formal analysis of its differential privacy guarantees. Extensive experiments on four public recommendation datasets and the VirtualTB platform show that FeedGuard performs well in both offline and online settings, while maintaining rigorous privacy guarantees with minimal degradation.",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792155",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792155",
+      "doi": "10.1145/3774904.3792155",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "FeedGuard 提出了一种评论家引导的强化学习推荐框架，通过分裂联邦学习和差分隐私实现端到端的用户反馈隐私保护，支持在线微调和探索-利用权衡，在离线与在线环境下均表现良好。",
+      "core_method": "基于评论家引导的强化学习框架，结合分裂联邦学习与差分隐私以保护反馈隐私并实现在线自适应优化。",
+      "innovation_points": [
+        "利用评论家引导增强轨迹建模，提供更好的探索-利用平衡",
+        "通过分裂联邦学习和差分隐私对反馈全生命周期进行端到端隐私保护",
+        "形式化分析差分隐私保证，并在在线设置中验证有效性"
+      ],
+      "experiment_results": [
+        "在四个公共推荐数据集和 VirtualTB 平台上的实验表明，FeedGuard 在离线和在线环境下均有良好表现，同时保持严格的隐私保证且性能下降极小。"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "摘要明确提到在在线设置（online settings）中进行了实验，结合 VirtualTB 平台评估了在线性能。",
+      "limitations": [
+        "摘要未详细说明在线实验的具体指标对比或用户规模",
+        "差分隐私保护可能在某些严格隐私预算下导致性能损失（仅提及最小退化，未量化）"
+      ],
+      "practical_value": "提供了一种隐私安全的强化学习推荐方案，可直接部署于真实在线服务中，平衡个性化推荐效果与用户隐私保护需求。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "0cb4b465ef74700b",
+      "tags": [
+        "LLM4Rec",
+        "Online Eval"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "发表在顶级会议WWW，满足权重2。；包含线上实验（VirtualTB平台上的在线设置），满足权重1。；作者单位未明显包含知名互联网公司，不满足权重4。",
+      "preference_signals": [
+        "Top venue",
+        "Online A/B",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 114,
+      "display_affiliations": [
+        "Zhejiang University",
+        "Ningbo University"
+      ],
+      "published_date": "2026-04-12"
     },
     {
       "id": "dblp:conf/www/LiuZHZZZ26",
@@ -638,74 +993,6 @@
         "Southwestern University of Finance and Economics"
       ],
       "published_date": "2026-07-10"
-    },
-    {
-      "id": "openalex:W4392576636",
-      "title": "Bridging Language and Items for Retrieval and Recommendation: Benchmarking LLMs as Semantic Encoders",
-      "authors": [
-        "Yupeng Hou",
-        "Jiacheng Li",
-        "Xiangjun Fu",
-        "Zhankui He",
-        "An Yan",
-        "Xiusi Chen",
-        "Julian McAuley"
-      ],
-      "affiliations": [],
-      "published": "2026-01-01",
-      "updated": "2026-07-29T14:22:42.915294",
-      "abstract": "Yupeng Hou, Jiacheng Li, Xiangjun Fu, Zhankui He, An Yan, Xiusi Chen, Julian McAuley. Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers). 2026.",
-      "categories": [
-        "OpenAlex",
-        "WSDM"
-      ],
-      "primary_category": "WSDM",
-      "abs_url": "https://doi.org/10.18653/v1/2026.acl-long.147",
-      "pdf_url": "https://aclanthology.org/2026.acl-long.147.pdf",
-      "doi": "10.18653/v1/2026.acl-long.147",
-      "source": "OpenAlex",
-      "status": "conference",
-      "venue": "WSDM",
-      "venue_key": "WSDM",
-      "generated_summary": "该论文系统性地评估了大型语言模型（LLMs）作为语义编码器在推荐系统与物品检索任务中的表现，并构建了基准测试以比较不同编码策略。研究发现，LLM语义编码在零样本和少样本场景下具有显著优势，但在效率与精度权衡上仍需优化。工作为语义ID在推荐系统中的应用提供了实证基础。",
-      "core_method": "将LLMs作为语义编码器应用于物品检索和推荐，通过基准测试对比多种编码策略。",
-      "innovation_points": [
-        "首次系统性基准测试LLMs作为语义编码器在推荐与检索任务中的表现",
-        "探索了不同编码策略在零样本和少样本场景下的效果",
-        "为语义ID在推荐系统中的应用提供了实证分析"
-      ],
-      "experiment_results": [
-        "摘要未提供具体实验结果数据"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "效率与精度权衡仍需优化",
-        "缺乏对大规模工业级场景的验证"
-      ],
-      "practical_value": "为推荐系统中利用LLM进行语义编码和物品检索提供了基准参考和指导",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "177a0b8846ab3b25",
-      "tags": [
-        "LLM4Rec",
-        "Semantic ID",
-        "Benchmark"
-      ],
-      "llm_score": 75,
-      "llm_score_rationale": "WSDM 是信息检索与推荐领域的顶级会议，符合顶会偏好；论文标题与摘要明确涉及语义编码器和检索/推荐，与生成式推荐及语义 ID 强相关；作者 Julian McAuley 是推荐系统领域知名学者，但无明确工业界公司标注，且摘要未提及线上 A/B 实验",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 119,
-      "display_affiliations": [
-        "Unknown affiliation"
-      ],
-      "published_date": "2026-01-01"
     },
     {
       "id": "dblp:conf/www/LiuFYWGH26",
@@ -1187,73 +1474,6 @@
         "University of Pisa, Pisa, Italy",
         "National Institute of Geophysics and Volcanology, Rome, Italy",
         "Sapienza University of Rome, Rome, Italy"
-      ],
-      "published_date": "2026"
-    },
-    {
-      "id": "dblp:conf/www/ZhuCJYWCZ26",
-      "title": "FeedGuard: Online Critic-Guided Reinforcement Learning with Privacy-Preserving Feedback for Recommendation",
-      "authors": [
-        "Mengying Zhu",
-        "Feiyue Chen",
-        "Lifan Jiang",
-        "Mengyuan Yang",
-        "Yangyang Wu",
-        "Guanjie Cheng",
-        "Xiaolin Zheng"
-      ],
-      "affiliations": [
-        "Zhejiang University"
-      ],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792155",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792155",
-      "doi": "10.1145/3774904.3792155",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "本文提出FeedGuard，一种在线评论引导的强化学习推荐方法，通过隐私保护反馈机制优化推荐策略。",
-      "core_method": "基于评论引导的强化学习与隐私保护反馈的在线推荐优化方法。",
-      "innovation_points": [
-        "引入隐私保护的用户反馈机制用于强化学习训练",
-        "利用在线评论信号指导推荐策略优化"
-      ],
-      "experiment_results": [
-        "论文全文未提供实验数据或评测结论。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏实验验证和性能对比数据",
-        "隐私保护反馈的实际效果未经验证"
-      ],
-      "practical_value": "为推荐系统提供了一种隐私保护的在线强化学习框架，具有实际应用潜力。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "97b04dcec784f17d",
-      "tags": [
-        "LLM4Rec",
-        "Online Eval"
-      ],
-      "llm_score": 85,
-      "llm_score_rationale": "发表于顶会WWW，题目包含“Online”和“Recommendation”，可能涉及在线强化学习；缺乏明确线上A/B实验证据或知名公司署名；未直接提及生成式推荐或语义ID，但涉及在线反馈与隐私保护，对工业实践有一定参考价值",
-      "preference_signals": [
-        "Top venue",
-        "Industry company (implied by online critic-guided RL with live feedback, but no explicit company affiliation)"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 116,
-      "display_affiliations": [
-        "Zhejiang University"
       ],
       "published_date": "2026"
     },
@@ -3116,76 +3336,6 @@
       "published_date": "2026-07-20"
     },
     {
-      "id": "dblp:conf/www/QiuXHPW26",
-      "title": "Meta-Learning Driven Few-Shot Knowledge Transfer with Dual-Stage Adaptive Data Replay for Cross-Domain Recommendation",
-      "authors": [
-        "Yilei Qiu",
-        "Fei Xiong",
-        "Jun Hu",
-        "Shirui Pan",
-        "Liang Wang"
-      ],
-      "affiliations": [
-        "Beijing Jiaotong University",
-        "University of Chinese Academy of Sciences",
-        "Institute of Software",
-        "Griffith University",
-        "Northwestern Polytechnical University"
-      ],
-      "published": "2026-04-12",
-      "updated": "2026-07-14T23:27:15.235271",
-      "abstract": "Cross-domain recommendation (CDR) has emerged as a promising solution by effectively alleviating data sparsity by leveraging information from auxiliary domains. However, a major challenge in CDR is its dependence on predefined alignment rules (e.g., structural or distribution matching) to achieve cross-domain knowledge transfer, which impose fixed transfer patterns and lack the flexibly need for diverse cross-domain scenarios. Furthermore, most existing approaches still rely on coarse-grained representations. Knowledge transfer built upon imprecise representations can, even with improved alignment rules, instead lead to negative transfer in the target domain. To address these challenges and optimize recommendation efficacy, a new framework named meta-learning driven few-shot knowledge transfer with dual-stage adaptive data replay for cross-domain recommendation (MFACDR) is proposed. Specifically, a new meta-learning driven few-shot knowledge transfer method is proposed. This method leverages overlapping parts as anchors to guide the non-overlapping parts in autonomously exploring alignment rules through meta-learning, thus enabling few-shot knowledge transfer and flexible handling of different cross-domain scenarios. In addition, a dual-stage adaptive data replay mechanism is proposed, which enables fine-grained cross-domain adaptability and helps to mitigate negative transfer. Extensive experiments on three real-world datasets consistently demonstrate the superior effectiveness and robustness of the proposed MFACDR.",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792443",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792443",
-      "doi": "10.1145/3774904.3792443",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "提出一种基于元学习的小样本跨域推荐框架MFACDR，利用重叠用户作为锚点，通过元学习自动探索跨域对齐规则，实现灵活的知识迁移；同时设计双阶段自适应数据重放机制，缓解负迁移问题，提升细粒度跨域适应性。",
-      "core_method": "元学习驱动的小样本知识迁移，以重叠部分为锚点引导非重叠部分自主发现对齐规则，并配合双阶段自适应数据重放机制。",
-      "innovation_points": [
-        "提出元学习驱动的小样本知识迁移方法，无需预定义对齐规则，可灵活适应不同跨域场景。",
-        "设计双阶段自适应数据重放机制，实现细粒度跨域适应，有效缓解负迁移。"
-      ],
-      "experiment_results": [
-        "在三个真实数据集上的大量实验表明，MFACDR在有效性和鲁棒性方面均优于现有基线方法。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "未提供全文，无法评估方法的计算复杂度或在小样本场景下的具体性能波动。"
-      ],
-      "practical_value": "为跨域推荐提供了一种更灵活的知识迁移方案，减少了对预定义对齐规则的依赖，具有较好的通用性和鲁棒性。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "263af0c24ea8d4cb",
-      "tags": [
-        "Generative Rec"
-      ],
-      "llm_score": 75,
-      "llm_score_rationale": "发表在中国计算机学会A类顶级会议WWW上，会议权威性高；研究主题为跨域推荐知识迁移，属于推荐系统领域但非生成式推荐或语义ID方向；作者单位来自高校而非知名互联网公司，缺少工业界背景",
-      "preference_signals": [
-        "Top venue"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 124,
-      "display_affiliations": [
-        "Beijing Jiaotong University",
-        "University of Chinese Academy of Sciences",
-        "Institute of Software",
-        "Griffith University",
-        "Northwestern Polytechnical University"
-      ],
-      "published_date": "2026-04-12"
-    },
-    {
       "id": "arxiv:2607.15591",
       "title": "RecGPT-V3 Technical Report",
       "authors": [
@@ -4094,7 +4244,7 @@
         "Kun Gai"
       ],
       "affiliations": [
-        "Kuaishou Technology"
+        "Kuaishou (China)"
       ],
       "published": "2026-07-03T14:18:19Z",
       "updated": "2026-07-03T14:18:19Z",
@@ -4150,7 +4300,7 @@
       "notes": "",
       "score": 128,
       "display_affiliations": [
-        "Kuaishou Technology"
+        "Kuaishou (China)"
       ],
       "published_date": "2026-07-03"
     },
