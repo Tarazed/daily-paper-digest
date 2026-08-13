@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-12T02:37:59Z",
+  "generated_at": "2026-08-13T02:37:54Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
@@ -7,8 +7,8 @@
   },
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 5,
-    "analyzed": 5,
+    "reused": 8,
+    "analyzed": 2,
     "source": "web/public/papers.json"
   },
   "current_limit": 10,
@@ -130,87 +130,6 @@
   },
   "papers": [
     {
-      "id": "dblp:conf/sigir/FuGKAVJR26",
-      "title": "Differentiable Semantic ID for Generative Recommendation",
-      "authors": [
-        "Junchen Fu",
-        "Xuri Ge",
-        "Alexandros Karatzoglou",
-        "Ioannis Arapakis",
-        "Suzan Verberne",
-        "Joemon M. Jose",
-        "Zhaochun Ren"
-      ],
-      "affiliations": [
-        "University of Glasgow",
-        "Shandong University",
-        "Amazon (United States)",
-        "Telefónica Scientific Research, Telefónica Innovación Digital, Barcelona, Spain",
-        "Telefonica Research and Development",
-        "Leiden University"
-      ],
-      "published": "2026-07-15",
-      "updated": "2026-08-08T01:25:22.217667",
-      "abstract": "Generative recommendation provides a novel paradigm in which each item is represented by a discrete semantic ID (SID) learned from rich content. Most methods treat SIDs as predefined and train recommenders under static indexing. In practice, SIDs are optimized only for content reconstruction rather than recommendation accuracy. This leads to an objective mismatch : the system optimizes an indexing loss to learn the SID, and a recommendation loss for interaction prediction, but because the tokenizer is trained independently, the recommendation loss cannot update it. A natural approach is to make semantic indexing differentiable so recommendation gradients can directly influence SID learning, but this often causes codebook collapse with only a few codes used. We attribute this to early deterministic assignments that limit codebook exploration, leading to imbalance and unstable optimization. In this paper, we therefore propose DIGER (Differentiable Semantic ID for GEnerative Recommendation). DIGER is a first step towards an effective differentiable semantic ID for generative recommendation. The Gumbel noise explicitly encourages early-stage exploration over codes, mitigating collapse and improving code utilization. To better balance exploration and convergence, we introduce two uncertainty decay strategies that reduce the Gumbel noise, enabling a gradual shift from early-stage exploration to the exploitation of learned SIDs. Extensive experiments across multiple public datasets demonstrate consistent improvements from differentiable semantic ID. These results confirm the effectiveness of aligning indexing and recommendation objectives through differentiable SIDs. This identifies differentiable SID as a promising area of study. Our code is released under https://github.com/junchen-fu/DIGER.",
-      "categories": [
-        "SIGIR"
-      ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3805712.3809641",
-      "pdf_url": "https://doi.org/10.1145/3805712.3809641",
-      "doi": "10.1145/3805712.3809641",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "本文提出DIGER，一种可微分的语义ID方法用于生成式推荐，通过Gumbel噪声探索和不确定性衰减策略解决码本崩溃和目标不一致问题，实验证明其有效性。",
-      "core_method": "DIGER通过引入Gumbel噪声和不确定性衰减策略实现可微分的语义ID学习，使推荐梯度能端到端地优化索引和推荐目标。",
-      "innovation_points": [
-        "首次实现可微分的语义ID用于生成式推荐，解决索引与推荐目标不一致的问题。",
-        "引入Gumbel噪声显式鼓励早期码本探索，有效缓解码本崩溃和码本利用率低的问题。",
-        "提出两种不确定性衰减策略，逐步从探索过渡到利用，平衡探索与收敛。"
-      ],
-      "experiment_results": [
-        "在多个公开数据集上的实验表明，可微分的语义ID相比静态索引方法取得了持续的性能提升。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "论文未提供线上实验验证，实际线上效果未知。",
-        "Gumbel噪声和衰减策略可能引入额外超参数，需进一步调优。"
-      ],
-      "practical_value": "为生成式推荐提供了一种端到端可优化的语义索引方法，有望提升推荐精度和索引质量。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "e3ac6c95ad042f6a",
-      "tags": [
-        "Generative Rec",
-        "Semantic ID",
-        "Vector Quantization",
-        "Item Tokenization"
-      ],
-      "llm_score": 75,
-      "llm_score_rationale": "SIGIR顶会论文，生成式推荐和语义ID直接相关；作者单位含Amazon，具备工业背景；仅提供离线实验，无线上A/B或production证据",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 144,
-      "display_affiliations": [
-        "University of Glasgow",
-        "Shandong University",
-        "Amazon (United States)",
-        "Telefónica Scientific Research, Telefónica Innovación Digital, Barcelona, Spain",
-        "Telefonica Research and Development",
-        "Leiden University"
-      ],
-      "published_date": "2026-07-15"
-    },
-    {
       "id": "dblp:conf/sigir/ChenGCYH26",
       "title": "Beyond Static Best-of-N: Bayesian List-wise Alignment for LLM-based Recommendation",
       "authors": [
@@ -271,86 +190,10 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 138,
+      "score": 139,
       "display_affiliations": [
         "University of Science and Technology of China",
         "Zhejiang University"
-      ],
-      "published_date": "2026-07-15"
-    },
-    {
-      "id": "dblp:conf/sigir/BaiLZWYRRF26",
-      "title": "Bi-Level Optimization for Generative Recommendation: Bridging Tokenization and Generation",
-      "authors": [
-        "Yimeng Bai",
-        "Chang Liu",
-        "Yang Zhang",
-        "Dingxian Wang",
-        "Frank Yang",
-        "Andrew Rabinovich",
-        "Wenge Rong",
-        "Fuli Feng"
-      ],
-      "affiliations": [
-        "University of Science and Technology of China",
-        "Beihang University",
-        "National University of Singapore",
-        "ResearchWorks (United States)"
-      ],
-      "published": "2026-07-15",
-      "updated": "2026-08-01T09:00:35.917206",
-      "abstract": "Generative recommendation is emerging as a transformative paradigm by directly generating recommended items, rather than relying on matching. Building such a system typically involves two key components: (1) optimizing the tokenizer to derive suitable item identifiers, and (2) training the recommender based on those identifiers. Existing approaches often treat these components separately—either sequentially or in alternation—overlooking their interdependence. This separation can lead to misalignment: the tokenizer is trained without direct guidance from the recommendation objective, potentially yielding suboptimal identifiers that degrade recommendation performance. To address this, we propose BLOGER, a Bi-Level Optimization for GEnerative Recommendation framework, which explicitly models the interdependence between the tokenizer and the recommender in a unified optimization process. The lower level trains the recommender using tokenized sequences, while the upper level optimizes the tokenizer based on both the tokenization loss and recommendation loss. We adopt a meta-learning approach to solve this bi-level optimization efficiently, and introduce gradient surgery to mitigate gradient conflicts in the upper-level updates, thereby ensuring that item identifiers are both informative and recommendation-aligned. Extensive experiments on multiple real-world datasets demonstrate that BLOGER consistently outperforms state-of-the-art generative recommendation methods while maintaining practical efficiency with no significant additional computational overhead, effectively bridging the gap between item tokenization and autoregressive generation. We release our code at https://github.com/Ten-Mao/BLOGER.",
-      "categories": [
-        "SIGIR"
-      ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3805712.3809632",
-      "pdf_url": "https://doi.org/10.1145/3805712.3809632",
-      "doi": "10.1145/3805712.3809632",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "提出BLOGER框架，通过双层优化将生成式推荐中的令牌化器与推荐模型联合训练，解决现有方法中两者分离导致的次优对齐问题。利用元学习高效求解，并引入梯度手术缓解上层梯度冲突，确保物品标识符同时具有信息性和推荐对齐性。",
-      "core_method": "基于元学习的双层优化框架，上层优化令牌化器以最小化令牌化损失和推荐损失，下层训练推荐模型，通过梯度手术缓解上层更新中的梯度冲突。",
-      "innovation_points": [
-        "首次将令牌化器与推荐生成器建模为双层优化问题，统一优化令牌化和推荐目标",
-        "采用元学习方法高效求解双层优化，避免传统交替优化的次优性",
-        "引入梯度手术技术缓解上层优化中令牌化损失与推荐损失之间的梯度冲突"
-      ],
-      "experiment_results": [
-        "在多个真实数据集上BLOGER一致优于现有生成式推荐方法",
-        "算法在提升性能的同时保持了实用效率，没有显著额外计算开销"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "双层优化的计算复杂度可能较高，尽管文中声称效率相当，但元学习过程仍可能引入额外训练时间",
-        "梯度手术虽能缓解冲突，但其效果可能依赖于任务和数据集特性"
-      ],
-      "practical_value": "提供了一种端到端联合优化令牌化器和生成推荐模型的方法，有望提升生成式推荐系统的实际推荐性能，且效率可接受。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "5b5733cec1e8257e",
-      "tags": [
-        "Generative Rec",
-        "Item Tokenization"
-      ],
-      "llm_score": 86,
-      "llm_score_rationale": "发表在顶级会议SIGIR上，强相关生成式推荐/语义ID方向；摘要聚焦于解决tokenization和生成之间的错位问题，属于生成式推荐核心难题；提供了代码开源，实验在多个真实数据集上验证，但没有明确提及线上A/B实验或生产环境",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 129,
-      "display_affiliations": [
-        "University of Science and Technology of China",
-        "Beihang University",
-        "National University of Singapore",
-        "ResearchWorks (United States)"
       ],
       "published_date": "2026-07-15"
     },
@@ -422,13 +265,586 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 129,
+      "score": 137,
       "display_affiliations": [
         "Zhejiang University",
         "Ant Group, Hangzhou, China",
         "Zhejiang University, Hangzhou, China and Shanghai AI Laboratory, Shanghai, China"
       ],
       "published_date": "2026-04-09"
+    },
+    {
+      "id": "dblp:conf/sigir/BaiLZWYRRF26",
+      "title": "Bi-Level Optimization for Generative Recommendation: Bridging Tokenization and Generation",
+      "authors": [
+        "Yimeng Bai",
+        "Chang Liu",
+        "Yang Zhang",
+        "Dingxian Wang",
+        "Frank Yang",
+        "Andrew Rabinovich",
+        "Wenge Rong",
+        "Fuli Feng"
+      ],
+      "affiliations": [
+        "University of Science and Technology of China",
+        "Beihang University",
+        "National University of Singapore",
+        "ResearchWorks (United States)"
+      ],
+      "published": "2026-07-15",
+      "updated": "2026-08-01T09:00:35.917206",
+      "abstract": "Generative recommendation is emerging as a transformative paradigm by directly generating recommended items, rather than relying on matching. Building such a system typically involves two key components: (1) optimizing the tokenizer to derive suitable item identifiers, and (2) training the recommender based on those identifiers. Existing approaches often treat these components separately—either sequentially or in alternation—overlooking their interdependence. This separation can lead to misalignment: the tokenizer is trained without direct guidance from the recommendation objective, potentially yielding suboptimal identifiers that degrade recommendation performance. To address this, we propose BLOGER, a Bi-Level Optimization for GEnerative Recommendation framework, which explicitly models the interdependence between the tokenizer and the recommender in a unified optimization process. The lower level trains the recommender using tokenized sequences, while the upper level optimizes the tokenizer based on both the tokenization loss and recommendation loss. We adopt a meta-learning approach to solve this bi-level optimization efficiently, and introduce gradient surgery to mitigate gradient conflicts in the upper-level updates, thereby ensuring that item identifiers are both informative and recommendation-aligned. Extensive experiments on multiple real-world datasets demonstrate that BLOGER consistently outperforms state-of-the-art generative recommendation methods while maintaining practical efficiency with no significant additional computational overhead, effectively bridging the gap between item tokenization and autoregressive generation. We release our code at https://github.com/Ten-Mao/BLOGER.",
+      "categories": [
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3805712.3809632",
+      "pdf_url": "https://doi.org/10.1145/3805712.3809632",
+      "doi": "10.1145/3805712.3809632",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "提出BLOGER框架，通过双层优化将生成式推荐中的令牌化器与推荐模型联合训练，解决现有方法中两者分离导致的次优对齐问题。利用元学习高效求解，并引入梯度手术缓解上层梯度冲突，确保物品标识符同时具有信息性和推荐对齐性。",
+      "core_method": "基于元学习的双层优化框架，上层优化令牌化器以最小化令牌化损失和推荐损失，下层训练推荐模型，通过梯度手术缓解上层更新中的梯度冲突。",
+      "innovation_points": [
+        "首次将令牌化器与推荐生成器建模为双层优化问题，统一优化令牌化和推荐目标",
+        "采用元学习方法高效求解双层优化，避免传统交替优化的次优性",
+        "引入梯度手术技术缓解上层优化中令牌化损失与推荐损失之间的梯度冲突"
+      ],
+      "experiment_results": [
+        "在多个真实数据集上BLOGER一致优于现有生成式推荐方法",
+        "算法在提升性能的同时保持了实用效率，没有显著额外计算开销"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "双层优化的计算复杂度可能较高，尽管文中声称效率相当，但元学习过程仍可能引入额外训练时间",
+        "梯度手术虽能缓解冲突，但其效果可能依赖于任务和数据集特性"
+      ],
+      "practical_value": "提供了一种端到端联合优化令牌化器和生成推荐模型的方法，有望提升生成式推荐系统的实际推荐性能，且效率可接受。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "5b5733cec1e8257e",
+      "tags": [
+        "Generative Rec",
+        "Item Tokenization"
+      ],
+      "llm_score": 86,
+      "llm_score_rationale": "发表在顶级会议SIGIR上，强相关生成式推荐/语义ID方向；摘要聚焦于解决tokenization和生成之间的错位问题，属于生成式推荐核心难题；提供了代码开源，实验在多个真实数据集上验证，但没有明确提及线上A/B实验或生产环境",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 134,
+      "display_affiliations": [
+        "University of Science and Technology of China",
+        "Beihang University",
+        "National University of Singapore",
+        "ResearchWorks (United States)"
+      ],
+      "published_date": "2026-07-15"
+    },
+    {
+      "id": "arxiv:2608.11980",
+      "title": "HCGRec: Hint-Conditioned Generative Recommendation with Semantic IDs",
+      "authors": [
+        "Kangning Zhang",
+        "Haotian Fang",
+        "Xukun Luo",
+        "Hao Yin",
+        "Yang Gao",
+        "Peng Yan",
+        "Weiwen Liu",
+        "Weinan Zhang",
+        "Yong Yu"
+      ],
+      "affiliations": [
+        "Shanghai Jiao Tong University"
+      ],
+      "published": "2026-08-12T12:13:08Z",
+      "updated": "2026-08-12T12:13:08Z",
+      "abstract": "Semantic-ID generative recommenders represent each item as a short sequence of discrete semantic tokens and predict the next item by autoregressively generating this token sequence. This paradigm enables a unified generation interface for item IDs, histories, and item text, but it also creates a structured optimization bottleneck during reward-based post-training: when an early semantic token enters the wrong branch of the item-token space, finite rollout groups rarely reach the ground-truth item, so group-relative optimization receives identical zero rewards and produces no useful advantage. We propose Hint-Conditioned Generative Recommendation (HCGRec), a semantic-ID generative recommendation framework that recovers learning signal for such hard training instances. HCGRec diagnoses each instance with checkpoint rollouts and supplies a minimal target-prefix hint only when the current generator cannot reach the correct item. The model then generates the unhinted suffix under the hinted semantic branch, turning zero-reward groups into informative comparisons over item-token completions. Hinting also changes token identity: hinted prefix tokens are oracle-provided item context, while unhinted suffix tokens are sampled generation actions. We therefore introduce hint-aware credit decomposition, using supervised learning to preserve item-semantic and prefix-structure alignment for hinted tokens and GRPO to optimize the sampled suffix. Experiments on sequential recommendation benchmarks show that HCGRec substantially improves over supervised fine-tuning and vanilla reward-based post-training, while reducing zero-advantage training samples from over 70% to below 20%. The code is accessible at https://github.com/WncFht/GRec.",
+      "categories": [
+        "cs.IR",
+        "cs.AI"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2608.11980v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.11980v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "HCGRec提出了一种基于提示条件生成推荐框架，通过为困难样本提供最小目标前缀提示，恢复训练信号，并采用提示感知的信用分解结合监督学习和GRPO优化，显著提升了语义ID生成式推荐的性能，减少了零优势训练样本。",
+      "core_method": "通过诊断困难样本并提供最小目标前缀提示，结合提示感知的信用分解来优化语义ID生成式推荐。",
+      "innovation_points": [
+        "提出了提示条件生成机制，通过最小的目标前缀提示恢复困难样本的训练信号",
+        "引入提示感知的信用分解，对提示前缀使用监督学习、对采样后缀使用GRPO",
+        "显著减少零优势训练样本比例，从超过70%降至低于20%"
+      ],
+      "experiment_results": [
+        "在顺序推荐基准上，HCGRec相比监督微调和普通奖励后训练有显著提升",
+        "零优势训练样本比例从超过70%降低到低于20%"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上 A/B 测试",
+      "limitations": [
+        "论文未明确讨论方法的可扩展性或计算开销",
+        "未报告在更大规模工业数据集上的表现"
+      ],
+      "practical_value": "通过提示机制缓解语义ID生成式推荐中奖励优化的零奖励问题，提升训练效率和推荐质量。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "934c7f22f7ce6a00",
+      "tags": [
+        "Semantic ID",
+        "Generative Rec",
+        "Generative Retrieval",
+        "Sequential Rec"
+      ],
+      "llm_score": 82,
+      "llm_score_rationale": "论文属于生成式推荐与语义ID核心方向，方法创新（hint-conditioned + credit decomposition）针对训练瓶颈有明确改进。；实验显示在序列推荐基准上大幅超越SFT和普通RL后训练，且将零优势样本从70%以上降至20%以下，效果显著。；虽然无顶会发表和工业界A/B证据，但作者包括Weinan Zhang等知名学者，且与工业界Weiwen Liu合作，潜力较高。",
+      "preference_signals": [
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 132,
+      "display_affiliations": [
+        "Shanghai Jiao Tong University"
+      ],
+      "published_date": "2026-08-12"
+    },
+    {
+      "id": "dblp:conf/sigir/FengLHLGZLG26",
+      "title": "Drift-Aware Incremental Token Adaptation with Collaborative Semantics for Generative Recommendation",
+      "authors": [
+        "Yuebo Feng",
+        "Jiahao Liu",
+        "Mingzhe Han",
+        "Dongsheng Li",
+        "Hansu Gu",
+        "Peng Zhang",
+        "Tun Lu",
+        "Ning Gu"
+      ],
+      "affiliations": [
+        "Fudan University",
+        "Microsoft Research Asia (China)"
+      ],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3805712.3809645",
+      "pdf_url": "https://doi.org/10.1145/3805712.3809645",
+      "doi": "10.1145/3805712.3809645",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "本文提出了一种面向生成式推荐的漂移感知增量令牌适应方法，通过协作语义来应对数据分布变化。该方法关注在动态环境中保持推荐系统的性能。研究发表于SIGIR会议。",
+      "core_method": "提出漂移感知的增量令牌适应方法，结合协作语义以应对生成式推荐中的数据分布漂移。",
+      "innovation_points": [
+        "提出漂移感知的增量令牌适应机制，动态调整语义令牌以应对数据分布变化",
+        "引入协作语义，利用多源信息增强令牌表示"
+      ],
+      "experiment_results": [
+        "论文元数据未提供具体实验结果或评测结论"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "由于缺少全文，无法评估方法的具体局限性和适用场景"
+      ],
+      "practical_value": "该方法有望提升生成式推荐系统在动态环境下的适应性和性能稳定性。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "42b62859fa130b27",
+      "tags": [
+        "Generative Rec",
+        "User Modeling",
+        "Sequential Rec"
+      ],
+      "llm_score": 85,
+      "llm_score_rationale": "发表于顶级会议 SIGIR，符合顶会发表权重。；标题含 Token Adaptation 与 Generative Recommendation，与生成式推荐强相关。；缺少线上 A/B 证据或工业界作者单位，故未给满分。",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 126,
+      "display_affiliations": [
+        "Fudan University",
+        "Microsoft Research Asia (China)"
+      ],
+      "published_date": "2026"
+    },
+    {
+      "id": "dblp:conf/sigir/CuiLWZWWC26",
+      "title": "SpecTran: Spectral-Aware Transformer-based Adapter for LLM-Enhanced Sequential Recommendation",
+      "authors": [
+        "Yu Cui",
+        "Feng Liu",
+        "Zhaoxiang Wang",
+        "Changwang Zhang",
+        "Jun Wang",
+        "Can Wang",
+        "Jiawei Chen"
+      ],
+      "affiliations": [
+        "Zhejiang University",
+        "OPPO Research Institute, Shenzhen, China"
+      ],
+      "published": "2026-07-15",
+      "updated": "2026-07-17T05:52:16.776730",
+      "abstract": "Traditional sequential recommendation (SR) models learn low-dimensional item ID embeddings from user-item interactions, often overlooking textual information such as item titles or descriptions. Recent advances in Large Language Models (LLMs) have inspired a surge of research that encodes item textual information with high-dimensional semantic embeddings, and designs transformation methods to inject such embeddings into SR models. These embedding transformation strategies can be categorized into two types, both of which exhibits notable drawbacks: 1) adapter-based methods suffer from pronounced dimension collapse, concentrating information into a few dominant dimensions; 2) SVD-based methods are rigid and manual, considering only a few principal spectral components while discarding rich information in the remaining spectrum.",
+      "categories": [
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3805712.3809701",
+      "pdf_url": "https://doi.org/10.1145/3805712.3809701",
+      "doi": "10.1145/3805712.3809701",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "针对LLM增强序列推荐中适配器方法的维度塌缩和SVD方法的刚性信息丢失问题，提出频谱感知Transformer适配器SpecTran，通过可学习的频谱权重自适应保留语义信息，避免信息丢失。",
+      "core_method": "一种频谱感知的Transformer适配器，通过可学习的频谱权重对预训练语言模型的高维语义嵌入进行自适应变换，注入序列推荐模型。",
+      "innovation_points": [
+        "提出频谱感知适配器，自适应学习各频谱成分的重要性，缓解维度塌缩和信息丢失。",
+        "结合Transformer结构实现端到端的嵌入变换，替代手动或刚性的SVD处理。",
+        "针对LLM增强序列推荐中的嵌入变换问题，统一了适配器与频谱方法的优势。"
+      ],
+      "experiment_results": [
+        "论文全文中未提供具体实验结果数据（仅有元数据，无全文内容）。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未提供实验结果，无法评估方法有效性。",
+        "仅基于元数据分析，缺乏对计算开销和实际部署的讨论。"
+      ],
+      "practical_value": "为LLM增强推荐提供了一种更优的语义嵌入变换方法，有望提升序列推荐模型的准确性和信息利用率。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "45c87b43c3aa26be",
+      "tags": [
+        "LLM4Rec",
+        "Sequential Rec"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "发表于信息检索顶会SIGIR；作者单位包含OPPO Research Institute，工业界参与；研究LLM增强的序列推荐，利用文本语义信息，与LLM4Rec相关但非生成式推荐/语义ID核心方向",
+      "preference_signals": [
+        "Top venue",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 125,
+      "display_affiliations": [
+        "Zhejiang University",
+        "OPPO Research Institute, Shenzhen, China"
+      ],
+      "published_date": "2026-07-15"
+    },
+    {
+      "id": "dblp:conf/sigir/FuGKAVJR26",
+      "title": "Differentiable Semantic ID for Generative Recommendation",
+      "authors": [
+        "Junchen Fu",
+        "Xuri Ge",
+        "Alexandros Karatzoglou",
+        "Ioannis Arapakis",
+        "Suzan Verberne",
+        "Joemon M. Jose",
+        "Zhaochun Ren"
+      ],
+      "affiliations": [
+        "University of Glasgow",
+        "Shandong University",
+        "Amazon (United States)",
+        "Telefónica Scientific Research, Telefónica Innovación Digital, Barcelona, Spain",
+        "Telefonica Research and Development",
+        "Leiden University"
+      ],
+      "published": "2026-07-15",
+      "updated": "2026-08-08T01:25:22.217667",
+      "abstract": "Generative recommendation provides a novel paradigm in which each item is represented by a discrete semantic ID (SID) learned from rich content. Most methods treat SIDs as predefined and train recommenders under static indexing. In practice, SIDs are optimized only for content reconstruction rather than recommendation accuracy. This leads to an objective mismatch : the system optimizes an indexing loss to learn the SID, and a recommendation loss for interaction prediction, but because the tokenizer is trained independently, the recommendation loss cannot update it. A natural approach is to make semantic indexing differentiable so recommendation gradients can directly influence SID learning, but this often causes codebook collapse with only a few codes used. We attribute this to early deterministic assignments that limit codebook exploration, leading to imbalance and unstable optimization. In this paper, we therefore propose DIGER (Differentiable Semantic ID for GEnerative Recommendation). DIGER is a first step towards an effective differentiable semantic ID for generative recommendation. The Gumbel noise explicitly encourages early-stage exploration over codes, mitigating collapse and improving code utilization. To better balance exploration and convergence, we introduce two uncertainty decay strategies that reduce the Gumbel noise, enabling a gradual shift from early-stage exploration to the exploitation of learned SIDs. Extensive experiments across multiple public datasets demonstrate consistent improvements from differentiable semantic ID. These results confirm the effectiveness of aligning indexing and recommendation objectives through differentiable SIDs. This identifies differentiable SID as a promising area of study. Our code is released under https://github.com/junchen-fu/DIGER.",
+      "categories": [
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3805712.3809641",
+      "pdf_url": "https://doi.org/10.1145/3805712.3809641",
+      "doi": "10.1145/3805712.3809641",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "本文提出DIGER，一种可微分的语义ID方法用于生成式推荐，通过Gumbel噪声探索和不确定性衰减策略解决码本崩溃和目标不一致问题，实验证明其有效性。",
+      "core_method": "DIGER通过引入Gumbel噪声和不确定性衰减策略实现可微分的语义ID学习，使推荐梯度能端到端地优化索引和推荐目标。",
+      "innovation_points": [
+        "首次实现可微分的语义ID用于生成式推荐，解决索引与推荐目标不一致的问题。",
+        "引入Gumbel噪声显式鼓励早期码本探索，有效缓解码本崩溃和码本利用率低的问题。",
+        "提出两种不确定性衰减策略，逐步从探索过渡到利用，平衡探索与收敛。"
+      ],
+      "experiment_results": [
+        "在多个公开数据集上的实验表明，可微分的语义ID相比静态索引方法取得了持续的性能提升。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "论文未提供线上实验验证，实际线上效果未知。",
+        "Gumbel噪声和衰减策略可能引入额外超参数，需进一步调优。"
+      ],
+      "practical_value": "为生成式推荐提供了一种端到端可优化的语义索引方法，有望提升推荐精度和索引质量。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "e3ac6c95ad042f6a",
+      "tags": [
+        "Generative Rec",
+        "Semantic ID",
+        "Vector Quantization",
+        "Item Tokenization"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "SIGIR顶会论文，生成式推荐和语义ID直接相关；作者单位含Amazon，具备工业背景；仅提供离线实验，无线上A/B或production证据",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 124,
+      "display_affiliations": [
+        "University of Glasgow",
+        "Shandong University",
+        "Amazon (United States)",
+        "Telefónica Scientific Research, Telefónica Innovación Digital, Barcelona, Spain",
+        "Telefonica Research and Development",
+        "Leiden University"
+      ],
+      "published_date": "2026-07-15"
+    },
+    {
+      "id": "arxiv:2608.09634",
+      "title": "IntHQ: Task-Interactive Hierarchical Query on Dual-Stream Representations for Generative Recommendation",
+      "authors": [
+        "Junjie Sun",
+        "Longfei Xu",
+        "Huimin Yan",
+        "Wei Luo",
+        "Kaikui Liu",
+        "Xiangxiang Chu"
+      ],
+      "affiliations": [
+        "Alibaba Group"
+      ],
+      "published": "2026-08-10T14:13:47Z",
+      "updated": "2026-08-10T14:13:47Z",
+      "abstract": "Multi-task learning over heterogeneous data is fundamental to modern recommendation, while generative models are emerging as the backbone of next-generation recommenders. However, the integration of multi-task learning into the generative paradigm remains largely unexplored. Existing multi-task recommenders, in both discriminative and generative paradigms, extract task-relevant features from a single task-agnostic representation and wire tasks into a predefined conversion funnel. We show that this scheme is inherently prone to a threefold collapse. Source collapse, where task-specific signals are injected late and diluted in the shared latent space. Relational collapse, where task dependencies are either implicitly absorbed by the backbone or statically fixed by predefined funnels. Hierarchical collapse, where tasks depend on features at different scales and shift across training stages. We propose IntHQ, a multi-task generative recommender with three components, each alleviating one collapse. Dual-Stream Decoupling (DSD) injects task identity into computation stream early and separates the shared context stream from the task-specific stream, alleviating signal dilution. Task-Interactive Modeling (TIM) replaces the predefined funnel with explicit cross-task interaction, letting each task condition on the realized outcomes of its predecessors with learned, input-adaptive strength. Hierarchical Querying (HQ) lets each task gather multi-scale information across different layers at different training stages. In offline evaluations, IntHQ consistently outperforms competitive encoder backbones under four representative task-head configurations. Deployed in production on Amap, serving hundreds of millions of users for travel recommendation, IntHQ yields a 1.60\\% relative UVCTR lift.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2608.09634v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.09634v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "IntHQ针对生成式推荐中的多任务学习，提出双流解耦、任务交互建模和层次查询三个组件，分别缓解源坍缩、关系坍缩和层次坍缩，在离线评测和生产环境中均取得显著提升。",
+      "core_method": "通过双流解耦注入任务身份并分离共享与任务专属流，利用任务交互建模实现输入自适应的显式跨任务依赖，以及层次查询让任务在不同训练阶段聚合多尺度信息。",
+      "innovation_points": [
+        "首次系统分析生成式多任务推荐中的三种坍缩问题（源坍缩、关系坍缩、层次坍缩）",
+        "提出双流解耦机制，在计算流早期注入任务身份并分离共享与任务特定流",
+        "设计任务交互建模，以学到的输入自适应强度显式建模任务间依赖，替代预定义漏斗"
+      ],
+      "experiment_results": [
+        "离线评测中，IntHQ在四种代表性任务头配置下均优于竞争编码器骨干",
+        "在高德地图千万级用户旅行推荐的生产部署中，UVCTR相对提升1.60%"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文全文明确说明部署在高德地图生产环境，服务数亿用户旅行推荐，取得1.60% UVCTR相对提升。",
+      "limitations": [
+        "仅在单一业务场景（旅行推荐）验证线上效果，其他领域的泛化性待检验",
+        "模型复杂度增加可能带来更高的训练和推理成本，论文未详细讨论资源开销"
+      ],
+      "practical_value": "为生成式推荐中的多任务学习提供了可部署的解决方案，已在工业级场景验证效果，对大规模推荐系统有直接参考价值。",
+      "analysis_basis": "full_text",
+      "analysis_status": "cached",
+      "analysis_signature": "b956d19c1f21fb75",
+      "tags": [
+        "Generative Rec",
+        "User Modeling",
+        "Online Eval"
+      ],
+      "llm_score": 93,
+      "llm_score_rationale": "明确提及线上部署和A/B测试，获得1.60% UVCTR提升；主题为生成式推荐，解决多任务学习中的坍缩问题；已在生产环境服务数亿用户，公司Amap为知名互联网公司",
+      "preference_signals": [
+        "Online A/B",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 122,
+      "display_affiliations": [
+        "Alibaba Group"
+      ],
+      "published_date": "2026-08-10"
+    },
+    {
+      "id": "dblp:conf/www/TangLPLK26",
+      "title": "Verifiable Federated Representation Learning for Cross-domain Sequential Recommendation",
+      "authors": [
+        "Tao Tang",
+        "Botao Liu",
+        "Ciyuan Peng",
+        "Ivan Lee",
+        "Xiangjie Kong"
+      ],
+      "affiliations": [
+        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
+        "Zhejiang University of Technology",
+        "Federation University",
+        "Adelaide University, Adelaide, Australia",
+        "The University of Adelaide"
+      ],
+      "published": "2026-04-09",
+      "updated": "2026-07-29T14:22:42.915294",
+      "abstract": "Cross-domain sequential recommendation (CDSR) plays a critical role in decentralized Web applications by leveraging user behavior sequences across multiple platforms to alleviate data sparsity and capture dynamic preferences. However, existing federated CDSR frameworks face two fundamental challenges: (i) heterogeneous sequential interactions that encode domain-exclusive semantics and cannot be directly shared under privacy constraints, and (ii) strong trust assumptions that both servers and clients behave honestly, leaving federated training vulnerable to misreporting, malicious updates, and negative transfer. In this paper, we propose VeriFRL, a verifiable federated representation learning framework for cross-domain sequential recommendation. VeriFRL adopts a dual-module design that integrates representation learning with verifiable training: an attention-based variational encoder disentangles domain-shared and domain-exclusive representations to support transferable and privacy-preserving knowledge sharing, while a contribution evaluation module quantifies client-level and feature-level influences to enable verifiability, interpretability, and negative transfer detection. Extensive experiments on real-world multi-domain datasets demonstrate that VeriFRL achieves competitive or superior recommendation performance over state-of-the-art federated CDSR methods, while providing fine-grained insights into cross-domain knowledge transfer dynamics.",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792533",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792533",
+      "doi": "10.1145/3774904.3792533",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "本文提出VeriFRL，一种面向跨域序列推荐的可验证联邦表示学习框架，通过注意力变分编码器分离域共享与域专属表示，并引入贡献评估模块实现可验证性、可解释性和负迁移检测，在真实多域数据集上验证了其有效性。",
+      "core_method": "基于注意力变分编码器分离域共享与域专属表示，并结合贡献评估模块实现可验证的联邦表示学习。",
+      "innovation_points": [
+        "提出双模块设计，集成表示学习与可验证训练。",
+        "通过贡献评估模块量化客户端和特征级影响，实现可验证性、可解释性和负迁移检测。",
+        "在联邦跨域序列推荐中引入变分编码器解耦域共享与域专属表示。"
+      ],
+      "experiment_results": [
+        "在真实多域数据集上的实验表明，VeriFRL相比最先进的联邦CDSR方法取得了竞争性或更优的推荐性能，并提供了跨域知识迁移动态的细粒度洞察。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "元数据未提供局限性信息，无法评估。"
+      ],
+      "practical_value": "为隐私敏感的多平台跨域序列推荐提供可验证、可解释的联邦学习方案，有助于负迁移检测和知识迁移理解。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "9375ebc594e7192f",
+      "tags": [
+        "Generative Rec",
+        "User Modeling"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "发表于顶级会议 WWW，符合优先项；论文研究跨域序列推荐，涉及表示学习，但与生成式推荐/语义ID无直接关联；无工业界公司参与，且无线上A/B实验证据",
+      "preference_signals": [
+        "Top venue",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 121,
+      "display_affiliations": [
+        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
+        "Zhejiang University of Technology",
+        "Federation University",
+        "Adelaide University, Adelaide, Australia",
+        "The University of Adelaide"
+      ],
+      "published_date": "2026-04-09"
+    },
+    {
+      "id": "s2:9b112ef24108f75cade65efda4bf767fd4d6b185",
+      "title": "MergeRec: Model Merging for Data-Isolated Cross-Domain Sequential Recommendation",
+      "authors": [],
+      "affiliations": [
+        "Sungkyunkwan University"
+      ],
+      "published": "2026-01-05",
+      "updated": "2026-01-05",
+      "abstract": "Modern recommender systems trained on domain-specific data often struggle to generalize across multiple domains. Cross-domain sequential recommendation has emerged as a promising research direction to address this challenge; however, existing approaches face fundamental limitations, such as reliance on overlapping users or items across domains, or unrealistic assumptions that ignore privacy constraints. In this work, we propose a new framework, MergeRec, based on model merging under a new and realistic problem setting termed data-isolated cross-domain sequential recommendation, where raw user interaction data cannot be shared across domains. MergeRec consists of three key components: (1) merging initialization, (2) pseudo-user data construction, and (3) collaborative merging optimization. First, we initialize a merged model using training-free merging techniques. Next, we construct pseudo-user data by treating each item as a virtual sequence in each domain, enabling the synthesis of meaningful training samples without relying on real user interactions. Finally, we optimize domain-specific merging weights through a joint objective that combines a recommendation loss, which encourages the merged model to identify relevant items, and a distillation loss, which transfers collaborative filtering signals from the fine-tuned source models. Extensive experiments demonstrate that MergeRec not only preserves the strengths of the original models but also significantly enhances generalizability to unseen domains. Compared to conventional model merging methods, MergeRec consistently achieves superior performance, with average improvements of up to 17.21% in Recall@10, highlighting the potential of model merging as a scalable and effective approach for building universal recommender systems. The source code is available at github.com/DIALLab-SKKU/MergeRec.",
+      "categories": [
+        "Semantic Scholar",
+        "KDD"
+      ],
+      "primary_category": "KDD",
+      "abs_url": "https://www.semanticscholar.org/paper/9b112ef24108f75cade65efda4bf767fd4d6b185",
+      "pdf_url": "https://doi.org/10.1145/3770854.3780264",
+      "doi": "10.1145/3770854.3780264",
+      "source": "Semantic Scholar",
+      "status": "conference",
+      "venue": "Knowledge Discovery and Data Mining",
+      "venue_key": "KDD",
+      "generated_summary": "提出MergeRec框架，在数据隔离的跨域顺序推荐设定下，通过模型合并实现多域知识融合，无需共享原始用户交互数据。利用伪用户数据构建和协同合并优化，提升模型在未见过域的泛化能力。",
+      "core_method": "基于训练无关的模型合并初始化，通过伪用户数据构建和联合推荐损失与蒸馏损失的协同优化，学习域特定的合并权重。",
+      "innovation_points": [
+        "首次提出数据隔离的跨域顺序推荐新设定，无需重叠用户或物品。",
+        "设计伪用户数据构建方法，以物品序列模拟训练样本，解决无共享数据问题。",
+        "提出协同合并优化目标，结合推荐损失和蒸馏损失提升泛化性。"
+      ],
+      "experiment_results": [
+        "在Recall@10上平均提升17.21%，优于传统模型合并方法。",
+        "实验表明方法能保留原模型优势并显著增强对未见过域的泛化能力。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未明确讨论计算开销和伪用户数据构建的适用边界。",
+        "缺乏在更大规模工业级跨域场景下的验证。"
+      ],
+      "practical_value": "为隐私受限的多域推荐场景提供了一种可扩展的模型融合方案，无需共享原始数据。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "d8522de0d7923c68",
+      "tags": [
+        "Sequential Rec"
+      ],
+      "llm_score": 65,
+      "llm_score_rationale": "发表在KDD顶会，符合偏好；研究主题为跨域序列推荐，与生成式推荐/语义ID无直接强相关；无线上A/B实验证据，仅有离线实验",
+      "preference_signals": [
+        "Top venue"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 119,
+      "display_affiliations": [
+        "Sungkyunkwan University"
+      ],
+      "published_date": "2026-01-05"
     },
     {
       "id": "arxiv:2608.07989",
@@ -574,76 +990,6 @@
       "published_date": "2026-01-01"
     },
     {
-      "id": "dblp:conf/sigir/CuiLWZWWC26",
-      "title": "SpecTran: Spectral-Aware Transformer-based Adapter for LLM-Enhanced Sequential Recommendation",
-      "authors": [
-        "Yu Cui",
-        "Feng Liu",
-        "Zhaoxiang Wang",
-        "Changwang Zhang",
-        "Jun Wang",
-        "Can Wang",
-        "Jiawei Chen"
-      ],
-      "affiliations": [
-        "Zhejiang University",
-        "OPPO Research Institute, Shenzhen, China"
-      ],
-      "published": "2026-07-15",
-      "updated": "2026-07-17T05:52:16.776730",
-      "abstract": "Traditional sequential recommendation (SR) models learn low-dimensional item ID embeddings from user-item interactions, often overlooking textual information such as item titles or descriptions. Recent advances in Large Language Models (LLMs) have inspired a surge of research that encodes item textual information with high-dimensional semantic embeddings, and designs transformation methods to inject such embeddings into SR models. These embedding transformation strategies can be categorized into two types, both of which exhibits notable drawbacks: 1) adapter-based methods suffer from pronounced dimension collapse, concentrating information into a few dominant dimensions; 2) SVD-based methods are rigid and manual, considering only a few principal spectral components while discarding rich information in the remaining spectrum.",
-      "categories": [
-        "SIGIR"
-      ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3805712.3809701",
-      "pdf_url": "https://doi.org/10.1145/3805712.3809701",
-      "doi": "10.1145/3805712.3809701",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "针对LLM增强序列推荐中适配器方法的维度塌缩和SVD方法的刚性信息丢失问题，提出频谱感知Transformer适配器SpecTran，通过可学习的频谱权重自适应保留语义信息，避免信息丢失。",
-      "core_method": "一种频谱感知的Transformer适配器，通过可学习的频谱权重对预训练语言模型的高维语义嵌入进行自适应变换，注入序列推荐模型。",
-      "innovation_points": [
-        "提出频谱感知适配器，自适应学习各频谱成分的重要性，缓解维度塌缩和信息丢失。",
-        "结合Transformer结构实现端到端的嵌入变换，替代手动或刚性的SVD处理。",
-        "针对LLM增强序列推荐中的嵌入变换问题，统一了适配器与频谱方法的优势。"
-      ],
-      "experiment_results": [
-        "论文全文中未提供具体实验结果数据（仅有元数据，无全文内容）。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "未提供实验结果，无法评估方法有效性。",
-        "仅基于元数据分析，缺乏对计算开销和实际部署的讨论。"
-      ],
-      "practical_value": "为LLM增强推荐提供了一种更优的语义嵌入变换方法，有望提升序列推荐模型的准确性和信息利用率。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "45c87b43c3aa26be",
-      "tags": [
-        "LLM4Rec",
-        "Sequential Rec"
-      ],
-      "llm_score": 75,
-      "llm_score_rationale": "发表于信息检索顶会SIGIR；作者单位包含OPPO Research Institute，工业界参与；研究LLM增强的序列推荐，利用文本语义信息，与LLM4Rec相关但非生成式推荐/语义ID核心方向",
-      "preference_signals": [
-        "Top venue",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 123,
-      "display_affiliations": [
-        "Zhejiang University",
-        "OPPO Research Institute, Shenzhen, China"
-      ],
-      "published_date": "2026-07-15"
-    },
-    {
       "id": "dblp:conf/www/QiuXHPW26",
       "title": "Meta-Learning Driven Few-Shot Knowledge Transfer with Dual-Stage Adaptive Data Replay for Cross-Domain Recommendation",
       "authors": [
@@ -713,76 +1059,6 @@
         "Northwestern Polytechnical University"
       ],
       "published_date": "2026-04-12"
-    },
-    {
-      "id": "arxiv:2608.09634",
-      "title": "IntHQ: Task-Interactive Hierarchical Query on Dual-Stream Representations for Generative Recommendation",
-      "authors": [
-        "Junjie Sun",
-        "Longfei Xu",
-        "Huimin Yan",
-        "Wei Luo",
-        "Kaikui Liu",
-        "Xiangxiang Chu"
-      ],
-      "affiliations": [
-        "Alibaba Group"
-      ],
-      "published": "2026-08-10T14:13:47Z",
-      "updated": "2026-08-10T14:13:47Z",
-      "abstract": "Multi-task learning over heterogeneous data is fundamental to modern recommendation, while generative models are emerging as the backbone of next-generation recommenders. However, the integration of multi-task learning into the generative paradigm remains largely unexplored. Existing multi-task recommenders, in both discriminative and generative paradigms, extract task-relevant features from a single task-agnostic representation and wire tasks into a predefined conversion funnel. We show that this scheme is inherently prone to a threefold collapse. Source collapse, where task-specific signals are injected late and diluted in the shared latent space. Relational collapse, where task dependencies are either implicitly absorbed by the backbone or statically fixed by predefined funnels. Hierarchical collapse, where tasks depend on features at different scales and shift across training stages. We propose IntHQ, a multi-task generative recommender with three components, each alleviating one collapse. Dual-Stream Decoupling (DSD) injects task identity into computation stream early and separates the shared context stream from the task-specific stream, alleviating signal dilution. Task-Interactive Modeling (TIM) replaces the predefined funnel with explicit cross-task interaction, letting each task condition on the realized outcomes of its predecessors with learned, input-adaptive strength. Hierarchical Querying (HQ) lets each task gather multi-scale information across different layers at different training stages. In offline evaluations, IntHQ consistently outperforms competitive encoder backbones under four representative task-head configurations. Deployed in production on Amap, serving hundreds of millions of users for travel recommendation, IntHQ yields a 1.60\\% relative UVCTR lift.",
-      "categories": [
-        "cs.IR"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2608.09634v1",
-      "pdf_url": "https://arxiv.org/pdf/2608.09634v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "IntHQ针对生成式推荐中的多任务学习，提出双流解耦、任务交互建模和层次查询三个组件，分别缓解源坍缩、关系坍缩和层次坍缩，在离线评测和生产环境中均取得显著提升。",
-      "core_method": "通过双流解耦注入任务身份并分离共享与任务专属流，利用任务交互建模实现输入自适应的显式跨任务依赖，以及层次查询让任务在不同训练阶段聚合多尺度信息。",
-      "innovation_points": [
-        "首次系统分析生成式多任务推荐中的三种坍缩问题（源坍缩、关系坍缩、层次坍缩）",
-        "提出双流解耦机制，在计算流早期注入任务身份并分离共享与任务特定流",
-        "设计任务交互建模，以学到的输入自适应强度显式建模任务间依赖，替代预定义漏斗"
-      ],
-      "experiment_results": [
-        "离线评测中，IntHQ在四种代表性任务头配置下均优于竞争编码器骨干",
-        "在高德地图千万级用户旅行推荐的生产部署中，UVCTR相对提升1.60%"
-      ],
-      "ab_test": "yes",
-      "ab_test_evidence": "论文全文明确说明部署在高德地图生产环境，服务数亿用户旅行推荐，取得1.60% UVCTR相对提升。",
-      "limitations": [
-        "仅在单一业务场景（旅行推荐）验证线上效果，其他领域的泛化性待检验",
-        "模型复杂度增加可能带来更高的训练和推理成本，论文未详细讨论资源开销"
-      ],
-      "practical_value": "为生成式推荐中的多任务学习提供了可部署的解决方案，已在工业级场景验证效果，对大规模推荐系统有直接参考价值。",
-      "analysis_basis": "full_text",
-      "analysis_status": "complete",
-      "analysis_signature": "b956d19c1f21fb75",
-      "tags": [
-        "Generative Rec",
-        "User Modeling",
-        "Online Eval"
-      ],
-      "llm_score": 93,
-      "llm_score_rationale": "明确提及线上部署和A/B测试，获得1.60% UVCTR提升；主题为生成式推荐，解决多任务学习中的坍缩问题；已在生产环境服务数亿用户，公司Amap为知名互联网公司",
-      "preference_signals": [
-        "Online A/B",
-        "Generative Rec / Semantic ID",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 119,
-      "display_affiliations": [
-        "Alibaba Group"
-      ],
-      "published_date": "2026-08-10"
     },
     {
       "id": "dblp:conf/www/ZhuCJYWCZ26",
@@ -1125,151 +1401,6 @@
         "National University of Defense Technology"
       ],
       "published_date": "2026-07-10"
-    },
-    {
-      "id": "dblp:conf/sigir/FengLHLGZLG26",
-      "title": "Drift-Aware Incremental Token Adaptation with Collaborative Semantics for Generative Recommendation",
-      "authors": [
-        "Yuebo Feng",
-        "Jiahao Liu",
-        "Mingzhe Han",
-        "Dongsheng Li",
-        "Hansu Gu",
-        "Peng Zhang",
-        "Tun Lu",
-        "Ning Gu"
-      ],
-      "affiliations": [
-        "Fudan University",
-        "Microsoft Research Asia (China)",
-        "Seattle University"
-      ],
-      "published": "2026-07-15",
-      "updated": "2026-07-16T06:00:37.324182",
-      "abstract": "",
-      "categories": [
-        "SIGIR"
-      ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3805712.3809645",
-      "pdf_url": "https://doi.org/10.1145/3805712.3809645",
-      "doi": "10.1145/3805712.3809645",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "本文提出一种漂移感知的增量令牌适应方法，通过协作语义来应对生成式推荐中的数据分布漂移问题。该方法在SIGIR会议上提出，旨在提升生成式推荐系统在动态环境下的性能。由于缺乏摘要和全文，具体实现和实验细节未知。",
-      "core_method": "漂移感知的增量令牌适应方法，利用协作语义处理数据分布变化。",
-      "innovation_points": [
-        "提出漂移感知机制以适应数据分布变化",
-        "引入协作语义增强令牌适应过程"
-      ],
-      "experiment_results": [
-        "论文摘要和全文未提供，实验结论未知"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏详细实验评估，方法有效性不确定",
-        "未说明计算开销和可扩展性"
-      ],
-      "practical_value": "若能解决动态环境下的推荐漂移问题，将对需要实时更新的推荐场景具有实用价值。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "6b26310cc7b9c4a5",
-      "tags": [
-        "Generative Rec"
-      ],
-      "llm_score": 91,
-      "llm_score_rationale": "SIGIR顶级会议论文，权威性高；标题直接涉及生成式推荐中的语义与Token适应，与生成式推荐/语义ID强相关；作者单位包含Microsoft Research Asia，知名互联网公司研究院",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 141,
-      "display_affiliations": [
-        "Fudan University",
-        "Microsoft Research Asia (China)",
-        "Seattle University"
-      ],
-      "published_date": "2026-07-15"
-    },
-    {
-      "id": "dblp:conf/www/TangLPLK26",
-      "title": "Verifiable Federated Representation Learning for Cross-domain Sequential Recommendation",
-      "authors": [
-        "Tao Tang",
-        "Botao Liu",
-        "Ciyuan Peng",
-        "Ivan Lee",
-        "Xiangjie Kong"
-      ],
-      "affiliations": [
-        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
-        "Zhejiang University of Technology",
-        "Federation University",
-        "Adelaide University, Adelaide, Australia",
-        "The University of Adelaide"
-      ],
-      "published": "2026-04-09",
-      "updated": "2026-07-29T14:22:42.915294",
-      "abstract": "Cross-domain sequential recommendation (CDSR) plays a critical role in decentralized Web applications by leveraging user behavior sequences across multiple platforms to alleviate data sparsity and capture dynamic preferences. However, existing federated CDSR frameworks face two fundamental challenges: (i) heterogeneous sequential interactions that encode domain-exclusive semantics and cannot be directly shared under privacy constraints, and (ii) strong trust assumptions that both servers and clients behave honestly, leaving federated training vulnerable to misreporting, malicious updates, and negative transfer. In this paper, we propose VeriFRL, a verifiable federated representation learning framework for cross-domain sequential recommendation. VeriFRL adopts a dual-module design that integrates representation learning with verifiable training: an attention-based variational encoder disentangles domain-shared and domain-exclusive representations to support transferable and privacy-preserving knowledge sharing, while a contribution evaluation module quantifies client-level and feature-level influences to enable verifiability, interpretability, and negative transfer detection. Extensive experiments on real-world multi-domain datasets demonstrate that VeriFRL achieves competitive or superior recommendation performance over state-of-the-art federated CDSR methods, while providing fine-grained insights into cross-domain knowledge transfer dynamics.",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792533",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792533",
-      "doi": "10.1145/3774904.3792533",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "本文提出VeriFRL，一种面向跨域序列推荐的可验证联邦表示学习框架，通过注意力变分编码器分离域共享与域专属表示，并引入贡献评估模块实现可验证性、可解释性和负迁移检测，在真实多域数据集上验证了其有效性。",
-      "core_method": "基于注意力变分编码器分离域共享与域专属表示，并结合贡献评估模块实现可验证的联邦表示学习。",
-      "innovation_points": [
-        "提出双模块设计，集成表示学习与可验证训练。",
-        "通过贡献评估模块量化客户端和特征级影响，实现可验证性、可解释性和负迁移检测。",
-        "在联邦跨域序列推荐中引入变分编码器解耦域共享与域专属表示。"
-      ],
-      "experiment_results": [
-        "在真实多域数据集上的实验表明，VeriFRL相比最先进的联邦CDSR方法取得了竞争性或更优的推荐性能，并提供了跨域知识迁移动态的细粒度洞察。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "元数据未提供局限性信息，无法评估。"
-      ],
-      "practical_value": "为隐私敏感的多平台跨域序列推荐提供可验证、可解释的联邦学习方案，有助于负迁移检测和知识迁移理解。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "9375ebc594e7192f",
-      "tags": [
-        "Generative Rec",
-        "User Modeling"
-      ],
-      "llm_score": 75,
-      "llm_score_rationale": "发表于顶级会议 WWW，符合优先项；论文研究跨域序列推荐，涉及表示学习，但与生成式推荐/语义ID无直接关联；无工业界公司参与，且无线上A/B实验证据",
-      "preference_signals": [
-        "Top venue",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 121,
-      "display_affiliations": [
-        "Zhejiang University of Technology, Hangzhou, China and Zhejiang Key Laboratory of Visual Information Intelligent Processing, Hangzhou, China",
-        "Zhejiang University of Technology",
-        "Federation University",
-        "Adelaide University, Adelaide, Australia",
-        "The University of Adelaide"
-      ],
-      "published_date": "2026-04-09"
     },
     {
       "id": "dblp:conf/sigir/DengFFTLL26",
@@ -4093,66 +4224,6 @@
         "Chengdu University of Information Technology"
       ],
       "published_date": "2026-06-01"
-    },
-    {
-      "id": "s2:9b112ef24108f75cade65efda4bf767fd4d6b185",
-      "title": "MergeRec: Model Merging for Data-Isolated Cross-Domain Sequential Recommendation",
-      "authors": [],
-      "affiliations": [
-        "Sungkyunkwan University, Suwon-si, Gyeongggi-do, Republic of Korea"
-      ],
-      "published": "2026-01-05",
-      "updated": "2026-01-05",
-      "abstract": "Modern recommender systems trained on domain-specific data often struggle to generalize across multiple domains. Cross-domain sequential recommendation has emerged as a promising research direction to address this challenge; however, existing approaches face fundamental limitations, such as reliance on overlapping users or items across domains, or unrealistic assumptions that ignore privacy constraints. In this work, we propose a new framework, MergeRec, based on model merging under a new and realistic problem setting termed data-isolated cross-domain sequential recommendation, where raw user interaction data cannot be shared across domains. MergeRec consists of three key components: (1) merging initialization, (2) pseudo-user data construction, and (3) collaborative merging optimization. First, we initialize a merged model using training-free merging techniques. Next, we construct pseudo-user data by treating each item as a virtual sequence in each domain, enabling the synthesis of meaningful training samples without relying on real user interactions. Finally, we optimize domain-specific merging weights through a joint objective that combines a recommendation loss, which encourages the merged model to identify relevant items, and a distillation loss, which transfers collaborative filtering signals from the fine-tuned source models. Extensive experiments demonstrate that MergeRec not only preserves the strengths of the original models but also significantly enhances generalizability to unseen domains. Compared to conventional model merging methods, MergeRec consistently achieves superior performance, with average improvements of up to 17.21% in Recall@10, highlighting the potential of model merging as a scalable and effective approach for building universal recommender systems. The source code is available at github.com/DIALLab-SKKU/MergeRec.",
-      "categories": [
-        "Semantic Scholar",
-        "KDD"
-      ],
-      "primary_category": "KDD",
-      "abs_url": "https://www.semanticscholar.org/paper/9b112ef24108f75cade65efda4bf767fd4d6b185",
-      "pdf_url": "https://www.semanticscholar.org/paper/9b112ef24108f75cade65efda4bf767fd4d6b185",
-      "doi": "10.1145/3770854.3780264",
-      "source": "Semantic Scholar",
-      "status": "conference",
-      "venue": "Knowledge Discovery and Data Mining",
-      "venue_key": "KDD",
-      "generated_summary": "提出MergeRec框架，在数据隔离的跨域顺序推荐设定下，通过模型合并实现多域知识融合，无需共享原始用户交互数据。利用伪用户数据构建和协同合并优化，提升模型在未见过域的泛化能力。",
-      "core_method": "基于训练无关的模型合并初始化，通过伪用户数据构建和联合推荐损失与蒸馏损失的协同优化，学习域特定的合并权重。",
-      "innovation_points": [
-        "首次提出数据隔离的跨域顺序推荐新设定，无需重叠用户或物品。",
-        "设计伪用户数据构建方法，以物品序列模拟训练样本，解决无共享数据问题。",
-        "提出协同合并优化目标，结合推荐损失和蒸馏损失提升泛化性。"
-      ],
-      "experiment_results": [
-        "在Recall@10上平均提升17.21%，优于传统模型合并方法。",
-        "实验表明方法能保留原模型优势并显著增强对未见过域的泛化能力。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "未明确讨论计算开销和伪用户数据构建的适用边界。",
-        "缺乏在更大规模工业级跨域场景下的验证。"
-      ],
-      "practical_value": "为隐私受限的多域推荐场景提供了一种可扩展的模型融合方案，无需共享原始数据。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "d8522de0d7923c68",
-      "tags": [
-        "Sequential Rec"
-      ],
-      "llm_score": 65,
-      "llm_score_rationale": "发表在KDD顶会，符合偏好；研究主题为跨域序列推荐，与生成式推荐/语义ID无直接强相关；无线上A/B实验证据，仅有离线实验",
-      "preference_signals": [
-        "Top venue"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 112,
-      "display_affiliations": [
-        "Sungkyunkwan University, Suwon-si, Gyeongggi-do, Republic of Korea"
-      ],
-      "published_date": "2026-01-05"
     },
     {
       "id": "arxiv:2607.04068",
