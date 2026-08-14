@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-13T02:37:54Z",
+  "generated_at": "2026-08-14T02:37:44Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
@@ -7,8 +7,8 @@
   },
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 8,
-    "analyzed": 2,
+    "reused": 5,
+    "analyzed": 5,
     "source": "web/public/papers.json"
   },
   "current_limit": 10,
@@ -129,6 +129,725 @@
     ]
   },
   "papers": [
+    {
+      "id": "s2:92af309261db106b1150daaf6d3e9350e4b4e93c",
+      "title": "GSDiffRec: Enhancing Personalized Sequential Recommendation via Diffusion Augmentation and Guidance Optimization",
+      "authors": [],
+      "affiliations": [
+        "Qufu Normal University",
+        "Beijing University of Technology",
+        "Nanjing University of Information Science and Technology",
+        "Macquarie University"
+      ],
+      "published": "2026-02-21",
+      "updated": "2026-02-21",
+      "abstract": "Sequential recommendation aims to predict the next user interaction by modeling historical behavior sequences. Recently diffusion models (DMs) have emerged as a promising generative approach due to their robustness and capacity for uncertainty modeling. However, existing diffusion-based recommendation approaches still encounter two major challenges: sample drift during the noise injection process, which compromises the stability of generation; and limited adaptability to noisy data, which hampers the effectiveness of personalized recommendations. To address these issues, we propose GSDiffRec, a novel generative sequential recommendation approach that integrates two core modules: (i) Semantic-Targeted Guidance Module (STG) built upon an enhanced Transformer backbone equipped with shaped attention and convolutional components to improve representational efficiency and modeling capacity; and (ii) Geodesic Diffusion Module (GDM) enforcing manifold constraints through geodesic random walks, thereby preserving geometric consistency and enhancing denoising stability throughout the diffusion process. Extensive experiments on two public Amazon datasets demonstrate that GSDiffRec significantly outperforms a wide range of competitive baselines. Further ablation studies validate the complementary contributions and effectiveness of the GDM and STG modules.",
+      "categories": [
+        "Semantic Scholar",
+        "WSDM"
+      ],
+      "primary_category": "WSDM",
+      "abs_url": "https://www.semanticscholar.org/paper/92af309261db106b1150daaf6d3e9350e4b4e93c",
+      "pdf_url": "https://www.semanticscholar.org/paper/92af309261db106b1150daaf6d3e9350e4b4e93c",
+      "doi": "10.1145/3773966.3777973",
+      "source": "Semantic Scholar",
+      "status": "conference",
+      "venue": "Web Search and Data Mining",
+      "venue_key": "WSDM",
+      "generated_summary": "GSDiffRec提出一种生成式序列推荐方法，通过语义引导模块（STG）和测地扩散模块（GDM）解决扩散模型中的样本漂移和噪声适应性差的问题，在两个公开Amazon数据集上显著优于基线。",
+      "core_method": "结合语义目标引导的Transformer编码器与测地随机游走约束的扩散模型，进行序列推荐中的个性化生成。",
+      "innovation_points": [
+        "提出语义目标引导模块（STG），利用增强Transformer backbone提升表征效率",
+        "设计测地扩散模块（GDM），通过测地随机游走保持几何一致性以增强去噪稳定性"
+      ],
+      "experiment_results": [
+        "在Amazon两个公开数据集上，GSDiffRec显著优于多个竞争基线",
+        "消融实验验证了GDM和STG模块的互补性和有效性"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "仅基于元数据和摘要，缺乏全文细节，无法评估方法的泛化性和潜在缺陷，如计算开销等",
+        "实验仅在两个Amazon数据集上进行，对其他领域数据的适应性未知"
+      ],
+      "practical_value": "为序列推荐提供了一种稳定且噪声鲁棒的生成式扩散模型，有望提升真实推荐场景中的个性化质量。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "5837d0eb99318f23",
+      "tags": [
+        "Generative Rec",
+        "Sequential Rec",
+        "LLM4Rec"
+      ],
+      "llm_score": 70,
+      "llm_score_rationale": "WSDM顶会论文，涉及生成式序列推荐（扩散模型）；明确针对个性化序列推荐，与生成式推荐相关；仅有离线实验，无线上A/B证据",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 131,
+      "display_affiliations": [
+        "Qufu Normal University",
+        "Beijing University of Technology",
+        "Nanjing University of Information Science and Technology",
+        "Macquarie University"
+      ],
+      "published_date": "2026-02-21"
+    },
+    {
+      "id": "s2:1c168032d25046e6a304aa3ba40d04ce7f03b11b",
+      "title": "Third Workshop on Generative AI for Recommender Systems and Personalization",
+      "authors": [],
+      "affiliations": [
+        "AWS AI Labs, Santa Clara, CA, USA",
+        "Google DeepMind, Mountain View, CA, USA",
+        "University of California San Diego",
+        "Texas A&#38;M University, College Station, USA",
+        "Snap Inc., Seattle, WA, USA",
+        "University of Minnesota"
+      ],
+      "published": "2026-02-21",
+      "updated": "2026-02-21",
+      "abstract": "Building personalized recommender systems and search experiences is a cornerstone of the modern data mining and applied machine learning (ML) community. Modern online platforms have a confluence of data including user-item interaction graphs, user and item-associated semantics (text, visual content, etc.), and metadata. Recent advancements in generative models and semantic encoders via large language models (LLMs), visual and audio encoders have significantly impacted research in relevant domains, enabling new directions in knowledge discovery and ability of models to better incorporate semantic context. These techniques are quickly advancing in the academic sphere, and adoption in industrial environments is growing. These advances force large questions about the future of search, recommendation and personalized experiences in the future. This workshop bridges the research gap between the use of generative models and recommendation for personalized systems. We will focus on topics spanning the interplay between such models and conventional personalized systems. Building upon the momentum of previous successful forums, we seek to engage a diverse audience from academia and industry, fostering a dialogue that incorporates fresh insights and anticipates over 100 attendees, including key stakeholders in the field.",
+      "categories": [
+        "Semantic Scholar",
+        "WSDM"
+      ],
+      "primary_category": "WSDM",
+      "abs_url": "https://www.semanticscholar.org/paper/1c168032d25046e6a304aa3ba40d04ce7f03b11b",
+      "pdf_url": "https://doi.org/10.1145/3773966.3778018",
+      "doi": "10.1145/3773966.3778018",
+      "source": "Semantic Scholar",
+      "status": "conference",
+      "venue": "Web Search and Data Mining",
+      "venue_key": "WSDM",
+      "generated_summary": "本研讨会聚焦生成式AI在推荐系统与个性化领域的应用，探讨大语言模型等技术如何推动知识发现与语义理解，旨在连接学术界与工业界，展望未来搜索与推荐体验。",
+      "core_method": "研讨会探讨生成式模型与推荐系统结合的前沿方法，包括LLM、语义编码器等。",
+      "innovation_points": [
+        "将生成式AI与推荐系统个性化结合，探索语义增强的知识发现",
+        "讨论生成模型在工业界推荐中的实际应用与未来方向"
+      ],
+      "experiment_results": [
+        "元数据未提供具体实验结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "仅提供研讨会概述，缺乏具体方法论与实验细节"
+      ],
+      "practical_value": "为工业界推荐系统引入生成式AI技术提供研讨与方向指导",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "33f00ac233004491",
+      "tags": [
+        "LLM4Rec",
+        "Generative Rec"
+      ],
+      "llm_score": 60,
+      "llm_score_rationale": "WSDM 顶会 workshop，与生成式推荐强相关；聚焦工业界和学术界的生成式推荐对话，可能涉及大厂实践；但仅为 workshop 前言综述，无具体实验或线上A/B证据",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 128,
+      "display_affiliations": [
+        "AWS AI Labs, Santa Clara, CA, USA",
+        "Google DeepMind, Mountain View, CA, USA",
+        "University of California San Diego",
+        "Texas A&#38;M University, College Station, USA",
+        "Snap Inc., Seattle, WA, USA",
+        "University of Minnesota"
+      ],
+      "published_date": "2026-02-21"
+    },
+    {
+      "id": "openalex:W4392576636",
+      "title": "Bridging Language and Items for Retrieval and Recommendation: Benchmarking LLMs as Semantic Encoders",
+      "authors": [
+        "Yupeng Hou",
+        "Jiacheng Li",
+        "Xiangjun Fu",
+        "Zhankui He",
+        "An Yan",
+        "Xiusi Chen",
+        "Julian McAuley"
+      ],
+      "affiliations": [],
+      "published": "2026-01-01",
+      "updated": "2026-08-11T07:18:39.950985",
+      "abstract": "Yupeng Hou, Jiacheng Li, Xiangjun Fu, Zhankui He, An Yan, Xiusi Chen, Julian McAuley. Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers). 2026.",
+      "categories": [
+        "OpenAlex",
+        "WSDM"
+      ],
+      "primary_category": "WSDM",
+      "abs_url": "https://doi.org/10.18653/v1/2026.acl-long.147",
+      "pdf_url": "https://aclanthology.org/2026.acl-long.147.pdf",
+      "doi": "10.18653/v1/2026.acl-long.147",
+      "source": "OpenAlex",
+      "status": "conference",
+      "venue": "WSDM",
+      "venue_key": "WSDM",
+      "generated_summary": "该论文探讨了如何利用大语言模型作为语义编码器，以桥接自然语言与物品之间的语义鸿沟，并系统评估了其在检索和推荐任务中的表现。通过基准测试，作者分析了不同编码策略的有效性，为语义ID和生成式推荐提供了新见解。",
+      "core_method": "利用大语言模型作为语义编码器，将物品和自然语言映射到统一语义空间，用于检索和推荐任务。",
+      "innovation_points": [
+        "系统基准测试LLM作为语义编码器在检索和推荐中的性能",
+        "分析不同编码策略对语义表示质量的影响",
+        "为语义ID和生成式推荐提供实证依据"
+      ],
+      "experiment_results": [
+        "论文未提供具体实验结果（仅元数据）"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未提供详细实验设置和数值结果，难以评估具体效果",
+        "基于元数据无法判断模型泛化性和实际部署表现"
+      ],
+      "practical_value": "为推荐系统中利用LLM进行语义建模提供了基准参考，有助于选择和改进编码策略。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "808e1c58a31685c8",
+      "tags": [
+        "LLM4Rec",
+        "Semantic ID",
+        "Generative Rec",
+        "Benchmark",
+        "Evaluation"
+      ],
+      "llm_score": 85,
+      "llm_score_rationale": "WSDM 顶级会议论文，与生成式推荐和语义编码相关；研究 LLM 作为语义编码器用于检索和推荐，契合语义 ID 方向；摘要未提及线上 A/B，推测为离线评测",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 124,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026-01-01"
+    },
+    {
+      "id": "openalex:W7135040829",
+      "title": "RoLLMRec: a robust LLM-based recommender system for defending against shilling and prompt injection attacks",
+      "authors": [
+        "Sarama Shehmir",
+        "Rasha Kashef"
+      ],
+      "affiliations": [
+        "Metropolitan University"
+      ],
+      "published": "2026-03-12",
+      "updated": "2026-08-08T07:41:36.138363",
+      "abstract": "Large Language Models (LLMs) are increasingly being integrated into recommender systems, offering contextual reasoning, cross-domain adaptability, and natural language interaction. However, their adoption also introduces vulnerabilities such as prompt injection, semantic poisoning, and shilling attacks, which can distort recommendations and erode user trust. Addressing these risks is essential for the safe deployment of LLM-based recommenders. We propose RoLLMRec, a defense oriented architectural framework and evaluation methodology for LLM-based recommender systems that integrates prompt filtering, retrieval augmented grounding, trust aware scoring, and an auditing feedback loop. RoLLMRec improves robustness under the evaluated prompt level and semantic adversarial settings, while multimodal support is included at the architectural level only and is not empirically evaluated in the current experimental setup.RoLLMRec unifies five core components: (1) prompt shielding and input filtering to detect and block adversarial instructions; (2) retrieval-augmented generation to enrich factual grounding and reduce hallucination; (3) multimodal LLM encoding for text, metadata, and image inputs; (4) trust-aware scoring and Top-K ranking; and (5) adaptive feedback loops for continual learning. Evaluations on benchmark datasets such as Yelp, MovieLens, and Amazon Books show that RoLLMRec surpasses BERT4Rec, RecVAE, and LightGCN, improving NDCG@10 and HR@10 by up to 6% and 5%, respectively. Under a 10% prompt-injection attack, it maintains a Robust Hit Rate (RHR@10) above 0.63 and a Perturbation Sensitivity Index (PSI) below 0.135, achieving 15%–25% higher resilience. It also sustains a Semantic Stability Score (SSS) above 0.60 in zero-shot cross-domain transfer, confirming stable semantic intent.",
+      "categories": [
+        "OpenAlex",
+        "WSDM"
+      ],
+      "primary_category": "WSDM",
+      "abs_url": "https://doi.org/10.3389/fcomp.2026.1735253",
+      "pdf_url": "https://public-pages-files-2025.frontiersin.org/journals/computer-science/articles/10.3389/fcomp.2026.1735253/pdf",
+      "doi": "10.3389/fcomp.2026.1735253",
+      "source": "OpenAlex",
+      "status": "conference",
+      "venue": "Frontiers in Computer Science",
+      "venue_key": "WSDM",
+      "generated_summary": "RoLLMRec是一个针对基于LLM的推荐系统的防御框架，通过提示过滤、检索增强接地、信任感知评分和审计反馈循环来抵御提示注入和语义投毒攻击。在Yelp、MovieLens和Amazon Books数据集上的评估显示，它在NDCG@10和HR@10上分别提高了最多6%和5%，并在攻击下保持较高的鲁棒性。",
+      "core_method": "提出RoLLMRec框架，集成提示屏蔽、检索增强生成、多模态编码、信任感知评分和自适应反馈循环，以提升LLM推荐系统的鲁棒性。",
+      "innovation_points": [
+        "针对LLM推荐系统提出了统一的防御架构，涵盖输入过滤、检索增强接地和信任感知评分。",
+        "引入鲁棒性评估指标如RHR@10、PSI和SSS来衡量攻击下推荐性能的稳定性。",
+        "在多个基准数据集上验证了对提示注入和语义投毒攻击的防御效果。"
+      ],
+      "experiment_results": [
+        "在Yelp、MovieLens和Amazon Books数据集上，NDCG@10和HR@10分别提高最多6%和5%。",
+        "在10%提示注入攻击下，RHR@10保持在0.63以上，PSI低于0.135，弹性提升15%-25%。",
+        "零样本跨域迁移中，SSS保持在0.60以上，证明语义意图稳定。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "多模态支持仅在架构层面描述，未进行实证评估。",
+        "评估基于离线数据集，未在真实生产环境中验证。"
+      ],
+      "practical_value": "为部署基于LLM的推荐系统提供了防御攻击的框架和评估方法，有助于提升系统安全性和用户信任。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "727c18423921bd0c",
+      "tags": [
+        "LLM4Rec",
+        "RAG Rec",
+        "Evaluation"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "发表于WSDM顶会（尽管年份标注2026，但按WSDM计）；属于LLM4Rec/生成式推荐范畴，涉及prompt注入和鲁棒性；缺乏线上A/B证据，且作者单位非知名互联网公司，但顶会发表加分",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 118,
+      "display_affiliations": [
+        "Metropolitan University"
+      ],
+      "published_date": "2026-03-12"
+    },
+    {
+      "id": "arxiv:2608.09634",
+      "title": "IntHQ: Task-Interactive Hierarchical Query on Dual-Stream Representations for Generative Recommendation",
+      "authors": [
+        "Junjie Sun",
+        "Longfei Xu",
+        "Huimin Yan",
+        "Wei Luo",
+        "Kaikui Liu",
+        "Xiangxiang Chu"
+      ],
+      "affiliations": [
+        "Alibaba Group"
+      ],
+      "published": "2026-08-10T14:13:47Z",
+      "updated": "2026-08-10T14:13:47Z",
+      "abstract": "Multi-task learning over heterogeneous data is fundamental to modern recommendation, while generative models are emerging as the backbone of next-generation recommenders. However, the integration of multi-task learning into the generative paradigm remains largely unexplored. Existing multi-task recommenders, in both discriminative and generative paradigms, extract task-relevant features from a single task-agnostic representation and wire tasks into a predefined conversion funnel. We show that this scheme is inherently prone to a threefold collapse. Source collapse, where task-specific signals are injected late and diluted in the shared latent space. Relational collapse, where task dependencies are either implicitly absorbed by the backbone or statically fixed by predefined funnels. Hierarchical collapse, where tasks depend on features at different scales and shift across training stages. We propose IntHQ, a multi-task generative recommender with three components, each alleviating one collapse. Dual-Stream Decoupling (DSD) injects task identity into computation stream early and separates the shared context stream from the task-specific stream, alleviating signal dilution. Task-Interactive Modeling (TIM) replaces the predefined funnel with explicit cross-task interaction, letting each task condition on the realized outcomes of its predecessors with learned, input-adaptive strength. Hierarchical Querying (HQ) lets each task gather multi-scale information across different layers at different training stages. In offline evaluations, IntHQ consistently outperforms competitive encoder backbones under four representative task-head configurations. Deployed in production on Amap, serving hundreds of millions of users for travel recommendation, IntHQ yields a 1.60\\% relative UVCTR lift.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2608.09634v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.09634v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "IntHQ针对生成式推荐中的多任务学习，提出双流解耦、任务交互建模和层次查询三个组件，分别缓解源坍缩、关系坍缩和层次坍缩，在离线评测和生产环境中均取得显著提升。",
+      "core_method": "通过双流解耦注入任务身份并分离共享与任务专属流，利用任务交互建模实现输入自适应的显式跨任务依赖，以及层次查询让任务在不同训练阶段聚合多尺度信息。",
+      "innovation_points": [
+        "首次系统分析生成式多任务推荐中的三种坍缩问题（源坍缩、关系坍缩、层次坍缩）",
+        "提出双流解耦机制，在计算流早期注入任务身份并分离共享与任务特定流",
+        "设计任务交互建模，以学到的输入自适应强度显式建模任务间依赖，替代预定义漏斗"
+      ],
+      "experiment_results": [
+        "离线评测中，IntHQ在四种代表性任务头配置下均优于竞争编码器骨干",
+        "在高德地图千万级用户旅行推荐的生产部署中，UVCTR相对提升1.60%"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文全文明确说明部署在高德地图生产环境，服务数亿用户旅行推荐，取得1.60% UVCTR相对提升。",
+      "limitations": [
+        "仅在单一业务场景（旅行推荐）验证线上效果，其他领域的泛化性待检验",
+        "模型复杂度增加可能带来更高的训练和推理成本，论文未详细讨论资源开销"
+      ],
+      "practical_value": "为生成式推荐中的多任务学习提供了可部署的解决方案，已在工业级场景验证效果，对大规模推荐系统有直接参考价值。",
+      "analysis_basis": "full_text",
+      "analysis_status": "cached",
+      "analysis_signature": "b956d19c1f21fb75",
+      "tags": [
+        "Generative Rec",
+        "User Modeling",
+        "Online Eval"
+      ],
+      "llm_score": 93,
+      "llm_score_rationale": "明确提及线上部署和A/B测试，获得1.60% UVCTR提升；主题为生成式推荐，解决多任务学习中的坍缩问题；已在生产环境服务数亿用户，公司Amap为知名互联网公司",
+      "preference_signals": [
+        "Online A/B",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 116,
+      "display_affiliations": [
+        "Alibaba Group"
+      ],
+      "published_date": "2026-08-10"
+    },
+    {
+      "id": "s2:db3ed14bfec6bbaa0fa0e371b47519b3b35c5b21",
+      "title": "Enhanced Cold-Start Sequential Recommendation with Causal Diffusion Preference Modeling",
+      "authors": [],
+      "affiliations": [
+        "Nanjing University of Information Science and Technology",
+        "Macquarie University"
+      ],
+      "published": "2026-02-21",
+      "updated": "2026-02-21",
+      "abstract": "Sequential recommendation has achieved remarkable success across various application domains due to its ability to capture dynamic user preferences. Therefore, its effectiveness significantly diminishes in user cold-start scenarios, where new users have limited or no interaction history. Current solutions typically design specialized model architectures to infer cold-start user preferences from auxiliary information, such as user attributes or social networks. However, such methods overlook compatibility with advanced sequential recommender models, preventing the efficient extraction of sequential features. To address this limitation, we propose CDMRec, a Causal Diffusion Preference Model for user cold-start sequential recommendation. CDMRec generates diffusion-based preference representations for cold-start users, which can be directly utilized by existing sequential recommendation models. The framework first constructs a Preference-Dominant Sequence (PDS) by isolating interactions most indicative of user interests, mitigating noise from irrelevant behaviors. Then, leveraging causal inference, CDMRec identifies key causal variables from PDS to condition the diffusion process, enabling the generation of personalized behavioral preferences. Extensive experiments on three public datasets demonstrate that CDMRec can be seamlessly integrated into mainstream sequential recommender models, yielding substantial performance gains in cold-start settings.",
+      "categories": [
+        "Semantic Scholar",
+        "WSDM"
+      ],
+      "primary_category": "WSDM",
+      "abs_url": "https://www.semanticscholar.org/paper/db3ed14bfec6bbaa0fa0e371b47519b3b35c5b21",
+      "pdf_url": "https://doi.org/10.1145/3773966.3778026",
+      "doi": "10.1145/3773966.3778026",
+      "source": "Semantic Scholar",
+      "status": "conference",
+      "venue": "Web Search and Data Mining",
+      "venue_key": "WSDM",
+      "generated_summary": "针对序列推荐中的用户冷启动问题，提出因果扩散偏好建模框架CDMRec。通过构建偏好主导序列并利用因果推断识别关键变量，生成扩散式偏好表示，可直接与现有序列推荐模型集成，在三个公开数据集上验证了冷启动性能提升。",
+      "core_method": "基于因果推理的扩散偏好生成模型，通过偏好主导序列和反事实推断条件化扩散过程，为冷启动用户生成个性化行为偏好表示。",
+      "innovation_points": [
+        "提出偏好主导序列（PDS）概念，从有限交互中提取最能反映用户兴趣的序列以降低噪声",
+        "将因果推断引入扩散偏好生成，通过识别关键因果变量指导扩散过程，实现更可控的冷启动偏好建模",
+        "模型架构与主流序列推荐解耦，生成的偏好表示可直接即插即用，兼容性强"
+      ],
+      "experiment_results": [
+        "在三个公开数据集上的实验表明，CDMRec能无缝集成到主流的序列推荐模型中，在冷启动场景下取得显著性能提升"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "论文未提供全文，无法评估方法在更大规模或更稀疏数据集上的泛化能力",
+        "因果推断的假设条件（如无混淆）在实际推荐场景可能难以完全满足，影响偏好生成的可靠性"
+      ],
+      "practical_value": "提供即插即用的冷启动偏好生成方案，可快速增强现有序列推荐系统的冷启动性能，降低重新设计模型的成本。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "8583e22eb7f53204",
+      "tags": [
+        "Sequential Rec",
+        "User Modeling"
+      ],
+      "llm_score": 60,
+      "llm_score_rationale": "发表于WSDM顶会；研究方向为冷启动推荐，与生成式推荐/语义ID无直接关联；无线上A/B实验证据",
+      "preference_signals": [
+        "Top venue"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 113,
+      "display_affiliations": [
+        "Nanjing University of Information Science and Technology",
+        "Macquarie University"
+      ],
+      "published_date": "2026-02-21"
+    },
+    {
+      "id": "arxiv:2608.11015",
+      "title": "Sona Technical Report",
+      "authors": [
+        "Sona Team",
+        "Alexandr Udeneev",
+        "Aleksei Krasilnikov",
+        "Alexey Nadtochiy",
+        "Andrey Semenov",
+        "Andrey Tsyrkunov",
+        "Anna Krivonos",
+        "Anna Lipkina",
+        "Artem Matveev",
+        "Daniil Burlakov",
+        "Daniil Leshchev",
+        "Daria Tikhonovich",
+        "Denis Burshtein",
+        "Ekaterina Dmitrieva",
+        "Eugene Krofto",
+        "Grigorii Khlystov",
+        "Ilya Murzin",
+        "Kirill Golovko",
+        "Ksenia Sycheva",
+        "Leonid Dmitriev",
+        "Mariia Rozaeva",
+        "Mariia Ulianova",
+        "Mikhail Sandul",
+        "Nikolai Savushkin",
+        "Oleg Sorokin",
+        "Roman Odobesku",
+        "Semyon Panenko",
+        "Sergei Liamaev",
+        "Sergei Makeev",
+        "Vadim Shilov",
+        "Veronika Ivanova",
+        "Viktor Yanush",
+        "Vladimir Baikalov",
+        "Vladislav Dodonov",
+        "Vladislav Tytskiy"
+      ],
+      "affiliations": [],
+      "published": "2026-08-11T14:58:26Z",
+      "updated": "2026-08-12T13:04:32Z",
+      "abstract": "We introduce Sona, a single-model generative recommender for Yandex Music. In an online A/B test, Sona replaced the entire production cascade, comprising more than 15 candidate generators followed by pre-ranking and ranking models that consume hundreds of features, including signals from large transformer models such as Argus and target-attention scorers, while significantly improving key engagement metrics. The architecture of Sona unifies candidate generation and ranking around a shared user representation. Its encoder transforms the user's chronological sequence of logged engagement events into hidden states consumed by both the autoregressive decoder and the Ranking Module. The next-token-prediction and distillation objectives jointly update the encoder, coupling generation and ranking through the same user state. Neither Sona nor its Teacher Ranker uses hand-engineered features; both operate on logged event fields and learned item representations. In the final Sona configuration, the larger teacher supplies ranking targets during training but is absent from serving, leaving the encoder, decoder, and Ranking Module as a single deployed model. We evaluate Sona in an online A/B experiment using live traffic from My Vibe on smart speakers, one of Yandex Music's largest recommendation surfaces. Relative to the production control, Sona produced statistically significant uplifts of 4.53% in Active Users, the primary metric, 6.30% in Total Listening Time, and 11.42% in Likes. These effects were incremental to improvements retained from preceding deployments. The Active Users uplift was 2.35 times the increment previously delivered by Argus, the strongest model deployed on this surface before Sona. These results show that a single jointly trained model can replace a mature multi-stage recommendation cascade while improving recommendation quality on live traffic.",
+      "categories": [
+        "cs.IR"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2608.11015v2",
+      "pdf_url": "https://arxiv.org/pdf/2608.11015v2",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "Sona是Yandex Music的单一模型生成式推荐系统，取代了包含超过15个候选生成器和排名模型的整个生产级联，显著提升关键参与度指标。其架构统一候选生成和排序，共享用户表示，通过下一词预测和蒸馏目标联合训练，且不使用手工特征。在智能音箱的在线A/B测试中，活跃用户数提升4.53%，总收听时间提升6.30%，点赞量提升11.42%。",
+      "core_method": "Sona利用统一用户表示同时驱动自回归解码器和排序模块，通过下一词预测和蒸馏联合训练，将候选生成与排序整合到单个模型中。",
+      "innovation_points": [
+        "提出单一生成式模型统一多阶段推荐级联，同时完成候选生成和排序。",
+        "通过共享用户表示和联合训练目标，实现生成与排序的协同优化。",
+        "使用蒸馏从大型教师模型中学习排序，且教师不参与在线服务。"
+      ],
+      "experiment_results": [
+        "在线A/B测试中，Sona活跃用户数提升4.53%，总收听时间提升6.30%，点赞量提升11.42%。",
+        "活跃用户提升是之前最强模型Argus的2.35倍，且增量叠加在已有改进之上。"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "论文明确报告在智能音箱上的在线A/B实验中使用实时流量，并给出统计显著的指标提升。",
+      "limitations": [
+        "论文为技术报告，仅报告单一场景（聪明音箱My Vibe）的在线结果，泛化性需在其他场景验证。",
+        "未提供离线消融研究细节，难以评估各组件贡献。"
+      ],
+      "practical_value": "证明单一生成式模型可替代成熟多阶段推荐级联，在真实生产环境中提升用户参与度，为工业界推荐系统简化架构提供参考。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "1a9a7687e6e7f364",
+      "tags": [
+        "Generative Rec",
+        "Generative Ranking",
+        "Online Eval"
+      ],
+      "llm_score": 95,
+      "llm_score_rationale": "论文明确报告了线上A/B测试，使用Yandex Music的live traffic，并取得了显著指标提升（Active Users +4.53%等），符合最高权重信号。；论文提出单一生成式推荐模型（Sona）统一候选生成与排序，属于generative recommendation方向，与读者兴趣强相关。；作者来自Yandex，属于知名互联网公司，且技术报告展示了工业级实践细节。",
+      "preference_signals": [
+        "Online A/B",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 111,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026-08-11"
+    },
+    {
+      "id": "arxiv:2608.10929",
+      "title": "FedCGR: Federated Cross-Domain Generative Recommendation",
+      "authors": [
+        "Zhuodong Liu",
+        "Hugen Lv",
+        "Xiangyu Li",
+        "Bohan Guo",
+        "Peiyu Hu"
+      ],
+      "affiliations": [
+        "Beijing Jiaotong University",
+        "University of Malaya",
+        "Xi'an Jiaotong-Liverpool University"
+      ],
+      "published": "2026-08-11T13:58:55Z",
+      "updated": "2026-08-11T13:58:55Z",
+      "abstract": "Cross-domain recommendation (CDR) transfers preference knowledge across related domains, but federated deployment makes cross-domain alignment difficult because the behavioral anchors that align item spaces, such as overlapping users and shared interaction signals, are often sparse, unavailable, or privacy-sensitive across clients. To address this tension, we revisit federated CDR as generation over a stable semantic item language. By representing items as discrete semantic ID (SID) sequences derived from public item-side metadata, cross-domain item alignment is induced by a shared vocabulary rather than by exchanging private interactions or aligning domain-specific embeddings. Directly federating SID-based generators, however, introduces two design constraints: the SID tokenizer must remain fixed to preserve cross-client token consistency, which creates a semantic-only bottleneck because local collaborative filtering (CF) signals cannot be globally shared or aligned; meanwhile, standard federated averaging can cause negative transfer under domain heterogeneity. To overcome these constraints, we propose FedCGR, a federated generative CDR framework that keeps the item language stable and makes adaptation explicit. FedCGR injects local CF evidence through a reliability-aware semantic interface and trains a prototype-personalized generator that selectively aggregates shared parameters according to domain relatedness while keeping domain-specific quantities local. Experiments on six Amazon cross-domain scenarios show that FedCGR consistently outperforms federated generative baselines and achieves competitive performance against strong sequential and federated CDR methods under both full-ranking and sampled evaluation protocols.",
+      "categories": [
+        "cs.AI"
+      ],
+      "primary_category": "cs.AI",
+      "abs_url": "http://arxiv.org/abs/2608.10929v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.10929v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "FedCGR提出了一种联邦跨域生成推荐框架，利用公共物品元数据生成稳定的语义ID序列来实现跨域对齐，并通过可靠性感知接口和原型个性化生成器解决联邦环境下语义瓶颈和负迁移问题。实验表明其在六个Amazon跨域场景中优于现有联邦生成基线，并在全排序和采样评估下具有竞争力。",
+      "core_method": "通过固定语义ID词表实现跨域对齐，并引入可靠性感知CF残差注入和原型个性化聚合来提升联邦生成推荐性能。",
+      "innovation_points": [
+        "将联邦跨域推荐建模为基于稳定语义ID的生成任务，通过共享离散词表而非隐私敏感的行为锚点实现跨域对齐。",
+        "设计可靠性感知语义接口，利用物品级置信度和客户端门控注入局部协同过滤信号，缓解冻结tokenizer导致的语义瓶颈。",
+        "提出原型个性化生成器，根据域相关性选择性聚合共享参数，减少联邦平均在域异质性下的负迁移。"
+      ],
+      "experiment_results": [
+        "在六个Amazon跨域场景下，FedCGR在全排序和采样评估中均优于联邦生成基线，并接近强序列推荐模型的性能。",
+        "在999负采样协议下，FedCGR在多个联邦判别式CDR基线中取得最佳结果。",
+        "消融实验显示，在不同域相关度条件下，CF增强和个性化聚合分别成为关键约束。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上 A/B 测试",
+      "limitations": [
+        "实验仅在Amazon公开数据集上进行离线评估，未在真实联邦生产环境中验证。",
+        "语义ID的生成依赖于物品元数据的质量和覆盖率，可能对元数据稀疏的场景不够稳健。"
+      ],
+      "practical_value": "为隐私敏感的多域推荐场景提供了一种无需共享交互数据即可实现跨域知识迁移的生成式解决方案。",
+      "analysis_basis": "full_text",
+      "analysis_status": "complete",
+      "analysis_signature": "0fd0b793e10ace49",
+      "tags": [
+        "Semantic ID",
+        "Generative Rec",
+        "User Modeling"
+      ],
+      "llm_score": 82,
+      "llm_score_rationale": "论文聚焦生成式推荐与语义ID，与生成式检索高度相关，方法新颖；无明确线上A/B证据，但提供六个Amazon跨域数据集离线对比，结果有竞争力；作者单位未知，未见知名工业实验室，但语义ID相关工作常被工业界关注",
+      "preference_signals": [
+        "Top venue: arXiv preprint",
+        "Generative Rec / Semantic ID",
+        "Industry company: Unknown affiliation"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 106,
+      "display_affiliations": [
+        "Beijing Jiaotong University",
+        "University of Malaya",
+        "Xi'an Jiaotong-Liverpool University"
+      ],
+      "published_date": "2026-08-11"
+    },
+    {
+      "id": "arxiv:2608.11980",
+      "title": "HCGRec: Hint-Conditioned Generative Recommendation with Semantic IDs",
+      "authors": [
+        "Kangning Zhang",
+        "Haotian Fang",
+        "Xukun Luo",
+        "Hao Yin",
+        "Yang Gao",
+        "Peng Yan",
+        "Weiwen Liu",
+        "Weinan Zhang",
+        "Yong Yu"
+      ],
+      "affiliations": [
+        "Shanghai Jiao Tong University"
+      ],
+      "published": "2026-08-12T12:13:08Z",
+      "updated": "2026-08-12T12:13:08Z",
+      "abstract": "Semantic-ID generative recommenders represent each item as a short sequence of discrete semantic tokens and predict the next item by autoregressively generating this token sequence. This paradigm enables a unified generation interface for item IDs, histories, and item text, but it also creates a structured optimization bottleneck during reward-based post-training: when an early semantic token enters the wrong branch of the item-token space, finite rollout groups rarely reach the ground-truth item, so group-relative optimization receives identical zero rewards and produces no useful advantage. We propose Hint-Conditioned Generative Recommendation (HCGRec), a semantic-ID generative recommendation framework that recovers learning signal for such hard training instances. HCGRec diagnoses each instance with checkpoint rollouts and supplies a minimal target-prefix hint only when the current generator cannot reach the correct item. The model then generates the unhinted suffix under the hinted semantic branch, turning zero-reward groups into informative comparisons over item-token completions. Hinting also changes token identity: hinted prefix tokens are oracle-provided item context, while unhinted suffix tokens are sampled generation actions. We therefore introduce hint-aware credit decomposition, using supervised learning to preserve item-semantic and prefix-structure alignment for hinted tokens and GRPO to optimize the sampled suffix. Experiments on sequential recommendation benchmarks show that HCGRec substantially improves over supervised fine-tuning and vanilla reward-based post-training, while reducing zero-advantage training samples from over 70% to below 20%. The code is accessible at https://github.com/WncFht/GRec.",
+      "categories": [
+        "cs.IR",
+        "cs.AI"
+      ],
+      "primary_category": "cs.IR",
+      "abs_url": "http://arxiv.org/abs/2608.11980v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.11980v1",
+      "doi": "",
+      "source": "arXiv",
+      "status": "preprint",
+      "venue": "",
+      "venue_key": "",
+      "generated_summary": "HCGRec提出了一种基于提示条件生成推荐框架，通过为困难样本提供最小目标前缀提示，恢复训练信号，并采用提示感知的信用分解结合监督学习和GRPO优化，显著提升了语义ID生成式推荐的性能，减少了零优势训练样本。",
+      "core_method": "通过诊断困难样本并提供最小目标前缀提示，结合提示感知的信用分解来优化语义ID生成式推荐。",
+      "innovation_points": [
+        "提出了提示条件生成机制，通过最小的目标前缀提示恢复困难样本的训练信号",
+        "引入提示感知的信用分解，对提示前缀使用监督学习、对采样后缀使用GRPO",
+        "显著减少零优势训练样本比例，从超过70%降至低于20%"
+      ],
+      "experiment_results": [
+        "在顺序推荐基准上，HCGRec相比监督微调和普通奖励后训练有显著提升",
+        "零优势训练样本比例从超过70%降低到低于20%"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文全文未报告线上 A/B 测试",
+      "limitations": [
+        "论文未明确讨论方法的可扩展性或计算开销",
+        "未报告在更大规模工业数据集上的表现"
+      ],
+      "practical_value": "通过提示机制缓解语义ID生成式推荐中奖励优化的零奖励问题，提升训练效率和推荐质量。",
+      "analysis_basis": "full_text",
+      "analysis_status": "cached",
+      "analysis_signature": "934c7f22f7ce6a00",
+      "tags": [
+        "Semantic ID",
+        "Generative Rec",
+        "Generative Retrieval",
+        "Sequential Rec"
+      ],
+      "llm_score": 82,
+      "llm_score_rationale": "论文属于生成式推荐与语义ID核心方向，方法创新（hint-conditioned + credit decomposition）针对训练瓶颈有明确改进。；实验显示在序列推荐基准上大幅超越SFT和普通RL后训练，且将零优势样本从70%以上降至20%以下，效果显著。；虽然无顶会发表和工业界A/B证据，但作者包括Weinan Zhang等知名学者，且与工业界Weiwen Liu合作，潜力较高。",
+      "preference_signals": [
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 105,
+      "display_affiliations": [
+        "Shanghai Jiao Tong University"
+      ],
+      "published_date": "2026-08-12"
+    },
+    {
+      "id": "openalex:W4414939390",
+      "title": "Diffusion Recommender Models and the Illusion of Progress: A Concerning Study of Reproducibility and a Conceptual Mismatch",
+      "authors": [
+        "Michael Benigni",
+        "Maurizio Ferrari Dacrema",
+        "Dietmar Jannach"
+      ],
+      "affiliations": [
+        "ReMAP Lab, Politecnico di Milano",
+        "University of Klagenfurt"
+      ],
+      "published": "2026-02-06",
+      "updated": "2026-08-11T07:18:39.950985",
+      "abstract": "Countless new machine learning models are published every year and are reported to significantly advance the state-of-the-art in top-n recommendation. However, earlier reproducibility studies indicate that progress in this area may be quite limited, due to widespread methodological issues, e.g., comparisons with untuned baseline models, creating an illusion of progress . In this work, we examine whether these problems persist in today’s research by attempting to reproduce nine SIGIR 2023 and 2024 recommendation algorithms based on Denoising Diffusion Probabilistic Models, a recent but rapidly expanding research area. Only 25% of reported results are fully reproducible and, since the original papers relied on weak baselines , they do not establish the superiority of diffusion models over state-of-the-art methods. In our controlled evaluations, well-tuned simpler baselines consistently exceed the diffusion-based models’ effectiveness reported in the original papers. Furthermore, we identify key mismatches between the characteristics of diffusion models and those of the traditional top-n recommendation task, raising doubts about their suitability for recommendation. Moreover, in the analyzed papers, the generative capabilities of these models are constrained to a minimum. Overall, our results call for greater scientific rigor and a disruptive change in the research and publication culture in this area.",
+      "categories": [
+        "OpenAlex",
+        "WSDM"
+      ],
+      "primary_category": "WSDM",
+      "abs_url": "https://doi.org/10.1145/3795792",
+      "pdf_url": "https://arxiv.org/pdf/2505.09364",
+      "doi": "10.1145/3795792",
+      "source": "OpenAlex",
+      "status": "conference",
+      "venue": "ACM Transactions on Recommender Systems",
+      "venue_key": "WSDM",
+      "generated_summary": "本研究复现了九篇基于扩散模型的SIGIR推荐论文，发现仅25%的结果可完全复现，且原论文方法未超越强基线模型。通过控制实验表明，简单基线模型在适当调优后性能更优，并指出扩散模型与经典top-n推荐任务存在概念不匹配。文章呼吁提高研究严谨性并变革该领域的发表文化。",
+      "core_method": "通过复现九篇SIGIR扩散推荐模型论文并进行受控实验对比，评估其可复现性和实际效果。",
+      "innovation_points": [
+        "对扩散推荐模型的系统复现研究，揭示仅25%的原始结果可完全复现。",
+        "发现扩散模型在推荐任务中并不优于经过充分调优的简单基线，存在概念不匹配。"
+      ],
+      "experiment_results": [
+        "仅25%的原始论文结果可完全复现。",
+        "在受控评估中，调优后的简单基线模型始终优于扩散模型在原始论文中报告的效果。",
+        "扩散模型的生成能力在原始论文中被限制到最小程度。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "仅复现九篇特定会议论文，可能无法完全代表所有扩散推荐模型研究。",
+        "未提供线上A/B测试或大规模在线评估证据，实用效果需进一步验证。"
+      ],
+      "practical_value": "警示研究者避免盲目追随扩散模型，强调应关注简单基线并提高实验严谨性。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "e0b8478573c3078f",
+      "tags": [
+        "Generative Rec",
+        "Evaluation"
+      ],
+      "llm_score": 60,
+      "llm_score_rationale": "发表于WSDM（顶会），关注扩散模型在推荐中的可复现性问题，与生成式推荐相关但结论负面；作者来自学术界，无工业界线上A/B实验证据；主题涉及diffusion model（生成式），但缺乏线上部署验证",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 103,
+      "display_affiliations": [
+        "ReMAP Lab, Politecnico di Milano",
+        "University of Klagenfurt"
+      ],
+      "published_date": "2026-02-06"
+    },
     {
       "id": "dblp:conf/sigir/ChenGCYH26",
       "title": "Beyond Static Best-of-N: Bayesian List-wise Alignment for LLM-based Recommendation",
@@ -348,79 +1067,6 @@
         "ResearchWorks (United States)"
       ],
       "published_date": "2026-07-15"
-    },
-    {
-      "id": "arxiv:2608.11980",
-      "title": "HCGRec: Hint-Conditioned Generative Recommendation with Semantic IDs",
-      "authors": [
-        "Kangning Zhang",
-        "Haotian Fang",
-        "Xukun Luo",
-        "Hao Yin",
-        "Yang Gao",
-        "Peng Yan",
-        "Weiwen Liu",
-        "Weinan Zhang",
-        "Yong Yu"
-      ],
-      "affiliations": [
-        "Shanghai Jiao Tong University"
-      ],
-      "published": "2026-08-12T12:13:08Z",
-      "updated": "2026-08-12T12:13:08Z",
-      "abstract": "Semantic-ID generative recommenders represent each item as a short sequence of discrete semantic tokens and predict the next item by autoregressively generating this token sequence. This paradigm enables a unified generation interface for item IDs, histories, and item text, but it also creates a structured optimization bottleneck during reward-based post-training: when an early semantic token enters the wrong branch of the item-token space, finite rollout groups rarely reach the ground-truth item, so group-relative optimization receives identical zero rewards and produces no useful advantage. We propose Hint-Conditioned Generative Recommendation (HCGRec), a semantic-ID generative recommendation framework that recovers learning signal for such hard training instances. HCGRec diagnoses each instance with checkpoint rollouts and supplies a minimal target-prefix hint only when the current generator cannot reach the correct item. The model then generates the unhinted suffix under the hinted semantic branch, turning zero-reward groups into informative comparisons over item-token completions. Hinting also changes token identity: hinted prefix tokens are oracle-provided item context, while unhinted suffix tokens are sampled generation actions. We therefore introduce hint-aware credit decomposition, using supervised learning to preserve item-semantic and prefix-structure alignment for hinted tokens and GRPO to optimize the sampled suffix. Experiments on sequential recommendation benchmarks show that HCGRec substantially improves over supervised fine-tuning and vanilla reward-based post-training, while reducing zero-advantage training samples from over 70% to below 20%. The code is accessible at https://github.com/WncFht/GRec.",
-      "categories": [
-        "cs.IR",
-        "cs.AI"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2608.11980v1",
-      "pdf_url": "https://arxiv.org/pdf/2608.11980v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "HCGRec提出了一种基于提示条件生成推荐框架，通过为困难样本提供最小目标前缀提示，恢复训练信号，并采用提示感知的信用分解结合监督学习和GRPO优化，显著提升了语义ID生成式推荐的性能，减少了零优势训练样本。",
-      "core_method": "通过诊断困难样本并提供最小目标前缀提示，结合提示感知的信用分解来优化语义ID生成式推荐。",
-      "innovation_points": [
-        "提出了提示条件生成机制，通过最小的目标前缀提示恢复困难样本的训练信号",
-        "引入提示感知的信用分解，对提示前缀使用监督学习、对采样后缀使用GRPO",
-        "显著减少零优势训练样本比例，从超过70%降至低于20%"
-      ],
-      "experiment_results": [
-        "在顺序推荐基准上，HCGRec相比监督微调和普通奖励后训练有显著提升",
-        "零优势训练样本比例从超过70%降低到低于20%"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文全文未报告线上 A/B 测试",
-      "limitations": [
-        "论文未明确讨论方法的可扩展性或计算开销",
-        "未报告在更大规模工业数据集上的表现"
-      ],
-      "practical_value": "通过提示机制缓解语义ID生成式推荐中奖励优化的零奖励问题，提升训练效率和推荐质量。",
-      "analysis_basis": "full_text",
-      "analysis_status": "complete",
-      "analysis_signature": "934c7f22f7ce6a00",
-      "tags": [
-        "Semantic ID",
-        "Generative Rec",
-        "Generative Retrieval",
-        "Sequential Rec"
-      ],
-      "llm_score": 82,
-      "llm_score_rationale": "论文属于生成式推荐与语义ID核心方向，方法创新（hint-conditioned + credit decomposition）针对训练瓶颈有明确改进。；实验显示在序列推荐基准上大幅超越SFT和普通RL后训练，且将零优势样本从70%以上降至20%以下，效果显著。；虽然无顶会发表和工业界A/B证据，但作者包括Weinan Zhang等知名学者，且与工业界Weiwen Liu合作，潜力较高。",
-      "preference_signals": [
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 132,
-      "display_affiliations": [
-        "Shanghai Jiao Tong University"
-      ],
-      "published_date": "2026-08-12"
     },
     {
       "id": "dblp:conf/sigir/FengLHLGZLG26",
@@ -644,76 +1290,6 @@
       "published_date": "2026-07-15"
     },
     {
-      "id": "arxiv:2608.09634",
-      "title": "IntHQ: Task-Interactive Hierarchical Query on Dual-Stream Representations for Generative Recommendation",
-      "authors": [
-        "Junjie Sun",
-        "Longfei Xu",
-        "Huimin Yan",
-        "Wei Luo",
-        "Kaikui Liu",
-        "Xiangxiang Chu"
-      ],
-      "affiliations": [
-        "Alibaba Group"
-      ],
-      "published": "2026-08-10T14:13:47Z",
-      "updated": "2026-08-10T14:13:47Z",
-      "abstract": "Multi-task learning over heterogeneous data is fundamental to modern recommendation, while generative models are emerging as the backbone of next-generation recommenders. However, the integration of multi-task learning into the generative paradigm remains largely unexplored. Existing multi-task recommenders, in both discriminative and generative paradigms, extract task-relevant features from a single task-agnostic representation and wire tasks into a predefined conversion funnel. We show that this scheme is inherently prone to a threefold collapse. Source collapse, where task-specific signals are injected late and diluted in the shared latent space. Relational collapse, where task dependencies are either implicitly absorbed by the backbone or statically fixed by predefined funnels. Hierarchical collapse, where tasks depend on features at different scales and shift across training stages. We propose IntHQ, a multi-task generative recommender with three components, each alleviating one collapse. Dual-Stream Decoupling (DSD) injects task identity into computation stream early and separates the shared context stream from the task-specific stream, alleviating signal dilution. Task-Interactive Modeling (TIM) replaces the predefined funnel with explicit cross-task interaction, letting each task condition on the realized outcomes of its predecessors with learned, input-adaptive strength. Hierarchical Querying (HQ) lets each task gather multi-scale information across different layers at different training stages. In offline evaluations, IntHQ consistently outperforms competitive encoder backbones under four representative task-head configurations. Deployed in production on Amap, serving hundreds of millions of users for travel recommendation, IntHQ yields a 1.60\\% relative UVCTR lift.",
-      "categories": [
-        "cs.IR"
-      ],
-      "primary_category": "cs.IR",
-      "abs_url": "http://arxiv.org/abs/2608.09634v1",
-      "pdf_url": "https://arxiv.org/pdf/2608.09634v1",
-      "doi": "",
-      "source": "arXiv",
-      "status": "preprint",
-      "venue": "",
-      "venue_key": "",
-      "generated_summary": "IntHQ针对生成式推荐中的多任务学习，提出双流解耦、任务交互建模和层次查询三个组件，分别缓解源坍缩、关系坍缩和层次坍缩，在离线评测和生产环境中均取得显著提升。",
-      "core_method": "通过双流解耦注入任务身份并分离共享与任务专属流，利用任务交互建模实现输入自适应的显式跨任务依赖，以及层次查询让任务在不同训练阶段聚合多尺度信息。",
-      "innovation_points": [
-        "首次系统分析生成式多任务推荐中的三种坍缩问题（源坍缩、关系坍缩、层次坍缩）",
-        "提出双流解耦机制，在计算流早期注入任务身份并分离共享与任务特定流",
-        "设计任务交互建模，以学到的输入自适应强度显式建模任务间依赖，替代预定义漏斗"
-      ],
-      "experiment_results": [
-        "离线评测中，IntHQ在四种代表性任务头配置下均优于竞争编码器骨干",
-        "在高德地图千万级用户旅行推荐的生产部署中，UVCTR相对提升1.60%"
-      ],
-      "ab_test": "yes",
-      "ab_test_evidence": "论文全文明确说明部署在高德地图生产环境，服务数亿用户旅行推荐，取得1.60% UVCTR相对提升。",
-      "limitations": [
-        "仅在单一业务场景（旅行推荐）验证线上效果，其他领域的泛化性待检验",
-        "模型复杂度增加可能带来更高的训练和推理成本，论文未详细讨论资源开销"
-      ],
-      "practical_value": "为生成式推荐中的多任务学习提供了可部署的解决方案，已在工业级场景验证效果，对大规模推荐系统有直接参考价值。",
-      "analysis_basis": "full_text",
-      "analysis_status": "cached",
-      "analysis_signature": "b956d19c1f21fb75",
-      "tags": [
-        "Generative Rec",
-        "User Modeling",
-        "Online Eval"
-      ],
-      "llm_score": 93,
-      "llm_score_rationale": "明确提及线上部署和A/B测试，获得1.60% UVCTR提升；主题为生成式推荐，解决多任务学习中的坍缩问题；已在生产环境服务数亿用户，公司Amap为知名互联网公司",
-      "preference_signals": [
-        "Online A/B",
-        "Generative Rec / Semantic ID",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 122,
-      "display_affiliations": [
-        "Alibaba Group"
-      ],
-      "published_date": "2026-08-10"
-    },
-    {
       "id": "dblp:conf/www/TangLPLK26",
       "title": "Verifiable Federated Representation Learning for Cross-domain Sequential Recommendation",
       "authors": [
@@ -922,72 +1498,6 @@
         "Kuaishou Technology"
       ],
       "published_date": "2026-08-08"
-    },
-    {
-      "id": "openalex:W4392576636",
-      "title": "Bridging Language and Items for Retrieval and Recommendation: Benchmarking LLMs as Semantic Encoders",
-      "authors": [
-        "Yupeng Hou",
-        "Jiacheng Li",
-        "Xiangjun Fu",
-        "Zhankui He",
-        "An Yan",
-        "Xiusi Chen",
-        "Julian McAuley"
-      ],
-      "affiliations": [],
-      "published": "2026-01-01",
-      "updated": "2026-08-11T07:18:39.950985",
-      "abstract": "Yupeng Hou, Jiacheng Li, Xiangjun Fu, Zhankui He, An Yan, Xiusi Chen, Julian McAuley. Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers). 2026.",
-      "categories": [
-        "OpenAlex",
-        "KDD"
-      ],
-      "primary_category": "KDD",
-      "abs_url": "https://doi.org/10.18653/v1/2026.acl-long.147",
-      "pdf_url": "https://aclanthology.org/2026.acl-long.147.pdf",
-      "doi": "10.18653/v1/2026.acl-long.147",
-      "source": "OpenAlex",
-      "status": "conference",
-      "venue": "KDD",
-      "venue_key": "KDD",
-      "generated_summary": "系统评估大型语言模型作为语义编码器用于检索与推荐任务，构建基准测试。LLM编码器在文本丰富场景下表现优异，但在零样本和跨域场景存在挑战。为LLM在推荐系统中的应用提供实验依据。",
-      "core_method": "将LLM作为语义编码器进行基准测试，评估其在检索和推荐场景中的性能。",
-      "innovation_points": [
-        "系统性地基准测试LLM作为语义编码器在检索和推荐中的应用",
-        "对比LLM编码器在文本丰富场景、零样本和跨域场景下的表现"
-      ],
-      "experiment_results": [
-        "LLM编码器在文本丰富场景下表现优异",
-        "零样本和跨域场景下LLM编码器仍面临挑战"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺少对实时推理效率的评估"
-      ],
-      "practical_value": "为工业界选型LLM编码器用于检索和推荐提供实验参考",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "707675b9d968db54",
-      "tags": [
-        "LLM4Rec",
-        "Evaluation"
-      ],
-      "llm_score": 87,
-      "llm_score_rationale": "发表在顶级会议KDD，与语义编码、检索和推荐相关，属于生成式推荐/语义ID范畴；摘要虽未提及线上A/B，但题目明确涉及将LLMs作为语义编码器进行推荐检索，与generative recommendation强相关；作者单位未知，缺少工业界大公司背景加成，否则分数可更高",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 126,
-      "display_affiliations": [
-        "Unknown affiliation"
-      ],
-      "published_date": "2026-01-01"
     },
     {
       "id": "dblp:conf/www/QiuXHPW26",
@@ -2140,74 +2650,6 @@
       "published_date": "2026-02-16"
     },
     {
-      "id": "openalex:W4414939390",
-      "title": "Diffusion Recommender Models and the Illusion of Progress: A Concerning Study of Reproducibility and a Conceptual Mismatch",
-      "authors": [
-        "Michael Benigni",
-        "Maurizio Ferrari Dacrema",
-        "Dietmar Jannach"
-      ],
-      "affiliations": [
-        "ReMAP Lab, Politecnico di Milano",
-        "University of Klagenfurt"
-      ],
-      "published": "2026-02-06",
-      "updated": "2026-07-30T17:31:21.811387",
-      "abstract": "Countless new machine learning models are published every year and are reported to significantly advance the state-of-the-art in top-n recommendation. However, earlier reproducibility studies indicate that progress in this area may be quite limited, due to widespread methodological issues, e.g., comparisons with untuned baseline models, creating an illusion of progress . In this work, we examine whether these problems persist in today’s research by attempting to reproduce nine SIGIR 2023 and 2024 recommendation algorithms based on Denoising Diffusion Probabilistic Models, a recent but rapidly expanding research area. Only 25% of reported results are fully reproducible and, since the original papers relied on weak baselines , they do not establish the superiority of diffusion models over state-of-the-art methods. In our controlled evaluations, well-tuned simpler baselines consistently exceed the diffusion-based models’ effectiveness reported in the original papers. Furthermore, we identify key mismatches between the characteristics of diffusion models and those of the traditional top-n recommendation task, raising doubts about their suitability for recommendation. Moreover, in the analyzed papers, the generative capabilities of these models are constrained to a minimum. Overall, our results call for greater scientific rigor and a disruptive change in the research and publication culture in this area.",
-      "categories": [
-        "OpenAlex",
-        "WSDM"
-      ],
-      "primary_category": "WSDM",
-      "abs_url": "https://doi.org/10.1145/3795792",
-      "pdf_url": "https://arxiv.org/pdf/2505.09364",
-      "doi": "10.1145/3795792",
-      "source": "OpenAlex",
-      "status": "conference",
-      "venue": "ACM Transactions on Recommender Systems",
-      "venue_key": "WSDM",
-      "generated_summary": "本研究复现了九种基于扩散模型的推荐算法，发现仅25%的结果可复现，且这些模型在性能上未超越简单基线。作者指出扩散模型与传统top-n推荐任务存在概念不匹配，并呼吁提高研究严谨性。",
-      "core_method": "对九种基于去噪扩散概率模型的推荐算法进行系统复现与评估，揭示其可复现性问题及与推荐任务的适配性不足。",
-      "innovation_points": [
-        "首次对基于扩散模型的推荐算法进行大规模复现研究，发现仅25%的结果可完全复现。",
-        "识别出扩散模型与top-n推荐任务之间的关键概念不匹配，质疑其适用性。",
-        "通过受控实验证明良好调优的简单基线模型优于扩散模型。"
-      ],
-      "experiment_results": [
-        "仅25%的原始论文结果能被完全复现。",
-        "在受控评估中，良好调优的简单基线模型始终优于扩散模型。",
-        "扩散模型的生成能力在分析论文中被极度限制。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "复现范围局限于SIGIR 2023和2024的九篇论文，可能不覆盖所有扩散推荐模型变体。",
-        "未深入探讨如何改进扩散模型以更好地适配推荐任务。"
-      ],
-      "practical_value": "提醒研究者和实践者在使用扩散推荐模型时需谨慎评估，避免盲目追随热点，强调与简单基线的公平比较。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "5b9332e7dfe83f3d",
-      "tags": [
-        "Evaluation"
-      ],
-      "llm_score": 85,
-      "llm_score_rationale": "发表于WSDM顶会，涉及扩散推荐模型与生成式推荐，与主题强相关；深入分析SIGIR 23-24扩散模型的可复现性，对生成式推荐方向有警示意义；作者单位非知名互联网公司，但内容对工业实践有潜在影响",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 128,
-      "display_affiliations": [
-        "ReMAP Lab, Politecnico di Milano",
-        "University of Klagenfurt"
-      ],
-      "published_date": "2026-02-06"
-    },
-    {
       "id": "arxiv:2607.26427",
       "title": "PSG: Pair-Space Generation for Efficient Generative Reranking",
       "authors": [
@@ -2410,68 +2852,6 @@
         "Toronto Metropolitan University"
       ],
       "published_date": "2025-06-04"
-    },
-    {
-      "id": "s2:db3ed14bfec6bbaa0fa0e371b47519b3b35c5b21",
-      "title": "Enhanced Cold-Start Sequential Recommendation with Causal Diffusion Preference Modeling",
-      "authors": [],
-      "affiliations": [
-        "Nanjing University of Information Science and Technology",
-        "Macquarie University"
-      ],
-      "published": "2026-02-21",
-      "updated": "2026-02-21",
-      "abstract": "Sequential recommendation has achieved remarkable success across various application domains due to its ability to capture dynamic user preferences. Therefore, its effectiveness significantly diminishes in user cold-start scenarios, where new users have limited or no interaction history. Current solutions typically design specialized model architectures to infer cold-start user preferences from auxiliary information, such as user attributes or social networks. However, such methods overlook compatibility with advanced sequential recommender models, preventing the efficient extraction of sequential features. To address this limitation, we propose CDMRec, a Causal Diffusion Preference Model for user cold-start sequential recommendation. CDMRec generates diffusion-based preference representations for cold-start users, which can be directly utilized by existing sequential recommendation models. The framework first constructs a Preference-Dominant Sequence (PDS) by isolating interactions most indicative of user interests, mitigating noise from irrelevant behaviors. Then, leveraging causal inference, CDMRec identifies key causal variables from PDS to condition the diffusion process, enabling the generation of personalized behavioral preferences. Extensive experiments on three public datasets demonstrate that CDMRec can be seamlessly integrated into mainstream sequential recommender models, yielding substantial performance gains in cold-start settings.",
-      "categories": [
-        "Semantic Scholar",
-        "WSDM"
-      ],
-      "primary_category": "WSDM",
-      "abs_url": "https://www.semanticscholar.org/paper/db3ed14bfec6bbaa0fa0e371b47519b3b35c5b21",
-      "pdf_url": "https://doi.org/10.1145/3773966.3778026",
-      "doi": "10.1145/3773966.3778026",
-      "source": "Semantic Scholar",
-      "status": "conference",
-      "venue": "Web Search and Data Mining",
-      "venue_key": "WSDM",
-      "generated_summary": "针对序列推荐中的用户冷启动问题，提出因果扩散偏好建模框架CDMRec。通过构建偏好主导序列并利用因果推断识别关键变量，生成扩散式偏好表示，可直接与现有序列推荐模型集成，在三个公开数据集上验证了冷启动性能提升。",
-      "core_method": "基于因果推理的扩散偏好生成模型，通过偏好主导序列和反事实推断条件化扩散过程，为冷启动用户生成个性化行为偏好表示。",
-      "innovation_points": [
-        "提出偏好主导序列（PDS）概念，从有限交互中提取最能反映用户兴趣的序列以降低噪声",
-        "将因果推断引入扩散偏好生成，通过识别关键因果变量指导扩散过程，实现更可控的冷启动偏好建模",
-        "模型架构与主流序列推荐解耦，生成的偏好表示可直接即插即用，兼容性强"
-      ],
-      "experiment_results": [
-        "在三个公开数据集上的实验表明，CDMRec能无缝集成到主流的序列推荐模型中，在冷启动场景下取得显著性能提升"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "论文未提供全文，无法评估方法在更大规模或更稀疏数据集上的泛化能力",
-        "因果推断的假设条件（如无混淆）在实际推荐场景可能难以完全满足，影响偏好生成的可靠性"
-      ],
-      "practical_value": "提供即插即用的冷启动偏好生成方案，可快速增强现有序列推荐系统的冷启动性能，降低重新设计模型的成本。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "8583e22eb7f53204",
-      "tags": [
-        "Sequential Rec",
-        "User Modeling"
-      ],
-      "llm_score": 60,
-      "llm_score_rationale": "发表于WSDM顶会；研究方向为冷启动推荐，与生成式推荐/语义ID无直接关联；无线上A/B实验证据",
-      "preference_signals": [
-        "Top venue"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 111,
-      "display_affiliations": [
-        "Nanjing University of Information Science and Technology",
-        "Macquarie University"
-      ],
-      "published_date": "2026-02-21"
     },
     {
       "id": "openalex:W4410636390",
@@ -4376,74 +4756,6 @@
       "published_date": "2026-07-03"
     },
     {
-      "id": "s2:92af309261db106b1150daaf6d3e9350e4b4e93c",
-      "title": "GSDiffRec: Enhancing Personalized Sequential Recommendation via Diffusion Augmentation and Guidance Optimization",
-      "authors": [],
-      "affiliations": [
-        "Qufu Normal University",
-        "Beijing University of Technology",
-        "Nanjing University of Information Science and Technology",
-        "Macquarie University"
-      ],
-      "published": "2026-02-21",
-      "updated": "2026-02-21",
-      "abstract": "Sequential recommendation aims to predict the next user interaction by modeling historical behavior sequences. Recently diffusion models (DMs) have emerged as a promising generative approach due to their robustness and capacity for uncertainty modeling. However, existing diffusion-based recommendation approaches still encounter two major challenges: sample drift during the noise injection process, which compromises the stability of generation; and limited adaptability to noisy data, which hampers the effectiveness of personalized recommendations. To address these issues, we propose GSDiffRec, a novel generative sequential recommendation approach that integrates two core modules: (i) Semantic-Targeted Guidance Module (STG) built upon an enhanced Transformer backbone equipped with shaped attention and convolutional components to improve representational efficiency and modeling capacity; and (ii) Geodesic Diffusion Module (GDM) enforcing manifold constraints through geodesic random walks, thereby preserving geometric consistency and enhancing denoising stability throughout the diffusion process. Extensive experiments on two public Amazon datasets demonstrate that GSDiffRec significantly outperforms a wide range of competitive baselines. Further ablation studies validate the complementary contributions and effectiveness of the GDM and STG modules.",
-      "categories": [
-        "Semantic Scholar",
-        "WSDM"
-      ],
-      "primary_category": "WSDM",
-      "abs_url": "https://www.semanticscholar.org/paper/92af309261db106b1150daaf6d3e9350e4b4e93c",
-      "pdf_url": "https://www.semanticscholar.org/paper/92af309261db106b1150daaf6d3e9350e4b4e93c",
-      "doi": "10.1145/3773966.3777973",
-      "source": "Semantic Scholar",
-      "status": "conference",
-      "venue": "Web Search and Data Mining",
-      "venue_key": "WSDM",
-      "generated_summary": "GSDiffRec提出一种生成式序列推荐方法，通过语义引导模块（STG）和测地扩散模块（GDM）解决扩散模型中的样本漂移和噪声适应性差的问题，在两个公开Amazon数据集上显著优于基线。",
-      "core_method": "结合语义目标引导的Transformer编码器与测地随机游走约束的扩散模型，进行序列推荐中的个性化生成。",
-      "innovation_points": [
-        "提出语义目标引导模块（STG），利用增强Transformer backbone提升表征效率",
-        "设计测地扩散模块（GDM），通过测地随机游走保持几何一致性以增强去噪稳定性"
-      ],
-      "experiment_results": [
-        "在Amazon两个公开数据集上，GSDiffRec显著优于多个竞争基线",
-        "消融实验验证了GDM和STG模块的互补性和有效性"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "仅基于元数据和摘要，缺乏全文细节，无法评估方法的泛化性和潜在缺陷，如计算开销等",
-        "实验仅在两个Amazon数据集上进行，对其他领域数据的适应性未知"
-      ],
-      "practical_value": "为序列推荐提供了一种稳定且噪声鲁棒的生成式扩散模型，有望提升真实推荐场景中的个性化质量。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "5837d0eb99318f23",
-      "tags": [
-        "Generative Rec",
-        "Sequential Rec",
-        "LLM4Rec"
-      ],
-      "llm_score": 70,
-      "llm_score_rationale": "WSDM顶会论文，涉及生成式序列推荐（扩散模型）；明确针对个性化序列推荐，与生成式推荐相关；仅有离线实验，无线上A/B证据",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 113,
-      "display_affiliations": [
-        "Qufu Normal University",
-        "Beijing University of Technology",
-        "Nanjing University of Information Science and Technology",
-        "Macquarie University"
-      ],
-      "published_date": "2026-02-21"
-    },
-    {
       "id": "openalex:W4386346386",
       "title": "A survey on multi-behavior sequential recommendation",
       "authors": [
@@ -4511,76 +4823,6 @@
         "Peng Cheng Laboratory"
       ],
       "published_date": "2026-01-27"
-    },
-    {
-      "id": "s2:1c168032d25046e6a304aa3ba40d04ce7f03b11b",
-      "title": "Third Workshop on Generative AI for Recommender Systems and Personalization",
-      "authors": [],
-      "affiliations": [
-        "AWS AI Labs, Santa Clara, CA, USA",
-        "Google DeepMind, Mountain View, CA, USA",
-        "University of California San Diego",
-        "Texas A&M University, College Station, USA",
-        "Snap Inc., Seattle, WA, USA",
-        "University of Minnesota"
-      ],
-      "published": "2026-02-21",
-      "updated": "2026-02-21",
-      "abstract": "Building personalized recommender systems and search experiences is a cornerstone of the modern data mining and applied machine learning (ML) community. Modern online platforms have a confluence of data including user-item interaction graphs, user and item-associated semantics (text, visual content, etc.), and metadata. Recent advancements in generative models and semantic encoders via large language models (LLMs), visual and audio encoders have significantly impacted research in relevant domains, enabling new directions in knowledge discovery and ability of models to better incorporate semantic context. These techniques are quickly advancing in the academic sphere, and adoption in industrial environments is growing. These advances force large questions about the future of search, recommendation and personalized experiences in the future. This workshop bridges the research gap between the use of generative models and recommendation for personalized systems. We will focus on topics spanning the interplay between such models and conventional personalized systems. Building upon the momentum of previous successful forums, we seek to engage a diverse audience from academia and industry, fostering a dialogue that incorporates fresh insights and anticipates over 100 attendees, including key stakeholders in the field.",
-      "categories": [
-        "Semantic Scholar",
-        "WSDM"
-      ],
-      "primary_category": "WSDM",
-      "abs_url": "https://www.semanticscholar.org/paper/1c168032d25046e6a304aa3ba40d04ce7f03b11b",
-      "pdf_url": "https://doi.org/10.1145/3773966.3778018",
-      "doi": "10.1145/3773966.3778018",
-      "source": "Semantic Scholar",
-      "status": "conference",
-      "venue": "Web Search and Data Mining",
-      "venue_key": "WSDM",
-      "generated_summary": "本研讨会聚焦生成式AI在推荐系统与个性化领域的应用，探讨大语言模型等技术如何推动知识发现与语义理解，旨在连接学术界与工业界，展望未来搜索与推荐体验。",
-      "core_method": "研讨会探讨生成式模型与推荐系统结合的前沿方法，包括LLM、语义编码器等。",
-      "innovation_points": [
-        "将生成式AI与推荐系统个性化结合，探索语义增强的知识发现",
-        "讨论生成模型在工业界推荐中的实际应用与未来方向"
-      ],
-      "experiment_results": [
-        "元数据未提供具体实验结果"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "仅提供研讨会概述，缺乏具体方法论与实验细节"
-      ],
-      "practical_value": "为工业界推荐系统引入生成式AI技术提供研讨与方向指导",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "33f00ac233004491",
-      "tags": [
-        "LLM4Rec",
-        "Generative Rec"
-      ],
-      "llm_score": 60,
-      "llm_score_rationale": "WSDM 顶会 workshop，与生成式推荐强相关；聚焦工业界和学术界的生成式推荐对话，可能涉及大厂实践；但仅为 workshop 前言综述，无具体实验或线上A/B证据",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 103,
-      "display_affiliations": [
-        "AWS AI Labs, Santa Clara, CA, USA",
-        "Google DeepMind, Mountain View, CA, USA",
-        "University of California San Diego",
-        "Texas A&M University, College Station, USA",
-        "Snap Inc., Seattle, WA, USA",
-        "University of Minnesota"
-      ],
-      "published_date": "2026-02-21"
     },
     {
       "id": "arxiv:2607.02818",
