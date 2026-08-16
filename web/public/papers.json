@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-15T01:47:24Z",
+  "generated_at": "2026-08-16T01:54:19Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
@@ -7,8 +7,8 @@
   },
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 9,
-    "analyzed": 1,
+    "reused": 8,
+    "analyzed": 2,
     "source": "web/public/papers.json"
   },
   "current_limit": 10,
@@ -199,7 +199,7 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 151,
+      "score": 144,
       "display_affiliations": [
         "University of Glasgow",
         "Shandong University",
@@ -207,155 +207,6 @@
         "Telefónica Scientific Research, Telefónica Innovación Digital, Barcelona, Spain",
         "Telefonica Research and Development",
         "Leiden University"
-      ],
-      "published_date": "2026-07-15"
-    },
-    {
-      "id": "dblp:conf/sigir/BaiLZWYRRF26",
-      "title": "Bi-Level Optimization for Generative Recommendation: Bridging Tokenization and Generation",
-      "authors": [
-        "Yimeng Bai",
-        "Chang Liu",
-        "Yang Zhang",
-        "Dingxian Wang",
-        "Frank Yang",
-        "Andrew Rabinovich",
-        "Wenge Rong",
-        "Fuli Feng"
-      ],
-      "affiliations": [
-        "University of Science and Technology of China",
-        "Beihang University",
-        "National University of Singapore",
-        "ResearchWorks (United States)"
-      ],
-      "published": "2026-07-15",
-      "updated": "2026-08-01T09:00:35.917206",
-      "abstract": "Generative recommendation is emerging as a transformative paradigm by directly generating recommended items, rather than relying on matching. Building such a system typically involves two key components: (1) optimizing the tokenizer to derive suitable item identifiers, and (2) training the recommender based on those identifiers. Existing approaches often treat these components separately—either sequentially or in alternation—overlooking their interdependence. This separation can lead to misalignment: the tokenizer is trained without direct guidance from the recommendation objective, potentially yielding suboptimal identifiers that degrade recommendation performance. To address this, we propose BLOGER, a Bi-Level Optimization for GEnerative Recommendation framework, which explicitly models the interdependence between the tokenizer and the recommender in a unified optimization process. The lower level trains the recommender using tokenized sequences, while the upper level optimizes the tokenizer based on both the tokenization loss and recommendation loss. We adopt a meta-learning approach to solve this bi-level optimization efficiently, and introduce gradient surgery to mitigate gradient conflicts in the upper-level updates, thereby ensuring that item identifiers are both informative and recommendation-aligned. Extensive experiments on multiple real-world datasets demonstrate that BLOGER consistently outperforms state-of-the-art generative recommendation methods while maintaining practical efficiency with no significant additional computational overhead, effectively bridging the gap between item tokenization and autoregressive generation. We release our code at https://github.com/Ten-Mao/BLOGER.",
-      "categories": [
-        "SIGIR"
-      ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3805712.3809632",
-      "pdf_url": "https://doi.org/10.1145/3805712.3809632",
-      "doi": "10.1145/3805712.3809632",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "提出BLOGER框架，通过双层优化将生成式推荐中的令牌化器与推荐模型联合训练，解决现有方法中两者分离导致的次优对齐问题。利用元学习高效求解，并引入梯度手术缓解上层梯度冲突，确保物品标识符同时具有信息性和推荐对齐性。",
-      "core_method": "基于元学习的双层优化框架，上层优化令牌化器以最小化令牌化损失和推荐损失，下层训练推荐模型，通过梯度手术缓解上层更新中的梯度冲突。",
-      "innovation_points": [
-        "首次将令牌化器与推荐生成器建模为双层优化问题，统一优化令牌化和推荐目标",
-        "采用元学习方法高效求解双层优化，避免传统交替优化的次优性",
-        "引入梯度手术技术缓解上层优化中令牌化损失与推荐损失之间的梯度冲突"
-      ],
-      "experiment_results": [
-        "在多个真实数据集上BLOGER一致优于现有生成式推荐方法",
-        "算法在提升性能的同时保持了实用效率，没有显著额外计算开销"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "双层优化的计算复杂度可能较高，尽管文中声称效率相当，但元学习过程仍可能引入额外训练时间",
-        "梯度手术虽能缓解冲突，但其效果可能依赖于任务和数据集特性"
-      ],
-      "practical_value": "提供了一种端到端联合优化令牌化器和生成推荐模型的方法，有望提升生成式推荐系统的实际推荐性能，且效率可接受。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "5b5733cec1e8257e",
-      "tags": [
-        "Generative Rec",
-        "Item Tokenization"
-      ],
-      "llm_score": 86,
-      "llm_score_rationale": "发表在顶级会议SIGIR上，强相关生成式推荐/语义ID方向；摘要聚焦于解决tokenization和生成之间的错位问题，属于生成式推荐核心难题；提供了代码开源，实验在多个真实数据集上验证，但没有明确提及线上A/B实验或生产环境",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 137,
-      "display_affiliations": [
-        "University of Science and Technology of China",
-        "Beihang University",
-        "National University of Singapore",
-        "ResearchWorks (United States)"
-      ],
-      "published_date": "2026-07-15"
-    },
-    {
-      "id": "dblp:conf/sigir/FengLHLGZLG26",
-      "title": "Drift-Aware Incremental Token Adaptation with Collaborative Semantics for Generative Recommendation",
-      "authors": [
-        "Yuebo Feng",
-        "Jiahao Liu",
-        "Mingzhe Han",
-        "Dongsheng Li",
-        "Hansu Gu",
-        "Peng Zhang",
-        "Tun Lu",
-        "Ning Gu"
-      ],
-      "affiliations": [
-        "Fudan University",
-        "Microsoft Research Asia (China)",
-        "Seattle University"
-      ],
-      "published": "2026-07-15",
-      "updated": "2026-07-16T06:00:37.324182",
-      "abstract": "",
-      "categories": [
-        "SIGIR"
-      ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3805712.3809645",
-      "pdf_url": "https://doi.org/10.1145/3805712.3809645",
-      "doi": "10.1145/3805712.3809645",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "本文提出一种面向生成式推荐的漂移感知增量令牌适应方法，结合协作语义应对数据分布动态变化。通过动态调整令牌表示提升生成式推荐在动态环境下的性能。研究关注生成式检索与推荐中的增量学习问题。",
-      "core_method": "漂移感知的增量令牌适应，持续更新令牌表示并融入协作语义。",
-      "innovation_points": [
-        "提出漂移感知的增量令牌适应机制，动态应对数据分布变化。",
-        "将协作语义引入令牌表示更新，增强生成式推荐的协同信号。"
-      ],
-      "experiment_results": [
-        "全文未提供。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "无全文和摘要，缺乏实验验证与具体效果的不确定性。"
-      ],
-      "practical_value": "为动态推荐场景中生成式模型的令牌表示自适应更新提供了新思路。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "6b26310cc7b9c4a5",
-      "tags": [
-        "Generative Rec",
-        "Generative Retrieval",
-        "Item Tokenization"
-      ],
-      "llm_score": 78,
-      "llm_score_rationale": "发表于信息检索与推荐系统顶级会议SIGIR，影响力较高；标题明确涉及生成式推荐中的语义与令牌适应，与语义ID/生成式检索主题强相关；作者单位包含微软亚洲研究院，属于知名互联网公司，提升应用价值",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 129,
-      "display_affiliations": [
-        "Fudan University",
-        "Microsoft Research Asia (China)",
-        "Seattle University"
       ],
       "published_date": "2026-07-15"
     },
@@ -427,7 +278,7 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 129,
+      "score": 141,
       "display_affiliations": [
         "Zhejiang University",
         "Ant Group, Hangzhou, China",
@@ -436,70 +287,77 @@
       "published_date": "2026-04-09"
     },
     {
-      "id": "dblp:conf/sigir/DangZPDCCC26",
-      "title": "MLLMRec: A Preference Reasoning Paradigm with Graph Refinement for Multimodal Recommendation",
+      "id": "dblp:conf/sigir/FengLHLGZLG26",
+      "title": "Drift-Aware Incremental Token Adaptation with Collaborative Semantics for Generative Recommendation",
       "authors": [
-        "Yuzhuo Dang",
-        "Xin Zhang",
-        "Zhiqiang Pan",
-        "Yuxiao Duan",
-        "Wanyu Chen",
-        "Fei Cai",
-        "Honghui Chen"
+        "Yuebo Feng",
+        "Jiahao Liu",
+        "Mingzhe Han",
+        "Dongsheng Li",
+        "Hansu Gu",
+        "Peng Zhang",
+        "Tun Lu",
+        "Ning Gu"
       ],
       "affiliations": [
-        "National University of Defense Technology"
+        "Fudan University",
+        "Microsoft Research Asia (China)",
+        "Seattle University"
       ],
-      "published": "2026-07-10",
-      "updated": "2026-08-05T07:39:15.569665",
-      "abstract": "Multimodal recommendation combines the user historical behaviors with the modal features of items to capture the tangible user preferences, presenting superior performance compared to the conventional ID-based recommender systems. However, existing methods still encounter two key problems in the representation learning of users and items, respectively: (1) the initialization of multimodal user representations is either agnostic to historical behaviors or contaminated by irrelevant modal noise, and (2) the widely used KNN-based item-item graph contains noisy edges with low similarities and lacks audience co-occurrence relationships. To address such issues, we propose MLLMRec, a novel preference reasoning paradigm with graph refinement for multimodal recommendation. Specifically, on the one hand, the item images are first converted into high-quality semantic descriptions using a multimodal large language model (MLLM), thereby bridging the semantic gap between visual and textual modalities. Then, we construct a behavioral description list for each user and feed it into the MLLM to reason about the purified user preference profiles that contain the latent interaction intents. On the other hand, we develop the threshold-controlled denoising and topology-aware enhancement strategies to refine the suboptimal item-item graph, thereby improving the accuracy of item representation learning. Extensive experiments on three publicly available datasets demonstrate that MLLMRec achieves the state-of-the-art performance with an average improvement of 21.48% over the optimal baselines. The source code is provided at https://github.com/Yuzhuo-Dang/MLLMRec.",
+      "published": "2026-07-15",
+      "updated": "2026-07-16T06:00:37.324182",
+      "abstract": "",
       "categories": [
         "SIGIR"
       ],
       "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3805712.3809749",
-      "pdf_url": "https://doi.org/10.1145/3805712.3809749",
-      "doi": "10.1145/3805712.3809749",
+      "abs_url": "https://doi.org/10.1145/3805712.3809645",
+      "pdf_url": "https://doi.org/10.1145/3805712.3809645",
+      "doi": "10.1145/3805712.3809645",
       "source": "DBLP",
       "status": "conference",
       "venue": "SIGIR",
       "venue_key": "SIGIR",
-      "generated_summary": "提出MLLMRec框架，利用多模态大语言模型生成物品语义描述和用户偏好画像，并通过图细化策略优化物品间关系，显著提升多模态推荐性能。在三个公开数据集上平均改善21.48%。",
-      "core_method": "利用MLLM生成物品语义描述并推理用户偏好，结合图去噪与拓扑增强优化物品图。",
+      "generated_summary": "本文提出一种面向生成式推荐的漂移感知增量令牌适应方法，结合协作语义应对数据分布动态变化。通过动态调整令牌表示提升生成式推荐在动态环境下的性能。研究关注生成式检索与推荐中的增量学习问题。",
+      "core_method": "漂移感知的增量令牌适应，持续更新令牌表示并融入协作语义。",
       "innovation_points": [
-        "首次将MLLM用于用户偏好推理，从行为描述中生成纯化的用户画像",
-        "提出阈值控制去噪和拓扑感知增强的图细化策略，提升物品图质量"
+        "提出漂移感知的增量令牌适应机制，动态应对数据分布变化。",
+        "将协作语义引入令牌表示更新，增强生成式推荐的协同信号。"
       ],
       "experiment_results": [
-        "在三个公开数据集（Baby、Sports、Clothing）上均取得SOTA，Recall@20平均提升21.48%"
+        "全文未提供。"
       ],
       "ab_test": "no",
       "ab_test_evidence": "论文未报告线上 A/B 测试。",
       "limitations": [
-        "未明确讨论MLLM推理的延迟与计算成本",
-        "图细化策略的效果可能依赖于数据集规模与域特性"
+        "无全文和摘要，缺乏实验验证与具体效果的不确定性。"
       ],
-      "practical_value": "通过MLLM生成语义描述和用户偏好，减少模态噪声，提升多模态推荐的准确性和可解释性。",
+      "practical_value": "为动态推荐场景中生成式模型的令牌表示自适应更新提供了新思路。",
       "analysis_basis": "metadata",
       "analysis_status": "cached",
-      "analysis_signature": "7b330de020c42913",
+      "analysis_signature": "6b26310cc7b9c4a5",
       "tags": [
-        "LLM4Rec"
+        "Generative Rec",
+        "Generative Retrieval",
+        "Item Tokenization"
       ],
-      "llm_score": 65,
-      "llm_score_rationale": "SIGIR顶会论文，符合顶会加分。；作者单位为国家重点实验室，非知名互联网公司，无工业线上A/B实验。；主要贡献为多模态推荐中使用LLM进行偏好推理，与生成式推荐/语义ID相关性较弱，离线实验提升显著。",
+      "llm_score": 78,
+      "llm_score_rationale": "发表于信息检索与推荐系统顶级会议SIGIR，影响力较高；标题明确涉及生成式推荐中的语义与令牌适应，与语义ID/生成式检索主题强相关；作者单位包含微软亚洲研究院，属于知名互联网公司，提升应用价值",
       "preference_signals": [
         "Top venue",
+        "Generative Rec / Semantic ID",
         "Industry company"
       ],
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 128,
+      "score": 139,
       "display_affiliations": [
-        "National University of Defense Technology"
+        "Fudan University",
+        "Microsoft Research Asia (China)",
+        "Seattle University"
       ],
-      "published_date": "2026-07-10"
+      "published_date": "2026-07-15"
     },
     {
       "id": "dblp:conf/sigir/ChenGCYH26",
@@ -562,12 +420,420 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 123,
+      "score": 125,
       "display_affiliations": [
         "University of Science and Technology of China",
         "Zhejiang University"
       ],
       "published_date": "2026-07-15"
+    },
+    {
+      "id": "dblp:conf/sigir/ChenWY26",
+      "title": "Advantage-Conditioned Flow Policy for Offline Reinforcement Learning in Recommendation",
+      "authors": [
+        "Xiaocong Chen",
+        "Siyu Wang",
+        "Lina Yao"
+      ],
+      "affiliations": [
+        "Macquarie University",
+        "The University of New South Wales, Sydney, NSW, Australia"
+      ],
+      "published": "2026-07-10",
+      "updated": "2026-07-29T14:22:42.915294",
+      "abstract": "Offline reinforcement learning (RL) is a useful approach for recommender systems because it can optimize long-term user feedback from logged interaction data without online exploration. A key challenge is the multi-modal nature of user preferences: a user may like several unrelated item types, so a unimodal policy (for example, a Gaussian) tends to average across modes and generate actions that do not match any interest. Recent diffusion-based policies can model complex preference distributions, but they often require many denoising steps. We propose PerfRec (Preference-aware Flow for Recommendation), a flow-matching offline RL framework that learns an expressive behavioral policy and distills it into an efficient one-step policy. PerfRec (i) trains a conditional flow model to clone the logged action distribution, (ii) trains twin Q-networks using next actions sampled from the learned flow policy, and (iii) trains an advantage-conditioned one-step policy with Q-guidance for improvement and a distillation loss that keeps the policy close to the flow policy. We use binary advantage conditioning to separate high-advantage and low-advantage regions of the flow-induced action distribution, so that at inference we can sample from the high-advantage mode with a single forward pass. Experiments on five benchmark datasets and one online simulation platform show that PerfRec improves recommendation performance over strong offline RL baselines.",
+      "categories": [
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3805712.3809626",
+      "pdf_url": "https://doi.org/10.1145/3805712.3809626",
+      "doi": "10.1145/3805712.3809626",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "本文提出PerfRec，一种基于流匹配的离线强化学习推荐框架，通过条件流模型克隆行为策略，并蒸馏为一步策略，使用优势条件化分离高低优势区域，以高效生成符合用户多模态偏好的推荐。在多个基准和在线模拟中表现优于现有基线。",
+      "core_method": "提出PerfRec框架，利用条件流匹配学习行为策略，并通过优势条件化和蒸馏得到高效的一步生成式推荐策略。",
+      "innovation_points": [
+        "将流匹配引入离线RL推荐，能够表达多模态用户偏好分布。",
+        "通过蒸馏将多步流模型转化为一步策略，提高推理效率。",
+        "使用二元优势条件化分离高低优势区域，实现单步采样生成高优势动作。"
+      ],
+      "experiment_results": [
+        "在五个基准数据集和一个在线模拟平台上，PerfRec相比强离线RL基线取得了更好的推荐性能。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未提供在线A/B测试结果，实际线上部署效果未知。",
+        "尚未讨论模型在不同数据分布或冷启动场景下的鲁棒性。"
+      ],
+      "practical_value": "为推荐系统提供了一种能高效建模用户多模态偏好并直接优化长期收益的离线RL方法，适合从静态日志数据中学习。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "0b2123e4e3ae99c3",
+      "tags": [
+        "Generative Rec",
+        "Sequential Rec",
+        "User Modeling"
+      ],
+      "llm_score": 78,
+      "llm_score_rationale": "SIGIR 顶会论文，权威性高。；采用 flow-matching 生成策略，属于生成式推荐范畴。；作者单位非知名互联网公司，且无明确线上 A/B 实验，仅有离线数据集和在线仿真。",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 121,
+      "display_affiliations": [
+        "Macquarie University",
+        "The University of New South Wales, Sydney, NSW, Australia"
+      ],
+      "published_date": "2026-07-10"
+    },
+    {
+      "id": "dblp:conf/sigir/DangZPDCCC26",
+      "title": "MLLMRec: A Preference Reasoning Paradigm with Graph Refinement for Multimodal Recommendation",
+      "authors": [
+        "Yuzhuo Dang",
+        "Xin Zhang",
+        "Zhiqiang Pan",
+        "Yuxiao Duan",
+        "Wanyu Chen",
+        "Fei Cai",
+        "Honghui Chen"
+      ],
+      "affiliations": [
+        "National University of Defense Technology"
+      ],
+      "published": "2026-07-10",
+      "updated": "2026-08-05T07:39:15.569665",
+      "abstract": "Multimodal recommendation combines the user historical behaviors with the modal features of items to capture the tangible user preferences, presenting superior performance compared to the conventional ID-based recommender systems. However, existing methods still encounter two key problems in the representation learning of users and items, respectively: (1) the initialization of multimodal user representations is either agnostic to historical behaviors or contaminated by irrelevant modal noise, and (2) the widely used KNN-based item-item graph contains noisy edges with low similarities and lacks audience co-occurrence relationships. To address such issues, we propose MLLMRec, a novel preference reasoning paradigm with graph refinement for multimodal recommendation. Specifically, on the one hand, the item images are first converted into high-quality semantic descriptions using a multimodal large language model (MLLM), thereby bridging the semantic gap between visual and textual modalities. Then, we construct a behavioral description list for each user and feed it into the MLLM to reason about the purified user preference profiles that contain the latent interaction intents. On the other hand, we develop the threshold-controlled denoising and topology-aware enhancement strategies to refine the suboptimal item-item graph, thereby improving the accuracy of item representation learning. Extensive experiments on three publicly available datasets demonstrate that MLLMRec achieves the state-of-the-art performance with an average improvement of 21.48% over the optimal baselines. The source code is provided at https://github.com/Yuzhuo-Dang/MLLMRec.",
+      "categories": [
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3805712.3809749",
+      "pdf_url": "https://doi.org/10.1145/3805712.3809749",
+      "doi": "10.1145/3805712.3809749",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "提出MLLMRec框架，利用多模态大语言模型生成物品语义描述和用户偏好画像，并通过图细化策略优化物品间关系，显著提升多模态推荐性能。在三个公开数据集上平均改善21.48%。",
+      "core_method": "利用MLLM生成物品语义描述并推理用户偏好，结合图去噪与拓扑增强优化物品图。",
+      "innovation_points": [
+        "首次将MLLM用于用户偏好推理，从行为描述中生成纯化的用户画像",
+        "提出阈值控制去噪和拓扑感知增强的图细化策略，提升物品图质量"
+      ],
+      "experiment_results": [
+        "在三个公开数据集（Baby、Sports、Clothing）上均取得SOTA，Recall@20平均提升21.48%"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未明确讨论MLLM推理的延迟与计算成本",
+        "图细化策略的效果可能依赖于数据集规模与域特性"
+      ],
+      "practical_value": "通过MLLM生成语义描述和用户偏好，减少模态噪声，提升多模态推荐的准确性和可解释性。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "7b330de020c42913",
+      "tags": [
+        "LLM4Rec"
+      ],
+      "llm_score": 65,
+      "llm_score_rationale": "SIGIR顶会论文，符合顶会加分。；作者单位为国家重点实验室，非知名互联网公司，无工业线上A/B实验。；主要贡献为多模态推荐中使用LLM进行偏好推理，与生成式推荐/语义ID相关性较弱，离线实验提升显著。",
+      "preference_signals": [
+        "Top venue",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 121,
+      "display_affiliations": [
+        "National University of Defense Technology"
+      ],
+      "published_date": "2026-07-10"
+    },
+    {
+      "id": "dblp:conf/sigir/BaiLZWYRRF26",
+      "title": "Bi-Level Optimization for Generative Recommendation: Bridging Tokenization and Generation",
+      "authors": [
+        "Yimeng Bai",
+        "Chang Liu",
+        "Yang Zhang",
+        "Dingxian Wang",
+        "Frank Yang",
+        "Andrew Rabinovich",
+        "Wenge Rong",
+        "Fuli Feng"
+      ],
+      "affiliations": [
+        "University of Science and Technology of China",
+        "Beihang University",
+        "National University of Singapore",
+        "ResearchWorks (United States)"
+      ],
+      "published": "2026-07-15",
+      "updated": "2026-08-01T09:00:35.917206",
+      "abstract": "Generative recommendation is emerging as a transformative paradigm by directly generating recommended items, rather than relying on matching. Building such a system typically involves two key components: (1) optimizing the tokenizer to derive suitable item identifiers, and (2) training the recommender based on those identifiers. Existing approaches often treat these components separately—either sequentially or in alternation—overlooking their interdependence. This separation can lead to misalignment: the tokenizer is trained without direct guidance from the recommendation objective, potentially yielding suboptimal identifiers that degrade recommendation performance. To address this, we propose BLOGER, a Bi-Level Optimization for GEnerative Recommendation framework, which explicitly models the interdependence between the tokenizer and the recommender in a unified optimization process. The lower level trains the recommender using tokenized sequences, while the upper level optimizes the tokenizer based on both the tokenization loss and recommendation loss. We adopt a meta-learning approach to solve this bi-level optimization efficiently, and introduce gradient surgery to mitigate gradient conflicts in the upper-level updates, thereby ensuring that item identifiers are both informative and recommendation-aligned. Extensive experiments on multiple real-world datasets demonstrate that BLOGER consistently outperforms state-of-the-art generative recommendation methods while maintaining practical efficiency with no significant additional computational overhead, effectively bridging the gap between item tokenization and autoregressive generation. We release our code at https://github.com/Ten-Mao/BLOGER.",
+      "categories": [
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3805712.3809632",
+      "pdf_url": "https://doi.org/10.1145/3805712.3809632",
+      "doi": "10.1145/3805712.3809632",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "提出BLOGER框架，通过双层优化将生成式推荐中的令牌化器与推荐模型联合训练，解决现有方法中两者分离导致的次优对齐问题。利用元学习高效求解，并引入梯度手术缓解上层梯度冲突，确保物品标识符同时具有信息性和推荐对齐性。",
+      "core_method": "基于元学习的双层优化框架，上层优化令牌化器以最小化令牌化损失和推荐损失，下层训练推荐模型，通过梯度手术缓解上层更新中的梯度冲突。",
+      "innovation_points": [
+        "首次将令牌化器与推荐生成器建模为双层优化问题，统一优化令牌化和推荐目标",
+        "采用元学习方法高效求解双层优化，避免传统交替优化的次优性",
+        "引入梯度手术技术缓解上层优化中令牌化损失与推荐损失之间的梯度冲突"
+      ],
+      "experiment_results": [
+        "在多个真实数据集上BLOGER一致优于现有生成式推荐方法",
+        "算法在提升性能的同时保持了实用效率，没有显著额外计算开销"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "双层优化的计算复杂度可能较高，尽管文中声称效率相当，但元学习过程仍可能引入额外训练时间",
+        "梯度手术虽能缓解冲突，但其效果可能依赖于任务和数据集特性"
+      ],
+      "practical_value": "提供了一种端到端联合优化令牌化器和生成推荐模型的方法，有望提升生成式推荐系统的实际推荐性能，且效率可接受。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "5b5733cec1e8257e",
+      "tags": [
+        "Generative Rec",
+        "Item Tokenization"
+      ],
+      "llm_score": 86,
+      "llm_score_rationale": "发表在顶级会议SIGIR上，强相关生成式推荐/语义ID方向；摘要聚焦于解决tokenization和生成之间的错位问题，属于生成式推荐核心难题；提供了代码开源，实验在多个真实数据集上验证，但没有明确提及线上A/B实验或生产环境",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 119,
+      "display_affiliations": [
+        "University of Science and Technology of China",
+        "Beihang University",
+        "National University of Singapore",
+        "ResearchWorks (United States)"
+      ],
+      "published_date": "2026-07-15"
+    },
+    {
+      "id": "s2:08a80fbb14094f34f7b440b9a7e08666e0263fa4",
+      "title": "StabCF: A Stabilized Training Method for Collaborative Filtering",
+      "authors": [],
+      "affiliations": [
+        "Yanshan University",
+        "Tsinghua University"
+      ],
+      "published": "2026-04-20",
+      "updated": "2026-04-20",
+      "abstract": "Collaborative Filtering (CF) with implicit feedback is widely used in personalized recommender systems. In most real-world scenarios, only implicit feedback signals are available, making CF training heavily dependent on sampling-based paradigms—typically optimized via pairwise ranking losses such as Bayesian Personalized Ranking (BPR). This simple yet effective approach has achieved remarkable success and remains the foundation of many modern recommender models. However, despite its empirical success, little attention has been paid to the inherent training instability issue under this sampling-based paradigm. In this paper, we conduct an in-depth analysis of training stability and find that unstable training not only hinders convergence but also leads to fluctuating and suboptimal recommendation performance. We identify two fundamental sources of this instability in CF: (1) noisy or sparse positive samples, where a single observed interaction may not reliably reflect user preference; and (2) inconsistent negative samples, where randomly drawn negatives from unobserved space vary drastically in negative hardness, leading to uninformative or noisy gradient updates. To address these two challenges, we propose StabCF, a Stabilized Training Method for Collaborative Filtering, which improves training stability by synthesizing enriched positive samples from historical positives and constructing consistent hard negatives through user-aware negatives mixing. By replacing raw training triplets with synthesized positive-negative pairs, StabCF effectively smooths the training dynamics and improves convergence stability. Extensive experiments on three public datasets demonstrate that StabCF not only significantly stabilizes the training process but also achieves superior recommendation performance. Our PyTorch implementation is available at https://github.com/Wu-Xi/StabCF.",
+      "categories": [
+        "Semantic Scholar",
+        "KDD"
+      ],
+      "primary_category": "KDD",
+      "abs_url": "https://www.semanticscholar.org/paper/08a80fbb14094f34f7b440b9a7e08666e0263fa4",
+      "pdf_url": "https://doi.org/10.1145/3770854.3780319",
+      "doi": "10.1145/3770854.3780319",
+      "source": "Semantic Scholar",
+      "status": "conference",
+      "venue": "Knowledge Discovery and Data Mining",
+      "venue_key": "KDD",
+      "generated_summary": "本文针对隐式反馈协同过滤中采样训练的不稳定性问题，提出了StabCF稳定训练方法，通过合成增强正样本和构建一致的难负样本，有效平滑训练动态，提升收敛稳定性和推荐性能。实验证明该方法在三个公开数据集上显著优于现有方法。",
+      "core_method": "StabCF通过合成增强正样本和用户感知的难负样本混合，替代原始训练三元组来稳定训练过程。",
+      "innovation_points": [
+        "识别出采样式协同过滤训练不稳定的两个根本原因：正样本噪声/稀疏和负样本不一致。",
+        "提出StabCF方法，通过合成历史正样本来增强正样本，并通过用户感知的负样本混合构建一致的难负样本。",
+        "在三个公开数据集上验证了StabCF能够稳定训练过程并提升推荐性能。"
+      ],
+      "experiment_results": [
+        "在三个公开数据集上，StabCF显著稳定了训练过程并取得了优越的推荐性能（具体指标未在元数据中提供）。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "摘要未提及线上测试或生产环境验证，实验仅限于公开数据集。",
+        "未说明在更大规模数据集或真实系统中的可扩展性。"
+      ],
+      "practical_value": "为实际推荐系统中常见的采样训练不稳定问题提供了有效的稳定化方法，有望提升模型训练效率和推荐质量。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "4a602b2ee2ac30be",
+      "tags": [
+        "Sequential Rec"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "KDD顶会论文，主题为协同过滤训练稳定性，与推荐系统实践相关；无在线A/B或生产环境证据，仅离线实验；不涉及生成式推荐或语义ID，作者单位非知名互联网公司",
+      "preference_signals": [
+        "Top venue"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 118,
+      "display_affiliations": [
+        "Yanshan University",
+        "Tsinghua University"
+      ],
+      "published_date": "2026-04-20"
+    },
+    {
+      "id": "dblp:conf/www/ZhuCJYWCZ26",
+      "title": "FeedGuard: Online Critic-Guided Reinforcement Learning with Privacy-Preserving Feedback for Recommendation",
+      "authors": [
+        "Mengying Zhu",
+        "Feiyue Chen",
+        "Lifan Jiang",
+        "Mengyuan Yang",
+        "Yangyang Wu",
+        "Guanjie Cheng",
+        "Xiaolin Zheng"
+      ],
+      "affiliations": [
+        "Zhejiang University",
+        "Ningbo University"
+      ],
+      "published": "2026-04-12",
+      "updated": "2026-07-29T14:22:42.915294",
+      "abstract": "Reinforcement learning-based recommendation systems (RLRS) are increasingly favored for their ability to leverage online interactive feedback, enabling adaptive and personalized decision-making. In this setting, user feedback serves as both a behavioral signal and an optimization target, making it essential for policy learning. However, collecting such feedback, e.g., clicks, ratings, and engagement traces, raises serious privacy concerns, posing critical challenges for value estimation, online adaptation, and privacy protection. In this paper, we propose FeedGuard, a critic-guided reinforcement learning framework with privacy-preserving feedback. FeedGuard enhances trajectory modeling via critic guidance, enables joint online fine-tuning with effective exploration–exploitation tradeoffs, and enforces end-to-end privacy protection across the feedback lifecycle via split federated learning and differential privacy. We further provide a formal analysis of its differential privacy guarantees. Extensive experiments on four public recommendation datasets and the VirtualTB platform show that FeedGuard performs well in both offline and online settings, while maintaining rigorous privacy guarantees with minimal degradation.",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792155",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792155",
+      "doi": "10.1145/3774904.3792155",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "FeedGuard 提出了一种评论家引导的强化学习推荐框架，通过分裂联邦学习和差分隐私实现端到端的用户反馈隐私保护，支持在线微调和探索-利用权衡，在离线与在线环境下均表现良好。",
+      "core_method": "基于评论家引导的强化学习框架，结合分裂联邦学习与差分隐私以保护反馈隐私并实现在线自适应优化。",
+      "innovation_points": [
+        "利用评论家引导增强轨迹建模，提供更好的探索-利用平衡",
+        "通过分裂联邦学习和差分隐私对反馈全生命周期进行端到端隐私保护",
+        "形式化分析差分隐私保证，并在在线设置中验证有效性"
+      ],
+      "experiment_results": [
+        "在四个公共推荐数据集和 VirtualTB 平台上的实验表明，FeedGuard 在离线和在线环境下均有良好表现，同时保持严格的隐私保证且性能下降极小。"
+      ],
+      "ab_test": "yes",
+      "ab_test_evidence": "摘要明确提到在在线设置（online settings）中进行了实验，结合 VirtualTB 平台评估了在线性能。",
+      "limitations": [
+        "摘要未详细说明在线实验的具体指标对比或用户规模",
+        "差分隐私保护可能在某些严格隐私预算下导致性能损失（仅提及最小退化，未量化）"
+      ],
+      "practical_value": "提供了一种隐私安全的强化学习推荐方案，可直接部署于真实在线服务中，平衡个性化推荐效果与用户隐私保护需求。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "0cb4b465ef74700b",
+      "tags": [
+        "LLM4Rec",
+        "Online Eval"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "发表在顶级会议WWW，满足权重2。；包含线上实验（VirtualTB平台上的在线设置），满足权重1。；作者单位未明显包含知名互联网公司，不满足权重4。",
+      "preference_signals": [
+        "Top venue",
+        "Online A/B",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 117,
+      "display_affiliations": [
+        "Zhejiang University",
+        "Ningbo University"
+      ],
+      "published_date": "2026-04-12"
+    },
+    {
+      "id": "dblp:conf/www/LiuZHZZZ26",
+      "title": "Facilitating Generative Retrieval with Logical Denoising for Interpretable Conversational Search",
+      "authors": [
+        "Qichuan Liu",
+        "Chentao Zhang",
+        "Yuxuan Hu",
+        "Chenfeng Zheng",
+        "Qinggang Zhang",
+        "Zhihong Zhang"
+      ],
+      "affiliations": [
+        "Xiamen University",
+        "Hong Kong Polytechnic University"
+      ],
+      "published": "2026-04-09",
+      "updated": "2026-07-29T14:22:42.915294",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792544",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792544",
+      "doi": "10.1145/3774904.3792544",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "该论文提出了一种基于逻辑去噪的生成式检索方法，以提升可解释的对话式搜索性能。研究聚焦于生成式检索在对话场景中的应用，通过逻辑去噪机制增强检索的准确性和可解释性。",
+      "core_method": "通过逻辑去噪机制增强生成式检索在对话式搜索中的准确性和可解释性。",
+      "innovation_points": [
+        "将逻辑去噪应用于生成式检索以实现可解释的对话式搜索",
+        "结合逻辑推理提升检索准确性"
+      ],
+      "experiment_results": [
+        "全文未提供实验结论或评测结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺少全文，无法评估方法局限"
+      ],
+      "practical_value": "为对话式搜索系统提供可解释的检索增强方案。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "a82238e160785193",
+      "tags": [
+        "Generative Retrieval",
+        "Conversational Rec"
+      ],
+      "llm_score": 85,
+      "llm_score_rationale": "发表于顶级会议WWW，标题明确涉及生成式检索（Generative Retrieval），与生成式推荐直接相关；论文聚焦可解释对话搜索的生成式检索去噪，属于语义ID和对话推荐前沿方向；无明确线上A/B实验证据和工业公司作者单位，因此未给更高分",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 117,
+      "display_affiliations": [
+        "Xiamen University",
+        "Hong Kong Polytechnic University"
+      ],
+      "published_date": "2026-04-09"
     },
     {
       "id": "dblp:conf/www/ZengQLLLCB26",
@@ -711,77 +977,6 @@
         "Southwestern University of Finance and Economics"
       ],
       "published_date": "2026-07-10"
-    },
-    {
-      "id": "dblp:conf/www/ZhuCJYWCZ26",
-      "title": "FeedGuard: Online Critic-Guided Reinforcement Learning with Privacy-Preserving Feedback for Recommendation",
-      "authors": [
-        "Mengying Zhu",
-        "Feiyue Chen",
-        "Lifan Jiang",
-        "Mengyuan Yang",
-        "Yangyang Wu",
-        "Guanjie Cheng",
-        "Xiaolin Zheng"
-      ],
-      "affiliations": [
-        "Zhejiang University",
-        "Ningbo University"
-      ],
-      "published": "2026-04-12",
-      "updated": "2026-07-29T14:22:42.915294",
-      "abstract": "Reinforcement learning-based recommendation systems (RLRS) are increasingly favored for their ability to leverage online interactive feedback, enabling adaptive and personalized decision-making. In this setting, user feedback serves as both a behavioral signal and an optimization target, making it essential for policy learning. However, collecting such feedback, e.g., clicks, ratings, and engagement traces, raises serious privacy concerns, posing critical challenges for value estimation, online adaptation, and privacy protection. In this paper, we propose FeedGuard, a critic-guided reinforcement learning framework with privacy-preserving feedback. FeedGuard enhances trajectory modeling via critic guidance, enables joint online fine-tuning with effective exploration–exploitation tradeoffs, and enforces end-to-end privacy protection across the feedback lifecycle via split federated learning and differential privacy. We further provide a formal analysis of its differential privacy guarantees. Extensive experiments on four public recommendation datasets and the VirtualTB platform show that FeedGuard performs well in both offline and online settings, while maintaining rigorous privacy guarantees with minimal degradation.",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792155",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792155",
-      "doi": "10.1145/3774904.3792155",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "FeedGuard 提出了一种评论家引导的强化学习推荐框架，通过分裂联邦学习和差分隐私实现端到端的用户反馈隐私保护，支持在线微调和探索-利用权衡，在离线与在线环境下均表现良好。",
-      "core_method": "基于评论家引导的强化学习框架，结合分裂联邦学习与差分隐私以保护反馈隐私并实现在线自适应优化。",
-      "innovation_points": [
-        "利用评论家引导增强轨迹建模，提供更好的探索-利用平衡",
-        "通过分裂联邦学习和差分隐私对反馈全生命周期进行端到端隐私保护",
-        "形式化分析差分隐私保证，并在在线设置中验证有效性"
-      ],
-      "experiment_results": [
-        "在四个公共推荐数据集和 VirtualTB 平台上的实验表明，FeedGuard 在离线和在线环境下均有良好表现，同时保持严格的隐私保证且性能下降极小。"
-      ],
-      "ab_test": "yes",
-      "ab_test_evidence": "摘要明确提到在在线设置（online settings）中进行了实验，结合 VirtualTB 平台评估了在线性能。",
-      "limitations": [
-        "摘要未详细说明在线实验的具体指标对比或用户规模",
-        "差分隐私保护可能在某些严格隐私预算下导致性能损失（仅提及最小退化，未量化）"
-      ],
-      "practical_value": "提供了一种隐私安全的强化学习推荐方案，可直接部署于真实在线服务中，平衡个性化推荐效果与用户隐私保护需求。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "0cb4b465ef74700b",
-      "tags": [
-        "LLM4Rec",
-        "Online Eval"
-      ],
-      "llm_score": 75,
-      "llm_score_rationale": "发表在顶级会议WWW，满足权重2。；包含线上实验（VirtualTB平台上的在线设置），满足权重1。；作者单位未明显包含知名互联网公司，不满足权重4。",
-      "preference_signals": [
-        "Top venue",
-        "Online A/B",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 109,
-      "display_affiliations": [
-        "Zhejiang University",
-        "Ningbo University"
-      ],
-      "published_date": "2026-04-12"
     },
     {
       "id": "dblp:conf/sigir/CuiLWZWWC26",
@@ -1854,73 +2049,6 @@
       "published_date": "2026-04-12"
     },
     {
-      "id": "dblp:conf/www/LiuZHZZZ26",
-      "title": "Facilitating Generative Retrieval with Logical Denoising for Interpretable Conversational Search",
-      "authors": [
-        "Qichuan Liu",
-        "Chentao Zhang",
-        "Yuxuan Hu",
-        "Chenfeng Zheng",
-        "Qinggang Zhang",
-        "Zhihong Zhang"
-      ],
-      "affiliations": [
-        "Xiamen University",
-        "Hong Kong Polytechnic University"
-      ],
-      "published": "2026-04-09",
-      "updated": "2026-07-29T14:22:42.915294",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792544",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792544",
-      "doi": "10.1145/3774904.3792544",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "该论文提出了一种基于逻辑去噪的生成式检索方法，以提升可解释的对话式搜索性能。研究聚焦于生成式检索在对话场景中的应用，通过逻辑去噪机制增强检索的准确性和可解释性。",
-      "core_method": "通过逻辑去噪机制增强生成式检索在对话式搜索中的准确性和可解释性。",
-      "innovation_points": [
-        "将逻辑去噪应用于生成式检索以实现可解释的对话式搜索",
-        "结合逻辑推理提升检索准确性"
-      ],
-      "experiment_results": [
-        "全文未提供实验结论或评测结果"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺少全文，无法评估方法局限"
-      ],
-      "practical_value": "为对话式搜索系统提供可解释的检索增强方案。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "a82238e160785193",
-      "tags": [
-        "Generative Retrieval",
-        "Conversational Rec"
-      ],
-      "llm_score": 85,
-      "llm_score_rationale": "发表于顶级会议WWW，标题明确涉及生成式检索（Generative Retrieval），与生成式推荐直接相关；论文聚焦可解释对话搜索的生成式检索去噪，属于语义ID和对话推荐前沿方向；无明确线上A/B实验证据和工业公司作者单位，因此未给更高分",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 122,
-      "display_affiliations": [
-        "Xiamen University",
-        "Hong Kong Polytechnic University"
-      ],
-      "published_date": "2026-04-09"
-    },
-    {
       "id": "dblp:conf/www/LiuFYWGH26",
       "title": "LLM-Driven Semantic ID for Information Diffusion Prediction",
       "authors": [
@@ -2118,71 +2246,6 @@
         "University of Pisa, Pisa, Italy",
         "National Institute of Geophysics and Volcanology, Rome, Italy",
         "Sapienza University of Rome, Rome, Italy"
-      ],
-      "published_date": "2026"
-    },
-    {
-      "id": "dblp:conf/sigir/ChenWY26",
-      "title": "Advantage-Conditioned Flow Policy for Offline Reinforcement Learning in Recommendation",
-      "authors": [
-        "Xiaocong Chen",
-        "Siyu Wang",
-        "Lina Yao"
-      ],
-      "affiliations": [
-        "Macquarie University, Sydney, NSW, Australia",
-        "The University of New South Wales, Sydney, NSW, Australia"
-      ],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "SIGIR"
-      ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3805712.3809626",
-      "pdf_url": "https://doi.org/10.1145/3805712.3809626",
-      "doi": "10.1145/3805712.3809626",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "提出一种用于离线强化学习推荐的优势条件流策略，通过流模型建模策略分布并利用优势函数进行条件生成，以提升推荐性能。",
-      "core_method": "基于优势条件流模型的离线强化学习推荐策略。",
-      "innovation_points": [
-        "将流模型引入推荐离线强化学习，实现策略分布的条件生成。",
-        "利用优势函数指导动作生成，提升决策质量。"
-      ],
-      "experiment_results": [
-        "论文未提供具体实验结果或评测结论。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "离线强化学习中的分布偏移问题可能影响实际推荐效果。",
-        "流模型的计算复杂度可能限制大规模应用。"
-      ],
-      "practical_value": "为推荐系统提供了一种结合生成模型与强化学习的离线训练方案，有望提高长期用户满意度。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "f1c03c410ef202cf",
-      "tags": [
-        "Generative Rec",
-        "Generative Retrieval"
-      ],
-      "llm_score": 80,
-      "llm_score_rationale": "SIGIR 2026 顶级会议发表，与推荐系统紧密相关；标题涉及离线强化学习和推荐，可能涉及生成式或语义推荐方法；无作者知名互联网公司单位，无明确线上 A/B 实验证据",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 111,
-      "display_affiliations": [
-        "Macquarie University, Sydney, NSW, Australia",
-        "The University of New South Wales, Sydney, NSW, Australia"
       ],
       "published_date": "2026"
     },
