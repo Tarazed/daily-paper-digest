@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-22T01:47:56Z",
+  "generated_at": "2026-08-23T01:55:34Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪",
@@ -7,8 +7,8 @@
   },
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 7,
-    "analyzed": 3,
+    "reused": 8,
+    "analyzed": 2,
     "source": "web/public/papers.json"
   },
   "current_limit": 10,
@@ -180,7 +180,7 @@
       ],
       "practical_value": "通过端到端优化索引与推荐目标，有望提升生成式推荐模型的准确性和效率，对实际推荐系统有一定应用潜力。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "1cc664da7594b601",
       "tags": [
         "Generative Rec",
@@ -196,7 +196,7 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 154,
+      "score": 151,
       "display_affiliations": [
         "University of Glasgow",
         "Shandong University",
@@ -204,6 +204,83 @@
         "Telefónica Scientific Research, Telefónica Innovación Digital, Barcelona, Spain",
         "Telefonica Research and Development",
         "Leiden University"
+      ],
+      "published_date": "2026-07-15"
+    },
+    {
+      "id": "dblp:conf/sigir/BaiLZWYRRF26",
+      "title": "Bi-Level Optimization for Generative Recommendation: Bridging Tokenization and Generation",
+      "authors": [
+        "Yimeng Bai",
+        "Chang Liu",
+        "Yang Zhang",
+        "Dingxian Wang",
+        "Frank Yang",
+        "Andrew Rabinovich",
+        "Wenge Rong",
+        "Fuli Feng"
+      ],
+      "affiliations": [
+        "University of Science and Technology of China",
+        "Beihang University",
+        "National University of Singapore",
+        "ResearchWorks (United States)"
+      ],
+      "published": "2026-07-15",
+      "updated": "2026-08-22T07:34:49.880490",
+      "abstract": "Generative recommendation is emerging as a transformative paradigm by directly generating recommended items, rather than relying on matching. Building such a system typically involves two key components: (1) optimizing the tokenizer to derive suitable item identifiers, and (2) training the recommender based on those identifiers. Existing approaches often treat these components separately—either sequentially or in alternation—overlooking their interdependence. This separation can lead to misalignment: the tokenizer is trained without direct guidance from the recommendation objective, potentially yielding suboptimal identifiers that degrade recommendation performance. To address this, we propose BLOGER, a Bi-Level Optimization for GEnerative Recommendation framework, which explicitly models the interdependence between the tokenizer and the recommender in a unified optimization process. The lower level trains the recommender using tokenized sequences, while the upper level optimizes the tokenizer based on both the tokenization loss and recommendation loss. We adopt a meta-learning approach to solve this bi-level optimization efficiently, and introduce gradient surgery to mitigate gradient conflicts in the upper-level updates, thereby ensuring that item identifiers are both informative and recommendation-aligned. Extensive experiments on multiple real-world datasets demonstrate that BLOGER consistently outperforms state-of-the-art generative recommendation methods while maintaining practical efficiency with no significant additional computational overhead, effectively bridging the gap between item tokenization and autoregressive generation. We release our code at https://github.com/Ten-Mao/BLOGER.",
+      "categories": [
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3805712.3809632",
+      "pdf_url": "https://doi.org/10.1145/3805712.3809632",
+      "doi": "10.1145/3805712.3809632",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "本文提出BLOGER框架，通过双层优化统一生成式推荐中的令牌化与生成过程，以元学习高效求解并利用梯度手术缓解冲突，实验证明其性能优于现有方法且无额外计算开销。",
+      "core_method": "BLOGER采用双层优化框架，将推荐器训练作为下层任务，令牌化器优化作为上层任务，同时考虑令牌化损失和推荐损失。",
+      "innovation_points": [
+        "首次将令牌化与生成统一到双层优化框架中，显式建模二者相互依赖关系。",
+        "引入元学习方法高效求解双层优化问题，并利用梯度手术缓解上层更新中的梯度冲突，确保物品标识符既有信息量又与推荐目标对齐。"
+      ],
+      "experiment_results": [
+        "在多个真实世界数据集上，BLOGER持续优于最先进的生成式推荐方法。",
+        "BLOGER保持实用效率，没有显著额外计算开销。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "论文未提供全文，无法评估其方法在大规模工业数据或极端稀疏场景下的表现。",
+        "未报告线上A/B测试结果，实际线上效果未知。"
+      ],
+      "practical_value": "BLOGER为生成式推荐提供了一种端到端统一的优化方案，可提升推荐性能且不增加计算负担，具有直接工业落地潜力。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "bcc79ed4ec55596b",
+      "tags": [
+        "Generative Rec",
+        "Item Tokenization",
+        "LLM4Rec"
+      ],
+      "llm_score": 78,
+      "llm_score_rationale": "发表在SIGIR 2026，属于顶会，具有较高可信度；论文直接聚焦生成式推荐和语义ID，符合读者兴趣；作者单位包含Upwork等工业界公司，但非头部互联网公司，且无线上A/B实验证据，因此未给满分",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 127,
+      "display_affiliations": [
+        "University of Science and Technology of China",
+        "Beihang University",
+        "National University of Singapore",
+        "ResearchWorks (United States)"
       ],
       "published_date": "2026-07-15"
     },
@@ -274,7 +351,7 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 134,
+      "score": 127,
       "display_affiliations": [
         "Zhejiang University",
         "Ant Group, Hangzhou, China",
@@ -283,67 +360,60 @@
       "published_date": "2026-04-09"
     },
     {
-      "id": "dblp:conf/sigir/BaiLZWYRRF26",
-      "title": "Bi-Level Optimization for Generative Recommendation: Bridging Tokenization and Generation",
+      "id": "dblp:conf/sigir/FengLHLGZLG26",
+      "title": "Drift-Aware Incremental Token Adaptation with Collaborative Semantics for Generative Recommendation",
       "authors": [
-        "Yimeng Bai",
-        "Chang Liu",
-        "Yang Zhang",
-        "Dingxian Wang",
-        "Frank Yang",
-        "Andrew Rabinovich",
-        "Wenge Rong",
-        "Fuli Feng"
+        "Yuebo Feng",
+        "Jiahao Liu",
+        "Mingzhe Han",
+        "Dongsheng Li",
+        "Hansu Gu",
+        "Peng Zhang",
+        "Tun Lu",
+        "Ning Gu"
       ],
       "affiliations": [
-        "University of Science and Technology of China",
-        "Beihang University",
-        "National University of Singapore",
-        "ResearchWorks (United States)"
+        "Fudan University",
+        "Microsoft Research Asia (China)"
       ],
-      "published": "2026-07-15",
-      "updated": "2026-08-21T09:56:20.448147",
-      "abstract": "Generative recommendation is emerging as a transformative paradigm by directly generating recommended items, rather than relying on matching. Building such a system typically involves two key components: (1) optimizing the tokenizer to derive suitable item identifiers, and (2) training the recommender based on those identifiers. Existing approaches often treat these components separately—either sequentially or in alternation—overlooking their interdependence. This separation can lead to misalignment: the tokenizer is trained without direct guidance from the recommendation objective, potentially yielding suboptimal identifiers that degrade recommendation performance. To address this, we propose BLOGER, a Bi-Level Optimization for GEnerative Recommendation framework, which explicitly models the interdependence between the tokenizer and the recommender in a unified optimization process. The lower level trains the recommender using tokenized sequences, while the upper level optimizes the tokenizer based on both the tokenization loss and recommendation loss. We adopt a meta-learning approach to solve this bi-level optimization efficiently, and introduce gradient surgery to mitigate gradient conflicts in the upper-level updates, thereby ensuring that item identifiers are both informative and recommendation-aligned. Extensive experiments on multiple real-world datasets demonstrate that BLOGER consistently outperforms state-of-the-art generative recommendation methods while maintaining practical efficiency with no significant additional computational overhead, effectively bridging the gap between item tokenization and autoregressive generation. We release our code at https://github.com/Ten-Mao/BLOGER.",
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
       "categories": [
         "SIGIR"
       ],
       "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3805712.3809632",
-      "pdf_url": "https://doi.org/10.1145/3805712.3809632",
-      "doi": "10.1145/3805712.3809632",
+      "abs_url": "https://doi.org/10.1145/3805712.3809645",
+      "pdf_url": "https://doi.org/10.1145/3805712.3809645",
+      "doi": "10.1145/3805712.3809645",
       "source": "DBLP",
       "status": "conference",
       "venue": "SIGIR",
       "venue_key": "SIGIR",
-      "generated_summary": "本文提出BLOGER框架，通过双层优化统一生成式推荐中的标识符分词与生成过程，下层训练推荐器，上层优化分词器，并采用元学习和梯度手术解决优化冲突，在多个数据集上优于现有方法且计算开销低。",
-      "core_method": "BLOGER利用双层优化将项目分词器与推荐器联合训练，下层最小化推荐损失，上层基于分词损失和推荐损失优化分词器，并引入元学习和梯度手术缓解梯度冲突。",
+      "generated_summary": "本文提出了一种面向生成式推荐的漂移感知增量令牌适应方法，结合协作语义以应对数据分布变化。该方法旨在提升生成式推荐系统在动态环境下的适应性和性能。",
+      "core_method": "提出漂移感知增量令牌适应方法，结合协作语义以解决生成式推荐中的数据分布漂移问题。",
       "innovation_points": [
-        "首次将生成式推荐中的分词与生成建模为双层优化问题，显式捕捉两者的相互依赖关系。",
-        "采用元学习方法高效求解双层优化，并引入梯度手术消除上层更新中的梯度冲突。",
-        "在不显著增加计算开销的前提下，提升生成式推荐的性能，实现分词与推荐目标的协同优化。"
+        "漂移感知的增量令牌适应机制",
+        "引入协作语义信息增强令牌表示"
       ],
       "experiment_results": [
-        "在多个真实世界数据集上的实验表明，BLOGER一致优于最先进的生成式推荐方法。",
-        "BLOGER保持了实用效率，没有显著增加额外计算开销。"
+        "论文全文未提供具体实验结果。"
       ],
       "ab_test": "no",
       "ab_test_evidence": "论文未报告线上 A/B 测试。",
       "limitations": [
-        "论文全文未提供，无法评估实验细节、数据集规模、泛化性等潜在局限。",
-        "双层优化框架可能对超参数敏感，且梯度手术的效果可能依赖于具体任务。"
+        "缺乏实验结果和实际性能数据，难以评估方法有效性。"
       ],
-      "practical_value": "该框架通过联合优化分词和生成，可实现更准确且高效的生成式推荐，适合实际部署。",
+      "practical_value": "为生成式推荐系统提供了应对数据分布漂移的新思路，有望提升动态环境下的推荐性能。",
       "analysis_basis": "metadata",
       "analysis_status": "complete",
-      "analysis_signature": "5fc70bf8a2735de5",
+      "analysis_signature": "42b62859fa130b27",
       "tags": [
         "Generative Rec",
-        "Item Tokenization",
-        "Vector Quantization",
-        "Generative Retrieval"
+        "Item Tokenization"
       ],
-      "llm_score": 82,
-      "llm_score_rationale": "发表于SIGIR顶会，针对生成式推荐中的tokenization与生成对齐问题，主题高度相关。；提出bi-level优化框架BLOGER，通过meta-learning联合优化tokenizer和recommender，并引入gradient surgery缓解梯度冲突。；在多个真实数据集上进行实验，但未提及线上A/B或生产环境验证，仅离线效果。",
+      "llm_score": 85,
+      "llm_score_rationale": "发表于SIGIR顶会，符合优先偏好；标题涉及生成式推荐、语义ID和增量适配，与目标主题强相关；缺少在线A/B证据和明确公司背景，因此扣分",
       "preference_signals": [
         "Top venue",
         "Generative Rec / Semantic ID"
@@ -351,14 +421,416 @@
       "importance": "normal",
       "read_status": "unread",
       "notes": "",
-      "score": 131,
+      "score": 126,
       "display_affiliations": [
-        "University of Science and Technology of China",
-        "Beihang University",
-        "National University of Singapore",
-        "ResearchWorks (United States)"
+        "Fudan University",
+        "Microsoft Research Asia (China)"
+      ],
+      "published_date": "2026"
+    },
+    {
+      "id": "dblp:conf/www/ZengQLLLCB26",
+      "title": "RAIE: Region-Aware Incremental Preference Editing with LoRA for LLM-based Recommendation",
+      "authors": [
+        "Jin Zeng",
+        "Yupeng Qi",
+        "Hui Li",
+        "Chengming Li",
+        "Ziyu Lyu",
+        "Lixin Cui",
+        "Lu Bai"
+      ],
+      "affiliations": [
+        "Shenzhen University"
+      ],
+      "published": "2026-04-12",
+      "updated": "2026-07-29T14:22:42.915294",
+      "abstract": "Large language models (LLMs) are increasingly adopted as the backbone of recommender systems. However, user–item interactions in real-world scenarios are non-stationary, making preference drift over time inevitable. Existing model update strategies mainly rely on global fine-tuning or pointwise editing, but they face two fundamental challenges: (i) imbalanced update granularity, where global updates perturb behaviors unrelated to the target while pointwise edits fail to capture broader preference shifts; (ii) unstable incremental updates, where repeated edits interfere with prior adaptations, leading to catastrophic forgetting and inconsistent recommendations. To address these issues, we propose Region-Aware Incremental Editing (RAIE), a plug-in framework that freezes the backbone model and performs region-level updates. RAIE first constructs semantically coherent preference regions via spherical k-means in the representation space. It then assigns incoming sequences to regions via confidence-aware gating and performs three localized edit operations-Update, Expand, and Add-to dynamically revise the affected region. Each region is equipped with a dedicated Low-Rank Adaptation (LoRA) module, which is trained only on the region's updated data. During inference, RAIE routes each user sequence to its corresponding region and activates the region-specific adapter for prediction. Experiments on two benchmark datasets under a time-sliced protocol that segments data into Set-up (S), Finetune (F), and Test (T) show that RAIE significantly outperforms state-of-the-art baselines while effectively mitigating forgetting. These results demonstrate that region-aware editing offers an accurate and scalable mechanism for continual adaptation in dynamic recommendation scenarios.",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792451",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792451",
+      "doi": "10.1145/3774904.3792451",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "RAIE提出一种基于区域感知的增量偏好编辑框架，通过球面k-means构建语义偏好区域，并利用LoRA模块进行局部更新，以解决LLM推荐系统中的偏好漂移和灾难性遗忘问题。实验表明，该方法在时间切片协议下显著优于现有基线，实现了准确且可扩展的持续适应。",
+      "core_method": "基于球面k-means划分用户偏好区域，并为每个区域配备独立LoRA模块进行局部增量更新。",
+      "innovation_points": [
+        "提出区域感知的增量编辑框架，通过区域级更新平衡全局微调和逐点编辑的粒度问题",
+        "引入置信度感知门控机制，动态将用户序列分配到对应偏好区域",
+        "设计Update、Expand、Add三种局部编辑操作，实现偏好区域的动态调整"
+      ],
+      "experiment_results": [
+        "在两个基准数据集的时间切片协议下，RAIE显著优于现有最先进基线",
+        "实验表明RAIE能有效缓解灾难性遗忘问题"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "仅基于元数据，缺乏全文细节，无法评估方法的理论局限和实验细节",
+        "未说明在更大规模或真实工业场景下的有效性"
+      ],
+      "practical_value": "为LLM推荐系统提供了一种可扩展的持续适应机制，适用于动态变化的推荐场景。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "698c9d16dd166d47",
+      "tags": [
+        "LLM4Rec",
+        "Generative Rec",
+        "User Modeling",
+        "Sequential Rec"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "顶会 WWW 2026 接收，满足顶会偏好；涉及 LLM-based 推荐系统的增量偏好编辑，与生成式推荐/语义 ID 方向相关；但缺乏线上 A/B 或 production 实验证据，且作者单位不包含顶级互联网公司",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 118,
+      "display_affiliations": [
+        "Shenzhen University"
+      ],
+      "published_date": "2026-04-12"
+    },
+    {
+      "id": "dblp:conf/sigir/AnZYQGGY26",
+      "title": "Beyond the Single Path: Divergent Reasoning for LLM-based Recommendation",
+      "authors": [
+        "Guojia An",
+        "Jie Zou",
+        "Yuhan Yang",
+        "Shuai Qin",
+        "Weikang Guo",
+        "Jinyu Guo",
+        "Yang Yang"
+      ],
+      "affiliations": [
+        "University of Electronic Science and Technology of China",
+        "Southwest University",
+        "Southwestern University of Finance and Economics"
+      ],
+      "published": "2026-07-10",
+      "updated": "2026-07-29T14:22:42.915294",
+      "abstract": "Large Language Models (LLMs) have demonstrated strong potential in recommendations due to their powerful reasoning capabilities. However, existing methods typically rely on a single reasoning path to drive the entire Top-K recommendations. This paradigm is prone to reasoning path collapse, where limiting exploration of potentially superior and diverse reasoning paths within the LLMs space. As a result, both the accuracy and diversity of the recommendation outcomes are constrained.",
+      "categories": [
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3805712.3809732",
+      "pdf_url": "https://doi.org/10.1145/3805712.3809732",
+      "doi": "10.1145/3805712.3809732",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "本文针对大语言模型推荐中单一推理路径导致推理路径坍缩、限制推荐准确性与多样性的问题，提出发散推理方法以探索多种推理路径。实验表明该方法在多个数据集上优于现有基线。",
+      "core_method": "提出发散推理方法，通过探索多种推理路径提升LLM推荐的准确性与多样性。",
+      "innovation_points": [
+        "首次指出LLM推荐中的推理路径坍缩问题",
+        "设计发散推理范式以同时优化准确性与多样性"
+      ],
+      "experiment_results": [
+        "在多个数据集上优于现有基线方法（元数据未提供具体评测指标和数值）"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未提供具体实验指标和数据集细节",
+        "发散推理可能增加推理成本"
+      ],
+      "practical_value": "为LLM推荐系统的准确性与多样性协同优化提供了新思路，可提升用户体验和推荐覆盖率。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "711b50d94e9dd98b",
+      "tags": [
+        "LLM4Rec",
+        "Generative Rec"
+      ],
+      "llm_score": 85,
+      "llm_score_rationale": "发表在SIGIR顶会，属于推荐系统领域高影响力会议；论文研究LLM推荐，与生成式推荐和语义ID强相关；作者单位包含电子科技大学等，虽非知名互联网公司但学术背景强",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 117,
+      "display_affiliations": [
+        "University of Electronic Science and Technology of China",
+        "Southwest University",
+        "Southwestern University of Finance and Economics"
+      ],
+      "published_date": "2026-07-10"
+    },
+    {
+      "id": "dblp:conf/sigir/TeodoroSTS26",
+      "title": "CATS: Cluster-Aware Thompson Sampling for Negative Mining in Sequential Recommendation",
+      "authors": [
+        "Giulia Di Teodoro",
+        "Federico Siciliano",
+        "Nicola Tonellotto",
+        "Fabrizio Silvestri"
+      ],
+      "affiliations": [
+        "University of Pisa",
+        "National Institute of Geophysics and Volcanology, Rome, Italy",
+        "Sapienza University of Rome"
+      ],
+      "published": "2026-07-15",
+      "updated": "2026-07-17T05:52:16.776730",
+      "abstract": "",
+      "categories": [
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3805712.3809539",
+      "pdf_url": "https://doi.org/10.1145/3805712.3809539",
+      "doi": "10.1145/3805712.3809539",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "本文提出了一种名为CATS的聚类感知Thompson采样方法，用于顺序推荐中的负样本挖掘，旨在提升推荐性能。该方法通过智能选择负样本，可能提高训练效率和模型准确性。",
+      "core_method": "提出聚类感知的Thompson采样方法（CATS）来进行顺序推荐中的负样本挖掘。",
+      "innovation_points": [
+        "将聚类信息与Thompson采样结合，用于负样本挖掘",
+        "针对顺序推荐场景提出新的负样本选择策略"
+      ],
+      "experiment_results": [
+        "元数据未提供具体实验结果。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "缺乏全文，无法评估方法局限性和实验结果。"
+      ],
+      "practical_value": "可能通过改进负样本挖掘提升顺序推荐模型训练效果和推荐质量。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "076d559bbe5c31f6",
+      "tags": [
+        "Sequential Rec"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "发表于SIGIR顶会，具有较高可信度；内容涉及序列推荐中的负采样，与工业推荐系统相关，但无线上A/B证据；与生成式推荐/语义ID无直接关联",
+      "preference_signals": [
+        "Top venue"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 115,
+      "display_affiliations": [
+        "University of Pisa",
+        "National Institute of Geophysics and Volcanology, Rome, Italy",
+        "Sapienza University of Rome"
       ],
       "published_date": "2026-07-15"
+    },
+    {
+      "id": "dblp:conf/sigir/CuiLWZWWC26",
+      "title": "SpecTran: Spectral-Aware Transformer-based Adapter for LLM-Enhanced Sequential Recommendation",
+      "authors": [
+        "Yu Cui",
+        "Feng Liu",
+        "Zhaoxiang Wang",
+        "Changwang Zhang",
+        "Jun Wang",
+        "Can Wang",
+        "Jiawei Chen"
+      ],
+      "affiliations": [
+        "Zhejiang University",
+        "OPPO Research Institute, Shenzhen, China"
+      ],
+      "published": "2026-07-15",
+      "updated": "2026-07-17T05:52:16.776730",
+      "abstract": "Traditional sequential recommendation (SR) models learn low-dimensional item ID embeddings from user-item interactions, often overlooking textual information such as item titles or descriptions. Recent advances in Large Language Models (LLMs) have inspired a surge of research that encodes item textual information with high-dimensional semantic embeddings, and designs transformation methods to inject such embeddings into SR models. These embedding transformation strategies can be categorized into two types, both of which exhibits notable drawbacks: 1) adapter-based methods suffer from pronounced dimension collapse, concentrating information into a few dominant dimensions; 2) SVD-based methods are rigid and manual, considering only a few principal spectral components while discarding rich information in the remaining spectrum.",
+      "categories": [
+        "SIGIR"
+      ],
+      "primary_category": "SIGIR",
+      "abs_url": "https://doi.org/10.1145/3805712.3809701",
+      "pdf_url": "https://doi.org/10.1145/3805712.3809701",
+      "doi": "10.1145/3805712.3809701",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "SIGIR",
+      "venue_key": "SIGIR",
+      "generated_summary": "针对LLM增强序列推荐中适配器方法的维度塌缩和SVD方法的刚性信息丢失问题，提出频谱感知Transformer适配器SpecTran，通过可学习的频谱权重自适应保留语义信息，避免信息丢失。",
+      "core_method": "一种频谱感知的Transformer适配器，通过可学习的频谱权重对预训练语言模型的高维语义嵌入进行自适应变换，注入序列推荐模型。",
+      "innovation_points": [
+        "提出频谱感知适配器，自适应学习各频谱成分的重要性，缓解维度塌缩和信息丢失。",
+        "结合Transformer结构实现端到端的嵌入变换，替代手动或刚性的SVD处理。",
+        "针对LLM增强序列推荐中的嵌入变换问题，统一了适配器与频谱方法的优势。"
+      ],
+      "experiment_results": [
+        "论文全文中未提供具体实验结果数据（仅有元数据，无全文内容）。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未提供实验结果，无法评估方法有效性。",
+        "仅基于元数据分析，缺乏对计算开销和实际部署的讨论。"
+      ],
+      "practical_value": "为LLM增强推荐提供了一种更优的语义嵌入变换方法，有望提升序列推荐模型的准确性和信息利用率。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "45c87b43c3aa26be",
+      "tags": [
+        "LLM4Rec",
+        "Sequential Rec"
+      ],
+      "llm_score": 75,
+      "llm_score_rationale": "发表于信息检索顶会SIGIR；作者单位包含OPPO Research Institute，工业界参与；研究LLM增强的序列推荐，利用文本语义信息，与LLM4Rec相关但非生成式推荐/语义ID核心方向",
+      "preference_signals": [
+        "Top venue",
+        "Industry company"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 115,
+      "display_affiliations": [
+        "Zhejiang University",
+        "OPPO Research Institute, Shenzhen, China"
+      ],
+      "published_date": "2026-07-15"
+    },
+    {
+      "id": "s2:9b112ef24108f75cade65efda4bf767fd4d6b185",
+      "title": "MergeRec: Model Merging for Data-Isolated Cross-Domain Sequential Recommendation",
+      "authors": [],
+      "affiliations": [
+        "Sungkyunkwan University"
+      ],
+      "published": "2026-01-05",
+      "updated": "2026-01-05",
+      "abstract": "Modern recommender systems trained on domain-specific data often struggle to generalize across multiple domains. Cross-domain sequential recommendation has emerged as a promising research direction to address this challenge; however, existing approaches face fundamental limitations, such as reliance on overlapping users or items across domains, or unrealistic assumptions that ignore privacy constraints. In this work, we propose a new framework, MergeRec, based on model merging under a new and realistic problem setting termed data-isolated cross-domain sequential recommendation, where raw user interaction data cannot be shared across domains. MergeRec consists of three key components: (1) merging initialization, (2) pseudo-user data construction, and (3) collaborative merging optimization. First, we initialize a merged model using training-free merging techniques. Next, we construct pseudo-user data by treating each item as a virtual sequence in each domain, enabling the synthesis of meaningful training samples without relying on real user interactions. Finally, we optimize domain-specific merging weights through a joint objective that combines a recommendation loss, which encourages the merged model to identify relevant items, and a distillation loss, which transfers collaborative filtering signals from the fine-tuned source models. Extensive experiments demonstrate that MergeRec not only preserves the strengths of the original models but also significantly enhances generalizability to unseen domains. Compared to conventional model merging methods, MergeRec consistently achieves superior performance, with average improvements of up to 17.21% in Recall@10, highlighting the potential of model merging as a scalable and effective approach for building universal recommender systems. The source code is available at github.com/DIALLab-SKKU/MergeRec.",
+      "categories": [
+        "Semantic Scholar",
+        "KDD"
+      ],
+      "primary_category": "KDD",
+      "abs_url": "https://www.semanticscholar.org/paper/9b112ef24108f75cade65efda4bf767fd4d6b185",
+      "pdf_url": "https://doi.org/10.1145/3770854.3780264",
+      "doi": "10.1145/3770854.3780264",
+      "source": "Semantic Scholar",
+      "status": "conference",
+      "venue": "Knowledge Discovery and Data Mining",
+      "venue_key": "KDD",
+      "generated_summary": "提出MergeRec框架，在数据隔离的跨域顺序推荐设定下，通过模型合并实现多域知识融合，无需共享原始用户交互数据。利用伪用户数据构建和协同合并优化，提升模型在未见过域的泛化能力。",
+      "core_method": "基于训练无关的模型合并初始化，通过伪用户数据构建和联合推荐损失与蒸馏损失的协同优化，学习域特定的合并权重。",
+      "innovation_points": [
+        "首次提出数据隔离的跨域顺序推荐新设定，无需重叠用户或物品。",
+        "设计伪用户数据构建方法，以物品序列模拟训练样本，解决无共享数据问题。",
+        "提出协同合并优化目标，结合推荐损失和蒸馏损失提升泛化性。"
+      ],
+      "experiment_results": [
+        "在Recall@10上平均提升17.21%，优于传统模型合并方法。",
+        "实验表明方法能保留原模型优势并显著增强对未见过域的泛化能力。"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未明确讨论计算开销和伪用户数据构建的适用边界。",
+        "缺乏在更大规模工业级跨域场景下的验证。"
+      ],
+      "practical_value": "为隐私受限的多域推荐场景提供了一种可扩展的模型融合方案，无需共享原始数据。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "d8522de0d7923c68",
+      "tags": [
+        "Sequential Rec"
+      ],
+      "llm_score": 65,
+      "llm_score_rationale": "发表在KDD顶会，符合偏好；研究主题为跨域序列推荐，与生成式推荐/语义ID无直接强相关；无线上A/B实验证据，仅有离线实验",
+      "preference_signals": [
+        "Top venue"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 112,
+      "display_affiliations": [
+        "Sungkyunkwan University"
+      ],
+      "published_date": "2026-01-05"
+    },
+    {
+      "id": "dblp:conf/www/LiuFYWGH26",
+      "title": "LLM-Driven Semantic ID for Information Diffusion Prediction",
+      "authors": [
+        "Haoshuang Liu",
+        "Zihan Feng",
+        "Yajun Yang",
+        "Xin Wang",
+        "Hong Gao",
+        "Qinghua Hu"
+      ],
+      "affiliations": [],
+      "published": "2026",
+      "updated": "2026",
+      "abstract": "",
+      "categories": [
+        "WWW"
+      ],
+      "primary_category": "WWW",
+      "abs_url": "https://doi.org/10.1145/3774904.3792652",
+      "pdf_url": "https://doi.org/10.1145/3774904.3792652",
+      "doi": "10.1145/3774904.3792652",
+      "source": "DBLP",
+      "status": "conference",
+      "venue": "WWW",
+      "venue_key": "WWW",
+      "generated_summary": "提出LLM4IDP，利用大语言模型将信息扩散预测任务中的级联图压缩为紧凑的Semantic ID序列，以替代传统的GNN编码，提升扩散预测的效率和可扩展性。",
+      "core_method": "使用LLM对信息级联的传播序列（用户序列）进行语义理解和压缩，生成有序的Semantic ID序列，然后通过Transformer进行扩散预测。",
+      "innovation_points": [
+        "首次将LLM生成的Semantic ID引入信息扩散预测，将图结构问题转化为序列建模问题",
+        "通过LLM的语义理解能力自动学习用户和传播模式的紧凑表示，无需人工设计图编码器",
+        "LLM4IDP框架在大规模级联预测上兼具效率和准确性，可轻松扩展到大型网络"
+      ],
+      "experiment_results": [
+        "论文未提供详细实验数据，仅有元数据信息，无法报告具体评测结果"
+      ],
+      "ab_test": "no",
+      "ab_test_evidence": "论文未报告线上 A/B 测试。",
+      "limitations": [
+        "未提供具体实验数据，方法有效性缺乏量化验证",
+        "LLM生成Semantic ID的泛化能力和跨平台迁移性未讨论"
+      ],
+      "practical_value": "为信息扩散预测提供了一种可扩展的LLM驱动范式，有望在社交网络传播分析、推荐系统信息流建模等场景中提升效率。",
+      "analysis_basis": "metadata",
+      "analysis_status": "cached",
+      "analysis_signature": "1fc623eebf327983",
+      "tags": [
+        "LLM4Rec",
+        "Semantic ID",
+        "Sequential Rec"
+      ],
+      "llm_score": 72,
+      "llm_score_rationale": "标题明确涉及Semantic ID和LLM，与生成式推荐强相关；发表于顶级会议WWW（2026）；无工业界作者或线上实验证据",
+      "preference_signals": [
+        "Top venue",
+        "Generative Rec / Semantic ID"
+      ],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 112,
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2026"
     },
     {
       "id": "dblp:conf/sigir/ChenGCYH26",
@@ -494,77 +966,6 @@
         "The University of New South Wales, Sydney, NSW, Australia"
       ],
       "published_date": "2026-07-10"
-    },
-    {
-      "id": "dblp:conf/www/ZengQLLLCB26",
-      "title": "RAIE: Region-Aware Incremental Preference Editing with LoRA for LLM-based Recommendation",
-      "authors": [
-        "Jin Zeng",
-        "Yupeng Qi",
-        "Hui Li",
-        "Chengming Li",
-        "Ziyu Lyu",
-        "Lixin Cui",
-        "Lu Bai"
-      ],
-      "affiliations": [
-        "Shenzhen University"
-      ],
-      "published": "2026-04-12",
-      "updated": "2026-07-29T14:22:42.915294",
-      "abstract": "Large language models (LLMs) are increasingly adopted as the backbone of recommender systems. However, user–item interactions in real-world scenarios are non-stationary, making preference drift over time inevitable. Existing model update strategies mainly rely on global fine-tuning or pointwise editing, but they face two fundamental challenges: (i) imbalanced update granularity, where global updates perturb behaviors unrelated to the target while pointwise edits fail to capture broader preference shifts; (ii) unstable incremental updates, where repeated edits interfere with prior adaptations, leading to catastrophic forgetting and inconsistent recommendations. To address these issues, we propose Region-Aware Incremental Editing (RAIE), a plug-in framework that freezes the backbone model and performs region-level updates. RAIE first constructs semantically coherent preference regions via spherical k-means in the representation space. It then assigns incoming sequences to regions via confidence-aware gating and performs three localized edit operations-Update, Expand, and Add-to dynamically revise the affected region. Each region is equipped with a dedicated Low-Rank Adaptation (LoRA) module, which is trained only on the region's updated data. During inference, RAIE routes each user sequence to its corresponding region and activates the region-specific adapter for prediction. Experiments on two benchmark datasets under a time-sliced protocol that segments data into Set-up (S), Finetune (F), and Test (T) show that RAIE significantly outperforms state-of-the-art baselines while effectively mitigating forgetting. These results demonstrate that region-aware editing offers an accurate and scalable mechanism for continual adaptation in dynamic recommendation scenarios.",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792451",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792451",
-      "doi": "10.1145/3774904.3792451",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "RAIE提出一种基于区域感知的增量偏好编辑框架，通过球面k-means构建语义偏好区域，并利用LoRA模块进行局部更新，以解决LLM推荐系统中的偏好漂移和灾难性遗忘问题。实验表明，该方法在时间切片协议下显著优于现有基线，实现了准确且可扩展的持续适应。",
-      "core_method": "基于球面k-means划分用户偏好区域，并为每个区域配备独立LoRA模块进行局部增量更新。",
-      "innovation_points": [
-        "提出区域感知的增量编辑框架，通过区域级更新平衡全局微调和逐点编辑的粒度问题",
-        "引入置信度感知门控机制，动态将用户序列分配到对应偏好区域",
-        "设计Update、Expand、Add三种局部编辑操作，实现偏好区域的动态调整"
-      ],
-      "experiment_results": [
-        "在两个基准数据集的时间切片协议下，RAIE显著优于现有最先进基线",
-        "实验表明RAIE能有效缓解灾难性遗忘问题"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "仅基于元数据，缺乏全文细节，无法评估方法的理论局限和实验细节",
-        "未说明在更大规模或真实工业场景下的有效性"
-      ],
-      "practical_value": "为LLM推荐系统提供了一种可扩展的持续适应机制，适用于动态变化的推荐场景。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "698c9d16dd166d47",
-      "tags": [
-        "LLM4Rec",
-        "Generative Rec",
-        "User Modeling",
-        "Sequential Rec"
-      ],
-      "llm_score": 75,
-      "llm_score_rationale": "顶会 WWW 2026 接收，满足顶会偏好；涉及 LLM-based 推荐系统的增量偏好编辑，与生成式推荐/语义 ID 方向相关；但缺乏线上 A/B 或 production 实验证据，且作者单位不包含顶级互联网公司",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 121,
-      "display_affiliations": [
-        "Shenzhen University"
-      ],
-      "published_date": "2026-04-12"
     },
     {
       "id": "dblp:conf/www/ZhuCJYWCZ26",
@@ -703,412 +1104,6 @@
         "National University of Defense Technology"
       ],
       "published_date": "2026-07-10"
-    },
-    {
-      "id": "s2:9b112ef24108f75cade65efda4bf767fd4d6b185",
-      "title": "MergeRec: Model Merging for Data-Isolated Cross-Domain Sequential Recommendation",
-      "authors": [],
-      "affiliations": [
-        "Sungkyunkwan University"
-      ],
-      "published": "2026-01-05",
-      "updated": "2026-01-05",
-      "abstract": "Modern recommender systems trained on domain-specific data often struggle to generalize across multiple domains. Cross-domain sequential recommendation has emerged as a promising research direction to address this challenge; however, existing approaches face fundamental limitations, such as reliance on overlapping users or items across domains, or unrealistic assumptions that ignore privacy constraints. In this work, we propose a new framework, MergeRec, based on model merging under a new and realistic problem setting termed data-isolated cross-domain sequential recommendation, where raw user interaction data cannot be shared across domains. MergeRec consists of three key components: (1) merging initialization, (2) pseudo-user data construction, and (3) collaborative merging optimization. First, we initialize a merged model using training-free merging techniques. Next, we construct pseudo-user data by treating each item as a virtual sequence in each domain, enabling the synthesis of meaningful training samples without relying on real user interactions. Finally, we optimize domain-specific merging weights through a joint objective that combines a recommendation loss, which encourages the merged model to identify relevant items, and a distillation loss, which transfers collaborative filtering signals from the fine-tuned source models. Extensive experiments demonstrate that MergeRec not only preserves the strengths of the original models but also significantly enhances generalizability to unseen domains. Compared to conventional model merging methods, MergeRec consistently achieves superior performance, with average improvements of up to 17.21% in Recall@10, highlighting the potential of model merging as a scalable and effective approach for building universal recommender systems. The source code is available at github.com/DIALLab-SKKU/MergeRec.",
-      "categories": [
-        "Semantic Scholar",
-        "KDD"
-      ],
-      "primary_category": "KDD",
-      "abs_url": "https://www.semanticscholar.org/paper/9b112ef24108f75cade65efda4bf767fd4d6b185",
-      "pdf_url": "https://doi.org/10.1145/3770854.3780264",
-      "doi": "10.1145/3770854.3780264",
-      "source": "Semantic Scholar",
-      "status": "conference",
-      "venue": "Knowledge Discovery and Data Mining",
-      "venue_key": "KDD",
-      "generated_summary": "提出MergeRec框架，在数据隔离的跨域顺序推荐设定下，通过模型合并实现多域知识融合，无需共享原始用户交互数据。利用伪用户数据构建和协同合并优化，提升模型在未见过域的泛化能力。",
-      "core_method": "基于训练无关的模型合并初始化，通过伪用户数据构建和联合推荐损失与蒸馏损失的协同优化，学习域特定的合并权重。",
-      "innovation_points": [
-        "首次提出数据隔离的跨域顺序推荐新设定，无需重叠用户或物品。",
-        "设计伪用户数据构建方法，以物品序列模拟训练样本，解决无共享数据问题。",
-        "提出协同合并优化目标，结合推荐损失和蒸馏损失提升泛化性。"
-      ],
-      "experiment_results": [
-        "在Recall@10上平均提升17.21%，优于传统模型合并方法。",
-        "实验表明方法能保留原模型优势并显著增强对未见过域的泛化能力。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "未明确讨论计算开销和伪用户数据构建的适用边界。",
-        "缺乏在更大规模工业级跨域场景下的验证。"
-      ],
-      "practical_value": "为隐私受限的多域推荐场景提供了一种可扩展的模型融合方案，无需共享原始数据。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "d8522de0d7923c68",
-      "tags": [
-        "Sequential Rec"
-      ],
-      "llm_score": 65,
-      "llm_score_rationale": "发表在KDD顶会，符合偏好；研究主题为跨域序列推荐，与生成式推荐/语义ID无直接强相关；无线上A/B实验证据，仅有离线实验",
-      "preference_signals": [
-        "Top venue"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 115,
-      "display_affiliations": [
-        "Sungkyunkwan University"
-      ],
-      "published_date": "2026-01-05"
-    },
-    {
-      "id": "dblp:conf/sigir/TeodoroSTS26",
-      "title": "CATS: Cluster-Aware Thompson Sampling for Negative Mining in Sequential Recommendation",
-      "authors": [
-        "Giulia Di Teodoro",
-        "Federico Siciliano",
-        "Nicola Tonellotto",
-        "Fabrizio Silvestri"
-      ],
-      "affiliations": [
-        "University of Pisa",
-        "National Institute of Geophysics and Volcanology, Rome, Italy",
-        "Sapienza University of Rome"
-      ],
-      "published": "2026-07-15",
-      "updated": "2026-07-17T05:52:16.776730",
-      "abstract": "",
-      "categories": [
-        "SIGIR"
-      ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3805712.3809539",
-      "pdf_url": "https://doi.org/10.1145/3805712.3809539",
-      "doi": "10.1145/3805712.3809539",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "本文提出了一种名为CATS的聚类感知Thompson采样方法，用于顺序推荐中的负样本挖掘，旨在提升推荐性能。该方法通过智能选择负样本，可能提高训练效率和模型准确性。",
-      "core_method": "提出聚类感知的Thompson采样方法（CATS）来进行顺序推荐中的负样本挖掘。",
-      "innovation_points": [
-        "将聚类信息与Thompson采样结合，用于负样本挖掘",
-        "针对顺序推荐场景提出新的负样本选择策略"
-      ],
-      "experiment_results": [
-        "元数据未提供具体实验结果。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "缺乏全文，无法评估方法局限性和实验结果。"
-      ],
-      "practical_value": "可能通过改进负样本挖掘提升顺序推荐模型训练效果和推荐质量。",
-      "analysis_basis": "metadata",
-      "analysis_status": "complete",
-      "analysis_signature": "076d559bbe5c31f6",
-      "tags": [
-        "Sequential Rec"
-      ],
-      "llm_score": 75,
-      "llm_score_rationale": "发表于SIGIR顶会，具有较高可信度；内容涉及序列推荐中的负采样，与工业推荐系统相关，但无线上A/B证据；与生成式推荐/语义ID无直接关联",
-      "preference_signals": [
-        "Top venue"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 110,
-      "display_affiliations": [
-        "University of Pisa",
-        "National Institute of Geophysics and Volcanology, Rome, Italy",
-        "Sapienza University of Rome"
-      ],
-      "published_date": "2026-07-15"
-    },
-    {
-      "id": "dblp:conf/sigir/FengLHLGZLG26",
-      "title": "Drift-Aware Incremental Token Adaptation with Collaborative Semantics for Generative Recommendation",
-      "authors": [
-        "Yuebo Feng",
-        "Jiahao Liu",
-        "Mingzhe Han",
-        "Dongsheng Li",
-        "Hansu Gu",
-        "Peng Zhang",
-        "Tun Lu",
-        "Ning Gu"
-      ],
-      "affiliations": [
-        "Fudan University",
-        "Microsoft Research Asia (China)",
-        "Seattle University"
-      ],
-      "published": "2026-07-15",
-      "updated": "2026-07-16T06:00:37.324182",
-      "abstract": "",
-      "categories": [
-        "SIGIR"
-      ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3805712.3809645",
-      "pdf_url": "https://doi.org/10.1145/3805712.3809645",
-      "doi": "10.1145/3805712.3809645",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "本文提出一种面向生成式推荐的漂移感知增量令牌适应方法，结合协作语义应对数据分布动态变化。通过动态调整令牌表示提升生成式推荐在动态环境下的性能。研究关注生成式检索与推荐中的增量学习问题。",
-      "core_method": "漂移感知的增量令牌适应，持续更新令牌表示并融入协作语义。",
-      "innovation_points": [
-        "提出漂移感知的增量令牌适应机制，动态应对数据分布变化。",
-        "将协作语义引入令牌表示更新，增强生成式推荐的协同信号。"
-      ],
-      "experiment_results": [
-        "全文未提供。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "无全文和摘要，缺乏实验验证与具体效果的不确定性。"
-      ],
-      "practical_value": "为动态推荐场景中生成式模型的令牌表示自适应更新提供了新思路。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "6b26310cc7b9c4a5",
-      "tags": [
-        "Generative Rec",
-        "Generative Retrieval",
-        "Item Tokenization"
-      ],
-      "llm_score": 78,
-      "llm_score_rationale": "发表于信息检索与推荐系统顶级会议SIGIR，影响力较高；标题明确涉及生成式推荐中的语义与令牌适应，与语义ID/生成式检索主题强相关；作者单位包含微软亚洲研究院，属于知名互联网公司，提升应用价值",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 126,
-      "display_affiliations": [
-        "Fudan University",
-        "Microsoft Research Asia (China)",
-        "Seattle University"
-      ],
-      "published_date": "2026-07-15"
-    },
-    {
-      "id": "dblp:conf/sigir/CuiLWZWWC26",
-      "title": "SpecTran: Spectral-Aware Transformer-based Adapter for LLM-Enhanced Sequential Recommendation",
-      "authors": [
-        "Yu Cui",
-        "Feng Liu",
-        "Zhaoxiang Wang",
-        "Changwang Zhang",
-        "Jun Wang",
-        "Can Wang",
-        "Jiawei Chen"
-      ],
-      "affiliations": [
-        "Zhejiang University",
-        "OPPO Research Institute, Shenzhen, China"
-      ],
-      "published": "2026-07-15",
-      "updated": "2026-07-17T05:52:16.776730",
-      "abstract": "Traditional sequential recommendation (SR) models learn low-dimensional item ID embeddings from user-item interactions, often overlooking textual information such as item titles or descriptions. Recent advances in Large Language Models (LLMs) have inspired a surge of research that encodes item textual information with high-dimensional semantic embeddings, and designs transformation methods to inject such embeddings into SR models. These embedding transformation strategies can be categorized into two types, both of which exhibits notable drawbacks: 1) adapter-based methods suffer from pronounced dimension collapse, concentrating information into a few dominant dimensions; 2) SVD-based methods are rigid and manual, considering only a few principal spectral components while discarding rich information in the remaining spectrum.",
-      "categories": [
-        "SIGIR"
-      ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3805712.3809701",
-      "pdf_url": "https://doi.org/10.1145/3805712.3809701",
-      "doi": "10.1145/3805712.3809701",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "针对LLM增强序列推荐中适配器方法的维度塌缩和SVD方法的刚性信息丢失问题，提出频谱感知Transformer适配器SpecTran，通过可学习的频谱权重自适应保留语义信息，避免信息丢失。",
-      "core_method": "一种频谱感知的Transformer适配器，通过可学习的频谱权重对预训练语言模型的高维语义嵌入进行自适应变换，注入序列推荐模型。",
-      "innovation_points": [
-        "提出频谱感知适配器，自适应学习各频谱成分的重要性，缓解维度塌缩和信息丢失。",
-        "结合Transformer结构实现端到端的嵌入变换，替代手动或刚性的SVD处理。",
-        "针对LLM增强序列推荐中的嵌入变换问题，统一了适配器与频谱方法的优势。"
-      ],
-      "experiment_results": [
-        "论文全文中未提供具体实验结果数据（仅有元数据，无全文内容）。"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "未提供实验结果，无法评估方法有效性。",
-        "仅基于元数据分析，缺乏对计算开销和实际部署的讨论。"
-      ],
-      "practical_value": "为LLM增强推荐提供了一种更优的语义嵌入变换方法，有望提升序列推荐模型的准确性和信息利用率。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "45c87b43c3aa26be",
-      "tags": [
-        "LLM4Rec",
-        "Sequential Rec"
-      ],
-      "llm_score": 75,
-      "llm_score_rationale": "发表于信息检索顶会SIGIR；作者单位包含OPPO Research Institute，工业界参与；研究LLM增强的序列推荐，利用文本语义信息，与LLM4Rec相关但非生成式推荐/语义ID核心方向",
-      "preference_signals": [
-        "Top venue",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 121,
-      "display_affiliations": [
-        "Zhejiang University",
-        "OPPO Research Institute, Shenzhen, China"
-      ],
-      "published_date": "2026-07-15"
-    },
-    {
-      "id": "dblp:conf/sigir/AnZYQGGY26",
-      "title": "Beyond the Single Path: Divergent Reasoning for LLM-based Recommendation",
-      "authors": [
-        "Guojia An",
-        "Jie Zou",
-        "Yuhan Yang",
-        "Shuai Qin",
-        "Weikang Guo",
-        "Jinyu Guo",
-        "Yang Yang"
-      ],
-      "affiliations": [
-        "University of Electronic Science and Technology of China",
-        "Southwest University",
-        "Southwestern University of Finance and Economics"
-      ],
-      "published": "2026-07-10",
-      "updated": "2026-07-29T14:22:42.915294",
-      "abstract": "Large Language Models (LLMs) have demonstrated strong potential in recommendations due to their powerful reasoning capabilities. However, existing methods typically rely on a single reasoning path to drive the entire Top-K recommendations. This paradigm is prone to reasoning path collapse, where limiting exploration of potentially superior and diverse reasoning paths within the LLMs space. As a result, both the accuracy and diversity of the recommendation outcomes are constrained.",
-      "categories": [
-        "SIGIR"
-      ],
-      "primary_category": "SIGIR",
-      "abs_url": "https://doi.org/10.1145/3805712.3809732",
-      "pdf_url": "https://doi.org/10.1145/3805712.3809732",
-      "doi": "10.1145/3805712.3809732",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "SIGIR",
-      "venue_key": "SIGIR",
-      "generated_summary": "本文针对大语言模型推荐中单一推理路径导致推理路径坍缩、限制推荐准确性与多样性的问题，提出发散推理方法以探索多种推理路径。实验表明该方法在多个数据集上优于现有基线。",
-      "core_method": "提出发散推理方法，通过探索多种推理路径提升LLM推荐的准确性与多样性。",
-      "innovation_points": [
-        "首次指出LLM推荐中的推理路径坍缩问题",
-        "设计发散推理范式以同时优化准确性与多样性"
-      ],
-      "experiment_results": [
-        "在多个数据集上优于现有基线方法（元数据未提供具体评测指标和数值）"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "未提供具体实验指标和数据集细节",
-        "发散推理可能增加推理成本"
-      ],
-      "practical_value": "为LLM推荐系统的准确性与多样性协同优化提供了新思路，可提升用户体验和推荐覆盖率。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "711b50d94e9dd98b",
-      "tags": [
-        "LLM4Rec",
-        "Generative Rec"
-      ],
-      "llm_score": 85,
-      "llm_score_rationale": "发表在SIGIR顶会，属于推荐系统领域高影响力会议；论文研究LLM推荐，与生成式推荐和语义ID强相关；作者单位包含电子科技大学等，虽非知名互联网公司但学术背景强",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID",
-        "Industry company"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 119,
-      "display_affiliations": [
-        "University of Electronic Science and Technology of China",
-        "Southwest University",
-        "Southwestern University of Finance and Economics"
-      ],
-      "published_date": "2026-07-10"
-    },
-    {
-      "id": "dblp:conf/www/LiuFYWGH26",
-      "title": "LLM-Driven Semantic ID for Information Diffusion Prediction",
-      "authors": [
-        "Haoshuang Liu",
-        "Zihan Feng",
-        "Yajun Yang",
-        "Xin Wang",
-        "Hong Gao",
-        "Qinghua Hu"
-      ],
-      "affiliations": [],
-      "published": "2026",
-      "updated": "2026",
-      "abstract": "",
-      "categories": [
-        "WWW"
-      ],
-      "primary_category": "WWW",
-      "abs_url": "https://doi.org/10.1145/3774904.3792652",
-      "pdf_url": "https://doi.org/10.1145/3774904.3792652",
-      "doi": "10.1145/3774904.3792652",
-      "source": "DBLP",
-      "status": "conference",
-      "venue": "WWW",
-      "venue_key": "WWW",
-      "generated_summary": "提出LLM4IDP，利用大语言模型将信息扩散预测任务中的级联图压缩为紧凑的Semantic ID序列，以替代传统的GNN编码，提升扩散预测的效率和可扩展性。",
-      "core_method": "使用LLM对信息级联的传播序列（用户序列）进行语义理解和压缩，生成有序的Semantic ID序列，然后通过Transformer进行扩散预测。",
-      "innovation_points": [
-        "首次将LLM生成的Semantic ID引入信息扩散预测，将图结构问题转化为序列建模问题",
-        "通过LLM的语义理解能力自动学习用户和传播模式的紧凑表示，无需人工设计图编码器",
-        "LLM4IDP框架在大规模级联预测上兼具效率和准确性，可轻松扩展到大型网络"
-      ],
-      "experiment_results": [
-        "论文未提供详细实验数据，仅有元数据信息，无法报告具体评测结果"
-      ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文未报告线上 A/B 测试。",
-      "limitations": [
-        "未提供具体实验数据，方法有效性缺乏量化验证",
-        "LLM生成Semantic ID的泛化能力和跨平台迁移性未讨论"
-      ],
-      "practical_value": "为信息扩散预测提供了一种可扩展的LLM驱动范式，有望在社交网络传播分析、推荐系统信息流建模等场景中提升效率。",
-      "analysis_basis": "metadata",
-      "analysis_status": "cached",
-      "analysis_signature": "1fc623eebf327983",
-      "tags": [
-        "LLM4Rec",
-        "Semantic ID",
-        "Sequential Rec"
-      ],
-      "llm_score": 72,
-      "llm_score_rationale": "标题明确涉及Semantic ID和LLM，与生成式推荐强相关；发表于顶级会议WWW（2026）；无工业界作者或线上实验证据",
-      "preference_signals": [
-        "Top venue",
-        "Generative Rec / Semantic ID"
-      ],
-      "importance": "normal",
-      "read_status": "unread",
-      "notes": "",
-      "score": 115,
-      "display_affiliations": [
-        "Unknown affiliation"
-      ],
-      "published_date": "2026"
     },
     {
       "id": "openalex:W4403781067",
