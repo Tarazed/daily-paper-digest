@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 import re
-from typing import List
+from typing import Dict, List
 
 
 @dataclass
@@ -40,6 +40,19 @@ class Paper:
     read_status: str = "unread"
     notes: str = ""
     score: int = 0
+    tracks: List[str] = field(default_factory=list)
+    primary_track: str = ""
+    topics: List[str] = field(default_factory=list)
+    primary_topic: str = ""
+    track_relevance: Dict[str, int] = field(default_factory=dict)
+    track_relevance_evidence: Dict[str, str] = field(default_factory=dict)
+    track_scores: Dict[str, int] = field(default_factory=dict)
+    track_score_rationales: Dict[str, str] = field(default_factory=dict)
+    track_score_breakdowns: Dict[str, Dict[str, int]] = field(default_factory=dict)
+    foundation: bool = False
+    foundation_score: int = 0
+    citation_count: int = 0
+    research_details: Dict[str, object] = field(default_factory=dict)
 
     @property
     def display_affiliations(self):

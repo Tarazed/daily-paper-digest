@@ -145,6 +145,7 @@ def merge_paper_metadata(target: Paper, source: Paper) -> None:
         target.abs_url = source.abs_url
     if source.affiliations:
         target.affiliations = _merge_affiliations(target.affiliations, source.affiliations)
+    target.citation_count = max(target.citation_count, source.citation_count)
 
 
 def fetch_openalex_venue_papers(venue: DblpVenueConfig, year: int, config: DblpConfig) -> List[Paper]:
@@ -201,6 +202,7 @@ def _openalex_work_to_paper(work: Dict[str, object], venue: DblpVenueConfig) -> 
         status="conference",
         venue=venue_name,
         venue_key=venue.name,
+        citation_count=int(work.get("cited_by_count", 0) or 0),
     )
 
 
@@ -240,6 +242,7 @@ def _semantic_scholar_work_to_paper(work: Dict[str, object], venue: DblpVenueCon
         status="conference",
         venue=venue_name,
         venue_key=venue.name,
+        citation_count=int(work.get("citationCount", 0) or 0),
     )
 
 
@@ -258,6 +261,7 @@ def _semantic_scholar_fields() -> List[str]:
         "publicationDate",
         "openAccessPdf",
         "publicationTypes",
+        "citationCount",
     ]
 
 

@@ -379,6 +379,11 @@ def _clean_display_author(value: str, html_module) -> str:
 
 
 def _paper_from_dict(values) -> Paper:
+    tracks = list(values.get("tracks") or [])
+    primary_track = str(values.get("primary_track", ""))
+    if not tracks:
+        tracks = ["generative_rec"]
+        primary_track = "generative_rec"
     paper = Paper(
         id=str(values.get("id", "")),
         title=str(values.get("title", "")),
@@ -415,5 +420,33 @@ def _paper_from_dict(values) -> Paper:
         read_status=str(values.get("read_status", "unread")),
         notes=str(values.get("notes", "")),
         score=int(values.get("score", 0)),
+        tracks=tracks,
+        primary_track=primary_track or tracks[0],
+        topics=list(values.get("topics") or []),
+        primary_topic=str(values.get("primary_topic", "")),
+        track_relevance={
+            str(key): int(value)
+            for key, value in (values.get("track_relevance") or {}).items()
+        },
+        track_relevance_evidence={
+            str(key): str(value)
+            for key, value in (values.get("track_relevance_evidence") or {}).items()
+        },
+        track_scores={
+            str(key): int(value)
+            for key, value in (values.get("track_scores") or {}).items()
+        },
+        track_score_rationales={
+            str(key): str(value)
+            for key, value in (values.get("track_score_rationales") or {}).items()
+        },
+        track_score_breakdowns={
+            str(track): {str(key): int(value) for key, value in (breakdown or {}).items()}
+            for track, breakdown in (values.get("track_score_breakdowns") or {}).items()
+        },
+        foundation=bool(values.get("foundation", False)),
+        foundation_score=int(values.get("foundation_score", 0) or 0),
+        citation_count=int(values.get("citation_count", 0) or 0),
+        research_details=dict(values.get("research_details") or {}),
     )
     return paper

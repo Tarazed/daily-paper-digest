@@ -109,6 +109,36 @@ def test_load_previous_site_papers_reads_existing_payload(tmp_path):
     assert [paper.id for paper in loaded] == ["arxiv:2606.01234"]
 
 
+def test_load_previous_site_papers_migrates_legacy_record_to_gr(tmp_path):
+    path = tmp_path / "papers.json"
+    legacy = asdict(make_paper("arxiv:legacy"))
+    legacy.pop("tracks", None)
+    legacy.pop("primary_track", None)
+    path.write_text(json.dumps({"papers": [legacy]}), encoding="utf-8")
+
+    loaded = _load_previous_site_papers(str(path))
+
+    assert loaded[0].tracks == ["generative_rec"]
+    assert loaded[0].primary_track == "generative_rec"
+
+
+def test_paper_round_trip_keeps_track_metadata(tmp_path):
+    path = tmp_path / "papers.json"
+    paper = make_paper("arxiv:tracked")
+    paper.tracks = ["llm_systems"]
+    paper.primary_track = "llm_systems"
+    paper.topics = ["llm_rl"]
+    paper.primary_topic = "llm_rl"
+    paper.track_scores = {"llm_systems": 91}
+    path.write_text(json.dumps({"papers": [asdict(paper)]}), encoding="utf-8")
+
+    loaded = _load_previous_site_papers(str(path))
+
+    assert loaded[0].tracks == ["llm_systems"]
+    assert loaded[0].topics == ["llm_rl"]
+    assert loaded[0].track_scores == {"llm_systems": 91}
+
+
 def test_paper_to_site_dict_includes_display_affiliations():
     paper = make_paper("arxiv:2606.01234")
     paper.affiliations = [
