@@ -6,6 +6,7 @@ import re
 import sys
 from dataclasses import asdict
 from typing import List
+from zoneinfo import ZoneInfo
 
 from .arxiv import fetch_papers
 from .config import load_config
@@ -16,6 +17,7 @@ from .filtering import prepare_papers, sort_papers
 from .mailer import MailConfigError, build_message, send_message
 from .state import load_state
 from .models import Paper
+from .pipeline import build_site_payload, build_track, merge_canonical_papers
 from .summarizer import (
     analyze_papers_for_site,
     copy_site_analysis,
@@ -48,6 +50,12 @@ def main(argv: List[str] = None) -> int:
     site_parser = subparsers.add_parser("site-data", help="Generate JSON data for the GitHub Pages app")
     site_parser.add_argument("--out", default="web/public/papers.json", help="Output JSON path")
     site_parser.add_argument("--limit", type=int, default=None, help="Maximum papers to include")
+    site_parser.add_argument(
+        "--track",
+        action="append",
+        default=[],
+        help="Research track to update. Repeat for multiple tracks or use 'all'.",
+    )
 
     args = parser.parse_args(argv)
     if not args.command:
@@ -129,11 +137,35 @@ def _send_command(args, config) -> int:
 def _site_data_command(args, config) -> int:
     limit = args.limit or config.site.default_limit
     previous_papers = _load_previous_site_papers(args.out)
-    candidates = _load_ranked_papers(config, limit=limit * 2, enrich_results=False)
-    papers = _select_site_papers(candidates, limit)
-    current_paper_count = len(papers)
+    paper_state = load_state(config.state_file)
+    results = []
+    build_errors = []
+    for track_key in _track_keys_for_site_run(config, getattr(args, "track", [])):
+        try:
+            results.append(
+                build_track(
+                    track_key,
+                    config,
+                    previous_papers=previous_papers,
+                    paper_state=paper_state,
+                )
+            )
+        except Exception as exc:
+            build_errors.append("%s: %s" % (track_key, exc))
+            print(
+                "Warning: track build failed for %s; continuing. %s"
+                % (track_key, exc),
+                file=sys.stderr,
+            )
+    if not results:
+        raise RuntimeError("No research tracks could be built. " + "; ".join(build_errors))
+
+    current_papers = merge_canonical_papers(
+        [paper for result in results for paper in result.papers], []
+    )
+    current_paper_count = len(current_papers)
     papers = enrich_papers(
-        papers,
+        current_papers,
         config.enrichment,
         llm_model=config.summary.model,
         llm_base_url=config.summary.base_url,
@@ -145,7 +177,7 @@ def _site_data_command(args, config) -> int:
         % (cache_reused_count, len(papers_to_analyze))
     )
     analyze_papers_for_site(papers_to_analyze, config.summary)
-    papers = _merge_site_history(papers, previous_papers)
+    papers = merge_canonical_papers(papers, previous_papers)
     papers = enrich_papers(
         papers,
         config.enrichment,
@@ -153,25 +185,36 @@ def _site_data_command(args, config) -> int:
         llm_base_url=config.summary.base_url,
     )
     _clean_site_papers(papers)
-    payload = {
-        "generated_at": _dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
-        "site": asdict(config.site),
-        "analysis_enabled": bool(_analysis_api_key(config.summary.provider)),
-        "analysis_cache": {
-            "reused": cache_reused_count,
-            "analyzed": len(papers_to_analyze),
-            "source": args.out,
-        },
-        "current_limit": limit,
-        "current_paper_count": current_paper_count,
-        "interests": {
-            "arxiv_categories": config.arxiv.categories,
-            "include_keywords": config.arxiv.include_keywords,
-            "exclude_keywords": config.arxiv.exclude_keywords,
-            "dblp_venues": [venue.name for venue in config.dblp.venues],
-        },
-        "papers": [_paper_to_site_dict(paper) for paper in papers],
-    }
+    generated_at = (
+        _dt.datetime.now(_dt.timezone.utc)
+        .replace(microsecond=0)
+        .isoformat()
+        .replace("+00:00", "Z")
+    )
+    payload = build_site_payload(
+        results, previous_papers=previous_papers, config=config, generated_at=generated_at
+    )
+    default_interest = config.tracks[config.default_track]
+    payload.update(
+        {
+            "analysis_enabled": bool(_analysis_api_key(config.summary.provider)),
+            "analysis_cache": {
+                "reused": cache_reused_count,
+                "analyzed": len(papers_to_analyze),
+                "source": args.out,
+            },
+            "current_limit": limit,
+            "current_paper_count": current_paper_count,
+            "interests": {
+                "arxiv_categories": default_interest.arxiv.categories,
+                "include_keywords": default_interest.arxiv.include_keywords,
+                "exclude_keywords": default_interest.arxiv.exclude_keywords,
+                "dblp_venues": [venue.name for venue in default_interest.dblp.venues],
+            },
+            "build_errors": build_errors,
+            "papers": [_paper_to_site_dict(paper) for paper in papers],
+        }
+    )
     out_dir = os.path.dirname(args.out)
     if out_dir and not os.path.exists(out_dir):
         os.makedirs(out_dir)
@@ -180,6 +223,25 @@ def _site_data_command(args, config) -> int:
         handle.write("\n")
     print("Wrote site data for %d papers to %s" % (len(papers), args.out))
     return 0
+
+
+def _track_keys_for_site_run(config, requested, now=None):
+    requested = list(requested or [])
+    if requested:
+        values = list(config.tracks) if "all" in requested else requested
+    else:
+        values = [config.default_track]
+        local_now = now or _dt.datetime.now(ZoneInfo("Asia/Shanghai"))
+        gr_track = config.tracks.get("generative_rec")
+        if gr_track and local_now.strftime("%A").lower() == gr_track.weekly_day.lower():
+            values.append("generative_rec")
+    result = []
+    for value in values:
+        if value not in config.tracks:
+            raise ValueError("Unknown research track: %s" % value)
+        if value not in result and config.tracks[value].enabled:
+            result.append(value)
+    return result
 
 
 def _paper_to_site_dict(paper: Paper):

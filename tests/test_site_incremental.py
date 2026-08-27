@@ -1,4 +1,5 @@
 import json
+import datetime as dt
 from dataclasses import asdict
 
 from daily_paper.cli import (
@@ -7,6 +8,7 @@ from daily_paper.cli import (
     _paper_to_site_dict,
     _reuse_cached_site_analysis,
     _select_site_papers,
+    _track_keys_for_site_run,
 )
 from daily_paper.config import SummaryConfig
 from daily_paper.models import Paper
@@ -186,3 +188,21 @@ def test_select_site_papers_keeps_conference_papers():
 
     assert len(selected) == 10
     assert any(paper.id == "dblp:conf/recsys/Sample26" for paper in selected)
+
+
+def test_site_track_schedule_defaults_daily_and_adds_gr_on_friday():
+    from daily_paper.config import load_config
+
+    config = load_config("config.toml")
+
+    assert _track_keys_for_site_run(
+        config, requested=[], now=dt.datetime(2026, 8, 27)
+    ) == ["llm_systems"]
+    assert _track_keys_for_site_run(
+        config, requested=[], now=dt.datetime(2026, 8, 28)
+    ) == ["llm_systems", "generative_rec"]
+    assert _track_keys_for_site_run(
+        config,
+        requested=["generative_rec"],
+        now=dt.datetime(2026, 8, 27),
+    ) == ["generative_rec"]
