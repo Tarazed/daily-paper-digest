@@ -1,6 +1,6 @@
 import os
 from dataclasses import dataclass, field
-from typing import List
+from typing import Dict, List
 
 from . import simple_toml
 
@@ -79,6 +79,20 @@ class SiteConfig:
 
 
 @dataclass
+class TrackConfig:
+    key: str
+    label: str
+    enabled: bool
+    cadence: str
+    weekly_day: str
+    quota: int
+    relevance_threshold: int
+    topic_quotas: Dict[str, int]
+    arxiv: ArxivConfig
+    dblp: DblpConfig
+
+
+@dataclass
 class AppConfig:
     arxiv: ArxivConfig
     dblp: DblpConfig
@@ -87,6 +101,9 @@ class AppConfig:
     enrichment: EnrichmentConfig
     site: SiteConfig
     state_file: str
+    tracks: Dict[str, TrackConfig]
+    default_track: str
+    digest_state_file: str
 
 
 def load_config(path: str = "config.toml") -> AppConfig:
@@ -100,62 +117,37 @@ def load_config(path: str = "config.toml") -> AppConfig:
     summary = raw.get("summary", {})
     enrichment = raw.get("enrichment", {})
     site = raw.get("site", {})
+    legacy_arxiv = _parse_arxiv_config(arxiv)
+    legacy_dblp = _parse_dblp_config(dblp)
+    tracks = _parse_track_configs(raw.get("tracks", {}), legacy_arxiv, legacy_dblp)
+    if not tracks:
+        tracks["generative_rec"] = TrackConfig(
+            key="generative_rec",
+            label="Generative Recommendation",
+            enabled=True,
+            cadence="daily",
+            weekly_day="friday",
+            quota=int(email.get("top_n", 10)),
+            relevance_threshold=70,
+            topic_quotas={},
+            arxiv=legacy_arxiv,
+            dblp=legacy_dblp,
+        )
+    compatibility_track = tracks.get("generative_rec")
+    if compatibility_track:
+        legacy_arxiv = compatibility_track.arxiv
+        legacy_dblp = compatibility_track.dblp
+    default_track = str(
+        raw.get(
+            "default_track",
+            "llm_systems" if "llm_systems" in tracks else "generative_rec",
+        )
+    )
+    if default_track not in tracks:
+        default_track = next(iter(tracks))
     return AppConfig(
-        arxiv=ArxivConfig(
-            categories=list(arxiv.get("categories", ["cs.IR", "cs.AI", "cs.LG", "cs.CL"])),
-            include_keywords=list(
-                arxiv.get(
-                    "include_keywords",
-                    [
-                        "recommender system",
-                        "recommendation",
-                        "generative recommendation",
-                        "sequential recommendation",
-                        "LLM4Rec",
-                        "large language model recommendation",
-                        "agent recommendation",
-                        "Agent4Rec",
-                        "conversational recommendation",
-                    ],
-                )
-            ),
-            exclude_keywords=list(arxiv.get("exclude_keywords", ["advertising", "sponsored search"])),
-            max_results=int(arxiv.get("max_results", 50)),
-            days_back=int(arxiv.get("days_back", 14)),
-        ),
-        dblp=DblpConfig(
-            enabled=bool(dblp.get("enabled", False)),
-            venues=_parse_dblp_venues(
-                dblp.get(
-                    "venues",
-                    ["RecSys", "SIGIR", "WWW", "KDD", "WSDM", "CIKM", "ICLR", "AAAI", "ICML", "NeurIPS"],
-                )
-            ),
-            include_keywords=list(
-                dblp.get(
-                    "include_keywords",
-                    [
-                        "recommender",
-                        "recommendation",
-                        "recommend",
-                        "LLM4Rec",
-                        "generative recommendation",
-                        "sequential recommendation",
-                        "conversational recommendation",
-                        "agent",
-                    ],
-                )
-            ),
-            max_results_per_query=int(dblp.get("max_results_per_query", 10)),
-            years_back=int(dblp.get("years_back", 2)),
-            timeout_seconds=int(dblp.get("timeout_seconds", 4)),
-            max_failures=int(dblp.get("max_failures", 2)),
-            max_total_results=int(dblp.get("max_total_results", 20)),
-            workers=int(dblp.get("workers", 4)),
-            fallback_enabled=bool(dblp.get("fallback_enabled", True)),
-            fallback_providers=list(dblp.get("fallback_providers", ["openalex", "semantic_scholar"])),
-            fallback_workers=int(dblp.get("fallback_workers", 4)),
-        ),
+        arxiv=legacy_arxiv,
+        dblp=legacy_dblp,
         email=EmailConfig(
             sender_name=str(email.get("sender_name", "Daily Paper Digest")),
             default_to=str(email.get("default_to", "")),
@@ -201,7 +193,98 @@ def load_config(path: str = "config.toml") -> AppConfig:
             default_limit=int(site.get("default_limit", 10)),
         ),
         state_file=str(raw.get("state_file", "paper_state.toml")),
+        tracks=tracks,
+        default_track=default_track,
+        digest_state_file=str(raw.get("digest_state_file", "digest_state.json")),
     )
+
+
+def _parse_arxiv_config(values) -> ArxivConfig:
+    values = values or {}
+    return ArxivConfig(
+        categories=list(values.get("categories", ["cs.IR", "cs.AI", "cs.LG", "cs.CL"])),
+        include_keywords=list(
+            values.get(
+                "include_keywords",
+                [
+                    "recommender system",
+                    "recommendation",
+                    "generative recommendation",
+                    "sequential recommendation",
+                    "LLM4Rec",
+                    "large language model recommendation",
+                    "agent recommendation",
+                    "Agent4Rec",
+                    "conversational recommendation",
+                ],
+            )
+        ),
+        exclude_keywords=list(values.get("exclude_keywords", ["advertising", "sponsored search"])),
+        max_results=int(values.get("max_results", 50)),
+        days_back=int(values.get("days_back", 14)),
+    )
+
+
+def _parse_dblp_config(values) -> DblpConfig:
+    values = values or {}
+    return DblpConfig(
+        enabled=bool(values.get("enabled", False)),
+        venues=_parse_dblp_venues(
+            values.get(
+                "venues",
+                ["RecSys", "SIGIR", "WWW", "KDD", "WSDM", "CIKM", "ICLR", "AAAI", "ICML", "NeurIPS"],
+            )
+        ),
+        include_keywords=list(
+            values.get(
+                "include_keywords",
+                [
+                    "recommender",
+                    "recommendation",
+                    "recommend",
+                    "LLM4Rec",
+                    "generative recommendation",
+                    "sequential recommendation",
+                    "conversational recommendation",
+                    "agent",
+                ],
+            )
+        ),
+        max_results_per_query=int(values.get("max_results_per_query", 10)),
+        years_back=int(values.get("years_back", 2)),
+        timeout_seconds=int(values.get("timeout_seconds", 4)),
+        max_failures=int(values.get("max_failures", 2)),
+        max_total_results=int(values.get("max_total_results", 20)),
+        workers=int(values.get("workers", 4)),
+        fallback_enabled=bool(values.get("fallback_enabled", True)),
+        fallback_providers=list(values.get("fallback_providers", ["openalex", "semantic_scholar"])),
+        fallback_workers=int(values.get("fallback_workers", 4)),
+    )
+
+
+def _parse_track_configs(values, legacy_arxiv, legacy_dblp) -> Dict[str, TrackConfig]:
+    tracks = {}
+    for key, item in (values or {}).items():
+        if not isinstance(item, dict):
+            continue
+        arxiv_values = item.get("arxiv")
+        dblp_values = item.get("dblp")
+        tracks[str(key)] = TrackConfig(
+            key=str(key),
+            label=str(item.get("label", key)),
+            enabled=bool(item.get("enabled", True)),
+            cadence=str(item.get("cadence", "daily")),
+            weekly_day=str(item.get("weekly_day", "friday")),
+            quota=int(item.get("quota", 10)),
+            relevance_threshold=int(item.get("relevance_threshold", 70)),
+            topic_quotas={
+                str(topic): int(quota)
+                for topic, quota in (item.get("topic_quotas") or {}).items()
+            },
+            arxiv=_parse_arxiv_config(arxiv_values) if arxiv_values is not None else legacy_arxiv,
+            dblp=_parse_dblp_config(dblp_values) if dblp_values is not None else legacy_dblp,
+        )
+    return tracks
 
 
 def _parse_dblp_venues(values) -> List[DblpVenueConfig]:
