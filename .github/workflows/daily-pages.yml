@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - codex/action-smoke
   schedule:
     # 08:00 Beijing time is 00:00 UTC.
     - cron: "0 0 * * *"
