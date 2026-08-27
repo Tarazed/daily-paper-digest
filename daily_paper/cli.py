@@ -1,4 +1,5 @@
 import argparse
+import copy
 import datetime as _dt
 import json
 import os
@@ -12,10 +13,16 @@ from .arxiv import fetch_papers
 from .config import load_config
 from .dblp import fetch_dblp_papers
 from .digest_state import load_digest_state, save_digest_state
-from .email_template import render_html, render_subject, render_text
+from .email_template import (
+    render_html,
+    render_subject,
+    render_text,
+    render_track_html,
+    render_track_text,
+)
 from .enrichment import enrich_papers, normalize_affiliations
 from .filtering import prepare_papers, sort_papers
-from .foundations import select_foundations
+from .foundations import next_foundation_batch, select_foundations
 from .mailer import MailConfigError, build_message, send_message
 from .state import load_state
 from .models import Paper
@@ -29,6 +36,7 @@ from .summarizer import (
     score_papers_with_llm,
     summarize_papers,
 )
+from .tracks import select_track_digest
 
 
 def main(argv: List[str] = None) -> int:
@@ -43,11 +51,19 @@ def main(argv: List[str] = None) -> int:
     preview_parser = subparsers.add_parser("preview", help="Render an HTML email preview")
     preview_parser.add_argument("--out", required=True, help="Output HTML path")
     preview_parser.add_argument("--limit", type=int, default=None, help="Maximum papers to render")
+    preview_parser.add_argument("--track", default=None, help="Research track to preview")
+    preview_parser.add_argument(
+        "--data", default="web/public/papers.json", help="Site data containing foundations"
+    )
 
     send_parser = subparsers.add_parser("send", help="Send the daily digest email")
     send_parser.add_argument("--to", default=None, help="Recipient email. Overrides config default_to")
     send_parser.add_argument("--dry-run", action="store_true", help="Build email but do not send")
     send_parser.add_argument("--limit", type=int, default=None, help="Maximum papers to send")
+    send_parser.add_argument("--track", default=None, help="Research track to send")
+    send_parser.add_argument(
+        "--data", default="web/public/papers.json", help="Site data containing foundations"
+    )
 
     site_parser = subparsers.add_parser("site-data", help="Generate JSON data for the GitHub Pages app")
     site_parser.add_argument("--out", default="web/public/papers.json", help="Output JSON path")
@@ -106,10 +122,26 @@ def _fetch_command(args, config) -> int:
 
 
 def _preview_command(args, config) -> int:
-    papers = _load_ranked_papers(config, limit=args.limit or config.email.top_n)
-    summarize_papers(papers, config.summary)
-    title = render_subject(config.email.subject_prefix)
-    html_body = render_html(papers, title=title)
+    track_key = _validated_track_key(config, getattr(args, "track", None))
+    track = config.tracks[track_key]
+    digest_state = load_digest_state(config.digest_state_file)
+    papers = _load_track_digest(
+        config,
+        track_key,
+        limit=args.limit or track.quota,
+        digest_state=digest_state,
+        data_path=getattr(args, "data", "web/public/papers.json"),
+    )
+    pending_state = copy.deepcopy(digest_state)
+    foundations = _pending_foundation_reviews(
+        track_key,
+        getattr(args, "data", "web/public/papers.json"),
+        pending_state,
+        exclude_ids={paper.id for paper in papers},
+    )
+    summarize_papers(papers + foundations, config.summary)
+    title = render_subject("%s · %s" % (config.email.subject_prefix, track.label))
+    html_body = render_track_html(papers, track, title, foundations)
     with open(args.out, "w", encoding="utf-8") as handle:
         handle.write(html_body)
     print("Wrote preview to %s" % args.out)
@@ -121,14 +153,31 @@ def _send_command(args, config) -> int:
     recipients = _parse_recipients(to_value)
     if not recipients:
         raise MailConfigError("A recipient is required. Pass --to or set email.default_to.")
-    papers = _load_ranked_papers(config, limit=args.limit or config.email.top_n)
-    summarize_papers(papers, config.summary)
-    subject = render_subject(config.email.subject_prefix)
-    html_body = render_html(papers, title=subject)
-    text_body = render_text(papers, title=subject)
+    track_key = _validated_track_key(config, getattr(args, "track", None))
+    track = config.tracks[track_key]
+    digest_state = load_digest_state(config.digest_state_file)
+    papers = _load_track_digest(
+        config,
+        track_key,
+        limit=args.limit or track.quota,
+        digest_state=digest_state,
+        data_path=getattr(args, "data", "web/public/papers.json"),
+    )
+    pending_state = copy.deepcopy(digest_state)
+    foundations = _pending_foundation_reviews(
+        track_key,
+        getattr(args, "data", "web/public/papers.json"),
+        pending_state,
+        exclude_ids={paper.id for paper in papers},
+    )
+    summarize_papers(papers + foundations, config.summary)
+    subject = render_subject("%s · %s" % (config.email.subject_prefix, track.label))
+    html_body = render_track_html(papers, track, subject, foundations)
+    text_body = render_track_text(papers, track, subject, foundations)
     sender = os.getenv("SMTP_USER", "")
-    if not sender:
+    if not sender and not args.dry_run:
         raise MailConfigError("SMTP_USER is required.")
+    sender = sender or "dry-run@localhost"
     message = build_message(
         sender_name=config.email.sender_name,
         sender_email=sender,
@@ -145,7 +194,16 @@ def _send_command(args, config) -> int:
         print("Papers: %d" % len(papers))
         return 0
     send_message(message)
-    print("Sent %d papers to %s" % (len(papers), ", ".join(recipients)))
+    sent_ids = pending_state.sent_ids.setdefault(track_key, [])
+    for paper in papers:
+        if paper.id not in sent_ids:
+            sent_ids.append(paper.id)
+    pending_state.last_success[track_key] = _utc_timestamp()
+    save_digest_state(config.digest_state_file, pending_state)
+    print(
+        "Sent %d new papers and %d foundation reviews to %s"
+        % (len(papers), len(foundations), ", ".join(recipients))
+    )
     return 0
 
 
@@ -238,6 +296,58 @@ def _site_data_command(args, config) -> int:
         handle.write("\n")
     print("Wrote site data for %d papers to %s" % (len(papers), args.out))
     return 0
+
+
+def _validated_track_key(config, requested=None) -> str:
+    track_key = requested or config.default_track
+    if track_key not in config.tracks:
+        raise ValueError("Unknown research track: %s" % track_key)
+    if not config.tracks[track_key].enabled:
+        raise ValueError("Research track is disabled: %s" % track_key)
+    return track_key
+
+
+def _load_track_digest(
+    config, track_key: str, limit: int, digest_state, data_path: str
+) -> List[Paper]:
+    previous_papers = _load_previous_site_papers(data_path)
+    result = build_track(
+        track_key,
+        config,
+        previous_papers=previous_papers,
+        paper_state=load_state(config.state_file),
+        limit=limit,
+    )
+    track = config.tracks[track_key]
+    selected = select_track_digest(
+        result.papers,
+        track_key,
+        quota=limit,
+        topic_quotas=track.topic_quotas,
+        sent_ids=digest_state.sent_ids.get(track_key, []),
+        relevance_threshold=track.relevance_threshold,
+    )
+    return enrich_papers(
+        selected,
+        config.enrichment,
+        llm_model=config.summary.model,
+        llm_base_url=config.summary.base_url,
+    )
+
+
+def _pending_foundation_reviews(
+    track_key: str, data_path: str, pending_state, exclude_ids=()
+) -> List[Paper]:
+    if track_key != "llm_systems":
+        return []
+    papers = [
+        paper
+        for paper in _load_previous_site_papers(data_path)
+        if paper.foundation and paper.id not in set(exclude_ids or ())
+    ]
+    if not papers:
+        return []
+    return next_foundation_batch(papers, pending_state, count=3)
 
 
 def _backfill_command(args, config) -> int:
