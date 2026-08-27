@@ -2,6 +2,7 @@ import argparse
 import copy
 import datetime as _dt
 import json
+import math
 import os
 import re
 import sys
@@ -211,25 +212,14 @@ def _site_data_command(args, config) -> int:
     limit = args.limit or config.site.default_limit
     previous_papers = _load_previous_site_papers(args.out)
     paper_state = load_state(config.state_file)
-    results = []
-    build_errors = []
-    for track_key in _track_keys_for_site_run(config, getattr(args, "track", [])):
-        try:
-            results.append(
-                build_track(
-                    track_key,
-                    config,
-                    previous_papers=previous_papers,
-                    paper_state=paper_state,
-                )
-            )
-        except Exception as exc:
-            build_errors.append("%s: %s" % (track_key, exc))
-            print(
-                "Warning: track build failed for %s; continuing. %s"
-                % (track_key, exc),
-                file=sys.stderr,
-            )
+    digest_state = load_digest_state(config.digest_state_file)
+    results, build_errors = _build_site_tracks(
+        config,
+        _track_keys_for_site_run(config, getattr(args, "track", [])),
+        previous_papers,
+        paper_state,
+        digest_state,
+    )
     if not results:
         raise RuntimeError("No research tracks could be built. " + "; ".join(build_errors))
 
@@ -298,6 +288,34 @@ def _site_data_command(args, config) -> int:
     return 0
 
 
+def _build_site_tracks(
+    config, track_keys, previous_papers, paper_state, digest_state
+):
+    results = []
+    build_errors = []
+    for track_key in track_keys:
+        try:
+            results.append(
+                build_track(
+                    track_key,
+                    config,
+                    previous_papers=previous_papers,
+                    paper_state=paper_state,
+                    days_back=_delivery_days_back(
+                        config.tracks[track_key], digest_state
+                    ),
+                )
+            )
+        except Exception as exc:
+            build_errors.append("%s: %s" % (track_key, exc))
+            print(
+                "Warning: track build failed for %s; continuing. %s"
+                % (track_key, exc),
+                file=sys.stderr,
+            )
+    return results, build_errors
+
+
 def _validated_track_key(config, requested=None) -> str:
     track_key = requested or config.default_track
     if track_key not in config.tracks:
@@ -311,14 +329,15 @@ def _load_track_digest(
     config, track_key: str, limit: int, digest_state, data_path: str
 ) -> List[Paper]:
     previous_papers = _load_previous_site_papers(data_path)
+    track = config.tracks[track_key]
     result = build_track(
         track_key,
         config,
         previous_papers=previous_papers,
         paper_state=load_state(config.state_file),
         limit=limit,
+        days_back=_delivery_days_back(track, digest_state),
     )
-    track = config.tracks[track_key]
     selected = select_track_digest(
         result.papers,
         track_key,
@@ -350,6 +369,24 @@ def _pending_foundation_reviews(
     return next_foundation_batch(papers, pending_state, count=3)
 
 
+def _delivery_days_back(track, digest_state, now=None) -> int:
+    cap = max(1, int(track.arxiv.days_back))
+    last_success = digest_state.last_success.get(track.key, "")
+    if not last_success:
+        return cap
+    try:
+        completed = _dt.datetime.fromisoformat(last_success.replace("Z", "+00:00"))
+    except ValueError:
+        return cap
+    current = now or _dt.datetime.now(_dt.timezone.utc)
+    if current.tzinfo is None:
+        current = current.replace(tzinfo=_dt.timezone.utc)
+    if completed.tzinfo is None:
+        completed = completed.replace(tzinfo=_dt.timezone.utc)
+    elapsed_days = max(0.0, (current - completed).total_seconds() / 86400.0)
+    return min(cap, max(1, int(math.ceil(elapsed_days))))
+
+
 def _backfill_command(args, config) -> int:
     digest_state = load_digest_state(config.digest_state_file)
     if digest_state.cold_start_completed_at:
@@ -377,21 +414,21 @@ def _backfill_command(args, config) -> int:
         llm_model=config.summary.model,
         llm_base_url=config.summary.base_url,
     )
-    papers_to_analyze = _reuse_cached_site_analysis(
-        current_papers, previous_papers, config.summary
-    )
-    analyze_papers_for_site(papers_to_analyze, config.summary)
     selection_report = {}
     foundations = select_foundations(
         current_papers,
         per_topic=max(0, int(args.per_topic)),
         report=selection_report,
     )
+    foundations_to_analyze = _reuse_cached_site_analysis(
+        foundations, previous_papers, config.summary
+    )
+    analyze_papers_for_site(foundations_to_analyze, config.summary)
     foundation_ids = {paper.id for paper in foundations}
     canonical = merge_canonical_papers(current_papers, previous_papers)
     for paper in canonical:
-        if paper.id in foundation_ids:
-            paper.foundation = True
+        if "llm_systems" in paper.tracks:
+            paper.foundation = paper.id in foundation_ids
     _clean_site_papers(canonical)
 
     completed_at = _utc_timestamp()

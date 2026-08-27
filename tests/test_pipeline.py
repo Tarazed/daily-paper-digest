@@ -1,4 +1,6 @@
+from daily_paper.cli import _build_site_tracks
 from daily_paper.config import load_config
+from daily_paper.digest_state import DigestState
 from daily_paper.models import Paper
 from daily_paper.pipeline import TrackBuildResult, build_site_payload, build_track
 
@@ -129,3 +131,30 @@ def test_build_track_can_override_both_cold_start_windows(monkeypatch):
     )
 
     assert observed == {"days_back": 365, "years_back": 1}
+
+
+def test_site_track_failure_does_not_block_an_unrelated_track(monkeypatch):
+    config = load_config("config.toml")
+    gr_paper = make_paper(
+        "arxiv:gr",
+        "Generative Recommendation",
+        "A recommendation model.",
+    )
+
+    def fake_build(track_key, *_args, **_kwargs):
+        if track_key == "llm_systems":
+            raise RuntimeError("LLM source failed")
+        return TrackBuildResult(track_key, [gr_paper], [gr_paper], [])
+
+    monkeypatch.setattr("daily_paper.cli.build_track", fake_build)
+
+    results, errors = _build_site_tracks(
+        config,
+        ["llm_systems", "generative_rec"],
+        previous_papers=[],
+        paper_state={},
+        digest_state=DigestState(),
+    )
+
+    assert [result.track_key for result in results] == ["generative_rec"]
+    assert errors == ["llm_systems: LLM source failed"]

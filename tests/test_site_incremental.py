@@ -3,6 +3,7 @@ import datetime as dt
 from dataclasses import asdict
 
 from daily_paper.cli import (
+    _delivery_days_back,
     _load_previous_site_papers,
     _merge_site_history,
     _paper_to_site_dict,
@@ -206,3 +207,21 @@ def test_site_track_schedule_defaults_daily_and_adds_gr_on_friday():
         requested=["generative_rec"],
         now=dt.datetime(2026, 8, 27),
     ) == ["generative_rec"]
+
+
+def test_delivery_window_recovers_since_success_with_track_caps():
+    from daily_paper.config import load_config
+    from daily_paper.digest_state import DigestState
+
+    config = load_config("config.toml")
+    now = dt.datetime(2026, 8, 27, 8, 0, tzinfo=dt.timezone.utc)
+    state = DigestState(
+        last_success={
+            "llm_systems": "2026-08-25T07:00:00Z",
+            "generative_rec": "2026-08-01T00:00:00Z",
+        }
+    )
+
+    assert _delivery_days_back(config.tracks["llm_systems"], state, now=now) == 3
+    assert _delivery_days_back(config.tracks["generative_rec"], state, now=now) == 14
+    assert config.tracks["generative_rec"].arxiv.days_back == 14

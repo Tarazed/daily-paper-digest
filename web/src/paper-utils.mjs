@@ -13,15 +13,25 @@ const RESEARCH_DETAIL_LABELS = new Map([
 
 
 export function papersForView(papers, track, topic = "All", view = "latest") {
-  return (Array.isArray(papers) ? papers : []).filter((paper) => {
-    const tracks = Array.isArray(paper.tracks) ? paper.tracks : [];
-    const topics = Array.isArray(paper.topics) ? paper.topics : [];
-    return (
-      tracks.includes(track) &&
-      (topic === "All" || topics.includes(topic)) &&
-      (view !== "foundations" || Boolean(paper.foundation))
-    );
-  });
+  return (Array.isArray(papers) ? papers : [])
+    .filter((paper) => {
+      const tracks = Array.isArray(paper.tracks) ? paper.tracks : [];
+      const topics = Array.isArray(paper.topics) ? paper.topics : [];
+      return (
+        tracks.includes(track) &&
+        (topic === "All" || topics.includes(topic)) &&
+        (view !== "foundations" || Boolean(paper.foundation))
+      );
+    })
+    .sort((left, right) => {
+      if (view === "foundations") {
+        const foundationDifference = Number(right.foundation_score || 0) - Number(left.foundation_score || 0);
+        if (foundationDifference) return foundationDifference;
+      }
+      const scoreDifference = trackScore(right, track) - trackScore(left, track);
+      if (scoreDifference) return scoreDifference;
+      return paperTimestamp(right) - paperTimestamp(left) || String(left.title || "").localeCompare(String(right.title || ""));
+    });
 }
 
 
@@ -56,6 +66,14 @@ export function showAbEvidence(track) {
 }
 
 
+export function fallbackDisplayTag(paper) {
+  const tracks = Array.isArray(paper?.tracks) ? paper.tracks : [];
+  return tracks.includes("llm_systems") && !tracks.includes("generative_rec")
+    ? ""
+    : "General Rec";
+}
+
+
 export function researchDetailEntries(paper) {
   const details = paper?.research_details || {};
   const result = [];
@@ -74,4 +92,10 @@ export function researchDetailEntries(paper) {
 function topicIndex(topic) {
   const index = TOPIC_ORDER.indexOf(topic);
   return index === -1 ? TOPIC_ORDER.length : index;
+}
+
+
+function paperTimestamp(paper) {
+  const value = Date.parse(paper?.published || paper?.updated || "");
+  return Number.isFinite(value) ? value : 0;
 }

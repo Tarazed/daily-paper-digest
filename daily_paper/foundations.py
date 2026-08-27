@@ -78,6 +78,9 @@ def select_foundations(
             relaxations[topic] = topic_relaxations
     if isinstance(report, dict):
         report["relaxations"] = relaxations
+        report["citation_unavailable"] = sum(
+            1 for paper in candidates if paper.citation_count <= 0
+        )
     return selected
 
 
@@ -99,6 +102,8 @@ def next_foundation_batch(
 
 
 def _select_diverse(papers: List[Paper], limit: int):
+    if not papers or limit <= 0:
+        return [], []
     selected = []
     selected_ids = set()
     series_counts = Counter()
@@ -112,7 +117,8 @@ def _select_diverse(papers: List[Paper], limit: int):
         (None, None, None, "method_series"),
     )
     for series_limit, author_limit, month_limit, relaxation in stages:
-        before = len(selected)
+        if relaxation and len(selected) < limit:
+            relaxations.append(relaxation)
         for paper in papers:
             if len(selected) >= limit:
                 break
@@ -132,9 +138,7 @@ def _select_diverse(papers: List[Paper], limit: int):
             series_counts[series_key] += 1
             author_counts[author_key] += 1
             month_counts[month_key] += 1
-        if relaxation and len(selected) > before:
-            relaxations.append(relaxation)
-        if len(selected) >= limit:
+        if len(selected) >= limit or len(selected) >= len(papers):
             break
     return selected, relaxations
 

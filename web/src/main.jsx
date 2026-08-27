@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import ReactDOM from "react-dom";
 import {
+  fallbackDisplayTag,
   papersForView,
   researchDetailEntries,
   showAbEvidence,
@@ -402,9 +403,9 @@ function App() {
 
       <div className="viewControls">
         <div className="viewTabs" aria-label="Paper collection">
-          <button className={activeView === "latest" ? "active" : ""} onClick={() => setActiveView("latest")}>最新论文</button>
+          <button className={activeView === "latest" ? "active" : ""} onClick={() => setActiveView("latest")}>每日最新</button>
           {activeTrack === "llm_systems" && (
-            <button className={activeView === "foundations" ? "active" : ""} onClick={() => setActiveView("foundations")}>经典基线</button>
+            <button className={activeView === "foundations" ? "active" : ""} onClick={() => setActiveView("foundations")}>近一年经典</button>
           )}
         </div>
         {topics.length > 0 && (
@@ -759,7 +760,8 @@ function paperDisplayTags(paper, includeKeywords = []) {
 
   const specificLabels = labels.filter((label) => label !== "General Rec");
   const finalLabels = specificLabels.length ? specificLabels : labels;
-  if (!finalLabels.length) finalLabels.push("General Rec");
+  const fallbackTag = fallbackDisplayTag(paper);
+  if (!finalLabels.length && fallbackTag) finalLabels.push(fallbackTag);
 
   return finalLabels
     .slice()

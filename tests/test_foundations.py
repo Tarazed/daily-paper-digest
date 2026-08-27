@@ -1,5 +1,6 @@
 import datetime as dt
 import json
+from dataclasses import asdict
 from types import SimpleNamespace
 
 from daily_paper.cli import _backfill_command
@@ -82,6 +83,20 @@ def test_select_foundations_keeps_up_to_twenty_per_topic():
     assert all(paper.foundation_score > 0 for paper in selected)
 
 
+def test_diversity_report_does_not_relax_when_topic_has_fewer_candidates():
+    report = {}
+
+    selected = select_foundations(
+        [make_paper("small-%s" % index) for index in range(3)],
+        per_topic=20,
+        now=dt.date(2026, 8, 27),
+        report=report,
+    )
+
+    assert len(selected) == 3
+    assert report["relaxations"] == {}
+
+
 def test_select_foundations_limits_a_repeated_method_series_when_alternatives_exist():
     repeated = [
         make_paper(
@@ -122,6 +137,43 @@ def test_next_batch_never_repeats_foundation():
     assert [paper.id for paper in first] == ["p1", "p2", "p3"]
     assert [paper.id for paper in second] == ["p4"]
     assert state.foundation_review_cursor == 4
+
+
+def test_twenty_review_batches_cover_sixty_foundations_once():
+    papers = [make_paper("p%02d" % index) for index in range(60)]
+    state = DigestState(foundation_review_ids=[paper.id for paper in papers])
+    reviewed = []
+
+    for _ in range(20):
+        reviewed.extend(next_foundation_batch(papers, state, 3))
+
+    assert len(reviewed) == 60
+    assert len({paper.id for paper in reviewed}) == 60
+    assert next_foundation_batch(papers, state, 3) == []
+
+
+def test_foundation_report_records_missing_citations_and_relaxation_order():
+    papers = [
+        make_paper(
+            "p%02d" % index,
+            citations=0,
+            title="Distinct Method %s for Language Models" % index,
+            authors=["Shared Author"],
+        )
+        for index in range(20)
+    ]
+    report = {}
+
+    selected = select_foundations(
+        papers, per_topic=20, now=dt.date(2026, 8, 27), report=report
+    )
+
+    assert len(selected) == 20
+    assert report["citation_unavailable"] == 20
+    assert report["relaxations"]["llm_rl"] == [
+        "publication_month",
+        "author_group",
+    ]
 
 
 def test_backfill_writes_foundations_and_completion_state(tmp_path, monkeypatch):
@@ -181,3 +233,32 @@ def test_completed_backfill_is_idempotent(tmp_path, monkeypatch):
     )
 
     assert result == 0
+
+
+def test_backfill_replaces_stale_foundation_membership(tmp_path, monkeypatch):
+    output_path = tmp_path / "papers.json"
+    state_path = tmp_path / "digest_state.json"
+    stale = make_paper("stale", citations=50)
+    stale.foundation = True
+    stale.foundation_score = 99
+    output_path.write_text(
+        json.dumps({"papers": [asdict(stale)]}), encoding="utf-8"
+    )
+    config = load_config("config.toml")
+    config.digest_state_file = str(state_path)
+    current = make_paper("current", citations=60)
+    monkeypatch.setattr(
+        "daily_paper.cli.build_track",
+        lambda track_key, _config, **kwargs: TrackBuildResult(
+            track_key, [current], [current], []
+        ),
+    )
+    monkeypatch.setattr("daily_paper.cli.enrich_papers", lambda values, *args, **kwargs: values)
+
+    assert _backfill_command(
+        SimpleNamespace(out=str(output_path), days=365, per_topic=1), config
+    ) == 0
+
+    payload = json.loads(output_path.read_text(encoding="utf-8"))
+    foundation_by_id = {paper["id"]: paper["foundation"] for paper in payload["papers"]}
+    assert foundation_by_id == {"current": True, "stale": False}

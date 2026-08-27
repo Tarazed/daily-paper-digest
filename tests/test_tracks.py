@@ -53,6 +53,18 @@ def test_sft_and_preference_paper_is_post_training():
     assert match.relevance >= 70
 
 
+def test_reward_model_paper_is_post_training():
+    paper = make_paper(
+        "Process Reward Models for Language Model Reasoning",
+        "We train a language model verifier with process rewards.",
+    )
+
+    match = classify_deterministically(paper, llm_track())
+
+    assert match.primary_topic == "post_training"
+    assert match.relevance >= 70
+
+
 def test_tool_memory_paper_is_llm_agent():
     paper = make_paper(
         "Long-Horizon Tool Agents with Episodic Memory",

@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
+  fallbackDisplayTag,
   papersForView,
   researchDetailEntries,
   showAbEvidence,
@@ -40,6 +41,24 @@ test("track and foundation views stay isolated", () => {
 });
 
 
+test("latest and foundation views use their own ranking", () => {
+  const papers = [
+    { id: "low", tracks: ["llm_systems"], topics: ["llm_rl"], published: "2026-08-27", foundation: true, foundation_score: 70, track_scores: { llm_systems: 70 } },
+    { id: "classic", tracks: ["llm_systems"], topics: ["llm_rl"], published: "2026-07-01", foundation: true, foundation_score: 95, track_scores: { llm_systems: 80 } },
+    { id: "high", tracks: ["llm_systems"], topics: ["llm_rl"], published: "2026-08-20", foundation: false, foundation_score: 0, track_scores: { llm_systems: 92 } }
+  ];
+
+  assert.deepEqual(
+    papersForView(papers, "llm_systems", "All", "latest").map((paper) => paper.id),
+    ["high", "classic", "low"]
+  );
+  assert.deepEqual(
+    papersForView(papers, "llm_systems", "All", "foundations").map((paper) => paper.id),
+    ["classic", "low"]
+  );
+});
+
+
 test("topics are counted only inside the active track", () => {
   const papers = [
     { id: "a", tracks: ["llm_systems"], topics: ["llm_rl", "llm_agent"] },
@@ -75,4 +94,11 @@ test("track-specific evidence stays isolated", () => {
     { key: "training_objective", label: "训练目标", value: "verifiable reasoning" },
     { key: "key_benchmarks", label: "关键基准", value: "AIME · MATH" }
   ]);
+});
+
+
+test("LLM papers never receive a Generative Recommendation fallback tag", () => {
+  assert.equal(fallbackDisplayTag({ tracks: ["llm_systems"] }), "");
+  assert.equal(fallbackDisplayTag({ tracks: ["generative_rec"] }), "General Rec");
+  assert.equal(fallbackDisplayTag({}), "General Rec");
 });

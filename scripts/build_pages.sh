@@ -39,16 +39,20 @@ python3 -m daily_paper --config "$CONFIG" site-data \
 
 if [ "${DAILY_PAPER_SEND:-false}" = "true" ]; then
   echo "Sending the daily LLM systems digest..."
-  python3 -m daily_paper --config "$CONFIG" send \
-    --track llm_systems \
-    --data web/public/papers.json \
-    --to "${DAILY_PAPER_TO:-}"
+  if ! python3 -m daily_paper --config "$CONFIG" send \
+      --track llm_systems \
+      --data web/public/papers.json \
+      --to "${DAILY_PAPER_TO:-}"; then
+    echo "Warning: LLM systems email failed; continuing with other tracks and site deployment." >&2
+  fi
   if [ "$WEEKDAY" = "5" ]; then
     echo "Sending the Friday Generative Recommendation digest..."
-    python3 -m daily_paper --config "$CONFIG" send \
-      --track generative_rec \
-      --data web/public/papers.json \
-      --to "${DAILY_PAPER_TO:-}"
+    if ! python3 -m daily_paper --config "$CONFIG" send \
+        --track generative_rec \
+        --data web/public/papers.json \
+        --to "${DAILY_PAPER_TO:-}"; then
+      echo "Warning: Generative Recommendation email failed; continuing with site deployment." >&2
+    fi
   fi
 else
   echo "Email delivery disabled (DAILY_PAPER_SEND is not true)."

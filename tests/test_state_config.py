@@ -157,6 +157,8 @@ def test_workflow_and_script_persist_state_without_push_email():
     assert "--track generative_rec" in script
     assert "DAILY_PAPER_SEND" in script
     assert " backfill " in script
+    assert "Warning: LLM systems email failed" in script
+    assert "Warning: Generative Recommendation email failed" in script
     assert initial_state["sent_ids"] == {}
     assert initial_state["cold_start_completed_at"] == ""
 
