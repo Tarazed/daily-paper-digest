@@ -11,9 +11,11 @@ from zoneinfo import ZoneInfo
 from .arxiv import fetch_papers
 from .config import load_config
 from .dblp import fetch_dblp_papers
+from .digest_state import load_digest_state, save_digest_state
 from .email_template import render_html, render_subject, render_text
 from .enrichment import enrich_papers, normalize_affiliations
 from .filtering import prepare_papers, sort_papers
+from .foundations import select_foundations
 from .mailer import MailConfigError, build_message, send_message
 from .state import load_state
 from .models import Paper
@@ -57,6 +59,17 @@ def main(argv: List[str] = None) -> int:
         help="Research track to update. Repeat for multiple tracks or use 'all'.",
     )
 
+    backfill_parser = subparsers.add_parser(
+        "backfill", help="Build the one-year LLM foundations collection"
+    )
+    backfill_parser.add_argument(
+        "--out", default="web/public/papers.json", help="Output JSON path"
+    )
+    backfill_parser.add_argument("--days", type=int, default=365, help="Calendar-day window")
+    backfill_parser.add_argument(
+        "--per-topic", type=int, default=20, help="Maximum foundations per topic"
+    )
+
     args = parser.parse_args(argv)
     if not args.command:
         parser.print_help()
@@ -72,6 +85,8 @@ def main(argv: List[str] = None) -> int:
             return _send_command(args, config)
         if args.command == "site-data":
             return _site_data_command(args, config)
+        if args.command == "backfill":
+            return _backfill_command(args, config)
     except MailConfigError as exc:
         print("Email error: %s" % exc, file=sys.stderr)
         return 1
@@ -222,6 +237,85 @@ def _site_data_command(args, config) -> int:
         json.dump(payload, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
     print("Wrote site data for %d papers to %s" % (len(papers), args.out))
+    return 0
+
+
+def _backfill_command(args, config) -> int:
+    digest_state = load_digest_state(config.digest_state_file)
+    if digest_state.cold_start_completed_at:
+        print(
+            "Cold start already completed at %s; no changes made."
+            % digest_state.cold_start_completed_at
+        )
+        return 0
+    if "llm_systems" not in config.tracks:
+        raise ValueError("The llm_systems track is required for cold start.")
+
+    previous_payload = _load_json_object(args.out)
+    previous_papers = _load_previous_site_papers(args.out)
+    result = build_track(
+        "llm_systems",
+        config,
+        previous_papers=previous_papers,
+        paper_state=load_state(config.state_file),
+        days_back=max(1, int(args.days)),
+        years_back=1,
+    )
+    current_papers = enrich_papers(
+        result.papers,
+        config.enrichment,
+        llm_model=config.summary.model,
+        llm_base_url=config.summary.base_url,
+    )
+    papers_to_analyze = _reuse_cached_site_analysis(
+        current_papers, previous_papers, config.summary
+    )
+    analyze_papers_for_site(papers_to_analyze, config.summary)
+    selection_report = {}
+    foundations = select_foundations(
+        current_papers,
+        per_topic=max(0, int(args.per_topic)),
+        report=selection_report,
+    )
+    foundation_ids = {paper.id for paper in foundations}
+    canonical = merge_canonical_papers(current_papers, previous_papers)
+    for paper in canonical:
+        if paper.id in foundation_ids:
+            paper.foundation = True
+    _clean_site_papers(canonical)
+
+    completed_at = _utc_timestamp()
+    refreshed_result = type(result)(
+        result.track_key, current_papers, result.selected, result.source_errors
+    )
+    payload = build_site_payload(
+        [refreshed_result],
+        previous_papers=previous_papers,
+        config=config,
+        generated_at=completed_at,
+    )
+    previous_payload.update(payload)
+    previous_payload["papers"] = [_paper_to_site_dict(paper) for paper in canonical]
+    previous_payload["foundations"] = [
+        paper.id for paper in canonical if paper.foundation
+    ]
+    previous_payload["cold_start"] = {
+        "completed_at": completed_at,
+        "days": max(1, int(args.days)),
+        "per_topic": max(0, int(args.per_topic)),
+        "selected": len(foundations),
+        **selection_report,
+    }
+    _write_json_atomic(args.out, previous_payload)
+
+    digest_state.foundation_review_ids = _foundation_review_order(foundations)
+    digest_state.foundation_review_cursor = 0
+    digest_state.cold_start_completed_at = completed_at
+    save_digest_state(config.digest_state_file, digest_state)
+    print(
+        "Cold start selected %d foundations and wrote %s"
+        % (len(foundations), args.out)
+    )
     return 0
 
 
@@ -512,3 +606,56 @@ def _paper_from_dict(values) -> Paper:
         research_details=dict(values.get("research_details") or {}),
     )
     return paper
+
+
+def _load_json_object(path: str):
+    try:
+        with open(path, "r", encoding="utf-8") as handle:
+            values = json.load(handle)
+    except (OSError, ValueError, TypeError):
+        return {}
+    return values if isinstance(values, dict) else {}
+
+
+def _write_json_atomic(path: str, payload) -> None:
+    parent = os.path.dirname(os.path.abspath(path))
+    os.makedirs(parent, exist_ok=True)
+    temporary_path = path + ".tmp"
+    try:
+        with open(temporary_path, "w", encoding="utf-8") as handle:
+            json.dump(payload, handle, ensure_ascii=False, indent=2)
+            handle.write("\n")
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temporary_path, path)
+    finally:
+        try:
+            os.unlink(temporary_path)
+        except FileNotFoundError:
+            pass
+
+
+def _foundation_review_order(papers: List[Paper]) -> List[str]:
+    by_topic = {}
+    topic_order = []
+    for paper in papers:
+        topic = paper.primary_topic or "other"
+        if topic not in by_topic:
+            by_topic[topic] = []
+            topic_order.append(topic)
+        by_topic[topic].append(paper.id)
+    result = []
+    while any(by_topic.values()):
+        for topic in topic_order:
+            if by_topic[topic]:
+                result.append(by_topic[topic].pop(0))
+    return result
+
+
+def _utc_timestamp() -> str:
+    return (
+        _dt.datetime.now(_dt.timezone.utc)
+        .replace(microsecond=0)
+        .isoformat()
+        .replace("+00:00", "Z")
+    )

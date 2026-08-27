@@ -27,6 +27,7 @@ def build_track(
     paper_state: Dict[str, Dict[str, str]],
     limit: int = None,
     days_back: int = None,
+    years_back: int = None,
     fetch_arxiv=fetch_papers,
     fetch_conferences=fetch_dblp_papers,
 ) -> TrackBuildResult:
@@ -38,11 +39,16 @@ def build_track(
         if days_back is not None
         else track.arxiv
     )
+    conference_config = (
+        replace(track.dblp, years_back=int(years_back))
+        if years_back is not None
+        else track.dblp
+    )
     candidates = []
     source_errors = []
     for source_name, fetcher, source_config in (
         ("arXiv", fetch_arxiv, arxiv_config),
-        ("conference", fetch_conferences, track.dblp),
+        ("conference", fetch_conferences, conference_config),
     ):
         try:
             candidates.extend(fetcher(source_config))

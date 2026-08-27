@@ -102,3 +102,30 @@ def test_build_track_uses_cached_track_when_both_sources_fail(monkeypatch):
 
     assert [paper.id for paper in result.papers] == ["arxiv:cached"]
     assert len(result.source_errors) == 2
+
+
+def test_build_track_can_override_both_cold_start_windows(monkeypatch):
+    monkeypatch.delenv("DEEPSEEK_API_KEY", raising=False)
+    config = load_config("config.toml")
+    observed = {}
+
+    def fetch_arxiv(source_config):
+        observed["days_back"] = source_config.days_back
+        return []
+
+    def fetch_conferences(source_config):
+        observed["years_back"] = source_config.years_back
+        return []
+
+    build_track(
+        "llm_systems",
+        config,
+        previous_papers=[],
+        paper_state={},
+        days_back=365,
+        years_back=1,
+        fetch_arxiv=fetch_arxiv,
+        fetch_conferences=fetch_conferences,
+    )
+
+    assert observed == {"days_back": 365, "years_back": 1}
