@@ -1,6 +1,7 @@
 from dataclasses import dataclass
+import datetime as _dt
 import re
-from typing import Dict, List
+from typing import Dict, Iterable, List
 
 from .config import TrackConfig
 from .models import Paper
@@ -71,6 +72,13 @@ HARD_EXCLUDES = (
     "power grid control",
 )
 EXPLICIT_AGENT_CONTEXT = ("language model agent", "language model agents", "llm agent")
+LLM_SCORE_LIMITS = {
+    "relevance": 30,
+    "technical": 25,
+    "evidence": 20,
+    "novelty": 15,
+    "reproducibility": 10,
+}
 
 
 @dataclass(frozen=True)
@@ -138,6 +146,72 @@ def apply_track_match(paper: Paper, match: TrackMatch, threshold: int) -> bool:
     return True
 
 
+def apply_track_score(
+    paper: Paper,
+    track_key: str,
+    breakdown: Dict[str, int],
+    rationale: str,
+) -> int:
+    cleaned = {
+        key: max(0, min(limit, _safe_int((breakdown or {}).get(key, 0))))
+        for key, limit in LLM_SCORE_LIMITS.items()
+    }
+    score = sum(cleaned.values())
+    paper.track_score_breakdowns[track_key] = cleaned
+    paper.track_scores[track_key] = score
+    paper.track_score_rationales[track_key] = str(rationale or "").strip()
+    return score
+
+
+def select_track_digest(
+    papers: Iterable[Paper],
+    track_key: str,
+    quota: int,
+    topic_quotas: Dict[str, int],
+    sent_ids=(),
+    relevance_threshold: int = 70,
+) -> List[Paper]:
+    sent = set(sent_ids or ())
+    eligible_by_id = {}
+    for paper in papers:
+        if paper.id in sent or track_key not in paper.tracks:
+            continue
+        if paper.track_relevance.get(track_key, 0) < relevance_threshold:
+            continue
+        current = eligible_by_id.get(paper.id)
+        if current is None or _track_sort_key(paper, track_key) < _track_sort_key(
+            current, track_key
+        ):
+            eligible_by_id[paper.id] = paper
+
+    ordered = sorted(
+        eligible_by_id.values(), key=lambda paper: _track_sort_key(paper, track_key)
+    )
+    selected = []
+    selected_ids = set()
+    for topic, reserved in (topic_quotas or {}).items():
+        for paper in ordered:
+            if len([item for item in selected if item.primary_topic == topic]) >= max(
+                0, int(reserved)
+            ):
+                break
+            if paper.id in selected_ids or paper.primary_topic != topic:
+                continue
+            selected.append(paper)
+            selected_ids.add(paper.id)
+            if len(selected) >= max(0, int(quota)):
+                return selected
+
+    for paper in ordered:
+        if len(selected) >= max(0, int(quota)):
+            break
+        if paper.id in selected_ids:
+            continue
+        selected.append(paper)
+        selected_ids.add(paper.id)
+    return selected
+
+
 def _classify_keyword_track(text: str, track: TrackConfig) -> TrackMatch:
     excluded = _matching_terms(text, tuple(track.arxiv.exclude_keywords))
     if excluded:
@@ -167,3 +241,33 @@ def _normalize(value: str) -> str:
     text = str(value or "").lower().replace("&", " and ")
     text = re.sub(r"[-_/]+", " ", text)
     return re.sub(r"[^a-z0-9]+", " ", text).strip()
+
+
+def _track_sort_key(paper: Paper, track_key: str):
+    return (
+        -paper.track_scores.get(track_key, 0),
+        -_published_timestamp(paper.published),
+        paper.title.lower(),
+    )
+
+
+def _published_timestamp(value: str) -> int:
+    if not value:
+        return 0
+    for fmt, sample in (
+        ("%Y-%m-%dT%H:%M:%S", value[:19]),
+        ("%Y-%m-%d", value[:10]),
+        ("%Y", value[:4]),
+    ):
+        try:
+            return int(_dt.datetime.strptime(sample, fmt).timestamp())
+        except ValueError:
+            continue
+    return 0
+
+
+def _safe_int(value, default: int = 0) -> int:
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return default
