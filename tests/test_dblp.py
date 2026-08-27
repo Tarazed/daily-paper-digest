@@ -1,8 +1,10 @@
 from daily_paper.config import DblpConfig, DblpVenueConfig
 from daily_paper.conference_sources import (
+    _openalex_work_to_paper,
     fetch_fallback_venue_papers,
     fetch_semantic_scholar_venue_papers,
     lookup_external_paper_metadata,
+    merge_paper_metadata,
     supplement_papers_from_external_sources,
 )
 from daily_paper.dblp import fetch_venue_papers, filter_dblp_papers, parse_results, parse_toc_xml
@@ -156,6 +158,7 @@ def test_semantic_scholar_fallback_maps_to_paper(monkeypatch):
                 "publicationVenue": {"name": "RecSys"},
                 "publicationDate": "2026-09-22",
                 "openAccessPdf": {"url": "https://example.com/paper.pdf"},
+                "citationCount": 37,
             }
         ]
     }
@@ -169,6 +172,27 @@ def test_semantic_scholar_fallback_maps_to_paper(monkeypatch):
     assert papers[0].venue == "RecSys"
     assert papers[0].doi == "10.1145/fallback"
     assert papers[0].pdf_url == "https://example.com/paper.pdf"
+    assert papers[0].citation_count == 37
+
+
+def test_openalex_mapping_and_merge_keep_highest_citation_count():
+    venue = DblpVenueConfig(name="ICLR", query="ICLR")
+    work = {
+        "id": "https://openalex.org/W123",
+        "display_name": "RLHF for Language Models",
+        "publication_year": 2026,
+        "publication_date": "2026-03-01",
+        "cited_by_count": 42,
+        "authorships": [],
+    }
+
+    paper = _openalex_work_to_paper(work, venue)
+    target = parse_results(SAMPLE_DBLP, DblpVenueConfig(name="RecSys", query="RecSys"))[0]
+    target.citation_count = 50
+    merge_paper_metadata(target, paper)
+
+    assert paper.citation_count == 42
+    assert target.citation_count == 50
 
 
 def test_fallback_source_order_dedupes_titles(monkeypatch):

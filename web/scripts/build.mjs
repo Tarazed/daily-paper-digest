@@ -8,7 +8,15 @@ const docsDir = path.resolve(root, "../docs");
 const assetsDir = path.join(docsDir, "assets");
 const publicDir = path.join(root, "public");
 
-fs.rmSync(docsDir, { recursive: true, force: true });
+const generatedPaths = [
+  assetsDir,
+  path.join(docsDir, "index.html"),
+  path.join(docsDir, "papers.json"),
+  path.join(docsDir, ".nojekyll")
+];
+for (const generatedPath of generatedPaths) {
+  fs.rmSync(generatedPath, { recursive: true, force: true });
+}
 fs.mkdirSync(assetsDir, { recursive: true });
 
 await esbuild.build({

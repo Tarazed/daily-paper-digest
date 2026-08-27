@@ -1,12 +1,15 @@
 import json
+import datetime as dt
 from dataclasses import asdict
 
 from daily_paper.cli import (
+    _delivery_days_back,
     _load_previous_site_papers,
     _merge_site_history,
     _paper_to_site_dict,
     _reuse_cached_site_analysis,
     _select_site_papers,
+    _track_keys_for_site_run,
 )
 from daily_paper.config import SummaryConfig
 from daily_paper.models import Paper
@@ -109,6 +112,36 @@ def test_load_previous_site_papers_reads_existing_payload(tmp_path):
     assert [paper.id for paper in loaded] == ["arxiv:2606.01234"]
 
 
+def test_load_previous_site_papers_migrates_legacy_record_to_gr(tmp_path):
+    path = tmp_path / "papers.json"
+    legacy = asdict(make_paper("arxiv:legacy"))
+    legacy.pop("tracks", None)
+    legacy.pop("primary_track", None)
+    path.write_text(json.dumps({"papers": [legacy]}), encoding="utf-8")
+
+    loaded = _load_previous_site_papers(str(path))
+
+    assert loaded[0].tracks == ["generative_rec"]
+    assert loaded[0].primary_track == "generative_rec"
+
+
+def test_paper_round_trip_keeps_track_metadata(tmp_path):
+    path = tmp_path / "papers.json"
+    paper = make_paper("arxiv:tracked")
+    paper.tracks = ["llm_systems"]
+    paper.primary_track = "llm_systems"
+    paper.topics = ["llm_rl"]
+    paper.primary_topic = "llm_rl"
+    paper.track_scores = {"llm_systems": 91}
+    path.write_text(json.dumps({"papers": [asdict(paper)]}), encoding="utf-8")
+
+    loaded = _load_previous_site_papers(str(path))
+
+    assert loaded[0].tracks == ["llm_systems"]
+    assert loaded[0].topics == ["llm_rl"]
+    assert loaded[0].track_scores == {"llm_systems": 91}
+
+
 def test_paper_to_site_dict_includes_display_affiliations():
     paper = make_paper("arxiv:2606.01234")
     paper.affiliations = [
@@ -156,3 +189,39 @@ def test_select_site_papers_keeps_conference_papers():
 
     assert len(selected) == 10
     assert any(paper.id == "dblp:conf/recsys/Sample26" for paper in selected)
+
+
+def test_site_track_schedule_defaults_daily_and_adds_gr_on_friday():
+    from daily_paper.config import load_config
+
+    config = load_config("config.toml")
+
+    assert _track_keys_for_site_run(
+        config, requested=[], now=dt.datetime(2026, 8, 27)
+    ) == ["llm_systems"]
+    assert _track_keys_for_site_run(
+        config, requested=[], now=dt.datetime(2026, 8, 28)
+    ) == ["llm_systems", "generative_rec"]
+    assert _track_keys_for_site_run(
+        config,
+        requested=["generative_rec"],
+        now=dt.datetime(2026, 8, 27),
+    ) == ["generative_rec"]
+
+
+def test_delivery_window_recovers_since_success_with_track_caps():
+    from daily_paper.config import load_config
+    from daily_paper.digest_state import DigestState
+
+    config = load_config("config.toml")
+    now = dt.datetime(2026, 8, 27, 8, 0, tzinfo=dt.timezone.utc)
+    state = DigestState(
+        last_success={
+            "llm_systems": "2026-08-25T07:00:00Z",
+            "generative_rec": "2026-08-01T00:00:00Z",
+        }
+    )
+
+    assert _delivery_days_back(config.tracks["llm_systems"], state, now=now) == 3
+    assert _delivery_days_back(config.tracks["generative_rec"], state, now=now) == 14
+    assert config.tracks["generative_rec"].arxiv.days_back == 14

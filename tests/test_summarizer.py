@@ -4,10 +4,11 @@ from daily_paper.models import Paper
 from daily_paper.summarizer import (
     ChatCompletionClient,
     analyze_papers_for_site,
+    classify_and_score_track,
     score_papers_with_llm,
     summarize_papers,
 )
-from daily_paper.config import SummaryConfig
+from daily_paper.config import SummaryConfig, load_config
 
 
 def make_paper():
@@ -23,6 +24,20 @@ def make_paper():
         primary_category="cs.IR",
         abs_url="https://arxiv.org/abs/2606.01234",
         pdf_url="https://arxiv.org/pdf/2606.01234",
+    )
+
+
+def make_summary_config():
+    return SummaryConfig(
+        provider="deepseek",
+        base_url="https://api.deepseek.com",
+        model="deepseek-v4-flash",
+        analysis_model="deepseek-v4-pro",
+        language="zh",
+        max_sentences=3,
+        full_text_max_chars=12000,
+        full_text_timeout_seconds=10,
+        analysis_workers=1,
     )
 
 
@@ -120,6 +135,112 @@ def test_preference_scoring_payload(monkeypatch):
     assert captured["body"]["response_format"] == {"type": "json_object"}
     assert "线上 A/B" in captured["body"]["messages"][0]["content"]
     assert result["score"] == 92
+
+
+def test_track_scoring_payload_uses_confirmed_dimensions(monkeypatch):
+    captured = {}
+    response_payload = {
+        "choices": [
+            {
+                "message": {
+                    "content": json.dumps(
+                        {
+                            "track_relevance": 94,
+                            "topics": ["llm_rl"],
+                            "primary_topic": "llm_rl",
+                            "evidence_text": "GRPO with verifiable rewards",
+                            "score_breakdown": {
+                                "relevance": 29,
+                                "technical": 24,
+                                "evidence": 18,
+                                "novelty": 14,
+                                "reproducibility": 9,
+                            },
+                            "rationale": "Strong LLM RL contribution.",
+                            "research_details": {
+                                "feedback_source": "verifiable rewards"
+                            },
+                        }
+                    )
+                }
+            }
+        ]
+    }
+
+    class FakeResponse:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+        def read(self):
+            return json.dumps(response_payload).encode("utf-8")
+
+    def fake_urlopen(request, timeout):
+        captured["body"] = json.loads(request.data.decode("utf-8"))
+        return FakeResponse()
+
+    monkeypatch.setattr("urllib.request.urlopen", fake_urlopen)
+    paper = make_paper()
+    paper.title = "GRPO for Language Model Reasoning"
+    paper.abstract = "We optimize a language model with verifiable rewards."
+    client = ChatCompletionClient("secret", "https://api.deepseek.com", "deepseek-v4-pro")
+
+    result = client.classify_and_score_track(paper, "llm_systems")
+
+    prompt = captured["body"]["messages"][0]["content"]
+    assert "relevance 0-30" in prompt
+    assert "technical 0-25" in prompt
+    assert result["primary_topic"] == "llm_rl"
+
+
+def test_classify_and_score_track_applies_llm_result(monkeypatch):
+    paper = make_paper()
+    paper.title = "GRPO for Language Model Reasoning"
+    paper.abstract = "We optimize a language model with verifiable rewards."
+    track = load_config("config.toml").tracks["llm_systems"]
+
+    def fake_score(self, paper, track_key, language="zh"):
+        return {
+            "track_relevance": 94,
+            "topics": ["llm_rl"],
+            "primary_topic": "llm_rl",
+            "evidence_text": "GRPO with verifiable rewards",
+            "score_breakdown": {
+                "relevance": 29,
+                "technical": 24,
+                "evidence": 18,
+                "novelty": 14,
+                "reproducibility": 9,
+            },
+            "rationale": "Strong LLM RL contribution.",
+            "research_details": {"feedback_source": "verifiable rewards"},
+        }
+
+    monkeypatch.setenv("DEEPSEEK_API_KEY", "secret")
+    monkeypatch.setattr(ChatCompletionClient, "classify_and_score_track", fake_score)
+
+    classify_and_score_track([paper], track, make_summary_config())
+
+    assert paper.tracks == ["llm_systems"]
+    assert paper.primary_topic == "llm_rl"
+    assert paper.track_scores["llm_systems"] == 94
+    assert paper.research_details["feedback_source"] == "verifiable rewards"
+
+
+def test_classify_and_score_track_falls_back_without_api_key(monkeypatch):
+    paper = make_paper()
+    paper.title = "GRPO for Language Model Reasoning"
+    paper.abstract = "We optimize a language model with verifiable rewards."
+    track = load_config("config.toml").tracks["llm_systems"]
+    monkeypatch.delenv("DEEPSEEK_API_KEY", raising=False)
+
+    classify_and_score_track([paper], track, make_summary_config())
+
+    assert paper.track_relevance["llm_systems"] >= 70
+    assert paper.primary_topic == "llm_rl"
+    assert paper.track_scores["llm_systems"] > 0
 
 
 def test_score_papers_with_llm_applies_preference_score(monkeypatch):
@@ -341,3 +462,46 @@ def test_analyze_papers_for_site_parallel_applies_all_results(monkeypatch):
     assert sorted(calls) == ["arxiv:2606.01234", "arxiv:2606.05678"]
     assert all(paper.core_method == "核心方法" for paper in papers)
     assert all(paper.ab_test == "no" for paper in papers)
+
+
+def test_llm_site_analysis_keeps_research_details_without_forcing_ab(monkeypatch):
+    paper = make_paper()
+    paper.title = "Tool-Using Language Model Agent"
+    paper.abstract = "A language model agent plans and calls tools."
+    paper.tracks = ["llm_systems"]
+    paper.primary_track = "llm_systems"
+    paper.topics = ["llm_agent"]
+    paper.primary_topic = "llm_agent"
+
+    def fake_summarize(self, paper, language="zh"):
+        return {"summary": "轻量摘要", "tags": []}
+
+    def fake_analyze(self, paper, full_text="", language="zh"):
+        return {
+            "summary": "Agent 深度摘要",
+            "core_method": "规划器调用工具并写入记忆",
+            "innovation_points": ["长时程工具规划"],
+            "experiment_results": ["在 Agent 基准上提升"],
+            "limitations": ["仅评测单一环境"],
+            "practical_value": "适合工具型 Agent 设计",
+            "research_details": {
+                "agent_environment": "browser benchmark",
+                "agent_mechanism": "planner with episodic memory",
+                "key_benchmarks": ["BrowserGym"],
+            },
+        }
+
+    monkeypatch.setenv("DEEPSEEK_API_KEY", "secret")
+    monkeypatch.setattr(ChatCompletionClient, "summarize", fake_summarize)
+    monkeypatch.setattr(ChatCompletionClient, "analyze_for_site", fake_analyze)
+    monkeypatch.setattr(
+        "daily_paper.summarizer.extract_full_text_for_analysis",
+        lambda *args, **kwargs: "full paper text",
+    )
+
+    analyze_papers_for_site([paper], make_summary_config())
+
+    assert paper.research_details["agent_environment"] == "browser benchmark"
+    assert paper.research_details["key_benchmarks"] == ["BrowserGym"]
+    assert paper.ab_test == "unknown"
+    assert paper.ab_test_evidence == ""

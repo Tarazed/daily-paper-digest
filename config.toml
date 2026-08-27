@@ -1,4 +1,6 @@
 state_file = "paper_state.toml"
+digest_state_file = "digest_state.json"
+default_track = "llm_systems"
 
 [arxiv]
 categories = ["cs.IR", "cs.AI", "cs.LG", "cs.CL", "cs.SI", "stat.ML"]
@@ -94,7 +96,7 @@ exclude_keywords = [
   "review recommendation"
 ]
 max_results = 50
-days_back = 7
+days_back = 14
 
 [dblp]
 # Conference metadata is merged into the site alongside recent arXiv papers.
@@ -194,6 +196,86 @@ fallback_enabled = true
 fallback_providers = ["openalex", "semantic_scholar"]
 fallback_workers = 4
 
+[tracks.llm_systems]
+label = "RL · Post-training · Agent"
+enabled = true
+cadence = "daily"
+quota = 12
+relevance_threshold = 70
+
+[tracks.llm_systems.topic_quotas]
+post_training = 4
+llm_rl = 4
+llm_agent = 4
+
+[tracks.llm_systems.arxiv]
+categories = ["cs.CL", "cs.AI", "cs.LG", "cs.MA"]
+include_keywords = [
+  "LLM post-training",
+  "language model post-training",
+  "supervised fine-tuning language model",
+  "instruction tuning language model",
+  "preference optimization language model",
+  "direct preference optimization",
+  "reward model language model",
+  "process reward model",
+  "RLHF",
+  "RLAIF",
+  "GRPO language model",
+  "PPO language model",
+  "reinforcement learning language model reasoning",
+  "verifiable reward language model",
+  "agent reinforcement learning language model",
+  "LLM agent",
+  "language model agent",
+  "tool use language model",
+  "function calling language model",
+  "agent memory language model",
+  "multi-agent language model",
+  "computer use agent",
+  "agent evaluation language model"
+]
+exclude_keywords = [
+  "locomotion control",
+  "power grid control",
+  "autonomous driving control",
+  "robot manipulation policy"
+]
+max_results = 150
+days_back = 7
+
+[tracks.llm_systems.dblp]
+enabled = true
+venues = ["ICLR", "ICML", "NeurIPS", "ACL", "EMNLP", "NAACL", "AAAI", "IJCAI", "COLM"]
+include_keywords = [
+  "LLM post-training",
+  "preference optimization language model",
+  "reward model language model",
+  "RLHF",
+  "GRPO language model",
+  "language model agent",
+  "LLM agent",
+  "tool use language model",
+  "agent evaluation language model"
+]
+max_results_per_query = 20
+years_back = 1
+timeout_seconds = 8
+max_failures = 3
+max_total_results = 100
+workers = 4
+fallback_enabled = true
+fallback_providers = ["openalex", "semantic_scholar"]
+fallback_workers = 4
+
+[tracks.generative_rec]
+label = "Generative Recommendation"
+enabled = true
+cadence = "weekly"
+weekly_day = "friday"
+quota = 10
+relevance_threshold = 70
+
 [email]
 sender_name = "Daily Paper Digest"
 default_to = ""
@@ -202,7 +284,7 @@ top_n = 10
 
 [site]
 title = "Daily Paper Digest"
-subtitle = "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪"
+subtitle = "LLM RL、Post-training 与 Agent 日更；Generative Recommendation 周更"
 default_limit = 30
 
 [summary]
