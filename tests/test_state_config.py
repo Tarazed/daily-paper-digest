@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 from daily_paper.config import load_config
 from daily_paper.state import load_state
 
@@ -140,3 +143,27 @@ notes = "重点看实验。"
 
     assert state["arxiv:2606.01234"]["importance"] == "high"
     assert state["arxiv:2606.01234"]["read_status"] == "saved"
+
+
+def test_workflow_and_script_persist_state_without_push_email():
+    workflow = Path(".github/workflows/daily-pages.yml").read_text(encoding="utf-8")
+    script = Path("scripts/build_pages.sh").read_text(encoding="utf-8")
+    initial_state = json.loads(Path("digest_state.json").read_text(encoding="utf-8"))
+
+    assert "digest_state.json" in workflow
+    assert "github.event_name == 'schedule'" in workflow
+    assert "inputs.send_email" in workflow
+    assert "--track llm_systems" in script
+    assert "--track generative_rec" in script
+    assert "DAILY_PAPER_SEND" in script
+    assert " backfill " in script
+    assert initial_state["sent_ids"] == {}
+    assert initial_state["cold_start_completed_at"] == ""
+
+
+def test_production_site_subtitle_uses_new_primary_focus():
+    config = load_config("config.toml")
+
+    assert "RL" in config.site.subtitle
+    assert "Post-training" in config.site.subtitle
+    assert "Agent" in config.site.subtitle

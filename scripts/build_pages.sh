@@ -23,7 +23,36 @@ if [ -z "${DEEPSEEK_API_KEY:-}" ]; then
 fi
 
 echo "Generating site data..."
-python3 -m daily_paper --config "$CONFIG" site-data --out web/public/papers.json --limit "$LIMIT"
+python3 -m daily_paper --config "$CONFIG" backfill --out web/public/papers.json --days 365 --per-topic 20
+
+TRACK_ARGS=(--track llm_systems)
+WEEKDAY="${DAILY_PAPER_WEEKDAY:-$(TZ=Asia/Shanghai date +%u)}"
+if [ "$WEEKDAY" = "5" ]; then
+  TRACK_ARGS+=(--track generative_rec)
+  echo "Friday in Asia/Shanghai: including the weekly Generative Recommendation track."
+fi
+
+python3 -m daily_paper --config "$CONFIG" site-data \
+  --out web/public/papers.json \
+  --limit "$LIMIT" \
+  "${TRACK_ARGS[@]}"
+
+if [ "${DAILY_PAPER_SEND:-false}" = "true" ]; then
+  echo "Sending the daily LLM systems digest..."
+  python3 -m daily_paper --config "$CONFIG" send \
+    --track llm_systems \
+    --data web/public/papers.json \
+    --to "${DAILY_PAPER_TO:-}"
+  if [ "$WEEKDAY" = "5" ]; then
+    echo "Sending the Friday Generative Recommendation digest..."
+    python3 -m daily_paper --config "$CONFIG" send \
+      --track generative_rec \
+      --data web/public/papers.json \
+      --to "${DAILY_PAPER_TO:-}"
+  fi
+else
+  echo "Email delivery disabled (DAILY_PAPER_SEND is not true)."
+fi
 
 echo "Building GitHub Pages site into docs/..."
 if ! command -v npm >/dev/null 2>&1; then

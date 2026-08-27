@@ -284,7 +284,7 @@ top_n = 10
 
 [site]
 title = "Daily Paper Digest"
-subtitle = "推荐系统、生成式推荐、LLM4Rec 与 Agent4Rec 论文追踪"
+subtitle = "LLM RL、Post-training 与 Agent 日更；Generative Recommendation 周更"
 default_limit = 30
 
 [summary]
