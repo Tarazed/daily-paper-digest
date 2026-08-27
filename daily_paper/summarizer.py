@@ -8,12 +8,19 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Dict, List
 
-from .config import SummaryConfig
+from .config import SummaryConfig, TrackConfig
 from .filtering import ALLOWED_TAGS, MAX_TAGS, infer_tags, normalize_tag
 from .fulltext import extract_full_text_for_analysis
 from .models import Paper
+from .tracks import (
+    TOPIC_TERMS,
+    TrackMatch,
+    apply_track_match,
+    apply_track_score,
+    classify_deterministically,
+)
 
-ANALYSIS_PROMPT_VERSION = "site-analysis-v2-tags"
+ANALYSIS_PROMPT_VERSION = "site-analysis-v3-tracks"
 PREFERENCE_PROMPT_VERSION = "preference-score-v1"
 SITE_ANALYSIS_FIELDS = [
     "generated_summary",
@@ -31,8 +38,20 @@ SITE_ANALYSIS_FIELDS = [
     "llm_score",
     "llm_score_rationale",
     "preference_signals",
+    "research_details",
 ]
 TAG_PROMPT = ", ".join(ALLOWED_TAGS)
+RESEARCH_DETAIL_KEYS = (
+    "training_objective",
+    "feedback_source",
+    "model_data_scale",
+    "key_benchmarks",
+    "artifacts",
+    "agent_environment",
+    "agent_mechanism",
+    "interaction_horizon",
+    "agent_evaluation",
+)
 
 
 def summarize_papers(papers: List[Paper], config: SummaryConfig) -> List[Paper]:
@@ -131,6 +150,117 @@ def score_papers_with_llm(papers: List[Paper], config: SummaryConfig) -> List[Pa
                 result = fallback_preference_score(paper)
             _apply_preference_score_result(paper, result)
     return papers
+
+
+def classify_and_score_track(
+    papers: List[Paper], track: TrackConfig, config: SummaryConfig
+) -> List[Paper]:
+    if not papers:
+        return papers
+    if track.key == "generative_rec":
+        accepted = []
+        for paper in papers:
+            match = classify_deterministically(paper, track)
+            if apply_track_match(paper, match, track.relevance_threshold):
+                accepted.append(paper)
+        score_papers_with_llm(accepted, config)
+        for paper in accepted:
+            paper.track_scores[track.key] = paper.llm_score
+            paper.track_score_rationales[track.key] = paper.llm_score_rationale
+        return papers
+
+    api_key = _api_key_for_provider(config.provider)
+
+    def score_one(paper: Paper) -> Dict[str, object]:
+        if not api_key:
+            return _fallback_track_result(paper, track)
+        client = ChatCompletionClient(
+            api_key=api_key,
+            base_url=config.base_url,
+            model=config.analysis_model,
+            provider=config.provider,
+        )
+        try:
+            return client.classify_and_score_track(
+                paper, track.key, language=config.language
+            )
+        except Exception as exc:
+            print(
+                "Warning: track scoring failed for %s; using rule fallback. %s"
+                % (paper.id, exc),
+                file=sys.stderr,
+            )
+            return _fallback_track_result(paper, track)
+
+    workers = max(1, int(config.analysis_workers))
+    if workers == 1 or len(papers) <= 1:
+        for paper in papers:
+            _apply_track_scoring_result(paper, track, score_one(paper))
+        return papers
+
+    with ThreadPoolExecutor(max_workers=min(workers, len(papers))) as executor:
+        futures = {executor.submit(score_one, paper): paper for paper in papers}
+        for future in as_completed(futures):
+            paper = futures[future]
+            try:
+                result = future.result()
+            except Exception:
+                result = _fallback_track_result(paper, track)
+            _apply_track_scoring_result(paper, track, result)
+    return papers
+
+
+def _fallback_track_result(paper: Paper, track: TrackConfig) -> Dict[str, object]:
+    match = classify_deterministically(paper, track)
+    text = " ".join([paper.title, paper.abstract, paper.abs_url]).lower()
+    return {
+        "track_relevance": match.relevance,
+        "topics": match.topics,
+        "primary_topic": match.primary_topic,
+        "evidence_text": match.evidence,
+        "score_breakdown": {
+            "relevance": round(match.relevance * 0.30),
+            "technical": min(25, 10 + max(0, len(match.topics) - 1) * 3),
+            "evidence": 10 if paper.abstract else 3,
+            "novelty": 5,
+            "reproducibility": 5 if "github" in text or "code" in text else 0,
+        },
+        "rationale": match.evidence,
+        "research_details": {},
+    }
+
+
+def _apply_track_scoring_result(
+    paper: Paper, track: TrackConfig, result: Dict[str, object]
+) -> None:
+    allowed_topics = set(TOPIC_TERMS)
+    topics = [
+        str(value)
+        for value in (result.get("topics") or [])
+        if str(value) in allowed_topics
+    ]
+    primary_topic = str(result.get("primary_topic", ""))
+    if primary_topic not in topics:
+        primary_topic = topics[0] if topics else ""
+    relevance = max(0, min(100, _safe_int(result.get("track_relevance"))))
+    match = TrackMatch(
+        track=track.key,
+        relevance=relevance,
+        topics=topics,
+        primary_topic=primary_topic,
+        evidence=str(result.get("evidence_text", "")).strip(),
+    )
+    if not apply_track_match(paper, match, track.relevance_threshold):
+        return
+    apply_track_score(
+        paper,
+        track.key,
+        result.get("score_breakdown") or {},
+        str(result.get("rationale", "")),
+    )
+    paper.research_details.update(
+        _clean_research_details(result.get("research_details") or {})
+    )
 
 
 def _apply_summary_result(paper: Paper, result: Dict[str, object], config: SummaryConfig) -> None:
@@ -292,30 +422,43 @@ def _apply_analysis_result(paper: Paper, result: Dict[str, object]) -> None:
         fallback=["全文未提供足够实验结果细节，或解析失败。"],
         limit=3,
     )
-    ab_test = str(result.get("ab_test", "unknown")).lower().strip()
-    paper.ab_test = ab_test if ab_test in ("yes", "no", "unknown") else "unknown"
-    original_ab_test = paper.ab_test
-    if paper.ab_test == "unknown":
-        paper.ab_test = "no"
-    if original_ab_test == "unknown":
-        paper.ab_test_evidence = "论文未报告线上 A/B 测试。"
+    llm_only = "llm_systems" in paper.tracks and "generative_rec" not in paper.tracks
+    if llm_only:
+        paper.ab_test = "unknown"
+        paper.ab_test_evidence = ""
     else:
-        paper.ab_test_evidence = str(
-            result.get("ab_test_evidence")
-            or (
-                "论文全文未报告线上 A/B 测试。"
-                if paper.analysis_basis == "full_text"
-                else "论文未报告线上 A/B 测试。"
-            )
-        ).strip()
+        ab_test = str(result.get("ab_test", "unknown")).lower().strip()
+        paper.ab_test = ab_test if ab_test in ("yes", "no", "unknown") else "unknown"
+        original_ab_test = paper.ab_test
+        if paper.ab_test == "unknown":
+            paper.ab_test = "no"
+        if original_ab_test == "unknown":
+            paper.ab_test_evidence = "论文未报告线上 A/B 测试。"
+        else:
+            paper.ab_test_evidence = str(
+                result.get("ab_test_evidence")
+                or (
+                    "论文全文未报告线上 A/B 测试。"
+                    if paper.analysis_basis == "full_text"
+                    else "论文未报告线上 A/B 测试。"
+                )
+            ).strip()
     paper.limitations = _clean_list(
         result.get("limitations"),
         fallback=["需要阅读全文确认实验设置、数据集和适用边界。"],
         limit=2,
     )
     paper.practical_value = str(
-        result.get("practical_value") or "可作为推荐系统相关方向的跟进阅读。"
+        result.get("practical_value")
+        or (
+            "可作为大模型后训练或 Agent 方向的跟进阅读。"
+            if llm_only
+            else "可作为推荐系统相关方向的跟进阅读。"
+        )
     ).strip()
+    paper.research_details.update(
+        _clean_research_details(result.get("research_details") or {})
+    )
     paper.tags = _clean_tags(result.get("tags") or paper.tags) or paper.tags or infer_tags(paper)
 
 
@@ -335,6 +478,8 @@ def expected_analysis_signature(paper: Paper, config: SummaryConfig) -> str:
             "categories": paper.categories,
             "source": paper.source,
             "venue": paper.venue,
+            "tracks": paper.tracks,
+            "topics": paper.topics,
         },
     }
     encoded = json.dumps(payload, ensure_ascii=False, sort_keys=True).encode("utf-8")
@@ -376,6 +521,8 @@ def copy_site_analysis(source: Paper, target: Paper) -> None:
         value = getattr(source, field_name)
         if isinstance(value, list):
             value = list(value)
+        elif isinstance(value, dict):
+            value = dict(value)
         setattr(target, field_name, value)
     target.analysis_status = "cached"
 
@@ -391,6 +538,23 @@ def _clean_list(values, fallback: List[str], limit: int) -> List[str]:
         if len(cleaned) >= limit:
             break
     return cleaned or fallback
+
+
+def _clean_research_details(values) -> Dict[str, object]:
+    if not isinstance(values, dict):
+        return {}
+    cleaned = {}
+    for key in RESEARCH_DETAIL_KEYS:
+        value = values.get(key)
+        if isinstance(value, list):
+            items = _clean_list(value, fallback=[], limit=8)
+            if items:
+                cleaned[key] = items
+        elif value is not None:
+            text = str(value).strip()
+            if text:
+                cleaned[key] = text
+    return cleaned
 
 
 class ChatCompletionClient:
@@ -487,10 +651,51 @@ class ChatCompletionClient:
             "}。标签集合：%s。优先选择细粒度主题标签；只有没有更具体标签时才使用 General Rec。"
             % TAG_PROMPT
         )
+        if "llm_systems" in paper.tracks and "generative_rec" not in paper.tracks:
+            system_prompt = (
+                "你是大模型后训练、强化学习与 Agent 方向的论文分析助手。"
+                "优先依据全文，证据不足时明确说明，不要猜测。输出严格 JSON，"
+                "包含 summary、core_method、innovation_points、experiment_results、limitations、"
+                "practical_value、tags 和 research_details。research_details 只允许这些键："
+                "training_objective、feedback_source、model_data_scale、key_benchmarks、artifacts、"
+                "agent_environment、agent_mechanism、interaction_horizon、agent_evaluation。"
+                "列表型信息使用 JSON 数组，其余使用字符串；没有证据的键不要输出。"
+            )
         payload = self._build_payload(system_prompt=system_prompt, user_prompt=user_prompt, max_tokens=1000)
         data = self._post_chat(payload)
         output = _extract_chat_output_text(data)
         return json.loads(output)
+
+    def classify_and_score_track(
+        self, paper: Paper, track_key: str, language: str = "zh"
+    ) -> Dict[str, object]:
+        user_prompt = (
+            "Title: %s\nAuthors: %s\nVenue: %s\nPublished: %s\nCategories: %s\nAbstract: %s"
+            % (
+                paper.title,
+                ", ".join(paper.authors),
+                paper.venue,
+                paper.published_date,
+                ", ".join(paper.categories),
+                paper.abstract or "No abstract is available.",
+            )
+        )
+        system_prompt = (
+            "Classify and rank a paper for the llm_systems research track. "
+            "Allowed topics are post_training, llm_rl, and llm_agent. "
+            "Exclude traditional robotics, control, and general RL without a material language-model contribution. "
+            "Return strict JSON with track_relevance 0-100, topics, primary_topic, evidence_text, "
+            "score_breakdown, rationale, and research_details. Score dimensions are: "
+            "relevance 0-30, technical 0-25, evidence 0-20, novelty 0-15, reproducibility 0-10. "
+            "research_details may contain training_objective, feedback_source, model_data_scale, "
+            "key_benchmarks, artifacts, agent_environment, agent_mechanism, interaction_horizon, "
+            "and agent_evaluation. Do not infer facts absent from the metadata."
+        )
+        payload = self._build_payload(
+            system_prompt=system_prompt, user_prompt=user_prompt, max_tokens=800
+        )
+        data = self._post_chat(payload)
+        return json.loads(_extract_chat_output_text(data))
 
     def score_preference(self, paper: Paper, language: str = "zh") -> Dict[str, object]:
         user_prompt = (
