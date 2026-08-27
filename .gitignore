@@ -3,6 +3,7 @@ __pycache__/
 .pytest_cache/
 web/node_modules/
 web/.vite/
+.worktrees/
 *.log
 .env
 .env.local
