@@ -1,5 +1,12 @@
 import React, { useEffect, useMemo, useState } from "react";
 import ReactDOM from "react-dom";
+import {
+  papersForView,
+  researchDetailEntries,
+  showAbEvidence,
+  trackScore,
+  trackTopics
+} from "./paper-utils.mjs";
 import "./styles.css";
 
 const MARKS_KEY = "daily-paper-marks-v1";
@@ -11,6 +18,11 @@ const AB_LABELS = {
 const AB_FILTER_LABELS = {
   All: "全部 A/B 状态",
   ...AB_LABELS
+};
+const TOPIC_LABELS = {
+  post_training: "Post-training",
+  llm_rl: "LLM RL",
+  llm_agent: "LLM Agent"
 };
 const CLOUD_TOPIC_GROUPS = [
   {
@@ -248,6 +260,9 @@ const DISPLAY_TAG_PRIORITY = new Map(DISPLAY_TAGS.map((label, index) => [label, 
 
 function App() {
   const [payload, setPayload] = useState(null);
+  const [selectedTrack, setSelectedTrack] = useState("");
+  const [activeTopic, setActiveTopic] = useState("All");
+  const [activeView, setActiveView] = useState("latest");
   const [query, setQuery] = useState("");
   const [archiveMonth, setArchiveMonth] = useState("All");
   const [archiveDate, setArchiveDate] = useState("All");
@@ -272,21 +287,36 @@ function App() {
   const papers = useMemo(() => {
     return (payload?.papers || []).map((paper) => ({
       ...paper,
+      tracks: paper.tracks?.length ? paper.tracks : ["generative_rec"],
       localMark: marks[paper.id] || paper.importance || "normal",
       displayTags: paperDisplayTags(paper, includeKeywords)
     }));
   }, [payload, marks, includeKeywords]);
 
-  const tags = useMemo(() => unique(papers.flatMap((paper) => paper.displayTags || [])), [papers]);
-  const venues = useMemo(() => unique(papers.map((paper) => displayVenue(paper)).filter(Boolean)), [papers]);
-  const archiveMonths = useMemo(() => uniqueDesc(papers.map((paper) => paperMonth(paper)).filter(Boolean)), [papers]);
-  const archiveDates = useMemo(() => uniqueDesc(papers.map((paper) => paperDate(paper)).filter(Boolean)), [papers]);
+  const tracks = useMemo(() => {
+    const configured = Object.values(payload?.tracks || {});
+    return configured.length
+      ? configured
+      : [{ key: "generative_rec", label: "Generative Recommendation", cadence: "weekly" }];
+  }, [payload]);
+  const activeTrack = selectedTrack || payload?.default_track || tracks[0]?.key || "generative_rec";
+  const activeTrackConfig = tracks.find((track) => track.key === activeTrack) || tracks[0] || {};
+  const topics = useMemo(() => trackTopics(papers, activeTrack), [papers, activeTrack]);
+  const viewPapers = useMemo(
+    () => papersForView(papers, activeTrack, activeTopic, activeView),
+    [papers, activeTrack, activeTopic, activeView]
+  );
+
+  const tags = useMemo(() => unique(viewPapers.flatMap((paper) => paper.displayTags || [])), [viewPapers]);
+  const venues = useMemo(() => unique(viewPapers.map((paper) => displayVenue(paper)).filter(Boolean)), [viewPapers]);
+  const archiveMonths = useMemo(() => uniqueDesc(viewPapers.map((paper) => paperMonth(paper)).filter(Boolean)), [viewPapers]);
+  const archiveDates = useMemo(() => uniqueDesc(viewPapers.map((paper) => paperDate(paper)).filter(Boolean)), [viewPapers]);
   const archiveMonthLabels = useMemo(() => optionLabels(archiveMonths, formatArchiveMonth, "全部月份"), [archiveMonths]);
   const archiveDateLabels = useMemo(() => optionLabels(archiveDates, formatArchiveDate, "全部日期"), [archiveDates]);
-  const keywordCloud = useMemo(() => buildKeywordCloud(papers, includeKeywords), [papers, includeKeywords]);
+  const keywordCloud = useMemo(() => buildKeywordCloud(viewPapers, includeKeywords), [viewPapers, includeKeywords]);
   const filtered = useMemo(() => {
     const needle = query.trim().toLowerCase();
-    return papers.filter((paper) => {
+    return viewPapers.filter((paper) => {
       const haystack = [
         paper.title,
         (paper.authors || []).join(" "),
@@ -306,18 +336,29 @@ function App() {
         (tag === "All" || (paper.displayTags || []).includes(tag)) &&
         (venue === "All" || displayVenue(paper) === venue) &&
         (importanceFilter === "All" || paper.localMark === importanceFilter) &&
-        (abFilter === "All" || (paper.ab_test || "unknown") === abFilter)
+        (!showAbEvidence(activeTrack) || abFilter === "All" || (paper.ab_test || "unknown") === abFilter)
       );
     });
-  }, [papers, query, archiveMonth, archiveDate, tag, venue, importanceFilter, abFilter, includeKeywords]);
+  }, [viewPapers, query, archiveMonth, archiveDate, tag, venue, importanceFilter, abFilter, includeKeywords, activeTrack]);
   const groupedPapers = useMemo(() => groupPapersByMonth(filtered), [filtered]);
 
-  const stats = useMemo(() => buildStats(papers), [papers]);
+  const stats = useMemo(() => buildStats(viewPapers), [viewPapers]);
   const site = payload?.site || {};
   const cache = payload?.analysis_cache || {};
 
   function setMark(paperId, value) {
     setMarks((current) => ({ ...current, [paperId]: value }));
+  }
+
+  function chooseTrack(trackKey) {
+    setSelectedTrack(trackKey);
+    setActiveTopic("All");
+    setActiveView("latest");
+    setArchiveMonth("All");
+    setArchiveDate("All");
+    setTag("All");
+    setVenue("All");
+    setAbFilter("All");
   }
 
   function selectKeyword(item) {
@@ -338,7 +379,7 @@ function App() {
         <div>
           <div className="eyebrow">GitHub Pages Research Dashboard</div>
           <h1>{site.title || "Daily Paper Digest"}</h1>
-          <p>{site.subtitle || "Recommendation Systems Paper Digest"}</p>
+          <p>{activeTrackConfig.label || site.subtitle || "Research Paper Digest"}</p>
         </div>
         <div className="metaBlock">
           <span>Updated</span>
@@ -346,11 +387,46 @@ function App() {
         </div>
       </header>
 
+      <nav className="trackTabs" aria-label="Research tracks">
+        {tracks.map((track) => (
+          <button
+            className={activeTrack === track.key ? "active" : ""}
+            key={track.key}
+            onClick={() => chooseTrack(track.key)}
+          >
+            <span>{track.label}</span>
+            <small>{track.cadence === "daily" ? "日更" : "周更"}</small>
+          </button>
+        ))}
+      </nav>
+
+      <div className="viewControls">
+        <div className="viewTabs" aria-label="Paper collection">
+          <button className={activeView === "latest" ? "active" : ""} onClick={() => setActiveView("latest")}>最新论文</button>
+          {activeTrack === "llm_systems" && (
+            <button className={activeView === "foundations" ? "active" : ""} onClick={() => setActiveView("foundations")}>经典基线</button>
+          )}
+        </div>
+        {topics.length > 0 && (
+          <div className="topicTabs" aria-label="LLM topics">
+            <button className={activeTopic === "All" ? "active" : ""} onClick={() => setActiveTopic("All")}>全部</button>
+            {topics.map((topic) => (
+              <button className={activeTopic === topic.key ? "active" : ""} key={topic.key} onClick={() => setActiveTopic(topic.key)}>
+                {TOPIC_LABELS[topic.key] || topic.key}<span>{topic.count}</span>
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+
       <section className="statsGrid" aria-label="Digest statistics">
         <Stat label="Papers" value={stats.total} />
         <Stat label="Archive Months" value={archiveMonths.length} />
         <Stat label="Important" value={stats.important} />
-        <Stat label="A/B Evidence" value={stats.abTests} />
+        <Stat
+          label={showAbEvidence(activeTrack) ? "A/B Evidence" : "Foundations"}
+          value={showAbEvidence(activeTrack) ? stats.abTests : stats.foundations}
+        />
         <Stat label="Analysis Cache" value={`${cache.reused || 0}/${(cache.reused || 0) + (cache.analyzed || 0)}`} />
       </section>
 
@@ -373,13 +449,15 @@ function App() {
         <FilterGroup label="日期" value={archiveDate} onChange={setArchiveDate} options={["All", ...archiveDates]} optionLabels={archiveDateLabels} />
         <FilterGroup label="标签" value={tag} onChange={setTag} options={["All", ...tags]} />
         <FilterGroup label="会议" value={venue} onChange={setVenue} options={["All", ...venues]} />
-        <FilterGroup
-          label="A/B 实验"
-          value={abFilter}
-          onChange={setAbFilter}
-          options={["All", "yes", "no", "unknown"]}
-          optionLabels={AB_FILTER_LABELS}
-        />
+        {showAbEvidence(activeTrack) && (
+          <FilterGroup
+            label="A/B 实验"
+            value={abFilter}
+            onChange={setAbFilter}
+            options={["All", "yes", "no", "unknown"]}
+            optionLabels={AB_FILTER_LABELS}
+          />
+        )}
         <FilterGroup
           label="重要性"
           value={importanceFilter}
@@ -393,8 +471,7 @@ function App() {
           {archiveMonth === "All" ? "全部月份" : formatArchiveMonth(archiveMonth)}
           {" · "}
           {archiveDate === "All" ? "全部日期" : formatArchiveDate(archiveDate)}
-          {" · "}
-          {AB_FILTER_LABELS[abFilter] || AB_FILTER_LABELS.All}
+          {showAbEvidence(activeTrack) && ` · ${AB_FILTER_LABELS[abFilter] || AB_FILTER_LABELS.All}`}
         </span>
         <strong>{filtered.length} 篇论文</strong>
       </section>
@@ -416,7 +493,7 @@ function App() {
                     </div>
                     <div className="paperGrid">
                       {dateGroup.papers.map((paper) => (
-                        <PaperCard key={paper.id} paper={paper} onMark={setMark} />
+                        <PaperCard key={paper.id} paper={paper} track={activeTrack} onMark={setMark} />
                       ))}
                     </div>
                   </section>
@@ -432,14 +509,17 @@ function App() {
   );
 }
 
-function PaperCard({ paper, onMark }) {
+function PaperCard({ paper, track, onMark }) {
   const mark = paper.localMark || "normal";
   const displayTags = paper.displayTags || paper.tags || [];
+  const researchDetails = researchDetailEntries(paper);
   return (
     <article className={`paperCard mark-${mark}`}>
       <div className="cardHeader">
         <div className="tagRow">
           {mark === "high" && <span className="badge badgeImportant">重要</span>}
+          {paper.foundation && <span className="badge badgeFoundation">经典基线</span>}
+          {paper.primary_topic && <span className="badge badgeTopic">{TOPIC_LABELS[paper.primary_topic] || paper.primary_topic}</span>}
           {displayTags.slice(0, 5).map((item) => (
             <span className="badge" key={item}>
               {item}
@@ -469,7 +549,7 @@ function PaperCard({ paper, onMark }) {
       </div>
       <div className="statusLine"><span>{markLabel(mark)}</span></div>
 
-      <PreferenceScore paper={paper} />
+      <TrackScoreCard paper={paper} track={track} />
 
       <p className="summary">{paper.generated_summary || paper.abstract || "No summary available."}</p>
       {paper.core_method && (
@@ -482,10 +562,26 @@ function PaperCard({ paper, onMark }) {
       <InfoSection title="创新点" items={paper.innovation_points} />
       <InfoSection title="实验结果" items={paper.experiment_results} />
 
-      <div className={`abBox ab-${paper.ab_test || "unknown"}`}>
-        <span>{AB_LABELS[paper.ab_test] || AB_LABELS.unknown}</span>
-        <p>{paper.ab_test_evidence || "论文未报告线上 A/B 测试。"}</p>
-      </div>
+      {track === "llm_systems" && researchDetails.length > 0 && (
+        <section className="researchDetails">
+          <h3>研究设置</h3>
+          <dl>
+            {researchDetails.map((detail) => (
+              <div key={detail.key}>
+                <dt>{detail.label}</dt>
+                <dd>{detail.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      )}
+
+      {showAbEvidence(track) && (
+        <div className={`abBox ab-${paper.ab_test || "unknown"}`}>
+          <span>{AB_LABELS[paper.ab_test] || AB_LABELS.unknown}</span>
+          <p>{paper.ab_test_evidence || "论文未报告线上 A/B 测试。"}</p>
+        </div>
+      )}
 
       {paper.practical_value && (
         <div className="valueLine">
@@ -546,15 +642,18 @@ function WordCloud({ items, activeTag, activeQuery, onSelect }) {
   );
 }
 
-function PreferenceScore({ paper }) {
-  const score = Number(paper.llm_score || 0);
-  const signals = Array.isArray(paper.preference_signals) ? paper.preference_signals.filter(Boolean) : [];
-  const rationale = String(paper.llm_score_rationale || "").trim();
+function TrackScoreCard({ paper, track }) {
+  const score = trackScore(paper, track);
+  const isGr = track === "generative_rec";
+  const signals = isGr && Array.isArray(paper.preference_signals) ? paper.preference_signals.filter(Boolean) : [];
+  const rationale = String(
+    paper.track_score_rationales?.[track] || (isGr ? paper.llm_score_rationale : "") || ""
+  ).trim();
   if (!score && !signals.length && !rationale) return null;
   return (
     <div className="preferenceScore">
       <div className="preferenceHead">
-        <span>偏好评分</span>
+        <span>{isGr ? "偏好评分" : "Track 评分"}</span>
         <strong>{score || "N/A"}</strong>
       </div>
       {signals.length > 0 && (
@@ -616,6 +715,7 @@ function buildStats(papers) {
     total: papers.length,
     important: papers.filter((paper) => paper.localMark === "high" || paper.importance === "high").length,
     abTests: papers.filter((paper) => paper.ab_test === "yes").length,
+    foundations: papers.filter((paper) => paper.foundation).length,
     venues: unique(papers.map((paper) => displayVenue(paper)).filter(Boolean)).slice(0, 3).join(" · ") || "N/A"
   };
 }
