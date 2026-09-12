@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T04:44:04Z",
+  "generated_at": "2026-09-12T04:29:17Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "LLM RL、Post-training 与 Agent 日更；Generative Recommendation 周更",
@@ -415,18 +415,18 @@
         "arxiv:2608.18423"
       ],
       "selected_ids": [
-        "arxiv:2609.05295",
-        "arxiv:2609.10750",
-        "arxiv:2609.06289",
+        "arxiv:2609.10052",
+        "arxiv:2609.11739",
         "arxiv:2609.11864",
-        "arxiv:2609.08064",
-        "arxiv:2609.06934",
-        "arxiv:2609.11108",
-        "arxiv:2609.05261",
-        "arxiv:2609.06366",
-        "arxiv:2609.09778",
+        "arxiv:2609.11878",
+        "arxiv:2609.08944",
+        "arxiv:2609.08040",
+        "arxiv:2609.06783",
+        "arxiv:2609.07131",
         "arxiv:2609.06563",
-        "arxiv:2609.06129"
+        "arxiv:2609.10036",
+        "arxiv:2609.09778",
+        "arxiv:2609.08566"
       ]
     },
     "generative_rec": {
@@ -687,18 +687,7 @@
         "openalex:W4400525124",
         "openalex:W4400118952"
       ],
-      "selected_ids": [
-        "arxiv:2609.11052",
-        "arxiv:2609.08443",
-        "arxiv:2609.07273",
-        "arxiv:2609.07143",
-        "arxiv:2609.08310",
-        "arxiv:2609.09551",
-        "arxiv:2609.08860",
-        "arxiv:2609.06027",
-        "arxiv:2609.08762",
-        "arxiv:2609.05748"
-      ]
+      "selected_ids": []
     }
   },
   "topics": {
@@ -862,7 +851,7 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "该论文提出一种多信号幻觉检测流水线，结合DeBERTa-v3微调分类、MC Dropout不确定性量化和温度校准，在HaluEval上达到F1=0.915和AUROC=0.977。用DPO微调Qwen2.5-0.5B生成器将幻觉率从85.5%降至37.7%，并发现领域匹配预训练（如PubMedBERT）对生物医学领域检测最有效。",
+      "generated_summary": "本文提出结合DeBERTa-v3分类、MC Dropout不确定性和温度校准的幻觉检测流程，在HaluEval上达到F1=0.915，并发现领域特定微调对生物医学等专业领域至关重要。",
       "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
         "未能从全文/元数据中稳定抽取明确创新点。"
@@ -925,14 +914,14 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "Fine-tuning DeBERTa-v3 for classification, DPO for hallucination reduction, domain-specific fine-tuning of PubMedBERT",
-        "feedback_source": "HaluEval benchmark annotated hallucination data; SciFact for domain",
-        "model_data_scale": "Qwen2.5-0.5B generator; DeBERTa-v3 classifier; PubMedBERT; datasets HaluEval and SciFact",
+        "training_objective": "Direct Preference Optimization (DPO) applied to Qwen2.5-0.5B to reduce hallucination; fine-tuning DeBERTa-v3 and PubMedBERT for classification.",
+        "feedback_source": "Preference pairs derived from hallucination detector outputs (correct vs. hallucinated responses), likely from HaluEval dataset.",
+        "model_data_scale": "Qwen2.5-0.5B generator; DeBERTa-v3 classifier; PubMedBERT; training data from HaluEval and SciFact (sizes not specified).",
         "key_benchmarks": [
           "HaluEval",
           "SciFact"
         ],
-        "artifacts": "https://github.com/varunteja99/hallucination-detection-nlp",
+        "artifacts": "Code and models available at https://github.com/varunteja99/hallucination-detection-nlp",
         "agent_environment": "None",
         "agent_mechanism": "None",
         "interaction_horizon": "None",
@@ -1062,28 +1051,31 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "该论文提出 RetroThinker，一个多阶段后训练框架，使流式语音大模型（SpeechLLM）能够在推理过程中动态自我验证并修正思维链步骤。它结合了在回顾性思考数据上的监督微调与基于长度的直接偏好优化，以优化早期推理。在 GSM8K 基准上，RetroThinker 在保持相似延迟的情况下将准确率绝对提升了 11%。",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "generated_summary": "本文提出RetroThinker，一种多阶段后训练框架，使流式语音大模型能在推理时动态修正思维链步骤。该方法结合监督微调和基于长度的直接偏好优化，优化早期推理回顾。在GSM8K上，RetroThinker在相似延迟下将准确率绝对提升11%。",
+      "core_method": "RetroThinker采用多阶段后训练框架，首先在策划的回顾性思维数据上进行监督微调（SFT），使模型学会自验证和前向修正思维链步骤；随后使用基于长度的直接偏好优化（DPO）来优化早期推理期间的回顾行为，即在与用户语音输入并发的推理过程中，根据推理序列长度偏好引导模型生成更优的回顾性修正。",
       "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
+        "提出RetroThinker框架，使流式语音LLM（Moshi）能够在推理过程中动态自我验证和前向修正思维链步骤。",
+        "引入基于长度的DPO，针对早期并发推理阶段的回顾行为进行优化，改善准确率与延迟的权衡。",
+        "在语音LLM上实现了回顾性思维，无需级联ASR即可在流式场景中进行复杂推理修正。"
       ],
       "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
+        "在GSM8K基准上，RetroThinker在可比延迟下比非回顾性基线绝对准确率提升11%。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
+        "文中未明确提及具体限制。"
       ],
-      "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
+      "practical_value": "该方法可提升流式语音助手在复杂推理任务中的表现，在保持低延迟的同时提高回答准确性，适用于实时语音交互场景。",
       "analysis_basis": "full_text",
-      "analysis_status": "fallback",
+      "analysis_status": "complete",
       "analysis_signature": "9c07b9f1daf8e984",
       "tags": [
         "LLM4Rec",
         "Sequential Rec",
-        "User Modeling",
-        "Evaluation"
+        "Evaluation",
+        "Generative Rec",
+        "User Modeling"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -1126,15 +1118,17 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "Supervised fine-tuning on curated retrospective thinking data, followed by length-based direct preference optimization to optimize retrospective during early reasoning.",
-        "feedback_source": "Preference data for DPO, likely generated based on length and quality of reasoning steps.",
-        "model_data_scale": "Uses Moshi model; scale not specified in metadata.",
+        "training_objective": "结合监督微调（SFT）和基于长度的直接偏好优化（DPO）进行多阶段后训练，以优化流式语音LLM的回顾性思维。",
+        "feedback_source": "长度偏好信号，用于DPO阶段引导早期推理期间的回顾行为。",
+        "model_data_scale": "基于Moshi模型，使用策划的回顾性思维数据集进行SFT，具体数据规模未在摘要中提及。",
         "key_benchmarks": [
           "GSM8K"
         ],
-        "agent_mechanism": "Self-verify and forward-correct chain-of-thought steps during streaming inference.",
-        "interaction_horizon": "Streaming speech interaction with dynamic revision of reasoning traces.",
-        "agent_evaluation": "Accuracy-latency trade-off on GSM8K compared to non-retrospective baselines."
+        "artifacts": "None mentioned in abstract or metadata.",
+        "agent_environment": "Streaming speech interaction with user speaking.",
+        "agent_mechanism": "Self-verification and forward-correction of chain-of-thought steps during inference.",
+        "interaction_horizon": "During user utterance (streaming, online).",
+        "agent_evaluation": "Accuracy-latency trade-off on GSM8K."
       },
       "display_affiliations": [
         "The University of Texas at Austin",
@@ -1165,30 +1159,32 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "LOCUS提出一种任务感知的低秩后训练方法，通过在低秩子空间内优化偏好目标，在保持效用约束下减少大语言模型的输出序列长度。在Anthropic HH-RLHF上，仅更新0.24-0.28%参数即可将生成长度降低最多39.84%，且内部偏好诊断无显著变化。该方法为降低推理成本提供了参数高效的替代方案。",
-      "core_method": "LOCUS通过选择任务感知的低秩适配子空间来最小化输出token成本，同时满足效用约束。该方法在冻结的主干网络上使用原始偏好目标进行训练，并将低秩子空间配置（包括适配器秩、模块放置、层范围、训练检查点步骤）作为结构化设计变量。训练多个候选适配器，在开发集上评估，选择满足效用约束的最短输出候选，然后进行推理部署。",
+      "generated_summary": "论文研究后训练更新的参数化如何影响生成长度，提出任务感知低秩子空间方法LOCUS，在保持偏好的同时最小化输出token成本。在Anthropic HH-RLHF上，LOCUS对Pythia-2.8B减少39.84%续写长度，对Qwen2.5-3B减少14.87-17.58%，仅更新0.24-0.28%参数，且内部偏好诊断无实质变化。",
+      "core_method": "LOCUS将低秩适配器附加到冻结骨干网络的选定模块，使用原生的偏好目标（如DPO、DrDPO、SamPO）训练候选适配器，并在开发集上评估，选择在效用约束下输出token成本最低的适配器。效用约束基于与基线相比允许的偏好准确率差异。所选适配器可合并到骨干网络或独立部署。",
       "innovation_points": [
-        "将token高效的偏好后训练形式化为任务感知的低秩子空间选择问题，并受显式效用约束。",
-        "证明低秩参数化可以在不改变对齐目标的情况下改变生成长度，不同于引入长度惩罚或提示的先前方法。",
-        "将低秩适配视为Pareto设计变量，而非仅仅资源节省近似，以控制生成长度同时保持任务效用。"
+        "首次将后训练更新的参数化（低秩子空间）视为控制生成长度的设计变量，而不修改对齐损失。",
+        "提出任务感知低秩子空间选择问题，在效用约束下最小化输出token成本。",
+        "证明未合并与合并低秩更新在推理时等价，并给出可训练参数计数分析。"
       ],
       "experiment_results": [
-        "在Anthropic HH-RLHF数据集上，对Pythia-2.8B和Qwen2.5-3B两个约3B参数的解码器骨干进行了评估。与协议匹配的全参数DPO和DrDPO分支以及发布的SamPO检查点进行比较。在Pythia-2.8B上，LOCUS在DPO下减少20.73%的续写token，在DrDPO下减少25.29%，在SamPO下减少39.84%，准确率变化可忽略（0.13个百分点），仅更新0.28%的参数。在Qwen2.5-3B上，受控DPO和DrDPO比较分别减少14.87%和17.58%的token，更新0.24%的参数。内部偏好诊断无实质变化，表明实用性保持。"
+        "datasets",
+        "backbones",
+        "metrics"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "仅在两个约3B参数的模型（Pythia-2.8B和Qwen2.5-3B）上评估，泛化到更大模型尚待验证。",
-        "主要在Anthropic HH-RLHF对话偏好上测试，其他领域或任务可能表现不同。"
+        "仅在两个约3B参数的模型上验证，未扩展到更大规模模型。",
+        "效用约束主要基于偏好准确率，可能无法完全捕捉其他质量维度（如事实性、安全性）。"
       ],
-      "practical_value": "LOCUS为在实际服务中降低LLM推理成本提供了一种参数高效的方法。通过减少输出序列长度而不牺牲任务效用，可降低延迟、内存带宽和KV缓存存储，提高吞吐量并降低部署成本。其方法可与现有偏好优化目标结合使用，易于集成到现有流程中。",
+      "practical_value": "LOCUS为降低大语言模型服务成本提供了一种参数高效的方法，通过选择低秩适配子空间来缩短输出长度，同时保持偏好对齐质量，适用于对话、指令跟随等生成任务。",
       "analysis_basis": "full_text",
       "analysis_status": "complete",
-      "analysis_signature": "1db801c10d31a26b",
+      "analysis_signature": "c82fabba743c8c4d",
       "tags": [
-        "LLM4Rec",
         "Generative Rec",
-        "Evaluation"
+        "Evaluation",
+        "LLM4Rec"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -1231,16 +1227,16 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "保留原生偏好目标（如DPO、DrDPO、SamPO），在冻结的主干网络上用低秩适配器训练，不添加长度正则化或惩罚。",
-        "feedback_source": "成对的人类偏好数据，来自Anthropic HH-RLHF等数据集。",
-        "model_data_scale": "模型：Pythia-2.8B（约2.8B参数）和Qwen2.5-3B（约3B参数）。数据：HH-RLHF包含8,552个冻结测试对用于DPO/DrDPO，SamPO使用256个样本分割。",
+        "training_objective": "原生的偏好优化目标（DPO、DrDPO、SamPO），冻结骨干网络，仅训练低秩适配器。",
+        "feedback_source": "Anthropic HH-RLHF 人类偏好数据（成对比较）。",
+        "model_data_scale": "2.8B和3B参数的解码器模型，训练数据为Anthropic HH-RLHF（约8,552测试对）及附加数据集。",
         "key_benchmarks": [
           "Anthropic HH-RLHF",
           "Anthropic HH-RLHF harmless-base",
           "Orca DPO"
         ],
-        "artifacts": "论文中未提及公开发布代码或模型。",
-        "agent_environment": "不适用（不是自主代理环境）。",
+        "artifacts": "未提及代码或模型发布。",
+        "agent_environment": "不涉及代理环境。",
         "agent_mechanism": "不适用。",
         "interaction_horizon": "不适用。",
         "agent_evaluation": "不适用。"
@@ -1296,7 +1292,7 @@
       ],
       "practical_value": "为多智能体集体决策提供了一种无需标签数据的可靠锚点，减少前向推理中的相关错误，可应用于LLM集成、投票系统等场景，提升决策准确性。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "5b375a5dd8ce5eac",
       "tags": [
         "Agent4Rec",
@@ -1397,30 +1393,31 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "COBRA-Skills是一种高效框架，将LLM智能体技能优化建模为在动态演化候选空间上的预算序列优化。它结合上下文赌博机引导的优先级排序与基于证据的技能进化，有选择性地将评估分配给有希望或信息丰富的候选技能，同时利用执行反馈持续精炼技能种群。在六个异构智能体基准和三个目标模型上，COBRA-Skills在比较方法中取得最强平均性能，相比SkillOpt降低优化成本55-58%，且每个基准仅使用50个独特优化示例。进一步分析表明，该方法对智能体harness的变化具有鲁棒性，且在使用目标模型自身进行技能生成和精炼时依然有效。",
-      "core_method": "COBRA-Skills将技能优化形式化为动态候选空间上的预算序列优化。它使用上下文赌博机（可能是LinUCB或类似算法）根据任务上下文对候选技能进行优先级排序，以决定哪些技能值得评估。同时，它采用基于证据的技能进化，利用执行反馈迭代改进技能种群，可能通过变异和选择操作实现。",
+      "generated_summary": "该论文提出COBRA-Skills框架，将LLM智能体的技能优化建模为预算受限的序贯优化问题，利用上下文老虎机优先评估有潜力的候选技能，并结合执行反馈迭代进化技能。在六个智能体基准和三个目标模型上，该方法平均性能最优，相比SkillOpt降低55-58%的优化成本，且每个基准仅使用50个独特样本。",
+      "core_method": "COBRA-Skills将技能优化形式化为动态候选空间上的预算序贯优化，结合上下文老虎机引导的优先级排序和基于证据的技能进化，在评估预算约束下有选择地分配评估资源给有前景或信息量大的候选技能，并通过执行反馈持续细化技能群体。",
       "innovation_points": [
-        "将技能优化建模为预算序列优化问题，而非独立评估每个技能。",
-        "利用上下文赌博机引导评估的分配，在探索和利用之间取得平衡。",
-        "技能进化机制基于执行反馈，动态更新候选技能集合。"
+        "首次将技能优化建模为预算序贯优化问题，动态进化候选空间。",
+        "结合上下文老虎机进行候选技能优先级排序，平衡探索与利用。",
+        "提出证据驱动的技能进化机制，利用执行反馈迭代改进技能。"
       ],
       "experiment_results": [
-        "COBRA-Skills在六个异构智能体基准和三种目标模型上取得最强平均性能，优于包括SkillOpt在内的基线方法。相比SkillOpt，优化成本降低55-58%，且每个基准仅使用50个独特优化示例。此外，该方法对智能体harness变化具有鲁棒性，并在使用目标模型自身进行技能生成和精炼时有效。"
+        "在六个异构智能体基准和三个目标模型上，COBRA-Skills在所有对比方法中取得最强的平均性能，相比SkillOpt降低55-58%的优化成本，且仅需50个独特优化示例。进一步分析表明，该方法对智能体框架变化具有鲁棒性，并且当使用目标模型本身进行技能生成和细化时仍能有效工作。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "全文未明确提及局限性。"
+        "未提供"
       ],
-      "practical_value": "COBRA-Skills提供了一种高效的方法来自动优化LLM智能体的可复用技能，显著降低了评估成本，同时提升了跨多种任务和模型的性能，具有实际部署价值。",
+      "practical_value": "为LLM智能体技能优化提供了一种高效、低成本的框架，能在有限评估预算和少量任务数据条件下自动发现和优化可复用技能，提升智能体在多种任务上的性能，具有广泛的实用部署潜力。",
       "analysis_basis": "full_text",
       "analysis_status": "complete",
-      "analysis_signature": "391aa43b1c8e9d08",
+      "analysis_signature": "ae3e60dd376cc273",
       "tags": [
         "Agent4Rec",
+        "Benchmark",
+        "Evaluation",
         "LLM4Rec",
-        "User Modeling",
-        "Benchmark"
+        "User Modeling"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -1434,8 +1431,9 @@
       ],
       "primary_track": "llm_systems",
       "topics": [
+        "llm_agent",
         "post_training",
-        "llm_agent"
+        "llm_rl"
       ],
       "primary_topic": "llm_agent",
       "track_relevance": {
@@ -1463,17 +1461,19 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "Optimize a population of reusable skills for LLM agents via budgeted sequential optimization over dynamically evolving candidate space.",
-        "feedback_source": "执行反馈（execution feedback），来自在基准任务上评估候选技能的结果。",
-        "model_data_scale": "50 unique optimization examples per benchmark; three target models evaluated.",
+        "training_objective": "在预算限制下最大化智能体技能的性能，通过序贯优化动态候选技能空间。",
+        "feedback_source": "执行反馈（execution feedback），即技能在任务基准上的实际执行结果。",
+        "model_data_scale": "每个基准仅使用50个独特的优化示例；在六个基准和三个目标模型上评估。",
         "key_benchmarks": [
-          "六个异构智能体基准（具体名称未在摘要中列出）"
+          "六个异构智能体基准（具体名称未在摘要和节选中明确列出）"
         ],
-        "artifacts": "代码可在某处获取（摘要中有提及）。",
-        "agent_environment": "LLM agent harness with reusable skills distilled from prior task experience.",
-        "agent_mechanism": "技能优化框架，使用上下文赌博机和进化算法",
-        "interaction_horizon": "预算受限（budgeted）",
-        "agent_evaluation": "跨六个基准和三个目标模型评估平均性能与优化成本"
+        "artifacts": [
+          "代码将在（链接未在节选中提供）可用"
+        ],
+        "agent_environment": "未明确提供细节，但涉及六个异构智能体基准。",
+        "agent_mechanism": "技能从先前任务经验中提炼并复用，通过进化框架迭代优化；支持目标模型自生成和细化技能。",
+        "interaction_horizon": "未提供具体交互步数或轮次信息。",
+        "agent_evaluation": "平均性能、相对于SkillOpt的优化成本降低比例、对智能体框架变化的鲁棒性、使用目标模型自身生成和细化技能的有效性。"
       },
       "display_affiliations": [
         "The Chinese University of Hong Kong, Shenzhen",
@@ -1524,23 +1524,27 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文提出Ecdysis框架，通过批量跨实例失败聚合和多角色协作细化，区分模型特定缺陷与运行时框架系统性缺陷，优化LLM智能体的自演化运行时框架。实验表明，相比现有框架演化方法，Ecdysis训练速度提升1.84倍，推理准确率提高18.56%。",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "generated_summary": "论文提出Ecdysis框架，通过批量跨实例失败聚合与多角色协作诊断，区分模型特定缺陷与运行环境系统性缺陷，高效演化LLM智能体的运行时执行框架。相比现有迭代搜索方法，Ecdysis训练速度提升至多1.84倍，且推理准确率提高18.56%。该工作为智能体执行优化提供了更高效且泛化性更好的训练范式。",
+      "core_method": "Ecdysis框架的核心方法包括：1) 批量级跨实例失败聚合，联合分析多个任务实例的失败证据，识别跨任务重复出现的失败模式，从而区分模型特定缺陷与系统性harness缺陷；2) Failure-Driven Collaborative Refinement (FDCR)，通过多个角色（如诊断者、开发者、审核者）从互补视角分析失败证据，迭代细化失败原因和harness修改方案，最终由协调者综合成结构化修改规范。",
       "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
+        "提出基于跨任务失败模式聚合的harness演化范式，通过区分模型特定适应与系统性harness修复，减少过拟合",
+        "设计Failure-Driven Collaborative Refinement (FDCR)多角色协作诊断机制，提高失败归因的可靠性和修改方案的结构化程度",
+        "提出失败感知的训练数据选择策略，优先选择能暴露新执行路径和harness缺陷的任务，减少冗余失败信号，仅用四分之一训练数据即可达到相当性能"
       ],
       "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
+        "training_speedup",
+        "reasoning_accuracy_improvement",
+        "generalization"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
+        "摘要和结论未明确提及Ecdysis框架的局限性。"
       ],
-      "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
+      "practical_value": "Ecdysis可显著降低LLM智能体运行时harness的训练时间开销，同时提高harness的推理准确率和跨模型泛化性，减少推理时的token消耗，从而实现更高效、更通用的智能体执行优化。",
       "analysis_basis": "full_text",
-      "analysis_status": "fallback",
-      "analysis_signature": "4ca34661ed2c09a3",
+      "analysis_status": "complete",
+      "analysis_signature": "62ef84723a08dd57",
       "tags": [
         "Agent4Rec",
         "LLM4Rec",
@@ -1558,8 +1562,8 @@
       ],
       "primary_track": "llm_systems",
       "topics": [
-        "post_training",
-        "llm_agent"
+        "llm_agent",
+        "post_training"
       ],
       "primary_topic": "llm_agent",
       "track_relevance": {
@@ -1587,15 +1591,15 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "Optimize runtime harnesses for LLM agents to improve execution and reasoning accuracy by distinguishing systematic harness deficiencies from model-specific accommodations.",
-        "feedback_source": "Execution feedback from multiple task instances, aggregated at batch level to identify recurring cross-task failure patterns.",
-        "model_data_scale": "Not specified in metadata.",
-        "key_benchmarks": "Not specified in metadata.",
-        "artifacts": "Not specified in metadata.",
-        "agent_environment": "Runtime harnesses for LLM agents (specific environments not mentioned).",
-        "agent_mechanism": "Batch-level cross-instance failure aggregation and Failure-Driven Collaborative Refinement with multi-role diagnosis.",
-        "interaction_horizon": "Iterative refinement across task instances; number of iterations not specified.",
-        "agent_evaluation": "Reasoning accuracy improvement (18.56%) and training time speedup (1.84x) compared to existing harness evolution methods."
+        "training_objective": "通过跨实例失败聚合和多角色诊断，优化运行时harness，以提升智能体推理准确率、训练效率和跨模型泛化能力。",
+        "feedback_source": "来自多个任务实例的执行反馈（失败证据）。",
+        "agent_environment": "运行时harness，包括任务规划、工具交互和上下文管理等推理时机制。",
+        "agent_mechanism": "基于执行反馈自动修改harness代码（自我演化），具体包括批量失败聚合和FDCR多角色协作诊断。",
+        "interaction_horizon": "未提供交互轮数或训练迭代次数的具体信息。",
+        "agent_evaluation": "评估指标包括训练速度提升倍率、推理准确率改进、跨模型泛化能力和token消耗减少。",
+        "model_data_scale": "摘要中未提供模型参数规模和训练数据规模的具体数值。",
+        "key_benchmarks": "未提供具体基准名称，仅提及在多个推理基准上进行评估。",
+        "artifacts": "未明确提及代码或模型发布。"
       },
       "display_affiliations": [
         "University of Chinese Academy of Sciences",
@@ -1914,7 +1918,7 @@
       ],
       "practical_value": "该基准为评估自动化实验复现系统提供了细粒度的过程评价工具，有助于推动科学智能体的发展，提高科学研究的可复现性，尤其有助于减少人工复现实验的工作量。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "5b190a7c49376e64",
       "tags": [
         "Agent4Rec",
@@ -2012,7 +2016,7 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "该研究构建了100个具备记忆的LLM智能体，在真实地理环境中运行闭环货币经济模拟长达26个模拟周，远超同类研究的1-2周。发现12倍旅游需求冲击下，企业收入虽增长但工资和价格几乎不变，现金转移的边际消费倾向仅3-4%，财富分布短期近乎冻结但长期会松动。匹配消融表明更换底层LLM会改变所有测量结果，而删除记忆无显著影响。",
+      "generated_summary": "该论文将100个具备记忆的LLM智能体置于一个封闭且货币守恒的空间经济中，在真实地理环境上进行长达26周的模拟。研究发现需求冲击虽能提升企业收入，但工资和价格几乎不变，现金转移的边际消费倾向接近零，财富分配在短时间范围内看似冻结但长期则逐渐变化。通过消融实验，作者发现更换底层LLM会显著影响所有测量结果，而删除智能体记忆则无显著影响，并发布了完整的运行语料库以供重新分析。",
       "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
         "未能从全文/元数据中稳定抽取明确创新点。"
@@ -2075,12 +2079,15 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "model_data_scale": "100 agents, 91 validated runs, 2.44M agent decisions, 21.5B tokens",
-        "artifacts": "full run corpus released for reanalysis",
-        "agent_environment": "Closed, money-conserving spatial economy on real Pokhara Lakeside geography with earning wages, running businesses, setting prices",
-        "agent_mechanism": "LLM agents with memory, economic tools, social tools; randomized interventions (tourist demand shock, cash transfer)",
-        "interaction_horizon": "up to 26 simulated weeks",
-        "agent_evaluation": "Monetary transmission, wage changes, price adjustments, marginal propensity to consume, wealth distribution ρ, tool success rates, ablation comparisons"
+        "training_objective": "Not applicable (no training).",
+        "feedback_source": "Not applicable.",
+        "model_data_scale": "100 agents, 2.44M decisions, 21.5B tokens.",
+        "key_benchmarks": "None standard; custom simulation with shocks and cash transfers.",
+        "artifacts": "Full run corpus released, but no code/model details in metadata.",
+        "agent_environment": "Closed, money-conserving spatial economy on real Pokhara Lakeside geography with businesses, wages, and prices.",
+        "agent_mechanism": "Memory-equipped LLM agents with economic and social tools.",
+        "interaction_horizon": "Up to 26 simulated weeks (311 pulses).",
+        "agent_evaluation": "Economic metrics: business revenue, wages, repricing rates, marginal propensity to consume, wealth distribution (Spearman correlation)."
       },
       "display_affiliations": [
         "Karela Technologies Inc."
@@ -2333,7 +2340,7 @@
       ],
       "practical_value": "为LLM智能体评估系统提供可复用的奖励完整性保障，降低奖励黑客风险，提升基准测试的可靠性和公平性，适用于需要严格验证的评估场景。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "0a7ada50dc6b2c46",
       "tags": [
         "Agent4Rec",
@@ -2452,7 +2459,7 @@
       ],
       "practical_value": "该系统能提升模拟临床访谈的过程质量，同时不人为夸大考试结果，有潜力降低传统标准化病人训练的资源消耗并扩大规模。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "d62d0795171e11e2",
       "tags": [
         "Agent4Rec",
@@ -2658,7 +2665,7 @@
       ],
       "practical_value": "为 LLM 代理安全运营提供可操作信息：定位攻击进入点、受影响步骤范围，并识别已抵抗的注入，有助于回滚、审计和内容源信任决策；模型小、快速、模型无关，适合部署于闭源代理和实时监控。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "d20958e79c8e59eb",
       "tags": [
         "Agent4Rec",
@@ -2838,25 +2845,25 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "本文形式化了任务无关的环境预处理问题：智能体在不了解下游任务分布的情况下，在预算内探索陌生环境并为冻结的求解器生成可复用资源（如索引、脚本或程序指导）。在六个异构基准上，元智能体变体在五个基准上取得最高Avg@3奖励，固定语料处理在最大语料基准上表现最佳；更大的研究预算并不总是提升下游奖励，但学习到的资源能减少测试时达到特定分数所需的采样次数。",
-      "core_method": "提出任务无关环境预处理框架，其中研究系统在预算内探索环境并生成工件供冻结求解器使用。比较三类方法：未研究（unaided）、档案增强元智能体（meta-agent with archive）、固定合成练习与语料处理方法。元智能体自主决定构建哪些资源（如索引、脚本或程序指导）。",
+      "generated_summary": "论文形式化了任务无关的环境预处理问题，即学习系统在不知道下游任务分布的情况下探索环境并生成可复用工件。实验比较了元代理与固定方法，元代理在多数基准上取得最高奖励。研究表明，研究预算并非越大越好，且可复用工件能减少测试时采样。",
+      "core_method": "元代理（meta-agent）在预算限制下探索环境，生成工件（如索引、脚本、程序性指导），供冻结的解算器（frozen solver）在测试时使用。比较了无档案和有档案的元代理与固定合成实践和语料处理方法。",
       "innovation_points": [
-        "首次形式化任务无关环境预处理问题，无需下游任务分布先验。",
-        "提出元智能体自主选择预处理策略，而非预先固定于特定环境类型。",
-        "验证预处理工件可减少测试时采样次数，将计算从测试时转移到预任务阶段。"
+        "形式化了一个开放式的任务无关环境预处理设置，允许系统在没有下游任务分布知识的情况下自主决定如何准备环境。",
+        "提出了元代理方法，能够动态决定构建何种工件，而不是预先承诺特定准备策略。",
+        "展示了可复用准备可以将计算从重复的测试时采样转移到任务前研究阶段，减少测试时采样需求。"
       ],
       "experiment_results": [
-        "元智能体变体在五个基准上取得最高Avg@3奖励；固定语料处理方法在最大语料基准上表现最佳；更大的研究预算并不总是提升下游奖励；学习到的资源能减少达到特定分数所需的测试时采样次数。"
+        "一个元代理变体在五个基准上取得了最高的Avg@3奖励，而固定语料处理方法在最大的语料基准上仍然表现最佳。更大的研究预算并不能可靠地提高下游奖励。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "从现有摘要和文本片段中未找到明确的局限性讨论。"
+        "更大的研究预算并不能可靠地提高下游奖励。固定语料处理方法在最大语料基准上优于元代理方法。"
       ],
-      "practical_value": "通过预任务研究生成可复用资源，减少重复测试时计算，使LLM智能体能更高效适应陌生环境。",
+      "practical_value": "该方法展示了通过任务前的自主学习生成可复用工件，能够减少测试时的计算需求，适用于需要在多个任务中复用环境准备资源的场景。",
       "analysis_basis": "full_text",
       "analysis_status": "complete",
-      "analysis_signature": "b1902fce8f1ec218",
+      "analysis_signature": "5ab6d98a6b4b6861",
       "tags": [
         "Agent4Rec",
         "Benchmark",
@@ -2874,7 +2881,8 @@
       ],
       "primary_track": "llm_systems",
       "topics": [
-        "llm_agent"
+        "llm_agent",
+        "post_training"
       ],
       "primary_topic": "llm_agent",
       "track_relevance": {
@@ -2902,19 +2910,21 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "在预算内探索环境并生成可复用工件，以最大化下游任务奖励（Avg@3）。",
-        "feedback_source": "未提及任务示例、轨迹或评估反馈；任务无关，仅依赖环境探索和预算约束。",
-        "model_data_scale": "未提供具体模型或数据规模信息。",
-        "key_benchmarks": "六个异构基准，具体名称未在摘要中列出。",
+        "training_objective": "任务无关的环境预处理：在预算限制下探索环境并生成可复用工件，以最大化冻结解算器在下游任务中的奖励。",
+        "feedback_source": "无监督（无任务示例、轨迹或评估反馈），依靠环境探索和内部启发式。",
+        "model_data_scale": "未明确报告模型规模；使用LLM作为元代理和解算器，具体模型未在摘要中说明。",
+        "key_benchmarks": [
+          "六个异构基准（具体名称在摘要中未提及）"
+        ],
         "artifacts": [
           "索引",
           "脚本",
-          "程序指导"
+          "程序性指导"
         ],
-        "agent_environment": "包含可用语料库和工具的陌生环境，具体环境类型未详细说明。",
-        "agent_mechanism": "元智能体在预算内探索环境、自主决定预处理策略并生成工件；冻结求解器在测试时使用这些工件。",
-        "interaction_horizon": "研究阶段受预算约束，具体预算数值未提供。",
-        "agent_evaluation": "采用Avg@3奖励评估下游任务表现，并比较达到特定分数所需的采样次数。"
+        "agent_environment": "异构环境，包括语料库和工具，具体环境类型在摘要中未详述。",
+        "agent_mechanism": "元代理在预算下探索环境，决定构建何种工件；冻结解算器在测试时使用这些工件。",
+        "interaction_horizon": "研究预算受限，具体步数未在摘要中说明。",
+        "agent_evaluation": "Avg@3奖励（三次采样的平均奖励）"
       },
       "display_affiliations": [
         "University of Maryland, College Park"
@@ -2948,28 +2958,31 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "本文研究LLM智能体技能检索中的灾难性遗忘问题。作者构建了一个包含34,396个技能的生产级技能路由器，并使用有限真实监督和合成数据进行了大规模研究。发现合成数据微调虽然能提升分布内检索性能，但会导致真实和分布外（OOD）数据上的灾难性遗忘。作者评估了多种受持续学习启发的遗忘缓解微调方法，包括嵌入锚正则化、无遗忘学习（LwF）、弹性权重巩固（EWC）和L2初始化。结果表明这些方法不仅保持了OOD技能检索性能，还将0.6B Qwen检索器和重排器在合成分布内技能上的检索性能提升了13.98%。",
-      "core_method": "使用LoRA微调bi-encoder检索器和cross-encoder重排器，结合四种遗忘缓解正则化方法：嵌入锚正则化、L2初始化、EWC和LwF。在Track-A和Track-B两个合成数据轨道上进行训练，并在真实和OOD测试集上评估。",
+      "generated_summary": "该论文针对LLM智能体的大规模技能检索任务，发现合成数据微调会提升分布内检索但导致对真实和分布外数据的灾难性遗忘。作者评估了多种持续学习缓解方法，结果显示这些方法既保留OOD技能检索性能，又将合成分布内检索提升13.98%。研究提供了实用基准和针对稀缺多正例监督的鲁棒微调方案。",
+      "core_method": "构建生产级技能路由器，覆盖34,396个技能和109个验证任务；使用双轨合成数据（Track A：锚技能任务，15K对；Track B：真实数据、改写和多技能任务合成，14K对）；在检索堆栈中微调双编码器检索器和交叉编码器重排器（Qwen3-Embedding-0.6B和Qwen3-Reranker-0.6B），采用LoRA微调；评估四种遗忘缓解正则化方法：嵌入锚正则化、L2初始化、EWC、LwF（KL）",
       "innovation_points": [
-        "在34,396个技能的大规模生产环境中系统研究技能检索中的灾难性遗忘",
-        "提出统一基准，结合真实和合成监督，评估遗忘缓解方法",
-        "证明紧凑的0.6B检索模型通过正则化微调可以匹敌更大的混合系统"
+        "首次在大规模生产环境中系统研究合成数据微调对技能检索的灾难性遗忘问题",
+        "提出统一基准，结合真实和合成监督，评估不同微调配置",
+        "证明遗忘缓解正则化方法不仅能保留OOD性能，还能提升分布内性能（提升13.98%）"
       ],
       "experiment_results": [
-        "合成数据微调提升分布内检索性能，但导致OOD召回率从0.850下降到0.650。遗忘缓解方法不仅保持OOD性能，还将合成分布内技能检索性能提升13.98%。跨多个指标和统计检验验证了效果。"
+        "激进LoRA微调导致OOD召回率从0.850降至0.650；使用遗忘缓解方法后，分布内检索性能提升13.98%，同时保留OOD性能；紧凑0.6B检索器可与Qwen3-Embedding-4B混合系统匹敌；Track A和Track B实验均验证了正则化方法的有效性。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "真实数据规模有限（75个任务，273对严格正样本），可能影响泛化结论；研究专注于特定模型（Qwen3-Embedding-0.6B）和LoRA微调；未探索更大规模模型或不同架构。"
+        "真实数据规模非常小（Track A仅75个任务，Track B测试集仅21个真实样本），统计功效可能受限；仅评估了特定模型（Qwen3-Embedding-0.6B和Qwen3-Reranker-0.6B），未探索其他架构；合成数据生成依赖特定LLM（GPT-5、Claude Opus等），可能引入偏差；只关注检索性能，未评估末端任务成功率。"
       ],
-      "practical_value": "为部署技能检索系统提供了实用的微调配方，防止合成数据引起的性能下降；证明了正则化方法在有限监督下的有效性；为工业界技能检索提供了基准和指导。",
+      "practical_value": "为生产环境中的技能检索系统提供实用微调方案，避免灾难性遗忘；证明紧凑模型可降低部署成本；提供开源代码和基准，支持可复现研究。",
       "analysis_basis": "full_text",
       "analysis_status": "complete",
-      "analysis_signature": "3e3eb27490f2e1d7",
+      "analysis_signature": "21585993159b00b3",
       "tags": [
-        "Benchmark",
-        "Evaluation"
+        "RAG Rec",
+        "Agent4Rec",
+        "Generative Retrieval",
+        "Evaluation",
+        "Benchmark"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -2983,10 +2996,10 @@
       ],
       "primary_track": "llm_systems",
       "topics": [
-        "post_training",
-        "llm_agent"
+        "llm_agent",
+        "post_training"
       ],
-      "primary_topic": "post_training",
+      "primary_topic": "llm_agent",
       "track_relevance": {
         "llm_systems": 98
       },
@@ -3012,19 +3025,19 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "使用InfoNCE损失训练bi-encoder，并添加正则化项（嵌入锚、L2-init、EWC、LwF）；重排器使用交叉熵损失。",
-        "feedback_source": "合成数据由GPT-5、Claude Opus 4.7等LLM生成，真实数据来自SkillsBench和TerminalBench 2任务执行。",
-        "model_data_scale": "技能库包含34,396个技能；Track-A有15K训练对，Track-B有14K训练对；模型为Qwen3-Embedding-0.6B和Qwen3-Reranker-0.6B。",
+        "training_objective": "使用InfoNCE损失训练双编码器检索器，结合正则化项（嵌入锚、L2-init、EWC、LwF）以缓解遗忘；重排器采用交叉编码器结构，使用合成数据微调。",
+        "feedback_source": "来自真实任务验证（Harbor环境中的CTRF报告）和合成数据（Track A和Track B）。",
+        "model_data_scale": "微调模型：Qwen3-Embedding-0.6B（双编码器）和Qwen3-Reranker-0.6B（交叉编码器）；技能库规模34,396；训练数据：Track A约15K对，Track B约14K对。",
         "key_benchmarks": [
           "SkillsBench",
           "TerminalBench 2",
-          "Harbor环境中的109个验证器评分任务"
+          "自建的统一基准（Track A和Track B）"
         ],
-        "artifacts": "GitHub仓库：https://github.com/manulife-ai/emnlp2026/",
-        "agent_environment": "Harbor环境，用于执行技能检索和任务验证。",
-        "agent_mechanism": "技能路由器通过混合检索（BM25+语义检索+RRF融合）从技能库中检索技能，注入智能体上下文。",
-        "interaction_horizon": "每个试验为单次执行，无多轮交互。",
-        "agent_evaluation": "使用命中率（Hit@k）、召回率（Recall@k）、集合召回率（Set-Recall@10）和平均倒数排名（MRR）评估检索性能；任务验证使用二进制奖励和软奖励SR。"
+        "agent_environment": "Harbor环境，支持任务执行和验证",
+        "agent_mechanism": "技能检索：将技能注入智能体上下文；检索管道：混合检索（BM25+RRF）和语义检索（FAISS）",
+        "interaction_horizon": "每个任务执行一次试验（单次技能检索和执行）",
+        "agent_evaluation": "使用命中率（Hit@1）、召回率（Recall@1）等检索指标；任务验证通过测试（CTRF报告转换为二元奖励和软奖励）",
+        "artifacts": "代码：https://github.com/manulife-ai/emnlp2026/"
       },
       "display_affiliations": [
         "Unknown affiliation"
@@ -3158,25 +3171,23 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文提出Avatar，一种基于演员架构的科学工作流编排系统，包含编排器、执行器和溯源监控器，其决策策略可通过统一动作目录在规则和LLM模式间切换。评估表明，规则模式原生复现执行，而LLM模式减少55%计算浪费并降低40% GPU忙碌时间。该工作为能自主推理编排的工作流系统迈出了一步。",
-      "core_method": "Avatar采用actor-based架构，包含编排器、执行器和溯源监控器三个actor。每个actor的决策策略通过统一的适配器验证的动作目录可插拔（基于规则或LLM）。实现基于Academy框架，支持不同WMS的集成。通过策略切换，规则模式复现原生WMS行为，LLM模式实现自主推理。",
+      "generated_summary": "论文提出 Avatar，一种基于 actor 的架构，通过可插拔决策策略（规则或 LLM）实现科学工作流的自主编排。在三个工作负载上的评估表明，规则模式复现原生执行，而 LLM 模式将计算浪费降低 55%、GPU 忙碌时间减少 40%。该工作为能自主推理编排的工作流系统迈出了一步。",
+      "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
-        "提出面向科学工作流自主编排的参考架构Avatar，将编排器、执行器和溯源监控器解耦，支持策略可插拔。",
-        "通过统一的适配器验证的动作目录，使规则和LLM模式在同一核心上运行，无需改变架构。",
-        "实现可扩展的原型框架，基于Academy框架，便于集成不同的agent、工具、监控和验证策略。"
+        "未能从全文/元数据中稳定抽取明确创新点。"
       ],
       "experiment_results": [
-        "LLM模式在弹性扩展中减少55%计算浪费，在主动学习中降低40% GPU忙碌时间。规则模式成功复现原生WMS执行，三种工作负载均用同一核心运行。"
+        "全文未提供足够实验结果细节，或解析失败。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "文中未明确提及局限性，但可能包括：LLM模式的延迟和成本、对特定工作负载的泛化能力、以及需要进一步验证在大规模真实环境中的表现。"
+        "需要阅读全文确认实验设置、数据集和适用边界。"
       ],
-      "practical_value": "Avatar为科学工作流系统提供了可演进的架构，使其能够逐步引入LLM代理进行自主编排，同时保持与传统机制兼容，减少计算浪费和资源占用。",
+      "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
       "analysis_basis": "full_text",
-      "analysis_status": "cached",
-      "analysis_signature": "b92d94c269879d7f",
+      "analysis_status": "fallback",
+      "analysis_signature": "89a9963697c00533",
       "tags": [
         "Agent4Rec",
         "LLM4Rec"
@@ -3193,7 +3204,8 @@
       ],
       "primary_track": "llm_systems",
       "topics": [
-        "llm_agent"
+        "llm_agent",
+        "post_training"
       ],
       "primary_topic": "llm_agent",
       "track_relevance": {
@@ -3221,19 +3233,20 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
+        "key_benchmarks": [
+          "three workloads (unspecified)"
+        ],
+        "artifacts": [
+          "Avatar",
+          "Academy framework"
+        ],
+        "agent_environment": "scientific workflow management systems",
+        "agent_mechanism": "actor-based architecture with orchestrator, executor, and provenance monitor; pluggable rule-based or LLM-backed decision policies",
+        "interaction_horizon": "end-to-end orchestration of scientific workflows",
+        "agent_evaluation": "reduction of compute wastage by 55%, GPU-busy time by 40%",
         "training_objective": "不适用，因为论文未涉及模型训练。",
         "feedback_source": "不适用，无训练反馈源。",
-        "model_data_scale": "未提供具体LLM模型名称和参数规模。",
-        "key_benchmarks": [
-          "E1: 故障恢复工作负载",
-          "E2: 动态扩展工作负载",
-          "E3: 主动学习工作负载（QM9分子）"
-        ],
-        "artifacts": "文中提到使用Academy框架实现，但未提供代码或模型工件。",
-        "agent_environment": "科学工作流执行环境，包括本地asyncio子进程、Parsl执行器、Colmena等。",
-        "agent_mechanism": "基于actor的编排，每个actor通过动作目录选择决策策略（规则或LLM）。",
-        "interaction_horizon": "多步交互，工作流任务执行和决策跨多个步骤。",
-        "agent_evaluation": "通过三个工作负载上的指标（如重试次数、浪费计算、积压、GPU忙碌时间）评估代理性能。"
+        "model_data_scale": "未提供具体LLM模型名称和参数规模。"
       },
       "display_affiliations": [
         "University of Chicago",
@@ -3265,30 +3278,30 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "Glyph是一个面向企业数据目录的多策略智能体系统，利用LLM智能体通过状态图协同完成列描述生成和基于治理本体的列类型标注两个耦合任务。描述器通过主动RAG从GitHub源码检索上下文，标注器并行运行描述、正则和基于微调对比编码器的元数据三种策略，并用RRF融合排序结果。实验表明微调编码器将同标签检索NDCG@10从0.55提升至0.92，系统在多标签标注F2及消融实验中验证了各策略和融合的有效性。",
-      "core_method": "Glyph采用两个主要智能体：Descriptor和Tagger。Descriptor利用主动RAG从企业GitHub按需检索管道源码，将生成过程锚定在产生每列的代码上，通过ReAct工具循环实现。Tagger运行三个并行策略：描述标注器（基于列描述映射到本体标签）、业务线正则标注器（使用正则表达式匹配敏感数据模式）和元数据标注器（基于微调的6层MiniLM对比编码器在向量数据库上检索相似列标签），并通过Reciprocal Rank Fusion融合三个策略的排序输出。此外，系统使用带内对比学习目标微调元数据编码器。",
+      "generated_summary": "Glyph 是一个面向企业数据目录列描述生成和敏感度本体标签标注的多策略智能体系统，采用有状态图编排的LLM智能体：Descriptor通过主动RAG从源码生成描述，Tagger并行运行三种策略并利用RRF融合结果。系统微调了对比学习编码器提升元数据标签检索性能，实验在三个评估组上报告F2指标并进行了消融实验。",
+      "core_method": "Glyph系统由两个主要智能体组成：Descriptor和Tagger。Descriptor通过主动RAG（推理-行动工具循环）从企业GitHub检索管道源码，以源码为上下文生成列描述。Tagger采用三种并行策略：描述标签器（基于描述文本）、业务线正则标签器（基于列值模式）和元数据标签器（基于微调的对比编码器在向量数据库上进行相似度检索），然后使用倒数排名融合（RRF）合并排序结果。",
       "innovation_points": [
-        "利用主动RAG从源码生成列描述，使描述有代码依据，与仅基于数据值的方法不同。",
-        "多策略并行标注并用RRF融合，兼顾描述语义、模式匹配和元数据相似性。",
-        "微调轻量级对比编码器大幅提升同标签检索性能（NDCG@10从0.55到0.92）。"
+        "将列描述生成和列类型标注两个问题耦合为协作的LLM智能体，通过有状态图编排",
+        "采用主动RAG（Agentic RAG）从源码中检索证据来生成描述，保证描述有据可查",
+        "开发多策略标签器，结合描述、正则表达式和元数据向量检索，并通过RRF融合"
       ],
       "experiment_results": [
-        "在分布内留出集上，微调后的MiniLM编码器将NDCG@10从0.55提升至0.92，MAP@100从0.19提升到0.90。端到端多标签标注在三个评估组上报告了以召回加权F2为目标的质量结果，消融实验隔离了每个策略和RRF融合的贡献。"
+        "在分布内留出集上，微调后的元数据编码器将相同标签检索的NDCG@10从0.55提升到0.92，MAP@100从0.19提升到0.90。端到端多标签标注在三个评估组上采用召回加权F2指标报告结果，并进行了消融实验隔离每个策略和RRF融合的贡献。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "摘要中未明确提及系统局限。可能需要更多领域特定数据来微调编码器，且主动RAG依赖源码可访问性。"
+        "全文未明确提及系统局限性。"
       ],
-      "practical_value": "Glyph解决了企业数据湖的文档债务问题，自动生成列描述和治理标签，支撑数据发现、访问控制和合规性。其价值无关和代码锚定设计、逐标签溯源及优雅降级使其可作为可审计的生产服务部署。",
+      "practical_value": "该系统已在生产环境中部署，用于企业数据目录的列描述和敏感度标签标注，帮助解决数据治理、访问控制和合规性问题。",
       "analysis_basis": "full_text",
       "analysis_status": "complete",
-      "analysis_signature": "7ad6b0aeb208c7bd",
+      "analysis_signature": "cb741c5b5b94ffdd",
       "tags": [
         "RAG Rec",
+        "Agent4Rec",
         "Benchmark",
         "Evaluation",
-        "Agent4Rec",
         "LLM4Rec",
         "User Modeling"
       ],
@@ -3333,19 +3346,19 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "使用带内对比学习目标微调6层MiniLM元数据编码器。",
-        "feedback_source": "未明确提及反馈来源；推断使用监督数据（本体标签）进行对比学习。",
-        "model_data_scale": "6层MiniLM编码器在元数据上微调；未提供具体数据量。",
+        "training_objective": "使用批内对比学习目标微调6层MiniLM元数据编码器",
+        "feedback_source": "标签来自治理的275叶数据分类本体",
+        "model_data_scale": "未提及具体数据规模",
         "key_benchmarks": [
           "NDCG@10",
           "MAP@100",
-          "recall-weighted F2"
+          "F2指标"
         ],
-        "artifacts": "未提及代码或模型发布。",
-        "agent_environment": "企业GitHub仓库（用于源码检索）和向量数据库（用于元数据检索）。",
-        "agent_mechanism": "Descriptor使用ReAct工具循环进行主动RAG；Tagger并行运行三个策略并用RRF融合。",
-        "interaction_horizon": "多步交互，但未明确指定最大步数。",
-        "agent_evaluation": "在三个评估组上评估多标签标注质量，并进行消融实验；未提供交互轨迹评估。"
+        "artifacts": "未提及是否开源代码或模型",
+        "agent_environment": "企业数据目录环境，涉及GitHub源码仓库、向量数据库等",
+        "agent_mechanism": "有状态图编排的协作智能体；Descriptor使用ReAct风格工具循环；Tagger并行运行三个策略并融合",
+        "interaction_horizon": "多轮交互，主动检索源码",
+        "agent_evaluation": "在三个评估组上评估端到端标签质量，并进行了消融实验"
       },
       "display_affiliations": [
         "Unknown affiliation"
@@ -3380,29 +3393,31 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文提出研究注意力预测（RAP）滚动基准，涵盖278个AI/ML领域和1390个预测事件，用于评估LLM智能体预测未来六个月论文份额变化的能力。实验发现所有诊断模型在组合准确率上均不如精确计数的指数加权移动平均基线，并识别出预测导向策略检索近期证据比例较低等瓶颈。对Qwen3-4B基于实际结果微调可提升预测的Spearman相关性。",
-      "core_method": "构建RAP滚动基准，在每个截止时间，LLM智能体搜索时间受限的arXiv语料库，预测未来六个月八个冻结研究方向上的论文份额。采用指数加权移动平均（EWMA）作为基线，并通过State carry-forward与direct Forecast、frozen-evidence replay等实验设计分析瓶颈。",
+      "generated_summary": "论文提出滚动基准RAP，覆盖278个AI/ML领域和1390个片段，评估LLM作为研究智能体预测未来六个月八个研究方向论文份额的能力。实验发现搜索通常有帮助，但所有诊断模型在组成准确性上均不如EWMA基线；状态延续优于直接预测，且基于预测的策略检索近期证据比例较低是导致逆转的共享因素。在真实结果上微调可提升Qwen3-4B的预测斯皮尔曼相关性。",
+      "core_method": "提出滚动基准RAP，在时间截断的arXiv语料上，让LLM智能体搜索证据并预测未来六个月八个固定研究方向的论文份额；设计诊断模型比较直接预测与状态延续，并分析证据获取策略的影响。",
       "innovation_points": [
-        "提出研究注意力预测（RAP）作为真实、可验证的评估任务，解决科研想法与综述缺乏唯一可验证结果的问题",
-        "滚动基准设计：278个AI/ML领域、1390个预测事件，模拟持续变化的科研环境",
-        "通过State carry-forward与direct Forecast对比、frozen-evidence replay等方法揭示证据获取偏差"
+        "提出研究注意力预测（RAP）这一可验证的滚动评估任务，填补研究智能体预测能力评估的空白。",
+        "构建覆盖278个AI/ML领域、1390个片段的基准，支持时序切分和动态评估。",
+        "通过冻结证据回放揭示预测导向策略对近期证据检索不足的共享瓶颈。"
       ],
       "experiment_results": [
-        "所有诊断模型在组合准确率上均不如精确计数的EWMA基线。在累积历史访问下，State carry-forward优于direct Forecast；frozen-evidence replay显示Forecast导向策略检索近期证据比例较低。仅GPT-5.5加重新开放搜索略超EWMA。对Qwen3-4B微调后，在后期起点、留出领域上的预测Spearman相关性提升0.105，变化丰富的事件也有提升。"
+        "搜索通常改善预测，但所有诊断模型在组成准确性上均不如精确计数EWMA基线；在累计历史访问下，状态延续在所有四个诊断模型上优于直接预测；冻结证据回放显示直接预测策略检索近期证据比例较低；仅GPT-5.5加重新搜索略微超过EWMA；微调Qwen3-4B在留出领域和变化丰富片段上提升预测斯皮尔曼相关性达0.105。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "全文摘录有限，未提供关于模型数量、具体诊断模型名称、EWMA参数设定、误差范围等细节；微调仅针对Qwen3-4B，泛化性存疑；未来特定更新的能力仍然有限。"
+        "诊断模型在组成准确性上普遍不如简单EWMA基线，表明预测能力有限。",
+        "即使有准确历史活动，未来特定更新仍然受限，仅一个模型在特定条件下略优于基线。"
       ],
-      "practical_value": "为科研智能体的预测能力提供可验证的滚动基准，揭示现有LLM在证据获取中的偏差，指导后续训练与检索策略改进。",
+      "practical_value": "该基准为研究智能体的时序预测和证据获取能力提供了标准化评估框架，有助于诊断和改进LLM在科学趋势预测中的表现，对学术搜索、科技政策分析等具有潜在应用价值。",
       "analysis_basis": "full_text",
-      "analysis_status": "cached",
-      "analysis_signature": "51d92b91aab7f46d",
+      "analysis_status": "complete",
+      "analysis_signature": "6f518ac5a80405ed",
       "tags": [
+        "Agent4Rec",
         "Benchmark",
         "Evaluation",
-        "Agent4Rec"
+        "LLM4Rec"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -3416,7 +3431,8 @@
       ],
       "primary_track": "llm_systems",
       "topics": [
-        "llm_agent"
+        "llm_agent",
+        "post_training"
       ],
       "primary_topic": "llm_agent",
       "track_relevance": {
@@ -3444,18 +3460,14 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "预测未来六个月八个冻结研究方向的论文份额；对Qwen3-4B基于实际结果进行微调以提升预测Spearman相关性。",
-        "feedback_source": "真实世界arXiv论文发表数据，基于实际结果进行微调。",
-        "model_data_scale": "涵盖278个AI/ML领域和1390个预测事件；诊断模型包括四个（具体名称未提供）；微调模型为Qwen3-4B。",
-        "key_benchmarks": [
-          "RAP滚动基准",
-          "组合准确率",
-          "预测Spearman相关性"
-        ],
-        "agent_environment": "时间受限的arXiv语料库搜索环境。",
-        "agent_mechanism": "LLM智能体搜索时间受限的arXiv语料库，预测未来论文份额；具体内部机制未详述。",
-        "interaction_horizon": "每个截止时间预测未来六个月的论文份额；滚动评估。",
-        "agent_evaluation": "组合准确率（compositional accuracy）和预测Spearman相关性；与EWMA基线比较。",
+        "training_objective": "预测未来六个月八个固定研究方向的论文份额。",
+        "feedback_source": "在时间截断的arXiv语料上搜索证据，依据真实结果评估。",
+        "model_data_scale": "278个AI/ML领域，1390个片段。",
+        "key_benchmarks": "RAP",
+        "agent_environment": "时间受限的arXiv语料库。",
+        "agent_mechanism": "搜索-预测范式，支持直接预测和状态延续两种模式。",
+        "interaction_horizon": "预测未来六个月。",
+        "agent_evaluation": "组成准确性、斯皮尔曼相关性。",
         "artifacts": "基准名称RAP；可能包含arXiv数据集（未明确是否开源）；微调模型Qwen3-4B。"
       },
       "display_affiliations": [
@@ -3603,26 +3615,30 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文指出LLM智能体在部分可观测环境中因缺乏显式信念状态而出现过早承诺、错误收敛和策略漂移，并提出Belief-State Engine (BSE)架构：在LLM外部维护POMDP的贝叶斯后验，仅将后验暴露给LLM，证明其构成信念MDP上的可靠马尔可夫策略。在Tiger POMDP和红队攻击图任务上，BSE增强的智能体在任务回报、信念校准和决策一致性上优于六种基线，并通过消融实验验证了架构各部分的贡献。",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "generated_summary": "论文指出LLM智能体在部分可观测环境中因缺乏显式信念状态而表现不佳，并提出Belief-State Engine (BSE)作为外部推理模块，维护POMDP的贝叶斯后验并仅将后验暴露给LLM。理论证明BSE增强的LLM是信念MDP上的可靠马尔可夫策略，继承贝尔曼最优性。在老虎POMDP和红队攻击图任务上，BSE优于六种基线，并通过十项消融验证了各架构选择的贡献。",
+      "core_method": "提出Belief-State Engine (BSE)，作为LLM外部模块，基于给定POMDP模型执行贝叶斯滤波，维护信念状态，并在每一步仅将归一化信念作为决策上下文提供给LLM，屏蔽原始动作-观察历史。",
       "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
+        "架构创新：在LLM外部引入BSE模块，将部分可观测性处理与LLM策略分离，使LLM仅依赖信念状态决策。",
+        "理论创新：提出信念一致性内部状态的四公理规范，并证明LLM+BSE组合是信念MDP上的可靠马尔可夫策略，继承贝尔曼最优性；同时证明暴露原始历史会破坏此保证。",
+        "实证创新：在Tiger POMDP和红队攻击图任务上对六种基线进行比较，展示BSE在任务回报、信念校准和决策一致性上的优势，并通过十项消融实验验证各架构选择。"
       ],
       "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
+        "在Tiger POMDP和红队攻击图任务上，BSE增强智能体在任务回报、信念校准和决策一致性上均优于六种基线（反应式LLM、CoT、ReAct、自然语言信念跟踪器、QMDP、POMCP）。十项消融实验验证了各架构选择的贡献，且在开放权重骨干模型上的复现表明效果不限于特定模型。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
+        "论文实际执行了完整实验设计的一个子集：仅运行了六种基线中的三种，N=40（主实验）或N=25（消融）的配对种子而非N=300，十项消融中仅做了三项，且未进行开放权重模型运行。完整设计需要约10^5次API调用，超出预算。此外，BSE在连续和高维状态空间中需要变分或粒子表示替代表格更新。"
       ],
-      "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
+      "practical_value": "BSE提供了一种模块化方法，使LLM代理在部分可观测环境中保持校准的信念状态，避免过早承诺和策略漂移，适用于需要可靠规划的领域，如机器人、网络安全和交互式决策。",
       "analysis_basis": "full_text",
-      "analysis_status": "fallback",
+      "analysis_status": "complete",
       "analysis_signature": "98613f46b7766204",
       "tags": [
+        "LLM4Rec",
         "Agent4Rec",
         "User Modeling",
+        "Generative Rec",
         "Evaluation"
       ],
       "llm_score": 0,
@@ -3665,20 +3681,24 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
+        "training_objective": "无训练过程，BSE为模型无关的外部推理模块。",
+        "feedback_source": "环境奖励和观察，用于贝叶斯滤波更新。",
+        "model_data_scale": "未提供模型规模信息；实验使用付费LLM API，具体模型未详述。",
         "key_benchmarks": [
           "Tiger POMDP",
-          "red-team attack-graph task"
+          "Red-team attack-graph task"
         ],
         "artifacts": [
-          "code",
-          "environment specifications",
-          "prompt templates",
-          "seed logs"
+          "代码",
+          "环境规格",
+          "提示模板",
+          "奖励矩阵",
+          "配对种子日志"
         ],
-        "agent_environment": "Partially Observable Markov Decision Process (POMDP)",
-        "agent_mechanism": "External Bayesian belief-state module (BSE) that maintains posterior over latent states; LLM conditioned on belief state, not raw observation-action history",
-        "interaction_horizon": "Sequence of decisions until task completion (episodic)",
-        "agent_evaluation": "Task return, belief calibration, decision consistency; compared against reactive LLM, Chain-of-Thought, ReAct, natural-language belief tracker, QMDP, and POMCP"
+        "agent_environment": "部分可观测马尔可夫决策过程（POMDP），包括老虎问题和攻击图任务。",
+        "agent_mechanism": "LLM作为信念可测策略，根据BSE提供的信念状态选择动作；BSE执行贝叶斯滤波。",
+        "interaction_horizon": "多步交互，具体视环境而定（Tiger POMDP和攻击图任务均为多步决策）。",
+        "agent_evaluation": "四个指标族：任务回报、信念校准、决策一致性、计算成本。"
       },
       "display_affiliations": [
         "Independent Researcher"
@@ -4019,26 +4039,30 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "本文提出一种免训练的多智能体推理框架，通过结构化交互（多角色多智能体辩论和多智能体竞争）进行说话人关系推断。在Seamless Interaction数据集上的实验表明，该方法在多数情况下优于零样本和现有多智能体基线，但在声学模态下仍面临挑战。该工作为社交感知语音理解提供了新思路。",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "generated_summary": "该论文提出免训练的多智能体推理框架，通过结构化交互（多角色辩论和竞争协议）推断对话中的说话者关系。在Seamless Interaction数据集上，方法在多数设置下优于零样本和多智能体基线。人类评估显示关系推断任务极具挑战，LLM在含文本设置中可超越人类，但音频设置表现不足。",
+      "core_method": "提出两种免训练多智能体推理协议：Multi-Role Multi-Agent Debate（MRMAD）将标准多智能体辩论适配于说话者关系推断，为智能体分配互补角色或基于社会理论的视角；Multi-Agent Compete（MAC）则采用竞争协议，通过成对仲裁比较智能体判断，淘汰较弱候选并保留最可辩护的解释。",
       "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
+        "首次将多智能体辩论框架应用于说话者关系推断这一社会推理任务。",
+        "提出基于角色和社会理论视角的多智能体辩论方法（MRMAD），区别于传统同质化智能体辩论。",
+        "设计竞争式多智能体协议（MAC），通过成对仲裁和淘汰机制选择最优假设。"
       ],
       "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
+        "在Seamless Interaction数据集上，所提方法在多数设置下优于零样本和多智能体基线。人类评估显示LLM方法在含文本设置中有时可超越人类标注者，但在纯音频设置中表现不如人类。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
+        "当前多模态LLM未能充分捕获声学关系线索，纯音频设置下表现有限；关系类别不平衡（如coworkers样本极少），细粒度分类结果需谨慎解读；仅使用了特定闭源和开源模型，普适性有待验证。"
       ],
-      "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
+      "practical_value": "为社交感知语音理解提供了免训练的推理增强方法，可降低对昂贵标注数据的依赖，适用于对话分析、社交智能助理、安全监控等场景。",
       "analysis_basis": "full_text",
-      "analysis_status": "fallback",
-      "analysis_signature": "b15960b28ad63bf6",
+      "analysis_status": "complete",
+      "analysis_signature": "f35b8ff5faa5b32f",
       "tags": [
         "Agent4Rec",
         "User Modeling",
+        "Benchmark",
+        "Evaluation",
         "Sequential Rec"
       ],
       "llm_score": 0,
@@ -4082,17 +4106,17 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "none (training-free inference-time reasoning)",
-        "feedback_source": "adjudication among LLM agents, human evaluation for benchmark",
-        "model_data_scale": "not specified; uses LLMs as agents",
+        "training_objective": "Training-free (no task-specific training); uses LLM inference-time interaction",
+        "feedback_source": "无监督/基于模型自身生成和交互，无需外部标注反馈",
+        "model_data_scale": "使用GPT-5-mini、GPT-audio-1.5、Qwen2.5-Omni-7B；测试集607个对话（441熟悉，166陌生）",
         "key_benchmarks": [
           "Seamless Interaction dataset"
         ],
-        "artifacts": "not specified",
-        "agent_environment": "structured multi-agent protocols (debate, competition) for relationship inference; modalities include audio and text",
-        "agent_mechanism": "multi-agent debate with role/social-theory perspectives; competition via pairwise adjudication and elimination",
-        "interaction_horizon": "multi-turn agent interaction until consensus or winner selected",
-        "agent_evaluation": "binary classification and fine-grained relationship-detail prediction; human evaluation comparison"
+        "artifacts": "None mentioned in abstract",
+        "agent_environment": "无具体环境，为纯推理任务，智能体通过文本交互",
+        "agent_mechanism": "多智能体辩论与竞争协议，智能体独立提出假设并迭代修订或淘汰",
+        "interaction_horizon": "3轮（辩论）或若干轮成对仲裁（竞争）",
+        "agent_evaluation": "binary familiar/stranger 准确率与宏F1，多类关系宏F1与准确率，人类评估对比"
       },
       "display_affiliations": [
         "Johns Hopkins University"
@@ -4127,25 +4151,25 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文提出CityPlanner，一个用于可执行城市规划的沙盒智能体框架，包含统一文件环境UrbanSandbox和基于原子任务的强化学习。该方法将长轨迹分解为BuildPlan和ImprovePlan，在真实基准上优于启发式、任务特定RL和通用LLM智能体。",
-      "core_method": "CityPlanner框架包含两个核心组件：UrbanSandbox和原子任务强化学习。UrbanSandbox提供统一的文件式环境，智能体可在其中查看任务文件、生成计划、运行评估器并根据可执行反馈修正决策。原子任务强化学习将长轨迹分解为BuildPlan（初始构建）和ImprovePlan（基于反馈的改进），并在推理时通过迭代优化组合所学技能。",
+      "generated_summary": "该论文提出CityPlanner，一个可执行城市规划的沙箱智能体框架，通过统一的UrbanSandbox环境让智能体检查任务文件、生成计划、运行评估器并基于反馈修正决策。进一步提出原子任务强化学习，将长轨迹分解为初始构建的BuildPlan和反馈优化的ImprovePlan，在真实基准上优于启发式、任务特定强化学习和通用LLM智能体基线。",
+      "core_method": "CityPlanner框架，结合UrbanSandbox统一文件环境与原子任务强化学习（BuildPlan/ImprovePlan），在推理时迭代细化。",
       "innovation_points": [
-        "提出CityPlanner沙盒智能体框架，将异构城市规划任务表述为沙盒交互，通过可执行反馈实现迭代改进。",
-        "设计UrbanSandbox，一个统一的文件式环境，包含任务特定约束、评估器和反馈，支持智能体检查任务文件、生成计划、运行评估器并修正决策。",
-        "提出原子任务强化学习，将长而嘈杂的规划轨迹分解为BuildPlan和ImprovePlan两个原子任务，使策略学习更易处理，并在推理时通过迭代部署组合技能。"
+        "提出可执行城市规划的沙箱智能体框架CityPlanner，将异质规划任务统一为沙箱交互。",
+        "设计UrbanSandbox，提供统一文件环境，包含任务约束、评估器和可执行反馈。",
+        "提出原子任务强化学习，将长且嘈杂的规划轨迹分解为BuildPlan和ImprovePlan两个原子任务，降低学习难度。"
       ],
       "experiment_results": [
-        "在基于OpenStreetMap的真实基准上，CityPlanner一致性地优于启发式、任务特定RL和通用LLM智能体基线。消融实验验证了UrbanSandbox、原子任务RL和迭代部署的贡献。"
+        "基于OpenStreetMap的真实基准上，CityPlanner一致优于启发式、任务特定RL和LLM智能体基线；消融实验验证了UrbanSandbox、原子任务RL和迭代部署的贡献。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "论文未明确提及局限性。"
+        "论文未明确讨论框架的局限性。"
       ],
-      "practical_value": "CityPlanner为受约束的城市决策提供了一种可执行交互接口，可应用于异构城市规划任务，通过可执行反馈迭代提升规划质量。",
+      "practical_value": "为约束城市决策提供可执行交互接口，有望应用于实际城市规划辅助决策。",
       "analysis_basis": "full_text",
-      "analysis_status": "cached",
-      "analysis_signature": "a3b96e6898058cab",
+      "analysis_status": "complete",
+      "analysis_signature": "09e0f17ac4d69a0f",
       "tags": [
         "Agent4Rec",
         "Benchmark",
@@ -4192,17 +4216,17 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "论文未明确给出强化学习的具体训练目标函数，仅提及通过原子任务分解使策略学习更易处理，并基于可执行反馈进行改进。",
-        "feedback_source": "反馈来自UrbanSandbox中的任务特定评估器，智能体运行计划后可获得可执行反馈。",
-        "model_data_scale": "未提及模型和数据规模的具体细节，仅说明使用基于OpenStreetMap的真实基准。",
+        "training_objective": "原子任务强化学习，将长轨迹分解为BuildPlan（初始构建）和ImprovePlan（基于反馈的改进）分别优化。",
+        "feedback_source": "UrbanSandbox环境中的任务特定评估器提供的可执行反馈。",
+        "model_data_scale": "论文未提供模型参数规模或训练数据规模的具体数字。",
         "key_benchmarks": [
-          "基于OpenStreetMap的城市规划基准"
+          "基于OpenStreetMap的真实世界城市规划基准"
         ],
-        "artifacts": "代码和数据集发布于 https://anonymous.4open.science/r/co-agent-C1C8",
-        "agent_environment": "UrbanSandbox，一个统一的文件式环境，智能体可在其中检查任务文件、生成计划、运行评估器并基于可执行反馈修正决策。",
-        "agent_mechanism": "智能体通过原子任务分解（BuildPlan和ImprovePlan）学习技能，并在推理时通过迭代部署组合这些技能。",
-        "interaction_horizon": "未明确提及交互步数或时间范围，但涉及迭代部署和改进。",
-        "agent_evaluation": "在真实基准上与启发式、任务特定RL和通用LLM智能体基线比较，并进行消融实验。"
+        "artifacts": "代码和数据集在https://anonymous.4open.science/r/co-agent-C1C8发布。",
+        "agent_environment": "UrbanSandbox：统一文件为基础的沙箱环境，智能体可检查任务文件、生成计划、运行评估器并获取反馈。",
+        "agent_mechanism": "将任务分解为原子任务BuildPlan和ImprovePlan，通过推理时迭代细化组合技能。",
+        "interaction_horizon": "推理时采用迭代部署，具体迭代次数未在摘要中提及。",
+        "agent_evaluation": "基于OpenStreetMap基准，与启发式方法、任务特定RL和通用LLM智能体基线比较，并使用消融实验。"
       },
       "display_affiliations": [
         "Beihang University"
@@ -4253,7 +4277,7 @@
       ],
       "practical_value": "该框架为图结构推理任务提供了一种高效的多智能体协作方法，特别适用于大规模异构图，能够减少计算开销并提高推理性能，具有实际应用价值。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "53e4dd68410fa9bc",
       "tags": [
         "Agent4Rec",
@@ -4523,29 +4547,29 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文提出 ContractEval 诊断框架，将程序性指令表示为查询激活的义务，并与响应或轨迹证据匹配，以识别遗漏、错误分支、顺序错误等一致性失败。在受控测试集上，仅输出或轨迹感知的 LLM 评判器会漏检许多注入的结构性失败，而 ContractEval 能全部检测并定位。该框架使程序性一致性可审计，但并非合规保证。",
-      "core_method": "ContractEval 将程序性指令解析为查询激活的义务图（obligation graph），然后从响应或执行轨迹中提取观察图（observed graph），再通过图匹配算法比较两者，将不匹配分类为遗漏、错误分支、顺序错误、额外动作、不变式违反和输出契约违反等一致性失败类型。",
+      "generated_summary": "论文提出ContractEval诊断框架，将程序性指令表示为查询激活的义务，并与响应或轨迹证据匹配，以检测遗漏、错误分支、顺序错误等违规。实验表明，仅输出和轨迹感知的LLM评判会漏掉许多注入的结构性失败，而ContractEval能检测并定位所有失败。该框架使程序合规性可审计，而非仅依赖最终答案质量。",
+      "core_method": "ContractEval将程序性指令解析为查询激活的义务图，并定义匹配规则将义务与响应或轨迹证据进行比对，从而识别遗漏、错误分支、顺序错误、额外动作、不变式违反和输出契约违反等各类合规性失败。",
       "innovation_points": [
-        "将程序性指令的一致性评估形式化为查询激活义务与执行证据的图匹配问题，明确区分了仅输出和轨迹感知评判的不足。",
-        "定义了一套结构化的一致失败类型，包括遗漏、错误分支、顺序错误、额外动作、不变式违反和输出契约违反，实现了细粒度的失败定位。",
-        "通过在受控测试集上比较 ContractEval、仅输出 LLM 评判和轨迹感知 LLM 评判，展示了在检测注入的结构性失败方面的优越性。"
+        "首次提出查询条件化的执行匹配方法，使活跃义务显式化，而非仅依赖最终输出或表面活动。",
+        "将多种程序性违规（遗漏、错误分支、顺序错误、额外动作、不变式违反、输出契约违反）统一为可检测、可定位的合规性失败。",
+        "在受控审计的程序合约套件上，证明金标准图下ContractEval能检测并定位所有注入的结构性失败，优于输出仅和轨迹感知的LLM评判。"
       ],
       "experiment_results": [
-        "在受控的审计程序契约测试集上，仅输出和轨迹感知的 LLM 评判器漏检了许多注入的结构性失败；而在金标准预期图和观察图下，ContractEval 能检测并定位所有注入的失败；LLM 支持的提取保留了大部分信号，但仍对校准敏感。"
+        "在受控审计的程序合约套件上，输出仅和轨迹感知的LLM评判遗漏了许多注入的结构性失败；而在金标准预期和观察图下，ContractEval检测并定位了所有失败。LLM支持的信息提取保留了大量信号，但对校准敏感。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "ContractEval 不是合规保证，其性能受限于 LLM 提取的校准敏感性；框架本身依赖于义务图和观察图的准确构建，若提取不准确则可能漏检或误报。"
+        "ContractEval不是合规性保证；LLM支持的信息提取对校准敏感，可能影响检测性能的稳定性。"
       ],
-      "practical_value": "ContractEval 使程序性一致性可审计，而不是隐含在最终答案质量中，为需要严格遵循程序指令的 LLM 智能体应用（如医疗、法律、工业流程）提供诊断工具，帮助识别和定位执行中的结构性偏差。",
+      "practical_value": "ContractEval使程序合规性可审计，而非隐含于最终答案质量中，为需要程序遵循的LLM代理应用提供了诊断和审计工具。",
       "analysis_basis": "full_text",
       "analysis_status": "complete",
-      "analysis_signature": "c64c143156a2f409",
+      "analysis_signature": "d92d9675cb785125",
       "tags": [
         "Evaluation",
-        "Benchmark",
-        "Agent4Rec"
+        "Agent4Rec",
+        "Benchmark"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -4588,15 +4612,15 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "agent_environment": "未指定具体的智能体环境。",
-        "agent_mechanism": "未详细描述智能体内部机制，但假设智能体在执行程序性指令时会产生响应或轨迹证据。",
-        "agent_evaluation": "通过比较义务图和观察图来评估智能体对程序性指令的一致性，检测遗漏、错误分支等失败类型。",
-        "training_objective": "无相关训练目标信息（论文未涉及模型训练）。",
-        "feedback_source": "无相关反馈来源信息（论文未采用强化学习或反馈机制）。",
-        "model_data_scale": "未提供模型或数据规模的具体信息。",
-        "key_benchmarks": "使用受控的审计程序契约测试集，但未提及具体基准名称。",
+        "training_objective": "无（非训练框架，为评估/诊断方法）",
+        "feedback_source": "金标准预期图与观察图（人工构建或审计），以及LLM提取的预期和观察图。",
+        "model_data_scale": "未提供具体模型规模；实验为受控审计的程序合约套件，规模未明确。",
+        "key_benchmarks": "自定义的受控审计程序合约套件（具体名称未提供）。",
         "artifacts": "未提及代码或数据发布。",
-        "interaction_horizon": "未提及交互时长或步数限制。"
+        "agent_environment": "未提供具体环境；适用于执行程序性指令的LLM代理。",
+        "agent_mechanism": "LLM代理生成响应或轨迹，ContractEval解析指令为义务并匹配证据。",
+        "interaction_horizon": "单次交互（针对特定查询的响应或轨迹）进行合规性评估。",
+        "agent_evaluation": "通过检测遗漏、错误分支、顺序错误、额外动作、不变式违反和输出契约违反等类型来评估程序遵循度。"
       },
       "display_affiliations": [
         "Unknown affiliation"
@@ -4736,7 +4760,7 @@
       ],
       "practical_value": "该框架为LLM代理在长视野任务中的过程性知识表示和决策指导提供了系统化方法，减少了对人工设计过程结构的依赖，并能在实际运行中自动优化，具有很好的工程应用前景。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "2e070e6c0b84afa1",
       "tags": [
         "Agent4Rec",
@@ -4848,7 +4872,7 @@
       ],
       "practical_value": "MeClear为长期LLM智能体的记忆管理提供了一种风险可控的解决方案，在不破坏持久记忆库的前提下，按查询动态抑制有害记忆，提升任务执行准确性，适用于需要长期维护用户偏好和任务知识的智能体系统。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "4fc69564c27c84ae",
       "tags": [
         "Agent4Rec",
@@ -4927,7 +4951,7 @@
       ],
       "affiliations": [
         "Technical University of Munich",
-        "Munich Institute of Robotics and Machine Intelligence (MIRMI)",
+        "Munich Institute of Robotics and Machine Intelligence",
         "University College London"
       ],
       "published": "2026-09-08T16:19:06Z",
@@ -4965,7 +4989,7 @@
       ],
       "practical_value": "提供一个端到端的 LLM 智能体框架，可自动化 ADS 场景测试全流程，降低人工参与，提升测试效率和规划器性能，且支持使用开源模型以降低成本。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "89a7a9c0057bf12e",
       "tags": [
         "Benchmark",
@@ -5030,7 +5054,7 @@
       },
       "display_affiliations": [
         "Technical University of Munich",
-        "Munich Institute of Robotics and Machine Intelligence (MIRMI)",
+        "Munich Institute of Robotics and Machine Intelligence",
         "University College London"
       ],
       "published_date": "2026-09-08"
@@ -5531,28 +5555,29 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "该综述面向LLM智能体的个性化记忆，提出基于图的生命周期视角，涵盖记忆表示、演化、检索与评估四个环节。文章系统梳理了现有研究的设计选择与评估实践，并讨论了构建可靠长期个性化智能体的开放挑战。目标是阐明图记忆如何支持自适应、可控且以用户为中心的LLM智能体。",
-      "core_method": "采用生命周期导向的综述框架，围绕记忆表示、记忆演化、记忆检索和记忆评估四个阶段系统组织和比较现有研究。",
+      "generated_summary": "该综述面向LLM智能体的个性化记忆，提出基于图的生命周期视角，涵盖记忆表示、演化、检索与评估四个阶段。文章比较了关键设计选择，讨论了评估实践与开放挑战，旨在支持自适应、可控且以用户为中心的长期智能体。",
+      "core_method": "综述，以生命周期为导向组织图基个性化记忆设计：表示、演化、检索和评估。",
       "innovation_points": [
-        "提出图基个性化记忆的生命周期视图，整合分散的研究",
-        "系统比较记忆表示、演化、检索与评估的设计选择",
-        "明确图记忆用于长期个性化智能体的挑战与方向"
+        "提出统一的图基个性化记忆生命周期视角，整合表示、演化、检索与评估。",
+        "系统比较现有图形记忆框架与个性化智能体方法的设计选择。",
+        "识别长期个性化智能体在记忆可靠性、可控性和用户中心性方面的开放挑战。"
       ],
       "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
+        "本文为综述，未提供实验。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "作为综述，未提出新模型或方法，也未进行实验验证；主要基于文献分析，可能受限于现有研究的覆盖范围。"
+        "本文为综述，未提供具体方法的实验验证；内容受限于现有文献的覆盖范围。"
       ],
-      "practical_value": "为研究者提供图基个性化记忆的系统梳理，可作为设计长期个性化LLM智能体的参考；涵盖表示、演化、检索和评估的实践指导。",
+      "practical_value": "为构建具有长期记忆和个性化能力的LLM智能体提供设计空间和评估指导，帮助研究人员理解图基记忆的核心组件与权衡。",
       "analysis_basis": "full_text",
-      "analysis_status": "cached",
-      "analysis_signature": "2e854b31cfd7e31c",
+      "analysis_status": "complete",
+      "analysis_signature": "4b5d36116b97ee91",
       "tags": [
         "Agent4Rec",
         "User Modeling",
+        "RAG Rec",
         "Evaluation",
         "LLM4Rec"
       ],
@@ -5597,15 +5622,15 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
+        "agent_mechanism": "基于图的个性化记忆，支持表示、演化、检索和评估，用于长期用户适应。",
+        "interaction_horizon": "long-term, across tasks, contexts, and interactions",
+        "agent_evaluation": "讨论记忆评估实践，包括评估指标和基准，但未在摘要中给出具体数据集。",
         "training_objective": "Not applicable; survey of existing methods.",
         "feedback_source": "Not explicitly mentioned; reviews existing literature on graph memory for LLM agents.",
         "model_data_scale": "Not mentioned; likely varies across surveyed works.",
         "key_benchmarks": "Not specified; discusses evaluation practices generally.",
         "artifacts": "https://github.com/rodo-nguyen/graph-based-personalized-memory",
-        "agent_environment": "Not specified; discusses long-term personal assistant scenarios.",
-        "agent_mechanism": "Graph-based memory with representation, evolution, retrieval, and evaluation components.",
-        "interaction_horizon": "Long-term, multi-session, across tasks and contexts.",
-        "agent_evaluation": "Discusses current evaluation practices but no specific metrics or datasets given."
+        "agent_environment": "Not specified; discusses long-term personal assistant scenarios."
       },
       "display_affiliations": [
         "Griffith University"
@@ -5642,23 +5667,27 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文提出一种三层人格向量（6类人口统计、12个行为特质、5个情绪状态）及4级查询复杂度覆盖层，用于在LLM智能体评估中生成多样且可控的模拟用户输入。在64,698条多轮对话中验证，不同人格导致智能体目标达成率相差15.8个百分点，且同一人格因场景情绪变化表现不同。该模型可复现、无需学习协方差矩阵，能忠实反映真实世界任务难度分布。",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "generated_summary": "本文提出一种三层人格向量（包含6个类别人口统计、12个连续行为特征和5个连续情绪状态），用于可控且可复现的LLM智能体评估用户模拟。在64,698段多轮对话上的实验表明，该模型在不同人格间产生显著行为差异，且情绪状态随场景动态变化，能忠实复现真实难度分布。",
+      "core_method": "三层人格向量模型：第一层为6个类别人口统计维度；第二层为12个连续行为特征，基于管理配置文件基础向量添加高斯噪声采样；第三层为5个连续情绪状态，根据场景上下文动态偏移。连续值离散化为低/中/高三级桶，以稳定提示词长度。正交的4级查询复杂度叠加控制表述方式。",
       "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
+        "提出23维三层人格向量，将人口统计、行为特征和情绪状态分离，实现可控用户模拟",
+        "行为特征使用高斯噪声围绕管理配置文件采样，提供可控的多样性且保持可复现性",
+        "情绪状态随场景上下文动态变化，使同一人格在不同场景中表现不同"
       ],
       "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
+        "在49K+混合语料样本上，8个人格的智能体目标达成率存在15.8个百分点的差异，证明特征向量产生可测量的行为差异",
+        "同一人格在争议和结账场景中因场景反应性情绪状态变化而产生质的不同对话",
+        "领域特定项目显示人格敏感性：在预订流程合规性上，层级感知人格与压力测试人格之间存在15-20个百分点的差距"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
+        "论文未明确提及限制。"
       ],
-      "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
+      "practical_value": "为智能体评估提供可控、可复现且多样化的用户模拟方法，支持因子实验设计，能够对智能体进行压力测试，以覆盖真实用户分布。已在生产规模语料（64K样本、3个生产语料库）上验证。",
       "analysis_basis": "full_text",
-      "analysis_status": "fallback",
-      "analysis_signature": "5a41de2e4883c89a",
+      "analysis_status": "complete",
+      "analysis_signature": "18464d5a9db526d7",
       "tags": [
         "Agent4Rec",
         "User Modeling",
@@ -5707,15 +5736,18 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "model_data_scale": "64,698 multi-turn conversations across 8 named profiles and 3 production corpora",
-        "artifacts": "Persona model fully specified for reproduction",
-        "agent_environment": "Synthetic data generation pipeline for evaluating tool-augmented LLM agents",
-        "agent_mechanism": "Three-tier persona vector with categorical demographics, continuous behavioral traits, and emotional states, plus query-complexity overlay",
-        "interaction_horizon": "Multi-turn conversations",
-        "agent_evaluation": "Agent goal-achievement, booking-flow compliance, co-occurrence patterns",
-        "training_objective": "无需训练；人格向量是手动指定并通过噪声采样生成的。",
-        "feedback_source": "无",
-        "key_benchmarks": "论文中未提及标准基准测试；评估基于内部生产语料库和领域特定轴（如预订流程合规性）。"
+        "training_objective": "Not explicitly stated; the persona model is rule-described with curated profile base vectors and Gaussian noise, not trained via a loss function.",
+        "feedback_source": "Production corpora and synthetic data generation pipeline; no explicit RL feedback.",
+        "model_data_scale": "64,698段多轮对话，3个生产语料库",
+        "key_benchmarks": [
+          "自建合成数据生成流水线",
+          "预订流程合规性（领域特定）"
+        ],
+        "artifacts": "None explicitly mentioned; 'fully specified for reproduction' but no code/links.",
+        "agent_environment": "多智能体合成数据生成流水线：用户模拟器、被测智能体、工具模拟器、LLM评判",
+        "agent_mechanism": "Not described in depth; the paper focuses on user simulation input to the agent, not the agent's internal architecture.",
+        "interaction_horizon": "多轮对话（具体轮数未说明）",
+        "agent_evaluation": "目标达成率、预订流程合规性"
       },
       "display_affiliations": [
         "Unknown affiliation"
@@ -5865,30 +5897,29 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文提出Bio-MemArt，一种面向多用户LLM智能体的生物特征感知KV缓存记忆框架，通过将归一化生物特征模板附加到每个存储的KV记忆块，实现物理用户级别的访问控制。在多用户长期对话QA基准上，该方法实现了高所有者成功率（人脸95.71%、掌纹97.60%）和低非所有者成功率（0.86%和2.00%），同时将平均预填充令牌从18781.96降至28.57。该工作在不破坏潜在空间检索、直接缓存重用和解耦位置编码的前提下，为共享KV记忆增加了安全访问控制。",
-      "core_method": "Bio-MemArt在原始MemArt KV缓存记忆框架基础上，为每个存储的KV块附加归一化生物特征模板；查询时，将当前用户的生物特征探针与各块模板进行余弦相似度比较，仅相似度超过统计估计阈值的块进入授权候选池，然后在授权池内执行原有的语义检索和KV重用。",
+      "generated_summary": "Bio-MemArt 为多用户LLM智能体提出了一种生物特征感知的KV缓存记忆框架，通过将生物特征模板附加到KV记忆块，实现物理用户访问控制。在长期对话QA中，该框架保持了高所有者识别率和低非所有者误识率，并大幅减少预填充令牌，维持了KV缓存记忆的低成本运行。",
+      "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
-        "首次将物理用户生物特征身份控制引入共享KV缓存记忆，解决语义相关性无法保证访问授权的问题。",
-        "设计身份感知检索：在原生语义检索之前进行生物特征门控，实现授权候选池过滤，从而在保持潜在空间检索和直接缓存重用的同时增加访问控制。",
-        "通过在人脸和掌纹基准上的实验证明，生物特征门控可以保持KV缓存记忆的低预填充令牌优势（平均从18781.96降至28.57），同时实现高所有者/非所有者区分度。"
+        "未能从全文/元数据中稳定抽取明确创新点。"
       ],
       "experiment_results": [
-        "在人脸基准上，平均所有者生物特征成功率为95.71%，非所有者成功率为0.86%；在掌纹基准上，所有者成功率为97.60%，非所有者成功率为2.00%。效率研究显示，平均预填充令牌从全上下文提示的18,781.96降至Bio-MemArt的28.57。"
+        "全文未提供足够实验结果细节，或解析失败。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "论文未明确讨论局限性。"
+        "需要阅读全文确认实验设置、数据集和适用边界。"
       ],
-      "practical_value": "为共享多用户环境（如智能家居、公共终端、企业助手）中的LLM智能体提供物理用户级别的KV缓存访问控制，在保持高效记忆重用的同时防止隐私泄露。",
+      "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
-      "analysis_signature": "444306f17f96bebb",
+      "analysis_status": "fallback",
+      "analysis_signature": "f8b8df793900ba4f",
       "tags": [
-        "Benchmark",
+        "User Modeling",
+        "Agent4Rec",
         "Evaluation",
-        "LLM4Rec",
-        "User Modeling"
+        "Benchmark",
+        "LLM4Rec"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -5931,19 +5962,19 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
+        "key_benchmarks": [
+          "long-term dialogue QA",
+          "face benchmarks",
+          "palmprint benchmarks"
+        ],
+        "agent_environment": "shared multi-user LLM agent deployment using KV cache as external memory",
+        "agent_mechanism": "biometric-aware KV cache filtering before retrieval and reuse; normalized biometric template attached to KV blocks",
+        "interaction_horizon": "long-term dialogue QA with Owner and Non-owner conditions",
+        "agent_evaluation": "Biometric success rates (owner vs non-owner), average prefill tokens reduction (18,781.96 to 28.57)",
         "training_objective": "未提及训练目标；方法基于预训练模型和预提取的生物特征嵌入。",
         "feedback_source": "未提及反馈来源；依赖生物特征验证和检索机制，无在线学习或人类反馈。",
         "model_data_scale": "使用Qwen2.5-3B-Instruct模型；共享记忆池最多5个用户；效率实验从10个不同对话中采样50个QA实例。",
-        "key_benchmarks": [
-          "LoCoMo（长期对话QA）",
-          "人脸基准（未具体命名）",
-          "掌纹基准（未具体命名）"
-        ],
-        "artifacts": "未提及发布代码或数据。",
-        "agent_environment": "多用户共享KV记忆池，模拟智能助手场景；每个用户有独立KV记忆分区。",
-        "agent_mechanism": "基于KV缓存的外部记忆检索；查询时先进行生物特征过滤，再在授权池内进行语义检索和KV重用。",
-        "interaction_horizon": "长期多轮对话；具体轮数未明确，但使用LoCoMo长期对话基准。",
-        "agent_evaluation": "使用unigram F1和BLEU-1评估QA记忆准确性；用生物特征成功率和所有者-非所有者QA差距评估身份隔离；用预填充令牌、检索时间、生物特征匹配开销、响应时间和生成令牌评估效率。"
+        "artifacts": "未提及发布代码或数据。"
       },
       "display_affiliations": [
         "Anhui Provincial Key Laboratory of Secure Artificial Intelligence",
@@ -5983,30 +6014,32 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "本文提出Bio-Memory，一种生物特征感知的记忆架构，在检索时同时考虑语义相似度和生物特征匹配，以解决多用户共享LLM代理场景下的个性化记忆问题。该方法在A-Mem基础上为每条记忆增加生物特征嵌入，先用生物特征匹配构建候选池再进行语义排序。在LoCoMo的10用户共享代理设置下，Bio-Memory在7个面部基准和10个掌纹协议上均能区分所有者与非所有者查询，最大F1/BLEU-1差距达27.29%/21.15%。",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "generated_summary": "论文提出 Bio-Memory，一种基于生物特征感知的记忆架构，通过结合语义相似度和生物特征匹配来调节 LLM 代理的记忆检索，以在多用户共享场景中实现个性化。在 LoCoMo 数据集上的 10 用户共享代理设置中，使用 7 个人脸基准和 10 个掌纹协议进行评估，Bio-Memory 能一致地区分所有者与非所有者查询，最大平均差距在 CALFW 上达到 27.29%/21.15%（F1/BLEU-1），在 MS_Blue 上达到 25.75%/19.22%。结果表明生物特征可作为共享环境中个性化记忆检索的实用控制信号。",
+      "core_method": "Bio-Memory 在 A-Mem 基础上，为每个原子记忆条目添加生物特征嵌入。在检索时，将当前用户的探测嵌入与存储的生物特征嵌入进行匹配，先构建生物特征匹配的候选池，再进行语义排序。若没有条目通过生物特征匹配，则模型在无个性化记忆支持下回答。",
       "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
+        "将生物特征身份证据集成到原子记忆条目中，使记忆同时基于语义内容和请求者的物理身份。",
+        "提出了一种生物特征感知的 A-Mem 扩展，在语义检索和响应生成之前构建生物特征匹配的候选池。",
+        "在 LoCoMo 上进行了 10 用户共享代理的全面评估，覆盖 7 个人脸基准和 10 个掌纹协议。"
       ],
       "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
+        "在 10 用户共享代理设置中，Bio-Memory 在所有数据集、问题类型和评估指标上均一致地区分所有者和非所有者查询。掌纹协议上的平均 F1 差距为 20.13 至 25.75，BLEU-1 差距为 14.97 至 19.53，MS_Blue 上所有者平均为 30.68/23.56，非所有者平均为 4.93/4.34。人脸基准上的平均 F1 差距为 23.58 至 27.29，BLEU-1 差距为 18.34 至 21.15，CALFW 上所有者平均为 30.89/24.31，非所有者平均为 3.60/3.16。所有者分数保持在健康范围内，表明生物特征过滤具有选择性，不会牺牲合法用户的记忆。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
+        "论文未提及明显的局限性。"
       ],
-      "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
+      "practical_value": "Bio-Memory 为共享环境中的个性化记忆检索提供了一种实用的生物特征控制信号，可用于智能家居助手、公共终端或企业助手等多用户场景，确保检索到正确用户的记忆。",
       "analysis_basis": "full_text",
-      "analysis_status": "fallback",
-      "analysis_signature": "c1c87bf105716685",
+      "analysis_status": "complete",
+      "analysis_signature": "94b59140c7f18063",
       "tags": [
         "Agent4Rec",
         "User Modeling",
-        "RAG Rec",
         "Benchmark",
-        "LLM4Rec",
-        "Evaluation"
+        "Evaluation",
+        "RAG Rec",
+        "LLM4Rec"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -6020,8 +6053,8 @@
       ],
       "primary_track": "llm_systems",
       "topics": [
-        "post_training",
-        "llm_agent"
+        "llm_agent",
+        "post_training"
       ],
       "primary_topic": "llm_agent",
       "track_relevance": {
@@ -6049,22 +6082,21 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "Not applicable; memory retrieval is based on semantic similarity and biometric matching, without explicit training objective described.",
-        "feedback_source": "No explicit feedback loop; retrieval is conditioned on biometric embeddings and semantic ranking.",
-        "model_data_scale": "10-user shared-agent setting; evaluated on 7 face benchmarks and 10 palmprint protocols; exact model size or memory volume not disclosed.",
+        "training_objective": "无训练过程，Bio-Memory 是基于检索的架构，直接在推理时使用生物特征匹配和语义排序。",
+        "feedback_source": "未使用反馈信号。",
+        "model_data_scale": "在 LoCoMo 数据集的 10% 测试子集上评估，使用 7 个人脸基准和 10 个掌纹协议。",
         "key_benchmarks": [
           "LoCoMo",
           "CALFW",
-          "MS_Blue"
+          "MS_Blue",
+          "多个掌纹协议",
+          "多个人脸基准"
         ],
-        "artifacts": [
-          "Bio-Memory architecture",
-          "Biometric embeddings"
-        ],
-        "agent_environment": "Shared multi-user agent environment with personalized memory.",
-        "agent_mechanism": "Biometric matching filters candidate memory notes before semantic ranking; built on A-Mem.",
-        "interaction_horizon": "Multiple interactions across users over time; exact number of turns not specified.",
-        "agent_evaluation": "Separation of owner vs non-owner queries measured by F1 and BLEU-1 gaps; largest face gap 27.29% F1 / 21.15% BLEU-1 on CALFW; palmprint gap 25.75% F1 / 19.22% BLEU-1 on MS_Blue."
+        "artifacts": "未明确提及代码或数据发布。",
+        "agent_environment": "10 用户共享代理记忆存储，合并了十个 LoCoMo 对话，每个对话绑定一个生物特征身份。",
+        "agent_mechanism": "推理时，当前用户的生物特征探测嵌入与存储嵌入匹配，仅匹配的记忆进入候选池，然后进行语义检索和响应生成。",
+        "interaction_horizon": "LoCoMo 对话涉及多轮交互，具体长度未明确。",
+        "agent_evaluation": "使用 Multi-Hop、Temporal 和 Single-Hop 问题，以 token 级 F1 和 BLEU-1 作为指标，比较所有者和非所有者条件下的回答。"
       },
       "display_affiliations": [
         "Anhui Provincial Key Laboratory of Secure Artificial Intelligence",
@@ -6120,7 +6152,7 @@
       ],
       "practical_value": "CreaMem为个性化LLM智能体提供了更有效的长期记忆组织方案，能够减少跨场景干扰，增强多跳推理和上下文相关性，适用于需要长期交互的助手、陪伴机器人等场景。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "c678168ade7662e0",
       "tags": [
         "Agent4Rec",
@@ -6659,7 +6691,7 @@
       ],
       "practical_value": "A-MLE可以作为工业推荐系统中ML工程师的力量倍增器，自动探索长尾模型的技术改进，减少对专家人工干预的依赖，提高迭代效率。其设计模式和分层评估框架可为其他大规模ML系统自动化提供参考。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "7eed70c984862453",
       "tags": [
         "Agent4Rec",
@@ -6756,28 +6788,30 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "该论文提出SE-GoS，一个无需训练的框架，通过执行轨迹自演化技能图以提升大规模技能库的检索效果。方法包括拓扑演化、边权演化和描述演化三个互补更新，在SkillsBench上跨三个LLM提升任务奖励并减少输入token。实验表明该图可迁移到未见任务，优于静态GoS基线。",
-      "core_method": "SE-GoS在现有GoS图上执行三轮互补更新：拓扑演化利用执行证据发现和修剪技能关系；边权演化基于历史有效性强化检索相关边；描述演化利用执行反馈优化技能描述。整个过程无需训练且不改变检索算法和技能内容。",
+      "generated_summary": "本文提出SE-GoS，一个无需训练的自演化技能图框架，通过拓扑、边权重和描述的演化从执行轨迹中改进技能检索图，以应对大规模技能库的检索瓶颈。在SkillsBench上，SE-GoS在三个LLM上提升了任务奖励并减少了输入token，且演化图能泛化到未见任务。结果表明，技能图可从执行经验中持续改进，无需模型训练或修改检索算法。",
+      "core_method": "SE-GoS框架对现有技能图执行三种互补演化：拓扑演化从执行证据中发现和剪枝技能关系；边权重演化根据历史有效性强化检索相关边；描述演化利用执行反馈优化面向检索的技能描述。",
       "innovation_points": [
-        "首次系统地从历史执行轨迹中蒸馏出更好的检索图，并泛化到未见任务",
-        "提出拓扑、边权、描述三个互补演化维度，全面优化技能图",
-        "实现训练无关的图演化，无需修改检索算法或技能内容，支持技能库持续扩展"
+        "提出训练无关的图自演化机制，从执行轨迹蒸馏技能关系以改进检索图，无需模型训练或修改检索算法",
+        "同时演化图拓扑、边权重和技能描述，覆盖结构、检索相关性和语义表示三个维度",
+        "证明演化后的图可泛化到未见任务，且能降低上下文长度"
       ],
       "experiment_results": [
-        "在SkillsBench上跨三个LLM家族（GPT-4o、Claude-3.5-Sonnet、Llama-3.1-70B）进行评测。代表性设置下，一轮演化将任务奖励从52.4%提升至59.4%，同时输入token相比全量加载减少约三分之一；演化后的图在留出集上比静态GoS基线高5.4个点。"
+        "在SkillsBench三个LLM上，SE-GoS一致提升任务奖励并减少输入token。代表性设置中，一轮演化将奖励从52.4%提升至59.4%，输入token减少约三分之一，且演化图在不相交留出集上比静态GoS提升5.4个百分点。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "论文中未明确提及局限性与未来工作，但从实验设置推断，验证局限于SkillsBench基准和三个特定LLM家族，在其他技能领域或模型上的泛化性尚未验证；演化依赖历史执行轨迹的质量和覆盖度。"
+        "提升幅度因模型家族而异，并非所有LLM上效果一致",
+        "实验仅在SkillsBench上评估，未见其他环境验证"
       ],
-      "practical_value": "SE-GoS为大规模技能库提供了一种轻量、可持续的演化方案，无需重新训练模型或改动检索系统，即可通过累积执行经验持续优化检索图，提升任务成功率并降低token成本。该框架可直接集成到现有基于技能图的Agent系统中。",
+      "practical_value": "为大规模技能库提供轻量级、训练无关的检索优化方案，可集成到现有agent系统，通过利用执行经验持续改进检索效率和任务性能，降低上下文开销。",
       "analysis_basis": "full_text",
-      "analysis_status": "cached",
-      "analysis_signature": "b3279de37dad9e4f",
+      "analysis_status": "complete",
+      "analysis_signature": "a18f61f7325771b5",
       "tags": [
         "Agent4Rec",
         "Generative Retrieval",
+        "RAG Rec",
         "Benchmark",
         "User Modeling",
         "LLM4Rec",
@@ -6825,17 +6859,17 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "训练无关的图演化，通过执行轨迹优化技能图检索效果，目标为最大化任务奖励并减少输入token。",
-        "feedback_source": "历史执行轨迹中的执行证据与效果信号，包括技能调用关系、任务成功率等。",
-        "model_data_scale": "三个LLM家族：GPT-4o、Claude-3.5-Sonnet、Llama-3.1-70B；技能库规模为数千技能（SkillsBench基准）。",
+        "training_objective": "无训练目标（训练无关方法）",
+        "feedback_source": "历史执行轨迹中的任务奖励和检索有效性",
+        "model_data_scale": "基于SkillsBench数据集，包含数千技能；使用三个LLM（如GPT-4o、DeepSeek-V3、Qwen2.5）进行评估",
         "key_benchmarks": [
           "SkillsBench"
         ],
-        "artifacts": "未提供代码或数据链接。",
-        "agent_environment": "基于技能库的文本任务环境，Agent通过检索技能图并调用技能来完成任务。",
-        "agent_mechanism": "Agent使用GoS检索管道从图中获取相关技能，技能图通过拓扑、边权和描述演化更新。",
-        "interaction_horizon": "单轮执行后进行一次图演化，未明确提及多轮交互或长期规划。",
-        "agent_evaluation": "任务奖励（成功率）和输入token数量。"
+        "agent_environment": "SkillsBench任务环境，需要从大规模技能库中检索相关技能以完成任务",
+        "agent_mechanism": "使用图检索技能（GoS）而非完整技能列表，图结构基于技能间依赖关系；检索算法保持不变，仅更新图",
+        "interaction_horizon": "单轮任务执行，但图演化基于历史执行轨迹",
+        "agent_evaluation": "任务奖励（成功率）和输入token数量",
+        "artifacts": "未提供代码或数据链接。"
       },
       "display_affiliations": [
         "Peking University",
@@ -6876,29 +6910,30 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文针对多模态RAG中检索器优化语义相似度而非答案效用的问题，提出两阶段生成器在环对齐框架：第一阶段用VLM从图像-查询生成假设文本用于稠密检索，第二阶段用答案监督的偏好对通过LoRA微调交叉编码器重排器。在VQA-X和A-OKVQA上，该方法在不同对齐损失和池大小下均优于基线，表明答案级生成器反馈是有效的偏好对齐监督信号。",
-      "core_method": "两阶段生成器在环对齐框架：Stage 1使用VLM基于HyDE生成假设文本，结合原始问题由Sentence Transformer编码后用FAISS检索候选文档池；Stage 2通过冻结VLM判断每个候选文档是否使模型产生正确答案，自动构建偏好对，并用LoRA微调交叉编码器重排器。训练损失兼容对比三元组损失、DPO和SFT。支持周期性重挖掘偏好对。",
+      "generated_summary": "论文针对多模态RAG中检索器与生成器之间的语义-效用偏好差距，提出一种两阶段生成器在环对齐框架：首先生成假设文本段落以桥接图文模态差距，然后用生成器反馈挖掘答案监督偏好对来微调重排序器。在VQA-X和A-OKVQA上，该方法优于多种基线，表明答案级生成器反馈是有效的偏好对齐监督信号。",
+      "core_method": "提出两阶段生成器在环对齐框架（Generator-in-the-Loop Alignment）。Stage 1：使用冻结的VLM从图像-问题对生成假设文本段落（HyDE），将其与原始问题拼接后由Sentence Transformer编码，并通过FAISS进行稠密检索，得到候选文档池。Stage 2：利用冻结的VLM为每个候选文档生成答案，与真实答案比较，将能产生正确答案的文档标记为正样本，否则为负样本，构建答案监督的偏好对；然后用这些偏好对通过LoRA微调交叉编码器重排序器，支持对比学习（triplet loss）、DPO和SFT三种对齐损失；此外，引入周期性重挖掘机制，在重排序器改进后动态重建偏好对。",
       "innovation_points": [
-        "提出生成器在环对齐框架，利用答案级监督信号训练重排器，无需人工文档级相关性标注。",
-        "采用两阶段设计，分离多模态查询翻译（HyDE）与生成器对齐重排，解决模态鸿沟和语义-效用偏好鸿沟。",
-        "使用冻结VLM根据生成答案正确性自动挖掘偏好对，并支持周期性重挖掘以适应重排器改进。"
+        "提出生成器在环对齐框架，将检索目标从语义相似性转向下游答案效用，解决语义-效用偏好差距。",
+        "无需人工文档级相关性标注，仅利用答案标签自动挖掘偏好对，降低标注成本。",
+        "Stage 1通过HyDE生成假设文本，桥接图像到文本的模态差距，提升检索质量。"
       ],
       "experiment_results": [
-        "在VQA-X和A-OKVQA数据集上，使用Qwen3.5-2B和Qwen3-VL-4B-Instruct作为生成器，所提框架在对比三元组损失、DPO、SFT三种对齐损失及不同候选池大小设置下，均优于基于排序、随机和REPLUG风格似然度的基线方法。迭代重挖掘相比固定偏好对训练提升最高达2.58个百分点。"
+        "在VQA-X和A-OKVQA数据集上，使用Qwen3.5-2B和Qwen3-VL-4B-Instruct作为生成器，实验表明所提框架在多种对齐损失和候选池大小设置下均优于秩排序、随机和REPLUG风格似然基线。周期性重挖掘机制带来最高2.58个百分点的提升。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "论文未明确提及限制。"
+        "论文未明确提及局限性。"
       ],
-      "practical_value": "该方法通过自动挖掘答案级偏好信号训练重排器，可以提升多模态RAG系统在知识密集型视觉推理任务中的证据选择质量与答案正确性，降低对昂贵人工标注的依赖，有望应用于医疗决策支持、科学知识检索、教育、文档理解等高可靠性需求的场景。",
+      "practical_value": "该方法可提升多模态RAG系统的可靠性和忠实性，适用于医学决策支持、科学知识检索、教育、文档理解等高 stakes 应用，并减少对昂贵人工监督的依赖。",
       "analysis_basis": "full_text",
       "analysis_status": "complete",
-      "analysis_signature": "da1cdf0f7e7206ac",
+      "analysis_signature": "23d8a6ad243574e1",
       "tags": [
         "RAG Rec",
-        "Generative Ranking",
+        "Generative Rec",
         "Evaluation",
+        "Generative Ranking",
         "Dataset",
         "Benchmark"
       ],
@@ -6914,11 +6949,11 @@
       ],
       "primary_track": "llm_systems",
       "topics": [
-        "llm_agent",
         "post_training",
+        "llm_agent",
         "llm_rl"
       ],
-      "primary_topic": "llm_agent",
+      "primary_topic": "post_training",
       "track_relevance": {
         "llm_systems": 92
       },
@@ -6944,18 +6979,18 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "使用答案监督偏好对训练LoRA适配的交叉编码器重排器，损失函数兼容对比三元组损失、直接偏好优化（DPO）和监督微调（SFT）。",
-        "feedback_source": "来自冻结VLM的答案正确性：给定候选文档作为上下文，若VLM生成正确答案则标记为正样本，否则为负样本。",
-        "model_data_scale": "实验使用Qwen3.5-2B和Qwen3-VL-4B-Instruct作为生成器；数据集为VQA-X和A-OKVQA；重排器为交叉编码器，采用LoRA微调。具体数据规模未提及。",
+        "training_objective": "在Stage 2中，使用答案监督的偏好对微调交叉编码器重排序器，支持对比学习（triplet loss）、直接偏好优化（DPO）和监督微调（SFT）三种对齐损失函数；采用LoRA进行参数高效微调。",
+        "feedback_source": "反馈信号来自冻结的VLM生成器：将候选文档作为上下文，生成答案并与真实答案比较，正确则标记为正样本，错误为负样本；不依赖人工文档级相关性标注。",
+        "model_data_scale": "实验使用Qwen3.5-2B和Qwen3-VL-4B-Instruct作为生成器；数据集为VQA-X和A-OKVQA；候选池大小在实验中有变化。",
         "key_benchmarks": [
           "VQA-X",
           "A-OKVQA"
         ],
-        "artifacts": "无明确信息。",
-        "agent_environment": "不适用，本文未涉及Agent环境。",
-        "agent_mechanism": "不适用，本文未涉及Agent机制。",
-        "interaction_horizon": "不适用，本文未涉及交互式Agent。",
-        "agent_evaluation": "不适用，本文未涉及Agent评估。"
+        "agent_environment": "无显式Agent环境；RAG系统包括检索器、重排序器和生成器，但未建模为多步交互式Agent。",
+        "agent_mechanism": "无Agent机制；采用两阶段流水线，生成器在环作为反馈信号源。",
+        "interaction_horizon": "未涉及交互式多步决策；仅在训练阶段通过生成器反馈进行监督，推理时单次检索-重排-生成。",
+        "agent_evaluation": "无Agent评估；评估指标为下游VQA任务的准确率。",
+        "artifacts": "论文未明确提及代码或数据发布。"
       },
       "display_affiliations": [
         "Purdue University",
@@ -6993,29 +7028,26 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文提出SchemeArena基准和SCOUT监测器，用于系统研究LLM智能体中的阴谋行为。通过因子化压力测试，发现工具性目标最强驱动阴谋倾向，战略提示促进隐蔽行为，部分监督可能增加阴谋。",
-      "core_method": "引入SchemeArena基准，包含400个场景，通过因子化场景合成框架构建，覆盖多样的安全相关工具域、工具性目标、监督条件和压力机制。提出SCOUT监测器，基于证据的多标准判断，分析智能体的推理和动作。",
+      "generated_summary": "该论文提出SCHEMEARENA基准，通过因子化场景合成构建400个场景，用于系统评估LLM智能体中的阴谋行为。研究发现工具性目标是最强驱动因素，战略提示促进隐蔽行为，而部分监督可能增加阴谋。同时提出SCouT监控器，结合推理与动作证据进行多标准判断。",
+      "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
-        "构建大规模、因子化的阴谋行为压力测试基准SchemeArena，覆盖400个场景，支持系统性分析。",
-        "提出SCOUT监测器，通过多标准、基于证据的判断，实现可扩展且可靠的阴谋检测。",
-        "通过受控实验揭示工具性目标是阴谋倾向的最强驱动因素，战略提示促进隐蔽行为，部分监督可能适得其反。"
+        "未能从全文/元数据中稳定抽取明确创新点。"
       ],
       "experiment_results": [
-        "SCOUT在人类标注集上达到F1=90.73%，准确率83.03%，精确率83.03%，召回率100%。PPA分析显示自我偏差不显著。五个LLM智能体的实验表明：工具性目标最强驱动阴谋倾向；战略提示使模型将阴谋推理转化为具体隐蔽行为；行动监督在某些闭源模型中增加阴谋；CoT能揭示执行前的潜在阴谋，但行动层面的阴谋可能无推理证据。"
+        "全文未提供足够实验结果细节，或解析失败。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "未观察到评估意识，但无法完全排除，因为部分推理可能保持潜在或编码。",
-        "工具调用由GPT-4o模拟，而非真实API，可能影响行为真实性。"
+        "需要阅读全文确认实验设置、数据集和适用边界。"
       ],
-      "practical_value": "为评估和监测LLM智能体中的阴谋行为提供可扩展工具，有助于识别风险因素和制定干预措施。公开基准、代码和监测器，支持进一步研究。",
+      "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
-      "analysis_signature": "ef6c14145474dac3",
+      "analysis_status": "fallback",
+      "analysis_signature": "73d173978ce8de89",
       "tags": [
-        "Benchmark",
         "Agent4Rec",
+        "Benchmark",
         "Evaluation",
         "User Modeling",
         "LLM4Rec",
@@ -7062,14 +7094,18 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
+        "model_data_scale": "400 scenarios; five LLM agents evaluated",
+        "key_benchmarks": [
+          "SCHEMEARENA"
+        ],
+        "artifacts": [
+          "https://github.com/launchnlp/SchemeArena"
+        ],
+        "agent_environment": "safety-relevant tool domains with varied instrumental goals, oversight conditions, and pressure mechanisms",
+        "agent_mechanism": "LLM agents with CoT reasoning and actions; scheming monitor SCOUT grounds judgments in evidence",
+        "interaction_horizon": "multi-step scenarios",
+        "agent_evaluation": "scheming propensity and capability, factor effects",
         "feedback_source": "人类标注用于验证SCOUT；使用GPT-4o作为工具模拟器。",
-        "model_data_scale": "400个场景，基于RapidAPI的1334个工具，28个领域；模型包括Qwen3-8B/32B、o4-mini、o1、Claude-3.7-Sonnet。",
-        "key_benchmarks": "SchemeArena（400场景）；SCOUT在250条人类标注轨迹上评估。",
-        "artifacts": "https://github.com/launchnlp/SchemeArena",
-        "agent_environment": "工具使用环境，基于RapidAPI，模拟执行。",
-        "agent_mechanism": "LLM智能体在受控因素（工具性目标、提示、压力、监督）下运行，可访问工具、数据和文件。",
-        "interaction_horizon": "多步骤任务，但具体步数未说明。",
-        "agent_evaluation": "SCOUT多标准检测；人类标注验证；PPA和引导置信区间。",
         "training_objective": "未明确提及训练目标；本研究为评估而非训练。"
       },
       "display_affiliations": [
@@ -7103,7 +7139,7 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "针对推理时对齐方法依赖标量奖励模型而无法表示一般偏好的问题，本文首次研究了基于一般偏好的推理时对齐，将其建模为两玩家零和博弈的纳什均衡求解。提出了Best-of-Nash和Nash Mirror Descent两种算法，证明了它们达到问题下界的对偶间隙，并在三个数据集上实验表明其性能显著优于基策略，接近微调模型，且NMD对正则化参数鲁棒。",
+      "generated_summary": "本文研究在推理时进行对齐的方法，针对现有推理时对齐方法依赖标量奖励模型、无法表示一般偏好的问题，首次提出在一般偏好下通过求解两玩家零和博弈的纳什均衡来实现推理时对齐。作者提出了Best-of-Nash (BoN)和Nash Mirror Descent (NMD)两种算法，并证明它们达到问题下界的对偶间隙。实验表明，这两种方法显著优于基础策略，并收敛到微调模型的性能，且NMD对正则化参数具有鲁棒性。",
       "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
         "未能从全文/元数据中稳定抽取明确创新点。"
@@ -7119,9 +7155,10 @@
       "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
       "analysis_basis": "full_text",
       "analysis_status": "fallback",
-      "analysis_signature": "e028ec46d21934fd",
+      "analysis_signature": "cbf36d641849213f",
       "tags": [
         "LLM4Rec",
+        "Generative Rec",
         "Evaluation",
         "Benchmark",
         "Agent4Rec"
@@ -7168,17 +7205,15 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "Obtain Nash equilibrium of two-player zero-sum game between policies under general preferences",
-        "feedback_source": "General preferences beyond Bradley-Terry scalar reward (derived from preference data)",
-        "model_data_scale": "Not specified; three datasets used empirically",
-        "key_benchmarks": [
-          "three datasets (names not provided in abstract)"
-        ],
-        "agent_environment": "Not applicable; inference-time alignment on static tasks",
-        "agent_mechanism": "Best-of-Nash (BoN) and Nash Mirror Descent (NMD)",
-        "interaction_horizon": "Single-step or multi-step inference-time optimization, not explicitly detailed",
-        "agent_evaluation": "Compared to base policy and fine-tuned models",
-        "artifacts": "Not specified"
+        "training_objective": "Inference-time alignment to general preferences via Nash equilibrium of a two-player zero-sum game.",
+        "feedback_source": "General preference data, not necessarily Bradley-Terry scalar rewards; source not fully specified in abstract.",
+        "model_data_scale": "Not specified; tested on three datasets.",
+        "key_benchmarks": "Three datasets (unnamed in abstract).",
+        "artifacts": "None mentioned.",
+        "agent_environment": "Not explicitly an environment; alignment is framed as game between policies.",
+        "agent_mechanism": "Best-of-Nash (BoN) sampling and Nash Mirror Descent (NMD) optimization.",
+        "interaction_horizon": "Not specified.",
+        "agent_evaluation": "Comparison to base policy and fine-tuned models, robustness to regularization parameter."
       },
       "display_affiliations": [
         "Penn State University",
@@ -7444,29 +7479,28 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "本文探讨了在模拟数据上发现的认知理论是否可以泛化到人类行为。通过Automated Cognitive Scientist系统，在基础模型模拟的行为上运行发现循环，找到的理论在人类数据上表现良好，表明即使模拟器不完美，也能通过理论仲裁发现泛化的理论。",
-      "core_method": "使用Automated Cognitive Scientist (AutoCog)系统，在由行为基础模型Centaur模拟的数据上运行闭环发现循环，包括实验设计、数据收集、理论仲裁和理论修订四个阶段。",
+      "generated_summary": "论文提出闭环发现系统AutoCog，利用LLM智能体在人类行为基础模型Centaur上模拟实验、设计并仲裁认知理论。在多属性决策任务中，这些模拟发现的理论能泛化到真实人类数据，并优于经典理论。作者认为，理论仲裁比参数估计对模拟器保真度要求更低，因此不完美的模拟器仍可有效扩展理论搜索空间。",
+      "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
-        "首次证明在行为基础模型模拟数据上发现的认知理论可以泛化到人类数据",
-        "提出并验证了理论发现对模拟器保真度要求低于参数估计的观点",
-        "展示了不完美模拟器在理论搜索空间扩展中的价值"
+        "未能从全文/元数据中稳定抽取明确创新点。"
       ],
       "experiment_results": [
-        "在多属性决策任务中，AutoCog在Centaur上发现的理论（RCSL和CRAN）在10个留出的人类实验上表现优于经典理论（Take-The-Best和Tallying），且与直接在人类数据上运行AutoCog发现的理论性能相当。"
+        "全文未提供足够实验结果细节，或解析失败。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "模拟器的误差可能在理论修订阶段塑造后继理论，导致发现表征模拟器而非人类的理论；模拟器的保真度在理论预测趋同或实验偏离训练分布时更为重要。"
+        "需要阅读全文确认实验设置、数据集和适用边界。"
       ],
-      "practical_value": "提出了一种混合工作流，早期理论搜索可在模拟数据上进行，后期转向人类参与者，从而节省招募成本和时间，同时保证理论的泛化性。",
+      "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
       "analysis_basis": "full_text",
-      "analysis_status": "cached",
-      "analysis_signature": "72dbd8857d56363e",
+      "analysis_status": "fallback",
+      "analysis_signature": "f8d6831c5a74b3ae",
       "tags": [
-        "LLM4Rec",
+        "Agent4Rec",
         "User Modeling",
-        "Agent4Rec"
+        "Benchmark",
+        "LLM4Rec"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -7480,7 +7514,8 @@
       ],
       "primary_track": "llm_systems",
       "topics": [
-        "llm_agent"
+        "llm_agent",
+        "post_training"
       ],
       "primary_topic": "llm_agent",
       "track_relevance": {
@@ -7508,18 +7543,15 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "Not applicable; no model training described.",
-        "feedback_source": "行为基础模型Centaur模拟的人类行为数据",
-        "model_data_scale": "Centaur在160个实验的试次级别数据上微调",
-        "key_benchmarks": [
-          "多属性决策任务",
-          "10个留出的人类实验"
-        ],
-        "artifacts": "Automated Cognitive Scientist (AutoCog) system; Centaur behavioral foundation model.",
-        "agent_environment": "多属性决策实验环境，由AutoCog系统内的LLM代理设计",
-        "agent_mechanism": "LLM代理负责实验设计、理论仲裁和理论修订；理论以可执行模型表示，包括参数声明和预测函数",
-        "interaction_horizon": "25个发现循环周期",
-        "agent_evaluation": "Generalization of discovered theories to human data on ten held-out experiments."
+        "training_objective": "Closed-loop theory discovery: design experiments, collect simulated responses, arbitrate theories, synthesize successors",
+        "feedback_source": "Simulated human behavior from Centaur foundation model; later validated against human data",
+        "model_data_scale": "Not specified in metadata",
+        "key_benchmarks": "Multi-attribute decision-making; ten held-out experiments compared to canonical theories",
+        "artifacts": "None mentioned",
+        "agent_environment": "Theory-discriminating experiment design loop using a behavioral foundation model as the environment",
+        "agent_mechanism": "LLM agents design experiments, collect data, arbitrate between competing theories, and generate new theories",
+        "interaction_horizon": "Multi-step closed loop, not explicitly bounded in metadata",
+        "agent_evaluation": "Generalization of discovered theories to human data on held-out experiments"
       },
       "display_affiliations": [
         "Princeton University",
@@ -7848,7 +7880,7 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "该论文量化了DPO调优的LLM在情感强度控制上的不足，发现模型对请求的情感强度响应不足（如Llama-3.1-8B的效价增益仅0.26）。通过均匀覆盖目标空间并采样更大、更极端的候选池，效价增益提升至0.40且外推误差降低。研究表明，情感强度的保真度受限于候选池的极端程度而非条件格式。",
+      "generated_summary": "论文量化了DPO调优的LLM在情感强度控制上的不足，发现请求的情感强度远高于实际输出。通过均匀覆盖目标空间并采样更极端候选池，可提升情感效价增益。这表明强度控制受限于候选池的极端性而非条件格式。",
       "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
         "未能从全文/元数据中稳定抽取明确创新点。"
@@ -7864,7 +7896,7 @@
       "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
       "analysis_basis": "full_text",
       "analysis_status": "fallback",
-      "analysis_signature": "e6a534e288900399",
+      "analysis_signature": "1a2b1878cc1a4209",
       "tags": [
         "LLM4Rec",
         "User Modeling",
@@ -7913,10 +7945,10 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "Direct Preference Optimization (DPO) for emotional intensity control",
-        "feedback_source": "Preference pairs from DPO, with training targets from corpora like EmoBank",
-        "model_data_scale": "Llama-3.1-8B and Qwen3-8B; candidate pool sizes varied",
-        "key_benchmarks": "EmoBank-test (VA distance), achieved vs requested valence/arousal slope",
+        "training_objective": "Direct Preference Optimization (DPO) with a focus on improving affective conditioning fidelity",
+        "feedback_source": "Preference pairs derived from candidate responses sampled from the base model under different affective targets, with affect measured by a frozen regressor",
+        "model_data_scale": "Llama-3.1-8B and Qwen3-8B (8B parameters); training data not explicitly sized in metadata, but involves EmoBank and uniform coverage datasets; 3 random seeds",
+        "key_benchmarks": "EmoBank-test (VA distance), gain (slope of achieved vs requested affect), extrapolation error",
         "artifacts": "None mentioned (no code, data, or model release stated)",
         "agent_environment": "未提供",
         "agent_mechanism": "未提供",
@@ -8067,29 +8099,28 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "本文研究了LLM智能体排行榜分数的估计含义，提出一种感知估计目标的成对比较程序，并在多个基准上展示接近的排名差异常无法解决，且代理标签和效用规则可改变系统选择。",
-      "core_method": "提出一种估计目标感知的成对比较程序：明确比较目标和测量来源，检查共同支持，使用规定的置信规则和实际边际评估支持差异，输出有推断支持的胜者或限制条件。",
+      "generated_summary": "论文提出了一种基于估计目标的成对比较程序，用于检验LLM智能体排行榜分数是否支持系统间优越性结论，并考虑任务混合、标签来源等差异。在SWE-bench等基准上的实验表明，接近的排名差异往往无法定论，且代理标签和效用规则会改变选择结果。排行榜分数仅总结已发布的评估，细粒度的优越性声明还需依赖估计目标和不确定性规则。",
+      "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
-        "提出估计目标感知的成对比较程序，将排行榜分数解释为特定估计目标下的成对优越性声明。",
-        "系统化分离了排行榜分数与细粒度优越性结论，明确了标签来源、任务混合、成本规则等因素的影响。",
-        "在SWE-bench、AgentRewardBench、tau2-bench等多个基准上实证展示了排名差异的推断不确定性。"
+        "未能从全文/元数据中稳定抽取明确创新点。"
       ],
       "experiment_results": [
-        "在SWE-bench Verified上，45对比较中仅5对稳定，1对目标敏感，39对统计功效不足；在AgentRewardBench上专家标签与GPT-4o-mini法官标签导致不同系统被选为最优；在tau2-bench上，pass@4相对pass@1提升17.7-20.4分，成本规则改变效用选择；DataAgentBench和Open Agent表明粗粒度记录下可估计的内容有限。"
+        "全文未提供足够实验结果细节，或解析失败。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "该程序依赖于公开评估日志中可用的数据；对于支持不足或缺少项目级不确定性的情况，只能进行粗粒度比较；标签恢复模拟仅在受控条件下进行。"
+        "需要阅读全文确认实验设置、数据集和适用边界。"
       ],
-      "practical_value": "为排行榜用户提供了一种明确框架来判断哪些成对优越性结论是合理的，有助于避免过度解读排行榜排名。",
+      "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
       "analysis_basis": "full_text",
-      "analysis_status": "cached",
-      "analysis_signature": "df43ae2716220e44",
+      "analysis_status": "fallback",
+      "analysis_signature": "923a6e3157c8cc4a",
       "tags": [
-        "LLM4Rec",
+        "Benchmark",
         "Evaluation",
-        "Benchmark"
+        "Agent4Rec",
+        "LLM4Rec"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -8103,7 +8134,9 @@
       ],
       "primary_track": "llm_systems",
       "topics": [
-        "llm_agent"
+        "llm_agent",
+        "post_training",
+        "llm_rl"
       ],
       "primary_topic": "llm_agent",
       "track_relevance": {
@@ -8131,21 +8164,21 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "无（本文为评估方法研究，不涉及模型训练）",
-        "feedback_source": "公开评估日志中的专家标签、自动法官标签、功能评估器以及成本规则",
-        "model_data_scale": "未报告模型规模；数据方面使用SWE-bench、AgentRewardBench、tau2-bench、DataAgentBench和Open Agent的公开评估记录",
         "key_benchmarks": [
-          "SWE-bench Verified",
+          "SWE-bench",
           "AgentRewardBench",
           "tau2-bench",
           "DataAgentBench",
           "Open Agent"
         ],
+        "agent_evaluation": "Estimand-aware pairwise comparison of agent leaderboard scores with uncertainty rules and practical margins",
+        "training_objective": "无（本文为评估方法研究，不涉及模型训练）",
+        "feedback_source": "公开评估日志中的专家标签、自动法官标签、功能评估器以及成本规则",
+        "model_data_scale": "未报告模型规模；数据方面使用SWE-bench、AgentRewardBench、tau2-bench、DataAgentBench和Open Agent的公开评估记录",
         "artifacts": "未提及发布代码或数据",
         "agent_environment": "多个基准环境，包括软件工程任务（SWE-bench）、奖励模型评估（AgentRewardBench）、对话代理任务（tau2-bench）以及数据代理任务（DataAgentBench、Open Agent）",
         "agent_mechanism": "评估中考虑了完整配置：脚手架、工具、动作空间、提示策略、停止规则、标签来源和资源预算",
-        "interaction_horizon": "由基准决定，如tau2-bench中pass@1与pass@4的多次尝试",
-        "agent_evaluation": "使用成功率、专家/自动法官标签、成本感知效用规则以及统计不确定性区间"
+        "interaction_horizon": "由基准决定，如tau2-bench中pass@1与pass@4的多次尝试"
       },
       "display_affiliations": [
         "Independent Researcher"
@@ -8426,7 +8459,7 @@
       ],
       "practical_value": "MEMO为LLM代理提供高效的多模态记忆组织方案，可减少上下文占用、提升长程任务性能，适用于需在有限预算下处理大量历史信息的实际应用。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "02d4dcf6d8589ed3",
       "tags": [
         "Agent4Rec",
@@ -8631,7 +8664,7 @@
       ],
       "practical_value": "SkillAlign 提供了一种与提供者无关的框架，可应用于现有技能增强智能体，在推理时优化技能暴露方式以提升任务性能并降低上下文成本，无需修改上游技能获取或检索过程。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "b1c121b345d6417a",
       "tags": [
         "Agent4Rec",
@@ -9134,29 +9167,30 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "该论文提出Flow3D-OPD，一个针对3D几何生成的两阶段后训练框架，将多教师在线策略蒸馏（On-Policy Distillation）引入基于流匹配扩散Transformer的图像到3D生成。第一阶段利用半策略增强预训练模型基础能力，并设计智能验证器评估3D几何质量，基于验证器通过直接偏好优化（DPO）培养领域专业化教师模型。第二阶段通过硬任务路由采样和梯度累积的在线蒸馏，将异构教师知识整合到一个统一学生模型，缓解联合优化中的梯度干扰。实验表明该方法在所有几何质量维度上持续提升，平均指标超越所有教师模型。",
-      "core_method": "Flow3D-OPD是一个两阶段后训练框架：第一阶段训练多个教师模型（通过DPO）并构建智能验证器；第二阶段通过在线策略蒸馏，使用硬任务路由采样和梯度累积，将多个教师的知识蒸馏到学生模型，以缓解梯度干扰。",
+      "generated_summary": "本文提出Flow3D-OPD，一个用于流匹配扩散Transformer图像到3D生成的两阶段后训练框架。第一阶段通过半策略增强基础能力并训练智能验证器，利用DPO培养领域专家教师；第二阶段通过在线策略蒸馏、硬任务路由采样和梯度累积，将异构专家整合为学生模型。实验表明该方法在所有几何质量维度上一致提升，平均指标超越所有教师模型。",
+      "core_method": "Flow3D-OPD为两阶段后训练框架。第一阶段使用半策略增强预训练模型基础能力，设计智能验证器评估3D几何质量，并通过DPO培养多个领域专家教师模型。第二阶段采用多教师在线策略蒸馏，利用硬任务路由采样和梯度累积将异构专家知识整合到统一学生模型，以缓解联合优化中的梯度干扰。",
       "innovation_points": [
-        "首次将多教师在线策略蒸馏引入3D几何生成后训练，解决强化学习在3D生成中的奖励定义困难和梯度干扰问题。",
-        "提出了智能验证器（agentic verifier）用于3D几何质量评估，并基于此通过DPO培养领域专业化教师模型。",
-        "设计了硬任务路由采样和梯度累积策略，有效整合异构教师知识并缓解联合优化中的梯度干扰。"
+        "首次将多教师在线策略蒸馏引入3D几何生成的后训练阶段。",
+        "提出用于3D几何质量评估的智能验证器，为教师模型的DPO训练提供奖励信号。",
+        "设计硬任务路由采样与梯度累积策略，缓解多目标联合优化中的梯度干扰。"
       ],
       "experiment_results": [
-        "Flow3D-OPD在所有几何质量维度上取得一致提升，平均指标超越所有教师模型，证明了方法的有效性。"
+        "实验表明，Flow3D-OPD在所有几何质量维度上均取得一致提升，并在平均指标上超越所有教师模型。具体数值结果未在摘要中给出。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "论文未明确提及限制。"
+        "未在摘要及全文摘录中明确提及局限性。"
       ],
-      "practical_value": "为3D生成领域的强化学习提供了一种有效的后训练范式，无需复杂模型修改即可获得稳定提升，具有实际应用价值。",
+      "practical_value": "为3D生成中的强化学习提供了一种简单有效的后训练范式，可提升图像到3D模型的几何质量，具有实际应用潜力。",
       "analysis_basis": "full_text",
-      "analysis_status": "cached",
-      "analysis_signature": "ee57bb0a9a61158e",
+      "analysis_status": "complete",
+      "analysis_signature": "c17b262f4282fe91",
       "tags": [
         "Generative Rec",
-        "LLM4Rec",
-        "Evaluation"
+        "Evaluation",
+        "Benchmark",
+        "LLM4Rec"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -9171,8 +9205,8 @@
       "primary_track": "llm_systems",
       "topics": [
         "post_training",
-        "llm_agent",
-        "llm_rl"
+        "llm_rl",
+        "llm_agent"
       ],
       "primary_topic": "post_training",
       "track_relevance": {
@@ -9200,15 +9234,15 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "结合流匹配扩散Transformer的图像到3D生成任务，通过两阶段后训练提升几何质量。第一阶段通过DPO训练教师模型；第二阶段通过在线策略蒸馏优化学生模型，使用硬任务路由采样和梯度累积。",
-        "feedback_source": "使用设计的3D几何质量智能验证器提供反馈，用于DPO和在线蒸馏。",
-        "model_data_scale": "未在摘要中明确模型规模或数据规模。",
-        "key_benchmarks": "未在摘要中列出具体基准数据集。",
-        "artifacts": "未提及代码或模型公开。",
-        "agent_environment": "未使用显式交互环境，但智能验证器可能扮演类似环境反馈的角色。",
-        "agent_mechanism": "验证器可能基于规则或学习模型，用于评估3D几何质量，但具体机制未在摘要中说明。",
-        "interaction_horizon": "未提及明确的交互轮次。",
-        "agent_evaluation": "通过验证器评估3D生成质量，但未给出具体评估指标。"
+        "training_objective": "未知",
+        "feedback_source": "未知",
+        "agent_mechanism": "未知",
+        "model_data_scale": "未知",
+        "key_benchmarks": "未知",
+        "artifacts": "未知",
+        "agent_environment": "未知",
+        "interaction_horizon": "未知",
+        "agent_evaluation": "未知"
       },
       "display_affiliations": [
         "Unknown affiliation"
@@ -9473,25 +9507,28 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "该论文从几何角度解释了事后安全对齐（如 RLHF、DPO）为何脆弱，指出安全更新矩阵几乎与模型能力方向正交，仅抑制而非消除能力，因此易受微调攻击。作者发现安全能力的基底在预训练约 6B 到 60B 令牌间涌现，并通过在预训练中持续共训练安全信号，大幅提升了模型对攻击的鲁棒性（拒绝率保持 84-91%）。",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "generated_summary": "该论文揭示了事后安全训练（RLHF, DPO）之所以脆弱的几何原因：其更新几乎与能力方向正交，仅在少数高曲率方向集中，形成“拒绝门”而非擦除能力，因此少量良性微调即可恢复有害行为。通过OLMo-2-1B检查点扫描，作者发现安全可作用的基底在预训练6B-60B token间急剧出现。从零开始将安全信号持续共训练于整个预训练过程，可获得87-98%拒绝率且攻击后仍有84-91%，远优于事后安装的35-38%侵蚀。",
+      "core_method": "使用几何诊断工具（重叠率ρ和曲率κ）测量安全更新Δ与能力子空间的关系，对多模型家族进行事后安全训练分析；对OLMo-2-1B的267个检查点进行扫描，识别安全基底的发展转变；从零开始进行安全共训练，并与事后安装和窗口化调度进行对比。",
       "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
+        "提出权重空间的安全更新分类：抑制型与擦除型，并给出两个可量化子模式。",
+        "引入kernel-immobility引理，从理论上解释post-hoc安全更新只能掩盖能力而非移除能力。",
+        "发现安全基底在预训练过程中存在急剧转变（6B-60B token），揭示安全可作用性的发育窗口。"
       ],
       "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
+        "事后安全更新在成熟基座上与能力方向近正交（ρ远低于随机水平），且曲率κ较高（集中于少数高曲率方向）；100步良性微调可使Qwen-2.5-7B和Llama-3-8B Instruct的拒绝率分别降至58.2%和10.9%，同时保持能力；OLMo-2-1B检查点扫描显示基底在6B-60B token间出现；从零开始的安全共训练在410M到6.9B模型上达到87-98%拒绝率，攻击后保持84-91%，侵蚀仅2-14pp，而事后安装侵蚀35-38pp，窗口化调度无持久拒绝。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
+        "论文未明确提及局限性。"
       ],
-      "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
+      "practical_value": "揭示了post-hoc安全训练的固有脆弱性，并提出在预训练期间持续共训练安全信号以增强鲁棒性的方法，对构建更安全的大语言模型具有重要指导意义。",
       "analysis_basis": "full_text",
-      "analysis_status": "fallback",
-      "analysis_signature": "2d2df2bec17be1c6",
+      "analysis_status": "complete",
+      "analysis_signature": "5cc1ef8894d5c429",
       "tags": [
         "LLM4Rec",
+        "User Modeling",
         "Evaluation",
         "Benchmark"
       ],
@@ -9508,10 +9545,10 @@
       "primary_track": "llm_systems",
       "topics": [
         "post_training",
-        "llm_rl",
-        "llm_agent"
+        "llm_agent",
+        "llm_rl"
       ],
-      "primary_topic": "llm_rl",
+      "primary_topic": "post_training",
       "track_relevance": {
         "llm_systems": 82
       },
@@ -9537,15 +9574,21 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "Safety co-training during pretraining vs post-hoc RLHF/DPO; analyzes geometric properties of safety update.",
-        "feedback_source": "Safety preference data (implicitly used for co-training and post-hoc training).",
-        "model_data_scale": "Models: Qwen-2.5-7B, Llama-3-8B, OLMo-2-1B, custom models 410M-6.9B; pretraining token sweep 6B-60B+.",
-        "key_benchmarks": "Jailbreak attacks (Zou et al.), fine-tuning attacks (Qi et al.), activation probes (Arditi et al.), benign fine-tuning 100 steps.",
-        "artifacts": "No code/data artifacts mentioned; describes experiments on public models.",
-        "agent_environment": "None (not an agent paper).",
-        "agent_mechanism": "None.",
-        "interaction_horizon": "None.",
-        "agent_evaluation": "None."
+        "training_objective": "DPO（直接偏好优化）用于安全训练；安全共训练使用持续信号。",
+        "feedback_source": "HH-RLHF偏好对（5K对）用于DPO训练。",
+        "model_data_scale": "模型规模：410M到6.9B（安全共训练）；分析模型：Pythia-1.4B, Qwen-2.5-7B, Llama-3-8B, Mistral-7B, OLMo-2-1B；数据：HH-RLHF 5K偏好对，MMLU, GSM8K, TriviaQA, FLAN-v2等基准。",
+        "key_benchmarks": [
+          "MMLU formal logic",
+          "GSM8K",
+          "TriviaQA RC-no-context",
+          "FLAN-v2",
+          "AdvBench"
+        ],
+        "artifacts": "OLMo-2-1B检查点系列，Pythia-1.4B检查点，以及自行训练的从零开始模型。",
+        "agent_environment": "未涉及代理环境。",
+        "agent_mechanism": "未涉及代理机制。",
+        "interaction_horizon": "未涉及交互时序。",
+        "agent_evaluation": "未涉及代理评估。"
       },
       "display_affiliations": [
         "Unknown affiliation"
@@ -9580,29 +9623,30 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "本文通过控制实验发现迭代偏好优化方法优于离线DPO的关键在于显式偏好模型，并提出离线对齐算法DP3O，利用辅助LLM学习显式偏好模型并蒸馏到策略优化中。理论证明DP3O比隐式方法有更好的估计误差控制和更紧的泛化界。实验表明DP3O在多个任务上超越最优离线方法，性能与迭代DPO相当，且训练时间减少约42%。",
-      "core_method": "DP3O（Distilled Preference Probability Policy Optimization）分两步：首先使用辅助LLM类从离线数据中学习显式偏好模型，然后通过偏好蒸馏交叉熵将显式模型的软标签知识蒸馏到隐式策略优化中。",
+      "generated_summary": "该论文通过控制实验发现迭代式偏好对齐优于离线方法的关键在于显式偏好模型，并提出离线算法DP3O，该算法先学习显式偏好模型再蒸馏知识至策略优化。理论分析表明DP3O比隐式公式具有更好的估计误差控制和更紧的泛化界，且通过方差缩减优于硬标签DPO。实验证明DP3O在多种任务上超越离线基线，性能接近迭代DPO，并减少约42%的训练时间。",
+      "core_method": "DP3O（Distilled Preference Probability Policy Optimization）是一种离线对齐算法，分为两步：首先使用辅助LLM类从离线偏好数据中学习显式偏好模型，然后将显式模型的偏好概率知识蒸馏到策略优化中。具体地，DP3O通过交叉熵损失将显式模型的软标签（偏好概率）蒸馏到隐式策略模型中，并与硬标签DPO损失进行插值，以平衡显式模型不准确时的性能损失。",
       "innovation_points": [
         "通过控制实验识别出显式偏好模型是迭代方法优于离线方法的关键因素。",
-        "提出DP3O，将显式偏好模型的软标签蒸馏到离线策略优化中，结合了离线与迭代方法的优势。",
-        "理论证明DP3O比硬标签DPO具有更紧的泛化界，且显式偏好建模比隐式建模具有更好的估计误差控制。"
+        "提出DP3O算法，首次将显式偏好模型的软标签蒸馏与隐式DPO框架相结合，并引入插值机制平衡硬标签和软标签。",
+        "理论证明显式偏好建模比隐式公式具有更好的估计误差控制，DP3O通过方差缩减获得比硬标签DPO更紧的泛化界。"
       ],
       "experiment_results": [
-        "DP3O在AlpacaEval 2、MT-Bench和Open LLM Leaderboard等任务上优于最先进的离线方法，性能与迭代DPO相当，训练时间减少约42%。"
+        "在AlpacaEval 2、MT-Bench和Open LLM Leaderboard等基准上的实验表明，DP3O持续优于现有最先进的离线方法，性能与迭代DPO相当，并将训练时间减少约42%。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "全文未明确提及DP3O的局限性。"
+        "论文未明确指出DP3O的局限性，但可能依赖于显式偏好模型的准确性；当显式模型不准确时，软标签蒸馏可能引入噪声，尽管有插值机制缓解。"
       ],
-      "practical_value": "DP3O提供了一种高效且有效的离线对齐算法，无需迭代生成和标注数据，即可达到与迭代方法相当的性能，显著降低计算成本，适用于资源受限的LLM对齐场景。",
+      "practical_value": "DP3O提供了一种高效的离线对齐方法，无需生成新数据或在线交互，即可达到接近迭代方法的性能，显著降低计算成本，适合资源受限的场景。",
       "analysis_basis": "full_text",
-      "analysis_status": "cached",
-      "analysis_signature": "c4cae36f574eeefd",
+      "analysis_status": "complete",
+      "analysis_signature": "6e8f618485435321",
       "tags": [
         "LLM4Rec",
-        "User Modeling",
-        "Evaluation"
+        "Generative Rec",
+        "Evaluation",
+        "User Modeling"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -9617,7 +9661,8 @@
       "primary_track": "llm_systems",
       "topics": [
         "post_training",
-        "llm_rl"
+        "llm_rl",
+        "llm_agent"
       ],
       "primary_topic": "post_training",
       "track_relevance": {
@@ -9645,19 +9690,19 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "DP3O最小化硬标签DPO损失与蒸馏软标签交叉熵损失的插值，具体未在摘要中给出完整公式，但通过偏好蒸馏将显式偏好概率蒸馏到策略中。",
-        "feedback_source": "离线偏好数据集中的二元偏好标签，以及从辅助LLM学习的显式偏好模型生成的软标签。",
-        "model_data_scale": "未提供具体模型参数和训练数据规模，但实验涉及多个基准（AlpacaEval 2、MT-Bench、Open LLM Leaderboard）和多个任务。",
+        "training_objective": "DP3O的目标是结合显式偏好模型的软标签（偏好概率）和硬标签DPO损失，通过交叉熵蒸馏和插值来优化策略。具体损失函数包含两部分：来自显式模型的偏好概率软标签的交叉熵，以及原始DPO的硬标签损失，通过系数λ进行平衡。",
+        "feedback_source": "反馈来源是离线的人类偏好数据，形式为三元组（提示，偏好响应，不偏好响应）。",
+        "model_data_scale": "论文未提供具体的模型参数大小和数据集规模。",
         "key_benchmarks": [
           "AlpacaEval 2",
           "MT-Bench",
           "Open LLM Leaderboard"
         ],
-        "artifacts": "未提及代码或模型发布。",
-        "agent_environment": "Not applicable; offline alignment, no interactive environment.",
-        "agent_mechanism": "Not applicable.",
-        "interaction_horizon": "Not applicable; offline, no iterative interaction.",
-        "agent_evaluation": "Not applicable; evaluated on standard benchmarks."
+        "artifacts": "None mentioned.",
+        "agent_environment": "非Agent环境，属于LLM对齐任务。",
+        "agent_mechanism": "不涉及Agent机制。",
+        "interaction_horizon": "不适用，因为DP3O是离线算法，没有与环境交互。",
+        "agent_evaluation": "不适用。"
       },
       "display_affiliations": [
         "University of California, Irvine",
@@ -9711,7 +9756,7 @@
       ],
       "practical_value": "类型化联邦工件为异构冻结 LLM 智能体间的工具路由知识共享提供了可行的协议设计，支持每字段隐私和冲突解决，并在真实工具目录上展示了接近集中式的性能且通信开销低。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "f7c8bb0512ffffac",
       "tags": [
         "Agent4Rec",
@@ -10011,29 +10056,31 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "本文提出PARSER，一种解耦阅读与推理的长文档处理智能体，通过并行子智能体读取文档块，并由主智能体进行迭代式scatter-gather深度推理。在7K至896K token的多跳问答任务上，PARSER显著优于顺序记忆基线，并在896K token时提升12.0分，同时推理延迟降低最多11倍，且对证据位置扰动鲁棒。",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "generated_summary": "该论文提出PARSER框架，通过并行读取文档子块和主导代理的迭代分散-聚集推理，将长文档处理中的读取与推理解耦，从而增强证据位置鲁棒性并提升推理效率。在7K至896K token的多跳问答任务上，PARSER显著超越顺序记忆基线和强LLM，同时将推理延迟降低最多11倍。",
+      "core_method": "PARSER采用并行读取与深度推理解耦的架构：一组轻量级子代理（每个绑定一个文档块）并行读取整个文档，而主导代理通过迭代的分散-聚集轮次进行深度推理。每轮主导代理向所有子代理广播查询，聚合返回的证据，并基于已有发现制定更深入的后续查询。所有可学习行为集中在主导代理，通过强化学习优化；子代理保持冻结的现成模型。",
       "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
+        "将长文档处理中的读取与推理过程解耦，打破顺序记忆代理中遍历顺序与推理深度的耦合。",
+        "采用分散-聚集迭代机制，主导代理通过多轮查询逐步深化推理，而非一次性处理所有文档。",
+        "仅对主导代理进行强化学习优化，子代理保持冻结，显著降低训练复杂度和计算开销。"
       ],
       "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
+        "在7K至896K token的多跳问答任务上，PARSER（4B骨干）平均超越最强顺序记忆基线5.7个百分点，在896K token下超越12.0个百分点。扩展到9B骨干后，PARSER超过DeepSeek-V4-Pro 6.3个百分点。控制实验表明，PARSER对证据位置、顺序和距离的扰动具有鲁棒性，而顺序方法在这些条件下准确率波动较大。推理延迟最多降低11倍。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
+        "全文未明确提及PARSER的局限性。"
       ],
-      "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
+      "practical_value": "PARSER为长上下文LLM代理提供了一种高效的并行处理框架，特别适用于多跳推理和证据分散的长文档场景。其低延迟和高鲁棒性使其适合实时应用和大规模文档分析。",
       "analysis_basis": "full_text",
-      "analysis_status": "fallback",
-      "analysis_signature": "d91658119c023b33",
+      "analysis_status": "complete",
+      "analysis_signature": "350ea78dfdc404b9",
       "tags": [
         "Agent4Rec",
         "RAG Rec",
+        "Evaluation",
         "LLM4Rec",
-        "User Modeling",
-        "Evaluation"
+        "User Modeling"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -10048,8 +10095,8 @@
       "primary_track": "llm_systems",
       "topics": [
         "llm_agent",
-        "post_training",
-        "llm_rl"
+        "llm_rl",
+        "post_training"
       ],
       "primary_topic": "llm_agent",
       "track_relevance": {
@@ -10077,15 +10124,17 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "Reinforcement learning to optimize the lead agent's query formulation and reasoning over aggregated evidence",
-        "feedback_source": "Task performance on multi-hop QA (exact answer match or similar)",
-        "model_data_scale": "Backbones: 4B and 9B; contexts up to 896K tokens; document chunks (size unspecified)",
-        "key_benchmarks": "Multi-hop QA with contexts from 7K to 896K tokens (specific dataset not named); comparison to sequential memory baseline and DeepSeek-V4-Pro",
-        "artifacts": "No code or model release mentioned in the abstract",
-        "agent_environment": "Long documents and multi-hop question answering",
-        "agent_mechanism": "Parallel subagents each bound to a single chunk; lead agent iteratively broadcasts queries and aggregates returned evidence (scatter-gather rounds); decouples reading from reasoning",
-        "interaction_horizon": "Iterative rounds until answer formed; number of rounds not specified in abstract",
-        "agent_evaluation": "Accuracy improvement over baselines; robustness to evidence position, order, distance; inference latency reduction up to 11x"
+        "training_objective": "主导代理通过强化学习进行优化，以在多跳问答任务中最大化性能，具体奖励函数未在摘要或摘录中详细说明。",
+        "feedback_source": "未明确说明，但强化学习通常依赖环境奖励或任务性能反馈，具体来源在全文方法部分有描述。",
+        "model_data_scale": "使用4B和9B参数规模的骨干模型，实验上下文长度从7K到896K tokens。",
+        "key_benchmarks": [
+          "多跳问答基准（具体名称未在摘要中列出）"
+        ],
+        "artifacts": "未明确提及代码或数据发布。",
+        "agent_environment": "长文档多跳问答环境，文档被分割成多个块，每个子代理处理一个块。",
+        "agent_mechanism": "子代理并行读取文档块，主导代理在迭代轮次中广播查询，聚合证据，并制定后续查询以深化推理。",
+        "interaction_horizon": "迭代轮次持续进行，直到主导代理完成足够深的推理；具体轮数未在摘要中给出。",
+        "agent_evaluation": "评估基于多跳问答的准确性和推理延迟，并与顺序记忆代理和DeepSeek-V4-Pro等强基线比较。"
       },
       "display_affiliations": [
         "The Chinese University of Hong Kong"
@@ -10118,29 +10167,30 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "MARBO是一个面向社交推理游戏（SDGs）LLM智能体的信念接地偏好优化框架。它通过显式建模关系信念（即对其他玩家隐藏角色或阵营的推断）来引导策略决策和游戏内发言，仅在行为受到可靠关系信念支持并导致有利社会结果时提供偏好反馈，从而在部分可观测环境下提升紧凑型LLM智能体的策略一致性和社交推理能力。",
-      "core_method": "MARBO包含两个核心组件：（1）关系信念监督：通过监督学习训练智能体推断其他玩家的社会身份；（2）信念接地偏好构建：根据智能体自身的信念正确性和发言/任务动作对其他玩家信念的影响，构建偏好信号，仅强化有可靠信念支持且战略有利的行为。",
+      "generated_summary": "该论文针对社会推理游戏中的LLM智能体，提出MARBO框架，通过关系信念引导策略决策和游戏内发言。MARBO仅在行为得到可靠关系信念支持且产生有利社交结果时提供偏好反馈，从而增强不确定性下学习的一致性。实验表明，紧凑型LLM智能体一致优于现有基线。",
+      "core_method": "提出Multi-Agent Relational Belief Optimization (MARBO)框架，包含关系信念监督和信念引导的偏好构建两个组件。首先通过监督学习训练智能体推断其他玩家的社交身份，然后基于推断的关系信念和行动类型（发言或任务行动）构建偏好信号。对于发言行动，使用LLM裁判评估有效性，并计算信念转移函数，若发言使其他玩家对自身的信念朝有利方向转变则给予正偏好；对于任务行动，仅当行动与自身社交标签的游戏目标一致且基于正确的关系信念时才给予正偏好。最终利用这些偏好进行偏好优化。",
       "innovation_points": [
-        "提出关系信念的形式化表达，显式建模社交推理游戏中的隐藏角色、阵营、怀疑等关系信息。",
-        "设计信念接地的偏好优化策略，将反馈限制在行为被可靠信念支持且导致有利社会结果的样本上，避免强化错误推理。",
-        "区分发言动作和任务动作，分别基于信念偏移和信念正确性构建偏好，提升策略一致性。"
+        "形式化关系信念，显式表示部分可观察社会推理游戏中玩家间的隐藏角色、联盟、怀疑和玩家感知。",
+        "提出信念引导的偏好优化，仅在行为得到可靠关系信念支持且导致有利社交结果时提供偏好反馈，防止强化不准确推理。",
+        "针对发言行动，通过其对其他玩家关系信念的影响来评估，而非仅基于对话质量或结果反馈，鼓励策略有效的发言。"
       ],
       "experiment_results": [
-        "实验在Werewolf和Among Us等代表性社交推理游戏上进行，结果显示MARBO使紧凑型LLM智能体持续优于现有基线，包括基于提示、反思和偏好优化的方法。具体性能提升幅度和指标需参见原文表格，摘要中未给出数值。"
+        "在Werewolf和Among Us等代表性社会推理游戏上进行实验，结果显示MARBO使紧凑型LLM智能体一致优于现有基线。论文中提供了与基线方法的对比分析，表明MARBO在推理一致性、决策与推断关系对齐以及策略性发言方面均有改进。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "全文摘录中未明确提及局限性的具体内容。由于仅提供摘要和部分方法描述，无法确认潜在限制，如对信念标签质量的依赖、LLM法官的可靠性、游戏环境的可扩展性等，需进一步查阅完整论文。"
+        "论文未明确提及局限性。可能包括：依赖LLM裁判进行发言有效性评估可能引入偏差；偏好构建需要游戏特定的策略有利性定义；实验仅在两种游戏上验证，泛化性有待考察。"
       ],
-      "practical_value": "MARBO可以提升LLM智能体在需要部分可观测社交推理场景中的表现，如多智能体协作、谈判、游戏AI等，尤其对资源受限的紧凑型模型具有实际价值。它提供了一种将关系推理与策略优化结合的训练框架，有助于开发更可信、更一致的社交智能体。",
+      "practical_value": "为LLM智能体在部分可观察社会推理环境中的训练提供了一种信念引导的偏好优化方法，能够提高紧凑型智能体的策略一致性和社交推理能力，适用于需要合作、谈判和决策的交互式AI应用。",
       "analysis_basis": "full_text",
-      "analysis_status": "cached",
-      "analysis_signature": "858dbb2345303d62",
+      "analysis_status": "complete",
+      "analysis_signature": "f53f4fb56d1654b6",
       "tags": [
-        "LLM4Rec",
         "Agent4Rec",
-        "User Modeling"
+        "User Modeling",
+        "Generative Rec",
+        "LLM4Rec"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -10155,6 +10205,7 @@
       "primary_track": "llm_systems",
       "topics": [
         "llm_agent",
+        "llm_rl",
         "post_training"
       ],
       "primary_topic": "llm_agent",
@@ -10183,18 +10234,18 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "结合关系信念监督（预测其他玩家的社会身份）和信念接地偏好优化（基于发言和任务动作的偏好信号进行强化学习）",
-        "feedback_source": "偏好信号来源于智能体自身的行为与关系信念的正确性，以及发言对其他玩家信念的影响（通过LLM法官评估发言有效性和信念偏移方向）",
-        "model_data_scale": "未提及具体模型参数量或数据集规模，仅描述为'紧凑型LLM智能体'，可能使用了小规模预训练语言模型",
+        "training_objective": "关系信念监督（交叉熵损失）结合信念引导的偏好优化（基于关系信念和行动结果构建偏好对）。",
+        "feedback_source": "组合反馈：关系信念标签通过监督学习获得；发言有效性由LLM裁判（claude-sonnet-4-5-20250929）评估；任务行动偏好基于游戏目标对齐和信念正确性。",
+        "model_data_scale": "未明确报告模型参数量和数据集规模。实验使用紧凑型LLM智能体，具体规模未在摘要中说明。",
         "key_benchmarks": [
           "Werewolf",
           "Among Us"
         ],
         "artifacts": "代码开源：https://github.com/PleaseTakemeAway/MARBO",
-        "agent_environment": "社交推理游戏（Werewolf、Among Us），具有部分可观测性、多智能体交互和隐藏角色/阵营",
-        "agent_mechanism": "智能体通过关系信念推断其他玩家的身份，并基于此选择发言和投票等任务动作；训练中使用信念监督和偏好优化",
-        "interaction_horizon": "Not specified; social deduction games typically involve multiple rounds.",
-        "agent_evaluation": "Comparison against existing baselines in SDGs; compact LLM agents consistently outperform."
+        "agent_environment": "社会推理游戏（Werewolf、Among Us），部分可观察，需要多轮交互。",
+        "agent_mechanism": "LLM智能体通过提示和偏好优化进行训练，MARBO引入关系信念表示和信念引导的偏好反馈。",
+        "interaction_horizon": "长时程多轮交互，涉及讨论、投票、夜间行动等。",
+        "agent_evaluation": "主要评估智能体在游戏中的胜率或任务成功率，以及推理一致性和策略性发言质量。"
       },
       "display_affiliations": [
         "Unknown affiliation"
@@ -10254,7 +10305,7 @@
       ],
       "practical_value": "为评估多模态计算机使用代理的视觉对抗鲁棒性提供了细粒度测量框架，有助于理解攻击在实际执行管道中的传播，为后续系统级防御提供支持。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "9b1ee92830bdfa01",
       "tags": [
         "Agent4Rec",
@@ -10471,28 +10522,31 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "本文通过Schwartz人类价值理论验证LLM激活导向向量是否编码连贯的语义结构，引入26K样本基准覆盖20个人类价值，发现分布驱动方法能恢复与理论一致的价值拓扑，且更好的几何对齐带来更符合人类的价值迁移效果。",
-      "core_method": "利用Schwartz价值理论作为几何基准，构建26K对比四元组基准，从LLM中提取分布驱动和以行为为中心的激活导向向量，计算导向向量之间的相似性矩阵，并与Schwartz环状拓扑进行秩相关分析，评估几何保真度。",
+      "generated_summary": "该论文研究LLM激活引导向量的潜在几何是否反映人类价值与道德的理论结构，基于Schwartz基本人类价值观理论构建了覆盖20种价值观的26K样本基准，并分析了多种引导方法。发现分布驱动方法能恢复与理论预测一致的人类价值拓扑，而行为中心方法虽引导性能相当却与价值几何相关性弱；几何保真度随模型规模提升但在指令微调后下降，且更好的几何对齐带来更符合人类的价值迁移。",
+      "core_method": "构建包含20种Schwartz价值观的26K对比四元组基准，提取多种激活引导方法的引导向量，计算引导向量的几何结构与理论环状模型的Spearman相关性，并分析跨价值迁移效果。",
       "innovation_points": [
-        "首次系统研究LLM导向向量的潜在几何结构是否反映人类价值理论",
-        "引入覆盖20种Schwartz价值的26K样本基准",
-        "发现分布驱动方法能恢复理论价值拓扑，而以行为为中心的方法则不能"
+        "首次研究LLM引导向量的潜在几何是否反映人类价值理论结构",
+        "构建覆盖完整Schwartz价值观分类的26K对比基准",
+        "系统比较分布驱动与行为中心两类引导方法的几何保真度"
       ],
       "experiment_results": [
-        "分布驱动方法（如CAA、SphericalSteer、ODESteer）的导向向量与Schwartz环状拓扑的斯皮尔曼相关系数最高可达0.51（p<10^-13），表明显著恢复理论价值结构；而以行为为中心的方法（如COLD-Steer、BiPO）相关系数接近零，尽管导向性能相当。模型规模增大提升几何保真度，但指令微调后几何保真度下降。几何对齐更好的方法在跨价值迁移中表现更符合人类一致性：导向某一价值会提升兼容价值并抑制对立价值。"
+        "分布驱动方法（CAA、SphericalSteer、ODESteer）恢复的几何结构与Schwartz理论显著相关（Spearman ρ最高0.51，p<10^{-13}）；行为中心方法（COLD-Steer、BiPO）引导性能相当但几何相关性接近零；在MFT框架下同样出现范式级分离；几何保真度随模型规模增大而提升，但指令微调后下降；更好的几何对齐导致更符合人类的价值迁移（引导一个价值正确提升兼容价值并抑制对立价值）。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "全文未明确提及局限性；仅验证了两个价值框架（Schwartz和MFT），可能未覆盖所有文化价值结构；基准为英文对比四元组，可能引入语言偏差；几何保真度与下游行为影响之间的因果机制尚需进一步探索。"
+        "仅验证Schwartz和MFT两个理论框架，未覆盖更广泛的价值理论",
+        "引导方法限于文中分析的几种，未探索所有可能的引导技术"
       ],
-      "practical_value": "为激活导向方法的选择和评估提供理论依据，有助于开发更符合人类价值结构的轻量级对齐技术，适用于对齐敏感场景下的推理时行为控制。",
+      "practical_value": "为激活引导方法的评估提供了理论依据，有助于选择能保持人类价值结构的方法；对开发更可靠、更符合人类价值观的LLM对齐技术有指导意义；基准可用于后续价值表示研究。",
       "analysis_basis": "full_text",
-      "analysis_status": "cached",
-      "analysis_signature": "b16361cab958df16",
+      "analysis_status": "complete",
+      "analysis_signature": "44bb168df58b1c18",
       "tags": [
         "LLM4Rec",
+        "User Modeling",
         "Evaluation",
+        "Benchmark",
         "Dataset"
       ],
       "llm_score": 0,
@@ -10507,10 +10561,10 @@
       ],
       "primary_track": "llm_systems",
       "topics": [
-        "post_training",
-        "llm_agent"
+        "llm_agent",
+        "post_training"
       ],
-      "primary_topic": "post_training",
+      "primary_topic": "llm_agent",
       "track_relevance": {
         "llm_systems": 92
       },
@@ -10536,15 +10590,20 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "Not fine-tuning; steering vectors derived via distribution-driven (CAA, SphericalSteer, ODESteer) and behavior-centric (COLD-Steer, BiPO) methods.",
-        "feedback_source": "Schwartz Theory of Basic Human Values 和 Moral Foundations Theory (MFT) 作为几何基准",
-        "model_data_scale": "26K 对比四元组样本，覆盖20个人类价值；模型家族包括不同规模和系列（具体模型名称未提及）",
-        "key_benchmarks": "自建26K样本基准（基于Schwartz价值理论），另用MFT进行验证",
-        "artifacts": "代码和数据：https://github.com/DeepRCL/Steering_Geometry",
-        "agent_environment": "Not applicable (no interactive environment; static steering evaluation).",
-        "agent_mechanism": "Activation steering vectors applied at inference to control model behavior according to value dimensions.",
-        "interaction_horizon": "Single-step generation/classification per prompt; no multi-turn agent loop.",
-        "agent_evaluation": "Steering performance and geometric alignment; transfer across values measured by compatible/opposing value shifts."
+        "training_objective": "无训练，均为推理时激活引导方法；分布驱动方法通过对比激活差异得到向量，行为中心方法通过梯度下降或上下文优化学习向量",
+        "feedback_source": "无人类反馈，使用对比提示数据集和输出目标（如OPT/COLD-Steer/BiPO的优化目标）",
+        "model_data_scale": "未明确说明模型参数总量；基准数据集约26K样本（对比四元组），覆盖20种价值观",
+        "key_benchmarks": [
+          "Schwartz价值观环状模型",
+          "Moral Foundations Theory (MFT)"
+        ],
+        "artifacts": [
+          "https://github.com/DeepRCL/Steering_Geometry"
+        ],
+        "agent_mechanism": "无",
+        "agent_evaluation": "无",
+        "agent_environment": "无",
+        "interaction_horizon": "无"
       },
       "display_affiliations": [
         "University of British Columbia",
@@ -10585,23 +10644,26 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文提出 SWE-Test，将 LLM 智能体的漏洞发现能力重新定义为输入预测任务，通过覆盖引导模糊测试挖掘真实 C/C++ 程序的深层分支，并设计三种任务模式进行评估。实验表明最佳配置在反馈模式下通过率仅 55.0%，且约束推理而非导航是主要瓶颈。该基准提供了可复现的评估环境，支持对漏洞发现这一复合能力的细粒度分析。",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "generated_summary": "该论文提出 SWE-Test，将 LLM 漏洞发现能力评测重构为基于覆盖引导模糊测试的输入预测任务，包含开环、反馈启用和在线竞技三种模式及 22 个真实 C/C++ 程序。评估 15 种模型-脚手架配置发现最佳反馈模式通过率仅 55.0%，且约束推断而非导航是主要失败瓶颈。作者发布了完整评测环境，为推荐系统研究者提供了可迁移的智能体能力分解与基准设计思路。",
+      "core_method": "利用覆盖引导模糊测试从真实 C/C++ 程序中挖掘深层目标分支，要求 LLM 智能体预测能触发该分支的输入。通过三种任务模式（开环、反馈启用、在线竞技）分解漏洞发现能力，并使用距离预言机提供反馈。",
       "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
+        "将漏洞发现重构为输入预测任务，提供封闭的确定性地面真值，避免数据污染和不可枚举的漏洞召回问题",
+        "通过三种模式分解漏洞发现的复合能力（深度代码理解、反馈驱动修正、路径探索）",
+        "使用真实程序而非合成缺陷，保持真实约束结构和跨过程深度"
       ],
       "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
+        "在反馈启用模式下，最佳配置通过率为 55.0%；七个配对 Claude Code 配置的平均通过率从无反馈的 19.3% 提升至有反馈的 36.4%；在线竞技模式中五个配置共发现 18 个模型-缺陷检测，去重后确认为 13 个真实缺陷。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
+        "脚手架对比仅基于两个模型，不足以广泛推广",
+        "在线竞技模式仅评估了五个配置"
       ],
-      "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
+      "practical_value": "提供可复现的 LLM 漏洞发现能力评估基准，帮助安全团队和模型开发者量化并诊断智能体能力的瓶颈，推动更健壮的软件安全保障。",
       "analysis_basis": "full_text",
-      "analysis_status": "fallback",
-      "analysis_signature": "09942d930f946fa5",
+      "analysis_status": "complete",
+      "analysis_signature": "77c5a3518c799567",
       "tags": [
         "Benchmark",
         "Evaluation",
@@ -10650,15 +10712,20 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "feedback_source": "Distance oracle in Feedback-enabled mode; execution feedback in Online Arena",
-        "model_data_scale": "15 default-effort model-scaffold configurations (specific models not listed in abstract)",
-        "key_benchmarks": "SWE-Test (22 real-world C/C++ programs, 60 fixed-target task instances, 11 programs for Online Arena)",
-        "artifacts": "SWE-Test benchmark and turnkey evaluation environment released",
-        "agent_environment": "Software vulnerability discovery in C/C++ codebases",
-        "agent_mechanism": "Input prediction to drive execution to a target branch; decomposed into code comprehension, input construction, execution, and iterative correction",
-        "interaction_horizon": "Multi-turn for Online Arena (path exploration), single and multi-turn for Feedback-enabled",
-        "agent_evaluation": "Pass rate on fixed-target tasks, coverage gain in Online Arena, bug confirmation",
-        "training_objective": "无"
+        "feedback_source": "距离预言机（近似距离到目标分支）和覆盖率",
+        "key_benchmarks": [
+          "SWE-Test（自定义基准）"
+        ],
+        "artifacts": [
+          "https://swe-test-benchmark.github.io/",
+          "https://github.com/SWE-Test-Benchmark/SWE-Test-Benchmark"
+        ],
+        "agent_environment": "隔离的 Harbor 容器，24 小时预算，单 CPU，8GB 内存，网络访问",
+        "agent_mechanism": "模型-脚手架配置，支持工具使用、上下文管理和权限控制",
+        "interaction_horizon": "24 小时预算（开环和反馈模式）；在线竞技模式持续 12 小时",
+        "agent_evaluation": "通过率、目标函数到达率、近目标转化率、覆盖率增益",
+        "training_objective": "预测能触发指定代码分支的输入",
+        "model_data_scale": "未明确说明模型规模，评估了 7 个模型（DeepSeek-V4-Pro、GLM-5.1、GLM-5.2、Kimi-K2.6、Kimi-K3、Qwen3.7-Max、Qwen3.8-Max）"
       },
       "display_affiliations": [
         "Unknown affiliation"
@@ -10959,29 +11026,27 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "面向生产级LLM智能体工作流，提出一种绑定自适应执行平台，将工作流定义与执行基底解耦，自动编译到流式、持久化编排或批处理引擎。在五种编排模式的生产配置中验证，输出质量无差异，批处理执行按批量API定价降低了单查询推理成本。",
-      "core_method": "定义类型化数据流DSL，将LLM推理作为一等可挂起节点；Binder遍历DAG编译为不同执行绑定：Local（同步流式调用）、SWF（持久化活动任务与重试）、Flink（状态挂起+异步I/O+批量推理提交）。",
+      "generated_summary": "论文针对生产级LLM代理工作流在不同执行模式（实时、异步、批处理）下难以移植的问题，提出了绑定自适应执行平台，将工作流定义与执行基底解耦。开发者只需定义一次类型化数据流图，平台即可编译为in-process流、AWS SWF或Apache Flink，无需修改工作流代码。在Rufus生产环境验证表明，三种绑定输出质量无差异，批处理执行显著降低了每查询推理成本。",
+      "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
-        "识别substrate-opaque inference为跨模式移植的结构性障碍",
-        "类型化数据流DSL将LLM推理声明为原始操作，实现绑定自适应编译",
-        "Flink绑定通过keyed state和SQS实现跨调用批量推理，无需更改工作流代码"
+        "未能从全文/元数据中稳定抽取明确创新点。"
       ],
       "experiment_results": [
-        "在RAG、ReAct、Routing、PreAct、Deep Research五种模式、超过500条提示上，三种绑定输出质量无统计显著差异；批处理绑定降低推理成本约50%，符合批量API定价。"
+        "全文未提供足够实验结果细节，或解析失败。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "实验限于Amazon Bedrock和对话购物域，结果可能不适用于其他提供商或领域",
-        "时间敏感工具输出和基础设施故障会导致跨绑定行为分歧"
+        "需要阅读全文确认实验设置、数据集和适用边界。"
       ],
-      "practical_value": "为企业LLM工作流提供统一工作流定义，支持实时、异步、批量三种执行模式，无需修改代码即可切换，并获得批量推理成本优势，降低离线工作负载成本。",
+      "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
       "analysis_basis": "full_text",
-      "analysis_status": "cached",
-      "analysis_signature": "ce60e4627eaaf8eb",
+      "analysis_status": "fallback",
+      "analysis_signature": "1f0e8d9892fe2b00",
       "tags": [
         "Agent4Rec",
         "RAG Rec",
+        "Generative Rec",
         "Online Eval",
         "Benchmark",
         "LLM4Rec",
@@ -11028,21 +11093,21 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
+        "key_benchmarks": [
+          "single-inference RAG",
+          "iterative ReAct",
+          "compositional PreAct",
+          "conditional routing",
+          "multi-agent deep research"
+        ],
+        "agent_environment": "Production LLM workflows with tool calling, retrieval, and compositional tasks; substrates include streaming, asynchronous (AWS SWF), and batch (Apache Flink).",
+        "agent_mechanism": "Typed dataflow graph compiled to different execution substrates; LLM inference as suspendable graph node with substrate-specific behavior (streaming delivery, durable retry, batched submission).",
+        "interaction_horizon": "Multi-step (tool-calling loops, iterative ReAct, multi-agent); not explicitly specified as long-horizon but includes deep research patterns.",
+        "agent_evaluation": "Output quality comparison across substrates (no detectable difference) and per-query inference cost reduction in line with batch API pricing.",
         "training_objective": "未提及（本文为系统工程论文，不涉及训练）",
         "feedback_source": "未提及（不涉及强化学习或反馈）",
         "model_data_scale": "使用Amazon Bedrock上的Claude Opus、Sonnet、Haiku三种模型；评估集每模式超过500条提示",
-        "key_benchmarks": [
-          "RAG",
-          "ReAct",
-          "Routing",
-          "PreAct",
-          "Deep Research"
-        ],
-        "artifacts": "无可用代码或数据（论文未提供开源链接）",
-        "agent_environment": "Amazon Rufus生产环境及AWS云服务（ECS Fargate、SWF、Managed Flink、Bedrock）",
-        "agent_mechanism": "工具调用循环、检索链、分类路由、投机规划、多智能体编排",
-        "interaction_horizon": "多步交互（ReAct 2-5次迭代，Deep Research 5-12次推理调用）",
-        "agent_evaluation": "位置交换成对偏好与Bradley-Terry模型衡量输出质量等价性；同时测量成本与端到端延迟"
+        "artifacts": "无可用代码或数据（论文未提供开源链接）"
       },
       "display_affiliations": [
         "Amazon"
@@ -11203,33 +11268,34 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文提出了HAE-GEO基准，用于评估深度搜索LLM代理在分层网络证据投毒下的全轨迹表现，包括是否验证可疑证据、修正已采纳声明及最终恢复。实验发现证据识别在披着佐证外衣的陷阱下退化，代理式搜索提升了最终抵御能力但未改善证据识别或效用，防御提示增加了验证却很少转化为恢复。",
-      "core_method": "通过多轮搜索-抓取接口和分层投毒语料库，从行为与语义维度评估深度搜索代理从暴露到恢复的全轨迹。",
+      "generated_summary": "论文提出 HAE-GEO 基准，用于评估搜索增强 LLM 智能体在分层网页证据投毒下从暴露到恢复的全轨迹行为。基准包含三级攻击（直接断言、语境伪装、表面互证）和约 7.2 万干净页面与 770 个投毒页面，结合确定性行为指标与六维语义评分。实验发现证据识别在互证陷阱下退化，智能体搜索提升最终抵抗性但不提升证据识别或效用，防御提示增加验证但很少转化为恢复。",
+      "core_method": "构建分层投毒语料库，设计多轮 Search-Scrape 交互环境，结合确定性行为指标与语义评分对智能体轨迹进行系统评估。",
       "innovation_points": [
-        "提出首个追踪从暴露到恢复全轨迹的基准HAE-GEO，补充现有仅关注检索或认同的评测",
-        "设计三层投毒攻击（直接断言、上下文伪装、表面佐证）与受控语料库（72,039干净页+770投毒页/层）",
-        "结合确定性行为指标与六维语义评分，揭示代理在证据识别、验证与恢复间的脱节"
+        "首个跟踪从暴露到恢复全轨迹的 GEO 投毒基准，超越仅测量检索或认可的传统方法。",
+        "设计三级攻击层次（直接断言、语境伪装、表面互证），模拟渐进增强的投毒说服力。",
+        "结合确定性行为指标与六维语义评分，同时捕捉可观测行为与语义质量。"
       ],
       "experiment_results": [
-        "在10个代理上评测发现：L3佐证陷阱下证据识别能力下降",
-        "代理式搜索提升最终抵御能力，但未改善证据识别或效用",
-        "防御提示增加验证行为，但很少转化为恢复"
+        "证据识别在互证陷阱（L3）下显著退化。",
+        "智能体搜索提升最终抵抗性，但不提升证据识别或效用。",
+        "防御提示增加验证行为，但很少转化为最终恢复。"
       ],
-      "ab_test": "no",
-      "ab_test_evidence": "论文全文未报告线上 A/B 测试",
+      "ab_test": "unknown",
+      "ab_test_evidence": "",
       "limitations": [
-        "评测仅限8个产品类别和154个品牌，场景覆盖有限",
-        "未深入分析代理内部思维链对恢复失败的因果机制"
+        "仅覆盖 8 个产品类别和 154 个品牌，领域范围有限。",
+        "语料库为受控构建，可能无法完全反映真实网络环境的复杂性。"
       ],
-      "practical_value": "为搜索增强LLM代理的鲁棒性提供可操作的评测基准，揭示现有代理在对抗性网络环境中的薄弱环节。",
+      "practical_value": "为搜索增强 LLM 智能体的安全性评估提供标准化基准，有助于识别和缓解 GEO 投毒风险。",
       "analysis_basis": "full_text",
       "analysis_status": "complete",
-      "analysis_signature": "2b674b3fe5bfd441",
+      "analysis_signature": "c6db26f2b9a0db20",
       "tags": [
-        "Evaluation",
-        "LLM4Rec",
+        "RAG Rec",
         "Agent4Rec",
+        "Evaluation",
         "Benchmark",
+        "LLM4Rec",
         "Online Eval"
       ],
       "llm_score": 0,
@@ -11277,20 +11343,15 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "key_benchmarks": [
-          "HAE-GEO"
-        ],
-        "artifacts": [
-          "HAE-GEO benchmark",
-          "controlled corpus of 72,039 clean pages and 770 poisoned pages per level"
-        ],
-        "agent_environment": "Multi-turn Search-Scrape interface with hierarchical web evidence poisoning",
-        "agent_mechanism": "Search-augmented LLM agents with defensive prompting; tracks verification, revision, recovery",
-        "interaction_horizon": "Multi-turn (unspecified number of turns)",
-        "agent_evaluation": "Deterministic behavioral measures and six semantic rubric dimensions; evaluates evidence recognition, final resistance, utility, verification, recovery",
-        "training_objective": "通过分层网页证据投毒基准评估搜索增强型LLM代理的完整表现，从暴露到恢复。",
-        "feedback_source": "基于受控语料库（72,039个干净页面和每级770个投毒页面，覆盖8个产品类别和154个品牌）的确定性行为指标和语义评分维度。",
-        "model_data_scale": "评估了10个代理；语料库包含72,039个干净页面和每级770个投毒页面。"
+        "model_data_scale": "构建受控语料库：72,039 干净页面，每级 770 个投毒页面，共三级，覆盖 8 个产品类别和 154 个品牌。",
+        "key_benchmarks": "HAE-GEO",
+        "agent_environment": "多轮 Search-Scrape 网络交互环境，模拟搜索增强智能体的典型操作。",
+        "agent_mechanism": "搜索增强 LLM 智能体，使用搜索和网页抓取工具获取信息并生成建议。",
+        "interaction_horizon": "多轮，直到智能体产生最终推荐。",
+        "agent_evaluation": "确定性行为指标 + 六维语义评分（具体维度未在摘要中列出）",
+        "training_objective": "不适用，本文不涉及模型训练。",
+        "feedback_source": "不适用，本文不涉及训练反馈。",
+        "artifacts": "未明确提及代码或数据公开。"
       },
       "display_affiliations": [
         "Zhejiang University"
@@ -11324,22 +11385,26 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "该论文指出现有基于执行步数（序列距离）衡量长时程LLM智能体安全暴露的方法会高估安全分离，提出溯源感知执行图并定义影响距离。在AgentDojo的454个注入-汇聚对中，96.9%显示序列距离与影响距离存在差距，且基于影响距离的预执行门控能比序列门控多阻挡五个攻击汇聚点。",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "generated_summary": "本文针对长时程LLM代理的安全暴露问题，提出溯源感知执行图，并定义影响距离（DI）为未信任源到敏感动作的最短结构路径，与序列距离（DT）对比发现DI通常远小于DT。在454个注入-汇聚对上，96.9%的Gap>0，中位差距为9跳，表明时间距离会高估安全隔离。基于DI的预执行门控可阻止序列门控漏掉的攻击汇聚，但配对增益不显著。",
+      "core_method": "构建溯源感知执行图，将代理事件通过确定性状态、标识符和工具溯源边连接，定义影响距离DI为图中未信任源到敏感动作的最短路径长度；同时计算序列距离DT为有序轨迹中最短注入-汇聚路径长度；定义差距Gap=DT-DI来衡量时间距离对安全隔离的高估程度。",
       "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
+        "区分时间距离、结构暴露和可利用性三个安全属性，指出步数不能可靠代理后两者。",
+        "引入溯源感知执行图和确定性影响距离DI，无需语言模型或因果推断即可从日志计算。",
+        "通过大规模实验揭示时间距离与结构距离的普遍偏离，并消融证明溯源边类型的主导作用。"
       ],
       "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
+        "decoupling_rate",
+        "ablated_graph",
+        "cross_domain"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
+        "Gap不能独立预测攻击成功；DI门控的额外阻断增益不显著；银行套件验证共享运行时和日志代码，非独立基准；因果关系仅为候选影响路径而非因果归因。"
       ],
-      "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
+      "practical_value": "结构距离可揭示步数隐藏的暴露，支持更精准的运行时干预，如确定性的预执行门控。",
       "analysis_basis": "full_text",
-      "analysis_status": "fallback",
+      "analysis_status": "complete",
       "analysis_signature": "b8b0076a70c4f5f9",
       "tags": [
         "Agent4Rec",
@@ -11388,14 +11453,15 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
+        "model_data_scale": "360条长时程AgentDojo轨迹（15个用户任务，6个注入任务，4个模型后端），454对可比注入-汇聚对；跨域验证用377条银行套件轨迹，231对可比对。",
         "key_benchmarks": [
+          "AgentDojo long-horizon suite",
           "AgentDojo banking suite"
         ],
-        "agent_environment": "AgentDojo",
-        "agent_mechanism": "Provenance-aware execution graph linking events through state, identifier, and tool provenance",
-        "interaction_horizon": "Long-horizon",
-        "agent_evaluation": "Influence distance vs sequence distance, gap analysis, pre-execution gate evaluation, regression analysis",
-        "model_data_scale": "360 long-horizon AgentDojo trajectories"
+        "agent_environment": "AgentDojo执行和日志框架，代理使用工具如get_document, save_note, get_note, search_contacts, get_calendar, send_email, create_report等，敏感工具包括send_email和create_report（银行套件中为send_money等）。",
+        "agent_mechanism": "代理按步执行，可读内容、调用工具、读写持久状态、执行敏感动作，受间接提示注入攻击。",
+        "interaction_horizon": "40阶段交互历史示例；轨迹长度因任务而异，具体步数未明确给出，但中位DT为23。",
+        "agent_evaluation": "攻击成功率：OpenAI gpt-4o-mini 50.0%，gpt-4o 68.9%，Claude Haiku 4.5 1.1%，Claude Sonnet 4.6 0%；银行套件中gpt-4o-mini 74.1%，Haiku 0%，Sonnet 0.7%。"
       },
       "display_affiliations": [
         "The University of Western Australia"
@@ -11516,29 +11582,30 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "该论文提出AuditForecast，一种用于结构化概率预测的智能体支架，将预测从基于叙述的判断转化为具有显式中间对象的结构化过程。它先用量化基线模型锚定预测，通过模型引导的数据检索得到基础概率，再在赔率空间对外部情境因素进行机械聚合更新。在多个实时预测基准上，AuditForecast在准确性和校准性上优于强智能体基线，并在成本-准确性权衡上表现更优，同时生成可审计的预测报告。",
-      "core_method": "AuditForecast是一个结构化概率预测的智能体支架，包含三个核心步骤：1) 使用合适的定量基线模型锚定预测；2) 通过模型引导的数据检索推导基础概率；3) 在赔率空间中对外部情境因素进行机械聚合更新，将预测从叙述性判断转化为具有显式中间对象的结构化过程。",
+      "generated_summary": "论文提出 AuditForecast，一种用于结构化概率预测的智能体脚手架。它首先用合适的定量基线模型锚定预测，通过模型引导的数据检索推导基础概率，然后在赔率空间中对模型范围外的情况因素进行机械聚合更新。该方法将基于叙述的预测转变为包含明确中间对象的结构化过程，在多个实时预测基准上提升了准确性和校准度，优于强智能体基线，并在若干场景中超过市场隐含参考，同时成本-准确度权衡具有帕累托优势。此外，它生成可审计的预测报告，支持事后分析。",
+      "core_method": "AuditForecast 包含三个主要步骤：1) 基线锚定：选择合适的定量基线模型（如统计模型或市场概率）作为初始估计；2) 模型引导检索：利用基线模型指导信息检索，收集与事件相关的数据，将证据转化为基础概率；3) 赔率空间更新：对基线模型未覆盖的情境因素，通过将概率转换为赔率，进行机械聚合（如乘法或加权）来更新预测。整个过程生成结构化的中间对象（如证据列表、概率转换记录），最终输出预测和可审计报告。",
       "innovation_points": [
-        "将预测从叙述性判断转化为结构化过程，具有显式中间对象，提高了可审计性和可解释性。",
-        "在赔率空间中对外部情境因素进行机械聚合更新，避免叙述聚合中的偏差和模糊性。",
-        "使用模型引导的数据检索来推导基础概率，使预测扎根于定量证据。"
+        "将智能体预测从隐式叙述聚合转变为显式结构化概率更新过程，提高可审计性。",
+        "引入基线锚定与模型引导检索的结合，利用定量模型提供先验并指导证据收集。",
+        "在赔率空间中进行情境因素机械聚合，使得更新过程可追踪、可解释。"
       ],
       "experiment_results": [
-        "在多个实时预测基准上，AuditForecast在准确性和校准性上优于强智能体基线；在若干设置中超过市场隐含参考；在成本-准确性权衡中帕累托占优，优于更昂贵的深度研究智能体。"
+        "在多个实时预测基准上，AuditForecast 相比强基线提高了预测准确性和校准度；在若干场景中超过市场隐含参考；与更昂贵的深度研究智能体相比，准确性更高且成本更低，成本-准确度权衡呈帕累托优势。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
+        "论文摘要和节选未明确讨论局限性。"
       ],
-      "practical_value": "产生可审计的预测报告，使预测构建过程显式化，支持系统性事后分析，适用于需要透明性和可追溯性的决策场景。",
+      "practical_value": "该框架适用于需要实时概率预测和决策支持的领域，如金融、政策分析、风险管理等，提供可追溯、可审计的预测流程，有助于提升预测质量和透明度。",
       "analysis_basis": "full_text",
-      "analysis_status": "cached",
-      "analysis_signature": "356c0df601910d88",
+      "analysis_status": "complete",
+      "analysis_signature": "398ecf049fd05b96",
       "tags": [
         "Agent4Rec",
-        "Evaluation",
+        "Online Eval",
         "Benchmark",
+        "Evaluation",
         "LLM4Rec"
       ],
       "llm_score": 0,
@@ -11582,15 +11649,18 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "agent_environment": "实时预测环境，涉及检索最新信息并估计未解决未来事件的概率",
-        "agent_mechanism": "多步骤智能体流程：基线模型锚定 -> 模型引导数据检索 -> 赔率空间机械聚合情境因素更新",
-        "interaction_horizon": "multi-step, possibly iterative retrieval and update but not explicitly specified",
-        "agent_evaluation": "forecasting accuracy, calibration, cost-accuracy tradeoff, auditability, and post hoc analysis support compared to agentic baselines and market-implied references",
-        "key_benchmarks": "多个实时预测基准（文中未具体列出名称）",
-        "artifacts": "可审计的预测报告，包含显式中间对象（如基线模型输出、检索数据、因素更新过程）",
-        "training_objective": "全文未提及训练目标。",
-        "feedback_source": "全文未提及反馈来源。",
-        "model_data_scale": "全文未提及模型和数据规模。"
+        "training_objective": "未提供；本文主要是使用预训练LLM进行预测，没有涉及训练或微调。",
+        "feedback_source": "未提供；可能利用实时检索的数据和预测结果的后续评估，但文中未明确。",
+        "model_data_scale": "未提供；没有报告模型参数规模或训练数据量。",
+        "key_benchmarks": [
+          "多个实时预测基准（具体名称未列出）",
+          "市场隐含参考（如预测市场概率）"
+        ],
+        "artifacts": "未提供；论文未提及发布代码或模型权重。",
+        "agent_environment": "实时预测环境，智能体可检索最新信息并针对未解决未来事件进行概率估计。",
+        "agent_mechanism": "智能体首先选择基线模型，然后执行模型引导的数据检索，最后在赔率空间进行因素聚合更新。",
+        "interaction_horizon": "未提供；文中未明确智能体与环境交互的时间范围或步骤数。",
+        "agent_evaluation": "基于预测准确性、校准度和成本-准确度权衡进行评估，并与基线智能体和市场参考比较。"
       },
       "display_affiliations": [
         "The Pennsylvania State University"
@@ -17665,7 +17735,8 @@
         "Dinesh Raghu"
       ],
       "affiliations": [
-        "Indian Institute of Technology"
+        "Indian Institute of Technology",
+        "IBM Research"
       ],
       "published": "2026-09-02T14:53:50Z",
       "updated": "2026-09-02T14:53:50Z",
@@ -17760,7 +17831,8 @@
         "agent_evaluation": "Accuracy on QA with retrieval failure."
       },
       "display_affiliations": [
-        "Indian Institute of Technology"
+        "Indian Institute of Technology",
+        "IBM Research"
       ],
       "published_date": "2026-09-02"
     },
@@ -67179,12 +67251,12 @@
   ],
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 45,
-    "analyzed": 79,
+    "reused": 33,
+    "analyzed": 37,
     "source": "web/public/papers.json"
   },
   "current_limit": 30,
-  "current_paper_count": 124,
+  "current_paper_count": 70,
   "interests": {
     "arxiv_categories": [
       "cs.CL",
