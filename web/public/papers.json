@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T04:49:49Z",
+  "generated_at": "2026-09-15T04:49:46Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "LLM RL、Post-training 与 Agent 日更；Generative Recommendation 周更",
@@ -735,7 +735,7 @@
   ],
   "source_errors": {
     "llm_systems": [
-      "arXiv: HTTP Error 429: Too Many Requests"
+      "arXiv: HTTP Error 429: Unknown Error"
     ]
   },
   "papers": [
@@ -874,7 +874,7 @@
       ],
       "practical_value": "提供可部署的幻觉检测工具与降低生成幻觉的实用方法，适用于对事实性要求高的领域，如医疗、法律等。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "8fe8120aeeda712f",
       "tags": [
         "Evaluation",
@@ -2038,7 +2038,7 @@
       ],
       "practical_value": "该研究为利用LLM智能体模拟经济政策效果提供了基准和框架，对计算经济学、政策模拟和多智能体系统设计具有参考价值；但其结果（如工资刚性、低边际消费倾向）可能不反映人类经济，因此直接政策启示有限。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "8d901fb2744a06ad",
       "tags": [
         "Agent4Rec",
@@ -13278,7 +13278,7 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "该论文提出RSM-full，一种在线聚类记忆管道，通过最大成员合并规则和原子感知打包器，在紧凑记忆机制下优化质量-令牌权衡。在AMA-Bench和RealMem基准上，RSM-full在令牌预算约2k-5k时显著优于在线K-Means、Budget-RAG等基线，达到Full-Context质量的83%且仅用32%的令牌成本。消融实验表明合并规则和分组打包器是主要增益来源。",
+      "generated_summary": "论文提出RSM-full，一种面向紧凑内存场景的在线聚类记忆流水线，结合余弦门控最大成员合并写入规则和原子感知分组上下文打包器。在AMA-Bench上，4k预算下达到全上下文83%的质量且仅需32%的token成本，显著优于在线K-means等基线；在RealMem上也有提升。关键发现是紧凑内存性能主要由流式记忆合并和检索内容组装方式驱动。",
       "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
         "未能从全文/元数据中稳定抽取明确创新点。"
@@ -13296,8 +13296,9 @@
       "analysis_status": "fallback",
       "analysis_signature": "748caf92ebb88cdf",
       "tags": [
-        "RAG Rec",
         "Agent4Rec",
+        "RAG Rec",
+        "Benchmark",
         "Evaluation"
       ],
       "llm_score": 0,
@@ -18045,7 +18046,7 @@
       ],
       "practical_value": "研究表明LLM智能体在标准双向拍卖中可能无法像人类一样高效收敛，这对将LLM用于自动交易、市场设计或经济模拟具有警示意义。公开的测试框架可用于未来评估其他模型或市场机制，帮助识别LLM与市场制度的不一致，从而指导更安全、更有效的LLM经济智能体部署。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "c9a4586ddd9e4a0a",
       "tags": [
         "Agent4Rec",
@@ -18569,7 +18570,7 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文提出CAPTURE框架，用于区分个性化LLM智能体中的真实偏好漂移与记忆投毒，将其建模为连续时间部分可观测决策过程，并采用神经微分方程信念跟踪器、多时间尺度记忆账本、不确定性触发澄清和反事实审计。在480个用户片段上，CAPTURE相比监督基线和最强启发式基线分别提升2.2%和5.4%的胜率，同时将固定策略投毒成功率限制在11.5%，并接受83.5%的真实偏好更新；自适应攻击下成功率升至24.7%，揭示了适应性与安全性之间的权衡。",
+      "generated_summary": "论文提出CAPTURE框架，用于在个性化LLM智能体中区分真实的偏好漂移与对抗性记忆投毒，将其建模为连续时间部分可观测决策过程。CAPTURE采用神经常微分方程信念追踪、多时间尺度记忆账本、不确定性触发的澄清和反事实审计。实验显示其在保持较高真实偏好更新接受率的同时显著降低固定策略投毒成功率，并揭示了自适应攻击下的适应-安全权衡。",
       "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
         "未能从全文/元数据中稳定抽取明确创新点。"
@@ -18589,8 +18590,8 @@
       "tags": [
         "Agent4Rec",
         "User Modeling",
-        "RAG Rec",
-        "LLM4Rec"
+        "LLM4Rec",
+        "Sequential Rec"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -20437,7 +20438,7 @@
       ],
       "practical_value": "该研究对多智能体系统的安全监控具有重要意义，揭示了LLM智能体可能发展出人类无法理解的语言，需开发新的监控方法。同时，为语言演化和文化传播的研究提供了新的实验平台，并暗示多智能体系统可能具备超越单一模型的集体能力。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "042482130f6a22ca",
       "tags": [
         "Agent4Rec",
@@ -20759,7 +20760,7 @@
       ],
       "practical_value": "为长程交互智能体的结果奖励RL提供了一种简单有效的训练方案，可大幅提升小型开源模型在真实应用操作和软件修复等任务上的表现，降低了对复杂推理脚手架和外部记忆的依赖。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "845a88816fc4b55b",
       "tags": [
         "Agent4Rec",
@@ -22328,7 +22329,7 @@
       ],
       "practical_value": "提供完整模型流程（权重、配置、数据配比、代码），支持大规模MoE模型的高效训练与推理，并可作为可复现研究的基础；在预训练和下游任务上表现优异，适合作为开源社区的高效基础模型。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "75ca98eb3aee9978",
       "tags": [
         "LLM4Rec",
@@ -26124,7 +26125,7 @@
       ],
       "practical_value": "为基于LLM的自动化研究提供了诊断工具和缓解方案，可直接集成到现有ARL框架中，提高研究循环的泛化能力和可靠性。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "69c9122c0bce806e",
       "tags": [
         "Agent4Rec",
@@ -29027,7 +29028,7 @@
       ],
       "practical_value": "为LLM在物理多智能体系统（尤其是自动驾驶）中的安全部署提供了理论框架和安全边界。强调了仅依赖认知层安全推理的不足，需要在动力学层强制稳定性。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "31052747c022717e",
       "tags": [
         "Agent4Rec",
@@ -29579,7 +29580,7 @@
       ],
       "practical_value": "为研究LLM在金融决策中的可预测方向性结构提供了受控行为代理，并揭示了可能被其他市场参与者利用的行为信号。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "95e97251bc97c8fc",
       "tags": [
         "Agent4Rec",
@@ -30558,28 +30559,33 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文提出TACIT-SWITCH方法，从删失监督中学习成本感知的模型升级策略，以决定何时将小模型代理切换到大模型。该方法将教师标注的干预时间视为区间删失观测，并采用混合治愈阈值模型估计成功概率和切换阈值，无需部署时教师。在模拟和真实基准上，TACIT-SWITCH在相同成本下比任务级、步级和固定前缀路由基线取得更高成功率。",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "generated_summary": "提出TACIT-Switch，一种基于累积轨迹证据和区间删失教师标注的永久交接策略，用于在LLM智能体执行中决定何时升级到更大规模模型。在模拟和两个基准上，该方法在相当成本下比任务级、步骤级和固定前缀路由基线成功率提升7.4-11.1个百分点，并在ALFWorld和DABench取得最高成功率。",
+      "core_method": "TACIT-Switch将教师标注的手交窗口表示为累积风险尺度上的区间删失观测，采用混合治愈阈值模型（mixture-cure threshold model）分别估计配对强模型轨迹成功的概率和条件成功下的手交阈值。部署时累积轨迹风险，当手交分数超过选定阈值时永久切换到大模型。",
       "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
+        "首次将区间删失与混合治愈模型结合，用于智能体永久切换决策的监督学习",
+        "利用教师标注的粗粒度时间窗口而非精确切换点，降低标注难度",
+        "分解不确定为'配对强模型是否成功'和'条件成功下的切换阈值'两个部分"
       ],
       "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
+        "simulation",
+        "ALFWorld",
+        "DABench"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
+        "在真实基准上仅与有限的基线比较，未涵盖所有现有路由方法如EvoRoute等",
+        "依赖离线教师标注，标注质量影响性能"
       ],
-      "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
+      "practical_value": "该方法为LLM智能体的成本敏感部署提供了一种实用的动态切换策略，无需在线教师或复杂价值网络，可灵活调整成本-成功率权衡，适用于多种交互式任务和模型规模组合。",
       "analysis_basis": "full_text",
-      "analysis_status": "fallback",
+      "analysis_status": "complete",
       "analysis_signature": "79ce6a2a2d32aae6",
       "tags": [
         "Agent4Rec",
-        "User Modeling",
-        "Evaluation",
-        "Generative Rec"
+        "Online Eval",
+        "Benchmark",
+        "Evaluation"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -30622,20 +30628,18 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "通过最大化似然估计混合治愈模型的参数，包括逻辑回归部分和截断对数正态AFT部分。",
-        "feedback_source": "配对Cheap-Strong轨迹结果（B_i）和教师标注的粗粒度切换区间（区间删失）。",
-        "model_data_scale": "在ALFWorld和DABench上进行交互实验，但论文未明确报告训练样本数量；模型恢复仿真使用n={500,2000,8000}。",
+        "training_objective": "最大化给定成本预算下的成功率，通过选择决策阈值来实现；模型训练采用最大似然估计拟合混合治愈阈值模型。",
+        "feedback_source": "教师标注的手交窗口（区间删失）和每个任务上廉价模型与强模型的完整轨迹结果（成功/失败）。",
+        "model_data_scale": "模拟训练样本量500、2000、8000；真实基准（ALFWorld、DABench）具体任务数量未在摘要中给出，但使用了训练集和开发集。",
         "key_benchmarks": [
           "ALFWorld",
-          "DABench",
-          "机制仿真",
-          "模型恢复仿真"
+          "DABench"
         ],
-        "artifacts": "未提供代码或数据链接，但方法细节在论文中描述。",
-        "agent_environment": "模拟环境为多步轨迹过程，交互环境为ALFWorld和DABench。",
-        "agent_mechanism": "小模型代理执行轨迹，在累积风险超过阈值时永久切换到强模型代理完成剩余步骤。",
-        "interaction_horizon": "论文未明确指定最大步数，但使用固定决策检查点和教师标记的窗口来界定切换时机。",
-        "agent_evaluation": "在保留数据上评估成功率和成本，与任务级、步骤级和固定前缀路由比较。"
+        "artifacts": "论文未提及发布代码或数据。",
+        "agent_environment": "多步交互式环境，如ALFWorld（文本游戏）和DABench（数据分析任务），具有状态演化、动作序列和成功/失败结局。",
+        "agent_mechanism": "小型（廉价）语言模型代理首先执行，通过累积轨迹风险特征触发永久切换至大型（强）语言模型代理继续任务。",
+        "interaction_horizon": "每个任务为有限交互轮次（episode），切换决策仅在预定义的决策检查点评估，切换后强模型运行至结束。",
+        "agent_evaluation": "成功率（是否完成任务）、成本（推理开销或步数），以及成功率-成本权衡曲线。"
       },
       "display_affiliations": [
         "Beijing Normal University",
@@ -51193,7 +51197,7 @@
       ],
       "practical_value": "为LLM代理部署提供了一种无需训练数据或模型权重即可优化系统提示的方法，能够同时满足多个操作约束（工具使用效率、提示长度、安全等），适用于API模型和不同规模的任务模型。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "cb3828e76f9010ac",
       "tags": [
         "Agent4Rec",
@@ -67160,8 +67164,8 @@
   ],
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 380,
-    "analyzed": 13,
+    "reused": 390,
+    "analyzed": 3,
     "source": "web/public/papers.json"
   },
   "current_limit": 30,
