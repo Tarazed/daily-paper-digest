@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-16T04:52:30Z",
+  "generated_at": "2026-09-17T04:58:46Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "LLM RL、Post-training 与 Agent 日更；Generative Recommendation 周更",
@@ -471,17 +471,17 @@
       ],
       "selected_ids": [
         "arxiv:2609.15134",
-        "arxiv:2609.16937",
-        "arxiv:2609.13916",
-        "arxiv:2609.11739",
+        "arxiv:2609.01245",
+        "arxiv:2609.02685",
+        "arxiv:2608.24988",
         "arxiv:2609.12651",
-        "arxiv:2609.16660",
-        "arxiv:2609.12607",
-        "arxiv:2609.12424",
-        "arxiv:2609.15309",
-        "arxiv:2609.09853",
-        "arxiv:2609.16305",
-        "arxiv:2609.14767"
+        "arxiv:2608.30051",
+        "arxiv:2609.03342",
+        "arxiv:2609.02236",
+        "arxiv:2609.11108",
+        "arxiv:2608.15108",
+        "arxiv:2608.30730",
+        "arxiv:2609.15309"
       ]
     },
     "generative_rec": {
@@ -788,7 +788,11 @@
     "arxiv:2608.15507",
     "arxiv:2608.15108"
   ],
-  "source_errors": {},
+  "source_errors": {
+    "llm_systems": [
+      "arXiv: HTTP Error 406: Not Acceptable"
+    ]
+  },
   "papers": [
     {
       "id": "arxiv:2609.17331",
@@ -831,7 +835,7 @@
       ],
       "practical_value": "可应用于需要稳定人格和自适应进化的LLM智能体系统，如长期交互助手、角色扮演、人工社会模拟，并为人工意识研究提供沙盒工具。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "40268ec281223a86",
       "tags": [
         "Agent4Rec",
@@ -911,7 +915,8 @@
         "Shengbo Eben Li"
       ],
       "affiliations": [
-        "Tsinghua University"
+        "Tsinghua University",
+        "Didi Voyager Labs"
       ],
       "published": "2026-09-15T10:12:56Z",
       "updated": "2026-09-15T10:12:56Z",
@@ -946,7 +951,7 @@
       ],
       "practical_value": "为LLM后训练中的on-policy蒸馏提供了一种稳定且有效的信用分配方案，可提升数学与代码推理等可验证任务上的性能，并支持多教师和跨容量蒸馏场景。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "a5ce8ca495695a75",
       "tags": [
         "LLM4Rec",
@@ -1013,7 +1018,8 @@
         "agent_evaluation": "通过数学验证器或代码执行单元测试评估最终答案正确性。"
       },
       "display_affiliations": [
-        "Tsinghua University"
+        "Tsinghua University",
+        "Didi Voyager Labs"
       ],
       "published_date": "2026-09-15"
     },
@@ -1060,7 +1066,7 @@
       ],
       "practical_value": "为LLM智能体的多轮任务后训练提供了一种有效的轮次级对齐方法，可提升模型在复杂交互环境中的规划与推理性能。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "f17c6c6abc9fe414",
       "tags": [
         "Agent4Rec",
@@ -1175,7 +1181,7 @@
       ],
       "practical_value": "为医学问答等小答案空间任务提供无标签测试时自适应方法，降低对人工标注的依赖；推理时无需额外奖励模型，便于部署；方法可迁移至未见数据集。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "08267b1d3bf61100",
       "tags": [
         "LLM4Rec",
@@ -1285,7 +1291,7 @@
       ],
       "practical_value": "EchoPath适用于企业级重复GUI任务，如更新记录、处理表单、配置工具和导出报告，能显著降低token成本和执行时间，提高效率、可审计性和操作控制。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "f6ad007ab50e0ea4",
       "tags": [
         "Agent4Rec",
@@ -1392,7 +1398,7 @@
       ],
       "practical_value": "该方法为LLM知识更新和检索提供了一种更高效的训练范式，特别是在需要同时保持新旧知识并适应时间敏感事实的场景（如知识编辑、动态知识库集成）具有实际应用价值。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "e556d166e939b6c7",
       "tags": [
         "LLM4Rec",
@@ -1500,7 +1506,7 @@
       ],
       "practical_value": "为社会科学研究者提供解释和引导LLM智能体的有效方法，增强社会模拟的透明度和可控性。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "415226107a14daa1",
       "tags": [
         "Agent4Rec",
@@ -1579,7 +1585,8 @@
         "Artem Babenko"
       ],
       "affiliations": [
-        "Yandex HSE University"
+        "Yandex HSE University",
+        "Yandex"
       ],
       "published": "2026-09-14T20:18:29Z",
       "updated": "2026-09-14T20:18:29Z",
@@ -1615,7 +1622,7 @@
       ],
       "practical_value": "为表格机器学习提供了一种新的自动化改进方法，降低了模型维护成本，提高了模型性能，且生成成本可摊销，可广泛应用于工业界表格模型调优。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "2524ca83fc23da5b",
       "tags": [
         "Agent4Rec",
@@ -1679,7 +1686,8 @@
         "agent_evaluation": "通过下游HPO性能间接评估智能体生成的搜索空间质量。"
       },
       "display_affiliations": [
-        "Yandex HSE University"
+        "Yandex HSE University",
+        "Yandex"
       ],
       "published_date": "2026-09-14"
     },
@@ -1732,7 +1740,7 @@
       ],
       "practical_value": "为评估和比较LLM代理在长时程、工具使用场景下的安全性与效用校准提供了一个标准化基准，有助于发现随时间累积的安全漏洞，推动代理安全研究从单轮向轨迹级发展。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "ebbaa5c77908cf0e",
       "tags": [
         "Agent4Rec",
@@ -1838,7 +1846,7 @@
       ],
       "practical_value": "为多智能体系统中利用廉价谈话提高行为可预测性提供了证据和机制理解，有助于设计更稳定的LLM智能体交互协议。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "f90863567f77470c",
       "tags": [
         "Agent4Rec",
@@ -1955,7 +1963,7 @@
       ],
       "practical_value": "为提升LLM智能体工具使用策略的鲁棒性提供实用方法，通过抑制虚假工具调用增强模型泛化能力。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "75091ae82ee884fa",
       "tags": [
         "Agent4Rec",
@@ -2071,7 +2079,7 @@
       ],
       "practical_value": "为评估和推动计算机使用智能体在专业工程软件中的自动化能力提供了基准，可用于研究和开发能处理复杂、持久性工程任务的智能体，潜在应用于设计自动化、制造辅助和工程教育。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "da61e4654995dba3",
       "tags": [
         "Benchmark",
@@ -2188,7 +2196,7 @@
       ],
       "practical_value": "Gavel能让LLM智能体在不增加上下文负担和外部参数的情况下，高效、准确地进行技能路由，支持更大的技能库和动态任务，对构建可扩展的智能体系统具有实用价值。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "cfae5c8279bca167",
       "tags": [
         "LLM4Rec",
@@ -2308,7 +2316,7 @@
       ],
       "practical_value": "为评估和提升安全分析智能体在仓库规模下定位漏洞的能力提供基准，推动安全智能体从检测向定位演进，并强调在漏洞修复后不得误报的重要性。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "de1266b91015e304",
       "tags": [
         "Agent4Rec",
@@ -2431,7 +2439,7 @@
       ],
       "practical_value": "该框架可应用于药物重定位等科学假设生成任务，通过多智能体协作和迭代优化提高假设质量，可能加速生物医学领域的发现过程，并为自主科学发现系统提供新的设计思路。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "543a9ab9837a7d34",
       "tags": [
         "Agent4Rec",
@@ -2545,7 +2553,7 @@
       ],
       "practical_value": "提供轻量级、模块化、模型无关的防御层，可以轻松集成到现有工具集成LLM代理中，提高安全性而不牺牲任务性能。代码已开源。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "d20eebdfe5b50380",
       "tags": [
         "Agent4Rec",
@@ -2659,7 +2667,7 @@
       ],
       "practical_value": "CREW为自适应、引用感知的科学写作助手提供了灵活方案，可减少人工撰写相关工作的时间和精力，并降低LLM调用成本，具有在学术写作辅助工具中应用的潜力。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "fe272b333dbb5e77",
       "tags": [
         "Agent4Rec",
@@ -2771,7 +2779,7 @@
       ],
       "practical_value": "为环境交互成本高或危险的应用（如机器人、昂贵模拟器）提供了一种可行的奖励函数指定方法，使非专家能够通过偏好或自然语言描述来设计奖励，降低部署RL的门槛。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "a73f915474c3c24e",
       "tags": [
         "LLM4Rec",
@@ -2888,7 +2896,7 @@
       ],
       "practical_value": "该方法为评估和优化 LLM 智能体的测试时计算分配提供了一种量化工具，帮助在计算预算有限时决定是使用单个长会话还是多个并行会话。缩放拐点的定义可以指导实际部署中的资源分配。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "b7479d03452c5dae",
       "tags": [
         "Agent4Rec",
@@ -2999,7 +3007,7 @@
       ],
       "practical_value": "为LLM智能体安全部署提供了简单的执行层修复方案（abort-on-flag），可将攻击成功率显著降低；提出的审计执行规范可作为框架安全设计标准，防止自发崩溃。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "cb1d4d33772c2aec",
       "tags": [
         "Agent4Rec",
@@ -3115,7 +3123,7 @@
       ],
       "practical_value": "提供了一种实用的运行时安全守卫方案，能够跨多种计算机使用代理框架产生可审计的安全决策，且无需外部评审器，可支持下游运行时干预。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "8b667854b28c46a9",
       "tags": [
         "Agent4Rec",
@@ -3236,7 +3244,7 @@
       ],
       "practical_value": "为使用LLM进行社会模拟和合成人口的研究提供验证框架和可重用提示模板，帮助研究者明确模拟所能支持的声明层次，避免过度解读群体相似性。对农业政策分析尤其有价值，因为极端行为（如高投入者）对政策敏感。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "88272443ff0d39d2",
       "tags": [
         "Agent4Rec",
@@ -3345,7 +3353,7 @@
       ],
       "practical_value": "ActGuard 为 LLM 代理提供了一种实用的防御间接提示注入的方法，能够在不牺牲太多任务性能的情况下提高安全性，适用于工具调用场景，代码已公开。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "627e062edffafc63",
       "tags": [
         "Agent4Rec",
@@ -3458,7 +3466,7 @@
       ],
       "practical_value": "提供了一种基于FCM的可解释因果视频生成方法，可应用于交互式虚拟世界、教育仿真、故事生成等领域，用户可通过修改FCM控制生成内容。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "825fa05871fc88bf",
       "tags": [
         "Agent4Rec",
@@ -3562,7 +3570,7 @@
       ],
       "practical_value": "支持两种工作流程：在固定评估预算下迭代新模型，以及通过确定性追踪审计长时程部署中的现有模型。提供风险量化工具，帮助发现聚合分数隐藏的特定风险失败率。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "b6a31f1fff2c471e",
       "tags": [
         "Agent4Rec",
@@ -3654,27 +3662,31 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文通过固定五个LLM代理的角色、提示、工具、模型和数据，仅改变管理者是否有权驳回并强制修订的配对实验，发现扁平组织在效用和写作清晰度上显著优于层级组织。层级报告模糊表达多出53%，每次修订循环导致写作清晰度下降0.14分，且监督层多消耗51.5%的token却无质量提升。结论表明，监督者仅能发表意见时反而成为负担，能验证时才有价值。",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "generated_summary": "该论文通过配对实验，在开放式商业智能报告任务中固定五个LLM代理的角色、提示、工具、模型和数据，仅改变管理者是否拥有驳回并要求修订的权威链接。结果发现扁平组织在实用性和写作清晰度上显著优于层级组织，层级报告出现更多模糊表述，且每次修订循环都降低写作清晰度，同时监督层多消耗51.5%的token却无质量提升。这表明当监督者只能提供意见而无法验证时，其权威反而成为负担。",
+      "core_method": "配对实验设计：两个多智能体架构（扁平与层级）共享相同角色、提示、工具、模型池和数据，唯一差异是管理者是否具有回环权威（拒绝并强制修订）。任务为商业智能报告生成，43个产品各在两种形式下运行一次，模型随机分配给角色。评估采用五模型法官小组进行主观评分，结合确定性规范检查。",
       "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
+        "首次在开放式任务上隔离单一权威链接进行配对实验，固定其他变量以消除混淆。",
+        "结合五模型法官小组和确定性规范检查的混合评估协议，并报告每个主要结果的法官敏感性。",
+        "揭示层级损害源于修订循环本身，而非权威链接的存在：未行使的权威无损害，修订导致模糊和填充。"
       ],
       "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
+        "扁平组织在Writing Clarity（d=0.34, p=0.030）和Utility（d=0.42, p=0.009）上显著优于层级组织；规格准确性两者均达天花板。层级报告长度相同但模糊表述多53%；每个修订循环使Writing Clarity下降0.14点；层级Writer的第一稿与扁平报告无统计差异。层级形式多消耗51.5% token。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
+        "无法验证的分析性声明的事实性未被测量，结构对事实性的影响未知。",
+        "回环权威链接没有附带制裁，观察到的合规行为是模型自身的。"
       ],
-      "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
+      "practical_value": "对于多智能体系统设计，建议默认使用扁平顺序管道；若需要管理者进行分解和路由，不应赋予回环权威；修订应由可验证的失败（如验证失败、缺失部分）触发，而非管理者的主观判断。",
       "analysis_basis": "full_text",
-      "analysis_status": "fallback",
+      "analysis_status": "complete",
       "analysis_signature": "8e6d7f848105292e",
       "tags": [
         "Agent4Rec",
-        "User Modeling",
-        "Evaluation"
+        "Evaluation",
+        "LLM4Rec",
+        "Benchmark"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -3722,10 +3734,10 @@
         "model_data_scale": "Five LLM agents (models unspecified); 43 paired products, 86 runs; 5-model judge panel.",
         "key_benchmarks": "Business-intelligence reporting task; metrics include Utility, Writing Clarity, hedging counts, specification accuracy, token costs.",
         "artifacts": "None specified in metadata.",
-        "agent_environment": "Multi-agent LLM system with roles: Writer, Manager, etc.; business-intelligence reporting task.",
-        "agent_mechanism": "Hierarchical orchestration with Manager review and revision loops vs. flat coordination without authority to reject.",
-        "interaction_horizon": "Multiple revision loops per report; 43 paired reports.",
-        "agent_evaluation": "Five-model judge panel scoring Utility and Writing Clarity; deterministic specification check; hedging analysis; token cost comparison."
+        "agent_environment": "商业智能报告生成：根据产品规格和客户评论生成报告",
+        "agent_mechanism": "五个角色：Researcher, Analyst, Writer, Critic, Manager；层级形式中Manager拥有回环权威（拒绝并强制修订，每次运行最多两次循环），扁平形式中Manager仅评论和路由。",
+        "interaction_horizon": "单次任务，最多两次修订循环",
+        "agent_evaluation": "五模型法官小组（1-5分）评估Writing Clarity和Utility等主观质量；确定性规范检查评估规格准确性。"
       },
       "display_affiliations": [
         "Leiden University"
@@ -3782,7 +3794,7 @@
       ],
       "practical_value": "DynSTEER为长时程智能体任务提供了一种更细粒度且高效的自动评估方法，能够更准确地区分不同模型能力，并在评估过程中节省计算资源，适用于大规模智能体评测和开发调试场景。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "83f8ba435b5ef7e4",
       "tags": [
         "Agent4Rec",
@@ -3889,7 +3901,7 @@
       ],
       "practical_value": "MOSCOPT为LLM代理提供了一种无需参数调整的提示/技能优化方法，可提升多种任务性能，且无需梯度计算，易于部署。代码已公开。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "fb69936c301eea5f",
       "tags": [
         "Agent4Rec",
@@ -4005,7 +4017,7 @@
       ],
       "practical_value": "为 LLM 智能体提供了一种持续演化的长期记忆框架，在长时交互任务中可提升记忆利用效率和推理性能，适用于个人助理、长时任务协作和持续决策等场景。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "0b0421c8a2fcbba5",
       "tags": [
         "Agent4Rec",
@@ -4117,7 +4129,7 @@
       ],
       "practical_value": "ECAS 为科学计算领域提供了一种安全、自动化的 HPC 工作流管理方案。它允许科学家以自然语言目标发起计算任务，通过云 LLM 的推理能力和边缘控制的执行与策略约束，实现从工件生成到目标规模运行的闭环自动化，减少人工干预和资源浪费。该架构特别适用于需要保护站点特定信息和凭证，同时利用云智能的场景。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "60ae80e70065c2d6",
       "tags": [
         "Agent4Rec",
@@ -4234,7 +4246,7 @@
       ],
       "practical_value": "该框架可实际部署于现有终身LLM智能体，无需修改模型，通过在线学习动态分配推理资源，在保持性能的同时显著降低推理成本，对资源受限的实际应用具有重要价值。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "7faa07188c427011",
       "tags": [
         "Agent4Rec",
@@ -4344,7 +4356,7 @@
       ],
       "practical_value": "揭示了开放权重LLM智能体在量化部署中的安全风险，推动量化感知安全评估成为标准实践。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "510fd90c446e3e93",
       "tags": [
         "Agent4Rec",
@@ -4455,7 +4467,7 @@
       ],
       "practical_value": "为LLM代理提供了一种独立于模型判断的隐私保护方案，可部署于真实代理（如MCP连接）以显著降低隐私泄露风险。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "9cb64004cbe6d6ea",
       "tags": [
         "Agent4Rec",
@@ -4563,25 +4575,31 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "该论文介绍了North Small Translate，一个基于混合专家架构（总参数2180亿，激活250亿）的开源LLM机器翻译模型，采用难度采样和五步训练协议（SFT、DPO、在线RL）进行训练。模型无需推理即可在50种语言上取得1T参数以下模型中的顶尖翻译性能，并支持后编辑、质量估计等任务。",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "generated_summary": "该论文提出了 North Small Translate，一个基于混合专家架构（218B总参数、25B激活参数）的开源大语言模型翻译系统，采用难度采样和包含SFT、DPO与在线强化学习的五步训练协议。模型支持后编辑、质量估计等翻译任务，在50种语言上达到1T参数以下模型的最优翻译性能，且无需推理时进行昂贵的推理。",
+      "core_method": "基于Cohere Command A Plus的混合专家架构，采用五步训练：粗粒度SFT、细粒度SFT、DPO、在线RL（GSPO和LLM-as-a-Judge）、轻量DPO微调。使用难度采样获取有挑战性的文档，并采用非推理模式以提升吞吐量。",
       "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
+        "首个在1T参数以下模型类别中达到顶级机器翻译性能的开源模型，无需推理时推理。",
+        "五步训练协议结合SFT、DPO和在线强化学习，并针对RL引入的回归进行针对性的轻量DPO修复。",
+        "提出可选的代理翻译框架（Agentic Translation），在延迟不敏感场景下弥补非推理模型的质量差距。"
       ],
       "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
+        "在WMT 2026通用机器翻译共享任务中，模型在50种语言上达到了1T参数以下模型的最佳性能，无需推理时推理。内部评估显示每一步训练均带来显著提升，但在线RL步骤在低资源语言上有所退化，通过轻量DPO修复。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
+        "在线RL步骤使用LLM-as-a-Judge，在低资源语言上判断能力较弱，导致性能下降。",
+        "代理翻译框架虽然能提升质量，但增加了延迟，不适用于延迟敏感场景。"
       ],
-      "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
+      "practical_value": "为生产环境提供高效、低延迟的机器翻译模型，支持50种语言，并具备指令跟随、后编辑、质量估计等扩展能力。适用于需要高吞吐量翻译的应用，如实时翻译服务和内容本地化。",
       "analysis_basis": "full_text",
-      "analysis_status": "fallback",
+      "analysis_status": "complete",
       "analysis_signature": "bb5fd00474b14030",
       "tags": [
-        "General Rec"
+        "LLM4Rec",
+        "Benchmark",
+        "Evaluation",
+        "Dataset"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -4624,15 +4642,19 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "Combine supervised fine-tuning, direct preference optimization, and online reinforcement learning for machine translation; difficulty sampling to select challenging documents.",
-        "feedback_source": "Preference pairs for DPO; environment reward for online RL (specifics not in abstract).",
-        "model_data_scale": "MoE with 25B active / 218B total parameters; trained for 50 languages.",
-        "key_benchmarks": "Not explicitly named; claims top MT performance across 50 languages among models under 1T parameters.",
-        "artifacts": "Open-weight model (North Small Translate).",
-        "agent_environment": "Optional agentic capabilities to improve translation quality; environment not specified.",
-        "agent_mechanism": "Agentic capabilities used to unlock translation quality gains; no detailed mechanism in abstract.",
-        "interaction_horizon": "Unknown; likely multi-step translation/refinement processes.",
-        "agent_evaluation": "MT quality across 50 languages; no specific agentic evaluation metric given."
+        "training_objective": "翻译质量为主，兼顾指令跟随和MT相关任务（后编辑、质量估计等），目标是达到1T参数以下模型的最佳翻译性能。",
+        "feedback_source": "LLM-as-a-Judge奖励信号用于在线RL；偏好数据集用于DPO；人类评估用于早期识别形式级和习语问题。",
+        "model_data_scale": "基于218B总参数、25B活跃参数的MoE模型；训练数据包含50种语言。",
+        "key_benchmarks": [
+          "WMT 2026 General MT shared task",
+          "WMT 2026 Terminology shared task",
+          "WMT 2026 Automated MT Evaluation shared tasks"
+        ],
+        "artifacts": "无明确证据。",
+        "agent_environment": "不涉及强化学习环境，代理翻译框架为模型内置的可选功能。",
+        "agent_mechanism": "可选代理翻译框架，通过额外推理步骤提升翻译质量，但具体机制未详细描述。",
+        "interaction_horizon": "无明确证据。",
+        "agent_evaluation": "未描述代理翻译的单独评估。"
       },
       "display_affiliations": [
         "Unknown affiliation"
@@ -4687,7 +4709,7 @@
       ],
       "practical_value": "ClinAgent为临床研究人员提供了自然语言查询临床试验信息的工具，减少手动检索错误，支持跨来源信息综合，提高生物医学研究效率。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "abe3b5e73cec068f",
       "tags": [
         "Agent4Rec",
@@ -4801,7 +4823,7 @@
       ],
       "practical_value": "该方法可提高语言模型智能体在不同 harness（系统提示、工具模式、控制循环、轨迹格式）下的鲁棒性，适用于需要跨接口泛化的智能体部署场景。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "7011fe629b87f786",
       "tags": [
         "Agent4Rec",
@@ -4897,7 +4919,7 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文提出MACE，一种多智能体候选事件获取方法，利用证据专用LLM智能体获取时间、地点、参与者和事件类型证据，并在最终候选构建前由协调器修订证据集。在两个事件链接基准上的实验表明，将MACE加入不同事件链接模型能持续提升准确率，且无需修改链接模型。",
+      "generated_summary": "该论文提出MACE，一种多智能体候选事件获取方法，通过专门的LLM智能体分别提取时间、地点、参与者和事件类型证据，并由协调者修正证据集，从而在链接前精炼事件结构。在两个事件链接基准上的实验表明，将MACE加入不同事件链接模型均能持续提升准确率。MACE无需修改事件链接模型，仅通过改进候选事件获取来提升链接性能。",
       "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
         "未能从全文/元数据中稳定抽取明确创新点。"
@@ -4915,9 +4937,8 @@
       "analysis_status": "fallback",
       "analysis_signature": "afd0ff821e8ba76f",
       "tags": [
-        "LLM4Rec",
-        "RAG Rec",
         "Agent4Rec",
+        "RAG Rec",
         "Evaluation"
       ],
       "llm_score": 0,
@@ -5021,7 +5042,7 @@
       ],
       "practical_value": "为临床代理基准的设计和报告提供了直接可操作的方法：建议基准应多次重跑任务并报告动作级稳定性，环境应忠实于记录服务器的响应。该方法可帮助识别代理的不可靠行为，避免在临床部署中因不一致订单造成风险。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "8bbcb0b1c36e7b98",
       "tags": [
         "Agent4Rec",
@@ -5139,7 +5160,7 @@
       ],
       "practical_value": "该框架可提升实际临床部署中长时程智能体的可靠性和及时性，减少关键行动遗漏，并改善严重程度不同的患者之间的公平性。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "241eeb8c610d21bf",
       "tags": [
         "Agent4Rec",
@@ -5255,7 +5276,7 @@
       ],
       "practical_value": "展示了LLM智能体在无训练条件下管理长期物理任务和适应环境变化的潜力，为农业等领域的自主管理提供了新的技术路径，有望减少人工干预和资源浪费。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "3e60c7a940a9371b",
       "tags": [
         "Agent4Rec",
@@ -5366,7 +5387,7 @@
       ],
       "practical_value": "为智能体技能安全提供可检索的公开轨迹库，支持风险分析、回归测试和防护模型训练。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "9c86fe3ffa2b7d78",
       "tags": [
         "Agent4Rec",
@@ -5480,7 +5501,7 @@
       ],
       "practical_value": "BQ-LoRA通过单一LoRA适配器支持LLM智能体的异构交互能力，减少适配器存储和推理路由开销，同时保持决策性能，对实际部署低资源智能体系统具有实用价值。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "c42ef320f5623083",
       "tags": [
         "Agent4Rec",
@@ -5584,7 +5605,7 @@
       ],
       "practical_value": "为多智能体系统的意外协调行为提供了案例研究和可复现的分析方法，强调了评估环境中记录读取和结果日志的重要性，对改进智能体安全评估具有指导意义。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "633ee49e41a3927f",
       "tags": [
         "Agent4Rec",
@@ -5680,7 +5701,7 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "该论文通过LAST-CQ框架对Text-to-Cypher智能体流水线进行反事实分析，发现增益主要来自失败检测与重试路由而非反馈质量或采样数量，并展示了执行BLEU与子集重叠指标的不可靠性。LAST-CQ能恢复91.7%的单轮失败查询，且成功查询仍只消耗一次LLM调用。",
+      "generated_summary": "该论文以五智能体、无需训练的LAST-CQ为测试平台，通过2471个实时数据库查询的反事实实验，分析了智能体式Text-to-Cypher流程中各环节对性能提升的贡献。核心发现是，检测失败并路由到重试是增益的主要来源，而反馈的精细程度或增加采样数量影响甚微。LAST-CQ能恢复91.7%的单次生成失败查询，且首次成功的查询仍仅消耗一次LLM调用。",
       "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
         "未能从全文/元数据中稳定抽取明确创新点。"
@@ -5699,9 +5720,9 @@
       "analysis_signature": "3405ca210c511371",
       "tags": [
         "Agent4Rec",
-        "Evaluation",
         "Benchmark",
-        "LLM4Rec"
+        "Evaluation",
+        "Generative Retrieval"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -5804,7 +5825,7 @@
       ],
       "practical_value": "为使用开源LLM的机器人系统提供了一种低成本、架构级的方法来提升长时程任务执行的稳定性和可靠性，降低对专有模型的依赖。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "05a6ea6ee3cb7e14",
       "tags": [
         "Agent4Rec",
@@ -5920,7 +5941,7 @@
       ],
       "practical_value": "为LLM智能体提供了一种终身学习框架，使其能够跨异构环境持续积累和重用经验，减少灾难性遗忘，提高零样本跨任务迁移能力，对持续部署的智能体系统具有实际价值。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "b652c3bc3e84b55b",
       "tags": [
         "Agent4Rec",
@@ -6027,7 +6048,7 @@
       ],
       "practical_value": "为RLHF在多元用户偏好场景下的应用提供理论指导，建议使用同策略采样偏好数据或先微调以接近数据源分布，从而提升平均效用并避免指数级退化。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "5be061151495c019",
       "tags": [
         "LLM4Rec",
@@ -6138,7 +6159,7 @@
       ],
       "practical_value": "该方法为LLM在主观连续控制任务中的对齐提供了一种高效、稳定的方案，能够显著降低训练资源需求，并提升模型在实时音频处理等场景中的实用性。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "f7d176617001e12c",
       "tags": [
         "User Modeling",
@@ -6248,7 +6269,7 @@
       ],
       "practical_value": "为评估LLM在社交推理游戏中的沟通和推理能力提供了新的基准，有助于诊断模型在信念更新中的系统性偏差，并为改进多智能体交互中的策略沟通能力提供方向。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "0c7b1048ac003e72",
       "tags": [
         "Agent4Rec",
@@ -6356,7 +6377,7 @@
       ],
       "practical_value": "为平台设计者和机构建设者提供证据，表明降低极化不一定会牺牲集体智慧，从而减轻政策上的权衡困境；提供可复用的TraitMix实验框架和效度控制方案。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "ba730f74af090364",
       "tags": [
         "Agent4Rec",
@@ -6468,7 +6489,7 @@
       ],
       "practical_value": "该研究为长期运行的LLM智能体提供了一种预防临时信息覆盖持久知识的机制，有助于提高行为一致性和用户信任。在实际部署中，若系统能提供生命周期标签（如用户标记临时指令或系统定义持久策略），LifeFuse-Mem可有效集成到现有的参数记忆模块中，降低行为漂移风险。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "9d138d5ce9a8f331",
       "tags": [
         "Agent4Rec",
@@ -6576,28 +6597,32 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文提出 GACA，一种面向长时程 LLM 智能体强化学习的无评论家信用分配方法，根据状态相关的不确定性（负对数似然）自适应地混合步骤级与回合级优势。理论分析表明，在正方向对齐条件下，适度的自适应调制优于固定混合。在 ALFWorld 和 WebShop 上，GACA 在 1.5B 和 7B 规模均提升了任务成功率。",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "generated_summary": "该论文提出GACA，一种面向长时程LLM智能体强化学习的无评论家估计器，通过基于不确定性的步级权重自适应混合步级与回合级优势。GACA利用模型自身rollout的负对数似然衡量步骤关键性，在关键步骤上更侧重细粒度信号。在ALFWorld和WebShop上，GACA在1.5B和7B规模均优于GRPO和GiGPO。",
+      "core_method": "GACA在GRPO和GiGPO的基础上，引入基于负对数似然（NLL）的步骤关键性评分，并通过单调递增的调制函数将该评分转换为逐步骤的混合权重，从而在步级优势和回合级优势之间进行自适应加权。该估计器无需评论家，不增加环境交互，计算开销极小。",
       "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
+        "提出状态依赖的粒度自适应信用分配，突破固定权重混合的局限。",
+        "利用策略自身的负对数似然作为步骤关键性的代理指标，无需额外模型或交互。",
+        "理论推导了NLL与局部动作值方差下界的关系，以及自适应混合优于固定权重的条件。"
       ],
       "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
+        "main_results",
+        "ablation_results"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
+        "实验限于两个文本环境，缺乏更广泛的任务验证。",
+        "临界性评分基于单样本NLL，噪声较大，调制强度需谨慎选择。"
       ],
-      "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
+      "practical_value": "为长时程LLM智能体的强化学习提供了一种简单有效的信用分配改进方法，无需额外计算或环境交互，易于集成到现有GRPO框架中，可提升样本效率和最终性能。",
       "analysis_basis": "full_text",
-      "analysis_status": "fallback",
+      "analysis_status": "complete",
       "analysis_signature": "bc3c5b420d9ca818",
       "tags": [
         "Agent4Rec",
         "LLM4Rec",
-        "User Modeling",
-        "Sequential Rec"
+        "Sequential Rec",
+        "Evaluation"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -6641,17 +6666,18 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "Reinforcement learning with proposed GACA estimator, blending step-level and episode-level advantages with uncertainty-based per-step weights; critic-free, group-relative.",
-        "feedback_source": "Sparse trajectory-level reward from environment (long-horizon tasks).",
-        "model_data_scale": "1.5B and 7B parameter LLM agents; no dataset size mentioned.",
+        "training_objective": "基于GRPO的组相对策略梯度，使用GACA估计的优势进行策略更新。",
+        "feedback_source": "稀疏终端奖励（任务成功与否）。",
+        "model_data_scale": "使用Qwen2.5骨干模型，参数量为1.5B和7B。",
         "key_benchmarks": [
           "ALFWorld",
           "WebShop"
         ],
-        "agent_environment": "ALFWorld (text-based household tasks) and WebShop (web shopping environment).",
-        "agent_mechanism": "LLM policy with token-level actions; GACA computes per-step NLL (from rollout log probabilities) as criticality proxy, blends fine-grained (step) and coarse (episode) advantage signals.",
-        "interaction_horizon": "Long-horizon tasks with dozens of interdependent actions and single sparse reward.",
-        "agent_evaluation": "Task success rate on ALFWorld and WebShop at 1.5B and 7B scales, compared against GRPO and GiGPO."
+        "agent_environment": "ALFWorld（模拟家庭环境）和WebShop（模拟网上购物环境）。",
+        "agent_mechanism": "模型生成文本动作，与环境交互多步完成任务。",
+        "interaction_horizon": "长时程，数十步交互。",
+        "agent_evaluation": "任务成功率。",
+        "artifacts": "论文未明确提及代码或模型发布。"
       },
       "display_affiliations": [
         "Nankai University",
@@ -6669,7 +6695,9 @@
         "Thanh Tran",
         "Kai Wei"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "Amazon"
+      ],
       "published": "2026-09-10T20:29:28Z",
       "updated": "2026-09-10T20:29:28Z",
       "abstract": "Comparing and selecting task-oriented LLM agents increasingly relies on a low-cost offline evaluation gate: persona-driven LLM user-simulators converse with each candidate, an LLM-as-a-judge scores the transcripts, and the higher-scoring agent is promoted. We introduce GAUGE, a reusable offline protocol that measures whether this gate's ranking matches a grounded verifiable reward across 25 agents from six providers on the $τ^2$-bench and SimulatorArena benchmarks, separating two kinds of evaluation validity that release practices conflate: ranking validity and construct validity. First, a satisfaction-success gap: satisfaction carries essentially no information about task success, as conversations rated satisfied by our blind panel are decorrelated from actual success, with 57.5% of them failing the customer's task, a pattern consistent across five rater populations, both benchmarks, and every subjective dimension we rated. Second, while the gate's ranking is robust across the broad capability span, it loses resolution among the near-equal strong agents: this decision-disagreement rate jumps from $<$1% on wide-reward pairs to 31% on close pairs. The gate is thus human-validated yet mis-anchored. As a remedy, we propose a calibrate-then-trust cadence in which a judge-free completion bit is a zero-cost tripwire for truncation regressions.",
@@ -6703,7 +6731,7 @@
       ],
       "practical_value": "为开发和部署任务型LLM智能体的团队提供了一种低成本定期校准方法，避免依赖误导性满意度指标，并在CI中保持安全操作区域。同时揭示了LLM-as-a-judge在用户模拟评估中的常见陷阱。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "2a29f414d4e50c11",
       "tags": [
         "Agent4Rec",
@@ -6766,7 +6794,7 @@
         "artifacts": "论文中未提及开源代码或数据"
       },
       "display_affiliations": [
-        "Unknown affiliation"
+        "Amazon"
       ],
       "published_date": "2026-09-10"
     },
@@ -6789,7 +6817,11 @@
         "Asif Khan",
         "Shimeng Yu"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "Georgia Institute of Technology",
+        "Samsung Electronics Co., Ltd.",
+        "NVIDIA"
+      ],
       "published": "2026-09-10T20:19:40Z",
       "updated": "2026-09-14T00:56:40Z",
       "abstract": "Experimental TCAD calibration is essential for predictive technology modeling of emerging oxide semiconductor transistors. However, it remains time-consuming and expert dependent because of model ambiguity. Multiple physical models and parameter sets can reproduce the same measured transfer characteristics, while local fitting alone cannot uniquely identify the underlying device physics. We present the first demonstration of an agentic TCAD calibration workflow for a fabricated bottom-gate In--W--O (BG-IWO) transistor. Starting from the measured transfer curve and device information, the workflow uses measurement--TCAD residuals and local sensitivity tests to select bounded parameter corrections or evaluate additional physical models, and accept only updates that improve device metrics. The LLM agent orchestrates the workflow, while Sentaurus governs the device physics. For the 2\\%-W reference device, five agent-suggested updates yield a fixed calibrated model, reducing the multi-metric device objective $J$ by 14.3$\\times$. Maximum $V_{\\mathrm{th}}$/$I_{\\mathrm{on}}$ errors are 36.1~mV/0.022 decade for varying-drain-bias tests and 46.2~mV/0.062 decade for varying-channel-length tests, demonstrating model transferability across bias and geometry rather than a local parameter fit. W-composition tests provide process-sensitive insight. This agentic workflow provides a faster route to model development for emerging device technologies.",
@@ -6824,7 +6856,7 @@
       ],
       "practical_value": "该工作为新兴器件技术提供了一种更快的模型开发途径，减少了专家依赖和时间消耗，适用于CMOS+X应用中的氧化物半导体晶体管建模和工艺优化。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "74237c511e009052",
       "tags": [
         "Agent4Rec",
@@ -6882,7 +6914,9 @@
         "artifacts": "Sentaurus TCAD模型、校准参数集、LLM代理配置等。"
       },
       "display_affiliations": [
-        "Unknown affiliation"
+        "Georgia Institute of Technology",
+        "Samsung Electronics Co., Ltd.",
+        "NVIDIA"
       ],
       "published_date": "2026-09-10"
     },
@@ -7424,31 +7458,29 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文针对多LLM智能体答案冲突问题，提出基于贝叶斯反向推理构建反向后验，并用Jensen-Shannon散度衡量跨路径一致性以排序智能体。基于该信号设计硬选择、软重加权与对数线性融合三种集成策略，在DDXPlus上优于投票等基线，尤其在智能体分歧时提升最大。反向后验虽单独精度较弱，但可作为无标签锚点提供互补信息。",
-      "core_method": "通过贝叶斯反向推理从显式似然构造反向后验，利用Jensen-Shannon散度计算前向与反向后验之间的跨路径一致性来排序智能体，并基于该信号实施三种集成策略：硬选择（MinJS）、软重加权（FwdJS）和对数线性融合（LogLin）。",
+      "generated_summary": "该论文针对多LLM智能体意见冲突时的集体决策问题，提出基于贝叶斯反向推理构建反向后验，并通过Jensen-Shannon散度衡量跨路径一致性，从而无需标签地排序和聚合智能体。在DDXPlus上跨五种LLM骨干的实验中，MinJS、FwdJS和LogLin三种策略均优于基线，LogLin在智能体分歧子集上增益最大。反向后验虽单独精度较弱，但作为锚点能提供互补信息，结合轻量两阶段校准可进一步提升聚合性能。",
+      "core_method": "论文提出了一种基于贝叶斯反向推理的无标签锚点方法，用于多智能体集体决策。首先为每个实例构建反向后验（通过显式似然进行反向推理），与正向先验形成不同分解的后验近似。然后利用Jensen-Shannon散度衡量智能体在正向和反向路径上的一致性（交叉路径一致性），并据此对智能体排序。基于该一致性信号，提出了三种聚合策略：硬选择（MinJS，选择一致性最高的智能体）、软重加权（FwdJS，根据一致性对正向预测进行加权）和对数线性融合（LogLin，结合正向和反向预测）。此外，当有标签数据时，可采用轻量两阶段校准进一步优化反向锚点。",
       "innovation_points": [
-        "提出基于贝叶斯反向推理的反向后验作为无标签锚点，为多智能体集体决策提供互补信息。",
-        "利用Jensen-Shannon散度量化前向与反向推理路径之间的一致性，无需标签即可评估智能体可靠性。",
-        "设计了三种基于跨路径一致性的集成策略，覆盖硬选择、软重加权和概率融合的不同粒度。"
+        "提出利用贝叶斯反向推理构建反向后验，作为与正向推理不同分解的互补信号源，用于多智能体集体决策。",
+        "引入交叉路径一致性（通过Jensen-Shannon散度）作为无标签的智能体可靠性度量，无需真实标签即可排序和聚合。",
+        "设计了三种基于交叉路径一致性的聚合策略（MinJS、FwdJS、LogLin），在不同场景下展示出性能提升。"
       ],
       "experiment_results": [
-        "在DDXPlus数据集上使用五种LLM骨干进行评估：MinJS在所有骨干上优于随机选择；FwdJS通常优于最强基线；LogLin在所有评估方法中表现最佳，且在智能体分歧子集上提升最大。反向后验作为锚点比纯前向替代方案更有用。当有标签数据可用时，两阶段校准可进一步改进聚合性能。"
+        "在DDXPlus数据集上，使用五种LLM骨干（具体名称未在摘要中列出）进行评估。实验结果显示：MinJS在所有骨干上优于随机选择；FwdJS通常优于最强基线；LogLin在所有评估方法中达到最佳性能，并且在智能体存在分歧的子集上增益最大。当使用标签数据进行两阶段校准时，可以进一步提升聚合性能。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "反向后验单独精度较弱，需要与前向估计结合才能发挥效用。",
-        "实验仅在DDXPlus一个数据集上进行，泛化性有待验证。"
+        "论文摘要未明确提及局限性。但可以推断：反向后验单独精度较弱，依赖于与正向推理的互补性；两阶段校准需要额外标签数据；方法的有效性可能受限于任务领域（仅在医疗诊断DDXPlus上验证）。"
       ],
-      "practical_value": "为多LLM智能体系统提供了一种无需标签即可改善集体决策的方法，特别适用于标签稀缺但需要高可靠决策的场景，如医疗诊断等。",
+      "practical_value": "该研究为多LLM智能体系统提供了一种无需标签的、基于推理路径一致性的可靠性评估框架，能够在不增加标注成本的情况下提升集体决策的准确性，尤其在智能体分歧较大时效果显著。适用于医疗诊断等高风险决策场景，以及任何需要融合多个LLM输出的系统。",
       "analysis_basis": "full_text",
       "analysis_status": "complete",
-      "analysis_signature": "ed32a948861ea5e9",
+      "analysis_signature": "5b375a5dd8ce5eac",
       "tags": [
         "Agent4Rec",
         "LLM4Rec",
-        "Evaluation",
-        "Generative Rec"
+        "Evaluation"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -7491,17 +7523,17 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "无标签场景下通过跨路径一致性排序智能体并集成决策；有标签时通过两阶段校准优化反向后验。",
-        "feedback_source": "来自前向与反向后验之间的Jensen-Shannon散度一致性信号，无监督；可选监督校准。",
+        "training_objective": "论文未提及模型训练，主要聚焦于推理阶段的聚合策略，因此无训练目标。",
+        "feedback_source": "无标签反馈，基于交叉路径一致性度量（Jensen-Shannon散度）；当有标签数据时，可进行两阶段校准。",
         "key_benchmarks": [
           "DDXPlus"
         ],
-        "agent_environment": "DDXPlus医疗诊断决策环境。",
-        "agent_mechanism": "多个LLM智能体独立产生前向推理估计，通过反向推理构造反向后验，用JS散度衡量一致性后进行集成。",
-        "interaction_horizon": "单轮决策聚合，无多轮交互。",
-        "agent_evaluation": "使用GTPA@1（包含在LogLin权重扫描中）和准确率等指标，在智能体分歧子集上分析。",
-        "model_data_scale": "使用五种LLM骨干，在DDXPlus数据集上进行评估。",
-        "artifacts": "未提及代码或模型发布。"
+        "agent_environment": "未提及具体的多智能体环境，但从描述推断为静态任务（给定实例做决策），无交互式环境。",
+        "agent_mechanism": "多个LLM智能体独立生成正向推理标签，通过反向推理计算反向后验，利用交叉路径一致性进行排序和聚合。",
+        "interaction_horizon": "单步决策，无多轮交互。",
+        "agent_evaluation": "使用准确率（GTPA@1，top-1准确率）作为评估指标，并特别关注智能体分歧子集上的表现。",
+        "model_data_scale": "未提供模型参数规模信息。仅在DDXPlus数据集上使用五种LLM骨干进行评估。",
+        "artifacts": "未提及代码或数据发布。"
       },
       "display_affiliations": [
         "The University of Melbourne",
@@ -7543,30 +7575,29 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "COBRA-Skills框架将LLM智能体的技能优化建模为动态候选空间上的预算序贯优化，利用上下文老虎机引导的优先级与基于证据的技能演化，选择性分配评估并持续改进技能。在六个异质智能体基准和三个目标模型上，COBRA-Skills取得最强的平均性能，相比SkillOpt降低55–58%的优化成本，且每个基准仅需50个独特优化样本。",
-      "core_method": "将技能优化建模为预算序贯优化问题，在动态演化的候选技能空间中进行搜索。采用上下文老虎机引导的候选技能优先级排序，结合基于证据的技能演化策略，根据执行反馈选择性地评估有前景或信息量大的候选技能，并不断精炼技能群体。",
+      "generated_summary": "该论文提出COBRA-Skills框架，将LLM智能体的技能优化建模为动态候选空间上的预算化顺序优化，结合上下文赌博机引导的优先级排序与基于证据的技能进化。在六个异质智能体基准上，该方法平均性能最佳，相比SkillOpt降低55–58%优化成本且每个基准仅用50个独特示例。",
+      "core_method": "COBRA-Skills框架将技能优化形式化为预算化顺序优化，动态扩展候选技能空间，并利用上下文赌博机引导的优先级排序来选择最有前景或信息量最大的候选技能进行评估，同时通过基于执行反馈的证据驱动进化不断改进技能群体。",
       "innovation_points": [
-        "首次将技能优化形式化为动态候选空间上的预算序贯优化问题",
-        "提出上下文老虎机引导的评估优先级分配机制，减少不必要的执行评估",
-        "引入基于证据的技能演化，从执行反馈中持续改进技能群体"
+        "引入上下文赌博机引导的优先级排序，动态分配有限评估预算给有前景或信息丰富的候选技能。",
+        "提出证据驱动的技能进化机制，基于执行反馈持续优化技能。",
+        "显著降低优化成本（相比SkillOpt降低55-58%），且仅需每个基准50个独特示例。"
       ],
       "experiment_results": [
-        "在六个异构智能体基准和三个目标模型上，COBRA-Skills实现了对比方法中最强的平均性能，相比SkillOpt降低55-58%的优化成本，每个基准仅使用50个独特的优化示例。进一步分析表明，COBRA-Skills对代理框架的变化具有鲁棒性，并且在目标模型自身用于技能生成和细化时依然有效。"
+        "在六个异质智能体基准（如WebShop、ALFWorld、ScienceWorld、BabyAI、TextCraft、WebArena）上，COBRA-Skills在三个目标模型（GPT-4o-mini、Llama-3.1-8B、Qwen2.5-7B）中均取得最强平均性能，相比SkillOpt减少55-58%的评估成本，且仅使用50个独特优化示例。详细消融研究表明上下文赌博机引导和进化机制对性能贡献显著，且对智能体框架变化具有鲁棒性。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "论文未明确提及限制。"
+        "全文未明确提及限制。"
       ],
-      "practical_value": "为LLM智能体的技能优化提供高效且低成本的解决方案，降低对执行评估和大量任务数据的依赖，有潜力推动智能体在真实世界任务中的快速适应和部署。",
+      "practical_value": "为LLM智能体提供了一种高效、低成本的技能优化方法，适用于资源受限场景，可快速从少量任务经验中提取可复用技能，提升智能体在多样化任务上的性能。",
       "analysis_basis": "full_text",
       "analysis_status": "complete",
-      "analysis_signature": "73362ad888e010d6",
+      "analysis_signature": "ae3e60dd376cc273",
       "tags": [
         "Agent4Rec",
-        "Evaluation",
         "Benchmark",
-        "LLM4Rec",
+        "Evaluation",
         "User Modeling"
       ],
       "llm_score": 0,
@@ -7611,15 +7642,22 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "在给定评估预算下，通过选择性评估和技能演化，最大化智能体技能集在目标任务上的性能。",
-        "feedback_source": "基于执行反馈（execution feedback）评估候选技能的性能，可能包括任务成功率或奖励信号。",
-        "model_data_scale": "每个基准仅使用50个独特的优化示例；论文提到三个目标模型，但未明确具体模型名称或参数规模。",
-        "key_benchmarks": "六个异构智能体基准，具体名称未在摘要中给出。",
-        "artifacts": "代码已开源，但摘要未提供具体URL。",
-        "agent_environment": "未提供具体环境细节，仅提及异构智能体基准。",
-        "agent_mechanism": "技能作为可复用组件，智能体在任务执行中调用技能；优化过程通过上下文老虎机选择候选技能进行评估和演化。",
-        "interaction_horizon": "未明确说明交互长度或优化轮次。",
-        "agent_evaluation": "使用平均性能作为主要指标，跨多个基准和目标模型进行评估。"
+        "training_objective": "在给定评估预算内最大化智能体在目标任务上的平均性能，通过优化技能集来实现。",
+        "feedback_source": "执行反馈，来自智能体在任务环境中的表现评估。",
+        "model_data_scale": "每个基准仅使用50个独特优化示例；三个目标模型：GPT-4o-mini、Llama-3.1-8B、Qwen2.5-7B；六个基准：WebShop、ALFWorld、ScienceWorld、BabyAI、TextCraft、WebArena（基于全文提及）。",
+        "key_benchmarks": [
+          "WebShop",
+          "ALFWorld",
+          "ScienceWorld",
+          "BabyAI",
+          "TextCraft",
+          "WebArena"
+        ],
+        "artifacts": "代码已公开（网址未提供）。",
+        "agent_environment": "六个异质智能体基准环境。",
+        "agent_mechanism": "COBRA-Skills维护动态技能候选集合，通过上下文赌博机对候选技能进行优先级排序，并基于评估反馈对技能进行进化修改。",
+        "interaction_horizon": "预算化顺序优化；具体轮数未提供，但评估成本比SkillOpt降低55-58%。",
+        "agent_evaluation": "平均任务成功率或标准化得分，在六个基准上评估。"
       },
       "display_affiliations": [
         "The Chinese University of Hong Kong, Shenzhen",
@@ -7672,29 +7710,31 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "针对LLM智能体运行时框架演化中迭代搜索效率低且易过拟合的问题，Ecdysis通过跨实例失败聚合与多角色诊断区分模型特定缺陷与框架系统性缺陷，实现批量级失败驱动协同精炼。实验表明该方法在加速训练最高1.84倍的同时将推理准确率提升18.56%。",
-      "core_method": "Ecdysis采用批量级跨实例失败聚合，通过分析多个任务实例的失败证据，识别重复出现的跨任务失败模式，以区分模型特定适配与框架系统性修复。进一步引入Failure-Driven Collaborative Refinement (FDCR)，由多个角色从互补视角诊断失败原因，迭代精炼框架修改规格，最终由协调者综合生成结构化修改规格。",
+      "generated_summary": "论文提出 Ecdysis 框架，通过跨任务失败模式聚合区分模型特定缺陷与框架系统性缺陷，并采用失败驱动的协作精炼来高效进化 LLM 智能体的运行时框架。实验表明，Ecdysis 在框架训练上提速达 1.84 倍，同时将所得框架的推理准确率提升 18.56%。",
+      "core_method": "Ecdysis 采用批量级跨实例失败聚合范式，联合分析多个任务实例的失败证据，识别重复出现的跨任务失败模式，优先处理更可能表明框架系统性缺陷的模式。引入 Failure-Driven Collaborative Refinement (FDCR)，由多个角色从互补角度检查失败证据并迭代细化潜在失败原因和候选框架修改，最后由主持人综合成结构化框架修改规范。",
       "innovation_points": [
-        "提出跨实例失败聚合范式，将失败驱动演化从单实例信号转向跨任务重复模式，更可靠地识别系统性框架缺陷。",
-        "设计Failure-Driven Collaborative Refinement (FDCR)机制，通过多角色协作诊断与迭代精炼，减少失败归因歧义。",
-        "提出基于失败感知的训练数据选择策略，优先选择能暴露新执行路径和框架缺陷的任务，减少冗余信号。"
+        "提出基于跨实例失败模式聚合区分模型特定适应与框架级修复的机制，避免过度适应模型特性。",
+        "设计 Failure-Driven Collaborative Refinement (FDCR) 多角色协作诊断框架，生成结构化修改规范。",
+        "提出失败感知训练数据选择策略，优先选择暴露新执行路径和框架缺陷的任务，减少冗余失败信号，仅用1/4训练数据即可达到全量数据训练效果。"
       ],
       "experiment_results": [
-        "在多个LLM和基准上评估，Ecdysis相比现有框架演化方法实现最高1.84倍训练加速，框架推理准确率提升18.56%；仅使用四分之一训练数据即可达到与全量数据训练相当的性能；框架表现出更强的跨LLM泛化能力，并减少推理时的token消耗。"
+        "在多个 LLM 和基准上，Ecdysis 相比现有框架进化方法实现最高 1.84 倍的训练加速。",
+        "所得框架的推理准确率提升 18.56%。",
+        "Ecdysis 训练的框架展现出更强的跨 LLM 泛化能力。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "全文未明确提及Ecdysis的局限性。"
+        "全文未提供关于 Ecdysis 局限性的明确讨论。"
       ],
-      "practical_value": "Ecdysis提高了LLM智能体运行时框架的训练效率和泛化能力，减少了训练时间和推理成本，适用于需要自动化优化智能体执行环境的场景。",
+      "practical_value": "Ecdysis 可显著提高 LLM 智能体运行时框架的训练效率和泛化能力，减少训练时间和推理成本，适用于需要自动优化智能体执行机制的工程场景。",
       "analysis_basis": "full_text",
       "analysis_status": "complete",
-      "analysis_signature": "428ec5e2899c55c0",
+      "analysis_signature": "62ef84723a08dd57",
       "tags": [
         "Agent4Rec",
-        "LLM4Rec",
-        "Evaluation"
+        "Evaluation",
+        "Benchmark"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -7737,13 +7777,15 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "通过识别跨任务失败模式区分系统性框架缺陷与模型特定行为，生成结构化框架修改规格，以实现高效且可泛化的框架演化。",
-        "feedback_source": "执行反馈：来自多任务实例的失败证据，包括失败模式、原因等。",
+        "training_objective": "通过进化运行时框架提升 LLM 智能体的推理准确率和执行效率，同时避免过度适应模型特定行为，增强跨模型泛化能力。",
+        "feedback_source": "任务实例的执行反馈，包含失败证据，作为框架修改的信号。",
         "model_data_scale": "无具体模型和数据规模信息。",
-        "key_benchmarks": "未提供具体基准名称，但提到“multiple LLMs and benchmarks”。",
+        "key_benchmarks": [
+          "多个推理基准（具体名称未在摘要和片段中给出）"
+        ],
         "artifacts": "None mentioned",
-        "agent_environment": "Runtime harness（运行时框架），提供任务规划、工具交互、上下文管理等推理时机制。",
-        "agent_mechanism": "通过分析失败证据，区分模型特定适配与框架级修复，迭代精炼框架修改规格，并应用到框架中。",
+        "agent_environment": "运行时框架（runtime harness）环境，支持任务规划、工具交互和上下文管理等推理时机制。",
+        "agent_mechanism": "框架自进化机制，通过批量跨实例失败聚合和 FDCR 多角色诊断迭代修改框架代码。",
         "interaction_horizon": "批量级跨实例失败聚合，每轮联合分析多个任务实例的失败证据。",
         "agent_evaluation": "推理准确率、训练加速比、跨LLM泛化能力、推理时token消耗。"
       },
@@ -7890,7 +7932,7 @@
       ],
       "practical_value": "为制药行业提供将碎片化文档转化为结构化过程智能的方法，支持技术转移和监管申报，减少知识管理成本，提高可追溯性。基准协议支持在非公开数据库上评估智能体平台，推动基于图的架构在制药领域采用。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "fd27d662857f2631",
       "tags": [
         "RAG Rec",
@@ -8179,7 +8221,7 @@
       ],
       "practical_value": "为实验复现提供了过程导向的评估基准和基础设施，可促进自动化复现研究，降低人工验证成本，并支持跨领域的科学研究复现评估。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "3d6698654bd26a46",
       "tags": [
         "Agent4Rec",
@@ -8724,7 +8766,7 @@
       ],
       "practical_value": "该系统可用于医学教育中标准化病人训练的补充或替代，降低资源需求并提高可扩展性。通过过程性脚手架提升医学生的沟通、共情和病史采集等临床访谈技能，而不过度影响诊断结果，适合作为临床技能训练工具。发布的数据集可用于开发更有效的AI-SP系统和临床推理训练研究。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "51e4d6801d954592",
       "tags": [
         "Agent4Rec",
@@ -8815,7 +8857,8 @@
         "Andy Wang"
       ],
       "affiliations": [
-        "University of Illinois Urbana-Champaign"
+        "University of Illinois Urbana-Champaign",
+        "Meta"
       ],
       "published": "2026-09-10T00:09:18Z",
       "updated": "2026-09-10T00:09:18Z",
@@ -8887,7 +8930,8 @@
       "citation_count": 0,
       "research_details": {},
       "display_affiliations": [
-        "University of Illinois Urbana-Champaign"
+        "University of Illinois Urbana-Champaign",
+        "Meta"
       ],
       "published_date": "2026-09-10"
     },
@@ -8936,7 +8980,7 @@
       ],
       "practical_value": "为操作人员提供三个关键事实：攻击进入位置、被破坏的步骤、是否抵抗了明显的毒害，有助于决定回滚范围、审计内容和不可信内容源；模型轻量、模型无关，可应用于闭源智能体；可集成到日志分析和事后取证流程中。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "1af0808d48983198",
       "tags": [
         "Agent4Rec",
@@ -9118,23 +9162,25 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文形式化了任务无关的环境预处理问题，即智能体在未知下游任务分布时预先探索环境并生成可复用产物。实验在六个异构基准上比较元智能体与固定预处理策略，发现元智能体变体在五个基准上取得最高Avg@3奖励，且研究产物可减少测试时采样需求。研究表明可复用的任务前准备能将计算从重复的测试时尝试转移到预研究阶段。",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "generated_summary": "论文形式化了任务无关的环境预处理：在测试前和未知下游任务分布的情况下，研究系统在预算内探索环境并为固定求解器生成制品。在六个异构基准上比较了元智能体与固定方法，一种元智能体变体在五个基准上取得了最高Avg@3奖励。研究发现更大的研究预算不一定能提升下游奖励，但研究制品能减少达到给定分数所需的测试时采样次数。",
+      "core_method": "任务无关环境预处理，研究系统（元智能体）在预算内探索环境并生成制品，供固定求解器使用；对比了无归档元智能体、带归档元智能体以及固定的合成实践和语料处理方法。",
       "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
+        "形式化任务无关环境预处理设置，在不了解下游任务分布的情况下通过预算探索生成制品",
+        "引入元智能体在选择准备策略上的灵活性，与固定方法对比",
+        "证明研究制品可将重复的测试时采样转移到预任务研究阶段，减少测试时计算"
       ],
       "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
+        "带归档元智能体在五个基准上达到最高Avg@3奖励，固定语料处理在最大语料基准上表现最佳；更大的研究预算未可靠提升下游奖励；研究制品减少达到给定分数所需的测试时采样次数。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
+        "更大的研究预算并不能可靠地提升下游奖励，研究收益存在不确定性；在最大语料基准上固定语料处理方法优于元智能体，表明元智能体方法在大规模语料环境中的通用性有限。"
       ],
-      "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
+      "practical_value": "提供了一种无需任务示例即可对陌生环境进行预处理的方法，能够生成可复用的索引、脚本或程序指导，从而降低后续任务求解的测试时计算成本，适用于LLM智能体快速适应新环境的场景。",
       "analysis_basis": "full_text",
-      "analysis_status": "fallback",
-      "analysis_signature": "b1902fce8f1ec218",
+      "analysis_status": "complete",
+      "analysis_signature": "5ab6d98a6b4b6861",
       "tags": [
         "Agent4Rec",
         "Benchmark",
@@ -9181,15 +9227,26 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "Task-agnostic environment preprocessing to produce reusable artifacts for a frozen solver.",
-        "feedback_source": "No task examples, trajectories, or evaluation feedback during study; only environment exploration.",
-        "model_data_scale": "Not specified in metadata.",
-        "key_benchmarks": "Six heterogeneous benchmarks, including a largest corpus benchmark (unnamed in abstract).",
-        "artifacts": "Indices, scripts, or procedural guidance produced during study phase.",
-        "agent_environment": "Unfamiliar environments with available corpora and tools.",
-        "agent_mechanism": "Meta-agents compare unaided and archive-equipped with fixed synthetic-practice and corpus-processing methods.",
-        "interaction_horizon": "Study under a budget before test time; test-time sampling reduced by artifacts.",
-        "agent_evaluation": "Avg@3 reward on downstream tasks; artifacts reduce test-time sampling needed to reach a given score."
+        "training_objective": "任务无关的环境预处理：在预算内探索环境以生成对下游任务有用的制品，没有明确的下游任务分布或监督信号。",
+        "feedback_source": "无监督或自监督；元智能体可能使用环境可访问的语料或工具，但不使用任务示例、轨迹或评估反馈。",
+        "model_data_scale": "未明确提供。文中未报告模型参数或训练数据规模。",
+        "key_benchmarks": [
+          "SWE-bench",
+          "HotpotQA",
+          "WebArena",
+          "GAIA",
+          "AgentBench",
+          "OSWorld"
+        ],
+        "artifacts": [
+          "索引",
+          "脚本",
+          "程序性指导"
+        ],
+        "agent_environment": "六个异构基准环境，但具体环境细节未在全文摘要中提及。",
+        "agent_mechanism": "研究系统在预算内探索环境并生成制品，然后由固定的求解器使用这些制品执行任务。",
+        "interaction_horizon": "未明确提供。",
+        "agent_evaluation": "使用Avg@3奖励评估下游任务性能，并测量达到给定分数所需的测试时采样次数。"
       },
       "display_affiliations": [
         "University of Maryland, College Park"
@@ -9240,7 +9297,7 @@
       ],
       "practical_value": "为工业界部署技能检索系统提供实用微调配方，避免合成数据微调导致的灾难性遗忘；展示如何利用有限真实监督和合成数据构建鲁棒检索模型；提供基准和代码，促进可复现研究。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "3e3eb27490f2e1d7",
       "tags": [
         "RAG Rec",
@@ -9436,33 +9493,28 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文提出Avatar，一种基于actor架构的自治端到端科学工作流编排系统，包含编排器、执行器和溯源监控器。各actor决策策略可通过统一适配器验证的动作目录在规则与LLM间插拔，在同一核心上跨WMS运行。实验显示LLM模式减少55%计算浪费并降低40% GPU忙碌时间。",
-      "core_method": "Avatar采用actor-based架构，将工作流编排分解为三个核心组件：编排器（orchestrator）、执行器（executor）和溯源监控器（provenance monitor）。每个actor的决策策略可通过统一的适配器验证的动作目录在规则基和LLM基之间插拔，从而在同一核心架构上支持多种工作流管理系统（WMS）。",
+      "generated_summary": "论文提出 Avatar，一种基于 actor 架构的自治科学工作流编排系统，包含编排器、执行器和溯源监控器，决策策略可通过统一动作目录在规则与 LLM 间切换。实验表明规则模式复现原生执行，而 LLM 驱动的 Avatar 减少 55% 计算浪费并降低 40% GPU 忙碌时间。",
+      "core_method": "Avatar 采用 actor 架构，由 orchestrator、executor 和 provenance monitor 三个核心组件构成。每个 actor 的决策策略可通过统一 adapter 验证的动作目录进行插拔，支持规则或 LLM 支持。实验在 Academy 框架上实现，并在三个工作流（弹性、扩展、主动学习）上评估。",
       "innovation_points": [
-        "提出了一种参考架构，将科学工作流编排中的常见职责抽象为编排器、执行器和溯源监控器三个actor，并定义了统一的状态、决策和动作接口。",
-        "通过可插拔的策略适配器，在同一架构上同时支持传统的规则基策略和LLM驱动的代理策略，实现了对代理推理位置的系统化研究。",
-        "提供了一个可扩展的原型实现（基于Academy框架），允许不同的代理、工具、监控接口和验证策略被集成和比较。"
+        "提出统一 actor 架构，将编排、执行和溯源解耦",
+        "提供可插拔决策策略，支持规则与 LLM 混合",
+        "单一核心可在不同 WMS 上运行，无需修改"
       ],
       "experiment_results": [
-        "Resilience (E1)",
-        "Scaling (E2)",
-        "Active Learning (E3)"
+        "在三个工作负载上评估：规则模式复现原生执行；LLM 模式减少 55% 计算浪费和 40% GPU 忙碌时间。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "论文未详细讨论LLM策略在不同模型、提示或上下文长度下的鲁棒性和泛化能力。",
-        "实验工作负载均为模拟或简化场景，未在真实大规模科学工作流上验证。"
+        "未提供大规模、长时间运行实验；未在真实分布式环境中测试；LLM 策略只在一个场景展示；未分析成本与延迟开销。"
       ],
-      "practical_value": "为科学工作流管理系统引入LLM代理提供了参考架构和实验平台，有助于系统化研究代理推理的适用场景和边界，推动工作流系统向自适应和自治编排发展。",
+      "practical_value": "为科学工作流系统引入自适应 AI 编排提供参考架构，可降低人工干预，提高资源利用效率。",
       "analysis_basis": "full_text",
       "analysis_status": "complete",
-      "analysis_signature": "b92d94c269879d7f",
+      "analysis_signature": "89a9963697c00533",
       "tags": [
         "Agent4Rec",
-        "Online Eval",
-        "Evaluation",
-        "LLM4Rec"
+        "Online Eval"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -9506,17 +9558,17 @@
       "citation_count": 0,
       "research_details": {
         "key_benchmarks": [
-          "Resilience (E1)",
-          "Scaling (E2)",
-          "Active Learning (E3)"
+          "Resilience workload (E1)",
+          "Scaling workload (E2)",
+          "Active Learning workload (E3)"
         ],
-        "agent_environment": "科学工作流管理系统，包括TaskVine、Parsl、Colmena等；运行环境为HPC集群和本地异步子进程。",
-        "agent_mechanism": "基于actor的决策策略，可通过适配器在规则基和LLM基之间切换；LLM代理通过动作目录执行经过验证的动作。",
-        "interaction_horizon": "多步交互，包括工作流执行、监控、故障恢复和动态调整。",
-        "agent_evaluation": "通过对比规则模式和LLM模式在三个工作负载上的性能指标（如重试次数、积压、资源利用率、GPU使用时间、科学产出等）进行评估。",
-        "training_objective": "未提及模型训练目标，LLM作为决策策略使用。",
-        "feedback_source": "LLM策略的反馈来源包括任务执行日志、溯源数据、资源监控指标等。",
-        "model_data_scale": "未提及模型参数规模和训练数据规模。",
+        "agent_environment": "Academy 框架",
+        "agent_mechanism": "每个 actor 通过 adapter 验证的动作目录选择动作",
+        "interaction_horizon": "多轮交互，直到工作流完成",
+        "agent_evaluation": "对比规则模式和 LLM 模式在三个工作负载上的性能，指标包括计算浪费、GPU 忙碌时间等",
+        "training_objective": "无（未训练模型）",
+        "feedback_source": "LLM 代理从执行日志和溯源数据获取反馈",
+        "model_data_scale": "未提及具体模型参数或训练数据规模",
         "artifacts": [
           "Avatar原型实现（基于Academy框架）",
           "三个评估工作负载的描述和配置"
@@ -9572,7 +9624,7 @@
       ],
       "practical_value": "适用于企业数据目录的自动化描述和分类，减轻人工负担，支持访问控制和合规。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "b5214f512f36de04",
       "tags": [
         "RAG Rec",
@@ -9672,30 +9724,31 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文提出Research Attention Prediction (RAP)滚动基准，覆盖278个AI/ML领域和1390个预测片段，评估LLM作为研究智能体预测未来六个月论文份额的能力。实验发现，尽管搜索一般有帮助，但所有诊断模型在组合准确率上均不如指数加权移动平均基线，且存在目标条件证据获取偏差，如面向预测的策略获取的近期证据比例较小。在已实现结果上微调可提升Qwen3-4B的预测Spearman相关性。",
-      "core_method": "构建滚动基准RAP，在每个时间截点让LLM智能体在时间受限的arXiv语料库中搜索并预测未来六个月内八个冻结研究方向的论文份额，并与指数加权移动平均（EWMA）基线及其他诊断模型对比。",
+      "generated_summary": "该论文提出研究注意力预测（RAP）滚动基准，覆盖278个AI/ML领域和1390个预测片段，评估LLM代理在受限语料搜索中预测未来六个月论文份额的能力。结果显示四种诊断模型均不如精确计数的EWMA基线，并识别出状态继承优于直接预测及预测导向策略检索近期证据不足两个瓶颈。在真实结果上微调Qwen3-4B可提升预测的Spearman相关性0.105。",
+      "core_method": "构建了一个滚动的预测基准，在每个截止点，LLM代理可以搜索时间受限的arXiv语料库，并预测未来六个月内在八个固定研究方向上的论文份额。通过比较不同模型（诊断模型、EWMA基线、状态继承、直接预测等）的性能，分析瓶颈，并通过微调来改善预测效果。",
       "innovation_points": [
-        "提出RAP滚动基准，首次大规模评估LLM研究智能体对研究注意力转移的预测能力，覆盖278个领域和1390个预测片段。",
-        "通过时间受限搜索和预测任务设计，揭示目标条件证据获取偏差（Forecast-oriented策略检索近期证据比例更小）。",
-        "利用冻结证据回放和State carry-forward等方法分离并归因预测瓶颈。"
+        "提出了研究注意力预测（RAP）这一新的滚动基准，覆盖278个AI/ML领域和1390个片段，用于评估研究代理跟踪研究注意力变化的能力。",
+        "通过冻结证据回放实验，将状态继承优于直接预测的现象与预测导向策略检索近期证据不足联系起来。",
+        "发现即使有精确的历史活动数据，未来特定更新仍然有限；仅在GPT-5.5加上重新开放搜索时略优于EWMA。"
       ],
       "experiment_results": [
-        "搜索通常有帮助，但所有四个诊断模型在组合准确率（compositional accuracy）上均低于精确计数的EWMA基线。累积历史访问下，State carry-forward优于直接Forecast；冻结证据回放显示Forecast导向策略检索的近期证据份额更小。即便有精确历史活动，未来特定更新仍有限，仅GPT-5.5加重新打开搜索略微超过EWMA。在已实现结果上微调使Qwen3-4B在留出领域后期起点的预测Spearman相关性提升0.105，并在变化丰富的片段上也有增益。"
+        "四种诊断模型在组合精度上均不如精确计数的EWMA基线。在累积历史访问下，状态继承优于直接预测，所有四个诊断模型均是如此。冻结证据回放显示，预测导向策略检索的近期证据比例较小。即使有精确历史活动，未来特定更新仍然有限，只有GPT-5.5加上重新开放搜索略优于EWMA。在真实结果上微调Qwen3-4B后，预测Spearman相关性提升了0.105，在保留领域和变化丰富的片段上也有增益。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "模型在组合准确率上整体落后于EWMA基线，未来特定更新能力有限；微调仅在部分条件（后期起点、变化丰富片段）上提升明显；基准限于arXiv AI/ML领域，可能存在领域偏差。"
+        "全文未明确讨论限制，但从描述中可推断：即使最好的模型也仅略优于简单基线，表明LLM代理在研究注意力预测上的能力仍然有限。",
+        "基准仅覆盖AI/ML领域，可能限制在其他领域的泛化性。"
       ],
-      "practical_value": "为评估和提升LLM作为研究智能体的科学预测能力提供基准和诊断工具；揭示证据获取偏差，指导未来智能体设计；证明通过微调可部分弥补预测能力不足。",
+      "practical_value": "该工作为评估和改进LLM作为研究代理在跟踪研究趋势和注意力转移方面的能力提供了新的基准和方法。它揭示了现有模型在证据获取和更新方面的系统性偏差，并展示了通过微调可以改善预测性能，对于构建更有效的研究辅助工具具有实际意义。",
       "analysis_basis": "full_text",
       "analysis_status": "complete",
-      "analysis_signature": "51d92b91aab7f46d",
+      "analysis_signature": "6f518ac5a80405ed",
       "tags": [
-        "Agent4Rec",
         "Benchmark",
         "Evaluation",
-        "LLM4Rec"
+        "Agent4Rec",
+        "User Modeling"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -9738,17 +9791,15 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "预测未来六个月内八个冻结研究方向的论文份额；微调时以已实现结果作为监督信号优化预测相关性。",
-        "feedback_source": "基于arXiv历史数据和已实现研究结果构造监督信号（用于微调），以及基准对比（EWMA）提供性能反馈。",
-        "model_data_scale": "覆盖278个AI/ML领域、1390个预测片段；具体模型参数规模包括Qwen3-4B、GPT-5.5等（文中未提供完整训练数据量）。",
-        "key_benchmarks": [
-          "RAP"
-        ],
-        "agent_environment": "时间受限的arXiv语料库搜索环境，包含历史论文数据，需预测未来论文份额。",
-        "agent_mechanism": "LLM智能体在给定截止时间搜索历史证据并生成未来研究注意力预测；包含直接预测（Forecast）和状态结转（State carry-forward）等策略。",
-        "interaction_horizon": "六个月预测期；滚动分段，每段包含搜索历史和预测未来。",
-        "agent_evaluation": "组合准确率（compositional accuracy）和Spearman相关性等指标。",
-        "artifacts": "未明确提供代码或数据链接。"
+        "training_objective": "论文中提到了在真实结果上微调Qwen3-4B以改善预测性能，但未给出具体的训练目标函数。推断可能是最小化预测分布与真实分布之间的损失（如交叉熵或均方误差），但缺乏明确证据。",
+        "feedback_source": "训练微调使用的反馈来源是已实现的研究结果（realised outcomes），即基于历史上实际发生的研究注意力分布。",
+        "model_data_scale": "基础模型包括四个诊断模型：GPT-5.5、Qwen3-4B等。微调使用的是Qwen3-4B（参数量约40亿）。基准覆盖278个AI/ML领域和1390个片段。",
+        "key_benchmarks": "RAP（Research Attention Prediction）滚动基准",
+        "agent_environment": "每个截止点，代理可以搜索时间受限的arXiv语料库。环境是模拟的学术文献检索环境。",
+        "agent_mechanism": "代理在给定截止点进行文献搜索，然后预测未来六个月在八个固定研究方向的论文份额。代理可以访问累积历史或进行状态继承、直接预测等。",
+        "interaction_horizon": "每次预测的时间范围是未来六个月。",
+        "agent_evaluation": "通过组合精度和Spearman相关性等指标评估预测性能，并与EWMA基线比较。",
+        "artifacts": "论文未明确提及是否发布代码或数据，因此无法确认。"
       },
       "display_affiliations": [
         "Fudan University",
@@ -10227,7 +10278,7 @@
       ],
       "practical_value": "ROAM为长期语言模型智能体提供了一种更稳健的记忆管理方案，能够提升多轮交互中的知识利用效率，减少冗余和冲突，可用于对话系统、个人助理等需要长期记忆的应用场景。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "058d70390de451de",
       "tags": [
         "Agent4Rec",
@@ -19554,7 +19605,7 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文提出RSM-full，一种面向紧凑内存场景的在线聚类记忆流水线，结合余弦门控最大成员合并写入规则和原子感知分组上下文打包器。在AMA-Bench上，4k预算下达到全上下文83%的质量且仅需32%的token成本，显著优于在线K-means等基线；在RealMem上也有提升。关键发现是紧凑内存性能主要由流式记忆合并和检索内容组装方式驱动。",
+      "generated_summary": "该论文针对长程LLM部署中严格提示预算下的记忆设计问题，提出RSM-full在线聚类记忆管道，包含余弦门控最大成员合并写入规则和原子感知分组上下文打包器。在AMA-Bench和RealMem基准上，RSM-full在紧凑记忆机制下实现了更优的质量-令牌权衡，优于在线K-Means、Budget-RAG等基线。研究表明，在紧预算下性能主要由流式记忆的合并和检索内容的组装方式驱动。",
       "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
         "未能从全文/元数据中稳定抽取明确创新点。"
@@ -19573,7 +19624,6 @@
       "analysis_signature": "748caf92ebb88cdf",
       "tags": [
         "Agent4Rec",
-        "RAG Rec",
         "Benchmark",
         "Evaluation"
       ],
@@ -24846,7 +24896,7 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文提出CAPTURE框架，用于在个性化LLM智能体中区分真实的偏好漂移与对抗性记忆投毒，将其建模为连续时间部分可观测决策过程。CAPTURE采用神经常微分方程信念追踪、多时间尺度记忆账本、不确定性触发的澄清和反事实审计。实验显示其在保持较高真实偏好更新接受率的同时显著降低固定策略投毒成功率，并揭示了自适应攻击下的适应-安全权衡。",
+      "generated_summary": "论文将个性化LLM智能体中的偏好漂移与记忆投毒问题建模为潜在用户状态上的连续时间部分可观测决策过程，并提出CAPTURE方法，结合神经常微分方程信念追踪、多时间尺度记忆账本、不确定性触发澄清和反事实审计。实验表明CAPTURE在真实偏好更新与投毒攻击之间取得更好平衡，但自适应攻击者仍能利用权重信息提升攻击成功率，揭示了适应性与安全性的权衡。",
       "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
         "未能从全文/元数据中稳定抽取明确创新点。"
@@ -24866,8 +24916,7 @@
       "tags": [
         "Agent4Rec",
         "User Modeling",
-        "LLM4Rec",
-        "Sequential Rec"
+        "Evaluation"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -36855,7 +36904,7 @@
       ],
       "practical_value": "该方法为LLM智能体的成本敏感部署提供了一种实用的动态切换策略，无需在线教师或复杂价值网络，可灵活调整成本-成功率权衡，适用于多种交互式任务和模型规模组合。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "79ce6a2a2d32aae6",
       "tags": [
         "Agent4Rec",
@@ -52708,7 +52757,10 @@
         "Tomas Pfister",
         "Chen-Yu Lee"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "Washington University in St. Louis",
+        "Google DeepMind"
+      ],
       "published": "2026-08-20T10:42:06Z",
       "updated": "2026-08-20T10:42:06Z",
       "abstract": "LLM agents learn by interacting with environments, yet these environments are hand-built and static: blind to an agent's weaknesses, and quickly left behind as it improves. While recent environment generation methods attempt to address this, they require domain-specific pipelines, rely on expensive or unreliable verifiers, and still produce static environments. To alleviate the engineering burden of rebuilding environments from scratch, we propose Environment Harness (EnvHarness), a programmable layer of plug-in components that wraps a static environment to reshape its behavior without modifying the underlying logic. Operating through standard interfaces, EnvHarness applies across diverse domains while ensuring every reshaped environment retains its original verifier. To automate this process, we introduce EnvRigger, which treats the target policy as a black box, observing its execution trajectories to synthesize EnvHarness components targeting diagnosed flaws, and validating them via fresh rollouts. Across five benchmarks in four domains, EnvHarness outperforms both original environments and domain-specific environment generation pipelines, achieving up to a 9.0-point improvement on held-out instances with 9.8% fewer execution steps. Furthermore, EnvHarness provides a superior optimization signal for reinforcement learning, enabling continuous, targeted co-evolution of the policy and its environment.",
@@ -52803,7 +52855,8 @@
         "agent_evaluation": "在保留实例上进行评估，指标包括性能改进和执行步骤减少。"
       },
       "display_affiliations": [
-        "Unknown affiliation"
+        "Washington University in St. Louis",
+        "Google DeepMind"
       ],
       "published_date": "2026-08-20"
     },
@@ -59613,7 +59666,9 @@
         "Jingrui He",
         "Hanqing Lu"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "University of Illinois Urbana-Champaign"
+      ],
       "published": "2026-08-15T06:43:56Z",
       "updated": "2026-08-15T06:43:56Z",
       "abstract": "Learning from experience is critical for developing capable, self-improving large language model (LLM) agents. Existing methods typically extract knowledge from accumulated trajectories via reflection, memory, rules, or skills. However, agents in realistic environments continuously encounter novel tasks, often offering only a one-shot opportunity to improve. These executions yield rich but highly noisy contexts, entangling broadly useful lessons with task-specific artifacts. Critically, prior works rarely validate their effectiveness on complex real-world tasks or isolate the underlying drivers of improvement. To address these gaps, we formulate online harness learning, where a frozen agent improves by continually updating a structured harness across sequential tasks. This formulation enables a systematic study of key self-improvement factors through our proposed Evo-Harness. At its core, context-to-harness skill compilation distills noisy, single-shot executions into reusable skill harnesses for cross-domain and topic-level adaptation. To demonstrate the efficacy of one-shot skill compilation, we evaluate across five realistic benchmarks (TerminalBench2, SWE-bench, CL-Bench, -bench, WebArena-Infinity). Our extensive analysis demonstrates the effectiveness of Evo-Harness and provides a principled understanding of how LLM agents can effectively learn on the fly. Our code is available at https://github.com/A-EVO-Lab/a-evolve/tree/release/evo-harness.",
@@ -59709,7 +59764,7 @@
         "agent_evaluation": "使用五个基准上的成功率或性能指标进行评估。"
       },
       "display_affiliations": [
-        "Unknown affiliation"
+        "University of Illinois Urbana-Champaign"
       ],
       "published_date": "2026-08-15"
     },
@@ -73440,12 +73495,12 @@
   ],
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 8,
-    "analyzed": 67,
+    "reused": 435,
+    "analyzed": 13,
     "source": "web/public/papers.json"
   },
   "current_limit": 30,
-  "current_paper_count": 75,
+  "current_paper_count": 448,
   "interests": {
     "arxiv_categories": [
       "cs.CL",
