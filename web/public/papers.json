@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-18T04:45:43Z",
+  "generated_at": "2026-09-19T04:31:58Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "LLM RL、Post-training 与 Agent 日更；Generative Recommendation 周更",
@@ -742,18 +742,7 @@
         "openalex:W4400525124",
         "openalex:W4400118952"
       ],
-      "selected_ids": [
-        "arxiv:2608.25528",
-        "arxiv:2609.11052",
-        "arxiv:2609.08443",
-        "arxiv:2608.24176",
-        "arxiv:2609.07273",
-        "arxiv:2609.07143",
-        "arxiv:2608.30553",
-        "arxiv:2608.27413",
-        "arxiv:2608.26804",
-        "arxiv:2608.25343"
-      ]
+      "selected_ids": []
     }
   },
   "topics": {
@@ -801,9 +790,6 @@
   ],
   "source_errors": {
     "llm_systems": [
-      "arXiv: HTTP Error 406: Not Acceptable"
-    ],
-    "generative_rec": [
       "arXiv: HTTP Error 406: Not Acceptable"
     ]
   },
@@ -3334,7 +3320,14 @@
         "Hongcheng Li",
         "Rong Yin"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "Institute of Information Engineering , Chinese Academy of Sciences , Beijing , China",
+        "Key Laboratory of Cyberspace Security Defense , Beijing , China",
+        "Institute of Information Engineering",
+        "China Information Technology Security Evaluation Center",
+        "University of Wisconsin–Madison",
+        "Beihang University"
+      ],
       "published": "2026-09-14T03:47:05Z",
       "updated": "2026-09-14T03:47:05Z",
       "abstract": "Large language model (LLM) agents interact with external environments through tool invocation, but tool outputs can also expose them to indirect prompt injection (IPI) attacks. Existing defenses mainly rely on prompt hardening, content filtering, pre-generated plans, or permission constraints. These approaches often struggle with complex tasks or over-sanitize external content, making it difficult to balance security and utility. The key challenge is therefore to preserve execution flexibility while precisely identifying and removing the malicious content that actually induces unsafe actions. To address this challenge, we propose ActGuard, a pre-execution action auditing framework. Rather than judging whether external content is inherently suspicious, ActGuard assesses whether it causes the current action to deviate from a locally reasonable expectation. At each step, ActGuard predicts the tools likely to be used by the upcoming action and constructs a local tool prior without constraining the execution trajectory. Before execution, it compares the candidate action against this prior and performs tool-level contrastive analysis and parameter-level evidence localization to identify deviations in tool selection and action parameters. A verifier then examines the localized evidence, masks only spans confirmed as malicious, and regenerates the action from the sanitized context. This design preserves legitimate planning flexibility while minimizing information loss from indiscriminate filtering. We evaluate ActGuard on challenging benchmarks for tool-using agents. Results show that ActGuard reduces attack success rates to a level comparable to state-of-the-art defenses while maintaining task utility close to the no-attack setting, achieving a favorable security-utility trade-off. Our code is publicly available at: https://github.com/binzhwang/ActGuard.",
@@ -3431,7 +3424,12 @@
         "agent_evaluation": "指标包括 None-Attack Utility (NAU)、Under-Attack Utility (UAU) 和 Attack Success Rate (ASR)。"
       },
       "display_affiliations": [
-        "Unknown affiliation"
+        "Institute of Information Engineering , Chinese Academy of Sciences , Beijing , China",
+        "Key Laboratory of Cyberspace Security Defense , Beijing , China",
+        "Institute of Information Engineering",
+        "China Information Technology Security Evaluation Center",
+        "University of Wisconsin–Madison",
+        "Beihang University"
       ],
       "published_date": "2026-09-14"
     },
@@ -4960,7 +4958,7 @@
       ],
       "practical_value": "MACE能够作为即插即用模块提升现有事件链接模型的准确性，无需修改模型架构，具有较好的通用性和实用性。在多领域文本理解任务（如问答、假新闻缓解）中，改进的事件链接可间接提升下游性能。效率研究表明在某些模型上还能减少运行时，batch预处理可摊销额外计算成本。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "afd0ff821e8ba76f",
       "tags": [
         "Agent4Rec",
@@ -5732,7 +5730,7 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "该论文利用五智能体、免训练、执行驱动的Text-to-Cypher框架LAST-CQ，通过2471次真实数据库查询实验，拆解了智能体循环中产生性能增益的关键组件。研究发现，移除纠错机制会导致执行BLEU下降3.1%至12.3%，但将模式接地的LLM反馈替换为原始数据库错误字符串几乎不影响性能，而将同等调用预算用于并行采样则使质量下降10-11%。核心结论是：检测失败并路由至重试是提升效果的关键，而非反馈的复杂程度或采样数量；LAST-CQ能恢复91.7%单次生成失败的查询，且首次成功的查询仅消耗一次LLM调用。",
+      "generated_summary": "本文以LAST-CQ（一种五智能体、免训练、基于执行的Text-to-Cypher框架）为测试平台，通过2471个实时数据库查询和六个骨干模型的三个反事实实验，发现智能体循环的性能提升主要来自失败检测与重试机制，而非反馈 sophistication 或采样数量。移除纠错会使单次生成系统性能下降3.1%至12.3%，而用原始数据库错误字符串替换模式接地反馈几乎不损失性能（不到0.2%）；并行采样反而降低质量10-11%。LAST-CQ能恢复91.7%单次生成失败的查询，且首次成功的查询仅需一次LLM调用。",
       "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
         "未能从全文/元数据中稳定抽取明确创新点。"
@@ -19659,7 +19657,7 @@
       ],
       "practical_value": "在约2k-5k提示token的预算下，RSM-full能以较低token成本保持较高的答案质量，适用于需要控制延迟、成本和上下文长度的长时程LLM部署。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "748caf92ebb88cdf",
       "tags": [
         "Agent4Rec",
@@ -24944,7 +24942,7 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "该论文将个性化LLM代理中区分真实偏好漂移与记忆毒化的问题形式化为连续时间部分可观测决策过程，并提出CAPTURE框架，结合神经常微分方程信念追踪、多时间尺度记忆账本、不确定性触发澄清和反事实审计。在480个用户交互片段上，CAPTURE达到71.5%胜率，同时限制固定策略毒化成功率为11.5%并接受83.5%的真实偏好更新。自适应攻击下攻击成功率升至24.7%，揭示了适应性与安全性之间的权衡。",
+      "generated_summary": "论文提出CAPTURE，将个性化LLM智能体中偏好漂移与记忆中毒的区分形式化为连续时间部分可观测决策过程，并利用神经微分方程信念追踪、多时间尺度记忆账本、不确定性触发的澄清和反事实审计来解决歧义。在480个测试片段上，CAPTURE达到71.5%的胜率，将固定策略中毒成功率限制在11.5%，同时接受83.5%的真实偏好更新。在自适应攻击下，攻击成功率升至24.7%，揭示了适应-安全权衡。",
       "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
         "未能从全文/元数据中稳定抽取明确创新点。"
@@ -24964,6 +24962,7 @@
       "tags": [
         "Agent4Rec",
         "User Modeling",
+        "Generative Rec",
         "Evaluation"
       ],
       "llm_score": 0,
@@ -73519,12 +73518,12 @@
   ],
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 535,
-    "analyzed": 159,
+    "reused": 446,
+    "analyzed": 2,
     "source": "web/public/papers.json"
   },
   "current_limit": 30,
-  "current_paper_count": 694,
+  "current_paper_count": 448,
   "interests": {
     "arxiv_categories": [
       "cs.CL",
