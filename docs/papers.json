@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-19T04:31:58Z",
+  "generated_at": "2026-09-20T04:56:13Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "LLM RL、Post-training 与 Agent 日更；Generative Recommendation 周更",
@@ -5730,7 +5730,7 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "本文以LAST-CQ（一种五智能体、免训练、基于执行的Text-to-Cypher框架）为测试平台，通过2471个实时数据库查询和六个骨干模型的三个反事实实验，发现智能体循环的性能提升主要来自失败检测与重试机制，而非反馈 sophistication 或采样数量。移除纠错会使单次生成系统性能下降3.1%至12.3%，而用原始数据库错误字符串替换模式接地反馈几乎不损失性能（不到0.2%）；并行采样反而降低质量10-11%。LAST-CQ能恢复91.7%单次生成失败的查询，且首次成功的查询仅需一次LLM调用。",
+      "generated_summary": "本文提出 LAST-CQ，一个无需训练的五智能体 Text-to-Cypher 框架，并在 2471 个实时数据库查询和六个骨干模型上通过反事实实验分析各组件贡献。结果显示，移除纠错机制会导致性能大幅下降，而将 LLM 合成的模式反馈替换为原始数据库错误字符串几乎无影响；核心增益来自检测失败并路由至重试，而非反馈的精细度或采样数量。LAST-CQ 本身能恢复 91.7% 的单遍失败查询，同时首次成功的查询仍仅消耗一次 LLM 调用。",
       "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
         "未能从全文/元数据中稳定抽取明确创新点。"
@@ -5750,8 +5750,7 @@
       "tags": [
         "Agent4Rec",
         "LLM4Rec",
-        "Evaluation",
-        "Generative Retrieval"
+        "Evaluation"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -24942,7 +24941,7 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文提出CAPTURE，将个性化LLM智能体中偏好漂移与记忆中毒的区分形式化为连续时间部分可观测决策过程，并利用神经微分方程信念追踪、多时间尺度记忆账本、不确定性触发的澄清和反事实审计来解决歧义。在480个测试片段上，CAPTURE达到71.5%的胜率，将固定策略中毒成功率限制在11.5%，同时接受83.5%的真实偏好更新。在自适应攻击下，攻击成功率升至24.7%，揭示了适应-安全权衡。",
+      "generated_summary": "论文提出 CAPTURE，将个性化语言代理中区分真实偏好漂移与记忆投毒的问题建模为连续时间部分可观察决策过程，并采用神经常微分方程信念跟踪、多时间尺度记忆账本、不确定性触发澄清和反事实审计。在 480 个留存回合上，CAPTURE 的胜率达 71.5%，优于监督基线和启发式基线，并将固定策略投毒成功率限制在 11.5%，同时接受 83.5% 的真实偏好更新。适应攻击者使攻击成功率升至 24.7%，揭示了适应性与安全性之间的真实权衡。",
       "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
         "未能从全文/元数据中稳定抽取明确创新点。"
@@ -24962,7 +24961,7 @@
       "tags": [
         "Agent4Rec",
         "User Modeling",
-        "Generative Rec",
+        "Sequential Rec",
         "Evaluation"
       ],
       "llm_score": 0,
