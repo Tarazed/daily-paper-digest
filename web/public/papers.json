@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-20T04:56:13Z",
+  "generated_at": "2026-09-21T04:52:37Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "LLM RL、Post-training 与 Agent 日更；Generative Recommendation 周更",
@@ -5730,7 +5730,7 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "本文提出 LAST-CQ，一个无需训练的五智能体 Text-to-Cypher 框架，并在 2471 个实时数据库查询和六个骨干模型上通过反事实实验分析各组件贡献。结果显示，移除纠错机制会导致性能大幅下降，而将 LLM 合成的模式反馈替换为原始数据库错误字符串几乎无影响；核心增益来自检测失败并路由至重试，而非反馈的精细度或采样数量。LAST-CQ 本身能恢复 91.7% 的单遍失败查询，同时首次成功的查询仍仅消耗一次 LLM 调用。",
+      "generated_summary": "该论文通过五个智能体、无需训练、基于执行的 Text-to-Cypher 框架 LAST-CQ 作为测试平台，在 2471 个实时数据库查询和六个骨干模型上进行了三个反事实实验，发现纠正步骤带来 3.1% 到 12.3% 的性能提升，而反馈的复杂性几乎不影响结果。关键发现是，检测失败并路由到重试机制有效，而并行采样会降低质量 10-11%。LAST-CQ 恢复了 91.7% 的单次生成失败查询，同时成功查询仍只消耗一次 LLM 调用。",
       "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
         "未能从全文/元数据中稳定抽取明确创新点。"
@@ -5749,8 +5749,9 @@
       "analysis_signature": "3405ca210c511371",
       "tags": [
         "Agent4Rec",
-        "LLM4Rec",
-        "Evaluation"
+        "Generative Retrieval",
+        "Evaluation",
+        "Benchmark"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -24941,7 +24942,7 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文提出 CAPTURE，将个性化语言代理中区分真实偏好漂移与记忆投毒的问题建模为连续时间部分可观察决策过程，并采用神经常微分方程信念跟踪、多时间尺度记忆账本、不确定性触发澄清和反事实审计。在 480 个留存回合上，CAPTURE 的胜率达 71.5%，优于监督基线和启发式基线，并将固定策略投毒成功率限制在 11.5%，同时接受 83.5% 的真实偏好更新。适应攻击者使攻击成功率升至 24.7%，揭示了适应性与安全性之间的真实权衡。",
+      "generated_summary": "论文研究个性化LLM智能体在持久记忆中的偏好漂移与记忆投毒区分问题，形式化为连续时间部分可观测决策过程，并提出CAPTURE模型（包含神经常微分方程信念追踪、多时间尺度记忆账本、不确定性触发澄清和反事实审计）。在480个用户回合上，CAPTURE取得71.5%胜率，将固定策略投毒成功率限制在11.5%同时接受83.5%的真实偏好更新，但自适应攻击下攻击成功率升至24.7%揭示了适应性与安全性的权衡。",
       "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
         "未能从全文/元数据中稳定抽取明确创新点。"
@@ -24961,8 +24962,8 @@
       "tags": [
         "Agent4Rec",
         "User Modeling",
-        "Sequential Rec",
-        "Evaluation"
+        "Online Eval",
+        "Benchmark"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
