@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-21T04:52:37Z",
+  "generated_at": "2026-09-22T04:41:55Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "LLM RL、Post-training 与 Agent 日更；Generative Recommendation 周更",
@@ -5730,7 +5730,7 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "该论文通过五个智能体、无需训练、基于执行的 Text-to-Cypher 框架 LAST-CQ 作为测试平台，在 2471 个实时数据库查询和六个骨干模型上进行了三个反事实实验，发现纠正步骤带来 3.1% 到 12.3% 的性能提升，而反馈的复杂性几乎不影响结果。关键发现是，检测失败并路由到重试机制有效，而并行采样会降低质量 10-11%。LAST-CQ 恢复了 91.7% 的单次生成失败查询，同时成功查询仍只消耗一次 LLM 调用。",
+      "generated_summary": "本文以五智能体无训练文本到Cypher框架LAST-CQ为测试平台，通过2471条实时数据库查询和六个骨干模型的反事实实验，发现修正步骤（失败检测与重试路由）是性能提升的关键，而非反馈的复杂性或采样数量。替换为原始数据库错误字符串几乎不影响效果，而将相同调用预算用于并行采样则会降低质量。LAST-CQ能恢复91.7%的单遍生成失败查询，同时首次成功的查询仅需一次LLM调用。",
       "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
         "未能从全文/元数据中稳定抽取明确创新点。"
@@ -5750,8 +5750,8 @@
       "tags": [
         "Agent4Rec",
         "Generative Retrieval",
-        "Evaluation",
-        "Benchmark"
+        "LLM4Rec",
+        "Evaluation"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -24942,7 +24942,7 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文研究个性化LLM智能体在持久记忆中的偏好漂移与记忆投毒区分问题，形式化为连续时间部分可观测决策过程，并提出CAPTURE模型（包含神经常微分方程信念追踪、多时间尺度记忆账本、不确定性触发澄清和反事实审计）。在480个用户回合上，CAPTURE取得71.5%胜率，将固定策略投毒成功率限制在11.5%同时接受83.5%的真实偏好更新，但自适应攻击下攻击成功率升至24.7%揭示了适应性与安全性的权衡。",
+      "generated_summary": "论文针对个性化LLM智能体中偏好漂移与记忆投毒的混淆问题，将其形式化为连续时间部分可观测决策过程，并提出CAPTURE框架，利用神经常微分方程信念追踪、多时间尺度记忆账本、不确定性触发澄清和反事实审计来区分真实偏好更新与对抗性投毒。在480个用户交互片段上，CAPTURE取得71.5%的胜率，将固定策略投毒成功率限制在11.5%，同时接受83.5%的真实偏好更新；但在自适应攻击者下攻击成功率升至24.7%，揭示了适应性与安全性之间的权衡。在独立基准和纵向真实交互数据上的零样本评估进一步表明，显式建模偏好真实性可同时提升个性化与鲁棒性。",
       "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
         "未能从全文/元数据中稳定抽取明确创新点。"
@@ -24962,8 +24962,8 @@
       "tags": [
         "Agent4Rec",
         "User Modeling",
-        "Online Eval",
-        "Benchmark"
+        "Sequential Rec",
+        "Evaluation"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
