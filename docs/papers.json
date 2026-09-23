@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-22T04:41:55Z",
+  "generated_at": "2026-09-23T04:40:56Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "LLM RL、Post-training 与 Agent 日更；Generative Recommendation 周更",
@@ -5730,7 +5730,7 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "本文以五智能体无训练文本到Cypher框架LAST-CQ为测试平台，通过2471条实时数据库查询和六个骨干模型的反事实实验，发现修正步骤（失败检测与重试路由）是性能提升的关键，而非反馈的复杂性或采样数量。替换为原始数据库错误字符串几乎不影响效果，而将相同调用预算用于并行采样则会降低质量。LAST-CQ能恢复91.7%的单遍生成失败查询，同时首次成功的查询仅需一次LLM调用。",
+      "generated_summary": "该论文以LAST-CQ（一种五智能体、免训练、基于执行的Text-to-Cypher框架）为测试平台，通过2471个实时数据库查询和六个骨干模型的反事实实验，分析智能体循环中哪部分带来性能增益。研究发现，检测失败并路由到重试是核心机制，而反馈的复杂程度和采样数量影响甚微；去除纠正机制会导致执行BLEU下降3.1%至12.3%。此外，序列化结果的n-gram重叠不能可靠衡量语义等价性，且LLM评判相比人工标注偏乐观9个点。",
       "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
         "未能从全文/元数据中稳定抽取明确创新点。"
@@ -5749,9 +5749,9 @@
       "analysis_signature": "3405ca210c511371",
       "tags": [
         "Agent4Rec",
-        "Generative Retrieval",
-        "LLM4Rec",
-        "Evaluation"
+        "Evaluation",
+        "Benchmark",
+        "LLM4Rec"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -24942,28 +24942,31 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "论文针对个性化LLM智能体中偏好漂移与记忆投毒的混淆问题，将其形式化为连续时间部分可观测决策过程，并提出CAPTURE框架，利用神经常微分方程信念追踪、多时间尺度记忆账本、不确定性触发澄清和反事实审计来区分真实偏好更新与对抗性投毒。在480个用户交互片段上，CAPTURE取得71.5%的胜率，将固定策略投毒成功率限制在11.5%，同时接受83.5%的真实偏好更新；但在自适应攻击者下攻击成功率升至24.7%，揭示了适应性与安全性之间的权衡。在独立基准和纵向真实交互数据上的零样本评估进一步表明，显式建模偏好真实性可同时提升个性化与鲁棒性。",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "generated_summary": "本文针对个性化LLM代理中偏好漂移与记忆投毒难以区分的问题，将其形式化为连续时间部分可观测决策过程，并提出CAPTURE方法，结合神经常微分方程信念追踪、多时间尺度记忆账本、不确定性触发澄清和反事实审计。实验表明CAPTURE在区分真实偏好更新和对抗性投毒上优于基线，并揭示了适应性与安全性之间的权衡。",
+      "core_method": "CAPTURE通过神经微分方程信念追踪器对用户状态进行连续时间推断，将偏好假设写入多时间尺度记忆账本，在不确定性过高时触发澄清提问，并对引用的记忆进行反事实审计以评估其因果影响。",
       "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
+        "将偏好真实性问题形式化为连续时间部分可观测决策过程，而非简单的二元分类或规则过滤。",
+        "提出多时间尺度记忆账本，将稳定偏好、情境偏好和瞬态信息分层存储，避免相互覆盖。",
+        "引入不确定性触发澄清机制，仅在低置信度时向用户提问，平衡适应性与交互成本。"
       ],
       "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
+        "在96名用户的480个保留回合上，CAPTURE达到71.5%胜率，优于监督基线（69.3%）和最强启发式基线（66.1%）。固定策略投毒成功率为11.5%，同时接受83.5%的真实偏好更新。自适应攻击下投毒率升至24.7%。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
+        "自适应攻击者成功将投毒率从11.5%提升至24.7%，此时来源过滤基线略优，暴露适应性与安全性的权衡。",
+        "系统在间接注入攻击上的表现（7.0%）弱于纯来源过滤（4.8%）。"
       ],
-      "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
+      "practical_value": "为个性化LLM代理提供了一种可在适应性、安全性和计算成本之间权衡的实用方案，每轮延迟约630ms，适合部署于需要长期记忆和抗投毒的应用。",
       "analysis_basis": "full_text",
-      "analysis_status": "fallback",
+      "analysis_status": "complete",
       "analysis_signature": "8f5f8676e3098395",
       "tags": [
         "Agent4Rec",
         "User Modeling",
-        "Sequential Rec",
-        "Evaluation"
+        "Evaluation",
+        "Generative Rec"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -25006,15 +25009,19 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "Improve personalization and robustness by modeling preference authenticity explicitly; distinguish genuine drift from poisoning.",
-        "feedback_source": "User interactions in episodic settings; latent user state; adversarial attacks.",
-        "model_data_scale": "Not specified in detail; 480 held-out episodes from 96 users for evaluation; 40 users for longitudinal replay; zero-shot benchmark.",
-        "key_benchmarks": "Held-out episodes, independently constructed benchmark, longitudinal interaction histories.",
-        "artifacts": "No artifacts mentioned.",
-        "agent_environment": "Personalized LLM agents with persistent memory, interacting with users.",
-        "agent_mechanism": "Neural differential-equation belief tracker, multi-timescale memory ledger, uncertainty-triggered clarification, counterfactual auditing of cited memories.",
-        "interaction_horizon": "Episodic with long-term memory; longitudinal histories over two to three weeks.",
-        "agent_evaluation": "Win rate, poisoning success, acceptance of genuine updates, attack success under adaptive attacker."
+        "training_objective": "最小化交叉熵与弃权惩罚的组合损失，用于偏好假设提取；神经微分方程信念追踪器和门控分类器采用监督学习。",
+        "feedback_source": "人工标注的偏好真实性标签，以及用户澄清反馈。",
+        "model_data_scale": "偏好提取器和门控基于Qwen2.5-3B，使用LoRA在4块A100 80GB GPU上训练；响应骨干为Qwen3-8B-Instruct和Llama-3.1-8B-Instruct。",
+        "key_benchmarks": [
+          "自建基准：包含2,400个纵向回合，涵盖五类轨迹（静止、四种真实漂移、良性噪声、三类污染、安全冲突），480个保留回合用于测试。",
+          "HorizonBench：独立构建的模拟六个月偏好演化基准。",
+          "40名用户的多会话纵向研究（2-3周）。"
+        ],
+        "artifacts": "代码和模型权重在论文中被提及已发布，但摘要未提供具体链接。",
+        "agent_environment": "用户与代理的交互环境，包括工具调用和检索文档。",
+        "agent_mechanism": "代理基于大型语言模型，配备持久记忆、澄清通道和安全选择器，记忆由多时间尺度账本管理。",
+        "interaction_horizon": "长达数周至数月的多轮交互，以及模拟六个月的纵向历史。",
+        "agent_evaluation": "使用胜率、真实更新接受率、投毒成功率、错误接受率、上下文切换正确范围选择率和证据F1等指标。"
       },
       "display_affiliations": [
         "Unknown affiliation"
