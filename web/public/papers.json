@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-23T04:40:56Z",
+  "generated_at": "2026-09-24T04:37:02Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "LLM RL、Post-training 与 Agent 日更；Generative Recommendation 周更",
@@ -5730,7 +5730,7 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "该论文以LAST-CQ（一种五智能体、免训练、基于执行的Text-to-Cypher框架）为测试平台，通过2471个实时数据库查询和六个骨干模型的反事实实验，分析智能体循环中哪部分带来性能增益。研究发现，检测失败并路由到重试是核心机制，而反馈的复杂程度和采样数量影响甚微；去除纠正机制会导致执行BLEU下降3.1%至12.3%。此外，序列化结果的n-gram重叠不能可靠衡量语义等价性，且LLM评判相比人工标注偏乐观9个点。",
+      "generated_summary": "该论文通过LAST-CQ框架的受控实验发现，在Text-to-Cypher任务中，性能提升的关键是检测失败并重试，而非反馈的精细度或采样次数；反馈质量影响极小，并行采样反而降低质量。LAST-CQ在单次通过失败的查询上恢复率达91.7%。研究还揭示了序列化结果上的n-gram重叠评估与集合等价及语义判断均不一致的问题。",
       "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
         "未能从全文/元数据中稳定抽取明确创新点。"
@@ -5748,10 +5748,9 @@
       "analysis_status": "fallback",
       "analysis_signature": "3405ca210c511371",
       "tags": [
+        "LLM4Rec",
         "Agent4Rec",
-        "Evaluation",
-        "Benchmark",
-        "LLM4Rec"
+        "Evaluation"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
@@ -24960,7 +24959,7 @@
       ],
       "practical_value": "为个性化LLM代理提供了一种可在适应性、安全性和计算成本之间权衡的实用方案，每轮延迟约630ms，适合部署于需要长期记忆和抗投毒的应用。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "8f5f8676e3098395",
       "tags": [
         "Agent4Rec",
@@ -73525,8 +73524,8 @@
   ],
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 446,
-    "analyzed": 2,
+    "reused": 447,
+    "analyzed": 1,
     "source": "web/public/papers.json"
   },
   "current_limit": 30,
