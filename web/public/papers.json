@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-24T04:37:02Z",
+  "generated_at": "2026-09-25T04:47:29Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "LLM RL、Post-training 与 Agent 日更；Generative Recommendation 周更",
@@ -105,6 +105,7 @@
         "arxiv:2608.17776",
         "arxiv:2608.16114",
         "arxiv:2608.15579",
+        "s2:3cd973e87008ac9a2be45a16cac7c9d0c816ae10",
         "arxiv:2609.16660",
         "arxiv:2609.16098",
         "arxiv:2609.14003",
@@ -238,6 +239,7 @@
         "arxiv:2608.16068",
         "arxiv:2608.15834",
         "arxiv:2608.15071",
+        "s2:88c2cf8b3ea6c6626aad8bc2b0b0c92ccfe51574",
         "arxiv:2609.16635",
         "arxiv:2609.16436",
         "arxiv:2609.16268",
@@ -442,6 +444,7 @@
         "arxiv:2608.23992",
         "arxiv:2608.23908",
         "arxiv:2608.18554",
+        "openalex:W4411063470",
         "arxiv:2609.07137",
         "arxiv:2609.04841",
         "arxiv:2609.05901",
@@ -470,18 +473,9 @@
         "arxiv:2609.15939"
       ],
       "selected_ids": [
-        "arxiv:2609.15134",
-        "arxiv:2609.01245",
-        "arxiv:2609.02685",
-        "arxiv:2608.24988",
-        "arxiv:2609.12651",
-        "arxiv:2608.30051",
-        "arxiv:2609.03342",
-        "arxiv:2609.02236",
-        "arxiv:2609.11108",
-        "arxiv:2608.15108",
-        "arxiv:2608.30730",
-        "arxiv:2609.15309"
+        "s2:88c2cf8b3ea6c6626aad8bc2b0b0c92ccfe51574",
+        "openalex:W4411063470",
+        "s2:3cd973e87008ac9a2be45a16cac7c9d0c816ae10"
       ]
     },
     "generative_rec": {
@@ -742,7 +736,18 @@
         "openalex:W4400525124",
         "openalex:W4400118952"
       ],
-      "selected_ids": []
+      "selected_ids": [
+        "arxiv:2608.25528",
+        "arxiv:2609.11052",
+        "arxiv:2609.08443",
+        "arxiv:2608.24176",
+        "arxiv:2609.07273",
+        "arxiv:2609.07143",
+        "arxiv:2608.30553",
+        "arxiv:2608.27413",
+        "arxiv:2608.26804",
+        "arxiv:2608.25343"
+      ]
     }
   },
   "topics": {
@@ -790,6 +795,9 @@
   ],
   "source_errors": {
     "llm_systems": [
+      "arXiv: HTTP Error 406: Not Acceptable"
+    ],
+    "generative_rec": [
       "arXiv: HTTP Error 406: Not Acceptable"
     ]
   },
@@ -12827,7 +12835,7 @@
       ],
       "practical_value": "该方法为生成式检索提供了一种易于实现且能保持语义局部结构的语义ID构建方案，尤其适用于需要快速冷启动和唯一标识符的推荐系统场景。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "84eac16906df4243",
       "tags": [
         "Semantic ID",
@@ -14907,7 +14915,11 @@
         "Baoxin Wu",
         "Jun Gao"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "University of Science and Technology of China",
+        "University of Chinese Academy of Sciences",
+        "Beijing Information Science and Technology University"
+      ],
       "published": "2026-09-07T09:36:57Z",
       "updated": "2026-09-07T09:36:57Z",
       "abstract": "Industrial ranking models for recommendation have scaled feature interaction and sequence modeling separately; recent architectures such as HyFormer and MixFormer unify both in a stackable backbone. Real-world recommender systems, however, nearly always require multi-task learning, yet existing unified architectures confine multi-task modeling to shallow post-backbone towers, leaving the backbone without task-aware information flow. We propose MORE (Multi-task cO-evolving Ranking modEl), which embeds multi-task information flow inside the backbone, enabling task-specific signals to co-evolve with sequence and feature representations at every layer rather than in a post-hoc fusion. It introduces Anchor Tokens that persist across backbone layers: Shared Anchors encode cross-task commonalities, while Private Anchors capture task-specific priors. In each block, Anchor Tokens (1) read task-conditioned signals from behavior sequences, (2) mix with non-sequential features under a task-boundary mask, and (3) refine per-task representations through independent branches; as blocks stack, each task obtains a differentiated representation refined through all backbone layers. Experiments on large-scale industrial datasets show that MORE consistently outperforms baselines across all tasks under comparable parameter and FLOPs budgets, and scales well with model size. Online A/B tests on Momo, a leading Chinese social discovery platform with tens of millions of monthly active users, yield 3% improvement in usage duration, 3.6% in interaction rate, and 2% in deep-chat rate. MORE is deployed in production with request-level shared computation reducing scoring latency by about 30%.",
@@ -14983,7 +14995,9 @@
       "citation_count": 0,
       "research_details": {},
       "display_affiliations": [
-        "Unknown affiliation"
+        "University of Science and Technology of China",
+        "University of Chinese Academy of Sciences",
+        "Beijing Information Science and Technology University"
       ],
       "published_date": "2026-09-07"
     },
@@ -15420,7 +15434,9 @@
         "Rong Xiao",
         "Xiaoyi Zeng"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "Alibaba International Digital Commerce Group"
+      ],
       "published": "2026-09-07T07:44:02Z",
       "updated": "2026-09-07T07:44:02Z",
       "abstract": "E-commerce platforms increasingly display clickable query suggestions alongside items in the user feed, enabling users to refine or expand their intent without manually reformulating queries. Existing approaches either mine suggestions from historical logs -- limited to past behavior and blind to long-tail, personalized intents -- or rely on off-the-shelf LLMs whose lack of platform-specific knowledge yields fluent but generic queries disconnected from real click behavior. We propose EAGER (Enrich-and-AliGn gEnerative Query Recommendation), a two-stage framework for generating query suggestions from clicked items. In the enrichment stage, supervised fine-tuning (SFT) follows a four-stage curriculum that scales information richness (from item-only to user-conditioned) and reasoning depth (from direct to chain-of-thought). Each stage incorporates rationale augmentation, diversity regularization, and self-distillation. In the alignment stage, we post-train via GRPO with a hybrid reward of multiple rule-based business signals and a preference-aware click reward. Extensive offline experiments and online A/B test demonstrate the effectiveness of EAGER, which has been deployed in production at a major e-commerce platform.",
@@ -15497,7 +15513,7 @@
       "citation_count": 0,
       "research_details": {},
       "display_affiliations": [
-        "Unknown affiliation"
+        "Alibaba International Digital Commerce Group"
       ],
       "published_date": "2026-09-07"
     },
@@ -16315,7 +16331,9 @@
         "Zhaoji Sun",
         "Lu Zhang"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "Sanya University"
+      ],
       "published": "2026-09-06T17:19:43Z",
       "updated": "2026-09-06T17:19:43Z",
       "abstract": "Smart agriculture platforms are widely regarded as key carriers for implementing China's pesticide and fertilizer reduction, water-saving and carbon-reduction agendas, yet a unified quantitative framework for assessing their green value is still lacking. Taking an AI-driven decision platform for tropical agriculture as the object (integrating large-language-model question answering, multimodal pest diagnosis, IoT sensing, satellite remote sensing, and a closed-loop field record system), this study builds a cradle-to-farm-gate agricultural carbon accounting model covering pesticide and fertilizer production, field N2O, irrigation electricity and paddy CH4, translates platform interventions into quantifiable transmission parameters, and propagates parameter uncertainty by Monte Carlo simulation over three Hainan scenarios (mango, winter vegetable, rice/nanfan, area-weighted 40%:30%:30%). Under full adoption, median reductions are 23.5% (90% interval 15.0%-33.2%) for pesticide use, 21.0% (13.8%-28.9%) for fertilizer, 16.5% (10.9%-23.5%) for irrigation water, and 21.5% (16.1%-27.2%) for carbon intensity. Attainment probabilities are high for fertilizer reduction >=15% (90.6%) and clear carbon decline (98.1%), but only about 20% for aggregate water saving >=20%, favoring scenario-specific statements. Sobol first-order indices show soil-test recommendation and organic substitution jointly explain about 83% of the variance of aggregate carbon-intensity reduction. Convergence tests show 10,000 iterations stabilize all statistics; conservative/baseline/optimistic scenario bounds are reported. The framework offers a reproducible, calibration-ready methodology for ex-ante green-value assessment and pilot observation design.",
@@ -16386,7 +16404,7 @@
       "citation_count": 0,
       "research_details": {},
       "display_affiliations": [
-        "Unknown affiliation"
+        "Sanya University"
       ],
       "published_date": "2026-09-06"
     },
@@ -17097,7 +17115,10 @@
         "Lina Yao",
         "James Caverlee"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "Texas A &M University",
+        "University of New South Wales"
+      ],
       "published": "2026-09-05T18:33:03Z",
       "updated": "2026-09-05T18:33:03Z",
       "abstract": "Sequential recommenders are typically trained on long user histories to capture rich behavioral signals, yet serving with training-length sequences is often impractical due to real-time efficiency constraints. Directly using only recent behaviors leads to a severe performance drop. To bridge this gap, existing approaches compress user histories into persistent per-user states, storing and retrieving them at inference time; while effective, they impose non-trivial infrastructure overhead and offer little remedy in cold-start scenarios. In this paper, we empirically identify two structural flaws rooted in geometric properties and dataset sparsity, and propose a novel two-stage framework to close the long-short-view performance gap. Specifically, in the first stage, we replace the commonly used dot-product with angular similarity scoring and leverage a modified softmax to counter prefix position bias. In the second stage, we fine-tune only bias and LayerNorm components, which are universal to standard sequential backbones, for further improvement. Both stages are guided by carefully designed learning objectives. Extensive experiments on two representative backbones across three public datasets demonstrate the effectiveness of our proposed framework.",
@@ -17165,7 +17186,8 @@
       "citation_count": 0,
       "research_details": {},
       "display_affiliations": [
-        "Unknown affiliation"
+        "Texas A &M University",
+        "University of New South Wales"
       ],
       "published_date": "2026-09-05"
     },
@@ -17828,7 +17850,9 @@
         "Hanvit Lee",
         "Jinhong Jung"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "Soongsil University"
+      ],
       "published": "2026-09-05T06:03:02Z",
       "updated": "2026-09-05T06:03:02Z",
       "abstract": "KG-aware recommendation has been widely studied to alleviate data sparsity by using knowledge graphs (KGs), which represent items, entities, and their relations as graphs and provide item-side knowledge. However, existing methods incorporate item knowledge without considering how much each user or item node should rely on it. As a result, they apply KG signals indiscriminately across nodes, even to nodes whose collaborative filtering (CF) signals from the interaction graph (IG) are already reliable. In this paper, we propose AdaKG (Adaptive Node-Aware KG Fusion), a novel KG-aware recommendation method that adaptively adjusts the contribution of auxiliary knowledge for each node. Since user-item interactions and item knowledge provide different types of signals, directly mixing them can distort the CF signals. To avoid this, AdaKG separately encodes the IG and KG with view-specific encoders, allowing each view to capture its own information. It then estimates how strongly each node should rely on item knowledge by measuring the stability of its CF signals under small adversarial perturbations, assigning a larger KG contribution to less stable nodes. Finally, AdaKG adaptively aligns the IG and KG embeddings in a shared space and fuses them according to the estimated node-wise reliance. Through experiments, we show that AdaKG achieves strong performance compared with its baselines and the effectiveness of our adaptive fusion strategy.",
@@ -17899,7 +17923,7 @@
       "citation_count": 0,
       "research_details": {},
       "display_affiliations": [
-        "Unknown affiliation"
+        "Soongsil University"
       ],
       "published_date": "2026-09-05"
     },
@@ -18354,7 +18378,9 @@
         "Oleg Lesota",
         "Antonela Tommasel"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "Johannes Kepler University Linz"
+      ],
       "published": "2026-09-04T22:38:49Z",
       "updated": "2026-09-04T22:38:49Z",
       "abstract": "Fairness-aware recommender systems aim to mitigate systematic imbalances in recommendation outcomes, including how visibility, relevance, and opportunities are distributed among users, items, and providers. However, these systems are usually evaluated in terms of accuracy and fairness alone, while their computational and environmental costs remain largely invisible. This omission matters because fairness interventions may affect the cost of recommendation in different ways. Training-time methods modify model optimization, post-processing methods add computation at inference time, and both may depend on the model, dataset, hardware, and deployment setting. We examine whether provider-side fairness in recommendation comes with a measurable green cost. We compare in-processing, graph-level reweighting and post-processing interventions across multiple models, two datasets, and two hardware settings. We measure recommendation quality, provider-side exposure, and energy consumption separately across training and inference stages. Our results show that the green cost of fairness is not uniform, post-processing shifts cost to repeated serving, while in-processing and graph-level methods avoid re-ranking overhead but vary substantially across models, datasets, and hardware. Findings call for evaluating fairness-aware recommendation as a three-way trade-off between accuracy, fairness, and computational cost.",
@@ -18425,7 +18451,7 @@
       "citation_count": 0,
       "research_details": {},
       "display_affiliations": [
-        "Unknown affiliation"
+        "Johannes Kepler University Linz"
       ],
       "published_date": "2026-09-04"
     },
@@ -21319,7 +21345,11 @@
         "Shai Vardi",
         "João Sedoc"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "University of South Florida , Muma College of Business",
+        "University of South Florida",
+        "New York University"
+      ],
       "published": "2026-09-03T17:25:20Z",
       "updated": "2026-09-03T17:25:20Z",
       "abstract": "Large language models are increasingly used to support organizational decisions, yet users often lack a principled basis for assessing whether to rely on a specific recommendation. Existing approaches typically evaluate broad model properties, such as reliability, uncertainty, or robustness, or focus on user trust, rather than the underlying basis for relying on an individual recommendation. Adapting theoretical foundations from epistemology, we introduce epistemic warrant, a decision-level construct that characterizes the stability of a model's preference and the scope over which that preference holds. We operationalize this construct through a four-tier reliance certificate for pairwise recommendations, distinguishing among unstable, context-dependent, locally supported, and broadly supported recommendations. We validate the construct using contemporary methodologies: known-groups tests successfully recover expert-prespecified warrant orderings, and stronger warrants systematically align with independent consensus from crowd workers. Furthermore, we demonstrate that epistemic warrant provides information distinct from verbalized confidence and is not readily explained by decision difficulty. Ultimately, this framework offers a theoretically grounded, implementable approach for characterizing the warrant of individual LLM recommendations when objective ground truth is unavailable.",
@@ -21391,7 +21421,9 @@
       "citation_count": 0,
       "research_details": {},
       "display_affiliations": [
-        "Unknown affiliation"
+        "University of South Florida , Muma College of Business",
+        "University of South Florida",
+        "New York University"
       ],
       "published_date": "2026-09-03"
     },
@@ -28046,7 +28078,9 @@
         "Yuan Wu",
         "Yi Chang"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "Jilin University"
+      ],
       "published": "2026-09-01T08:44:56Z",
       "updated": "2026-09-01T08:44:56Z",
       "abstract": "Large language models are increasingly used as interactive recommender assistants. Their evaluation should therefore go beyond plausible item recommendation and test whether they can recognize flawed recommendation requests. Existing recommender benchmarks mainly assess ranking, generation, or preference satisfaction, while existing error-detection benchmarks are usually not grounded in recommendation-specific user and candidate evidence. To address this gap, we introduce RPCBench, a benchmark for evaluating Recommender-Premise Critique: the ability to detect, diagnose, and properly handle faulty premises in natural-language recommendation requests. RPCBench contains evidence-grounded test instances from five recommendation domains and covers ten types of premise failures. Each instance provides a visible recommendation context and a corrupted user query. We further design a fine-grained evaluation framework that measures proactive detection, error localization, post-detection handling strategy, and evidence faithfulness. Through a systematic evaluation of 11 LLMs, we find that proactive detection is the main bottleneck in Recommender-Premise Critique, and models perform worst on underspecified-premise errors. We also observe that target-critical information density matters more than redundant evidence, and that longer reasoning does not monotonically improve critique quality: performance peaks at intermediate reasoning length, while overly long reasoning is accompanied by an overthinking penalty. The code is available at https://github.com/ZhongruChen/RPCBench.",
@@ -28122,7 +28156,7 @@
       "citation_count": 0,
       "research_details": {},
       "display_affiliations": [
-        "Unknown affiliation"
+        "Jilin University"
       ],
       "published_date": "2026-09-01"
     },
@@ -28137,7 +28171,9 @@
         "Laura Boggia",
         "Matteo Ruffini"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "Johannes Kepler University Linz"
+      ],
       "published": "2026-09-01T08:41:58Z",
       "updated": "2026-09-01T08:41:58Z",
       "abstract": "Interactions with cold items negatively impact real-time personalization of ID-based recommender systems. This is because the use of such interactions degrades user preference estimates, whereas excluding cold items from the user profile prevents real-time recommendation updates. In industrial scenarios, one heuristic often applied to address this shortcoming at inference time is to replace, i.e., \"swap\", cold-start items by their most similar \"warm\" neighbor, where similarity is inferred from the items' side information. In this paper, we demonstrate that sequential models, most often used for real-time personalization, are not robust to such swaps, and propose SwapRec, an approach to address this issue. SwapRec relies on using the same swap heuristics already at training time. We apply SwapRec to state-of-the-art models for sequential recommendation and analyze its impact by means of quantitative experiments in three recommendation domains (online shopping, movie, music). The experimental results show that, irrespective of the underlying sequential architecture, our easy-to-implement SwapRec approach allows for substantially more accurate recommendations when in presence of interactions with cold items, simultaneously leading to a larger percentage of cold items in the recommendation lists.",
@@ -28214,7 +28250,7 @@
       "citation_count": 0,
       "research_details": {},
       "display_affiliations": [
-        "Unknown affiliation"
+        "Johannes Kepler University Linz"
       ],
       "published_date": "2026-09-01"
     },
@@ -29108,7 +29144,12 @@
         "See-Kiong Ng",
         "Yang Deng"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "Sichuan University",
+        "National University of Singapore",
+        "Singapore Management University",
+        "Engineering Research Center of Machine Learning and Industry Intelligence"
+      ],
       "published": "2026-09-01T03:02:58Z",
       "updated": "2026-09-02T03:17:33Z",
       "abstract": "We investigate the role of conversational context modeling in user preference tracking for Conversational Recommendation Systems (CRSs). In this regard, we propose DREAMS, a novel tree-structured context modeling framework that explicitly captures user preference evolution throughout multi-turn interactions. DREAMS introduces two specialized node types to support the two fundamental objectives of CRSs: preference elicitation and preference exploitation. Specifically, elicitation nodes leverage Monte Carlo Tree Search (MCTS) to strategically explore conversational actions and infer latent user preferences, while exploitation nodes employ LLM-based refinement to transform the tracked preference state into structured retrieval queries for recommendation. Extensive experiments on benchmark datasets demonstrate the effectiveness of DREAMS and its design.",
@@ -29186,7 +29227,10 @@
       "citation_count": 0,
       "research_details": {},
       "display_affiliations": [
-        "Unknown affiliation"
+        "Sichuan University",
+        "National University of Singapore",
+        "Singapore Management University",
+        "Engineering Research Center of Machine Learning and Industry Intelligence"
       ],
       "published_date": "2026-09-01"
     },
@@ -29520,7 +29564,10 @@
         "Mohammad Saleh Torkestani",
         "Taha Mansouri"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "University of Salford",
+        "University of Exeter"
+      ],
       "published": "2026-09-01T00:21:39Z",
       "updated": "2026-09-01T00:21:39Z",
       "abstract": "Artificial intelligence systems increasingly enact market-facing promises through chatbots, recommendation systems, automated decisions, and generative interfaces. Their failures, misuse, and misrepresentation raise a question that conventional brand-crisis models do not fully specify: how do stakeholders assign responsibility when technical causation, customer-facing control, and governance duties are distributed across an AI system, developer, deployer, vendor, and user? This conceptual paper develops a sociotechnical process theory from a structured, federated scoping synthesis of verified academic and primary sources. It distinguishes an AI/algorithmic incident from an AI-related organisational crisis and, in turn, from an AI-related organisational scandal. The framework proposes that incident configuration shapes actor-specific attribution; attribution informs capability, integrity, fairness, and relationship appraisals; and public moralisation may, but need not, escalate an incident into scandal. The theory offers a reconciliation of findings that algorithm involvement can buffer negative brand reactions in some settings while robot and chatbot failures can redirect responsibility to an associated firm in others. It introduces accountable transparency as a proposed response configuration that combines timely notice, an intelligible account, role-responsibility acknowledgement, remedy, evidence of correction, and recourse. The evidence supports conditional, proximal inferences about blame, trust, satisfaction, firm evaluation, and communication credibility more strongly than claims about durable reputation, brand equity, or market performance.",
@@ -29589,7 +29636,8 @@
       "citation_count": 0,
       "research_details": {},
       "display_affiliations": [
-        "Unknown affiliation"
+        "University of Salford",
+        "University of Exeter"
       ],
       "published_date": "2026-09-01"
     },
@@ -30240,7 +30288,10 @@
         "Rajshekhar Sunderraman",
         "Yi Ding"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "Georgia State University",
+        "University of Tennessee, Knoxville"
+      ],
       "published": "2026-08-31T18:49:14Z",
       "updated": "2026-08-31T18:49:14Z",
       "abstract": "Large Language Models (LLMs) are increasingly used as conversational search engines for academic literature, yet whether they judge papers on content or on authority signals has not been tested causally. We investigate authority bias: systematic preference for papers based on author prestige, venue, and citations rather than content. Holding title and abstract constant, we vary authority metadata across three counterfactual conditions (original, flipped, boosted) over eight LLMs (five open-weight and three frontier closed-weight) in an in-context, single-turn, top-1 recommendation setting. Our experiments show that authority bias is substantial and directional, varies markedly across models, and is only partially addressable through prompt-level debiasing. We further document a say-do gap: debiasing instructions suppress authority mentions far faster than authority-driven flips, so surface auditing systematically underestimates behavioral bias.",
@@ -30311,7 +30362,8 @@
       "citation_count": 0,
       "research_details": {},
       "display_affiliations": [
-        "Unknown affiliation"
+        "Georgia State University",
+        "University of Tennessee, Knoxville"
       ],
       "published_date": "2026-08-31"
     },
@@ -30538,7 +30590,9 @@
         "Zihan Liang",
         "Ruoxuan Xiong"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "Emory University"
+      ],
       "published": "2026-08-31T18:00:49Z",
       "updated": "2026-08-31T18:00:49Z",
       "abstract": "Two-sided digital platforms are inherently dynamic: user preferences shift, item popularity evolves, and reviews both reflect and drive these changes. Yet most sequential recommendation systems treat reviews as passive signals for updating user states, leaving two aspects underexplored. First, review generation is nonrandom, depending on evolving latent states of both users and items. Second, reviews can reshape item states, induce spillover across related items, and influence future user decisions. To address these gaps, we propose a two-sided state-space model (TS-SSM) for event-conditioned sequential recommendation. TS-SSM consists of three components: (1) a modality-missing-not-at-random fusion module that encodes review content and informative observation patterns; (2) user-state evolution with temporal variation and local graph message passing that uses related item states to refine user preferences; and (3) item-state evolution with asymmetric carryover of positive and negative review feedback. In experiments across six Amazon categories, TS-SSM increases Recall@20 over BSARec by 14.8%--18.8% and exceeds HM4SR by 11.7% on average. On Goodreads Fantasy, Recall@20 improves HM4SR from .5191 to .5847. Ablations highlight distinct contributions of observation patterns, local propagation, and item dynamics.",
@@ -30613,7 +30667,7 @@
       "citation_count": 0,
       "research_details": {},
       "display_affiliations": [
-        "Unknown affiliation"
+        "Emory University"
       ],
       "published_date": "2026-08-31"
     },
@@ -31883,7 +31937,9 @@
         "Jin Zhang",
         "Zhuojun Wang"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "Alibaba Group"
+      ],
       "published": "2026-08-31T11:18:52Z",
       "updated": "2026-08-31T11:18:52Z",
       "abstract": "With the development of large language models (LLMs), generative retrieval is becoming increasingly important in e-commerce scenarios. Current mainstream approaches typically use a two-stage training strategy: first train a product embedding model, and then learn a codebook that maps embeddings to product IDs. This cascaded approach suffers from two major issues: (1) error accumulation-if the embedding model in the first stage produces biased representations, the codebook in the second stage cannot correct these errors, degrading final retrieval performance; and (2) codebook learning relies solely on product embeddings and lacks modeling of query-to-product and product-to-product interactions. As a result, products belonging to the same cluster may be assigned inconsistent IDs by the codebook, further hurting retrieval accuracy. To address these problems, we propose a novel method that jointly trains the embedding model and the codebook, and incorporates same product cluster information as an additional supervision signal. Experimental results demonstrate that our method significantly improves e-commerce retrieval performance while simultaneously enhancing both embedding and codebook learning.",
@@ -31959,7 +32015,7 @@
       "citation_count": 0,
       "research_details": {},
       "display_affiliations": [
-        "Unknown affiliation"
+        "Alibaba Group"
       ],
       "published_date": "2026-08-31"
     },
@@ -44286,7 +44342,10 @@
         "Shoko Wakamiya",
         "Eiji Aramaki"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "Nara Institute of Science and Technology",
+        "Kyushu University"
+      ],
       "published": "2026-08-25T10:19:41Z",
       "updated": "2026-08-25T10:19:41Z",
       "abstract": "Recent advances in LLM-enhanced recommendation commonly align semantic representations with collaborative embeddings in a shared space, yet how alignment affects LLM-encoded information remains unclear. In this work, we revisit LLM-enhanced recommendation from a spectral perspective and show that collaborative and semantic signals benefit from different spectral parts. While collaborative representations are dominated by smooth low-frequency components due to user-item homophily, semantic embeddings contain useful non-principal singular components. Through component-wise evaluation and training-dynamics analysis, we find that alignment increasingly concentrates learned representations in dominant collaborative and principal semantic subspaces, reducing overlap with non-principal semantic components. Controlled comparisons show that non-principal components provide inconsistent gains under alignment but consistently improve performance through component-level decoupling, while full prediction-level decoupling achieves the best overall performance. These results indicate that alignment fails to effectively exploit complementary non-principal semantic information. Motivated by these findings, we propose UniSpecRec (Unifying Spectral Signals for Recommendation), which applies signal-specific spectral filtering while preserving collaborative and semantic representations in their respective spaces. UniSpecRec combines their predictions without cross-space alignment or additional trainable parameters. Extensive experiments demonstrate its effectiveness, efficiency, and generalizability.",
@@ -44360,7 +44419,8 @@
       "citation_count": 0,
       "research_details": {},
       "display_affiliations": [
-        "Unknown affiliation"
+        "Nara Institute of Science and Technology",
+        "Kyushu University"
       ],
       "published_date": "2026-08-25"
     },
@@ -46010,7 +46070,10 @@
         "Fengyun Rao",
         "Jing Lyu"
       ],
-      "affiliations": [],
+      "affiliations": [
+        "Tencent Inc",
+        "Tencent (China)"
+      ],
       "published": "2026-08-25T04:23:03Z",
       "updated": "2026-08-25T04:23:03Z",
       "abstract": "Universal multimodal embeddings are becoming a core component of modern AI systems, enabling heterogeneous content to be represented in a shared space for applications such as retrieval, recommendation, classification, and agentic systems. In this report, we present WeMM-Embedding, a family of universal multimodal embedding models supporting text, images, videos, visual documents, and arbitrarily interleaved multimodal inputs with flexible output dimensions. The family comprises 2B, 4B, and 9B variants and is trained in two stages: a large-scale multimodal alignment stage, followed by a refinement stage using curated data, fine-grained relevance supervision, and cross-scale knowledge transfer. Across extensive evaluations, WeMM-Embedding achieves leading performance on multiple public benchmarks. Notably, the 2B variant already surpasses the previously leading 8B open-source baseline on MMEB-v2, while the 9B variant further achieves a new state-of-the-art overall score of 80.6. WeMM-Embedding also demonstrates strong practical performance across WeChat applications, with substantial gains on a 26-task in-house benchmark and consistent improvements across 14 online A/B tests. It has been deployed at scale across recommendation and search applications, including WeChat Channels, Official Accounts, Moments, and e-commerce services. We have released the model weights and code to facilitate future research at https://github.com/Tencent/WeMM-Embedding.",
@@ -46087,7 +46150,8 @@
       "citation_count": 0,
       "research_details": {},
       "display_affiliations": [
-        "Unknown affiliation"
+        "Tencent Inc",
+        "Tencent (China)"
       ],
       "published_date": "2026-08-25"
     },
@@ -59866,7 +59930,7 @@
       ],
       "practical_value": "为研究者和从业者提供扩散模型推荐系统的系统梳理与研究方向指引。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "aa130b820b0be378",
       "tags": [
         "General Rec"
@@ -59953,7 +60017,7 @@
       ],
       "practical_value": "该方法为语义ID生成式推荐在处理困难训练实例时提供了有效的后训练优化策略，能够显著提升模型在实际生成推荐中的性能。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "5dc5fc63b2fe6145",
       "tags": [
         "Semantic ID",
@@ -60064,7 +60128,7 @@
       ],
       "practical_value": "Sona 证明了单个联合训练模型可以替代成熟的多阶段推荐级联，并在真实业务中显著提升关键指标，为工业界推荐系统架构简化提供了实践范例。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "25df4214934354ca",
       "tags": [
         "Generative Rec",
@@ -60152,7 +60216,7 @@
       ],
       "practical_value": "FedCGR为隐私敏感的多平台推荐场景提供了一种可行的联邦跨域生成式方案，无需共享用户交互数据即可实现跨域知识迁移。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "4a9a6af198295bea",
       "tags": [
         "Generative Rec",
@@ -60240,7 +60304,7 @@
       ],
       "practical_value": "该模型已在生产环境验证，能直接提升多任务推荐系统的点击率，对工业界多任务生成式推荐具有重要参考价值。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "68268f42b321c41c",
       "tags": [
         "Generative Rec",
@@ -60331,7 +60395,7 @@
       ],
       "practical_value": "PushDualGen为工业级生成式推荐系统提供了一种高效且可解释的轻量级方案，可直接应用于大规模推送推荐场景。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "acf31e4712c53955",
       "tags": [
         "Generative Rec",
@@ -60422,7 +60486,7 @@
       ],
       "practical_value": "为模态不完整场景下的生成式推荐提供了统一且高效的解决方案，具有实际部署潜力。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "18b622f8d7c7d98e",
       "tags": [
         "Generative Rec",
@@ -60512,7 +60576,7 @@
       ],
       "practical_value": "SmartGR为生成式推荐模型的部署提供了一种有效的知识蒸馏方案，在保持较高准确率的同时显著降低推理延迟。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "7eb83e6d256e8f6e",
       "tags": [
         "Generative Rec",
@@ -60606,7 +60670,7 @@
       ],
       "practical_value": "该方法将LLM的推理能力离线蒸馏到轻量级模型，在保持高性能的同时实现低延迟在线推理，适合工业级推荐系统部署。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "3cf2120fda4ed49e",
       "tags": [
         "LLM4Rec",
@@ -60704,7 +60768,7 @@
       ],
       "practical_value": "为工业推荐系统提供了一种可控制的多目标生成式检索方案，在保持统一建模的同时支持目标级配额控制和互补候选生成，并已在生产环境验证效果。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "6db87b57d77195f4",
       "tags": [
         "Generative Retrieval",
@@ -60791,7 +60855,7 @@
       ],
       "practical_value": "对需要低延迟、高吞吐的工业级推荐重排序系统，通过将物品空间生成高效映射到对偶空间，实现显著效率提升和线上指标改善。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "9f75f32d3eb736ac",
       "tags": [
         "Generative Rec",
@@ -60879,7 +60943,7 @@
       ],
       "practical_value": "ClockRoPE为序列推荐提供了一种有效的时间周期性建模方法，可提升生成式检索中的用户参与度。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "48d9afeed8cf7d00",
       "tags": [
         "Sequential Rec",
@@ -60973,7 +61037,7 @@
       ],
       "practical_value": "该方法允许在训练阶段利用用户信号优化物品描述生成，而在推理阶段保持内容专属和可缓存，适合大规模推荐系统的部署。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "1ad5fd0afae6c844",
       "tags": [
         "LLM4Rec",
@@ -61077,7 +61141,7 @@
       ],
       "practical_value": "为工业级推荐系统提供了一种兼具高效性与竞争力的检索方案，在显著降低计算开销的同时保持了高质量检索性能。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "582b4a6a3578bf19",
       "tags": [
         "LLM4Rec",
@@ -61168,7 +61232,7 @@
       ],
       "practical_value": "为工业级生成式推荐提供在不增加序列长度的情况下建模异构行为属性的方法，可提升用户历史表示的上下文相关性。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "148da26cc29d0398",
       "tags": [
         "Generative Rec",
@@ -61253,7 +61317,7 @@
       ],
       "practical_value": "Grevo为生成式推荐提供了一种更简洁稳定的索引构建方法，可降低工程复杂度并提升离线性能，具有实际部署潜力。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "5c49af6e7932c6b8",
       "tags": [
         "Generative Rec",
@@ -61342,7 +61406,7 @@
       ],
       "practical_value": "VaLiDRec通过高效的可变长度LLM对齐语义ID和并行预测，为实际推荐系统提供了高精度且低延迟的生成式推荐方案。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "59ac3f77966d884b",
       "tags": [
         "LLM4Rec",
@@ -61432,7 +61496,7 @@
       ],
       "practical_value": "为工业推荐系统提供了一种节省计算资源、减少信息损失的统一模型架构，可同时服务召回和排序阶段。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "2df214715f232a22",
       "tags": [
         "Generative Rec",
@@ -61526,7 +61590,7 @@
       ],
       "practical_value": "为生成式推荐提供一种结构锚定的推理机制，在用户意图模糊时通过可解释的SID路由提升推荐效果。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "dafda140c50c32eb",
       "tags": [
         "Generative Rec",
@@ -61616,7 +61680,7 @@
       ],
       "practical_value": "为工业级生成式推荐系统提供了将多行为信号有效融入单一模型并安全部署的可行方案，显著提升电商转化指标。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "78a15244c85b7f75",
       "tags": [
         "Generative Rec",
@@ -61701,7 +61765,7 @@
       ],
       "practical_value": "为工业推荐系统提供了一种低开销、可流式更新的去偏方案，能够在保持线上准确性的同时缓解信息茧房问题。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "666b29eea0a9fe11",
       "tags": [
         "Online Eval"
@@ -61788,7 +61852,7 @@
       ],
       "practical_value": "通过离散语义ID大幅降低推荐系统的内存和I/O开销，适合大规模生产环境的高效部署。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "1acf22a643bb9f0b",
       "tags": [
         "Semantic ID",
@@ -61878,7 +61942,7 @@
       ],
       "practical_value": "BARGE在工业级推荐平台上取得了显著在线收益，可实际部署用于大规模推荐系统，改善用户参与度和内容消费。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "80b61e617bcca8eb",
       "tags": [
         "Generative Rec",
@@ -61974,7 +62038,7 @@
       ],
       "practical_value": "为工业级电商搜索提供了一种兼顾业务价值与生成式检索效率的解决方案，可直接用于生产环境提升关键业务指标。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "79ffcee2f70fdfad",
       "tags": [
         "Generative Retrieval",
@@ -62073,7 +62137,7 @@
       ],
       "practical_value": "为电商平台提供了可直接部署的原生多模态搜索基础模型，显著提升业务指标。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "c1f91813689a30e4",
       "tags": [
         "LLM4Rec",
@@ -62175,7 +62239,7 @@
       ],
       "practical_value": "该工作展示了在真实工业级推荐系统中融合LLM与语义ID的有效路径，显著提升业务指标并降低资源消耗，对大规模推荐部署有重要参考价值。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "64b4021da0cb623d",
       "tags": [
         "LLM4Rec",
@@ -62260,7 +62324,7 @@
       ],
       "practical_value": "为LLM推荐系统提供了一种在推理时降低计算成本并优化列表级指标的对齐方法，具有实际部署潜力。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "190fe4bc37acc6e2",
       "tags": [
         "LLM4Rec",
@@ -62357,7 +62421,7 @@
       ],
       "practical_value": "为构建更有效的生成式推荐系统提供了联合优化分词与生成的新思路，有望在不增加计算成本的前提下提升推荐质量。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "ba3c3d7886fdabff",
       "tags": [
         "Generative Rec",
@@ -62449,7 +62513,7 @@
       ],
       "practical_value": "可能通过更有效的负样本挖掘提升序列推荐模型的训练效果和推荐质量",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "8bdd736afd180d9c",
       "tags": [
         "Sequential Rec"
@@ -62546,7 +62610,7 @@
       ],
       "practical_value": "为生成式推荐提供了一种端到端优化语义ID的方法，有望缓解索引与推荐目标不一致的问题，提高推荐性能。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "b0eb2506dd7600a6",
       "tags": [
         "Semantic ID",
@@ -62646,7 +62710,7 @@
       ],
       "practical_value": "为生成式推荐中物品标记的动态适应提供潜在解决方案，但缺乏实证支撑。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "1a395995e04d06c4",
       "tags": [
         "Generative Rec",
@@ -62740,7 +62804,7 @@
       ],
       "practical_value": "为工业级LLM增强序列推荐提供了一种保留完整语义信息的嵌入注入方法，有望提升推荐准确性。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "1414d82f8f0c9fc0",
       "tags": [
         "LLM4Rec",
@@ -62838,7 +62902,7 @@
       ],
       "practical_value": "NONTP在工业级多域推荐场景中显著提升效果且推理零开销，具有直接落地价值。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "5f72b1516502d7c8",
       "tags": [
         "Generative Rec",
@@ -62930,7 +62994,7 @@
       ],
       "practical_value": "CRID提供了一种与业务目标对齐的DocID设计方法，可提高生成式检索在工业级大规模语料上的性能并支持增量更新。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "2e4d6649d08b82cb",
       "tags": [
         "Generative Retrieval",
@@ -63022,7 +63086,7 @@
       ],
       "practical_value": "为工业推荐系统从检索转向主动决策提供了理论框架和未来演进方向。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "5b50bbf1d4df377c",
       "tags": [
         "Semantic ID",
@@ -63104,7 +63168,7 @@
       ],
       "practical_value": "PerfRec通过流匹配和优势条件蒸馏，在保持多模态偏好表达能力的同时实现单步高效推理，有望在真实推荐系统中平衡效果与延迟。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "f08a135613678466",
       "tags": [
         "Generative Rec",
@@ -63196,7 +63260,7 @@
       ],
       "practical_value": "该分叉推理范式有潜力在提升推荐准确性的同时增强多样性，对实际推荐系统具有应用价值。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "2d1a8b48d671e346",
       "tags": [
         "LLM4Rec",
@@ -63287,7 +63351,7 @@
       ],
       "practical_value": "该方法能有效融合多模态信息和用户行为，提升推荐准确性，对多模态推荐系统的实际应用有重要价值。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "63c90ad0fc1b2f17",
       "tags": [
         "LLM4Rec"
@@ -63376,7 +63440,7 @@
       ],
       "practical_value": "通过解耦用户习惯与探索意图并建模时间动态，有望提升下一篮子推荐的准确性和用户体验。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "966f5208c6cccf69",
       "tags": [
         "Sequential Rec",
@@ -63463,7 +63527,7 @@
       ],
       "practical_value": "该框架有望在工业级搜索和推荐系统中实现端到端统一，同时保持高效率和可扩展性，适合大规模在线服务。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "03c08f1ad6cd98d4",
       "tags": [
         "Generative Retrieval",
@@ -63548,7 +63612,7 @@
       ],
       "practical_value": "PIT-SUN为推荐系统中价值驱动的回归任务（如停留时间、GMV、LTV预测）提供了一种轻量级、可部署的无偏估计方案，能稳定提升预测精度和业务指标。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "7bc91022d505d9fe",
       "tags": [
         "LLM4Rec",
@@ -63638,7 +63702,7 @@
       ],
       "practical_value": "为研究者和实践者提供了智能体推荐系统的统一理解框架，有助于指导未来自主推荐智能体的设计与评估方向。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "3c65958f82294609",
       "tags": [
         "Agent4Rec",
@@ -63726,7 +63790,7 @@
       ],
       "practical_value": "UniSGR为工业级生成式推荐系统提供了统一生成与排序的解决方案，并通过STARK推理优化支持大规模部署。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "22dc1b59ea4823fd",
       "tags": [
         "Generative Retrieval",
@@ -63818,7 +63882,7 @@
       ],
       "practical_value": "为工业推送系统提供高效的异构生成式推荐方案，能够同时提升内容质量和用户体验，并已在快手验证业务价值。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "9dbdd4a90a0ee78f",
       "tags": [
         "Generative Rec",
@@ -63905,7 +63969,7 @@
       ],
       "practical_value": "为大规模推荐系统提供了一种直接优化长期用户满意度的离线强化学习方案，避免在线试错成本。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "29e0e95d822dd86e",
       "tags": [
         "Generative Rec",
@@ -63999,7 +64063,7 @@
       ],
       "practical_value": "该方法为大规模推荐系统提供了一种高效、可扩展的硬负采样方案，能显著提升检索模型性能并缓解流行度偏差。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "cfda500eeecd2d71",
       "tags": [
         "LLM4Rec",
@@ -64153,7 +64217,7 @@
       ],
       "practical_value": "为工业推荐系统的重排序阶段提供端到端LLM解决方案，在保持低延迟和高吞吐的同时显著提升排序质量。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "61c2a80f657843ef",
       "tags": [
         "LLM4Rec",
@@ -64263,7 +64327,7 @@
       ],
       "practical_value": "为代理式购物提供了一种端到端的模型原生履约方案，有望减少流程损耗并提升复杂意图的满足能力。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "2c008a9555676d2c",
       "tags": [
         "LLM4Rec",
@@ -64353,7 +64417,7 @@
       ],
       "practical_value": "POEM已在快手工业级推荐系统中部署，能有效利用排序阶段信号提升实时推荐性能，对短视频等信息流场景具有实践参考价值。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "d71df796bcdc26e0",
       "tags": [
         "Sequential Rec",
@@ -64448,7 +64512,7 @@
       ],
       "practical_value": "CMSL为大规模推荐系统提供了缓解上下文污染的有效方案，已在Meta生产环境部署，证明了其在工业级排序和检索任务中的实用价值。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "6981ce193ee4006c",
       "tags": [
         "Sequential Rec",
@@ -64582,7 +64646,7 @@
       ],
       "practical_value": "该平台为大规模电商场景提供了可扩展的商品知识基础设施，显著提升搜索、推荐和运营效率。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "0464c493fa794285",
       "tags": [
         "LLM4Rec",
@@ -64669,7 +64733,7 @@
       ],
       "practical_value": "PermR能以极低推理延迟近似求解带约束的收入最大化重排序，可直接部署于实时推荐系统，在不显著损害用户体验的前提下提升平台收入。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "f76a21982be99ddd",
       "tags": [
         "Online Eval",
@@ -64762,7 +64826,7 @@
       ],
       "practical_value": "为工业推荐系统提供了一个高效的统一缩放方案，在保持推理效率的同时提升用户参与度和观看时长，可直接应用于大规模生产环境。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "a1cfc1096345db9c",
       "tags": [
         "Online Eval"
@@ -64902,7 +64966,7 @@
       ],
       "practical_value": "AgentX 展示了自动化智能体系统在工业推荐系统中实现高效、可扩展实验迭代的潜力，有望大幅降低人工成本并加速创新周期。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "3bb008f7cf2ad4cf",
       "tags": [
         "Agent4Rec",
@@ -65000,7 +65064,7 @@
       ],
       "practical_value": "为大规模推荐系统提供了一种工业可部署的用户建模方案，通过离散与稠密表示互补提升排序性能，并降低多场景模型维护成本。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "3aca539caeac99d3",
       "tags": [
         "Semantic ID",
@@ -65088,7 +65152,7 @@
       ],
       "practical_value": "为大规模多模态推荐系统提供了一种内存高效的解决方案，使得在有限GPU内存预算下训练和部署成为可能。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "a7595f794517408e",
       "tags": [
         "Vector Quantization"
@@ -65176,7 +65240,7 @@
       ],
       "practical_value": "为工业级生成式推荐提供可扩展的用户兴趣上下文建模方案，无需人工标注兴趣，可直接部署于大规模序列推荐。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "bb2cecf8c2890bc7",
       "tags": [
         "Generative Rec",
@@ -65270,7 +65334,7 @@
       ],
       "practical_value": "Token Factory为工业级大推荐模型提供了一种高效整合传统信号的方法，在不牺牲预测质量的前提下大幅减少提示长度和计算开销，适用于延迟敏感的在线推荐系统。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "396cab009f9502db",
       "tags": [
         "LLM4Rec",
@@ -65361,7 +65425,7 @@
       ],
       "practical_value": "为工业界搜索排序系统部署序列模型提供了可复用的设计原则和工程实践。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "c89eb3d1a72aaa7b",
       "tags": [
         "Sequential Rec",
@@ -65454,7 +65518,7 @@
       ],
       "practical_value": "為十億節點規模的推薦系統提供了一個可部署的圖學習框架，顯著降低服務成本並提升檢索效果。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "dd33d5b8144e67aa",
       "tags": [
         "Generative Retrieval",
@@ -65543,7 +65607,7 @@
       ],
       "practical_value": "为生成式推荐系统的设计提供了关于信息茧房风险的见解，提示需要关注物品标记化和模型规模以缓解茧房效应。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "b219695589df621f",
       "tags": [
         "Generative Rec",
@@ -65630,7 +65694,7 @@
       ],
       "practical_value": "为大规模零工平台提供可并行化的曝光控制推荐机制，有效提升市场匹配效率和公平性，对劳动密集型平台具有直接应用价值。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "285389bb032163aa",
       "tags": [
         "Online Eval",
@@ -65719,7 +65783,7 @@
       ],
       "practical_value": "为LLM生成式推荐提供了减轻记忆效应、提升泛化能力的训练策略，有助于改善对冷门或新颖物品的推荐效果。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "00ccdd341ab9ef7f",
       "tags": [
         "LLM4Rec",
@@ -65812,7 +65876,7 @@
       ],
       "practical_value": "为工业推荐系统提供统一且可扩展的多任务排序架构，有望在真实场景中提升多目标预测效果和计算效率。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "442be5f64c1904f2",
       "tags": [
         "User Modeling",
@@ -65896,7 +65960,7 @@
       ],
       "practical_value": "为序列推荐提供了一种显式融合语义与协作信号的方法，有望缓解长尾问题并提升推荐质量。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "21f0a7b5b16ed82f",
       "tags": [
         "LLM4Rec",
@@ -65987,7 +66051,7 @@
       ],
       "practical_value": "为生成式推荐提供无需外部标注即可内生推理的方案，在稀疏场景下提升效果并保持可接受推理成本。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "12508e38c75daf00",
       "tags": [
         "Generative Rec",
@@ -66075,7 +66139,7 @@
       ],
       "practical_value": "OneBar能够实时为电商短视频用户推荐相关查询，提升搜索流量和商业指标，具有直接的生产应用价值。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "3ba2ff9c4d5cc09b",
       "tags": [
         "LLM4Rec",
@@ -66166,7 +66230,7 @@
       ],
       "practical_value": "为生成式推荐中的时序感知语义ID设计提供系统指导，有望改善真实场景下用户兴趣演变的建模能力。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "f4828332f0d32506",
       "tags": [
         "Semantic ID",
@@ -66253,7 +66317,7 @@
       ],
       "practical_value": "PauseRec为工业界提供了一种轻量级且高效的LLM生成式推荐方案，无需昂贵推理数据采集，即可获得性能提升并节省大量计算资源。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "bd7182b6710024c1",
       "tags": [
         "LLM4Rec",
@@ -66348,7 +66412,7 @@
       ],
       "practical_value": "为工业级电商检索提供首个可编辑的生成式检索方案，在保持召回质量的同时实现实时干预，支持单一模型取代多分支检索阶段。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "1fd9c3363d16a21f",
       "tags": [
         "Generative Retrieval",
@@ -66432,7 +66496,7 @@
       ],
       "practical_value": "为电商图像AI助手提供了一套可自动演化、闭环优化的生产级框架，能持续提升响应质量和用户参与，降低人工维护成本。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "f02a1556961899f4",
       "tags": [
         "LLM4Rec",
@@ -66530,7 +66594,7 @@
       ],
       "practical_value": "该框架为工业级推荐系统提供了一种低成本、可扩展的实时LLM用户理解方案，能增强推荐的语义丰富性、可解释性和探索能力，具有直接的生产部署价值。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "b36754ce9dda0a6f",
       "tags": [
         "LLM4Rec",
@@ -66623,7 +66687,7 @@
       ],
       "practical_value": "GenAIR为序列推荐提供了一种通用且有效的物品表示增强方法，可无缝集成现有模型，提升推荐性能，具有较好的实际应用潜力。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "acec62f35efb3217",
       "tags": [
         "LLM4Rec",
@@ -66703,7 +66767,7 @@
       ],
       "practical_value": "为营销归因和客户旅程优化提供了识别对话助手作为未归因获客渠道的方法与证据，可指导渠道投资和增量测量。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "b2bcfcfcc4c436d9",
       "tags": [
         "Conversational Rec",
@@ -66782,7 +66846,7 @@
       ],
       "practical_value": "为推荐系统从业者提供分词器产物的标准化检查工具，帮助在训练前发现映射缺陷，避免下游性能损失。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "72bb56e169dc8e5d",
       "tags": [
         "Semantic ID",
@@ -66870,7 +66934,7 @@
       ],
       "practical_value": "该框架为工业级跨域推荐系统提供了一种低延迟、高性能的LLM集成方案，可直接提升电商平台的转化率和GMV。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "75ba681950f575c4",
       "tags": [
         "LLM4Rec",
@@ -66956,7 +67020,7 @@
       ],
       "practical_value": "为推荐系统等场景提供了在用户偏好变化和基线约束下保持安全高效探索的算法，具有实际部署潜力。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "14483bb206303aec",
       "tags": [
         "Online Eval"
@@ -67037,7 +67101,7 @@
       ],
       "practical_value": "为电影推荐中的视觉证据选择提供可复现的基准和实证指导，帮助实践者权衡缩略图VLM的可扩展性与全片/预告片的丰富性。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "10b052624d9c093c",
       "tags": [
         "Benchmark",
@@ -67116,7 +67180,7 @@
       ],
       "practical_value": "为RAG推荐系统的安全训练副作用提供实证，提示需检测注入驱动的品牌抑制攻击，并为鲁棒性测试提供可复现基准。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "2a18af58ff9d02b9",
       "tags": [
         "LLM4Rec",
@@ -67194,7 +67258,7 @@
       ],
       "practical_value": "为尼泊尔农民提供基于本地天气和土壤数据的作物推荐及农业问答服务，有望提升作物产量和气候适应能力。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "ba3c19b98243f09e",
       "tags": [
         "RAG Rec",
@@ -67274,7 +67338,7 @@
       ],
       "practical_value": "REVEAL可作为即插即用组件增强现有多模态推荐系统，无需修改骨干架构，具有较好的实际部署潜力。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "68442632428b24bd",
       "tags": [
         "Sequential Rec",
@@ -67384,7 +67448,7 @@
       ],
       "practical_value": "为设计以人为中心的GenAI增强学术搜索系统提供了原则、方法指导与社区共识，有助于推动该领域研究与实践。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "c6166b1f05660376",
       "tags": [
         "Generative Rec",
@@ -67465,7 +67529,7 @@
       ],
       "practical_value": "为KGC模型评估提供了更全面灵活的框架，有助于在不同应用需求下选择更合适的模型。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "c4c9113b371cb5c2",
       "tags": [
         "Evaluation"
@@ -67546,7 +67610,7 @@
       ],
       "practical_value": "Gryphon 可在不损失主要用户参与度的前提下大幅简化工业推荐系统的候选生成管线，减少候选数量并移除预排序阶段，降低系统复杂度。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "0b092c071e781539",
       "tags": [
         "Generative Retrieval",
@@ -67624,7 +67688,7 @@
       ],
       "practical_value": "为关系数据库上的深度学习任务提供自动图结构适配方法，提升模型准确性并降低推理成本。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "f227e12f5b56654e",
       "tags": [
         "General Rec"
@@ -67707,7 +67771,7 @@
       ],
       "practical_value": "AdaGRPO为工业界生成式推荐系统提供了一种稳定且噪声鲁棒的RL训练方案，能有效提升在线指标并控制幻觉。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "68ae11b7ee904878",
       "tags": [
         "Generative Rec",
@@ -67792,7 +67856,7 @@
       ],
       "practical_value": "为设备端智能助手的查询推荐提供有效的偏好对齐方案，提升用户点击和工具调用体验。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "80ecd978241c01e5",
       "tags": [
         "LLM4Rec",
@@ -67870,7 +67934,7 @@
       ],
       "practical_value": "为非专业用户提供结构化、透明的机器学习问题解决指导，降低使用门槛。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "910ffc66911689f1",
       "tags": [
         "Evaluation"
@@ -67949,7 +68013,7 @@
       ],
       "practical_value": "该研究为金融交易商户信息抽取任务提供了从小模型到8B模型的部署选择指南，可在保持准确率的同时显著降低资源消耗。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "5d261e2de8963aa0",
       "tags": [
         "LLM4Rec",
@@ -68028,7 +68092,7 @@
       ],
       "practical_value": "DeRes为工业级CTR模型提供了一种低成本、高性能的残差连接改进方案，在保持计算效率的同时显著提升预测准确率，适合大规模推荐系统部署。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "63a695727e3e448e",
       "tags": [
         "User Modeling",
@@ -68102,7 +68166,7 @@
       ],
       "practical_value": "OneFeed为统一搜索与推荐提供了可扩展的生成式建模方向，有望改善冷启动和长尾场景下的候选召回与用户理解。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "b941c70039d48de8",
       "tags": [
         "Generative Rec",
@@ -68192,7 +68256,7 @@
       ],
       "practical_value": "为自然语言生成领域的研究者提供了改进人工评估报告透明度和可复现性的具体指导，有助于提升研究质量。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "4eba1bd659b9e3cd",
       "tags": [
         "Evaluation"
@@ -68276,7 +68340,7 @@
       ],
       "practical_value": "为临床LLM在非英语环境下的性能评估提供了实用的双语基准。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "6362c05b418c2214",
       "tags": [
         "Benchmark",
@@ -68365,7 +68429,7 @@
       ],
       "practical_value": "为推荐系统算法选择提供更可靠的排名方法，无需在目标数据集上运行所有模型即可预评估算法表现。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "249e7fcb51365612",
       "tags": [
         "Evaluation"
@@ -68453,7 +68517,7 @@
       ],
       "practical_value": "为科学论文推荐系统提供了一个可操作的纵向评估框架和动态适应方法，有助于设计更贴近研究人员日常阅读行为的推荐服务。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "2c70af6247615371",
       "tags": [
         "Sequential Rec",
@@ -68537,7 +68601,7 @@
       ],
       "practical_value": "为长用户历史的生成式推荐系统提供高效的双向注意力编码方案，显著降低推理延迟，适合大规模在线服务。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "9c382977bfac6be8",
       "tags": [
         "Generative Retrieval",
@@ -68625,7 +68689,7 @@
       ],
       "practical_value": "为电商搜索提供一种低延迟且高效的生成式检索方案，通过类别层级引导潜在推理缓解查询与物品 ID 的语义鸿沟。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "96d33210cf87dbe4",
       "tags": [
         "Generative Retrieval",
@@ -68707,7 +68771,7 @@
       ],
       "practical_value": "为需要人工筛选文档以支持决策的任务（如专利审查、系统综述）提供一种更合理的停止策略，能够权衡检查成本与决策收益，提高资源利用效率。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "2b367397fe5fb136",
       "tags": [
         "Evaluation"
@@ -68785,7 +68849,7 @@
       ],
       "practical_value": "该研究为过滤式特征选择方法的评估提供了改进建议，有助于减少评估偏差，提高新方法验证的可靠性。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "bfa6b8a52063085d",
       "tags": [
         "Evaluation"
@@ -68866,7 +68930,7 @@
       ],
       "practical_value": "SSRLive已在工业级直播平台部署并带来显著业务指标提升，证明动态语义ID与交互信号融合对大规模直播推荐具有实际价值。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "0e900f067c18986e",
       "tags": [
         "Semantic ID",
@@ -68948,7 +69012,7 @@
       ],
       "practical_value": "为生成式推荐中的冷启动问题提供了新思路，通过动态细化语义ID分配提升冷启动物品推荐效果。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "e61a6fcfafe4cc90",
       "tags": [
         "Semantic ID",
@@ -69038,7 +69102,7 @@
       ],
       "practical_value": "TRACER为生成式推荐系统提供了一种实用的概念遗忘方法，有助于满足隐私和安全要求，同时保持推荐质量。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "5c416733b117387b",
       "tags": [
         "Generative Rec",
@@ -69123,7 +69187,7 @@
       ],
       "practical_value": "为多垂直电商平台的冷启动推荐提供了一种可落地的LLM特征工程方案，有效利用跨域行为数据提升新兴垂直领域的推荐效果。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "da21eb6fc26a5451",
       "tags": [
         "LLM4Rec",
@@ -69208,7 +69272,7 @@
       ],
       "practical_value": "该方法已经在Tubi生产推荐系统中部署，能够为冷启动内容即时生成嵌入，提升冷内容曝光和用户参与度，对工业界流媒体平台具有直接应用价值。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "2eab9dd42b35c6a2",
       "tags": [
         "Online Eval"
@@ -69286,7 +69350,7 @@
       ],
       "practical_value": "为SEO实践者提供了一个开源、可复现的内部链接评估工具，支持在部署前比较候选链接策略的权威与语义权衡，并结合人工审查提高可行性。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "5422e56d354af59a",
       "tags": [
         "General Rec"
@@ -69366,7 +69430,7 @@
       ],
       "practical_value": "ANCHOR通过监督式去噪提升了推荐模型的训练数据质量，在无需昂贵外部信息的情况下提高推荐性能。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "386309e0453b8120",
       "tags": [
         "Agent4Rec",
@@ -69449,7 +69513,7 @@
       ],
       "practical_value": "PHKT为多行为序列推荐提供了更精细的异构行为建模思路，有助于提升电商等平台对用户购买转化的预测能力。",
       "analysis_basis": "full_text",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "b8f49c14504a2f0a",
       "tags": [
         "Sequential Rec",
@@ -69534,7 +69598,7 @@
       ],
       "practical_value": "为隐私敏感的POI推荐场景提供了结合LLM偏好建模与隐私保护的实用方案。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "b3dcfe57dbe68955",
       "tags": [
         "LLM4Rec",
@@ -69632,7 +69696,7 @@
       ],
       "practical_value": "为研究者提供了生成式推荐系统的全面分类、评估建议和伦理考量，有助于指导后续研究和系统设计。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "ca3ef0fd3a6ffa5b",
       "tags": [
         "Generative Rec",
@@ -69718,7 +69782,7 @@
       ],
       "practical_value": "StabCF通过稳定训练过程改善协同过滤的收敛性和性能，对提升推荐系统鲁棒性具有实用价值。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "89974c00872debbd",
       "tags": [
         "General Rec"
@@ -69802,7 +69866,7 @@
       ],
       "practical_value": "为社交推荐系统提供可解释的协同效应分析，帮助用户理解多网络信息如何影响推荐结果，增强信任。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "1f11eb35abb1f9bc",
       "tags": [
         "User Modeling"
@@ -69886,7 +69950,7 @@
       ],
       "practical_value": "为推荐系统在隐私敏感场景下提供了一种兼顾性能与隐私的强化学习解决方案。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "344adefda5b7b2b2",
       "tags": [
         "Generative Rec",
@@ -69980,7 +70044,7 @@
       ],
       "practical_value": "该框架为跨域推荐提供了一种灵活的知识迁移方式，能够在数据稀疏场景下提升推荐性能，具有实际应用潜力。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "609b664ae4fa4cf7",
       "tags": [
         "User Modeling"
@@ -70074,7 +70138,7 @@
       ],
       "practical_value": "为LLM推荐系统提供了一种可扩展的持续适应机制，能够在不干扰全局模型的情况下高效处理用户偏好漂移。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "bf3f6582f5fc2a31",
       "tags": [
         "LLM4Rec",
@@ -70165,7 +70229,7 @@
       ],
       "practical_value": "为对话式搜索系统提供潜在的去噪和可解释性增强。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "b294d5bb965ad8d3",
       "tags": [
         "Conversational Rec",
@@ -70261,7 +70325,7 @@
       ],
       "practical_value": "ThinkRec为LLM推荐系统引入显式推理链，可提升推荐的可解释性和准确性，有助于实际场景中的语义感知与个性化推荐。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "9bc624afad7d9819",
       "tags": [
         "LLM4Rec",
@@ -70359,7 +70423,7 @@
       ],
       "practical_value": "为分布式环境中跨域序列推荐提供可验证且可解释的联邦学习方案，有助于在隐私约束下提升推荐性能并检测负迁移。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "ffe0298af9da1ad6",
       "tags": [
         "Sequential Rec"
@@ -70453,7 +70517,7 @@
       ],
       "practical_value": "该框架能有效处理多模态推荐中的模态不平衡与动态兴趣建模问题，有助于提升实际推荐系统的性能与鲁棒性。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "3b798a02899be646",
       "tags": [
         "Sequential Rec",
@@ -70531,7 +70595,7 @@
       ],
       "practical_value": "通过生成符合用户意图层次的数据增强提升稀疏场景下的序列推荐效果，有助于改善冷启动用户体验。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "6824e7917e2e044a",
       "tags": [
         "Sequential Rec",
@@ -70616,7 +70680,7 @@
       ],
       "practical_value": "该模型通过模态解缠与层次融合提升了多模态推荐的性能，对工业界处理多模态数据具有参考价值。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "e3d295e5d5013562",
       "tags": [
         "Generative Rec"
@@ -70692,7 +70756,7 @@
       ],
       "practical_value": "为隐私保护的个性化推荐提供了一种可解释且有效的联邦学习方案。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "54f56c74ca083058",
       "tags": [
         "User Modeling",
@@ -70770,7 +70834,7 @@
       ],
       "practical_value": "为地理感知对话推荐提供了无需微调LLM的轻量级框架，适合集成到现有对话系统中。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "16a09353d032c81c",
       "tags": [
         "Conversational Rec",
@@ -70866,7 +70930,7 @@
       ],
       "practical_value": "为序列推荐提供了结合双曲几何和动态专家选择的新思路，有潜力提升推荐性能。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "4d0e16bccc227157",
       "tags": [
         "Sequential Rec",
@@ -70951,7 +71015,7 @@
       ],
       "practical_value": "为多源多场景推荐提供了一个统一框架，可有效捕获跨源共享信号和场景动态。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "2665e5b9d5e63f82",
       "tags": [
         "User Modeling",
@@ -71028,7 +71092,7 @@
       ],
       "practical_value": "通过语义增强缓解数据稀疏和长尾问题，有望提升序列推荐模型的性能与泛化能力。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "6dcc7fdf21466e02",
       "tags": [
         "LLM4Rec",
@@ -71111,7 +71175,7 @@
       ],
       "practical_value": "为POI推荐提供了一种融合知识图谱与元学习的个性化建模方案，有望提升位置服务的推荐准确性和用户满意度。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "1b36dbe387c2124d",
       "tags": [
         "User Modeling",
@@ -71189,7 +71253,7 @@
       ],
       "practical_value": "提供了一种结合LLM推理能力与协同过滤信号的方法，可提升推荐系统的性能和可解释性。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "2105fb49cab76468",
       "tags": [
         "LLM4Rec",
@@ -71274,7 +71338,7 @@
       ],
       "practical_value": "为LLM推荐系统的安全部署提供防御框架，增强对恶意攻击的鲁棒性。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "d2fcf5d87107b902",
       "tags": [
         "LLM4Rec",
@@ -71356,7 +71420,7 @@
       ],
       "practical_value": "AFIM有望改善应用推荐系统在用户冷启动场景下的推荐质量，尤其适用于用户交互稀疏的工业场景。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "17b43395f104c15b",
       "tags": [
         "User Modeling"
@@ -71431,7 +71495,7 @@
       ],
       "practical_value": "为冷启动序列推荐提供即插即用的偏好生成方案，便于与现有模型结合，降低部署成本。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "05f9a1edb92b9995",
       "tags": [
         "Sequential Rec",
@@ -71512,7 +71576,7 @@
       ],
       "practical_value": "该方法有望提升序列推荐系统在噪声数据和不确定性下的个性化推荐性能，适用于电商等场景。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "e04bc9f0731ca68f",
       "tags": [
         "Generative Rec",
@@ -71596,7 +71660,7 @@
       ],
       "practical_value": "为学术界与工业界搭建交流平台，推动生成式AI在推荐系统中的应用落地。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "390679401792a476",
       "tags": [
         "LLM4Rec",
@@ -71690,7 +71754,7 @@
       ],
       "practical_value": "为多场景多任务推荐提供轻量级方案，降低模型复杂度与噪声，适合工业部署。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "a981f7f3887ba5ab",
       "tags": [
         "Online Eval"
@@ -71784,7 +71848,7 @@
       ],
       "practical_value": "为推荐系统提供可扩展的语义ID生成方案，适用于生成式检索和排序，能改善长尾物品推荐。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "ba0a2c7043ba4a90",
       "tags": [
         "Semantic ID",
@@ -71878,7 +71942,7 @@
       ],
       "practical_value": "提醒工业界和学术界警惕扩散模型在推荐系统中的实际效果，并强调严格实验设计和基线对比的重要性。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "9b0e9a8e6079be30",
       "tags": [
         "Evaluation",
@@ -71959,7 +72023,7 @@
       ],
       "practical_value": "为数字营销领域的从业者提供了大数据与AI应用于消费者行为分析的全面框架和未来研究方向。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "82a317819a23e37f",
       "tags": [
         "General Rec"
@@ -72039,7 +72103,7 @@
       ],
       "practical_value": "为智能健身和健康管理领域提供结合专家知识图谱和LLM的个性化推荐新方法，有望提高推荐的科学性和用户满意度。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "61b546f3b4072fc8",
       "tags": [
         "LLM4Rec",
@@ -72121,7 +72185,7 @@
       ],
       "practical_value": "为研究者提供多行为序列推荐领域的全景视图，有助于把握研究方向。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "f7938a023ec2e137",
       "tags": [
         "Sequential Rec"
@@ -72202,7 +72266,7 @@
       ],
       "practical_value": "为推荐系统在动态环境中的公平性评估提供了框架和见解，有助于设计更公平的算法以缓解反馈循环中的偏见放大。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "7d2c610bdc5ddcbb",
       "tags": [
         "Evaluation"
@@ -72278,7 +72342,7 @@
       ],
       "practical_value": "为无法共享原始数据的跨域推荐场景提供了可扩展的模型合并方案，有望构建通用推荐系统。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "98b60ef4112eb331",
       "tags": [
         "Sequential Rec",
@@ -72358,7 +72422,7 @@
       ],
       "practical_value": "为推荐系统提供了一种利用LLM统一物品语义表示的新思路，有助于提升跨域检索与推荐的泛化能力。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "008f06dc68dc4281",
       "tags": [
         "LLM4Rec",
@@ -72441,7 +72505,7 @@
       ],
       "practical_value": "为推荐系统实践者选择合适的数据增强方法提供系统指导和依据。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "1717690f33eeb02f",
       "tags": [
         "Sequential Rec"
@@ -72520,7 +72584,7 @@
       ],
       "practical_value": "若方法有效，可为信息扩散预测提供更丰富的语义表示，提升预测准确性。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "a51ac54d7fb2354e",
       "tags": [
         "LLM4Rec",
@@ -72607,7 +72671,7 @@
       ],
       "practical_value": "提醒从业者谨慎对待强化学习在序列推荐中的性能声明，并强调监督学习基线的调优重要性。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "bf480337c7067614",
       "tags": [
         "Sequential Rec",
@@ -72692,7 +72756,7 @@
       ],
       "practical_value": "为推荐系统等交互式AI系统的研究者提供用户模拟的理论基础和实用工具，降低评估与训练成本。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "b5cc476b44c4d97e",
       "tags": [
         "User Modeling",
@@ -72732,6 +72796,124 @@
         "University of Illinois Urbana-Champaign"
       ],
       "published_date": "2025-07-13"
+    },
+    {
+      "id": "openalex:W4411063470",
+      "title": "RLHF Deciphered: A Critical Analysis of Reinforcement Learning from Human Feedback for LLMs",
+      "authors": [
+        "Shreyas Chaudhari",
+        "Pranjal Aggarwal",
+        "Vishvak Murahari",
+        "Tanmay Rajpurohit",
+        "Ashwin Kalyan",
+        "Karthik Narasimhan",
+        "Ameet Deshpande",
+        "Bruno Castro da Silva"
+      ],
+      "affiliations": [
+        "University of Massachusetts Amherst",
+        "Carnegie Mellon University",
+        "Princeton University",
+        "Independent Researcher",
+        "Seattle University"
+      ],
+      "published": "2025-06-05",
+      "updated": "2026-09-24T07:57:37.273135",
+      "abstract": "A significant challenge in training large language models (LLMs) as effective assistants is aligning them with human preferences. Reinforcement learning from human feedback (RLHF) has emerged as a promising solution. However, our understanding of RLHF is often limited to initial design choices. This article analyzes RLHF through reinforcement learning principles, focusing on the reward model. It examines modeling choices and function approximation caveats, highlighting assumptions about reward expressivity and revealing limitations like incorrect generalization, model misspecification, and sparse feedback. A categorical review of current literature provides insights for researchers to understand the challenges of RLHF and build upon existing methods.",
+      "categories": [
+        "OpenAlex",
+        "NAACL"
+      ],
+      "primary_category": "NAACL",
+      "abs_url": "https://doi.org/10.1145/3743127",
+      "pdf_url": "https://dl.acm.org/doi/pdf/10.1145/3743127",
+      "doi": "10.1145/3743127",
+      "source": "OpenAlex",
+      "status": "conference",
+      "venue": "ACM Computing Surveys",
+      "venue_key": "NAACL",
+      "generated_summary": "本文从强化学习原理出发，深入分析RLHF中的奖励模型，揭示其建模选择与函数逼近中的假设及局限。通过对现有文献的分类综述，指出错误泛化、模型误设和反馈稀疏等挑战，为研究者理解和改进RLHF提供参考。",
+      "core_method": "对RLHF文献进行结构化批判性分析，重点关注奖励模型的设计选择与函数逼近问题，并从强化学习理论视角进行审视。",
+      "innovation_points": [
+        "从强化学习原理系统解构RLHF，特别是奖励模型假设与局限。",
+        "揭示奖励模型可能存在的错误泛化、模型误设与稀疏反馈问题。",
+        "提供结构化文献分类，帮助研究者理解RLHF挑战并改进方法。"
+      ],
+      "experiment_results": [
+        "无实验数据，本文为综述性分析。"
+      ],
+      "ab_test": "unknown",
+      "ab_test_evidence": "",
+      "limitations": [
+        "本文为综述性文章，未提出新的算法或实验；结论基于现有文献分析，可能受文献选择偏差影响。"
+      ],
+      "practical_value": "为RLHF研究者提供理论指导和设计参考，帮助避免常见建模陷阱，并指出未来改进方向。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "f641261c9f37f100",
+      "tags": [
+        "LLM4Rec",
+        "User Modeling"
+      ],
+      "llm_score": 0,
+      "llm_score_rationale": "",
+      "preference_signals": [],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 0,
+      "tracks": [
+        "llm_systems"
+      ],
+      "primary_track": "llm_systems",
+      "topics": [
+        "llm_rl",
+        "post_training"
+      ],
+      "primary_topic": "llm_rl",
+      "track_relevance": {
+        "llm_systems": 92
+      },
+      "track_relevance_evidence": {
+        "llm_systems": "The paper's title and abstract explicitly discuss 'Reinforcement Learning from Human Feedback (RLHF)' for large language models (LLMs), analyzing it through reinforcement learning principles and reviewing current literature on RLHF for LLMs. This directly matches the llm_rl topic, which covers RLHF and related methods for LLM alignment."
+      },
+      "track_scores": {
+        "llm_systems": 75
+      },
+      "track_score_rationales": {
+        "llm_systems": "The paper is highly relevant to the LLM systems track, focusing on RLHF for LLMs. It provides a critical analysis of RLHF, discussing modeling assumptions and limitations, which is technically deep. The evidence is moderate; it is a survey/analysis rather than empirical study, but draws on extensive literature. Novelty is limited as it is a review, but offers critical insights. Reproducibility is low as it does not present new experiments but synthesizes existing work."
+      },
+      "track_score_breakdowns": {
+        "llm_systems": {
+          "relevance": 27,
+          "technical": 20,
+          "evidence": 15,
+          "novelty": 8,
+          "reproducibility": 5
+        }
+      },
+      "foundation": false,
+      "foundation_score": 0,
+      "citation_count": 70,
+      "research_details": {
+        "training_objective": "分析RLHF中奖励模型的建模选择与函数逼近问题，并讨论其强化学习理论基础。",
+        "feedback_source": "基于现有文献与理论分析，无直接人类反馈。",
+        "model_data_scale": "未提供模型或数据规模信息。",
+        "key_benchmarks": "None explicitly listed; likely varies across surveyed work",
+        "artifacts": "None reported",
+        "agent_environment": "不适用",
+        "agent_mechanism": "不适用",
+        "interaction_horizon": "不适用",
+        "agent_evaluation": "不适用"
+      },
+      "display_affiliations": [
+        "University of Massachusetts Amherst",
+        "Carnegie Mellon University",
+        "Princeton University",
+        "Independent Researcher",
+        "Seattle University"
+      ],
+      "published_date": "2025-06-05"
     },
     {
       "id": "openalex:W4411030024",
@@ -72776,7 +72958,7 @@
       ],
       "practical_value": "为研究人员和从业者提供了LLM4Rec领域的全面参考框架。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "dddb6309145611cb",
       "tags": [
         "LLM4Rec"
@@ -72857,7 +73039,7 @@
       ],
       "practical_value": "通过利用商品图像等多模态信息，该方法能更全面地捕捉用户偏好，有望提升跨域电商推荐的效果。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "05adb06ec6f0a325",
       "tags": [
         "Sequential Rec"
@@ -72939,7 +73121,7 @@
       ],
       "practical_value": "利用LLM提升推荐系统去噪能力，有望改善基于隐式反馈的推荐质量。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "0c2ff485f9996103",
       "tags": [
         "LLM4Rec"
@@ -73031,7 +73213,7 @@
       ],
       "practical_value": "为多模态推荐系统提供了一种基于MLLM的新范式，有助于利用图像等多模态信息提升推荐性能。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "f654dc5149eaef92",
       "tags": [
         "LLM4Rec",
@@ -73126,7 +73308,7 @@
       ],
       "practical_value": "提供了一种利用LLM增强序列推荐嵌入的方法，易于集成，有望改善长尾推荐。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "b3c2f93d107d962a",
       "tags": [
         "LLM4Rec",
@@ -73214,7 +73396,7 @@
       ],
       "practical_value": "为研究人员和从业者提供了推荐系统领域的全面概览，有助于理解现有方法的优缺点和未来研究方向。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "65537c5da60f4618",
       "tags": [
         "Evaluation"
@@ -73298,7 +73480,7 @@
       ],
       "practical_value": "为推荐系统提供了一种结合知识图谱和LLM的新思路，有望改善冷启动和稀疏性，提升推荐质量。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "0857b9f9372a7393",
       "tags": [
         "LLM4Rec",
@@ -73338,6 +73520,222 @@
         "University of Birmingham"
       ],
       "published_date": "2025-01-01"
+    },
+    {
+      "id": "s2:3cd973e87008ac9a2be45a16cac7c9d0c816ae10",
+      "title": "LLaMA-Berry: Pairwise Optimization for Olympiad-level Mathematical Reasoning via O1-like Monte Carlo Tree Search",
+      "authors": [],
+      "affiliations": [
+        "Google Research",
+        "Carnegie Mellon University",
+        "Allen Institute of AI"
+      ],
+      "published": "2025",
+      "updated": "2025",
+      "abstract": "This paper presents LLaMA-Berry , an advanced mathematical reasoning framework to enhance the problem-solving ability of large language models (LLMs). The framework combines Monte Carlo Tree Search with Self-Refine (SR-MCTS) to optimize the reasoning paths and utilizes a pairwise reward model to evaluate different paths globally. By leveraging the self-critique and rewriting capabilities of LLMs, our SR-MCTS overcomes the inefficiencies and limitations of conventional step-wise and greedy search algorithms, enabling a more efficient exploration of solution spaces. To guide the search process, we propose the Pairwise Preference Reward Model (PPRM), which predicts pairwise preferences between solutions through instruction-following capabilities trained by Reinforcement Learning from Human Feedback (RLHF). Finally, the Enhanced Borda Count (EBC) method is adopted to synthesize pairwise preferences into global quantile scores for evaluations. This approach mitigates the challenges of scoring variability and non-independent distributions in mathematical reasoning tasks. The framework has been tested on general and advanced benchmarks, showing superior search efficiency and performance compared to existing open-source and closed-source methods, particularly in complex Olympiad-level benchmarks, including AIME24 and AMC23.",
+      "categories": [
+        "Semantic Scholar",
+        "NAACL"
+      ],
+      "primary_category": "NAACL",
+      "abs_url": "https://www.semanticscholar.org/paper/3cd973e87008ac9a2be45a16cac7c9d0c816ae10",
+      "pdf_url": "https://aclanthology.org/2025.naacl-long.375.pdf",
+      "doi": "10.18653/v1/2025.naacl-long.375",
+      "source": "Semantic Scholar",
+      "status": "conference",
+      "venue": "North American Chapter of the Association for Computational Linguistics",
+      "venue_key": "NAACL",
+      "generated_summary": "该论文提出 LLaMA-Berry 数学推理框架，结合蒙特卡洛树搜索与自精炼（SR-MCTS）以及成对偏好奖励模型（PPRM）来提升 LLM 的数学问题求解能力。框架采用增强 Borda 计数（EBC）将成对偏好合成为全局分位数评分，以缓解评分变异和非独立分布问题。在 AIME24 和 AMC23 等奥赛级基准上，该方法搜索效率和性能优于现有开源与闭源方法。",
+      "core_method": "结合蒙特卡洛树搜索与自精炼（SR-MCTS）进行推理路径优化，利用成对偏好奖励模型（PPRM）评估路径，并通过增强 Borda 计数（EBC）合成全局分数。",
+      "innovation_points": [
+        "提出 SR-MCTS 方法，结合 MCTS 与 LLM 自精炼能力，克服传统逐步搜索和贪婪搜索的低效",
+        "设计 PPRM，通过 RLHF 训练的指令跟随能力预测解决方案间的成对偏好",
+        "引入 EBC 方法将成对偏好合成为全局分位数评分，缓解评分变异和非独立分布问题"
+      ],
+      "experiment_results": [
+        "在 AIME24 和 AMC23 等奥赛级基准上，该框架的搜索效率和性能优于现有开源与闭源方法。"
+      ],
+      "ab_test": "unknown",
+      "ab_test_evidence": "",
+      "limitations": [
+        "需要阅读全文确认实验设置、数据集和适用边界。"
+      ],
+      "practical_value": "为奥林匹克级别数学推理提供高效的搜索和评估框架，可提升 LLM 在复杂数学问题上的表现。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "f75c1dd0dadc7ea7",
+      "tags": [
+        "LLM4Rec",
+        "Evaluation",
+        "Benchmark"
+      ],
+      "llm_score": 0,
+      "llm_score_rationale": "",
+      "preference_signals": [],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 0,
+      "tracks": [
+        "llm_systems"
+      ],
+      "primary_track": "llm_systems",
+      "topics": [
+        "post_training",
+        "llm_agent"
+      ],
+      "primary_topic": "llm_agent",
+      "track_relevance": {
+        "llm_systems": 92
+      },
+      "track_relevance_evidence": {
+        "llm_systems": "Abstract: 'combines Monte Carlo Tree Search with Self-Refine (SR-MCTS) to optimize the reasoning paths', 'utilizes a pairwise reward model', 'self-critique and rewriting capabilities of LLMs', 'Reinforcement Learning from Human Feedback (RLHF)'."
+      },
+      "track_scores": {
+        "llm_systems": 90
+      },
+      "track_score_rationales": {
+        "llm_systems": "The paper directly addresses LLM systems through an agentic MCTS reasoning framework with a pairwise reward model trained via RLHF, fitting the llm_agent and post_training topics. Relevance is high (28/30) as it centers on LLM reasoning and search. Technical depth is strong (23/25) with MCTS, self-refine, and RLHF integration. Evidence is solid (18/20) with benchmark results on AIME24 and AMC23 mentioned. Novelty (13/15) is moderate: combining MCTS with self-refine and pairwise preference is a distinct contribution. Reproducibility (8/10) is partially supported by the described framework but no explicit artifacts are mentioned."
+      },
+      "track_score_breakdowns": {
+        "llm_systems": {
+          "relevance": 28,
+          "technical": 23,
+          "evidence": 18,
+          "novelty": 13,
+          "reproducibility": 8
+        }
+      },
+      "foundation": false,
+      "foundation_score": 0,
+      "citation_count": 14,
+      "research_details": {
+        "training_objective": "Pairwise preference optimization via RLHF for a reward model; Enhanced Borda Count synthesis for global scoring",
+        "feedback_source": "RLHF（人类反馈强化学习）用于训练 PPRM",
+        "key_benchmarks": [
+          "AIME24",
+          "AMC23"
+        ],
+        "agent_environment": "Mathematical problem-solving benchmarks",
+        "agent_mechanism": "蒙特卡洛树搜索结合自精炼（SR-MCTS）",
+        "interaction_horizon": "Multi-step search over reasoning paths",
+        "agent_evaluation": "Search efficiency and performance compared to open-source and closed-source methods"
+      },
+      "display_affiliations": [
+        "Google Research",
+        "Carnegie Mellon University",
+        "Allen Institute of AI"
+      ],
+      "published_date": "2025"
+    },
+    {
+      "id": "s2:88c2cf8b3ea6c6626aad8bc2b0b0c92ccfe51574",
+      "title": "Stronger Universal and Transferable Attacks by Suppressing Refusals",
+      "authors": [],
+      "affiliations": [],
+      "published": "2025",
+      "updated": "2025",
+      "abstract": "Making large language models (LLMs) safe for mass deployment is a complex and ongoing challenge. Efforts have focused on aligning models to human preferences (RLHF), essentially embedding a “safety feature” into the model’s parameters. The Greedy Coor-dinate Gradient (GCG) algorithm (Zou et al., 2023b) emerges as one of the most popular automated jailbreaks, an attack that circumvents this safety training. So far, it is believed that such optimization-based attacks (unlike hand-crafted ones) are sample-specific . To make them universal and transferable, one has to incorporate multiple samples and models into the objective function. Contrary to this belief, we find that the adversarial prompts discovered by such optimizers are inherently prompt-universal and transferable , even when optimized on a single model and a single harmful request. To further exploit this phenomenon, we introduce IRIS, a new objective to these optimizers to explicitly deactivate the safety feature to create an even stronger universal and transferable attack. Without requiring a large number of queries or accessing output token probabilities, our universal and transferable attack achieves a 25% success rate against the state-of-the-art Circuit Breaker defense (Zou et al., 2024), compared to 2.5% by white-box GCG. Crucially, IRIS also attains state-of-the-art transfer rates on frontier models: GPT-3.5-Turbo (90%), GPT-4o-mini (86%), GPT-4o (76%), o1-mini (54%), o1-preview (48%), o3-mini (66%), and deepseek-reasoner (90%).",
+      "categories": [
+        "Semantic Scholar",
+        "NAACL"
+      ],
+      "primary_category": "NAACL",
+      "abs_url": "https://www.semanticscholar.org/paper/88c2cf8b3ea6c6626aad8bc2b0b0c92ccfe51574",
+      "pdf_url": "https://aclanthology.org/2025.naacl-long.302.pdf",
+      "doi": "10.18653/v1/2025.naacl-long.302",
+      "source": "Semantic Scholar",
+      "status": "conference",
+      "venue": "North American Chapter of the Association for Computational Linguistics",
+      "venue_key": "NAACL",
+      "generated_summary": "该论文研究发现GCG算法生成的对抗提示本质上具有通用性和可迁移性，即使仅针对单个模型和单个有害请求优化。为此提出IRIS目标，通过显式抑制安全特征来生成更强的通用可迁移攻击，在白盒和黑盒设置下均达到最优攻击成功率。",
+      "core_method": "IRIS（通过抑制拒绝来增强对抗性提示的通用性和可迁移性）",
+      "innovation_points": [
+        "发现优化器生成的对抗提示本质上具有提示通用性和跨模型迁移性",
+        "提出IRIS目标显式抑制安全特征以增强攻击",
+        "在查询数量和输出概率访问受限的情况下仍实现高成功率"
+      ],
+      "experiment_results": [
+        "white_box",
+        "transfer_rates"
+      ],
+      "ab_test": "unknown",
+      "ab_test_evidence": "",
+      "limitations": [
+        "元数据中未提及限制。"
+      ],
+      "practical_value": "提供更强的通用可迁移攻击方法，可评估LLM安全性并揭示防御弱点。",
+      "analysis_basis": "metadata",
+      "analysis_status": "complete",
+      "analysis_signature": "8ec300a61d3cbdbf",
+      "tags": [
+        "LLM4Rec",
+        "Online Eval"
+      ],
+      "llm_score": 0,
+      "llm_score_rationale": "",
+      "preference_signals": [],
+      "importance": "normal",
+      "read_status": "unread",
+      "notes": "",
+      "score": 0,
+      "tracks": [
+        "llm_systems"
+      ],
+      "primary_track": "llm_systems",
+      "topics": [
+        "post_training",
+        "llm_agent"
+      ],
+      "primary_topic": "post_training",
+      "track_relevance": {
+        "llm_systems": 88
+      },
+      "track_relevance_evidence": {
+        "llm_systems": "The paper focuses on jailbreak attacks against LLMs, analyzing safety alignment (RLHF) and introducing IRIS to suppress refusals. It evaluates transferability across LLMs and defenses, making it relevant to post-training safety mechanisms and adversarial LLM interactions."
+      },
+      "track_scores": {
+        "llm_systems": 87
+      },
+      "track_score_rationales": {
+        "llm_systems": "The paper is highly relevant to the LLM systems track as it addresses post-training safety alignment and adversarial attacks on language models. Technical depth is strong due to the introduction of a new objective (IRIS) and comprehensive empirical evaluation. Evidence is robust with results across multiple frontier models and a defense. Novelty is moderate: it challenges the belief that optimization-based attacks are sample-specific, but builds on existing GCG. Reproducibility depends on code and details availability, which is not explicitly provided in the metadata."
+      },
+      "track_score_breakdowns": {
+        "llm_systems": {
+          "relevance": 26,
+          "technical": 22,
+          "evidence": 18,
+          "novelty": 13,
+          "reproducibility": 8
+        }
+      },
+      "foundation": false,
+      "foundation_score": 0,
+      "citation_count": 19,
+      "research_details": {
+        "training_objective": "IRIS objective to deactivate safety feature and suppress refusals",
+        "feedback_source": "元数据中未提及",
+        "model_data_scale": "Not specified; evaluated on multiple frontier models",
+        "key_benchmarks": [
+          "Circuit Breaker defense",
+          "GPT-3.5-Turbo",
+          "GPT-4o-mini",
+          "GPT-4o",
+          "o1-mini",
+          "o1-preview",
+          "o3-mini",
+          "deepseek-reasoner"
+        ],
+        "artifacts": "None mentioned",
+        "agent_environment": "N/A",
+        "agent_mechanism": "Adversarial prompt optimization with IRIS objective",
+        "interaction_horizon": "Single or multiple queries to target model",
+        "agent_evaluation": "Attack success rate and transfer rates across models"
+      },
+      "display_affiliations": [
+        "Unknown affiliation"
+      ],
+      "published_date": "2025"
     },
     {
       "id": "openalex:W4400525124",
@@ -73388,7 +73786,7 @@
       ],
       "practical_value": "为将传统推荐模型行为信号与LLM世界知识结合提供了一种可行框架，有助于提升序列推荐性能。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "1c2bc3cd84786b92",
       "tags": [
         "LLM4Rec",
@@ -73483,7 +73881,7 @@
       ],
       "practical_value": "为推荐系统研究者提供了大语言模型时代个性化发展的方向性思考与潜在应用路径。",
       "analysis_basis": "metadata",
-      "analysis_status": "complete",
+      "analysis_status": "cached",
       "analysis_signature": "6219a08698922056",
       "tags": [
         "LLM4Rec",
@@ -73524,12 +73922,12 @@
   ],
   "analysis_enabled": true,
   "analysis_cache": {
-    "reused": 447,
-    "analyzed": 1,
+    "reused": 248,
+    "analyzed": 3,
     "source": "web/public/papers.json"
   },
   "current_limit": 30,
-  "current_paper_count": 448,
+  "current_paper_count": 251,
   "interests": {
     "arxiv_categories": [
       "cs.CL",
