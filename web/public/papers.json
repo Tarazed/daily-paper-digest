@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-26T04:48:25Z",
+  "generated_at": "2026-09-27T05:10:58Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "LLM RL、Post-training 与 Agent 日更；Generative Recommendation 周更",
@@ -5733,7 +5733,7 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "该论文通过消融实验分析了基于LLM代理的Text-to-Cypher框架LAST-CQ中自精炼循环各部分的贡献，发现检测失败并重试是关键，而反馈的复杂度和并行采样数量影响不大。LAST-CQ能恢复91.7%的单次生成失败查询，且对首次成功的查询只调用一次LLM。研究还表明n-gram重叠并非结果等价性的可靠指标，且LLM评判者比人工标签乐观9个百分点。",
+      "generated_summary": "该论文通过消融实验发现，在Text-to-Cypher智能体流程中，检测失败并重试（纠错路由）是性能提升的关键，而反馈的复杂度和并行采样数量影响甚微。LAST-CQ框架能恢复91.7%的单次生成失败查询，且成功查询仅需一次LLM调用。此外，基于n-gram的结果重叠度量与语义等价不相关，LLM评判相对人类标签乐观9个百分点。",
       "core_method": "需要全文或补充材料进一步确认核心方法。",
       "innovation_points": [
         "未能从全文/元数据中稳定抽取明确创新点。"
@@ -5751,10 +5751,10 @@
       "analysis_status": "fallback",
       "analysis_signature": "3405ca210c511371",
       "tags": [
-        "LLM4Rec",
-        "Generative Retrieval",
         "Agent4Rec",
-        "Evaluation"
+        "Generative Retrieval",
+        "Evaluation",
+        "Benchmark"
       ],
       "llm_score": 0,
       "llm_score_rationale": "",
