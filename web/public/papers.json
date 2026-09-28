@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-27T05:10:58Z",
+  "generated_at": "2026-09-28T05:11:01Z",
   "site": {
     "title": "Daily Paper Digest",
     "subtitle": "LLM RL、Post-training 与 Agent 日更；Generative Recommendation 周更",
@@ -5733,22 +5733,24 @@
       "status": "preprint",
       "venue": "",
       "venue_key": "",
-      "generated_summary": "该论文通过消融实验发现，在Text-to-Cypher智能体流程中，检测失败并重试（纠错路由）是性能提升的关键，而反馈的复杂度和并行采样数量影响甚微。LAST-CQ框架能恢复91.7%的单次生成失败查询，且成功查询仅需一次LLM调用。此外，基于n-gram的结果重叠度量与语义等价不相关，LLM评判相对人类标签乐观9个百分点。",
-      "core_method": "需要全文或补充材料进一步确认核心方法。",
+      "generated_summary": "该论文以LAST-CQ——一个五智能体、免训练、基于执行的Text-to-Cypher框架为测试平台，通过2471条实时数据库查询和六种主干模型的反事实实验，剖析了智能体循环中真正带来性能提升的环节。研究发现，核心增益来自失败检测与重试路由（可恢复91.7%的单次生成失败查询），而非反馈的精细程度或并行采样数量（后两者要么无显著影响，要么导致质量下降）。研究还揭示了n-gram重叠指标在结果等价性评估上的双向偏差，并校准了LLM评判器相对人类标签的乐观偏差。",
+      "core_method": "LAST-CQ是一个五智能体、免训练、基于执行的Text-to-Cypher框架，包含确定性模式解析、EXPLAIN预执行验证、模式引导纠错和空结果松弛。通过三个反事实实验（移除纠错、移除模式引导反馈、并行采样对比）隔离各组件贡献，在2471条查询和6个骨干模型上评估。",
       "innovation_points": [
-        "未能从全文/元数据中稳定抽取明确创新点。"
+        "对智能体自我优化循环进行消融分析，而非提出新架构",
+        "通过受控反事实实验定位增益来源于失败检测与重试路由",
+        "提出顺序不变的评测方法，并量化n-gram重叠与集合等价及语义判断的偏差"
       ],
       "experiment_results": [
-        "全文未提供足够实验结果细节，或解析失败。"
+        "移除纠错导致执行BLEU下降3.1%（对比单次系统）至12.3%（对比无优化反事实），最弱骨干下降80.7%。用原始数据库错误字符串替换模式引导反馈几乎无损失（精确匹配20.9% vs 19.9%，端到端<0.2%，两组单侧检验等价±0.075集合F1）。相同调用预算并行采样质量下降10-11%。LAST-CQ恢复91.7%单次生成失败的查询，成功查询仅需一次LLM调用。n-gram重叠在65.9%的结果上高估集合等价，同时低估语义判断。LLM评判器比人类标签乐观9个百分点。"
       ],
       "ab_test": "unknown",
       "ab_test_evidence": "",
       "limitations": [
-        "需要阅读全文确认实验设置、数据集和适用边界。"
+        "基于单一数据集（Neo4j Text2Cypher可执行子集）和特定数据库环境，可能限制泛化性。N=2、M=1的设置基于观察，未探索更大值。集合指标仅在1917条查询的纠正子集和214条配对子集上报告，非完整语料。未评估AST或图模式等价性。"
       ],
-      "practical_value": "可作为大模型后训练或 Agent 方向的跟进阅读。",
+      "practical_value": "研究表明在Text-to-Cypher智能体循环中，应优先实现高效的失败检测和重试机制，而非复杂的反馈生成或大规模采样，可节省计算成本并获得相当性能。LAST-CQ提供完全恢复和成本核算，可作为实际部署的参考架构。",
       "analysis_basis": "full_text",
-      "analysis_status": "fallback",
+      "analysis_status": "complete",
       "analysis_signature": "3405ca210c511371",
       "tags": [
         "Agent4Rec",
@@ -5796,15 +5798,17 @@
       "foundation_score": 0,
       "citation_count": 0,
       "research_details": {
-        "training_objective": "training-free; no fine-tuning; focuses on agent pipeline design",
-        "feedback_source": "execution results from database; compares LLM-synthesised feedback vs raw database error strings",
-        "model_data_scale": "2471 live-database queries; 6 LLM backbones spanning three vendor scale tiers",
-        "key_benchmarks": "execution-BLEU, naive exact match, set-F1, LLM judge calibrated against blind human labels",
-        "artifacts": "no explicit artifacts mentioned in metadata",
-        "agent_environment": "Text-to-Cypher query generation against live databases",
-        "agent_mechanism": "five-agent framework with failure detection and retry routing; correction and refinement steps",
-        "interaction_horizon": "multi-turn; until query succeeds or terminates? (not fully specified)",
-        "agent_evaluation": "recovery rate of failed queries (91.7%), cost efficiency (one LLM call for successful first-try queries), comparison to parallel sampling"
+        "training_objective": "训练无关（training-free），所有条件均为上下文提示，未进行微调",
+        "feedback_source": "模式引导、LLM合成的反馈以及原始数据库错误字符串（用于对比）",
+        "model_data_scale": "六个骨干模型（GPT-4o-mini、GPT-4o、Gemini 1.5 Flash、Gemini 1.5 Pro、Claude Sonnet 4、DeepSeek-Chat），2471条查询，16个领域，实时Neo4j演示数据库",
+        "key_benchmarks": [
+          "Neo4j Text2Cypher benchmark (executable subset)"
+        ],
+        "artifacts": "未明确提及代码或模型发布，仅描述框架和实验设置",
+        "agent_environment": "实时Neo4j数据库（LAST-CQ+DB）或仅模式访问（LAST-CQ）",
+        "agent_mechanism": "五智能体流水线：确定性模式解析、EXPLAIN预执行验证、模式引导纠错、空结果松弛、失败检测与重试路由",
+        "interaction_horizon": "每个查询最多N=2次验证循环和M=1次松弛传递（单次锁存实现）",
+        "agent_evaluation": "执行Google-BLEU、执行精确匹配（顺序不变）、裁判语义准确性、集合精度/召回/F1/Jaccard、命中检索率、恢复率、成本（流水线阶段数）"
       },
       "display_affiliations": [
         "Athens University of Economics and Business"
